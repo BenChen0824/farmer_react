@@ -1,11 +1,11 @@
 import './App.css';
-import { BrowserRouter, Route, Router } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-Routes-dom';
 
 function App() {
     return (
         <>
             <BrowserRouter>
-                <Router>
+                <Routes>
                     <Route path="/" />
                     <Route path="/comment" element={<></>} />
                     {/* 慧敏 */}
@@ -25,7 +25,7 @@ function App() {
                     <Route path="/activity" element={<></>} />
                     <Route path="/supplier" element={<></>} />
                     {/* pin */}
-                </Router>
+                </Routes>
             </BrowserRouter>
         </>
     );
