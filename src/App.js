@@ -1,11 +1,13 @@
 import './App.css';
-import { BrowserRouter, Route, Router } from 'react-router-dom';
-
+import Nav from './component/Navbar/Nav';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Footer from './component/Footer/Footer';
 function App() {
     return (
         <>
             <BrowserRouter>
-                <Router>
+                <Nav />
+                <Routes>
                     <Route path="/" />
                     <Route path="/comment" element={<></>} />
                     {/* 慧敏 */}
@@ -25,7 +27,8 @@ function App() {
                     <Route path="/activity" element={<></>} />
                     <Route path="/supplier" element={<></>} />
                     {/* pin */}
-                </Router>
+                </Routes>
+                <Footer />
             </BrowserRouter>
         </>
     );

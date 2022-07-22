@@ -1,4 +1,10 @@
-.App {
+* {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-family: 'Noto Sans TC', sans-serif;
+  /* border: 1px solid red; */
+}
+
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +41,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
