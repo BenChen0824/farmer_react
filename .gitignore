@@ -24,3 +24,4 @@ yarn-error.log*
 package-lock.json
 .vscode
 public/game-img
+public/images

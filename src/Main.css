@@ -1,0 +1,12 @@
+.main{padding-top: 150px;
+    min-height: 830px;
+    /* background-color: rgb(243, 243, 243); */
+}
+
+#root *{
+    list-style: none;
+}
+
+.cursor_pointer{
+    cursor: pointer;
+}

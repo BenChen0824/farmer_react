@@ -27,6 +27,9 @@ const Nav = () => {
                             <a href="/#">首頁</a>
                         </li>
                         <li>
+                            <a href="/#">合作廠商</a>
+                        </li>
+                        <li>
                             <a href="/#">小農活動</a>
                         </li>
                         <li>
@@ -39,8 +42,12 @@ const Nav = () => {
                             <a href="/#">客製化餐點</a>
                         </li>
                         <li>
+                            <a href="/#">智能客服</a>
+                        </li>
+                        <li>
                             <a href="/#">顧客評論</a>
                         </li>
+                        
                     </ul>
                 </nav>
                 {/* ICONS */}
@@ -63,6 +70,13 @@ const Nav = () => {
                 </div>
 
                 <div className="main_logo text-center ">
+                
+                    <img
+                        src="./logo/fresh_LOGO_black.svg"
+                        className="main_logo"
+                        alt=""
+                    />
+                
                     {/* <Logo className="w-75 pl-5" /> */}
                 </div>
 
