@@ -25,6 +25,7 @@ const Nav = () => {
 
     return (
         <>
+        
             <header id="Navbar" className={navColor ? a : b}>
                 {/* <Logo className="main_logo" /> */}
                 <Logo
