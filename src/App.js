@@ -2,7 +2,6 @@ import './App.css';
 import Nav from './component/Navbar/Nav';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Footer from './component/Footer/Footer';
-import { BrowserRouter, Route, Routes } from 'react-Routes-dom';
 
 function App() {
     return (
