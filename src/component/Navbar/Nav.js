@@ -6,15 +6,6 @@ import './Nav.css';
 import { ReactComponent as Logo } from './images/fresh_LOGO_black.svg';
 
 const Nav = () => {
-    // const Navbar = document.getElementById('Navbar');
-    // window.onscroll = function () {
-    //     if (window.scrollY > 200) {
-    //         Navbar.classList.add('nav_active');
-    //     } else {
-    //         Navbar.classList.remove('nav_active');
-    //     }
-    // };
-
     const [navColor, setNavColor] = useState(false);
 
     const changeColor = () => {
@@ -34,10 +25,6 @@ const Nav = () => {
 
     return (
         <>
-            {/* <header id="Navbar" className={clsx(d-none,d-md-flex ,justify-content-between, align-items-center,{[nav_active]: navColor === true})}></header> */}
-
-            {/* <header id="Navbar" className="d-none d-md-flex justify-content-between align-items-center"> */}
-
             <header id="Navbar" className={navColor ? a : b}>
                 {/* <Logo className="main_logo" /> */}
                 <Logo
