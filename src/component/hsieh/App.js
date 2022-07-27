@@ -2,10 +2,7 @@ import './App.css'
 import Nav from './component/Navbar/Nav'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Footer from './component/footer/Footer'
-import Recipesearch from './component/Recipesearch'
-import RecipesRecommend from './component/RecipesRecommend'
-import RecipesList from './component/RecipesList'
-import Pagination from './component/Pagination'
+import Recipesearch from './component/hsieh/Recipesearch'
 
 function App() {
   return (
