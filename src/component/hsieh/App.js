@@ -3,6 +3,8 @@ import Nav from './component/Navbar/Nav'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Footer from './component/footer/Footer'
 import Recipesearch from './component/hsieh/Recipesearch'
+import Eachrecipe from './component/hsieh/Eachrecipe'
+import Creatrecipe from './component/hsieh/Creatrecipe'
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
           <Route path="/comment" element={<></>} />
           {/* 慧敏 */}
           <Route path="/recipe" element={<Recipesearch />} />
+          <Route path="/each" element={<Eachrecipe />} />
+          <Route path="/creatrecipe" element={<Creatrecipe />} />
           {/* 宸睿 */}
           <Route path="/product" element={<></>} />
           {/* 昱蓉 */}
@@ -31,8 +35,6 @@ function App() {
           {/* pin */}
         </Routes>
 
-        {/* <RecipesRecommend /> */}
-        {/* <RecipesList /> */}
         {/* <Pagination /> */}
         <Footer />
       </BrowserRouter>
