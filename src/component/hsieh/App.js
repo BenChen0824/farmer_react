@@ -5,6 +5,7 @@ import Footer from './component/footer/Footer'
 import Recipesearch from './component/hsieh/Recipesearch'
 import Eachrecipe from './component/hsieh/Eachrecipe'
 import Creatrecipe from './component/hsieh/Creatrecipe'
+import Popup from './component/hsieh/Popup'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/recipe" element={<Recipesearch />} />
           <Route path="/each" element={<Eachrecipe />} />
           <Route path="/creatrecipe" element={<Creatrecipe />} />
+          <Route path="/popup" element={<Popup />} />
           {/* 宸睿 */}
           <Route path="/product" element={<></>} />
           {/* 昱蓉 */}
