@@ -14,7 +14,7 @@ header:hover {
    
 }
 
-header:hover a {
+header:hover .menu_items {
     color: #333333;
 }
 
@@ -37,7 +37,7 @@ nav ul li {
     /* align-items: center; */
 }
 
-header a {
+.menu_items {
     width: 100%;
     height: 80px;
     font-size: 1em;
@@ -88,3 +88,31 @@ border-left: 1px solid #fff;
 color: #fff;
 }
 
+.nav_active {
+    background-color: rgb(255, 255, 255);
+    color: #333;
+    box-shadow: 8px 3px 3px rgba(74, 74, 74, 0.2);
+
+}
+
+.main_logo_active {
+    fill: #333;
+    /* background-color: rgb(123, 44, 44); */
+}
+
+
+
+
+.menu_items_active {
+    color: #333
+}
+
+
+.nav_icons_active svg{
+    color: #333;
+}
+
+.cart_number_active {
+    color: #E5C391;
+    border-left: 1px solid #333;
+}
