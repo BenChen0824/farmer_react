@@ -9,10 +9,15 @@ import Cart from './component/ben/cart_main/Cart';
 import CartPayment from './component/ben/cart_payment/CartPayment';
 import CartCreditCard from './component/ben/cart_creditCard/CartCreditCard';
 import CartSuccess from './component/ben/cart_success/CartSuccess';
+import { IconContext } from 'react-icons'
+import { Provider } from 'react-redux'
+import ProductList from './page/ProductList'
 
 function App() {
     return (
         <>
+        <Provider store={store}>
+        <IconContext.Provider value={{ className: 'react_icons' }}>
             <BrowserRouter>
                 <Nav />
                 <Container>
@@ -24,7 +29,7 @@ function App() {
                         <Route path="/recipe" element={<></>} />
                         {/* 宸睿 */}
 
-                        <Route path="/product" element={<></>} />
+                        <Route path="/product" element={<ProductList />} />
                         {/* 昱蓉 */}
 
                         <Route path="/member" element={<></>} />
@@ -53,6 +58,8 @@ function App() {
                 </Container>
                 <Footer />
             </BrowserRouter>
+            </IconContext.Provider>
+            </Provider>
         </>
     );
 }
