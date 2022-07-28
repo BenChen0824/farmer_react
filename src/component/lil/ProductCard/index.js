@@ -16,6 +16,7 @@ function ProductCard({
     unit,
     img,
     inventory,
+    onClick,
 }) {
     const [amount, setAmount] = useState(1);
     const [collect, setCollect] = useState(false);
@@ -43,55 +44,58 @@ function ProductCard({
                     setHover(true);
                 }}
             >
-                <Box>
-                    <div className={styles.card_img}>
-                        <img src={img} alt="" />
-                    </div>
-                </Box>
-                <div className={styles.card_detail}>
-                    <p>{supplier}</p>
-                    <h3>{name}</h3>
-                    <div className={styles.card_price}>
-                        <div className={styles.dollar_tag}>$</div>
-                        <div className={styles.dollar}>{price}</div>
-                        <div className={styles.slash}>/</div>
-                        <div className={styles.type}>{UNIT[unit]}</div>
-                    </div>
-                    <div
-                        className={clsx(styles.card_cart, {
-                            [styles.hidden]: hover,
-                        })}
-                    >
+                <div onClick={onClick}>
+                    <Box>
+                        <div className={styles.card_img}>
+                            <img src={img} alt="" />
+                        </div>
+                    </Box>
+                    <div className={styles.card_detail}>
+                        <p>{supplier}</p>
+                        <h3>{name}</h3>
+                        <div className={styles.card_price}>
+                            <div className={styles.dollar_tag}>$</div>
+                            <div className={styles.dollar}>{price}</div>
+                            <div className={styles.slash}>/</div>
+                            <div className={styles.type}>{UNIT[unit]}</div>
+                        </div>
                         <div
-                            className={clsx(styles.collect, {
-                                [styles.active]: collect,
+                            className={clsx(styles.card_cart, {
+                                [styles.hidden]: hover,
                             })}
-                            onClick={() => {
-                                setCollect((prev) => !prev);
-                            }}
                         >
-                            <AiOutlineHeart size={24} /> {/* TODO: 連接收藏 */}
-                        </div>
-                        <div className={styles.count}>
                             <div
-                                className={styles.minus}
-                                onClick={handleClickMinus}
+                                className={clsx(styles.collect, {
+                                    [styles.active]: collect,
+                                })}
+                                onClick={() => {
+                                    setCollect((prev) => !prev);
+                                }}
                             >
-                                <AiOutlineMinus size={14} />
+                                <AiOutlineHeart size={24} />{' '}
+                                {/* TODO: 連接收藏 */}
                             </div>
-                            <div className={styles.num_box}>
-                                <div className={styles.num}>{amount}</div>
+                            <div className={styles.count}>
+                                <div
+                                    className={styles.minus}
+                                    onClick={handleClickMinus}
+                                >
+                                    <AiOutlineMinus size={14} />
+                                </div>
+                                <div className={styles.num_box}>
+                                    <div className={styles.num}>{amount}</div>
+                                </div>
+                                <div
+                                    className={styles.plus}
+                                    onClick={handleClickPlus}
+                                >
+                                    <AiOutlinePlus size={14} />
+                                </div>
                             </div>
-                            <div
-                                className={styles.plus}
-                                onClick={handleClickPlus}
-                            >
-                                <AiOutlinePlus size={14} />
-                            </div>
-                        </div>
 
-                        <div className={styles.buy} onClick={AddToCart}>
-                            <BsCart4 size={24} /> {/* TODO: add to cart */}
+                            <div className={styles.buy} onClick={AddToCart}>
+                                <BsCart4 size={24} /> {/* TODO: add to cart */}
+                            </div>
                         </div>
                     </div>
                 </div>

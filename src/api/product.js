@@ -20,3 +20,21 @@ export async function fetchProduct(goToPage, hashTag, type) {
 
     return res.data;
 }
+
+export async function getProductItem(sid) {
+    const res = await axios.get(`${AB_GET_PRODUCT}?sid=${sid}`);
+    const { data } = res;
+
+    if (data && data.rows) {
+        const [item] = data.rows.map((el) => {
+            const { product_img, ...rest } = el;
+            return {
+                ...rest,
+                product_img: product_img.map((o) => getImgUrl(o)),
+            };
+        });
+        return item;
+    }
+
+    return {};
+}

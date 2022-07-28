@@ -13,6 +13,7 @@ import { IconContext } from 'react-icons';
 import { Provider } from 'react-redux';
 import ProductList from './page/ProductList';
 import store from './store';
+import Product from './page/Product';
 
 function App() {
     return (
@@ -34,6 +35,10 @@ function App() {
                                     <Route
                                         path="/product"
                                         element={<ProductList />}
+                                    />
+                                    <Route
+                                        path="/product/:sid"
+                                        element={<Product />}
                                     />
                                     {/* 昱蓉 */}
 

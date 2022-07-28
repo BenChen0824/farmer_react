@@ -16,6 +16,7 @@ import Slider from 'react-slick';
 import { AB_GET_HOT_SALES } from '../../config/ajax-path';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleHashTag } from '../../store/slices/product';
+import { useNavigate } from 'react-router-dom';
 
 const settings = {
     // focusOnSelect: true,
@@ -27,6 +28,7 @@ const settings = {
 
 function ProductList() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [data, setData] = useState({});
     const query = useQuery();
     const page = query['page'] || 1;
@@ -34,10 +36,13 @@ function ProductList() {
     const [hotSales, setHotSale] = useState([]);
     const { hashTag } = useSelector((state) => state.product);
 
+    const goToPath = (sid) => {
+        navigate(`/product/${sid}`);
+    };
+
     const getProduct = async (page, hashTag, type) => {
         const data = await fetchProduct(page, hashTag, type);
         if (data && data.rows) {
-            console.log(data);
             setData(data);
         }
     };
@@ -45,7 +50,7 @@ function ProductList() {
     const getHotSales = async () => {
         const r = await fetch(AB_GET_HOT_SALES);
         const obj = await r.json();
-        console.log(obj);
+
         setHotSale(obj);
     };
 
@@ -100,6 +105,9 @@ function ProductList() {
                                                 return (
                                                     <ProductCard
                                                         key={i}
+                                                        onClick={() =>
+                                                            goToPath(v.sid)
+                                                        }
                                                         // className="col-6 col-lg-4"
                                                         className={styles.slick}
                                                         name={v.product_name}
@@ -129,6 +137,9 @@ function ProductList() {
                                           return (
                                               <ProductCard
                                                   key={i}
+                                                  onClick={() =>
+                                                      goToPath(v.sid)
+                                                  }
                                                   className="col-6 col-lg-4"
                                                   name={v.product_name}
                                                   supplier={v.product_supplier}

@@ -1,0 +1,31 @@
+.btn {
+  width: 180px;
+  height: 40px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 20px;
+}
+.active {
+  background-color: #82ca35;
+  color: #ffffff;
+}
+
+.green {
+  background-color: #ffffff;
+  border: 1px solid #82ca35;
+  color: #82ca35;
+}
+.green_active {
+  background-color: #82ca35;
+  color: #ffffff;
+}
+
+.brown {
+  background-color: #ffffff;
+  border: 1px solid #3a2c2c;
+  color: #3a2c2c;
+}
+.brown_active {
+  background-color: #3a2c2c;
+  color: #ffffff;
+}

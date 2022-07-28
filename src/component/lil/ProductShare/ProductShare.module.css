@@ -1,0 +1,13 @@
+.container {
+  max-width: 1000px;
+  margin: auto;
+  height: 400px;
+  background-color: #ffffff;
+  border: 1px solid #3a2c2c;
+}
+.wrap {
+  width: 90%;
+  margin: auto;
+  background-color: #ffffff;
+  margin: auto;
+}

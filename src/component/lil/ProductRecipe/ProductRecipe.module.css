@@ -1,0 +1,20 @@
+.container {
+  max-width: 1000px;
+  margin: auto;
+  height: 400px;
+  background-color: #ffffff;
+  border: 1px solid #3a2c2c;
+}
+.wrap {
+  width: 90%;
+  margin: auto;
+  background-color: #ffffff;
+  margin: auto;
+  display: flex;
+}
+.RCard_info > span {
+  margin-bottom: 10px;
+}
+.RCard_info > p {
+  margin-bottom: 5px;
+}
