@@ -1,4 +1,4 @@
-import './../cart.css';
+import './../Cart.css';
 
 function CartPayment() {
     return (
@@ -41,7 +41,7 @@ function CartPayment() {
                                     <i className="text-light fs-2 fa-solid fa-sack-dollar"></i>
                                 </div>
                                 <div className="cart_step_fontsize text-center pt-2 text-center">
-                                <div>信用卡</div>
+                                    <div>信用卡</div>
                                     <div>LinePay</div>
                                     <div>貨到付款</div>
                                 </div>
