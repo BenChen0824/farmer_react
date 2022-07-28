@@ -4,7 +4,7 @@ import styles from './ProductNavBar.module.css';
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { useQuery } from '../../hooks';
+import { useQuery } from './../../../hooks';
 import qs from 'qs';
 
 function ProductNavBar({ type }) {
