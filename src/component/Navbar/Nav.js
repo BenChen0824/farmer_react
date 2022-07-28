@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { FaShoppingCart } from 'react-icons/fa';
 import { FaUserCircle } from 'react-icons/fa';
 import { AiOutlineMenu } from 'react-icons/ai';
 import './Nav.css';
 import { ReactComponent as Logo } from './images/fresh_LOGO_black.svg';
+import CartCountContext, {
+    cartCountOBJ,
+} from '../ben/cart_count/CartCountContext';
 
-const Nav = () => {
+function Nav() {
+    const cartCountContext = useContext(CartCountContext);
     const [navColor, setNavColor] = useState(false);
 
     const changeColor = () => {
@@ -128,7 +132,7 @@ const Nav = () => {
                                     : 'cart_number px-3 fs-5'
                             }
                         >
-                            20
+                            {cartCountContext}
                         </div>
                     </div>
                     {/* <div className="cart_number d-flex justify-content-center align-items-center">
@@ -175,7 +179,9 @@ const Nav = () => {
                     <div className="nav_icons d-flex">
                         <FaUserCircle size={30} />
                         <FaShoppingCart size={30} className="mx-0" />
-                        <div className="cart_number px-2 fs-10">20</div>
+                        <div className="cart_number px-2 fs-10">
+                            {cartCountContext}
+                        </div>
                     </div>
                     {/* <div className="cart_number d-flex justify-content-center align-items-center">
                         <p className="fs-5 pl-4">0</p>
@@ -184,6 +190,6 @@ const Nav = () => {
             </header>
         </>
     );
-};
+}
 
 export default Nav;
