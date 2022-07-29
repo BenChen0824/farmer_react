@@ -13,6 +13,7 @@ import { IconContext } from 'react-icons';
 import { Provider } from 'react-redux';
 import ProductList from './page/ProductList';
 import store from './store';
+import Cart01 from './component/ben/cart_main/cart01';
 
 function App() {
     return (
@@ -24,7 +25,7 @@ function App() {
                             <Nav />
                             <Container>
                                 <Routes>
-                                    <Route path="/" />
+                                    <Route path="/" element={<></>} />
                                     <Route path="/comment" element={<></>} />
                                     {/* 慧敏 */}
 
@@ -42,6 +43,10 @@ function App() {
 
                                     <Route path="/cart" element={<Cart />} />
                                     <Route
+                                        path="/cart01"
+                                        element={<Cart01 />}
+                                    />
+                                    <Route
                                         path="/cart/payment"
                                         element={<CartPayment />}
                                     />
@@ -53,6 +58,7 @@ function App() {
                                         path="/cart/success"
                                         element={<CartSuccess />}
                                     />
+
                                     {/* 宗佑 */}
 
                                     <Route

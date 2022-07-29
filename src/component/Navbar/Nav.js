@@ -3,13 +3,14 @@ import { FaShoppingCart } from 'react-icons/fa';
 import { FaUserCircle } from 'react-icons/fa';
 import { AiOutlineMenu } from 'react-icons/ai';
 import './Nav.css';
+import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from './images/fresh_LOGO_black.svg';
 import CartCountContext, {
     cartCountOBJ,
 } from '../ben/cart_count/CartCountContext';
 
 function Nav() {
-    const cartCountContext = useContext(CartCountContext);
+    const { cartList, setCartList } = useContext(CartCountContext);
     const [navColor, setNavColor] = useState(false);
 
     const changeColor = () => {
@@ -124,7 +125,13 @@ function Nav() {
                         }
                     >
                         <FaUserCircle size={30} />
-                        <FaShoppingCart size={30} className="mx-1" />
+                        <Link to="/cart">
+                            <FaShoppingCart
+                                size={30}
+                                className="mx-1 cursor_pointer"
+                            />
+                        </Link>
+
                         <div
                             className={
                                 navColor
@@ -132,7 +139,7 @@ function Nav() {
                                     : 'cart_number px-3 fs-5'
                             }
                         >
-                            {cartCountContext}
+                            {cartList.length}
                         </div>
                     </div>
                     {/* <div className="cart_number d-flex justify-content-center align-items-center">
@@ -178,9 +185,15 @@ function Nav() {
                 <div className="d-flex">
                     <div className="nav_icons d-flex">
                         <FaUserCircle size={30} />
-                        <FaShoppingCart size={30} className="mx-0" />
+                        <Link to="/cart">
+                            <FaShoppingCart
+                                size={30}
+                                className="mx-0 cursor_pointer"
+                            />
+                        </Link>
+
                         <div className="cart_number px-2 fs-10">
-                            {cartCountContext}
+                            {cartList.length}
                         </div>
                     </div>
                     {/* <div className="cart_number d-flex justify-content-center align-items-center">

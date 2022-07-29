@@ -1,77 +1,39 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './../cart.css';
-import {
-    CART_LIST_TOBUY,
-    CART_LIST_CHANGE_COUNT,
-    CART_LIST_DELETE,
-} from './../../../config/ajax-path';
+import { CART_LIST_TOBUY } from './../../../config/ajax-path';
 import CartCountContext from '../cart_count/CartCountContext';
 
-function Cart() {
-    // const navigate = useNavigate();
-    const { cartList, setCartList } = useContext(CartCountContext);
-    // const [cartList, setCartList] = useState([]);
+function Cart01() {
+    const navigate = useNavigate();
+    const [cartList, setCartList] = useState([]);
     const [freshList, setFreshList] = useState([]);
-    const [render, setRender] = useState(0);
     const [customizedList, setCustomizedList] = useState([]);
     const [freshProductAmount, setFreshProductAmount] = useState(0);
     const [customizedProducAmount, setCustomizedProductAmount] = useState(0);
     const [totalAmount, setTotalAmountAmount] = useState(0);
-    // const [cartTotal, setCartTotal] = useContext(CartCountContext);
+    const cartContext = useContext(CartCountContext);
 
     //連接資料庫 抓資料並分為freshList customizedList
-    useEffect(() => {
-        const newFreshList = cartList.filter((v) => {
+    const getData = async () => {
+        const r = await fetch(`${CART_LIST_TOBUY}`);
+        const obj = await r.json();
+        console.log(obj);
+        setCartList(obj);
+
+        const newFreshList = obj.filter((v) => {
             return +v.cart_product_type === 1;
         });
-        console.log(newFreshList);
         setFreshList(newFreshList);
-        const newCustomizedList = cartList.filter((v) => {
+        const newCustomizedList = obj.filter((v) => {
             return +v.cart_product_type === 2;
         });
-        console.log(newCustomizedList);
         setCustomizedList(newCustomizedList);
+    };
+
+    useEffect(() => {
+        getData();
     }, []);
-
-    const changeCount = (sid, count) => {
-        let changeData = { sid, product_count: count };
-        fetch(`${CART_LIST_CHANGE_COUNT}`, {
-            method: 'PUT',
-            body: JSON.stringify(changeData),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-            .then((r) => r.json())
-            .then((obj) => {
-                // console.log(obj);
-                setRender(render + 1);
-            });
-    };
-
-    const deleteItem = (sid, name) => {
-        const deleteIt = window.confirm(`確定要將${name}移出您的購物車嗎`);
-        if (deleteIt) {
-            let deleteData = { sid };
-            fetch(`${CART_LIST_DELETE}`, {
-                method: 'DELETE',
-                body: JSON.stringify(deleteData),
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            })
-                .then((r) => r.json())
-                .then((obj) => {
-                    // console.log(obj);
-                    setRender(render + 1);
-                });
-        }
-    };
-
-    // useEffect(() => {
-    //     setCartList([...freshList, ...customizedList]);
-    // }, [render]);
     useEffect(() => {
         const newfreshProductAmountArray = freshList.map((v, i) => {
             return v.product_count * v.product_price;
@@ -82,7 +44,6 @@ function Cart() {
         });
         setFreshProductAmount(newfreshProductAmount);
     }, [freshList]);
-
     useEffect(() => {
         const newCustomizedProductAmountArray = customizedList.map((v, i) => {
             return v.product_count * v.product_price;
@@ -93,7 +54,7 @@ function Cart() {
         });
         setCustomizedProductAmount(newCustomizedProductAmount);
     }, [customizedList]);
-
+   
     useEffect(() => {
         const totalPrice = customizedProducAmount + freshProductAmount;
         setTotalAmountAmount(totalPrice);
@@ -189,15 +150,7 @@ function Cart() {
                                                     }}
                                                 />
                                             </span>
-                                            <span
-                                                className="d-block cursor_pointer"
-                                                onClick={() => {
-                                                    deleteItem(
-                                                        v.sid,
-                                                        v.product_name
-                                                    );
-                                                }}
-                                            >
+                                            <span className="d-block cursor_pointer">
                                                 <img
                                                     width="20px"
                                                     src="/images/ben/red-x.png"
@@ -233,10 +186,27 @@ function Cart() {
                                             <button
                                                 className="btn"
                                                 onClick={() => {
-                                                    changeCount(
-                                                        v.sid,
-                                                        v.product_count - 1
-                                                    );
+                                                    const newFreshList =
+                                                        JSON.parse(
+                                                            JSON.stringify(
+                                                                freshList
+                                                            )
+                                                        );
+                                                    freshList[i].product_count -
+                                                        1 >
+                                                    0
+                                                        ? (newFreshList[
+                                                              i
+                                                          ].product_count =
+                                                              +freshList[i]
+                                                                  .product_count -
+                                                              1)
+                                                        : (newFreshList[
+                                                              i
+                                                          ].product_count =
+                                                              +freshList[i]
+                                                                  .product_count);
+                                                    setFreshList(newFreshList);
                                                 }}
                                             >
                                                 -
@@ -270,10 +240,19 @@ function Cart() {
                                             <button
                                                 className="btn"
                                                 onClick={() => {
-                                                    changeCount(
-                                                        v.sid,
-                                                        v.product_count + 1
-                                                    );
+                                                    const newFreshList =
+                                                        JSON.parse(
+                                                            JSON.stringify(
+                                                                freshList
+                                                            )
+                                                        );
+
+                                                    newFreshList[
+                                                        i
+                                                    ].product_count =
+                                                        +freshList[i]
+                                                            .product_count + 1;
+                                                    setFreshList(newFreshList);
                                                 }}
                                             >
                                                 +
@@ -324,18 +303,7 @@ function Cart() {
                                                         }}
                                                     />
                                                 </span>
-                                                <span
-                                                    className="d-block cursor_pointer"
-                                                    onClick={() => {
-                                                        alert(
-                                                            `確定要將${v.product_name}移出您的購物車嗎`
-                                                        );
-                                                        deleteItem(
-                                                            v.sid,
-                                                            v.product_name
-                                                        );
-                                                    }}
-                                                >
+                                                <span className="d-block cursor_pointer">
                                                     <img
                                                         width="20px"
                                                         src="/images/ben/red-x.png"
@@ -371,9 +339,34 @@ function Cart() {
                                                 <button
                                                     className="btn"
                                                     onClick={() => {
-                                                        changeCount(
-                                                            v.sid,
-                                                            v.product_count - 1
+                                                        const newCustomizedList =
+                                                            JSON.parse(
+                                                                JSON.stringify(
+                                                                    customizedList
+                                                                )
+                                                            );
+
+                                                        customizedList[i]
+                                                            .product_count -
+                                                            1 >
+                                                        0
+                                                            ? (newCustomizedList[
+                                                                  i
+                                                              ].product_count =
+                                                                  +customizedList[
+                                                                      i
+                                                                  ]
+                                                                      .product_count -
+                                                                  1)
+                                                            : (newCustomizedList[
+                                                                  i
+                                                              ].product_count =
+                                                                  +customizedList[
+                                                                      i
+                                                                  ]
+                                                                      .product_count);
+                                                        setCustomizedList(
+                                                            newCustomizedList
                                                         );
                                                     }}
                                                 >
@@ -410,9 +403,21 @@ function Cart() {
                                                 <button
                                                     className="btn"
                                                     onClick={() => {
-                                                        changeCount(
-                                                            v.sid,
-                                                            v.product_count + 1
+                                                        const newCustomizedList =
+                                                            JSON.parse(
+                                                                JSON.stringify(
+                                                                    customizedList
+                                                                )
+                                                            );
+
+                                                        newCustomizedList[
+                                                            i
+                                                        ].product_count =
+                                                            +customizedList[i]
+                                                                .product_count +
+                                                            1;
+                                                        setCustomizedList(
+                                                            newCustomizedList
                                                         );
                                                     }}
                                                 >
@@ -461,16 +466,12 @@ function Cart() {
                         </div>
                         <div className="col my-5">
                             <div className="d-flex justify-content-end">
-                                <Link to="/product">
-                                    <button className="btn btn-info mx-3 px-3">
-                                        返回購物頁面
-                                    </button>
-                                </Link>
-                                <Link to="/cart/payment">
-                                    <button className="btn btn-info px-3">
-                                        繼續結帳
-                                    </button>
-                                </Link>
+                                <button className="btn btn-info mx-3 px-3">
+                                    返回購物頁面
+                                </button>
+                                <button className="btn btn-info px-3">
+                                    繼續結帳
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -480,4 +481,4 @@ function Cart() {
     );
 }
 
-export default Cart;
+export default Cart01;
