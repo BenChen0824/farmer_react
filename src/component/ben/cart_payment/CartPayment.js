@@ -1,5 +1,3 @@
-import './../Cart.css';
-
 function CartPayment() {
     return (
         <>
