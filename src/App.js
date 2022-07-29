@@ -13,7 +13,7 @@ import { IconContext } from 'react-icons';
 import { Provider } from 'react-redux';
 import ProductList from './page/ProductList';
 import store from './store';
-import Cart01 from './component/ben/cart_main/cart01';
+import Product from './page/Product';
 
 function App() {
     return (
@@ -36,16 +36,17 @@ function App() {
                                         path="/product"
                                         element={<ProductList />}
                                     />
+                                    <Route
+                                        path="/product/:sid"
+                                        element={<Product />}
+                                    />
                                     {/* 昱蓉 */}
 
                                     <Route path="/member" element={<></>} />
                                     {/* 柏安 */}
 
                                     <Route path="/cart" element={<Cart />} />
-                                    <Route
-                                        path="/cart01"
-                                        element={<Cart01 />}
-                                    />
+
                                     <Route
                                         path="/cart/payment"
                                         element={<CartPayment />}

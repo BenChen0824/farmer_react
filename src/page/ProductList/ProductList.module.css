@@ -1,20 +1,23 @@
+.page {
+    background-color: #eff0ea;
+}
 .container {
-  max-width: 1200px;
-  margin: auto;
-  background-color: #fafafa;
-  padding: 50px 20px;
+    max-width: 1200px;
+    margin: auto;
+    background-color: #fafafa;
+    padding: 50px 20px;
 }
 .hash_tag {
-  margin: 0 auto 50px;
+    margin: 0 auto 50px;
 }
 .card {
-  margin: 0 auto 50px;
+    margin: 0 auto 50px;
 }
 
 .pagination {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 .slick {
-  margin: 10px;
+    margin: 10px;
 }

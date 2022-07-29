@@ -50,14 +50,7 @@ function Pagination({ page, totalPage }) {
                         );
                     })}
 
-                {/* 
-        <li className={clsx(styles.page_num, styles.active)}>
-          <a className="page-link" href="#/">
-            1
-          </a>
-        </li> */}
-
-                <li className={styles.page_item}>
+                <li className={styles.page_item_right}>
                     <a className="page-link" href="#/">
                         <IoIosArrowForward />
                     </a>

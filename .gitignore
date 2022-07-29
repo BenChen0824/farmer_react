@@ -26,3 +26,7 @@ package-lock.json
 public/game-img
 public/images
 public/fontawesome-free-6.1.1-web
+
+public/images/**
+
+!**/.gitkeep
