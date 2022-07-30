@@ -1,17 +1,25 @@
 import CartCountContext from './CartCountContext';
 import React, { useContext, useState, useEffect } from 'react';
 import { CART_LIST_TOBUY } from './../../../config/ajax-path';
-export default function CartCountContextProvider({ children }) {
-    // const [cartTotal, setCartTotal] = useState(cartCountOBJ.cartCount);
-    const [cartList, setCartList] = useState([]);
 
-    const getData = async () => {
-        const r = await fetch(`${CART_LIST_TOBUY}`);
-        const obj = await r.json();
-        console.log(obj);
-        setCartList(obj);
-        //setCartTotal(cartTotal.length);
+export default function CartCountContextProvider({ children }) {
+    const [cartList, setCartList] = useState([]);
+    const [render, setrender] = useState(0);
+
+    let data = cartList;
+    const getData = () => {
+        fetch(`${CART_LIST_TOBUY}`, {
+            method: 'GET',
+        })
+            .then((r) => r.json())
+            .then((obj) => {
+                if (data !== obj) {
+                    setCartList(obj);
+                    setrender(render + 1);
+                }
+            });
     };
+
     useEffect(() => {
         getData();
     }, []);

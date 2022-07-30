@@ -5,9 +5,7 @@ import { AiOutlineMenu } from 'react-icons/ai';
 import './Nav.css';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from './images/fresh_LOGO_black.svg';
-import CartCountContext, {
-    cartCountOBJ,
-} from '../ben/cart_count/CartCountContext';
+import CartCountContext from '../ben/cart_count/CartCountContext';
 
 function Nav() {
     const { cartList, setCartList } = useContext(CartCountContext);

@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './../cart.css';
+import './../Cart.css';
 import {
     CART_LIST_TOBUY,
     CART_LIST_CHANGE_COUNT,
@@ -12,8 +12,8 @@ function Cart() {
     // const navigate = useNavigate();
     const { cartList, setCartList } = useContext(CartCountContext);
     // const [cartList, setCartList] = useState([]);
-    const [freshList, setFreshList] = useState([]);
     const [render, setRender] = useState(0);
+    const [freshList, setFreshList] = useState([]);
     const [customizedList, setCustomizedList] = useState([]);
     const [freshProductAmount, setFreshProductAmount] = useState(0);
     const [customizedProducAmount, setCustomizedProductAmount] = useState(0);
@@ -36,6 +36,7 @@ function Cart() {
 
     const changeCount = (sid, count) => {
         let changeData = { sid, product_count: count };
+
         fetch(`${CART_LIST_CHANGE_COUNT}`, {
             method: 'PUT',
             body: JSON.stringify(changeData),
@@ -46,7 +47,7 @@ function Cart() {
             .then((r) => r.json())
             .then((obj) => {
                 // console.log(obj);
-                setRender(render + 1);
+                setCartList(obj.cart);
             });
     };
 
@@ -63,8 +64,8 @@ function Cart() {
             })
                 .then((r) => r.json())
                 .then((obj) => {
-                    // console.log(obj);
-                    setRender(render + 1);
+                    console.log(obj);
+                    setCartList(obj);
                 });
         }
     };
@@ -73,26 +74,34 @@ function Cart() {
     //     setCartList([...freshList, ...customizedList]);
     // }, [render]);
     useEffect(() => {
-        const newfreshProductAmountArray = freshList.map((v, i) => {
-            return v.product_count * v.product_price;
-        });
+        const newfreshProductAmountArray = cartList
+            .filter((v) => {
+                return +v.cart_product_type === 1;
+            })
+            .map((v, i) => {
+                return v.product_count * v.product_price;
+            });
         let newfreshProductAmount = 0;
         newfreshProductAmountArray.map((v) => {
             newfreshProductAmount += v;
         });
         setFreshProductAmount(newfreshProductAmount);
-    }, [freshList]);
+    }, [cartList]);
 
     useEffect(() => {
-        const newCustomizedProductAmountArray = customizedList.map((v, i) => {
-            return v.product_count * v.product_price;
-        });
+        const newCustomizedProductAmountArray = cartList
+            .filter((v) => {
+                return +v.cart_product_type === 2;
+            })
+            .map((v, i) => {
+                return v.product_count * v.product_price;
+            });
         let newCustomizedProductAmount = 0;
         newCustomizedProductAmountArray.map((v) => {
             newCustomizedProductAmount += v;
         });
         setCustomizedProductAmount(newCustomizedProductAmount);
-    }, [customizedList]);
+    }, [cartList]);
 
     useEffect(() => {
         const totalPrice = customizedProducAmount + freshProductAmount;
@@ -172,142 +181,11 @@ function Cart() {
                             <li className="fs-5">總價</li>
                         </ul>
 
-                        {freshList.map((v, i) => {
-                            return (
-                                <div
-                                    className="d-flex justify-content-between align-content-center mt-3 cart_border_bottom pb-2"
-                                    key={i}
-                                >
-                                    <div className="d-flex justify-content-between align-content-center">
-                                        <div className="d-flex flex-column justify-content-center">
-                                            <span>
-                                                <input
-                                                    type="checkbox"
-                                                    style={{
-                                                        width: '20px',
-                                                        height: '20px',
-                                                    }}
-                                                />
-                                            </span>
-                                            <span
-                                                className="d-block cursor_pointer"
-                                                onClick={() => {
-                                                    deleteItem(
-                                                        v.sid,
-                                                        v.product_name
-                                                    );
-                                                }}
-                                            >
-                                                <img
-                                                    width="20px"
-                                                    src="/images/ben/red-x.png"
-                                                    alt=""
-                                                />
-                                            </span>
-                                        </div>
-                                        <div className="d-flex flex-column flex-md-row">
-                                            <div className="mx-2">
-                                                <img
-                                                    className="cart_product_img"
-                                                    src={`/images/${
-                                                        JSON.parse(
-                                                            v.product_img
-                                                        )[0]
-                                                    }`}
-                                                    alt=""
-                                                />
-                                            </div>
-                                            <div className="d-flex flex-column justify-content-center">
-                                                <p className="mx-3 text-center">
-                                                    {v.product_name}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="d-flex flex-column justify-content-center">
-                                        <p>{v.product_price}</p>
-                                    </div>
-                                    <div className="d-flex flex-column justify-content-center pb-3">
-                                        <div className="transformY">
-                                            <button
-                                                className="btn"
-                                                onClick={() => {
-                                                    changeCount(
-                                                        v.sid,
-                                                        v.product_count - 1
-                                                    );
-                                                }}
-                                            >
-                                                -
-                                            </button>
-                                            <input
-                                                className="cart_input_length"
-                                                type="text"
-                                                value={v.product_count}
-                                                style={{
-                                                    width: '40px',
-                                                    height: '40px',
-                                                }}
-                                                onChange={(e) => {
-                                                    const newFreshList =
-                                                        JSON.parse(
-                                                            JSON.stringify(
-                                                                freshList
-                                                            )
-                                                        );
-                                                    if (e.target.value > 0) {
-                                                        newFreshList[
-                                                            i
-                                                        ].product_count =
-                                                            e.target.value;
-                                                        setFreshList(
-                                                            newFreshList
-                                                        );
-                                                    }
-                                                }}
-                                            />
-                                            <button
-                                                className="btn"
-                                                onClick={() => {
-                                                    changeCount(
-                                                        v.sid,
-                                                        v.product_count + 1
-                                                    );
-                                                }}
-                                            >
-                                                +
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div className="d-flex flex-column justify-content-center">
-                                        <p>
-                                            {v.product_count * v.product_price}
-                                        </p>
-                                    </div>
-                                </div>
-                            );
-                        })}
-
-                        <div className="col my-3">
-                            <div className="d-flex justify-content-between">
-                                <div className="ps-5">小計</div>
-                                <div>NT${freshProductAmount}</div>
-                            </div>
-                        </div>
-                        {/* 客製化商品 */}
-
-                        <div className="col mt-5">
-                            <h2>客製化便當</h2>
-                            <span></span>
-                            <ul className="d-flex list-unstyled justify-content-between mt-3 cart_border_bottom pb-2">
-                                <li className="ps-md-5 ms-md-5 fs-5">商品</li>
-                                <li className="ps-5 fs-5">單價</li>
-                                <li className="pe-md-5 fs-5 text-end">數量</li>
-                                <li className="fs-5">總價</li>
-                            </ul>
-
-                            {customizedList.map((v, i) => {
+                        {cartList
+                            .filter((v) => {
+                                return +v.cart_product_type === 1;
+                            })
+                            .map((v, i) => {
                                 return (
                                     <div
                                         className="d-flex justify-content-between align-content-center mt-3 cart_border_bottom pb-2"
@@ -327,9 +205,6 @@ function Cart() {
                                                 <span
                                                     className="d-block cursor_pointer"
                                                     onClick={() => {
-                                                        alert(
-                                                            `確定要將${v.product_name}移出您的購物車嗎`
-                                                        );
                                                         deleteItem(
                                                             v.sid,
                                                             v.product_name
@@ -371,10 +246,16 @@ function Cart() {
                                                 <button
                                                     className="btn"
                                                     onClick={() => {
-                                                        changeCount(
-                                                            v.sid,
-                                                            v.product_count - 1
-                                                        );
+                                                        v.product_count - 1 > 0
+                                                            ? changeCount(
+                                                                  v.sid,
+                                                                  v.product_count -
+                                                                      1
+                                                              )
+                                                            : changeCount(
+                                                                  v.sid,
+                                                                  v.product_count
+                                                              );
                                                     }}
                                                 >
                                                     -
@@ -388,21 +269,21 @@ function Cart() {
                                                         height: '40px',
                                                     }}
                                                     onChange={(e) => {
-                                                        const newCustomizedList =
+                                                        const newFreshList =
                                                             JSON.parse(
                                                                 JSON.stringify(
-                                                                    customizedList
+                                                                    freshList
                                                                 )
                                                             );
                                                         if (
                                                             e.target.value > 0
                                                         ) {
-                                                            newCustomizedList[
+                                                            newFreshList[
                                                                 i
                                                             ].product_count =
                                                                 e.target.value;
-                                                            setCustomizedList(
-                                                                newCustomizedList
+                                                            setFreshList(
+                                                                newFreshList
                                                             );
                                                         }
                                                     }}
@@ -429,6 +310,158 @@ function Cart() {
                                     </div>
                                 );
                             })}
+
+                        <div className="col my-3">
+                            <div className="d-flex justify-content-between">
+                                <div className="ps-5">小計</div>
+                                <div>NT${freshProductAmount}</div>
+                            </div>
+                        </div>
+                        {/* 客製化商品 */}
+
+                        <div className="col mt-5">
+                            <h2>客製化便當</h2>
+                            <span></span>
+                            <ul className="d-flex list-unstyled justify-content-between mt-3 cart_border_bottom pb-2">
+                                <li className="ps-md-5 ms-md-5 fs-5">商品</li>
+                                <li className="ps-5 fs-5">單價</li>
+                                <li className="pe-md-5 fs-5 text-end">數量</li>
+                                <li className="fs-5">總價</li>
+                            </ul>
+
+                            {cartList
+                                .filter((v) => {
+                                    return +v.cart_product_type === 2;
+                                })
+                                .map((v, i) => {
+                                    return (
+                                        <div
+                                            className="d-flex justify-content-between align-content-center mt-3 cart_border_bottom pb-2"
+                                            key={i}
+                                        >
+                                            <div className="d-flex justify-content-between align-content-center">
+                                                <div className="d-flex flex-column justify-content-center">
+                                                    <span>
+                                                        <input
+                                                            type="checkbox"
+                                                            style={{
+                                                                width: '20px',
+                                                                height: '20px',
+                                                            }}
+                                                        />
+                                                    </span>
+                                                    <span
+                                                        className="d-block cursor_pointer"
+                                                        onClick={() => {
+                                                            deleteItem(
+                                                                v.sid,
+                                                                v.product_name
+                                                            );
+                                                        }}
+                                                    >
+                                                        <img
+                                                            width="20px"
+                                                            src="/images/ben/red-x.png"
+                                                            alt=""
+                                                        />
+                                                    </span>
+                                                </div>
+                                                <div className="d-flex flex-column flex-md-row">
+                                                    <div className="mx-2">
+                                                        <img
+                                                            className="cart_product_img"
+                                                            src={`/images/${
+                                                                JSON.parse(
+                                                                    v.product_img
+                                                                )[0]
+                                                            }`}
+                                                            alt=""
+                                                        />
+                                                    </div>
+                                                    <div className="d-flex flex-column justify-content-center">
+                                                        <p className="mx-3 text-center">
+                                                            {v.product_name}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div className="d-flex flex-column justify-content-center">
+                                                <p>{v.product_price}</p>
+                                            </div>
+                                            <div className="d-flex flex-column justify-content-center pb-3">
+                                                <div className="transformY">
+                                                    <button
+                                                        className="btn"
+                                                        onClick={() => {
+                                                            v.product_count -
+                                                                1 >
+                                                            0
+                                                                ? changeCount(
+                                                                      v.sid,
+                                                                      v.product_count -
+                                                                          1
+                                                                  )
+                                                                : changeCount(
+                                                                      v.sid,
+                                                                      v.product_count
+                                                                  );
+                                                        }}
+                                                    >
+                                                        -
+                                                    </button>
+                                                    <input
+                                                        className="cart_input_length"
+                                                        type="text"
+                                                        value={v.product_count}
+                                                        style={{
+                                                            width: '40px',
+                                                            height: '40px',
+                                                        }}
+                                                        onChange={(e) => {
+                                                            const newCustomizedList =
+                                                                JSON.parse(
+                                                                    JSON.stringify(
+                                                                        customizedList
+                                                                    )
+                                                                );
+                                                            if (
+                                                                e.target.value >
+                                                                0
+                                                            ) {
+                                                                newCustomizedList[
+                                                                    i
+                                                                ].product_count =
+                                                                    e.target.value;
+                                                                setCustomizedList(
+                                                                    newCustomizedList
+                                                                );
+                                                            }
+                                                        }}
+                                                    />
+                                                    <button
+                                                        className="btn"
+                                                        onClick={() => {
+                                                            changeCount(
+                                                                v.sid,
+                                                                v.product_count +
+                                                                    1
+                                                            );
+                                                        }}
+                                                    >
+                                                        +
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div className="d-flex flex-column justify-content-center">
+                                                <p>
+                                                    {v.product_count *
+                                                        v.product_price}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    );
+                                })}
                         </div>
 
                         {/* 小計 */}
