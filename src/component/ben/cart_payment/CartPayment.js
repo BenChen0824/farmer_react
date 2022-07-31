@@ -1,4 +1,44 @@
+import React, { useContext, useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import CartCountContext from '../cart_count/CartCountContext';
+
 function CartPayment() {
+    const navigate = useNavigate();
+    const { cartList, setCartList } = useContext(CartCountContext);
+
+    const [totalAmount, setTotalAmount] = useState(0);
+    const [formValue, setFormValue] = useState('creditcardPayment');
+
+    const paymentLinkto = () => {
+        if (formValue === 'linepay') {
+            // console.log('linepay');
+            navigate('/cart/linepay');
+        }
+        if (formValue === 'creditcard') {
+            // console.log('creditcard');
+            navigate('/cart/creditcard');
+        }
+        if (formValue === 'nonepay') {
+            // console.log('nonepay');
+            navigate('/cart/nonepay');
+        }
+    };
+
+    useEffect(() => {
+        const newCartListAmountArray = cartList
+            .filter((v) => {
+                return +v.ready_to_buy === 1;
+            })
+            .map((v, i) => {
+                return v.product_count * v.product_price;
+            });
+        let totalPayPrice = 0;
+        for (let i of newCartListAmountArray) {
+            totalPayPrice += i;
+        }
+        setTotalAmount(totalPayPrice);
+    }, [cartList]);
+
     return (
         <>
             <div className="container my-5">
@@ -67,14 +107,60 @@ function CartPayment() {
                         <p className="text-end cart_payment_border_bottom pb-2">
                             總計
                         </p>
-                        <div className="d-flex pb-3">
-                            <div className="col-4">香蕉</div>
-                            <div className="col-2">*1</div>
-                            <div className="col-6 text-end">NT$150</div>
-                        </div>
+                        {cartList
+                            .filter((v) => {
+                                return +v.cart_product_type === 1;
+                            })
+                            .filter((v) => {
+                                return +v.ready_to_buy === 1;
+                            })
+                            .map((v, i) => {
+                                return (
+                                    <div className="d-flex pb-3" key={i}>
+                                        <div className="col-6">
+                                            {v.product_name}
+                                        </div>
+                                        <div className="col-2">
+                                            {`${v.product_count}個`}
+                                        </div>
+                                        <div className="col-4 text-end">
+                                            NT$
+                                            {v.product_count * v.product_price}
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        {cartList
+                            .filter((v) => {
+                                return +v.cart_product_type === 2;
+                            })
+                            .filter((v) => {
+                                return +v.ready_to_buy === 1;
+                            })
+                            .map((v, i) => {
+                                return (
+                                    <div
+                                        className="d-flex pb-3"
+                                        key={Math.random()}
+                                    >
+                                        <div className="col-6">
+                                            {v.product_name}
+                                        </div>
+                                        <div className="col-2">
+                                            {`${v.product_count}個`}
+                                        </div>
+                                        <div className="col-4 text-end">
+                                            NT$
+                                            {v.product_count * v.product_price}
+                                        </div>
+                                    </div>
+                                );
+                            })}
                         <div className="d-flex justify-content-between cart_payment_border_top py-3">
                             <div className="col-6">小計</div>
-                            <div className="col-6 text-end">NT$150</div>
+                            <div className="col-6 text-end">
+                                NT${totalAmount}
+                            </div>
                         </div>
                         <div className="d-flex justify-content-between py-3">
                             <div className="col-6">優惠券</div>
@@ -87,17 +173,30 @@ function CartPayment() {
                         </div>
                         <div className="d-none d-md-block my-5">
                             <h2 className="my-3">付款方式</h2>
-                            <div className="">
+                            <form
+                                className=""
+                                id="paymentChosen"
+                                name="paymentChosen"
+                            >
                                 <div className="form-check d-flex align-items-baseline py-2">
                                     <input
                                         className="form-check-input"
                                         type="radio"
                                         name="flexRadioDefault"
-                                        id="flexRadioDefault1"
+                                        id="linePayPayment"
+                                        data-name="linepay"
+                                        onClick={(e) => {
+                                            const payment =
+                                                e.target.getAttribute(
+                                                    'data-name'
+                                                );
+                                            setFormValue(payment);
+                                            // console.log(payment);
+                                        }}
                                     />
                                     <label
                                         className="form-check-label px-2"
-                                        htmlFor="flexRadioDefault1"
+                                        htmlFor="linePayPayment"
                                     >
                                         <img
                                             style={{ height: '50px' }}
@@ -111,11 +210,20 @@ function CartPayment() {
                                         className="form-check-input"
                                         type="radio"
                                         name="flexRadioDefault"
-                                        id="flexRadioDefault1"
+                                        id="creditcardPayment"
+                                        data-name="creditcard"
+                                        onClick={(e) => {
+                                            const payment =
+                                                e.target.getAttribute(
+                                                    'data-name'
+                                                );
+                                            setFormValue(payment);
+                                            // console.log(payment);
+                                        }}
                                     />
                                     <label
                                         className="form-check-label px-2"
-                                        htmlFor="flexRadioDefault1"
+                                        htmlFor="creditCardPayment"
                                     >
                                         信用卡付款
                                     </label>
@@ -125,23 +233,40 @@ function CartPayment() {
                                         className="form-check-input"
                                         type="radio"
                                         name="flexRadioDefault"
-                                        id="flexRadioDefault2"
+                                        id="NonePayment"
+                                        data-name="nonepay"
+                                        onClick={(e) => {
+                                            const payment =
+                                                e.target.getAttribute(
+                                                    'data-name'
+                                                );
+                                            setFormValue(payment);
+                                            // console.log(payment);
+                                        }}
                                     />
                                     <label
                                         className="form-check-label px-2"
-                                        htmlFor="flexRadioDefault2"
+                                        htmlFor="NonePayment"
                                     >
                                         貨到付款
                                     </label>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                         <div className="my-4 text-end d-none d-md-block">
-                            <button className="btn btn-success px-5">
+                            <button
+                                className="btn btn-success px-5"
+                                onClick={() => {
+                                    paymentLinkto();
+                                }}
+                            >
                                 下單付款
                             </button>
                         </div>
                     </div>
+
+                    {/* 電腦版結帳section結束 */}
+
                     <div className="col-12 col-md-8">
                         <h2 className="my-3">帳單資訊</h2>
                         <form action="" name="form_payment">
@@ -223,17 +348,28 @@ function CartPayment() {
                     </div>
                     <div className="col-12 d-md-none">
                         <h2 className="my-3">付款方式</h2>
-                        <div className="">
+                        <form
+                            className=""
+                            id="paymentChosen"
+                            name="paymentChosen"
+                        >
                             <div className="form-check d-flex align-items-baseline py-2">
                                 <input
                                     className="form-check-input"
                                     type="radio"
                                     name="flexRadioDefault"
-                                    id="flexRadioDefault1"
+                                    id="linePayPayment"
+                                    data-name="linepay"
+                                    onClick={(e) => {
+                                        const payment =
+                                            e.target.getAttribute('data-name');
+                                        setFormValue(payment);
+                                        // console.log(payment);
+                                    }}
                                 />
                                 <label
                                     className="form-check-label px-2"
-                                    htmlFor="flexRadioDefault1"
+                                    htmlFor="linePayPayment"
                                 >
                                     <img
                                         style={{ maxHeight: '50px' }}
@@ -247,34 +383,56 @@ function CartPayment() {
                                     className="form-check-input"
                                     type="radio"
                                     name="flexRadioDefault"
-                                    id="flexRadioDefault1"
+                                    id="creditcardPayment"
+                                    data-name="creditcard"
+                                    onClick={(e) => {
+                                        const payment =
+                                            e.target.getAttribute('data-name');
+                                        setFormValue(payment);
+                                        // console.log(payment);
+                                    }}
                                 />
                                 <label
                                     className="form-check-label px-2"
-                                    htmlFor="flexRadioDefault1"
+                                    htmlFor="creditcardPayment"
                                 >
                                     信用卡付款
                                 </label>
                             </div>
+
                             <div className="form-check d-flex align-items-center py-3">
                                 <input
                                     className="form-check-input"
                                     type="radio"
                                     name="flexRadioDefault"
-                                    id="flexRadioDefault2"
+                                    id="nonepay"
+                                    data-name="nonepay"
+                                    onClick={(e) => {
+                                        const payment =
+                                            e.target.getAttribute('data-name');
+                                        setFormValue(payment);
+                                        // console.log(payment);
+                                    }}
                                 />
                                 <label
                                     className="form-check-label px-2"
-                                    htmlFor="flexRadioDefault2"
+                                    htmlFor="nonepay"
                                 >
                                     貨到付款
                                 </label>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
                 <div className="my-4 text-center d-md-none">
-                    <button className="btn btn-success px-5">下單付款</button>
+                    <button
+                        className="btn btn-success px-5"
+                        onClick={() => {
+                            paymentLinkto();
+                        }}
+                    >
+                        下單付款
+                    </button>
                 </div>
             </div>
         </>

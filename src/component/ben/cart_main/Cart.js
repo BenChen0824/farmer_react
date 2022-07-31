@@ -2,37 +2,24 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './../Cart.css';
 import {
-    CART_LIST_TOBUY,
     CART_LIST_CHANGE_COUNT,
     CART_LIST_DELETE,
+    CART_LIST_CHECK,
 } from './../../../config/ajax-path';
 import CartCountContext from '../cart_count/CartCountContext';
 
 function Cart() {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
+
+    //取得資料庫資料
     const { cartList, setCartList } = useContext(CartCountContext);
-    // const [cartList, setCartList] = useState([]);
-    const [render, setRender] = useState(0);
-    const [freshList, setFreshList] = useState([]);
-    const [customizedList, setCustomizedList] = useState([]);
+    const [readyToBuyFreshCheck, setReadyToBuyFreshCheck] = useState([]);
+    const [readyToBuyCustomizedCheck, setReadyToBuyCustomizedCheck] = useState(
+        []
+    );
     const [freshProductAmount, setFreshProductAmount] = useState(0);
     const [customizedProducAmount, setCustomizedProductAmount] = useState(0);
     const [totalAmount, setTotalAmountAmount] = useState(0);
-    // const [cartTotal, setCartTotal] = useContext(CartCountContext);
-
-    //連接資料庫 抓資料並分為freshList customizedList
-    useEffect(() => {
-        const newFreshList = cartList.filter((v) => {
-            return +v.cart_product_type === 1;
-        });
-        console.log(newFreshList);
-        setFreshList(newFreshList);
-        const newCustomizedList = cartList.filter((v) => {
-            return +v.cart_product_type === 2;
-        });
-        console.log(newCustomizedList);
-        setCustomizedList(newCustomizedList);
-    }, []);
 
     const changeCount = (sid, count) => {
         let changeData = { sid, product_count: count };
@@ -51,6 +38,61 @@ function Cart() {
             });
     };
 
+    //設定生鮮產品是否購買checkbox
+    useEffect(() => {
+        const newFreshCheckArray = cartList
+            .filter((v) => {
+                return v.cart_product_type === 1;
+            })
+            .map((v) => {
+                // console.log(v.ready_to_buy);
+                return v.ready_to_buy;
+            });
+        // console.log(newFreshCheckArray);
+        setReadyToBuyFreshCheck(newFreshCheckArray);
+    }, [cartList]);
+
+    //設定客製化便當是否購買checkbox
+    useEffect(() => {
+        const newCustomizedCheckArray = cartList
+            .filter((v) => {
+                return v.cart_product_type === 2;
+            })
+            .map((v) => {
+                return v.ready_to_buy;
+            });
+        // console.log(newCustomizedCheckArray);
+        setReadyToBuyCustomizedCheck(newCustomizedCheckArray);
+    }, [cartList]);
+
+    // 確認是否要進行購買;
+    const productReadyToBuy = (sid, check) => {
+        let changeData = { sid, check };
+
+        fetch(`${CART_LIST_CHECK}`, {
+            method: 'PUT',
+            body: JSON.stringify(changeData),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((r) => r.json())
+            .then((obj) => {
+                // console.log(obj);
+                setCartList(obj.cart);
+            });
+    };
+
+    //確認是否準備購買
+    const checkProductItems = (array, i) => {
+        let newCheckArray = [...array];
+        +newCheckArray[i] === 1
+            ? (newCheckArray[i] = 0)
+            : (newCheckArray[i] = 1);
+        // console.log(newCheckArray);
+        return newCheckArray;
+    };
+
     const deleteItem = (sid, name) => {
         const deleteIt = window.confirm(`確定要將${name}移出您的購物車嗎`);
         if (deleteIt) {
@@ -64,27 +106,49 @@ function Cart() {
             })
                 .then((r) => r.json())
                 .then((obj) => {
-                    console.log(obj);
+                    // console.log(obj);
                     setCartList(obj);
                 });
         }
     };
 
-    // useEffect(() => {
-    //     setCartList([...freshList, ...customizedList]);
-    // }, [render]);
+    const checkCartHasItems = () => {
+        // console.log(
+        //     cartList.filter((v) => {
+        //         return +v.ready_to_buy === 1;
+        //     }).length
+        // );
+        if (
+            cartList.filter((v) => {
+                return +v.ready_to_buy === 1;
+            }).length === 0
+        ) {
+            const answer = window.confirm('請先將待結帳商品加到購物車中');
+            if (answer) {
+                navigate('/cart');
+            } else {
+                navigate('/cart');
+            }
+        } else {
+            navigate('./payment');
+        }
+    };
+
     useEffect(() => {
         const newfreshProductAmountArray = cartList
             .filter((v) => {
                 return +v.cart_product_type === 1;
             })
+            .filter((v) => {
+                return +v.ready_to_buy === 1;
+            })
             .map((v, i) => {
                 return v.product_count * v.product_price;
             });
         let newfreshProductAmount = 0;
-        newfreshProductAmountArray.map((v) => {
-            newfreshProductAmount += v;
-        });
+        for (let i of newfreshProductAmountArray) {
+            newfreshProductAmount += i;
+        }
         setFreshProductAmount(newfreshProductAmount);
     }, [cartList]);
 
@@ -93,13 +157,16 @@ function Cart() {
             .filter((v) => {
                 return +v.cart_product_type === 2;
             })
+            .filter((v) => {
+                return +v.ready_to_buy === 1;
+            })
             .map((v, i) => {
                 return v.product_count * v.product_price;
             });
         let newCustomizedProductAmount = 0;
-        newCustomizedProductAmountArray.map((v) => {
-            newCustomizedProductAmount += v;
-        });
+        for (let i of newCustomizedProductAmountArray) {
+            newCustomizedProductAmount += i;
+        }
         setCustomizedProductAmount(newCustomizedProductAmount);
     }, [cartList]);
 
@@ -175,10 +242,12 @@ function Cart() {
                         <h2>生鮮商品</h2>
                         <span></span>
                         <ul className="d-flex list-unstyled justify-content-between mt-3 cart_border_bottom pb-2">
-                            <li className="ps-md-5 ms-md-5 fs-5">商品</li>
-                            <li className="ps-5 fs-5">單價</li>
-                            <li className="pe-md-5 fs-5 text-end">數量</li>
-                            <li className="fs-5">總價</li>
+                            <li className="col-4 col-md-6  fs-5">商品</li>
+                            <li className="col-2 fs-5 text-center">單價</li>
+                            <li className="col-4 col-md-2 fs-5  text-center">
+                                數量
+                            </li>
+                            <li className="col-2 fs-5 text-end">總價</li>
                         </ul>
 
                         {cartList
@@ -189,9 +258,9 @@ function Cart() {
                                 return (
                                     <div
                                         className="d-flex justify-content-between align-content-center mt-3 cart_border_bottom pb-2"
-                                        key={i}
+                                        key={(`fresh`, i)}
                                     >
-                                        <div className="d-flex justify-content-between align-content-center">
+                                        <div className="col-4 col-md-6 d-flex justify-content-between align-content-center">
                                             <div className="d-flex flex-column justify-content-center">
                                                 <span>
                                                     <input
@@ -199,6 +268,22 @@ function Cart() {
                                                         style={{
                                                             width: '20px',
                                                             height: '20px',
+                                                        }}
+                                                        onMouseDown={(e) => {
+                                                            setReadyToBuyFreshCheck(
+                                                                checkProductItems(
+                                                                    readyToBuyFreshCheck,
+                                                                    i
+                                                                )
+                                                            );
+                                                        }}
+                                                        onMouseUp={() => {
+                                                            productReadyToBuy(
+                                                                v.sid,
+                                                                readyToBuyFreshCheck[
+                                                                    i
+                                                                ]
+                                                            );
                                                         }}
                                                     />
                                                 </span>
@@ -218,7 +303,7 @@ function Cart() {
                                                     />
                                                 </span>
                                             </div>
-                                            <div className="d-flex flex-column flex-md-row">
+                                            <div className="d-flex flex-column flex-md-row ">
                                                 <div className="mx-2">
                                                     <img
                                                         className="cart_product_img"
@@ -238,10 +323,10 @@ function Cart() {
                                             </div>
                                         </div>
 
-                                        <div className="d-flex flex-column justify-content-center">
+                                        <div className="col-2  text-center d-flex flex-column justify-content-center ">
                                             <p>{v.product_price}</p>
                                         </div>
-                                        <div className="d-flex flex-column justify-content-center pb-3">
+                                        <div className="col-4 d-flex flex-column justify-content-center pb-3 col-md-2  text-center">
                                             <div className="transformY">
                                                 <button
                                                     className="btn"
@@ -260,7 +345,7 @@ function Cart() {
                                                 >
                                                     -
                                                 </button>
-                                                <input
+                                                <span
                                                     className="cart_input_length"
                                                     type="text"
                                                     value={v.product_count}
@@ -268,26 +353,9 @@ function Cart() {
                                                         width: '40px',
                                                         height: '40px',
                                                     }}
-                                                    onChange={(e) => {
-                                                        const newFreshList =
-                                                            JSON.parse(
-                                                                JSON.stringify(
-                                                                    freshList
-                                                                )
-                                                            );
-                                                        if (
-                                                            e.target.value > 0
-                                                        ) {
-                                                            newFreshList[
-                                                                i
-                                                            ].product_count =
-                                                                e.target.value;
-                                                            setFreshList(
-                                                                newFreshList
-                                                            );
-                                                        }
-                                                    }}
-                                                />
+                                                >
+                                                    {v.product_count}
+                                                </span>
                                                 <button
                                                     className="btn"
                                                     onClick={() => {
@@ -301,10 +369,12 @@ function Cart() {
                                                 </button>
                                             </div>
                                         </div>
-                                        <div className="d-flex flex-column justify-content-center">
+                                        <div className="col-2 d-flex flex-column justify-content-center text-end">
                                             <p>
-                                                {v.product_count *
-                                                    v.product_price}
+                                                {+v.ready_to_buy === 1
+                                                    ? v.product_count *
+                                                      v.product_price
+                                                    : 0}
                                             </p>
                                         </div>
                                     </div>
@@ -323,10 +393,12 @@ function Cart() {
                             <h2>客製化便當</h2>
                             <span></span>
                             <ul className="d-flex list-unstyled justify-content-between mt-3 cart_border_bottom pb-2">
-                                <li className="ps-md-5 ms-md-5 fs-5">商品</li>
-                                <li className="ps-5 fs-5">單價</li>
-                                <li className="pe-md-5 fs-5 text-end">數量</li>
-                                <li className="fs-5">總價</li>
+                                <li className="col-4 col-md-6  fs-5">商品</li>
+                                <li className="col-2 fs-5 text-center">單價</li>
+                                <li className="col-4 col-md-2 fs-5  text-center">
+                                    數量
+                                </li>
+                                <li className="col-2 fs-5 text-end">總價</li>
                             </ul>
 
                             {cartList
@@ -337,9 +409,9 @@ function Cart() {
                                     return (
                                         <div
                                             className="d-flex justify-content-between align-content-center mt-3 cart_border_bottom pb-2"
-                                            key={i}
+                                            key={(`customized`, i)}
                                         >
-                                            <div className="d-flex justify-content-between align-content-center">
+                                            <div className="col-4 col-md-6 d-flex justify-content-between align-content-center">
                                                 <div className="d-flex flex-column justify-content-center">
                                                     <span>
                                                         <input
@@ -347,6 +419,24 @@ function Cart() {
                                                             style={{
                                                                 width: '20px',
                                                                 height: '20px',
+                                                            }}
+                                                            onMouseDown={(
+                                                                e
+                                                            ) => {
+                                                                setReadyToBuyCustomizedCheck(
+                                                                    checkProductItems(
+                                                                        readyToBuyCustomizedCheck,
+                                                                        i
+                                                                    )
+                                                                );
+                                                            }}
+                                                            onMouseUp={() => {
+                                                                productReadyToBuy(
+                                                                    v.sid,
+                                                                    readyToBuyCustomizedCheck[
+                                                                        i
+                                                                    ]
+                                                                );
                                                             }}
                                                         />
                                                     </span>
@@ -386,10 +476,10 @@ function Cart() {
                                                 </div>
                                             </div>
 
-                                            <div className="d-flex flex-column justify-content-center">
+                                            <div className="col-2  text-center d-flex flex-column justify-content-center">
                                                 <p>{v.product_price}</p>
                                             </div>
-                                            <div className="d-flex flex-column justify-content-center pb-3">
+                                            <div className="col-4 d-flex flex-column justify-content-center pb-3 col-md-2  text-center">
                                                 <div className="transformY">
                                                     <button
                                                         className="btn"
@@ -410,7 +500,7 @@ function Cart() {
                                                     >
                                                         -
                                                     </button>
-                                                    <input
+                                                    <span
                                                         className="cart_input_length"
                                                         type="text"
                                                         value={v.product_count}
@@ -418,27 +508,9 @@ function Cart() {
                                                             width: '40px',
                                                             height: '40px',
                                                         }}
-                                                        onChange={(e) => {
-                                                            const newCustomizedList =
-                                                                JSON.parse(
-                                                                    JSON.stringify(
-                                                                        customizedList
-                                                                    )
-                                                                );
-                                                            if (
-                                                                e.target.value >
-                                                                0
-                                                            ) {
-                                                                newCustomizedList[
-                                                                    i
-                                                                ].product_count =
-                                                                    e.target.value;
-                                                                setCustomizedList(
-                                                                    newCustomizedList
-                                                                );
-                                                            }
-                                                        }}
-                                                    />
+                                                    >
+                                                        {v.product_count}
+                                                    </span>
                                                     <button
                                                         className="btn"
                                                         onClick={() => {
@@ -453,10 +525,12 @@ function Cart() {
                                                     </button>
                                                 </div>
                                             </div>
-                                            <div className="d-flex flex-column justify-content-center">
+                                            <div className="col-2 d-flex flex-column justify-content-center text-end">
                                                 <p>
-                                                    {v.product_count *
-                                                        v.product_price}
+                                                    {+v.ready_to_buy === 1
+                                                        ? v.product_count *
+                                                          v.product_price
+                                                        : 0}
                                                 </p>
                                             </div>
                                         </div>
@@ -467,27 +541,31 @@ function Cart() {
                         {/* 小計 */}
                         <div className="col mt-3">
                             <div className="d-flex justify-content-between">
-                                <div className="ps-5">小計</div>
+                                <div className="ps-md-5">小計</div>
                                 <div>NT${customizedProducAmount}</div>
                             </div>
                         </div>
                         <div className="col mt-3">
-                            <div className="d-flex justify-content-end align-items-center">
-                                <div className="pe-5">
-                                    <span className="pe-3">折價券</span>
-                                    <select name="" id="cart_discount_select">
-                                        <option value="" disabled>
-                                            --請選擇--
-                                        </option>
-                                    </select>
-                                </div>
+                            <div className="d-flex justify-content-between justify-content-md-end  align-items-center">
+                                <span className="pe-3">折價券</span>
+                                <select
+                                    name=""
+                                    id="cart_discount_select"
+                                    className="ps-3 me-3"
+                                >
+                                    <option value="" disabled>
+                                        --請選擇--
+                                    </option>
+                                </select>
                                 <div>NT$50</div>
                             </div>
                         </div>
                         <div className="col mt-3">
                             <div className="d-flex justify-content-between align-items-baseline">
                                 <div className="pe-5">
-                                    <div className="ps-5 fs-5">購物車總計</div>
+                                    <div className="ps-md-5 fs-5">
+                                        購物車總計
+                                    </div>
                                 </div>
                                 <div>NT${totalAmount}</div>
                             </div>
@@ -499,11 +577,15 @@ function Cart() {
                                         返回購物頁面
                                     </button>
                                 </Link>
-                                <Link to="/cart/payment">
-                                    <button className="btn btn-info px-3">
-                                        繼續結帳
-                                    </button>
-                                </Link>
+
+                                <button
+                                    className="btn btn-info px-3"
+                                    onClick={() => {
+                                        checkCartHasItems();
+                                    }}
+                                >
+                                    繼續結帳
+                                </button>
                             </div>
                         </div>
                     </div>

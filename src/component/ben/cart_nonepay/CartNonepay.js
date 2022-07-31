@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function CartSuccess() {
+function CartNonepay() {
     const showtime = new Date(Date.now() + 24 * 60 * 60 * 1000);
     const deliveryTime = showtime.toLocaleDateString();
+
     return (
         <>
             <div className="container">
@@ -68,7 +69,7 @@ function CartSuccess() {
                 </div>
                 <div className="row justify-content-center">
                     <div className="col-12 col-md-8 text-center">
-                        <h3>恭喜您 ! 付款成功 !</h3>
+                        <h3>恭喜您 ! 訂購成功 !</h3>
                         <p>
                             付款成功紀錄已寄至您的Email信箱 aaabb@abc.com
                             <br />
@@ -142,7 +143,7 @@ function CartSuccess() {
                                     >
                                         付款方式
                                     </td>
-                                    <td>信用卡</td>
+                                    <td>貨到付款</td>
                                 </tr>
                                 <tr>
                                     <td
@@ -162,4 +163,4 @@ function CartSuccess() {
     );
 }
 
-export default CartSuccess;
+export default CartNonepay;

@@ -14,6 +14,7 @@ import { Provider } from 'react-redux';
 import ProductList from './page/ProductList';
 import store from './store';
 import Product from './page/Product';
+import CartNonepay from './component/ben/cart_nonepay/CartNonepay';
 
 function App() {
     return (
@@ -58,6 +59,10 @@ function App() {
                                     <Route
                                         path="/cart/success"
                                         element={<CartSuccess />}
+                                    />
+                                    <Route
+                                        path="/cart/nonepay"
+                                        element={<CartNonepay />}
                                     />
 
                                     {/* 宗佑 */}

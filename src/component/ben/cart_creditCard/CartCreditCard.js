@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import Cards from 'react-credit-cards';
 import 'react-credit-cards/es/styles-compiled.css';
+import { useNavigate } from 'react-router-dom';
 
 function CartCreditCard() {
+    const navigate = useNavigate();
     const [number, setNumber] = useState('');
     const [name, setName] = useState('');
     const [expiry, setExpiry] = useState('');
@@ -23,6 +25,20 @@ function CartCreditCard() {
         } else {
             setExpiry(e.target.value);
         }
+    };
+
+    const formCheck = (e) => {
+        e.preventDefault();
+        const form1 = document.form1;
+        // console.log(form1[2].value);
+        if (
+            form1[0].value !== '' &&
+            form1[1].value !== '' &&
+            form1[2].value !== '' &&
+            form1[3].value !== ''
+        ) {
+            navigate('/cart/success');
+        } else alert('您還沒有完全填寫資料喔!');
     };
 
     return (
@@ -100,7 +116,7 @@ function CartCreditCard() {
                         />
                     </div>
                     <div className="col-12 col-md-6 mt-5 mt-md-0">
-                        <form className="">
+                        <form className="" name="form1">
                             <div className="mb-2">
                                 <label className="col-3 pb-2 " htmlFor="number">
                                     信用卡號碼
@@ -121,6 +137,7 @@ function CartCreditCard() {
                                     }}
                                     minLength="15"
                                     maxLength="16"
+                                    // required
                                 />
                             </div>
                             <div className="my-2">
@@ -142,6 +159,7 @@ function CartCreditCard() {
                                         setFocus(e.target.name);
                                     }}
                                     maxLength="20"
+                                    // required
                                 />
                             </div>
                             <div className="my-2">
@@ -186,14 +204,21 @@ function CartCreditCard() {
                                     onFocus={(e) => {
                                         setFocus(e.target.name);
                                     }}
+                                    // required
                                 />
                             </div>
+                            <div className="text-center mt-5">
+                                <button
+                                    type="submit"
+                                    className="btn px-5 py-2 fs-4 fw-bold"
+                                    onClick={(e) => {
+                                        formCheck(e);
+                                    }}
+                                >
+                                    確認付款
+                                </button>
+                            </div>
                         </form>
-                    </div>
-                    <div className="text-center mt-5">
-                        <button className="btn px-5 py-2 fs-4 fw-bold">
-                            確認付款
-                        </button>
                     </div>
                 </div>
             </div>
