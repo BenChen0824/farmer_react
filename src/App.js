@@ -15,6 +15,7 @@ import ProductList from './page/ProductList';
 import store from './store';
 import Product from './page/Product';
 import CartNonepay from './component/ben/cart_nonepay/CartNonepay';
+import Member from './component/bob/App';
 
 function App() {
     return (
@@ -43,7 +44,7 @@ function App() {
                                     />
                                     {/* 昱蓉 */}
 
-                                    <Route path="/member" element={<></>} />
+                                    <Route path="/member/*" element={<Member />} />
                                     {/* 柏安 */}
 
                                     <Route path="/cart" element={<Cart />} />
