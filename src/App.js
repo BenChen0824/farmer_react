@@ -19,6 +19,7 @@ import Member from './component/bob/App';
 import FarmerFirstPage from './component/kawa/FarmerFirstPage/FarmerFirstPage';
 import CustomerComment from './component/kawa/CustomerComment/CustomerComment';
 import RecipeMain from './component/hsieh/App';
+import GameMain from './component/po/game/gameMain';
 
 function App() {
     return (
@@ -94,7 +95,10 @@ function App() {
                                     />
                                     {/* 阿鑫 */}
 
-                                    <Route path="/game" element={<></>} />
+                                    <Route
+                                        path="/game/*"
+                                        element={<GameMain />}
+                                    />
                                     {/* po */}
 
                                     <Route path="/activity" element={<></>} />
