@@ -3,12 +3,6 @@ import { useState } from 'react'
 import './Popup.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
-import vegetabls from './../pic/icon/5.vegetable.png'
-import fruit from './../pic/icon/6.fruit.png'
-import seafood from './../pic/icon/7.seafood.png'
-import meat from './../pic/icon/8.meat.png'
-import egg from './../pic/icon/9.egg.png'
-import cereals from './../pic/icon/10.cereals.png'
 
 function Popup() {
   const [timecost, setTimecost] = useState('')
@@ -114,34 +108,58 @@ function Popup() {
       <h2 className="center">食材搜尋 ／ Search By Ingredient</h2>
       <div className="ia">
         <button type="button" classc="btn btn-dark" className="ingredient">
-          <img src={vegetabls} style={{ height: 30, width: 30 }} alt="" />
+          <img
+            src="http://localhost:3000/images/vegetable.png"
+            style={{ height: 30, width: 30 }}
+            alt=""
+          />
           蔬菜
           <FontAwesomeIcon icon={faAngleRight} />
         </button>
 
         <button type="button" classc="btn btn-dark" className="ingredient">
-          <img src={fruit} style={{ height: 30, width: 30 }} alt="" />
+          <img
+            src="http://localhost:3000/images/fruit.png"
+            style={{ height: 30, width: 30 }}
+            alt=""
+          />
           水果
           <FontAwesomeIcon icon={faAngleRight} />
         </button>
 
         <button type="button" classc="btn btn-dark" className="ingredient">
-          <img src={seafood} style={{ height: 30, width: 30 }} alt="" />
+          <img
+            src="http://localhost:3000/images/seafood.png"
+            style={{ height: 30, width: 30 }}
+            alt=""
+          />
           海鮮
           <FontAwesomeIcon icon={faAngleRight} />
         </button>
         <button type="button" classc="btn btn-dark" className="ingredient">
-          <img src={meat} style={{ height: 30, width: 30 }} alt="" />
+          <img
+            src="http://localhost:3000/images/meat.png"
+            style={{ height: 30, width: 30 }}
+            alt=""
+          />
           肉類
           <FontAwesomeIcon icon={faAngleRight} />
         </button>
         <button type="button" classc="btn btn-dark" className="ingredient">
-          <img src={egg} style={{ height: 30, width: 30 }} alt="" />
+          <img
+            src="http://localhost:3000/images/egg.png"
+            style={{ height: 30, width: 30 }}
+            alt=""
+          />
           蛋
           <FontAwesomeIcon icon={faAngleRight} />
         </button>
         <button type="button" classc="btn btn-dark" className="ingredient">
-          <img src={cereals} style={{ height: 30, width: 30 }} alt="" />
+          <img
+            src="http://localhost:3000/images/cereals.png"
+            style={{ height: 30, width: 30 }}
+            alt=""
+          />
           穀物
           <FontAwesomeIcon icon={faAngleRight} />
         </button>
