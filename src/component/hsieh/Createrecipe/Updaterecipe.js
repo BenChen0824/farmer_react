@@ -2,8 +2,8 @@ import { useState } from 'react'
 import React from 'react'
 import './Createrecipe.css'
 
-function Createrecipe() {
-  // 新增食譜名稱
+function Updaterecipe() {
+  // 新增食譜
   const [recipesname, setRecipesname] = useState('')
 
   // 料理簡介
@@ -48,7 +48,7 @@ function Createrecipe() {
 
   return (
     <>
-      <h2 className="creatrecipe">新增食譜 ／ Create New Recipes</h2>
+      <h2 className="creatrecipe">修改食譜 ／ Update Recipes</h2>
       <hr className="hr" />
       <div className="eachdata">
         <label className="dataname">食譜名稱</label>
@@ -418,9 +418,9 @@ function Createrecipe() {
 
       <div className="button">
         <button className="finish">
-          新增食譜
+          修改食譜
           <img
-            src="http://localhost:3000/images/file-plus.svg"
+            src="http://localhost:3000/images/pen.svg"
             alt=""
             className="crud"
           />
@@ -448,4 +448,4 @@ function Createrecipe() {
   )
 }
 
-export default Createrecipe
+export default Updaterecipe
