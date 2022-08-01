@@ -19,8 +19,10 @@ import Member from './component/bob/App';
 import FarmerFirstPage from './component/kawa/FarmerFirstPage/FarmerFirstPage';
 import CustomerComment from './component/kawa/CustomerComment/CustomerComment';
 import Customized_product from './component/xin/Customized_lunch/CustomizedLunch';
-import Main from './component/xin/Customized_server/Main'
+import Main from './component/xin/Customized_server/Main';
 
+import RecipeMain from './component/hsieh/App';
+import GameMain from './component/po/game/gameMain';
 
 function App() {
     return (
@@ -42,7 +44,11 @@ function App() {
                                     />
                                     {/* 慧敏 */}
 
-                                    <Route path="/recipe" element={<></>} />
+                                    <Route
+                                        path="/recipe/*"
+                                        element={<RecipeMain />}
+                                    />
+
                                     {/* 宸睿 */}
 
                                     <Route
@@ -88,11 +94,14 @@ function App() {
                                     />
                                     <Route
                                         path="/customer_server"
-                                        element={<Main/>}
+                                        element={<Main />}
                                     />
                                     {/* 阿鑫 */}
 
-                                    <Route path="/game" element={<></>} />
+                                    <Route
+                                        path="/game/*"
+                                        element={<GameMain />}
+                                    />
                                     {/* po */}
 
                                     <Route path="/activity" element={<></>} />

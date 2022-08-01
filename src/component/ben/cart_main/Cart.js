@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './../Cart.css';
+import './../cart.css';
 import {
     CART_LIST_CHANGE_COUNT,
     CART_LIST_DELETE,
