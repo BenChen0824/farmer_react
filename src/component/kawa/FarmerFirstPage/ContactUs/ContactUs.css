@@ -1,0 +1,21 @@
+.ContactUs_section button {
+    background-color: rgb(106, 189, 83);
+    border: 0.5px solid gray;
+    color: aliceblue;
+}
+
+
+.ContactUs_section {
+    margin-top: 200px;
+    margin-bottom: 200px;
+}
+
+.ContactUs_section h2 {
+    display: flex;
+    justify-content: center;
+}
+
+.ContactUs_input_area {
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,16 @@
+.starRating_btn {
+    background-color: #333;
+    color: white;
+    width: 180px;
+    text-align: center;
+    border-radius: 20px;
+    padding: 5px 10px 5px 10px;
+    margin-left: 10px;
+}
+
+.starRating_btn:hover {
+    background-color: #82CA35;
+    /* border: 1px solid #333; */
+    color: #333;
+    color: #ffffff;
+}

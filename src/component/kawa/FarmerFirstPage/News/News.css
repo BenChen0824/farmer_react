@@ -1,0 +1,25 @@
+.news_train 
+
+.news_group {
+    width: 3000px;
+    background-color: #EFF0EA;
+}
+
+.news_card {
+    width: 300px;
+    background-color: #fff;
+}
+
+.news_card img {
+    width: 100%;
+}
+
+.news_card:hover {
+    opacity: 0.8;
+}
+
+.news_arrow_btn {
+    margin-left: auto;
+    width: 100px;
+    margin-right: 50px;
+}

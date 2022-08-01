@@ -16,6 +16,8 @@ import store from './store';
 import Product from './page/Product';
 import CartNonepay from './component/ben/cart_nonepay/CartNonepay';
 import Member from './component/bob/App';
+import FarmerFirstPage from './component/kawa/FarmerFirstPage/FarmerFirstPage';
+import CustomerComment from './component/kawa/CustomerComment/CustomerComment';
 
 function App() {
     return (
@@ -27,8 +29,14 @@ function App() {
                             <Nav />
                             <Container>
                                 <Routes>
-                                    <Route path="/" element={<></>} />
-                                    <Route path="/comment" element={<></>} />
+                                    <Route
+                                        path="/"
+                                        element={<FarmerFirstPage />}
+                                    />
+                                    <Route
+                                        path="/comment"
+                                        element={<CustomerComment />}
+                                    />
                                     {/* 慧敏 */}
 
                                     <Route path="/recipe" element={<></>} />
@@ -44,7 +52,10 @@ function App() {
                                     />
                                     {/* 昱蓉 */}
 
-                                    <Route path="/member/*" element={<Member />} />
+                                    <Route
+                                        path="/member/*"
+                                        element={<Member />}
+                                    />
                                     {/* 柏安 */}
 
                                     <Route path="/cart" element={<Cart />} />

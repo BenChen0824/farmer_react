@@ -1,0 +1,57 @@
+import Marquee from "react-fast-marquee";
+import "./MarqueeSliderR.css";
+
+const MarqueeSliderR = () => {
+    // https://www.npmjs.com/package/react-fast-marquee
+
+    const settings = {
+        pauseOnHover: true,
+        direction: "right",
+        speed: 20,
+        delay: 0,
+        loop: 0,
+        gradient: true,
+        gradientWidth: 100,
+    };
+
+    return (
+        <>
+            <Marquee {...settings}>
+                <div className="slider d-flex">
+                    <div className="Marquee_img_wrap">
+                        <img src="./images/farmerpic_01.jpg" alt="" />
+                    </div>
+                    <div className="Marquee_img_wrap">
+                        <img src="./images/farmerpic_02.jpg" alt="" />
+                    </div>
+                    <div className="Marquee_img_wrap">
+                        <img src="./images/farmerpic_03.jpg" alt="" />
+                    </div>
+                    <div className="Marquee_img_wrap">
+                        <img src="./images/farmerpic_04.jpg" alt="" />
+                    </div>
+                    <div className="Marquee_img_wrap">
+                        <img src="./images/farmerpic_05.jpg" alt="" />
+                    </div>
+                    <div className="Marquee_img_wrap  mx-auto">
+                        <img src="./images/farmerpic_06.jpg" alt="" />
+                    </div>
+                    <div className="Marquee_img_wrap">
+                        <img src="./images/farmerpic_07.jpg" alt="" />
+                    </div>
+                    <div className="Marquee_img_wrap">
+                        <img src="./images/farmerpic_08.jpg" alt="" />
+                    </div>
+                    <div className="Marquee_img_wrap">
+                        <img src="./images/farmerpic_09.jpg" alt="" />
+                    </div>
+                    <div className="Marquee_img_wrap">
+                        <img src="./images/farmerpic_10.jpg" alt="" />
+                    </div>
+                </div>
+            </Marquee>
+        </>
+    );
+};
+
+export default MarqueeSliderR;
