@@ -1,12 +1,12 @@
-import Marquee from "react-fast-marquee";
-import "./MarqueeSliderR.css";
+import Marquee from 'react-fast-marquee';
+import './MarqueeSliderR.css';
 
 const MarqueeSliderR = () => {
     // https://www.npmjs.com/package/react-fast-marquee
 
     const settings = {
         pauseOnHover: true,
-        direction: "right",
+        direction: 'right',
         speed: 20,
         delay: 0,
         loop: 0,

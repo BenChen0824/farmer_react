@@ -4,7 +4,6 @@
 import IndexBanner from './IndexBanner/IndexBanner';
 import News from './News/News';
 import ContactUs from './ContactUs/ContactUs';
-
 import AboutUs from './AboutUs/AboutUs';
 
 function FarmerFirstPage() {

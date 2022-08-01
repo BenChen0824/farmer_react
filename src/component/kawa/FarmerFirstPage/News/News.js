@@ -1,7 +1,7 @@
-import React from "react";
-import "./News.css";
-import { FiArrowLeftCircle } from "react-icons/fi";
-import { FiArrowRightCircle } from "react-icons/fi";
+import React from 'react';
+import './News.css';
+import { FiArrowLeftCircle } from 'react-icons/fi';
+import { FiArrowRightCircle } from 'react-icons/fi';
 
 const News = () => {
     return (
@@ -91,5 +91,7 @@ const News = () => {
         </>
     );
 };
+
+
 
 export default News;

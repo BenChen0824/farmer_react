@@ -1,15 +1,16 @@
-import React from 'react';
+import React from "react";
 // import Slider from "react-slick";
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 // import background from "../../public/images/main_banner_05.jpg";
-import './IndexBanner.css';
+import "./IndexBanner.css"
 
 const IndexBanner = () => {
+
     return (
         <>
             <div className="indexBanner_imgwrap">
-                <img src="./index_images/main_banner_05.jpg" alt="" />
+                <img src="./images/main_banner_05.jpg" alt="" />
             </div>
 
             <div className="indexBanner_text_area">

@@ -1,7 +1,7 @@
-import React from "react";
-import "./AboutUs.css";
-import MarqueeSliderL from "./MarqueeSliderL/MarqueeSliderL";
-import MarqueeSliderR from "./MarqueeSliderR/MarqueeSliderR";
+import React from 'react';
+import './AboutUs.css';
+import MarqueeSliderL from './MarqueeSliderL/MarqueeSliderL';
+import MarqueeSliderR from './MarqueeSliderR/MarqueeSliderR';
 
 const AboutUs = () => {
     return (
@@ -38,7 +38,7 @@ const AboutUs = () => {
                 </div>
             </div>
 
-            <MarqueeSliderR className=""/>
+            <MarqueeSliderR className="" />
         </>
     );
 };
