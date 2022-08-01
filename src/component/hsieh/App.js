@@ -22,7 +22,6 @@ function App() {
           <Route path="/creatrecipe" element={<Creatrecipe />} />
           <Route path="/updaterecipe" element={<Updaterecipe />} />
           {/* 宸睿 */}
-
         </Routes>
 
         <Footer />
