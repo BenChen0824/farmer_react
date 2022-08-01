@@ -1,26 +1,28 @@
-import styles from './ProductHashTag.module.css'
-import clsx from 'clsx'
+import styles from './ProductHashTag.module.css';
+import clsx from 'clsx';
 
 function ProductHashTag(props) {
-  // const [collect, setCollect] = useState(false)
+    // const [collect, setCollect] = useState(false)
 
-  return (
-    <>
-      <div
-        className={styles.hashTag}
-        onClick={() => {
-          // setCollect((prev) => !prev)
-          props.onClick()
-        }}
-      >
-        <h5
-          className={clsx(styles.hashTagH, { [styles.active]: props.checked })}
-        >
-          #{props.hashTag}
-        </h5>
-      </div>
-    </>
-  )
+    return (
+        <>
+            <div
+                className={styles.hashTag}
+                onClick={() => {
+                    // setCollect((prev) => !prev)
+                    props.onClick();
+                }}
+            >
+                <h5
+                    className={clsx(styles.hashTagH, {
+                        [styles.active]: props.checked,
+                    })}
+                >
+                    #{props.hashTag}
+                </h5>
+            </div>
+        </>
+    );
 }
 
-export default ProductHashTag
+export default ProductHashTag;

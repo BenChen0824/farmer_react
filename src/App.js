@@ -18,6 +18,7 @@ import CartNonepay from './component/ben/cart_nonepay/CartNonepay';
 import Member from './component/bob/App';
 import FarmerFirstPage from './component/kawa/FarmerFirstPage/FarmerFirstPage';
 import CustomerComment from './component/kawa/CustomerComment/CustomerComment';
+import RecipeMain from './component/hsieh/App';
 
 function App() {
     return (
@@ -39,7 +40,11 @@ function App() {
                                     />
                                     {/* 慧敏 */}
 
-                                    <Route path="/recipe" element={<></>} />
+                                    <Route
+                                        path="/recipe/*"
+                                        element={<RecipeMain />}
+                                    />
+
                                     {/* 宸睿 */}
 
                                     <Route

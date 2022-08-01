@@ -1,13 +1,13 @@
-import styles from './ProductShare.module.css'
+import styles from './ProductShare.module.css';
 function ProductShare() {
-  return (
-    <>
-      <div className={styles.container}>
-        <div className={styles.wrap}>
-          <p>ProductShareProductShareProductShareProductShare</p>
-        </div>
-      </div>
-    </>
-  )
+    return (
+        <>
+            <div className={styles.container}>
+                <div className={styles.wrap}>
+                    <p>ProductShareProductShareProductShareProductShare</p>
+                </div>
+            </div>
+        </>
+    );
 }
-export default ProductShare
+export default ProductShare;

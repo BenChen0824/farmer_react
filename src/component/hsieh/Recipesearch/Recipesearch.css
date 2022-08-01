@@ -1,6 +1,6 @@
 
 .searching {
-    background-image:url("./../../../../public/imgs/1.searching.jpg") ;
+    background-image:url("/public/images/1.searching.jpg") ;
     width: 100%;
     background-size:cover;
     min-height: 800px;
