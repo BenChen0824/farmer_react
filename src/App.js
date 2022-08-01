@@ -18,6 +18,9 @@ import CartNonepay from './component/ben/cart_nonepay/CartNonepay';
 import Member from './component/bob/App';
 import FarmerFirstPage from './component/kawa/FarmerFirstPage/FarmerFirstPage';
 import CustomerComment from './component/kawa/CustomerComment/CustomerComment';
+import Customized_product from './component/xin/Customized_lunch/CustomizedLunch';
+import Main from './component/xin/Customized_server/Main';
+
 import RecipeMain from './component/hsieh/App';
 import GameMain from './component/po/game/gameMain';
 import Company_Activity from './component/pin/Company_Login';
@@ -88,11 +91,11 @@ function App() {
 
                                     <Route
                                         path="/customized_lunch"
-                                        element={<></>}
+                                        element={<Customized_product />}
                                     />
                                     <Route
                                         path="/customer_server"
-                                        element={<></>}
+                                        element={<Main />}
                                     />
                                     {/* 阿鑫 */}
 
