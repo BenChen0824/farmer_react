@@ -19,7 +19,7 @@ import Member from './component/bob/App';
 import FarmerFirstPage from './component/kawa/FarmerFirstPage/FarmerFirstPage';
 import CustomerComment from './component/kawa/CustomerComment/CustomerComment';
 import Customized_product from './component/xin/Customized_lunch/CustomizedLunch';
-import Main from './component/xin/Customized_server/Main';
+import MainChat from './component/xin/Customized_server/Main';
 
 import RecipeMain from './component/hsieh/App';
 import GameMain from './component/po/game/gameMain';
@@ -94,7 +94,7 @@ function App() {
                                     />
                                     <Route
                                         path="/customer_server"
-                                        element={<Main />}
+                                        element={<MainChat />}
                                     />
                                     {/* 阿鑫 */}
 
