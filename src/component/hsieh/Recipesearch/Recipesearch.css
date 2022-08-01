@@ -1,0 +1,149 @@
+
+.searching {
+    background-image:url("./../../../../public/imgs/1.searching.jpg") ;
+    width: 100%;
+    background-size:cover;
+    min-height: 800px;
+    position: relative;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+
+.iconmanagement{
+    display: flex;
+    align-items: center; 
+    margin-left: 10px;
+}
+
+.svgicon{
+    display: flex;
+    align-items: center; 
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.svgicon p {
+    font-size: 0px;
+    margin-left: 10px;
+    line-height: 30px;
+}
+
+.svgicon img {
+    height: 100px;
+    width: 100px;
+}
+
+
+.titleword{
+    text-align: center;
+    font-size: 30px;
+    padding-top: 20px;
+}
+
+.subtitleword{
+    font-size: 16px;
+}
+
+.searchinput {
+    font-size: 28px;
+}
+
+.recommend {
+    width: auto;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.recommendlist {
+    width: 48%;
+    display: flex;
+}
+
+.recipephoto {
+    width: 250px;
+    height: 200px;
+    position: relative;
+}
+
+.recipephoto img {
+    max-height: 100%;  
+    max-width: 100%; 
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 0;  
+    bottom: 0;  
+    left: 0;  
+    right: 0;  
+    margin: auto;
+}
+
+.recipeblock {
+    font-size: 20px;
+    line-height: 30px;
+    margin-left:10px ;
+    margin-bottom: 30px;
+}
+
+.iconmanagement {
+    display: flex;
+    margin-left: 10px;
+}
+
+
+.iconinsearch {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.iconinsearchp {
+    line-height: 30px;
+}
+
+.hrline {
+    margin: 0 0;
+    padding-bottom: 10px;
+}
+
+@media screen and (max-width:1050px) {
+    .recommend {
+        width: 70%;
+        margin-left: 15%;
+        margin-right: 15%;
+        display: flex;
+        flex-wrap: wrap;
+        position: relative;
+    }
+
+    .recommendlist {
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+        display: flex;
+    }
+
+}
+
+.buttoninsearch{
+    border: 0px;
+    background-color: rgb(255, 255, 255);
+}
+
+.pa {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+
+
+
+/* https://hff2.github.io/react/20211015/3955701539/ */
+/* https://www.websiterating.com/zh-TW/resources/html-css-php-cheat-sheet/#complete-css-cheat-sheet */
