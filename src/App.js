@@ -3,7 +3,7 @@ import Nav from './component/Navbar/Nav';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Footer from './component/Footer/Footer';
 import Container from './Container';
-import MyMap from './component/pin/MyMap';
+import MyMap from './component/pin/Company_map/MyMap';
 import Cart from './component/ben/cart_main/Cart';
 import CartPayment from './component/ben/cart_payment/CartPayment';
 import CartCreditCard from './component/ben/cart_creditCard/CartCreditCard';
@@ -23,6 +23,7 @@ import MainChat from './component/xin/Customized_server/Main';
 
 import RecipeMain from './component/hsieh/App';
 import GameMain from './component/po/game/gameMain';
+import Company_Activity from './component/pin/Company_Login';
 
 function App() {
     return (
@@ -114,6 +115,13 @@ function App() {
                             </Container>
                             <Footer />
                         </ProviderContainer>
+                        <Routes>
+                            <Route
+                                path="/Company"
+                                element={<Company_Activity />}
+                            />
+                            {/* pin */}
+                        </Routes>
                     </BrowserRouter>
                 </IconContext.Provider>
             </Provider>
