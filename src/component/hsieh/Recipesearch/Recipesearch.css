@@ -1,15 +1,14 @@
 
 .searching {
-    background-image:url("/public/images/1.searching.jpg") ;
+    background-image:url("/public/images/tomato.jpg") ;
     width: 100%;
     background-size:cover;
-    min-height: 500px;
+    min-height: 400px;
     position: relative;
     display: flex;
     justify-content: center; 
     align-items: center; 
 }
-
 
 .iconmanagement{
     display: flex;
