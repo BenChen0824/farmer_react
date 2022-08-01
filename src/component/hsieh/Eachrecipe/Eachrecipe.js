@@ -13,7 +13,9 @@ function Eachrecipe() {
         </div>
         <div className="recipedetail">
           <div className="auther">
-            <p>作者：XXX</p>
+            <div>
+              <p>作者：XXX</p>
+            </div>
             <div className="likeandcollect">
               <button className="buttonineach">
                 <img
@@ -210,10 +212,38 @@ function Eachrecipe() {
         </div>
       </div>
       <div className="buttonlist">
-        <button className="list">食譜列表</button>
-        <button className="create">新增食譜</button>
-        <button className="update">修改食譜</button>
-        <button className="delete">刪除食譜</button>
+        <button className="list">
+          食譜列表
+          <img
+            src="http://localhost:3000/images/files.svg"
+            alt=""
+            className="crud"
+          />
+        </button>
+        <button className="create">
+          新增食譜
+          <img
+            src="http://localhost:3000/images/file-plus.svg"
+            alt=""
+            className="crud"
+          />
+        </button>
+        <button className="update">
+          修改食譜
+          <img
+            src="http://localhost:3000/images/pen.svg"
+            alt=""
+            className="crud"
+          />
+        </button>
+        <button className="delete">
+          刪除食譜
+          <img
+            src="http://localhost:3000/images/trashcan.svg"
+            alt=""
+            className="crud"
+          />
+        </button>
       </div>
     </>
   )
