@@ -3,7 +3,7 @@ import React from 'react'
 import './Createrecipe.css'
 
 function Createrecipe() {
-  // 新增食譜
+  // 新增食譜名稱
   const [recipesname, setRecipesname] = useState('')
 
   // 料理簡介
