@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import React from 'react'
 import './Recipesearch.css'
 import dish from './../recipe_pic/image/1.dishimage.jpg'
 import Pagination from './Pagination'
@@ -11,7 +12,14 @@ function Recipesearch() {
       <div className="searching">
         <div id="inputText">
           <p className="subtitleword">食譜名稱</p>
-          <input type="text" value={inputText} className="searchinput" />
+          <input
+            type="text"
+            value={inputText}
+            className="searchinput"
+            onChange={(e) => {
+              setInputText(e.target.value)
+            }}
+          />
           <p className="subtitleword">熱門關鍵字：日式、炸蝦、雞腿</p>
           <button type="button" class="btn btn-dark" style={{ margin: 5 }}>
             進階搜尋
