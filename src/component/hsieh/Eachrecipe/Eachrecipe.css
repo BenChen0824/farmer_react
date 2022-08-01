@@ -1,314 +1,224 @@
 
-.recipetitle {
-    text-align: center;
-    font-size: 30px;
-    padding-top: 250px;
-    padding-bottom: 100px;
+.creatrecipe {
+  text-align: center;
+  padding-top: 200px;
+  padding-bottom: 50px;
 }
 
-.line {
-    color: black;
-    width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
+.hr{
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
-.recipeinfo{
-    width: 90%;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    margin-left: 5%;
-    margin-right: 5%;
-    display: flex;
-    justify-content: space-between;
+
+.eachdata {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  margin-left: 20%;
+  display: flex;
 }
 
-.pic {
-    width: 50%;
+.dataname {
+    font-size: 26px;
+    margin-right: 50px;
 }
 
-.pic img {
-    width: 100%;
+
+.dataform1 {
+  width: 400px;
+  height: 40px;
 }
 
-.recipedetail {
-    width: 48%;
+.breakpointtitle1 {
+  font-size: 26px;
 }
 
-@media screen and (max-width:756px) {
-    .recipeinfo {
-    width: 80%;
+.dataform2 {
+  margin-left: 15px;
+  width: 200px;
+  height: 40px;
+}
+
+.breakpointtitle2 {
+  font-size: 26px;
+  margin-left: 15px;
+}
+
+.ingredientandstep {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.ingredientuse {
+  width: 300px;
+  height: 40px;
+}
+
+.portionuse {
+  width: 100px;
+  height: 40px;
+  margin-left: 30px;
+}
+
+.plus {
+  height: 40px;
+  width: 40px;
+  margin-left: 50%;
+}
+
+.trashcan {
+  height: 40px;
+  width: 40px;
+  margin-left: 30px;
+}
+
+.redball {
+  background-color: rgb(255, 71, 71);
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  line-height: 40px;
+  font-size: 30px;
+  margin-right: 50px;
+  text-align: center;
+}
+
+.photoupload {
+  width: 50%;
+  height: 400px;
+  margin-left: 25%;
+  margin-right: 25%;
+  background-color: rgb(177, 177, 177);
+  position: relative;
+}
+
+.photoupload img {
+  height: 60px;
+  width: 60px;
+  margin-left: 50%;
+  position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+}
+
+.button {
+  text-align: center;
+}
+
+.finish {
+  width: 200px;
+  height: 40px;
+  background-color: rgb(130, 202, 53);
+  border-radius: 10px;
+  font-size: 24px;
+  margin-top: 30px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 30px;
+}
+
+@media screen and (max-width:950px) {
+
+  .hr {
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 15%;
+  }
+
+
+  .eachdata {
     margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-bottom: 10px;
+    margin-left: 15%;
     display: flex;
-    flex-wrap: wrap;
-    /* justify-content: space-between; */
-    }
+  }
 
-    .pic {
-        width: 90%;
-    }
+  .dataname {
+    font-size: 18px;
+  }
 
-    .likeandcollect {
-    justify-content: space-between;
-    }
-
-    .recipedetail {
-        width: 90%;
-    }
-
-    .greencircle {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background-color: rgb(130, 202, 53);
-}
-
-.recipedata p {
-    font-size: 12px;
-    padding-left: 5px;
-}
-
-}
-
-/* 分隔線 */
-
-.auther {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid rgb(0, 0, 0);
-}
-
-.likeandcollect {
-    width: 20%;
-    display: flex;
-}
-
-.likeandcollect img {
-    height: 40px;
-    width: 40px;
-    padding-left: 5px;
-    padding-right: 5px;
-}
-
-.recipeinfomation {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.recipedata {
-    width:48%;
-    padding: 5px;
-    display: flex;
-}
-
-.greencircle {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: rgb(130, 202, 53);
-}
-
-.greencircle img {
-    width: 100%;
-    height: 100%;
-}
-
-.recipedata p {
-    font-size: 16px;
-    padding-left: 5px;
-}
-
-/* 分隔線 */
-
-.socialmedia {
-    width: 40%;
-    margin-left: 30%;
-    margin-right: 30%;
-    margin-bottom: 30px;
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-}
-
-.socialmedia img {
+  .dataform1 {
+    width: 250px;
     height: 30px;
-    width: 30px;
-}
+  }
 
-/* 分隔線 */
+  .breakpointtitle1 {
+    font-size: 18px;
+  }
 
+  .dataform2 {
+    margin-left: 15px;
+    width: 200px;
+    height: 40px;
+  }
 
-.gray {
-    background-color: rgb(239, 240, 234);
-}
+  .breakpointtitle2 {
+    font-size: 18px;
+    margin-left: 10px;
+  }
 
-.cook {
-    width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
-    /* flex-wrap: wrap; */
-    display: flex;
-    text-align: justify;
-}
+  .ingredientuse {
+    width: 150px;
+    height: 30px;
+  }
 
-.material {
-    width: 50%;
-    margin-right: 15%;
-    display: inline-block;
-}
+  .portionuse {
+    width: 100px;
+    height: 30px;
+    margin-left: 20px;
+  }
 
-.black{
-    background-color: rgb(58, 44, 44);
-    width: 100%;
-    height: 50px;
-    font-size: 24px;
-    color: white;
-    line-height: 50px;
-    padding-left: 30px;
-}
+  .plus {
+    height: 40px;
+    width: 40px;
+    margin-left: 50%;
+  }
 
-.cooking {
-    width: 50%;
-    display: inline-block;
-}
-
-.green {
-    background-color: rgb(130, 202, 53);
-    width: 100%;
-    height: 50px;
-    font-size: 24px;
-    color: rgb(0, 0, 0);
-    line-height: 50px;
-    padding-left: 30px;
-}
-
-.showarea1 {
-    width: 100%;
-    background-color: rgb(250, 250, 250);
-}
-
-.character1 {
-    font-size: 24px;
-    color: rgb(0, 0, 0);
-    line-height: 50px;
-    margin-left: 30px;
-}
-
-.showarea2 {
-    width: 100%;
-    padding: 20px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    background-color: rgb(250, 250, 250);
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    /* outline: 1px solid black; */
-}
-
-.number{
+  .redball {
     background-color: rgb(255, 71, 71);
-    height: 40px;
-    width: 40px;
+    height: 25px;
+    width: 25px;
     border-radius: 50%;
-    line-height: 40px;
-    font-size: 30px;
+    line-height: 25px;
+    font-size: 18px;
+    margin-right: 20px;
     text-align: center;
-}
+  }
 
-.character2 {
-    width: 70%;
-    font-size: 16px;
-    color: rgb(0, 0, 0);
-    line-height: 30px;
-    margin-left: 30px;
-    margin-right: 30px;
-}
-
-
-@media screen and (max-width:800px) {
-    .cook {
-        width: 100%;
-        margin-left: 0;
-        margin-right: 0;
-        display: flex;
-        flex-wrap: wrap;
-        position: relative;
-    }
-
-    .material {
-        width: 100%;
-        margin-left: 0;
-        margin-right: 0;
-    }
-
-    .cooking {
-        width: 100%;
-    }
-}
-
-.buttonineach{
-    border: 0px;
-    background-color: rgb(255, 255, 255);
-}
-
-.iconineach {
-    width: 30px;
-    height: 30px;
-}
-
-.buttonlist{
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    margin-top: 20px;
+  .photoupload {
+    width: 50%;
+    height: 200px;
+    margin-left: 25%;
+    margin-right: 25%;
     margin-bottom: 20px;
+    background-color: rgb(177, 177, 177);
+    position: relative;
+  }
 }
 
-.list{
-    margin-right: 10px;
-    width: 150px;
-    height: 40px;
-    background-color: rgb(255, 249, 96);
-    border-radius: 10px;
-    font-size: 20px;
-    margin-left: 5px;
-    margin-right: 5px;
+.buttonincreate{
+  border: 0px;
+  background-color: rgba(255, 255, 255, 0);
 }
 
-.create{
-    margin-right: 10px;
-    width: 150px;
-    height: 40px;
-    background-color: rgb(130, 202, 53);
-    border-radius: 10px;
-    font-size: 20px;
-    margin-left: 5px;
-    margin-right: 5px;
+.buttonincreateplus{
+  border: 0px;
+  margin-left: 50%;
+  background-color: rgb(255, 255, 255);
 }
 
-.update{
-    margin-right: 10px;
-    width: 150px;
-    height: 40px;
-    background-color: rgb(96, 178, 255);
-    border-radius: 10px;
-    font-size: 20px;
-    margin-left: 5px;
-    margin-right: 5px;
+.iconincreate{
+  width: 40px;
+  height: 40px;
+  margin-left: 30px;
 }
 
-.delete {
-    margin-right: 10px;
-    width: 150px;
-    height: 40px;
-    background-color: rgb(170, 170, 170);
-    border-radius: 10px;
-    font-size: 20px;
-    margin-left: 5px;
-    margin-right: 5px;
-}
+
+/* <button className="buttonincreate">
+<img src={trashcan} alt="" className="iconincreate" />
+</button> */
+
