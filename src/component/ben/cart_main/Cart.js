@@ -260,7 +260,7 @@ function Cart() {
                                         className="d-flex justify-content-between align-content-center mt-3 cart_border_bottom pb-2"
                                         key={(`fresh`, i)}
                                     >
-                                        <div className="col-4 col-md-6 d-flex justify-content-between align-content-center">
+                                        <div className="col-4 col-md-6 d-flex justify-content-start align-content-center">
                                             <div className="d-flex flex-column justify-content-center">
                                                 <span>
                                                     <input
@@ -411,7 +411,7 @@ function Cart() {
                                             className="d-flex justify-content-between align-content-center mt-3 cart_border_bottom pb-2"
                                             key={(`customized`, i)}
                                         >
-                                            <div className="col-4 col-md-6 d-flex justify-content-between align-content-center">
+                                            <div className="col-4 col-md-6 d-flex justify-content-start align-content-center">
                                                 <div className="d-flex flex-column justify-content-center">
                                                     <span>
                                                         <input

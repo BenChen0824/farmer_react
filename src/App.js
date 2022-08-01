@@ -23,7 +23,7 @@ import MainChat from './component/xin/Customized_server/Main';
 
 import RecipeMain from './component/hsieh/App';
 import GameMain from './component/po/game/gameMain';
-import Company_Activity from './component/pin/Company_Login';
+import CompanyLogin from './component/pin/Company_Login';
 
 function App() {
     return (
@@ -110,18 +110,13 @@ function App() {
                                         path="/supplier"
                                         element={<MyMap />}
                                     />
+
                                     {/* pin */}
                                 </Routes>
                             </Container>
                             <Footer />
                         </ProviderContainer>
-                        <Routes>
-                            <Route
-                                path="/Company"
-                                element={<Company_Activity />}
-                            />
-                            {/* pin */}
-                        </Routes>
+                        {/* <Route path="/company" element={<CompanyLogin />} /> */}
                     </BrowserRouter>
                 </IconContext.Provider>
             </Provider>
