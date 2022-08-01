@@ -3,7 +3,7 @@
     background-image:url("/public/images/1.searching.jpg") ;
     width: 100%;
     background-size:cover;
-    min-height: 800px;
+    min-height: 500px;
     position: relative;
     display: flex;
     justify-content: center; 
@@ -39,7 +39,8 @@
 .titleword{
     text-align: center;
     font-size: 30px;
-    padding-top: 20px;
+    padding-top: 60px;
+    padding-bottom: 30px;
 }
 
 .subtitleword{
