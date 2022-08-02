@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { Icon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { countries, townships } from './data/townships';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 import companyData from './data/company.json';
 import './MyMap.css';
@@ -11,12 +11,11 @@ import './MyMap.css';
 // import { data } from './Data/company_1'
 
 const skater = new Icon({
-    iconUrl: '/logo/fresh_LOGO_icon.svg',
+    iconUrl: 'https://unpkg.com/leaflet@1.5.1/dist/images/marker-icon.png',
     iconSize: [26, 40],
     iconAnchor: [10, 41],
     popupAnchor: [2, -40],
 });
-
 function MyMap() {
     const [countryIndex, setCountryIndex] = useState(-1);
     const [townshipIndex, setTownshipIndex] = useState(-1);
@@ -78,26 +77,33 @@ function MyMap() {
                             </div>
                         </div>
                     </form>
-                    <section className="content bg-w overflow-auto w-100 px-3 pt-3 mx-2">
-                        {/* {data.map((v, i) => {
-              return (
-                <div class="card mb-3 infocards" data-cards="241" key={v.id}>
-                  <h5 class="title m-3">{v.FarmNm_CH}</h5>
-                  <img src={v.Photo}/>
-                  <ul class="list-group">
-                    <li class="list-group-item list-group-item-action">
-                      {v.TEL}
-                    </li>
-                    <li class="list-group-item list-group-item-action">
-                      {v.Address_CH}
-                    </li>
-                    <li class="list-group-item list-group-item-action">
-                      {v.Time}
-                    </li>
-                  </ul>
-                </div>
-              )
-            })} */}
+                    <section
+                        className="content bg-w overflow-auto w-100 px-3 pt-3 mx-2"
+                        style={{ height: '59vh' }}
+                    >
+                        {companyData.features.map((v, i) => {
+                            return (
+                                <div
+                                    class="card mb-3 infocards"
+                                    data-cards="241"
+                                    key={v.QualityFarmID}
+                                >
+                                    <h5 class="title m-3">{v.FarmNm_CH}</h5>
+                                    <img src={v.Photo} />
+                                    <ul class="list-group">
+                                        <li class="list-group-item list-group-item-action">
+                                            {v.TEL}
+                                        </li>
+                                        <li class="list-group-item list-group-item-action">
+                                            {v.Address_CH}
+                                        </li>
+                                        <li class="list-group-item list-group-item-action">
+                                            {v.Time}
+                                        </li>
+                                    </ul>
+                                </div>
+                            );
+                        })}
                     </section>
                 </div>
                 <div className="col-sm-6 col-md-8 col-xl-9 px-0">

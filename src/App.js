@@ -90,10 +90,7 @@ function App() {
                                         path="/activity"
                                         element={<Activity />}
                                     />
-                                    <Route
-                                        path="/supplier"
-                                        element={<MyMap />}
-                                    />
+                                    <Route path="/mymap" element={<MyMap />} />
 
                                     {/* pin */}
                                 </Routes>
