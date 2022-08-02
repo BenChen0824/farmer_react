@@ -3,10 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { CART_LINEPAY_CHECK } from './../../../config/ajax-path';
 import CartCountContext from '../cart_count/CartCountContext';
 import {
-    BarLoader,
     DoubleOrbit,
-    SlidingPebbles,
-    Spinner,
+
 } from 'react-spinner-animated';
 
 import 'react-spinner-animated/dist/index.css';
