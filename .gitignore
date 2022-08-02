@@ -5,6 +5,8 @@
 /.pnp
 .pnp.js
 
+
+
 # testing
 /coverage
 
@@ -29,7 +31,8 @@ public/fontawesome-free-6.1.1-web
 public/dailypoint-img
 public/game-images
 public/images/**
-src/component/hsieh/pic
+
+
 
 
 !**/.gitkeep
