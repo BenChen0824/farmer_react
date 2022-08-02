@@ -54,10 +54,7 @@ function Eachrecipe() {
 
                         <div className="recipedata">
                             <div className="greencircle">
-                                <img
-                                    src="http://localhost:3000/images/heat.svg"
-                                    alt=""
-                                />
+                                <img src="/images/heat.svg" alt="" />
                             </div>
                             <div>
                                 <p>
@@ -71,10 +68,7 @@ function Eachrecipe() {
 
                         <div className="recipedata">
                             <div className="greencircle">
-                                <img
-                                    src="http://localhost:3000/images/portion.png"
-                                    alt=""
-                                />
+                                <img src="/images/portion.png" alt="" />
                             </div>
                             <div>
                                 <p>
@@ -88,10 +82,7 @@ function Eachrecipe() {
 
                         <div className="recipedata">
                             <div className="greencircle">
-                                <img
-                                    src="http://localhost:3000/images/pot.png"
-                                    alt=""
-                                />
+                                <img src="/images/pot.png" alt="" />
                             </div>
                             <div>
                                 <p>
@@ -106,10 +97,7 @@ function Eachrecipe() {
 
                         <div className="recipedata">
                             <div className="greencircle">
-                                <img
-                                    src="http://localhost:3000/images/degree.png"
-                                    alt=""
-                                />
+                                <img src="/images/degree.png" alt="" />
                             </div>
                             <div>
                                 <p>
@@ -135,40 +123,28 @@ function Eachrecipe() {
 
             <div className="socialmedia">
                 <button className="buttonineach">
+                    <img src="/images/line.png" alt="" className="iconineach" />
+                </button>
+
+                <button className="buttonineach">
                     <img
-                        src="http://localhost:3000/images/line.png"
+                        src="/images/twitter.png"
                         alt=""
                         className="iconineach"
                     />
                 </button>
 
                 <button className="buttonineach">
-                    <img
-                        src="http://localhost:3000/images/twitter.png"
-                        alt=""
-                        className="iconineach"
-                    />
+                    <img src="/images/ig.png" alt="" className="iconineach" />
+                </button>
+
+                <button className="buttonineach">
+                    <img src="/images/fb.png" alt="" className="iconineach" />
                 </button>
 
                 <button className="buttonineach">
                     <img
-                        src="http://localhost:3000/images/ig.png"
-                        alt=""
-                        className="iconineach"
-                    />
-                </button>
-
-                <button className="buttonineach">
-                    <img
-                        src="http://localhost:3000/images/fb.png"
-                        alt=""
-                        className="iconineach"
-                    />
-                </button>
-
-                <button className="buttonineach">
-                    <img
-                        src="http://localhost:3000/images/email.png"
+                        src="/images/email.png"
                         alt=""
                         className="iconineach"
                     />
@@ -228,35 +204,19 @@ function Eachrecipe() {
             <div className="buttonlist">
                 <button className="list">
                     食譜列表
-                    <img
-                        src="http://localhost:3000/images/files.svg"
-                        alt=""
-                        className="crud"
-                    />
+                    <img src="/images/files.svg" alt="" className="crud" />
                 </button>
                 <button className="create">
                     新增食譜
-                    <img
-                        src="http://localhost:3000/images/file-plus.svg"
-                        alt=""
-                        className="crud"
-                    />
+                    <img src="/images/file-plus.svg" alt="" className="crud" />
                 </button>
                 <button className="update">
                     修改食譜
-                    <img
-                        src="http://localhost:3000/images/pen.svg"
-                        alt=""
-                        className="crud"
-                    />
+                    <img src="/images/pen.svg" alt="" className="crud" />
                 </button>
                 <button className="delete">
                     刪除食譜
-                    <img
-                        src="http://localhost:3000/images/trashcan.svg"
-                        alt=""
-                        className="crud"
-                    />
+                    <img src="/images/trashcan.svg" alt="" className="crud" />
                 </button>
             </div>
         </>

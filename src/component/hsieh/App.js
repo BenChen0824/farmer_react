@@ -8,16 +8,14 @@ import Updaterecipe from './Createrecipe/Updaterecipe';
 function RecipeMain() {
     return (
         <>
-            
-                <Routes>
-                    <Route path="/" element={<Recipesearch />} />
-                    <Route path="/popup" element={<Popup />} />
-                    <Route path="/each" element={<Eachrecipe />} />
-                    <Route path="/createrecipe" element={<Createrecipe />} />
-                    <Route path="/updaterecipe" element={<Updaterecipe />} />
-                    {/* 宸睿 */}
-                </Routes>
-            
+            <Routes>
+                <Route path="/" element={<Recipesearch />} />
+                <Route path="/popup" element={<Popup />} />
+                <Route path="/each" element={<Eachrecipe />} />
+                <Route path="/createrecipe" element={<Createrecipe />} />
+                <Route path="/updaterecipe" element={<Updaterecipe />} />
+                {/* 宸睿 */}
+            </Routes>
         </>
     );
 }

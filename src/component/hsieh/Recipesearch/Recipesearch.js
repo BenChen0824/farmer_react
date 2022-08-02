@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import React from 'react';
 import './Recipesearch.css';
-import dish from './../pic/image/1.dishimage.jpg';
 import Pagination from './Pagination';
 
 function Recipesearch() {
@@ -44,14 +43,14 @@ function Recipesearch() {
             <div className="recommend">
                 <div className="recommendlist">
                     <div className="recipephoto">
-                        <img src={dish} alt="" />
+                        <img src="/images/dishimage.jpg" alt="" />
                     </div>
                     <div className="recipeblock">
                         <p>日式黃金炸蝦</p>
                         <div className="iconmanagement">
                             <button className="buttoninsearch">
                                 <img
-                                    src="http://localhost:3000/images/heart.svg"
+                                    src="/images/heart.svg"
                                     alt=""
                                     className="iconinsearch"
                                 />
@@ -59,7 +58,7 @@ function Recipesearch() {
                             <p className="iconinsearchp">10</p>
                             <button className="buttoninsearch">
                                 <img
-                                    src="http://localhost:3000/images/good.svg"
+                                    src="/images/good.svg"
                                     alt=""
                                     className="iconinsearch"
                                 />
@@ -71,7 +70,7 @@ function Recipesearch() {
 
                         <div className="iconmanagement">
                             <img
-                                src="http://localhost:3000/images/clock.svg"
+                                src="/images/clock.svg"
                                 alt=""
                                 className="iconinsearch"
                             />
@@ -79,7 +78,7 @@ function Recipesearch() {
                         </div>
                         <div className="iconmanagement">
                             <img
-                                src="http://localhost:3000/images/heat.svg"
+                                src="/images/heat.svg"
                                 alt=""
                                 className="iconinsearch"
                             />
@@ -92,14 +91,14 @@ function Recipesearch() {
 
                 <div className="recommendlist">
                     <div className="recipephoto">
-                        <img src={dish} alt="" />
+                        <img src="/images/dishimage.jpg" alt="" />
                     </div>
                     <div className="recipeblock">
                         <p>日式黃金炸蝦</p>
                         <div className="iconmanagement">
                             <button className="buttoninsearch">
                                 <img
-                                    src="http://localhost:3000/images/heart.svg"
+                                    src="/images/heart.svg"
                                     alt=""
                                     className="iconinsearch"
                                 />
@@ -107,7 +106,7 @@ function Recipesearch() {
                             <p className="iconinsearchp">20</p>
                             <button className="buttoninsearch">
                                 <img
-                                    src="http://localhost:3000/images/good.svg"
+                                    src="/images/good.svg"
                                     alt=""
                                     className="iconinsearch"
                                 />
@@ -119,7 +118,7 @@ function Recipesearch() {
 
                         <div className="iconmanagement">
                             <img
-                                src="http://localhost:3000/images/clock.svg"
+                                src="/images/clock.svg"
                                 alt=""
                                 className="iconinsearch"
                             />
@@ -127,7 +126,7 @@ function Recipesearch() {
                         </div>
                         <div className="iconmanagement">
                             <img
-                                src="http://localhost:3000/images/heart.svg"
+                                src="/images/heart.svg"
                                 alt=""
                                 className="iconinsearch"
                             />
@@ -145,14 +144,14 @@ function Recipesearch() {
             <div className="recommend">
                 <div className="recommendlist">
                     <div className="recipephoto">
-                        <img src={dish} alt="" />
+                        <img src="/images/dishimage.jpg" alt="" />
                     </div>
                     <div className="recipeblock">
                         <p>日式黃金炸蝦</p>
                         <div className="iconmanagement">
                             <button className="buttoninsearch">
                                 <img
-                                    src="http://localhost:3000/images/heart.svg"
+                                    src="/images/heart.svg"
                                     alt=""
                                     className="iconinsearch"
                                 />
@@ -160,7 +159,7 @@ function Recipesearch() {
                             <p className="iconinsearchp">30</p>
                             <button className="buttoninsearch">
                                 <img
-                                    src="http://localhost:3000/images/good.svg"
+                                    src="/images/good.svg"
                                     alt=""
                                     className="iconinsearch"
                                 />
@@ -172,7 +171,7 @@ function Recipesearch() {
 
                         <div className="iconmanagement">
                             <img
-                                src="http://localhost:3000/images/clock.svg"
+                                src="/images/clock.svg"
                                 alt=""
                                 className="iconinsearch"
                             />
@@ -180,7 +179,7 @@ function Recipesearch() {
                         </div>
                         <div className="iconmanagement">
                             <img
-                                src="http://localhost:3000/images/heat.svg"
+                                src="/images/heat.svg"
                                 alt=""
                                 className="iconinsearch"
                             />
@@ -193,14 +192,14 @@ function Recipesearch() {
 
                 <div className="recommendlist">
                     <div className="recipephoto">
-                        <img src={dish} alt="" />
+                        <img src="/images/dishimage.jpg" alt="" />
                     </div>
                     <div className="recipeblock">
                         <p>日式黃金炸蝦</p>
                         <div className="iconmanagement">
                             <button className="buttoninsearch">
                                 <img
-                                    src="http://localhost:3000/images/heart.svg"
+                                    src="/images/heart.svg"
                                     alt=""
                                     className="iconinsearch"
                                 />
@@ -208,7 +207,7 @@ function Recipesearch() {
                             <p className="iconinsearchp">40</p>
                             <button className="buttoninsearch">
                                 <img
-                                    src="http://localhost:3000/images/good.svg"
+                                    src="/images/good.svg"
                                     alt=""
                                     className="iconinsearch"
                                 />
@@ -220,7 +219,7 @@ function Recipesearch() {
 
                         <div className="iconmanagement">
                             <img
-                                src="http://localhost:3000/images/clock.svg"
+                                src="/images/clock.svg"
                                 alt=""
                                 className="iconinsearch"
                             />
@@ -228,7 +227,7 @@ function Recipesearch() {
                         </div>
                         <div className="iconmanagement">
                             <img
-                                src="http://localhost:3000/images/heat.svg"
+                                src="/images/heat.svg"
                                 alt=""
                                 className="iconinsearch"
                             />
