@@ -1,18 +1,82 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { CART_LINEPAY } from './../../../config/ajax-path';
 import CartCountContext from '../cart_count/CartCountContext';
 
 function CartPayment() {
+    // const location = useLocation();
     const navigate = useNavigate();
     const { cartList, setCartList } = useContext(CartCountContext);
 
     const [totalAmount, setTotalAmount] = useState(0);
     const [formValue, setFormValue] = useState('creditcardPayment');
 
+    //Linepay
+    const linepay = () => {
+        const time = +new Date();
+        const order = {
+            amount: 300,
+            currency: 'TWD',
+            orderId: `Order${time}`,
+            packages: [
+                {
+                    id: 'Item20191015001',
+                    amount: 100,
+                    name: '生鮮商品',
+                    products: [
+                        {
+                            name: 'apple',
+                            quantity: 1,
+                            price: 100,
+                        },
+                    ],
+                },
+                {
+                    id: 'Item20191015001',
+                    amount: 200,
+                    name: '客製化商品',
+                    products: [
+                        {
+                            name: 'bento',
+                            quantity: 1,
+                            price: 200,
+                        },
+                    ],
+                },
+            ],
+            redirectUrls: {
+                confirmUrl: 'http://localhost:3000/cart/linepaycheck',
+                cancelUrl: 'https://example.com/cancelUrl',
+            },
+        };
+        // console.log(order);
+        let IDkey = {};
+
+        fetch(`${CART_LINEPAY}`, {
+            method: 'POST',
+            body: JSON.stringify(order),
+            headers: {
+                'content-type': 'application/json',
+            },
+        })
+            .then((r) => r.json())
+            .then((obj) => {
+                const { redirectURL, transitionID } = obj;
+                // console.log(redirectURL);
+                // console.log(transitionID);
+
+                IDkey.transitionID = JSON.parse(transitionID);
+                sessionStorage.setItem('transitionID', IDkey.transitionID);
+
+                // navigate(redirectURL);
+                window.location = redirectURL;
+                // location.href = redirectURL;
+            });
+    };
+
     const paymentLinkto = () => {
         if (formValue === 'linepay') {
-            // console.log('linepay');
-            navigate('/cart/linepay');
+            linepay();
         }
         if (formValue === 'creditcard') {
             // console.log('creditcard');
@@ -124,7 +188,6 @@ function CartPayment() {
                                             {`${v.product_count}個`}
                                         </div>
                                         <div className="col-4 text-end">
-                                            NT$
                                             {v.product_count * v.product_price}
                                         </div>
                                     </div>
@@ -150,7 +213,6 @@ function CartPayment() {
                                             {`${v.product_count}個`}
                                         </div>
                                         <div className="col-4 text-end">
-                                            NT$
                                             {v.product_count * v.product_price}
                                         </div>
                                     </div>
@@ -164,7 +226,7 @@ function CartPayment() {
                         </div>
                         <div className="d-flex justify-content-between py-3">
                             <div className="col-6">優惠券</div>
-                            <div className="col-6 text-end">-NT$100</div>
+                            <div className="col-6 text-end">-100</div>
                         </div>
 
                         <div className="d-flex justify-content-between cart_payment_border_bottom cart_payment_border_top py-3">

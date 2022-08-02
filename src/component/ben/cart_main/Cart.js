@@ -460,6 +460,7 @@ function Cart() {
                                                     <div className="mx-2">
                                                         <img
                                                             className="cart_product_img"
+                                                            
                                                             src={`/images/${
                                                                 JSON.parse(
                                                                     v.product_img

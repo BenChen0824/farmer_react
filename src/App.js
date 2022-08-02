@@ -4,26 +4,21 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Footer from './component/Footer/Footer';
 import Container from './Container';
 import MyMap from './component/pin/Company_map/MyMap';
-import Cart from './component/ben/cart_main/Cart';
-import CartPayment from './component/ben/cart_payment/CartPayment';
-import CartCreditCard from './component/ben/cart_creditCard/CartCreditCard';
-import CartSuccess from './component/ben/cart_success/CartSuccess';
 import ProviderContainer from './ProviderContainer';
 import { IconContext } from 'react-icons';
 import { Provider } from 'react-redux';
 import ProductList from './page/ProductList';
 import store from './store';
 import Product from './page/Product';
-import CartNonepay from './component/ben/cart_nonepay/CartNonepay';
 import Member from './component/bob/App';
 import FarmerFirstPage from './component/kawa/FarmerFirstPage/FarmerFirstPage';
 import CustomerComment from './component/kawa/CustomerComment/CustomerComment';
 import Customized_product from './component/xin/Customized_lunch/CustomizedLunch';
 import MainChat from './component/xin/Customized_server/Main';
-
 import RecipeMain from './component/hsieh/App';
 import GameMain from './component/po/game/gameMain';
 import CompanyLogin from './component/pin/Company_Login';
+import CartMain from './component/ben/App';
 
 function App() {
     return (
@@ -68,25 +63,10 @@ function App() {
                                     />
                                     {/* 柏安 */}
 
-                                    <Route path="/cart" element={<Cart />} />
-
                                     <Route
-                                        path="/cart/payment"
-                                        element={<CartPayment />}
+                                        path="/cart/*"
+                                        element={<CartMain />}
                                     />
-                                    <Route
-                                        path="/cart/creditcard"
-                                        element={<CartCreditCard />}
-                                    />
-                                    <Route
-                                        path="/cart/success"
-                                        element={<CartSuccess />}
-                                    />
-                                    <Route
-                                        path="/cart/nonepay"
-                                        element={<CartNonepay />}
-                                    />
-
                                     {/* 宗佑 */}
 
                                     <Route
