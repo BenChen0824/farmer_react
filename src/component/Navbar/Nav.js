@@ -30,87 +30,99 @@ function Nav() {
         <>
             <header id="Navbar" className={navColor ? a : b}>
                 {/* <Logo className="main_logo" /> */}
-                <Logo
-                    className={
-                        navColor ? 'main_logo_active main_logo' : 'main_logo'
-                    }
-                />
+                <Link to="/">
+                    <Logo
+                        className={
+                            navColor
+                                ? 'main_logo_active main_logo'
+                                : 'main_logo'
+                        }
+                    />
+                </Link>
 
                 {/* 選單 */}
                 <nav className=" mt-3">
                     <ul className="header_menu d-flex">
-                        <li>
-                            <a
-                                href="/#"
-                                className={
-                                    navColor
-                                        ? 'menu_items_active menu_items'
-                                        : 'menu_items'
-                                }
-                            >
-                                首頁
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="/#"
-                                className={
-                                    navColor
-                                        ? 'menu_items_active menu_items'
-                                        : 'menu_items'
-                                }
-                            >
-                                小農活動
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="/#"
-                                className={
-                                    navColor
-                                        ? 'menu_items_active menu_items'
-                                        : 'menu_items'
-                                }
-                            >
-                                生鮮商品
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="/#"
-                                className={
-                                    navColor
-                                        ? 'menu_items_active menu_items'
-                                        : 'menu_items'
-                                }
-                            >
-                                食譜分享
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="/#"
-                                className={
-                                    navColor
-                                        ? 'menu_items_active menu_items'
-                                        : 'menu_items'
-                                }
-                            >
-                                客製化餐點
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="/#"
-                                className={
-                                    navColor
-                                        ? 'menu_items_active menu_items'
-                                        : 'menu_items'
-                                }
-                            >
-                                顧客評論
-                            </a>
-                        </li>
+                        <Link to="/game">
+                            <li>
+                                <span
+                                    className={
+                                        navColor
+                                            ? 'menu_items_active menu_items'
+                                            : 'menu_items'
+                                    }
+                                >
+                                    每日登入
+                                </span>
+                            </li>
+                        </Link>
+                        <Link to="/activity">
+                            <li>
+                                <span
+                                    className={
+                                        navColor
+                                            ? 'menu_items_active menu_items'
+                                            : 'menu_items'
+                                    }
+                                >
+                                    小農活動
+                                </span>
+                            </li>
+                        </Link>
+                        <Link to="/product">
+                            <li>
+                                <span
+                                    className={
+                                        navColor
+                                            ? 'menu_items_active menu_items'
+                                            : 'menu_items'
+                                    }
+                                >
+                                    生鮮商品
+                                </span>
+                            </li>
+                        </Link>
+                        <Link to="/recipe">
+                            <li>
+                                <span
+                                    className={
+                                        navColor
+                                            ? 'menu_items_active menu_items'
+                                            : 'menu_items'
+                                    }
+                                >
+                                    食譜分享
+                                </span>
+                            </li>
+                        </Link>
+                        <Link to="/customized_lunch">
+                            <li>
+                                <a
+                                    href="/#"
+                                    className={
+                                        navColor
+                                            ? 'menu_items_active menu_items'
+                                            : 'menu_items'
+                                    }
+                                >
+                                    客製化餐點
+                                </a>
+                            </li>
+                        </Link>
+                        <Link to="/comment">
+                            <li>
+                                <span
+                                    href="/#"
+                                    className={
+                                        navColor
+                                            ? 'menu_items_active menu_items'
+                                            : 'menu_items'
+                                    }
+                                >
+                                    顧客評論
+                                </span>
+                            </li>
+                        </Link>
                     </ul>
                 </nav>
                 {/* ICONS */}
@@ -122,7 +134,9 @@ function Nav() {
                                 : 'nav_icons d-flex '
                         }
                     >
-                        <FaUserCircle size={30} />
+                        <Link to="/member">
+                            <FaUserCircle size={30} />
+                        </Link>
                         <Link to="/cart">
                             <FaShoppingCart
                                 size={30}
