@@ -1,0 +1,15 @@
+.jumbotron {
+    background: url('../../../../public/images/Activity.jpg')no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 600px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 250px;
+  }
+  .mytext{
+    font-weight:bold;
+  }
