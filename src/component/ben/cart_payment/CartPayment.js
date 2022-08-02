@@ -30,14 +30,13 @@ function CartPayment() {
         }
     };
 
-    console.log(finalLinepayArray);
     //Linepay
     const linepay = () => {
         const time = +new Date();
         const order = {
             amount: finalValue,
             currency: 'TWD',
-            orderId: time,
+            orderId: `Order:${time}`,
             packages: finalLinepayArray,
             redirectUrls: {
                 confirmUrl: 'http://localhost:3000/cart/linepaycheck',
@@ -62,6 +61,7 @@ function CartPayment() {
 
                 IDkey.transitionID = JSON.parse(transitionID);
                 sessionStorage.setItem('transitionID', IDkey.transitionID);
+                sessionStorage.setItem('amount', finalValue);
 
                 // navigate(redirectURL);
                 window.location = redirectURL;
@@ -82,6 +82,11 @@ function CartPayment() {
             totalPayPrice += i;
         }
 
+        setTotalAmount(totalPayPrice);
+        setFinalValue(totalAmount - discount);
+    }, [cartList]);
+
+    useEffect(() => {
         const newFreshArray = cartList
             .filter((v) => {
                 return +v.cart_product_type === 1;
@@ -97,6 +102,10 @@ function CartPayment() {
             freshprice += i;
         }
         // console.log(freshprice);
+        setFreshPrice(freshprice);
+    }, [cartList]);
+
+    useEffect(() => {
         const newCustomizedArray = cartList
             .filter((v) => {
                 return +v.cart_product_type === 2;
@@ -112,10 +121,8 @@ function CartPayment() {
             customizedprice += i;
         }
         // console.log(customizedprice);
-        setFreshPrice(freshprice);
+
         setCustomizedPrice(customizedprice);
-        setTotalAmount(totalPayPrice);
-        setFinalValue(totalAmount - discount);
     }, [cartList]);
 
     useEffect(() => {
@@ -165,7 +172,7 @@ function CartPayment() {
         ];
 
         setFinalLinepayArray(arr);
-    }, [cartList]);
+    }, [freshTotalPrice, customizedTotalPrice]);
 
     useEffect(() => {
         setFinalValue(totalAmount - discount);

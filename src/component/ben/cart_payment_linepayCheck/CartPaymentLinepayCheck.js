@@ -2,10 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { CART_LINEPAY_CHECK } from './../../../config/ajax-path';
 import CartCountContext from '../cart_count/CartCountContext';
-import {
-    DoubleOrbit,
-
-} from 'react-spinner-animated';
+import { DoubleOrbit } from 'react-spinner-animated';
 
 import 'react-spinner-animated/dist/index.css';
 function CartPaymentLinepayCheck() {
@@ -17,12 +14,13 @@ function CartPaymentLinepayCheck() {
     //Linepay
 
     function checkLine() {
-        let IDkey = {};
-        IDkey.transitionID = sessionStorage.getItem('transitionID');
-        console.log('IDkey:' + IDkey);
+        let data = {};
+        data.transitionID = sessionStorage.getItem('transitionID');
+        data.amount = sessionStorage.getItem('amount');
+        console.log('IDkey:' + data);
         fetch(CART_LINEPAY_CHECK, {
             method: 'POST',
-            body: JSON.stringify(IDkey),
+            body: JSON.stringify(data),
             headers: {
                 'content-type': 'application/json',
             },
@@ -31,6 +29,7 @@ function CartPaymentLinepayCheck() {
             .then((obj) => {
                 // console.log(JSON.stringify(obj));
                 sessionStorage.removeItem('transitionID');
+                sessionStorage.removeItem('amount');
                 navigate('/cart/success');
             });
     }
@@ -117,7 +116,13 @@ function CartPaymentLinepayCheck() {
                     className="d-flex justify-content-center my-5 pt-5"
                     style={{ color: '#fff' }}
                 >
-                    <span className="cursor_pointer">
+                    <span
+                        className="cursor_pointer"
+                        onClick={() => {
+
+                            checkLine();
+                        }}
+                    >
                         {' '}
                         <DoubleOrbit
                             text={`Linepay確認付款後請點擊`}
@@ -125,9 +130,6 @@ function CartPaymentLinepayCheck() {
                             center={false}
                             width={'250px'}
                             height={'250px'}
-                            onClick={() => {
-                                checkLine();
-                            }}
                         />
                     </span>
                 </div>
