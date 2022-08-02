@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+/public/index_images
 
 # testing
 /coverage
@@ -28,5 +29,11 @@ public/images
 public/fontawesome-free-6.1.1-web
 
 public/images/**
+public/game-images
+public/index-images
+public/lunch_images
+public/member_imgs
+public/dailypoint-img
+src/component/hsieh/pic
 
 !**/.gitkeep
