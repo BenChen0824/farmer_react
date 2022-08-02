@@ -30,7 +30,7 @@ function Nav() {
         <>
             <header id="Navbar" className={navColor ? a : b}>
                 {/* <Logo className="main_logo" /> */}
-                <Link to="/">
+                <Link to="/" style={{ textDecoration: 'none' }}>
                     <Logo
                         className={
                             navColor
@@ -43,7 +43,7 @@ function Nav() {
                 {/* 選單 */}
                 <nav className=" mt-3">
                     <ul className="header_menu d-flex">
-                        <Link to="/game">
+                        <Link to="/game" style={{ textDecoration: 'none' }}>
                             <li>
                                 <span
                                     className={
@@ -56,7 +56,10 @@ function Nav() {
                                 </span>
                             </li>
                         </Link>
-                        <Link to="/customer_server">
+                        <Link
+                            to="/customer_server"
+                            style={{ textDecoration: 'none' }}
+                        >
                             <li>
                                 <span
                                     className={
@@ -69,7 +72,7 @@ function Nav() {
                                 </span>
                             </li>
                         </Link>
-                        <Link to="/activity">
+                        <Link to="/activity" style={{ textDecoration: 'none' }}>
                             <li>
                                 <span
                                     className={
@@ -82,7 +85,7 @@ function Nav() {
                                 </span>
                             </li>
                         </Link>
-                        <Link to="/product">
+                        <Link to="/product" style={{ textDecoration: 'none' }}>
                             <li>
                                 <span
                                     className={
@@ -95,7 +98,7 @@ function Nav() {
                                 </span>
                             </li>
                         </Link>
-                        <Link to="/recipe">
+                        <Link to="/recipe" style={{ textDecoration: 'none' }}>
                             <li>
                                 <span
                                     className={
@@ -108,7 +111,10 @@ function Nav() {
                                 </span>
                             </li>
                         </Link>
-                        <Link to="/customized_lunch">
+                        <Link
+                            to="/customized_lunch"
+                            style={{ textDecoration: 'none' }}
+                        >
                             <li>
                                 <a
                                     href="/#"
@@ -122,7 +128,7 @@ function Nav() {
                                 </a>
                             </li>
                         </Link>
-                        <Link to="/comment">
+                        <Link to="/comment" style={{ textDecoration: 'none' }}>
                             <li>
                                 <span
                                     href="/#"
