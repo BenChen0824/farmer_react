@@ -16,7 +16,7 @@ function MemberProfile(){
         const fd = new FormData()
         fd.append('file', upimg.data)
 
-        fetch('http://localhost:7000/member_profile', {
+        fetch('http://localhost:3600/member/profile', {
             method: 'post',
             body: fd,
         }).then(r=>r.json())

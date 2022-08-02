@@ -16,7 +16,7 @@ function MemberData(){
     const loginUser = JSON.parse(localStorage.getItem("auth"))
 
     const getMemberData = async ()=>{
-        const response = await axios.get('http://localhost:7000/member', { headers: {loginUser: loginUser.customer_id}})
+        const response = await axios.get('http://localhost:3600/member/data', { headers: {loginUser: loginUser.customer_id}})
         setMemberData(response.data)
     }
 
@@ -37,7 +37,7 @@ function MemberData(){
             customer_id: document.form1.customer_id.value
         };
 
-        fetch('http://localhost:7000/member',{
+        fetch('http://localhost:3600/member/data',{
             method:'put',
             body: JSON.stringify(data),
             headers:{

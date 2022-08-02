@@ -6,6 +6,8 @@
 .pnp.js
 /public/index_images
 
+
+
 # testing
 /coverage
 
@@ -27,7 +29,8 @@ package-lock.json
 public/game-img
 public/images
 public/fontawesome-free-6.1.1-web
-
+public/dailypoint-img
+public/game-images
 public/images/**
 public/game-images
 public/index-images
@@ -35,5 +38,8 @@ public/lunch_images
 public/member_imgs
 public/dailypoint-img
 src/component/hsieh/pic
+
+
+
 
 !**/.gitkeep

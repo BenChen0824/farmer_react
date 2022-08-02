@@ -25,7 +25,7 @@ function SignIn(){
             password: document.form1.password.value
         };
 
-        const r = await fetch('http://localhost:7000/login',{
+        const r = await fetch('http://localhost:3600/member/login',{
             method:'post',
             body: JSON.stringify(data),
             headers:{

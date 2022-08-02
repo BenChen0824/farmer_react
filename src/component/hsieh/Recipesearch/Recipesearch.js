@@ -1,174 +1,249 @@
-import { useState } from 'react'
-import './Recipesearch.css'
-import heart from './../pic/icon/1.heart.svg'
-import good from './../pic/icon/2.good.svg'
-import clock from './../pic/icon/3.clock.png'
-import heat from './../pic/icon/4.heat.png'
-import dish from './../pic/image/1.dishimage.jpg'
-import Pagination from './Pagination'
+import { useState } from 'react';
+import React from 'react';
+import './Recipesearch.css';
+import Pagination from './Pagination';
 
 function Recipesearch() {
-  const [inputText, setInputText] = useState('')
+    const [inputText, setInputText] = useState('');
 
-  return (
-    <>
-      <div className="searching">
-        <div id="inputText">
-          <p className="subtitleword">食譜名稱</p>
-          <input type="text" value={inputText} className="searchinput" />
-          <p className="subtitleword">熱門關鍵字：日式、炸蝦、雞腿</p>
-          <button type="button" class="btn btn-dark" style={{ margin: 5 }}>
-            進階搜尋
-          </button>
-          <button type="button" class="btn btn-dark" style={{ margin: 5 }}>
-            搜尋
-          </button>
-        </div>
-      </div>
-
-      <div>
-        <p className="titleword">今日食譜推薦 ／ Recipes Recommend</p>
-      </div>
-      <div className="recommend">
-        <div className="recommendlist">
-          <div className="recipephoto">
-            <img src={dish} alt="" />
-          </div>
-          <div className="recipeblock">
-            <p>日式黃金炸蝦</p>
-            <div className="iconmanagement">
-              <button className="buttoninsearch">
-                <img src={heart} alt="" className="iconinsearch" />
-              </button>
-              <p className="iconinsearchp">10</p>
-              <button className="buttoninsearch">
-                <img src={good} alt="" className="iconinsearch" />
-              </button>
-              <p className="iconinsearchp">10</p>
+    return (
+        <>
+            <div className="searching">
+                <div id="inputText">
+                    <p className="subtitleword">食譜名稱</p>
+                    <input
+                        type="text"
+                        value={inputText}
+                        className="searchinput"
+                        onChange={(e) => {
+                            setInputText(e.target.value);
+                        }}
+                    />
+                    <p className="subtitleword">熱門關鍵字：日式、炸蝦、雞腿</p>
+                    <button
+                        type="button"
+                        class="btn btn-dark"
+                        style={{ margin: 5 }}
+                    >
+                        進階搜尋
+                    </button>
+                    <button
+                        type="button"
+                        class="btn btn-dark"
+                        style={{ margin: 5 }}
+                    >
+                        搜尋
+                    </button>
+                </div>
             </div>
 
-            <hr className="hrline" />
-
-            <div className="iconmanagement">
-              <img src={clock} alt="" className="iconinsearch" />
-              <p className="iconinsearchp">10</p>
+            <div>
+                <p className="titleword">今日食譜推薦 ／ Recipes Recommend</p>
             </div>
-            <div className="iconmanagement">
-              <img src={heat} alt="" className="iconinsearch" />
-              <p className="iconinsearchp">10</p>
-            </div>
-          </div>
-        </div>
+            <div className="recommend">
+                <div className="recommendlist">
+                    <div className="recipephoto">
+                        <img src="/images/dishimage.jpg" alt="" />
+                    </div>
+                    <div className="recipeblock">
+                        <p>日式黃金炸蝦</p>
+                        <div className="iconmanagement">
+                            <button className="buttoninsearch">
+                                <img
+                                    src="/images/heart.svg"
+                                    alt=""
+                                    className="iconinsearch"
+                                />
+                            </button>
+                            <p className="iconinsearchp">10</p>
+                            <button className="buttoninsearch">
+                                <img
+                                    src="/images/good.svg"
+                                    alt=""
+                                    className="iconinsearch"
+                                />
+                            </button>
+                            <p className="iconinsearchp">10</p>
+                        </div>
 
-        {/* 分隔線 */}
+                        <hr className="hrline" />
 
-        <div className="recommendlist">
-          <div className="recipephoto">
-            <img src={dish} alt="" />
-          </div>
-          <div className="recipeblock">
-            <p>日式黃金炸蝦</p>
-            <div className="iconmanagement">
-              <button className="buttoninsearch">
-                <img src={heart} alt="" className="iconinsearch" />
-              </button>
-              <p className="iconinsearchp">20</p>
-              <button className="buttoninsearch">
-                <img src={good} alt="" className="iconinsearch" />
-              </button>
-              <p className="iconinsearchp">20</p>
-            </div>
+                        <div className="iconmanagement">
+                            <img
+                                src="/images/clock.svg"
+                                alt=""
+                                className="iconinsearch"
+                            />
+                            <p className="iconinsearchp">10</p>
+                        </div>
+                        <div className="iconmanagement">
+                            <img
+                                src="/images/heat.svg"
+                                alt=""
+                                className="iconinsearch"
+                            />
+                            <p className="iconinsearchp">10</p>
+                        </div>
+                    </div>
+                </div>
 
-            <hr className="hrline" />
+                {/* 分隔線 */}
 
-            <div className="iconmanagement">
-              <img src={clock} alt="" className="iconinsearch" />
-              <p className="iconinsearchp">20</p>
-            </div>
-            <div className="iconmanagement">
-              <img src={heat} alt="" className="iconinsearch" />
-              <p className="iconinsearchp">20</p>
-            </div>
-          </div>
-        </div>
-      </div>
+                <div className="recommendlist">
+                    <div className="recipephoto">
+                        <img src="/images/dishimage.jpg" alt="" />
+                    </div>
+                    <div className="recipeblock">
+                        <p>日式黃金炸蝦</p>
+                        <div className="iconmanagement">
+                            <button className="buttoninsearch">
+                                <img
+                                    src="/images/heart.svg"
+                                    alt=""
+                                    className="iconinsearch"
+                                />
+                            </button>
+                            <p className="iconinsearchp">20</p>
+                            <button className="buttoninsearch">
+                                <img
+                                    src="/images/good.svg"
+                                    alt=""
+                                    className="iconinsearch"
+                                />
+                            </button>
+                            <p className="iconinsearchp">20</p>
+                        </div>
 
-      {/* 分隔線 */}
+                        <hr className="hrline" />
 
-      <div>
-        <p className="titleword">食譜列表 ／ Recipes List</p>
-      </div>
-      <div className="recommend">
-        <div className="recommendlist">
-          <div className="recipephoto">
-            <img src={dish} alt="" />
-          </div>
-          <div className="recipeblock">
-            <p>日式黃金炸蝦</p>
-            <div className="iconmanagement">
-              <button className="buttoninsearch">
-                <img src={heart} alt="" className="iconinsearch" />
-              </button>
-              <p className="iconinsearchp">30</p>
-              <button className="buttoninsearch">
-                <img src={good} alt="" className="iconinsearch" />
-              </button>
-              <p className="iconinsearchp">30</p>
-            </div>
-
-            <hr className="hrline" />
-
-            <div className="iconmanagement">
-              <img src={clock} alt="" className="iconinsearch" />
-              <p className="iconinsearchp">30</p>
-            </div>
-            <div className="iconmanagement">
-              <img src={heat} alt="" className="iconinsearch" />
-              <p className="iconinsearchp">30</p>
-            </div>
-          </div>
-        </div>
-
-        {/* 分隔線 */}
-
-        <div className="recommendlist">
-          <div className="recipephoto">
-            <img src={dish} alt="" />
-          </div>
-          <div className="recipeblock">
-            <p>日式黃金炸蝦</p>
-            <div className="iconmanagement">
-              <button className="buttoninsearch">
-                <img src={heart} alt="" className="iconinsearch" />
-              </button>
-              <p className="iconinsearchp">40</p>
-              <button className="buttoninsearch">
-                <img src={good} alt="" className="iconinsearch" />
-              </button>
-              <p className="iconinsearchp">40</p>
+                        <div className="iconmanagement">
+                            <img
+                                src="/images/clock.svg"
+                                alt=""
+                                className="iconinsearch"
+                            />
+                            <p className="iconinsearchp">20</p>
+                        </div>
+                        <div className="iconmanagement">
+                            <img
+                                src="/images/heart.svg"
+                                alt=""
+                                className="iconinsearch"
+                            />
+                            <p className="iconinsearchp">20</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <hr className="hrline" />
+            {/* 分隔線 */}
 
-            <div className="iconmanagement">
-              <img src={clock} alt="" className="iconinsearch" />
-              <p className="iconinsearchp">40</p>
+            <div>
+                <p className="titleword">食譜列表 ／ Recipes List</p>
             </div>
-            <div className="iconmanagement">
-              <img src={heat} alt="" className="iconinsearch" />
-              <p className="iconinsearchp">40</p>
+            <div className="recommend">
+                <div className="recommendlist">
+                    <div className="recipephoto">
+                        <img src="/images/dishimage.jpg" alt="" />
+                    </div>
+                    <div className="recipeblock">
+                        <p>日式黃金炸蝦</p>
+                        <div className="iconmanagement">
+                            <button className="buttoninsearch">
+                                <img
+                                    src="/images/heart.svg"
+                                    alt=""
+                                    className="iconinsearch"
+                                />
+                            </button>
+                            <p className="iconinsearchp">30</p>
+                            <button className="buttoninsearch">
+                                <img
+                                    src="/images/good.svg"
+                                    alt=""
+                                    className="iconinsearch"
+                                />
+                            </button>
+                            <p className="iconinsearchp">30</p>
+                        </div>
+
+                        <hr className="hrline" />
+
+                        <div className="iconmanagement">
+                            <img
+                                src="/images/clock.svg"
+                                alt=""
+                                className="iconinsearch"
+                            />
+                            <p className="iconinsearchp">30</p>
+                        </div>
+                        <div className="iconmanagement">
+                            <img
+                                src="/images/heat.svg"
+                                alt=""
+                                className="iconinsearch"
+                            />
+                            <p className="iconinsearchp">30</p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* 分隔線 */}
+
+                <div className="recommendlist">
+                    <div className="recipephoto">
+                        <img src="/images/dishimage.jpg" alt="" />
+                    </div>
+                    <div className="recipeblock">
+                        <p>日式黃金炸蝦</p>
+                        <div className="iconmanagement">
+                            <button className="buttoninsearch">
+                                <img
+                                    src="/images/heart.svg"
+                                    alt=""
+                                    className="iconinsearch"
+                                />
+                            </button>
+                            <p className="iconinsearchp">40</p>
+                            <button className="buttoninsearch">
+                                <img
+                                    src="/images/good.svg"
+                                    alt=""
+                                    className="iconinsearch"
+                                />
+                            </button>
+                            <p className="iconinsearchp">40</p>
+                        </div>
+
+                        <hr className="hrline" />
+
+                        <div className="iconmanagement">
+                            <img
+                                src="/images/clock.svg"
+                                alt=""
+                                className="iconinsearch"
+                            />
+                            <p className="iconinsearchp">40</p>
+                        </div>
+                        <div className="iconmanagement">
+                            <img
+                                src="/images/heat.svg"
+                                alt=""
+                                className="iconinsearch"
+                            />
+                            <p className="iconinsearchp">40</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div className="pa">
-        <Pagination />
-      </div>
-    </>
-  )
+            <div className="pa">
+                <Pagination />
+            </div>
+        </>
+    );
 }
 
-export default Recipesearch
+export default Recipesearch;
 
 // {data && data.rows
 //   ? data.rows.map((row) => (

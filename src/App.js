@@ -3,7 +3,7 @@ import Nav from './component/Navbar/Nav';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Footer from './component/Footer/Footer';
 import Container from './Container';
-import MyMap from './component/pin/MyMap';
+import MyMap from './component/pin/Company_map/MyMap';
 import Cart from './component/ben/cart_main/Cart';
 import CartPayment from './component/ben/cart_payment/CartPayment';
 import CartCreditCard from './component/ben/cart_creditCard/CartCreditCard';
@@ -18,6 +18,12 @@ import CartNonepay from './component/ben/cart_nonepay/CartNonepay';
 import Member from './component/bob/App';
 import FarmerFirstPage from './component/kawa/FarmerFirstPage/FarmerFirstPage';
 import CustomerComment from './component/kawa/CustomerComment/CustomerComment';
+import Customized_product from './component/xin/Customized_lunch/CustomizedLunch';
+import MainChat from './component/xin/Customized_server/Main';
+
+import RecipeMain from './component/hsieh/App';
+import GameMain from './component/po/game/gameMain';
+import CompanyLogin from './component/pin/Company_Login';
 
 function App() {
     return (
@@ -39,7 +45,11 @@ function App() {
                                     />
                                     {/* 慧敏 */}
 
-                                    <Route path="/recipe" element={<></>} />
+                                    <Route
+                                        path="/recipe/*"
+                                        element={<RecipeMain />}
+                                    />
+
                                     {/* 宸睿 */}
 
                                     <Route
@@ -81,15 +91,18 @@ function App() {
 
                                     <Route
                                         path="/customized_lunch"
-                                        element={<></>}
+                                        element={<Customized_product />}
                                     />
                                     <Route
                                         path="/customer_server"
-                                        element={<></>}
+                                        element={<MainChat />}
                                     />
                                     {/* 阿鑫 */}
 
-                                    <Route path="/game" element={<></>} />
+                                    <Route
+                                        path="/game/*"
+                                        element={<GameMain />}
+                                    />
                                     {/* po */}
 
                                     <Route path="/activity" element={<></>} />
@@ -97,11 +110,13 @@ function App() {
                                         path="/supplier"
                                         element={<MyMap />}
                                     />
+
                                     {/* pin */}
                                 </Routes>
                             </Container>
                             <Footer />
                         </ProviderContainer>
+                        {/* <Route path="/company" element={<CompanyLogin />} /> */}
                     </BrowserRouter>
                 </IconContext.Provider>
             </Provider>
