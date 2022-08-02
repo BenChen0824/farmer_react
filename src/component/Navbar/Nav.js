@@ -56,6 +56,19 @@ function Nav() {
                                 </span>
                             </li>
                         </Link>
+                        <Link to="/customer_server">
+                            <li>
+                                <span
+                                    className={
+                                        navColor
+                                            ? 'menu_items_active menu_items'
+                                            : 'menu_items'
+                                    }
+                                >
+                                    專人客服
+                                </span>
+                            </li>
+                        </Link>
                         <Link to="/activity">
                             <li>
                                 <span
