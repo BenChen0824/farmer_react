@@ -19,6 +19,7 @@ import RecipeMain from './component/hsieh/App';
 import GameMain from './component/po/game/gameMain';
 import CompanyLogin from './component/pin/Company_Login';
 import CartMain from './component/ben/App';
+import Activity from './component/pin/Activity/Activity';
 
 function App() {
     return (
@@ -85,7 +86,10 @@ function App() {
                                     />
                                     {/* po */}
 
-                                    <Route path="/activity" element={<></>} />
+                                    <Route
+                                        path="/activity"
+                                        element={<Activity />}
+                                    />
                                     <Route
                                         path="/supplier"
                                         element={<MyMap />}

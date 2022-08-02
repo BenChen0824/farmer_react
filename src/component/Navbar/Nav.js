@@ -6,10 +6,12 @@ import './Nav.css';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from './images/fresh_LOGO_black.svg';
 import CartCountContext from '../ben/cart_count/CartCountContext';
+import AuthContext from '../bob/component/authContext';
 
 function Nav() {
     const { cartList, setCartList } = useContext(CartCountContext);
     const [navColor, setNavColor] = useState(false);
+    const { authorized, username, logout } = useContext(AuthContext);
 
     const changeColor = () => {
         if (window.scrollY > 100) {
@@ -153,9 +155,19 @@ function Nav() {
                                 : 'nav_icons d-flex '
                         }
                     >
-                        <Link to="/member">
-                            <FaUserCircle size={30} />
-                        </Link>
+                        {authorized ? (
+                            <div className="row m-0">
+                                <Link className="col-4" to="/member/data">
+                                    <FaUserCircle size={30} />
+                                </Link>
+                                <span className="col-8">{username}</span>
+                            </div>
+                        ) : (
+                            <Link to="/member">
+                                <FaUserCircle size={30} />
+                            </Link>
+                        )}
+
                         <Link to="/cart">
                             <FaShoppingCart
                                 size={30}
@@ -172,6 +184,19 @@ function Nav() {
                         >
                             {cartList.length}
                         </div>
+
+                        {authorized ? (
+                            <button
+                                className="btn btn-sm btn-outline-dark"
+                                onClick={() => {
+                                    logout();
+                                }}
+                            >
+                                登出
+                            </button>
+                        ) : (
+                            ''
+                        )}
                     </div>
                     {/* <div className="cart_number d-flex justify-content-center align-items-center">
                         <p className="fs-5 pl-4">0</p>
