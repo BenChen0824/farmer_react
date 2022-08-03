@@ -1,10 +1,39 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { CART_EMAIL } from './../../../config/ajax-path';
 
 function CartNonepay() {
     const showtime = new Date(Date.now() + 24 * 60 * 60 * 1000);
     const deliveryTime = showtime.toLocaleDateString();
-
+    const getFreshItems = JSON.parse(sessionStorage.getItem('buyfresh'));
+    const getCustomizedItems = JSON.parse(
+        sessionStorage.getItem('buycustomized')
+    );
+    const amount = sessionStorage.getItem('price');
+    const discount = sessionStorage.getItem('discount');
+    const finalPrice = sessionStorage.getItem('finalPrice');
+    const orderId = '123123123123';
+    function sendEmail() {
+        fetch(CART_EMAIL, {
+            method: 'POST',
+            body: JSON.stringify({
+                orderId,
+                getFreshItems,
+                getCustomizedItems,
+                amount,
+                discount,
+                finalPrice,
+                deliveryTime,
+            }),
+            headers: {
+                'content-type': 'application/json',
+            },
+        })
+            .then((r) => r.json())
+            .then((obj) => {
+                console.log(obj);
+            });
+    }
     return (
         <>
             <div className="container">
@@ -105,8 +134,25 @@ function CartNonepay() {
                                         商品明細
                                     </td>
                                     <td>
-                                        香蕉 30元x3 <br />
-                                        客製化便當 180元x1
+                                        {getFreshItems.map((v, i) => {
+                                            return (
+                                                <div>
+                                                    {v.product_name}
+                                                    {v.product_price}元 *
+                                                    {v.product_count}個
+                                                </div>
+                                            );
+                                        })}
+
+                                        {getCustomizedItems.map((v, i) => {
+                                            return (
+                                                <div>
+                                                    {v.product_name}
+                                                    {v.product_price}元 *
+                                                    {v.product_count}個
+                                                </div>
+                                            );
+                                        })}
                                     </td>
                                 </tr>
                                 <tr>
@@ -116,7 +162,7 @@ function CartNonepay() {
                                     >
                                         訂單金額
                                     </td>
-                                    <td>270 元</td>
+                                    <td>{amount} 元</td>
                                 </tr>
                                 <tr>
                                     <td
@@ -125,7 +171,7 @@ function CartNonepay() {
                                     >
                                         折價券
                                     </td>
-                                    <td>-50 元</td>
+                                    <td>-{discount} 元</td>
                                 </tr>
                                 <tr>
                                     <td
@@ -134,7 +180,7 @@ function CartNonepay() {
                                     >
                                         實際繳費金額
                                     </td>
-                                    <td>220 元</td>
+                                    <td>{finalPrice} 元</td>
                                 </tr>
                                 <tr>
                                     <td
@@ -156,6 +202,16 @@ function CartNonepay() {
                                 </tr>
                             </tbody>
                         </table>
+                        <div className=" text-center mt-5 mb-3">
+                            <button
+                                className="btn"
+                                onClick={() => {
+                                    sendEmail();
+                                }}
+                            >
+                                回到購物頁面
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

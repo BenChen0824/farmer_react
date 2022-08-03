@@ -16,16 +16,39 @@ function CartPayment() {
     const [freshTotalPrice, setFreshPrice] = useState(0);
     const [customizedTotalPrice, setCustomizedPrice] = useState(0);
 
+    const setInSessionStorage = () => {
+        sessionStorage.setItem(
+            'buyfresh',
+            JSON.stringify([
+                ...cartList.filter((v) => {
+                    return +v.ready_to_buy === 1 && +v.cart_product_type === 1;
+                }),
+            ])
+        );
+        sessionStorage.setItem(
+            'buycustomized',
+            JSON.stringify([
+                ...cartList.filter((v) => {
+                    return +v.ready_to_buy === 1 && +v.cart_product_type === 2;
+                }),
+            ])
+        );
+        sessionStorage.setItem('price', totalAmount);
+        sessionStorage.setItem('discount', discount);
+        sessionStorage.setItem('finalPrice', finalValue);
+    };
+
     const paymentLinkto = () => {
         if (formValue === 'linepay') {
+            setInSessionStorage();
             linepay();
         }
         if (formValue === 'creditcard') {
-            // console.log('creditcard');
+            setInSessionStorage();
             navigate('/cart/creditcard');
         }
         if (formValue === 'nonepay') {
-            // console.log('nonepay');
+            setInSessionStorage();
             navigate('/cart/nonepay');
         }
     };

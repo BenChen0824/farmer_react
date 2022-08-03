@@ -1,9 +1,93 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
+import { CART_EMAIL } from './../../../config/ajax-path';
+import { useNavigate } from 'react-router-dom';
+import $ from 'jquery';
 function CartSuccess() {
+    const navigate = useNavigate();
     const showtime = new Date(Date.now() + 24 * 60 * 60 * 1000);
     const deliveryTime = showtime.toLocaleDateString();
+    const getFreshItems = JSON.parse(sessionStorage.getItem('buyfresh'));
+    const getCustomizedItems = JSON.parse(
+        sessionStorage.getItem('buycustomized')
+    );
+    const amount = sessionStorage.getItem('price');
+    const discount = sessionStorage.getItem('discount');
+    const finalPrice = sessionStorage.getItem('finalPrice');
+    const orderId = '123123123123';
+    function sendEmail() {
+        fetch(CART_EMAIL, {
+            method: 'POST',
+            body: JSON.stringify({
+                orderId,
+                getFreshItems,
+                getCustomizedItems,
+                amount,
+                discount,
+                finalPrice,
+                deliveryTime,
+            }),
+            headers: {
+                'content-type': 'application/json',
+            },
+        })
+            .then((r) => r.json())
+            .then((obj) => {
+                console.log(obj);
+            });
+    }
+
+    //google sheet
+    let data_ar = getFreshItems;
+    let google_order_sid = '';
+    let google_product_name = '';
+    let google_product_price = '';
+    let google_qty = '';
+    // data_ar = Object.values(data_ar);
+    console.log(data_ar);
+
+    function sendGoogleData() {
+        // console.log(data_ar);
+        if (data_ar.length !== 0) {
+            for (let i in data_ar) {
+                google_order_sid = getFreshItems[i].sid;
+                google_product_name = data_ar[i]['product_name'];
+                google_product_price = data_ar[i]['product_price'];
+                google_qty = data_ar[i]['product_count'];
+                let data = {
+                    google_order_sid: google_order_sid,
+                    product_name: google_product_name,
+                    product_price: google_product_price,
+                    qty: google_qty,
+                };
+
+                $.ajax({
+                    url: 'https://script.google.com/macros/s/AKfycbwU2csAvzQhMkgIaG0nmrkJSyRm0_0d26-gRqPdxEGfV8nbbeeDoo7lengPq5VdakTaFw/exec',
+                    data: (data = {
+                        google_order_sid: google_order_sid,
+                        product_name: google_product_name,
+                        product_price: google_product_price,
+                        qty: google_qty,
+                    }),
+                    async: false,
+                    success: function (response) {
+                        if (response == '成功') {
+                            console.log('資料上傳成功');
+                        }
+                    },
+                });
+            }
+        }
+    }
+
+    const sendBtn = () => {
+        sendEmail();
+        sendGoogleData();
+        setTimeout(() => {
+            navigate('/product');
+        }, 2000);
+    };
+
     return (
         <>
             <div className="container">
@@ -104,8 +188,25 @@ function CartSuccess() {
                                         商品明細
                                     </td>
                                     <td>
-                                        香蕉 30元x3 <br />
-                                        客製化便當 180元x1
+                                        {getFreshItems.map((v, i) => {
+                                            return (
+                                                <div>
+                                                    {v.product_name}
+                                                    {v.product_price}元 *
+                                                    {v.product_count}個
+                                                </div>
+                                            );
+                                        })}
+
+                                        {getCustomizedItems.map((v, i) => {
+                                            return (
+                                                <div>
+                                                    {v.product_name}
+                                                    {v.product_price}元 *
+                                                    {v.product_count}個
+                                                </div>
+                                            );
+                                        })}
                                     </td>
                                 </tr>
                                 <tr>
@@ -115,7 +216,7 @@ function CartSuccess() {
                                     >
                                         訂單金額
                                     </td>
-                                    <td>270 元</td>
+                                    <td>{amount} 元</td>
                                 </tr>
                                 <tr>
                                     <td
@@ -124,7 +225,7 @@ function CartSuccess() {
                                     >
                                         折價券
                                     </td>
-                                    <td>-50 元</td>
+                                    <td>-{discount} 元</td>
                                 </tr>
                                 <tr>
                                     <td
@@ -133,7 +234,7 @@ function CartSuccess() {
                                     >
                                         實際繳費金額
                                     </td>
-                                    <td>220 元</td>
+                                    <td>{finalPrice} 元</td>
                                 </tr>
                                 <tr>
                                     <td
@@ -156,7 +257,14 @@ function CartSuccess() {
                             </tbody>
                         </table>
                         <div className=" text-center mt-5 mb-3">
-                            <button className="btn">回到購物頁面</button>
+                            <button
+                                className="btn"
+                                onClick={() => {
+                                    sendBtn();
+                                }}
+                            >
+                                回到購物頁面
+                            </button>
                         </div>
                     </div>
                 </div>

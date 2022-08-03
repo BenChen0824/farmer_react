@@ -9,6 +9,7 @@ export const CART_LIST_DELETE = `${SERVER}/cart/delete`;
 export const CART_LIST_CHECK = `${SERVER}/cart/readytobuy`;
 export const CART_LINEPAY = `${SERVER}/linepay`;
 export const CART_LINEPAY_CHECK = `${SERVER}/linepay-check`;
+export const CART_EMAIL = `${SERVER}/cartemail`;
 export const customized_lunch_CHECK = `${SERVER}/customized_lunch/api`;
 
 export function getImgUrl(name) {
