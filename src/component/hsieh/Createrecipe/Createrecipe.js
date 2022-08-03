@@ -75,7 +75,7 @@ function Createrecipe() {
                         <textarea
                             className="dataform1"
                             value={description}
-                            placeholder="請以100字內簡單描述"
+                            placeholder="請100字內簡單描述"
                             cols="30"
                             rows="3"
                             onChange={(e) => {
@@ -316,9 +316,15 @@ function Createrecipe() {
                 </div>
             </div>
 
-            <button className="buttonincreateplus">
-                <img src="/images/plus.svg" alt="" className="iconincreate" />
-            </button>
+            <div className="additemarea">
+                <button className="buttonincreateplus">
+                    <img
+                        src="/images/plus.svg"
+                        alt=""
+                        className="iconincreateplus"
+                    />
+                </button>
+            </div>
 
             <hr className="hr" />
             {/* 分隔線，以下料理步驟 */}
@@ -385,9 +391,15 @@ function Createrecipe() {
                 </div>
             </div>
 
-            <button className="buttonincreateplus">
-                <img src="/images/plus.svg" alt="" className="iconincreate" />
-            </button>
+            <div className="additemarea">
+                <button className="buttonincreateplus">
+                    <img
+                        src="/images/plus.svg"
+                        alt=""
+                        className="iconincreateplus"
+                    />
+                </button>
+            </div>
 
             <hr className="hr" />
             {/* 分隔線，以下照片 */}

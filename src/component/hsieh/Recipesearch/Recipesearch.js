@@ -34,7 +34,7 @@ function Recipesearch() {
         <>
             <div className="searching">
                 <div id="inputText">
-                    <p className="subtitleword">食譜名稱</p>
+                    <p className="subtitleword">搜尋食譜</p>
                     <input
                         type="text"
                         value={inputText}
@@ -44,13 +44,15 @@ function Recipesearch() {
                         }}
                     />
                     <p className="subtitleword">熱門關鍵字：日式、炸蝦、雞腿</p>
-                    <button
-                        type="button"
-                        class="btn btn-dark"
-                        style={{ margin: 5 }}
-                    >
-                        進階搜尋
-                    </button>
+                    <a href="/recipe/popup">
+                        <button
+                            type="button"
+                            class="btn btn-dark"
+                            style={{ margin: 5 }}
+                        >
+                            進階搜尋
+                        </button>
+                    </a>
                     <button
                         type="button"
                         class="btn btn-dark"
@@ -150,7 +152,7 @@ function Recipesearch() {
                         </div>
                         <div className="iconmanagement">
                             <img
-                                src="/images/heart.svg"
+                                src="/images/heat.svg"
                                 alt=""
                                 className="iconinsearch"
                             />

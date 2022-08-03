@@ -316,9 +316,15 @@ function Updaterecipe() {
                 </div>
             </div>
 
-            <button className="buttonincreateplus">
-                <img src="/images/plus.svg" alt="" className="iconincreate" />
-            </button>
+            <div className="additemarea">
+                <button className="buttonincreateplus">
+                    <img
+                        src="/images/plus.svg"
+                        alt=""
+                        className="iconincreateplus"
+                    />
+                </button>
+            </div>
 
             <hr className="hr" />
             {/* 分隔線，以下料理步驟 */}
@@ -385,9 +391,15 @@ function Updaterecipe() {
                 </div>
             </div>
 
-            <button className="buttonincreateplus">
-                <img src="/images/plus.svg" alt="" className="iconincreate" />
-            </button>
+            <div className="additemarea">
+                <button className="buttonincreateplus">
+                    <img
+                        src="/images/plus.svg"
+                        alt=""
+                        className="iconincreateplus"
+                    />
+                </button>
+            </div>
 
             <hr className="hr" />
             {/* 分隔線，以下照片 */}
