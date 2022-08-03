@@ -101,11 +101,19 @@ function Popup() {
                 </section>
             </div>
 
-            <div className="buttom">
-                <button className="searchbuttom">搜尋</button>
+            <div className="buttoninpopup">
+                <button className="searchbutton">
+                    搜尋
+                    <img
+                        src="/images/file-plus.svg"
+                        alt=""
+                        className="iconineach"
+                    />
+                    {/* 要替換icon成search.svg */}
+                </button>
             </div>
 
-            <h2 className="center">食材搜尋 ／ Search By Ingredient</h2>
+            <h2 className="recipetitle">食材搜尋 ／ Search By Ingredient</h2>
             <div className="ia">
                 <button
                     type="button"
