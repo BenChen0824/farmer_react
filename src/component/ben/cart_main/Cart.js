@@ -21,6 +21,7 @@ function Cart() {
     const [customizedProducAmount, setCustomizedProductAmount] = useState(0);
     const [totalAmount, setTotalAmountAmount] = useState(0);
 
+    // console.log(cartList);
     const changeCount = (sid, count) => {
         let changeData = { sid, product_count: count };
 
@@ -161,7 +162,7 @@ function Cart() {
                 return +v.ready_to_buy === 1;
             })
             .map((v, i) => {
-                return v.product_count * v.product_price;
+                return v.product_count * v.total_price;
             });
         let newCustomizedProductAmount = 0;
         for (let i of newCustomizedProductAmountArray) {
@@ -445,7 +446,7 @@ function Cart() {
                                                         onClick={() => {
                                                             deleteItem(
                                                                 v.sid,
-                                                                v.product_name
+                                                                v.lunch_name
                                                             );
                                                         }}
                                                     >
@@ -460,18 +461,13 @@ function Cart() {
                                                     <div className="mx-2">
                                                         <img
                                                             className="cart_product_img"
-                                                            
-                                                            src={`/images/${
-                                                                JSON.parse(
-                                                                    v.product_img
-                                                                )[0]
-                                                            }`}
+                                                            src={`/images/${v.lunch_pic}`}
                                                             alt=""
                                                         />
                                                     </div>
                                                     <div className="d-flex flex-column justify-content-center">
                                                         <p className="mx-3 text-center">
-                                                            {v.product_name}
+                                                            {v.lunch_name}
                                                         </p>
                                                     </div>
                                                 </div>
@@ -504,7 +500,7 @@ function Cart() {
                                                     <span
                                                         className="cart_input_length"
                                                         type="text"
-                                                        value={v.product_count}
+                                                        value={v.lunchbox_stock}
                                                         style={{
                                                             width: '40px',
                                                             height: '40px',
@@ -530,7 +526,7 @@ function Cart() {
                                                 <p>
                                                     {+v.ready_to_buy === 1
                                                         ? v.product_count *
-                                                          v.product_price
+                                                          v.total_price
                                                         : 0}
                                                 </p>
                                             </div>
