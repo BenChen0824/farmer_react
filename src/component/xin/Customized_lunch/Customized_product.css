@@ -1,347 +1,346 @@
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 .xin-nav-link {
-  background-color: #3a2c2c;
-  padding: 0.5rem 0.25rem;
-  color: white;
+    background-color: #3a2c2c;
+    padding: 0.5rem 0.25rem;
+    color: white;
 }
 
 .xin-sideMenu {
-  z-index: 1;
+    z-index: 1;
 }
 .xin-nav-item {
-  background-color: #3a2c2c;
+    background-color: #3a2c2c;
 }
 .xin-nav-item.active {
-  background-color: #fff;
-  color: #3a2c2c;
+    background-color: #fff;
+    color: #3a2c2c;
 }
 
 .xin-nav-item .xin-nav-link.active {
-  background-color: #fff;
-  color: #3a2c2c;
-  border-radius: 0;
-  border: 1px solid #3a2c2c;
+    background-color: #fff;
+    color: #3a2c2c;
+    border-radius: 0;
+    border: 1px solid #3a2c2c;
 }
 
 .xin-sub-title {
-  border-bottom: 2px solid #000;
+    border-bottom: 2px solid #000;
 }
 
 .sub-title-border {
-  border-bottom: 2px solid #000;
+    border-bottom: 2px solid #000;
 }
 
 .xin-nav-item:hover {
-  background-color: #fff;
-  /* border-bottom: 1px solid #3a2c2c; */
+    background-color: #fff;
+    /* border-bottom: 1px solid #3a2c2c; */
 }
 .xin-nav-item:hover .xin-nav-link {
-  color: #3a2c2c;
-  border-bottom: 1px solid #3a2c2c;
-  border-radius: 0;
+    color: #3a2c2c;
+    border-bottom: 1px solid #3a2c2c;
+    border-radius: 0;
 }
 .xin-font-primary-color {
-  color: #3a2c2c;
+    color: #3a2c2c;
 }
 
 .pho-bg {
-  position: relative;
+    position: relative;
 }
 .lunchbox_stock {
-  width: 50px;
+    width: 50px;
 }
 
 .xin-food-area {
-  background-color: #fff;
-  border-right: 1px solid #000;
+    background-color: #fff;
+    border-right: 1px solid #000;
 }
 .xin-rightArrow {
-  display: none;
-  position: absolute;
-  right: -35px;
-  top: 35vh;
-  background: none;
-  border: none;
-  cursor: pointer;
-  background-color: rgb(243, 178, 178);
-  border: 2px solid rgb(254, 254, 254);
-  border-radius: 10px;
-  height: 51px;
-  width: 54px;
+    display: none;
+    position: absolute;
+    right: -35px;
+    top: 35vh;
+    background: none;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(243, 178, 178);
+    border: 2px solid rgb(254, 254, 254);
+    border-radius: 10px;
+    height: 51px;
+    width: 54px;
 }
 
 .xin-rightArrow span {
-  display: block;
-  margin-top: 2px;
-  background-color: #fff;
-  border-radius: 15px;
-  height: 4px;
-  width: 30px;
-  transition: 0.2s;
+    display: block;
+    margin-top: 2px;
+    background-color: #fff;
+    border-radius: 15px;
+    height: 4px;
+    width: 30px;
+    transition: 0.2s;
 }
 
 .xin-rightArrow:hover span {
-  margin: auto;
+    margin: auto;
 }
 
 .xin-rightArrow-in:hover span:nth-child(1) {
-  width: 25px;
-  transform: translate(-3px, 8px) rotate(30deg);
+    width: 25px;
+    transform: translate(-3px, 8px) rotate(30deg);
 }
 .xin-rightArrow-in:hover span:nth-child(2) {
-  display: none;
+    display: none;
 }
 .xin-rightArrow-in:hover span:nth-child(3) {
-  width: 25px;
-  transform: translate(-3px, -8px) rotate(-30deg);
+    width: 25px;
+    transform: translate(-3px, -8px) rotate(-30deg);
 }
 
 .xin-rightArrow-out:hover span:nth-child(1) {
-  width: 25px;
-  transform: translate(0px, 8px) rotate(-30deg);
+    width: 25px;
+    transform: translate(0px, 8px) rotate(-30deg);
 }
 .xin-rightArrow-out:hover span:nth-child(2) {
-  display: none;
+    display: none;
 }
 .xin-rightArrow-out:hover span:nth-child(3) {
-  width: 25px;
-  transform: translate(0px, -8px) rotate(30deg);
+    width: 25px;
+    transform: translate(0px, -8px) rotate(30deg);
 }
 .xin-leftArrow {
-  display: none;
-  position: absolute;
-  right: 0px;
-  top: 35vh;
-  background: none;
-  border: none;
-  cursor: pointer;
-  background-color: rgb(13, 220, 92);
-  border: 2px solid rgb(254, 254, 254);
-  /* padding: 20px; */
-  border-radius: 10px;
-  height: 51px;
-  width: 54px;
+    display: none;
+    position: absolute;
+    right: 0px;
+    top: 35vh;
+    background: none;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(13, 220, 92);
+    border: 2px solid rgb(254, 254, 254);
+    /* padding: 20px; */
+    border-radius: 10px;
+    height: 51px;
+    width: 54px;
 }
 
 .xin-leftArrow span {
-  display: block;
-  margin-top: 2px;
-  background-color: #fff;
-  border-radius: 15px;
-  height: 4px;
-  width: 30px;
-  transition: 0.2s;
+    display: block;
+    margin-top: 2px;
+    background-color: #fff;
+    border-radius: 15px;
+    height: 4px;
+    width: 30px;
+    transition: 0.2s;
 }
 
 .xin-leftArrow:hover span {
-  margin: auto;
+    margin: auto;
 }
 
 .xin-leftArrow-in:hover span:nth-child(1) {
-  width: 25px;
-  transform: translate(-3px, 8px) rotate(-30deg);
+    width: 25px;
+    transform: translate(-3px, 8px) rotate(-30deg);
 }
 .xin-leftArrow-in:hover span:nth-child(2) {
-  display: none;
+    display: none;
 }
 .xin-leftArrow-in:hover span:nth-child(3) {
-  width: 25px;
-  transform: translate(-3px, -8px) rotate(30deg);
+    width: 25px;
+    transform: translate(-3px, -8px) rotate(30deg);
 }
 
 .xin-leftArrow-out:hover span:nth-child(1) {
-  width: 25px;
-  transform: translate(0px, 8px) rotate(30deg);
+    width: 25px;
+    transform: translate(0px, 8px) rotate(30deg);
 }
 .xin-leftArrow-out:hover span:nth-child(2) {
-  display: none;
+    display: none;
 }
 .xin-leftArrow-out:hover span:nth-child(3) {
-  width: 25px;
-  transform: translate(0px, -8px) rotate(-30deg);
+    width: 25px;
+    transform: translate(0px, -8px) rotate(-30deg);
 }
 
 .card .xin-card-img-top {
-  width: 100%;
-  height: 7vw;
-  object-fit: contain;
-  flex-grow: 1;
+    width: 100%;
+    height: 7vw;
+    object-fit: contain;
+    flex-grow: 1;
 }
 
 .xin-card-body {
-  padding: 0;
+    padding: 0;
 }
 
 .selectedFoodArea {
-  height: 100vh;
-  background-color: #fff;
-  border-left: 1px solid#000;
-  /* transition: 1s; */
+    /* height: 100vh; */
+    background-color: #fff;
+    border-left: 1px solid#000;
 }
 
 /* .chooseArea {
   height: 40vh;
 } */
 .selectedDetil {
-  width: 65px;
-  height: 65px;
+    width: 65px;
+    height: 65px;
 }
 .fa-trash {
-  cursor: pointer;
+    cursor: pointer;
 }
 .fa-trash:hover {
-  color: red;
+    color: red;
 }
 
 .foodCard {
-  cursor: pointer;
+    cursor: pointer;
 }
 .canvasFood {
-  margin-top: -50px;
-  margin-left: -100px;
-  pointer-events: none;
+    margin-top: -50px;
+    margin-left: -100px;
+    pointer-events: none;
 }
 /* .myCanvas {
   position: absolute;
 } */
 .canvasBtns .price-btn {
-  background-color: #82ca35;
-  border: 1px solid #82ca35;
-  cursor: default;
-  padding: 0 30px;
-  font-size: 20px;
+    background-color: #82ca35;
+    border: 1px solid #82ca35;
+    cursor: default;
+    padding: 0 30px;
+    font-size: 20px;
 }
 .pay-btn {
-  padding: 10px 30px;
-  font-size: 20px;
+    padding: 10px 30px;
+    font-size: 20px;
 }
 .price-btn:hover {
-  background-color: #82ca35;
-  border: 1px solid #82ca35;
+    background-color: #82ca35;
+    border: 1px solid #82ca35;
 }
 .xinCanvasTitle {
-  font-size: 35px;
-  font-weight: 900;
+    font-size: 35px;
+    font-weight: 900;
 }
 .lunchbox_stock {
-  padding: 0;
-  padding-left: 10px;
+    padding: 0;
+    padding-left: 10px;
 }
 .canvasTextArea {
-  width: 250px;
-  padding-top: 15px;
+    width: 250px;
+    padding-top: 15px;
 }
 .canvaslabelTitle {
-  position: relative;
+    position: relative;
 }
 .canvaslabel {
-  position: absolute;
-  background-color: #fff;
-  top: -10px;
-  left: 10px;
+    position: absolute;
+    background-color: #fff;
+    top: -10px;
+    left: 10px;
 }
 
 .xin-canvas-topay {
-  margin-top: -50px;
-  z-index: 999;
+    margin-top: -50px;
+    z-index: 999;
 }
 .xin-border {
-  border-bottom: 2px solid #000;
+    border-bottom: 2px solid #000;
 }
 .xin-border-1 {
-  border-bottom: 1px solid #000;
+    border-bottom: 1px solid #000;
 }
 @media screen and (max-width: 992px) {
-  .xin-food-area {
-    border: none;
-  }
-  .xin-rightArrow {
-    position: absolute;
-    display: block;
-  }
-  .xin-leftArrow {
-    position: absolute;
-    left: -30px;
-    display: block;
-  }
-  .selectedFoodSideMenuNX {
-    position: relative;
-  }
-  .sideMenuNX {
-    position: relative;
-  }
-  .xin-nav-link {
-    padding: 0rem;
-    margin: 0;
-  }
+    .xin-food-area {
+        border: none;
+    }
+    .xin-rightArrow {
+        position: absolute;
+        display: block;
+    }
+    .xin-leftArrow {
+        position: absolute;
+        left: -30px;
+        display: block;
+    }
+    .selectedFoodSideMenuNX {
+        position: relative;
+    }
+    .sideMenuNX {
+        position: relative;
+    }
+    .xin-nav-link {
+        padding: 0rem;
+        margin: 0;
+    }
 
-  .hidden {
-    display: none;
-  }
+    .hidden {
+        display: none;
+    }
 
-  .hiddenSideBar {
-    position: absolute;
-    width: 1rem;
-    height: 100vh;
-    transition: all 0.2s;
-  }
+    .hiddenSideBar {
+        position: absolute;
+        width: 1rem;
+        height: 100vh;
+        transition: all 0.2s;
+    }
 
-  .showSideBar {
-    position: absolute;
-    height: 100vh;
-    width: 65%;
-    border-right: 1px solid #000;
-  }
+    .showSideBar {
+        position: absolute;
+        height: 100vh;
+        width: 65%;
+        border-right: 1px solid #000;
+    }
 
-  .showSelectedFoodSideBar {
-    position: absolute;
-    right: 0;
-    height: 100vh;
-    width: 65%;
-  }
+    .showSelectedFoodSideBar {
+        position: absolute;
+        right: 0;
+        height: 100vh;
+        width: 65%;
+    }
 
-  .card .xin-card-img-top {
-    width: 100%;
-    height: 20vw;
-    object-fit: contain;
-    flex-grow: 1;
-  }
+    .card .xin-card-img-top {
+        width: 100%;
+        height: 20vw;
+        object-fit: contain;
+        flex-grow: 1;
+    }
 
-  .selectedDetil {
-    width: 50px;
-    height: 50px;
-  }
-  .canvasFood {
-    margin-top: 0px;
-    margin-left: -50px;
-    width: 70%;
-  }
+    .selectedDetil {
+        width: 50px;
+        height: 50px;
+    }
+    .canvasFood {
+        margin-top: 0px;
+        margin-left: -50px;
+        width: 70%;
+    }
 
-  .selectedFoodArea {
-    border-left: 1px solid #000;
-  }
-  .hiddenSelectedFoodSideBar {
-    position: absolute;
-    width: 1rem;
-    right: 10px;
-    height: 100vh;
-    transition: all 0.2s;
-    border: none;
-  }
+    .selectedFoodArea {
+        border-left: 1px solid #000;
+    }
+    .hiddenSelectedFoodSideBar {
+        position: absolute;
+        width: 1rem;
+        right: 10px;
+        height: 100vh;
+        transition: all 0.2s;
+        border: none;
+    }
 
-  .canvasTextArea {
-    width: 250px;
-  }
-  .xin-canvas-topay {
-    margin-top: 10px;
-    z-index: 999;
-  }
-  .xin-border {
-    border-bottom: none;
-  }
-  .xin-border-1 {
-    border-bottom: none;
-  }
+    .canvasTextArea {
+        width: 250px;
+    }
+    .xin-canvas-topay {
+        margin-top: 10px;
+        z-index: 999;
+    }
+    .xin-border {
+        border-bottom: none;
+    }
+    .xin-border-1 {
+        border-bottom: none;
+    }
 }
