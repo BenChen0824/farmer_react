@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import ChatBody from './ChatContainer/ChatBody';
-import ChatContainer from './ChatContainer/index';
+import ChatContainer from './ChatContainer/ChatContainer';
 import ChatHeader from './ChatContainer/ChatHeader';
 import ChatInput from './ChatContainer/Chatinput';
 

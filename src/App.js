@@ -1,3 +1,5 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import './App.css';
 import Nav from './component/Navbar/Nav';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -13,13 +15,17 @@ import Product from './page/Product';
 import Member from './component/bob/App';
 import FarmerFirstPage from './component/kawa/FarmerFirstPage/FarmerFirstPage';
 import CustomerComment from './component/kawa/CustomerComment/CustomerComment';
-import Customized_product from './component/xin/Customized_lunch/CustomizedLunch';
-import MainChat from './component/xin/Customized_server/Main';
+import CustomizedLunch from './component/xin/Customized_lunch/CustomizedLunch';
+import ChatMain from './component/xin/Customized_service/ChatMain';
+
 import RecipeMain from './component/hsieh/App';
 import GameMain from './component/po/game/gameMain';
 import CompanyLogin from './component/pin/Company_Login';
 import CartMain from './component/ben/App';
 import Activity from './component/pin/Activity/Activity';
+
+import { io } from 'socket.io-client';
+const socket = io('http://localhost:3600');
 
 function App() {
     return (
@@ -72,11 +78,11 @@ function App() {
 
                                     <Route
                                         path="/customized_lunch"
-                                        element={<Customized_product />}
+                                        element={<CustomizedLunch />}
                                     />
                                     <Route
                                         path="/customer_server"
-                                        element={<MainChat />}
+                                        element={<ChatMain socket={socket} />}
                                     />
                                     {/* 阿鑫 */}
 

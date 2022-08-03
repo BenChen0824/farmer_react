@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Login from './Chat/Login';
 import Chat from './Chat/Chat';
-import './Main.css';
-// import ChatBot from "./ChatBot";
+import './ChatMain.css';
 
-const MainChat = ({ socket }) => {
+const ChatMain = ({ socket }) => {
     const [newUser, setNewUser] = useState('');
     const [user, setUser] = useState({});
     const [users, setUsers] = useState([]);
@@ -21,7 +20,6 @@ const MainChat = ({ socket }) => {
 
     useEffect(() => {
         checkIfUserExists();
-
         socket.on('connect', () => {
             console.info('connected');
         });
@@ -70,4 +68,4 @@ const MainChat = ({ socket }) => {
         </main>
     );
 };
-export default MainChat;
+export default ChatMain;

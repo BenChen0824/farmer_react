@@ -10,6 +10,7 @@
         "@testing-library/react": "^13.3.0",
         "@testing-library/user-event": "^13.5.0",
         "axios": "^0.27.2",
+        "bootstrap": "^5.2.0",
         "clsx": "^1.2.1",
         "jquery": "^3.6.0",
         "leaflet": "^1.8.0",
@@ -27,6 +28,7 @@
         "react-slick": "^0.29.0",
         "react-spinner-animated": "^3.1.1",
         "slick-carousel": "^1.8.1",
+        "socket.io-client": "^4.5.1",
         "web-vitals": "^2.1.4"
     },
     "scripts": {
