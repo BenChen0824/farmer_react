@@ -1,10 +1,6 @@
 import { useState } from 'react';
 import React from 'react';
-import './Creatrecipe.css';
-import trashcan from './../pic/icon/19.trashcan.svg';
-import plus from './../pic/icon/20.plus.svg';
-import move from './../pic/icon/21.move.svg';
-import camera from './../pic/icon/22.camera.svg';
+import './Createrecipe.css';
 
 function Updaterecipe() {
     // 新增食譜
@@ -241,7 +237,7 @@ function Updaterecipe() {
 
                         <button className="buttonincreate">
                             <img
-                                src={trashcan}
+                                src="/images/trashcan.svg"
                                 alt=""
                                 className="iconincreate"
                             />
@@ -276,7 +272,7 @@ function Updaterecipe() {
                         </section>
                         <button className="buttonincreate">
                             <img
-                                src={trashcan}
+                                src="/images/trashcan.svg"
                                 alt=""
                                 className="iconincreate"
                             />
@@ -311,7 +307,7 @@ function Updaterecipe() {
                         </section>
                         <button className="buttonincreate">
                             <img
-                                src={trashcan}
+                                src="/images/trashcan.svg"
                                 alt=""
                                 className="iconincreate"
                             />
@@ -321,7 +317,7 @@ function Updaterecipe() {
             </div>
 
             <button className="buttonincreateplus">
-                <img src={plus} alt="" className="iconincreate" />
+                <img src="/images/plus.svg" alt="" className="iconincreate" />
             </button>
 
             <hr className="hr" />
@@ -363,7 +359,11 @@ function Updaterecipe() {
                         </section>
 
                         <button className="buttonincreate">
-                            <img src={move} alt="" className="iconincreate" />
+                            <img
+                                src="/images/move.svg"
+                                alt=""
+                                className="iconincreate"
+                            />
                         </button>
                     </div>
 
@@ -386,7 +386,7 @@ function Updaterecipe() {
             </div>
 
             <button className="buttonincreateplus">
-                <img src={plus} alt="" className="iconincreate" />
+                <img src="/images/plus.svg" alt="" className="iconincreate" />
             </button>
 
             <hr className="hr" />
@@ -394,7 +394,11 @@ function Updaterecipe() {
 
             <div className="photoupload">
                 <button className="buttonincreate">
-                    <img src={camera} alt="" className="iconincreate" />
+                    <img
+                        src="/images/camera.svg"
+                        alt=""
+                        className="iconincreate"
+                    />
                 </button>
             </div>
             <div className="button">
@@ -405,7 +409,10 @@ function Updaterecipe() {
             {/* 分隔線，以下完成按鈕 */}
 
             <div className="button">
-                <button className="finish">修改食譜</button>
+                <button className="finish">
+                    修改食譜
+                    <img src="/images/pen.svg" alt="" className="crud" />
+                </button>
             </div>
 
             {/* <section id="step">

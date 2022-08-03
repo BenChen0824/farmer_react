@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './../cart.css';
+import './../Cart.css';
 import {
     CART_LIST_CHANGE_COUNT,
     CART_LIST_DELETE,
@@ -260,7 +260,7 @@ function Cart() {
                                         className="d-flex justify-content-between align-content-center mt-3 cart_border_bottom pb-2"
                                         key={(`fresh`, i)}
                                     >
-                                        <div className="col-4 col-md-6 d-flex justify-content-between align-content-center">
+                                        <div className="col-4 col-md-6 d-flex justify-content-start align-content-center">
                                             <div className="d-flex flex-column justify-content-center">
                                                 <span>
                                                     <input
@@ -411,7 +411,7 @@ function Cart() {
                                             className="d-flex justify-content-between align-content-center mt-3 cart_border_bottom pb-2"
                                             key={(`customized`, i)}
                                         >
-                                            <div className="col-4 col-md-6 d-flex justify-content-between align-content-center">
+                                            <div className="col-4 col-md-6 d-flex justify-content-start align-content-center">
                                                 <div className="d-flex flex-column justify-content-center">
                                                     <span>
                                                         <input
@@ -460,6 +460,7 @@ function Cart() {
                                                     <div className="mx-2">
                                                         <img
                                                             className="cart_product_img"
+                                                            
                                                             src={`/images/${
                                                                 JSON.parse(
                                                                     v.product_img

@@ -6,7 +6,6 @@ import MemberCollections from './memberCollections/memberCollections';
 import MemberProfile from './memberProfile/member_profile';
 import SignUp from './memberSignUp/signUp';
 import MemberVerify from './memberVerify/memberVerify';
-import AuthContextProvider from './component/authContextProvider';
 import MemberData from './memberData/memberData';
 import MemberOrders from './memberOrders/memberOrders';
 import MemberEvents from './memberEvents/memberEvents';
@@ -16,19 +15,17 @@ function Member() {
 
   return (
     <>
-        <AuthContextProvider>
-          <Routes>
-            <Route path='/' element={<SignIn/>}/>
-            <Route path='/signup' element={<SignUp/>}/>
-            <Route path='/verify' element={<MemberVerify/>}/>
-            <Route path="/data" element={<MemberData/>}/>
-            <Route path="/orders" element={<MemberOrders/>}/>
-            <Route path="/level" element={<MemberLevel/>}/>
-            <Route path="/events" element={<MemberEvents/>}/>
-            <Route path="/collections" element={<MemberCollections/>}/>
-            <Route path="/profile" element={<MemberProfile/>}/>
-          </Routes>
-        </AuthContextProvider>
+        <Routes>
+          <Route path='/' element={<SignIn/>}/>
+          <Route path='/signup' element={<SignUp/>}/>
+          <Route path='/verify' element={<MemberVerify/>}/>
+          <Route path="/data" element={<MemberData/>}/>
+          <Route path="/orders" element={<MemberOrders/>}/>
+          <Route path="/level" element={<MemberLevel/>}/>
+          <Route path="/events" element={<MemberEvents/>}/>
+          <Route path="/collections" element={<MemberCollections/>}/>
+          <Route path="/profile" element={<MemberProfile/>}/>
+        </Routes>
     </>
   );
 }

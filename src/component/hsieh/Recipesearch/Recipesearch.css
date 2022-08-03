@@ -1,15 +1,14 @@
 
 .searching {
-    background-image:url("/public/images/1.searching.jpg") ;
+    /* background-image:url("/public/images/spaghetti.jpg") ; */
     width: 100%;
     background-size:cover;
-    min-height: 800px;
+    min-height: 400px;
     position: relative;
     display: flex;
     justify-content: center; 
     align-items: center; 
 }
-
 
 .iconmanagement{
     display: flex;
@@ -39,7 +38,8 @@
 .titleword{
     text-align: center;
     font-size: 30px;
-    padding-top: 20px;
+    padding-top: 60px;
+    padding-bottom: 30px;
 }
 
 .subtitleword{

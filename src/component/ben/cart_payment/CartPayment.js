@@ -1,18 +1,24 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { CART_LINEPAY } from './../../../config/ajax-path';
 import CartCountContext from '../cart_count/CartCountContext';
 
 function CartPayment() {
+    // const location = useLocation();
     const navigate = useNavigate();
     const { cartList, setCartList } = useContext(CartCountContext);
 
     const [totalAmount, setTotalAmount] = useState(0);
     const [formValue, setFormValue] = useState('creditcardPayment');
+    const [finalLinepayArray, setFinalLinepayArray] = useState([]);
+    const [discount, setDiscount] = useState(0);
+    const [finalValue, setFinalValue] = useState(0);
+    const [freshTotalPrice, setFreshPrice] = useState(0);
+    const [customizedTotalPrice, setCustomizedPrice] = useState(0);
 
     const paymentLinkto = () => {
         if (formValue === 'linepay') {
-            // console.log('linepay');
-            navigate('/cart/linepay');
+            linepay();
         }
         if (formValue === 'creditcard') {
             // console.log('creditcard');
@@ -22,6 +28,45 @@ function CartPayment() {
             // console.log('nonepay');
             navigate('/cart/nonepay');
         }
+    };
+
+    //Linepay
+    const linepay = () => {
+        const time = +new Date();
+        const order = {
+            amount: finalValue,
+            currency: 'TWD',
+            orderId: `Order:${time}`,
+            packages: finalLinepayArray,
+            redirectUrls: {
+                confirmUrl: 'http://localhost:3000/cart/linepaycheck',
+                cancelUrl: 'https://example.com/cancelUrl',
+            },
+        };
+        // console.log(order);
+        let IDkey = {};
+
+        fetch(`${CART_LINEPAY}`, {
+            method: 'POST',
+            body: JSON.stringify(order),
+            headers: {
+                'content-type': 'application/json',
+            },
+        })
+            .then((r) => r.json())
+            .then((obj) => {
+                const { redirectURL, transitionID } = obj;
+                // console.log(redirectURL);
+                // console.log(transitionID);
+
+                IDkey.transitionID = JSON.parse(transitionID);
+                sessionStorage.setItem('transitionID', IDkey.transitionID);
+                sessionStorage.setItem('amount', finalValue);
+
+                // navigate(redirectURL);
+                window.location = redirectURL;
+                // location.href = redirectURL;
+            });
     };
 
     useEffect(() => {
@@ -36,8 +81,102 @@ function CartPayment() {
         for (let i of newCartListAmountArray) {
             totalPayPrice += i;
         }
+
         setTotalAmount(totalPayPrice);
+        setFinalValue(totalAmount - discount);
     }, [cartList]);
+
+    useEffect(() => {
+        const newFreshArray = cartList
+            .filter((v) => {
+                return +v.cart_product_type === 1;
+            })
+            .filter((v) => {
+                return +v.ready_to_buy === 1;
+            })
+            .map((v, i) => {
+                return +v.product_count * v.product_price;
+            });
+        let freshprice = 0;
+        for (let i of newFreshArray) {
+            freshprice += i;
+        }
+        // console.log(freshprice);
+        setFreshPrice(freshprice);
+    }, [cartList]);
+
+    useEffect(() => {
+        const newCustomizedArray = cartList
+            .filter((v) => {
+                return +v.cart_product_type === 2;
+            })
+            .filter((v) => {
+                return +v.ready_to_buy === 1;
+            })
+            .map((v, i) => {
+                return +v.product_count * v.product_price;
+            });
+        let customizedprice = 0;
+        for (let i of newCustomizedArray) {
+            customizedprice += i;
+        }
+        // console.log(customizedprice);
+
+        setCustomizedPrice(customizedprice);
+    }, [cartList]);
+
+    useEffect(() => {
+        let arr = [
+            {
+                id: 1,
+                name: '生鮮商品',
+                amount: freshTotalPrice,
+                products: [
+                    ...cartList
+                        .filter((v) => {
+                            return (
+                                +v.ready_to_buy === 1 &&
+                                +v.cart_product_type === 1
+                            );
+                        })
+                        .map((v, i) => {
+                            return {
+                                name: v.product_name,
+                                quantity: v.product_count,
+                                price: v.product_price,
+                            };
+                        }),
+                ],
+            },
+            {
+                id: 2,
+                name: '客製化商品',
+                amount: customizedTotalPrice,
+                products: [
+                    ...cartList
+                        .filter((v) => {
+                            return (
+                                +v.ready_to_buy === 1 &&
+                                +v.cart_product_type === 2
+                            );
+                        })
+                        .map((v, i) => {
+                            return {
+                                name: v.product_name,
+                                quantity: v.product_count,
+                                price: v.product_price,
+                            };
+                        }),
+                ],
+            },
+        ];
+
+        setFinalLinepayArray(arr);
+    }, [freshTotalPrice, customizedTotalPrice]);
+
+    useEffect(() => {
+        setFinalValue(totalAmount - discount);
+    }, [totalAmount]);
 
     return (
         <>
@@ -124,7 +263,6 @@ function CartPayment() {
                                             {`${v.product_count}個`}
                                         </div>
                                         <div className="col-4 text-end">
-                                            NT$
                                             {v.product_count * v.product_price}
                                         </div>
                                     </div>
@@ -150,7 +288,6 @@ function CartPayment() {
                                             {`${v.product_count}個`}
                                         </div>
                                         <div className="col-4 text-end">
-                                            NT$
                                             {v.product_count * v.product_price}
                                         </div>
                                     </div>
@@ -164,12 +301,14 @@ function CartPayment() {
                         </div>
                         <div className="d-flex justify-content-between py-3">
                             <div className="col-6">優惠券</div>
-                            <div className="col-6 text-end">-NT$100</div>
+                            <div className="col-6 text-end">-{discount}</div>
                         </div>
 
                         <div className="d-flex justify-content-between cart_payment_border_bottom cart_payment_border_top py-3">
                             <div className="col-6">總金額</div>
-                            <div className="col-6 text-end">NT$100</div>
+                            <div className="col-6 text-end">
+                                NT${finalValue}
+                            </div>
                         </div>
                         <div className="d-none d-md-block my-5">
                             <h2 className="my-3">付款方式</h2>

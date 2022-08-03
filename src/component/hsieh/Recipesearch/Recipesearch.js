@@ -1,14 +1,34 @@
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { RECIPE_GET_LIST } from './../../../config/recipe-ajax-path';
+import { Link, useLocation } from 'react-router-dom';
 import './Recipesearch.css';
-import heart from './../pic/icon/1.heart.svg';
-import good from './../pic/icon/2.good.svg';
-import clock from './../pic/icon/3.clock.png';
-import heat from './../pic/icon/4.heat.png';
-import dish from './../pic/image/1.dishimage.jpg';
 import Pagination from './Pagination';
 
 function Recipesearch() {
     const [inputText, setInputText] = useState('');
+
+    const [data, setData] = useState({});
+    const location = useLocation();
+    const usp = new URLSearchParams(location.search);
+    // usp.get('page')
+
+    console.log(location);
+
+    const getPageData = async (event, gotoPage) => {
+        if (event) {
+            event.preventDefault();
+        }
+        console.log({ gotoPage });
+
+        const r = await fetch(`${RECIPE_GET_LIST}?page=${gotoPage}`);
+        const obj = await r.json();
+        console.log(obj);
+        setData(obj);
+    };
+
+    useEffect(() => {
+        getPageData(null, +usp.get('page') || 1);
+    }, [location]);
 
     return (
         <>
@@ -19,6 +39,9 @@ function Recipesearch() {
                         type="text"
                         value={inputText}
                         className="searchinput"
+                        onChange={(e) => {
+                            setInputText(e.target.value);
+                        }}
                     />
                     <p className="subtitleword">熱門關鍵字：日式、炸蝦、雞腿</p>
                     <button
@@ -44,14 +67,14 @@ function Recipesearch() {
             <div className="recommend">
                 <div className="recommendlist">
                     <div className="recipephoto">
-                        <img src={dish} alt="" />
+                        <img src="/images/dishimage.jpg" alt="" />
                     </div>
                     <div className="recipeblock">
                         <p>日式黃金炸蝦</p>
                         <div className="iconmanagement">
                             <button className="buttoninsearch">
                                 <img
-                                    src={heart}
+                                    src="/images/heart.svg"
                                     alt=""
                                     className="iconinsearch"
                                 />
@@ -59,7 +82,7 @@ function Recipesearch() {
                             <p className="iconinsearchp">10</p>
                             <button className="buttoninsearch">
                                 <img
-                                    src={good}
+                                    src="/images/good.svg"
                                     alt=""
                                     className="iconinsearch"
                                 />
@@ -70,11 +93,19 @@ function Recipesearch() {
                         <hr className="hrline" />
 
                         <div className="iconmanagement">
-                            <img src={clock} alt="" className="iconinsearch" />
+                            <img
+                                src="/images/clock.svg"
+                                alt=""
+                                className="iconinsearch"
+                            />
                             <p className="iconinsearchp">10</p>
                         </div>
                         <div className="iconmanagement">
-                            <img src={heat} alt="" className="iconinsearch" />
+                            <img
+                                src="/images/heat.svg"
+                                alt=""
+                                className="iconinsearch"
+                            />
                             <p className="iconinsearchp">10</p>
                         </div>
                     </div>
@@ -84,14 +115,14 @@ function Recipesearch() {
 
                 <div className="recommendlist">
                     <div className="recipephoto">
-                        <img src={dish} alt="" />
+                        <img src="/images/dishimage.jpg" alt="" />
                     </div>
                     <div className="recipeblock">
                         <p>日式黃金炸蝦</p>
                         <div className="iconmanagement">
                             <button className="buttoninsearch">
                                 <img
-                                    src={heart}
+                                    src="/images/heart.svg"
                                     alt=""
                                     className="iconinsearch"
                                 />
@@ -99,7 +130,7 @@ function Recipesearch() {
                             <p className="iconinsearchp">20</p>
                             <button className="buttoninsearch">
                                 <img
-                                    src={good}
+                                    src="/images/good.svg"
                                     alt=""
                                     className="iconinsearch"
                                 />
@@ -110,11 +141,19 @@ function Recipesearch() {
                         <hr className="hrline" />
 
                         <div className="iconmanagement">
-                            <img src={clock} alt="" className="iconinsearch" />
+                            <img
+                                src="/images/clock.svg"
+                                alt=""
+                                className="iconinsearch"
+                            />
                             <p className="iconinsearchp">20</p>
                         </div>
                         <div className="iconmanagement">
-                            <img src={heat} alt="" className="iconinsearch" />
+                            <img
+                                src="/images/heart.svg"
+                                alt=""
+                                className="iconinsearch"
+                            />
                             <p className="iconinsearchp">20</p>
                         </div>
                     </div>
@@ -126,17 +165,81 @@ function Recipesearch() {
             <div>
                 <p className="titleword">食譜列表 ／ Recipes List</p>
             </div>
+
             <div className="recommend">
+                {data && data.totalPages ? (
+                    <Pagination page={data.page} totalPages={data.totalPages} />
+                ) : null}
+
+                {console.log({ data })}
+                {data && data.rows
+                    ? data.rows.map((row) => (
+                          <div className="recommendlist">
+                              <div className="recipephoto">
+                                  <img src="/images/dishimage.jpg" alt="" />
+                              </div>
+                              <div className="recipeblock">
+                                  <p>{row.recipes_name}</p>
+                                  <div className="iconmanagement">
+                                      <button className="buttoninsearch">
+                                          <img
+                                              src="/images/heart.svg"
+                                              alt=""
+                                              className="iconinsearch"
+                                          />
+                                      </button>
+                                      <p className="iconinsearchp">
+                                          {row.recipes_collection}
+                                      </p>
+                                      <button className="buttoninsearch">
+                                          <img
+                                              src="/images/good.svg"
+                                              alt=""
+                                              className="iconinsearch"
+                                          />
+                                      </button>
+                                      <p className="iconinsearchp">
+                                          {row.recipes_like}
+                                      </p>
+                                  </div>
+
+                                  <hr className="hrline" />
+
+                                  <div className="iconmanagement">
+                                      <img
+                                          src="/images/clock.svg"
+                                          alt=""
+                                          className="iconinsearch"
+                                      />
+                                      <p className="iconinsearchp">
+                                          {row.recipes_time_cost}
+                                      </p>
+                                  </div>
+                                  <div className="iconmanagement">
+                                      <img
+                                          src="/images/heat.svg"
+                                          alt=""
+                                          className="iconinsearch"
+                                      />
+                                      <p className="iconinsearchp">
+                                          {row.recipes_calories}
+                                      </p>
+                                  </div>
+                              </div>
+                          </div>
+                      ))
+                    : null}
+
                 <div className="recommendlist">
                     <div className="recipephoto">
-                        <img src={dish} alt="" />
+                        <img src="/images/dishimage.jpg" alt="" />
                     </div>
                     <div className="recipeblock">
                         <p>日式黃金炸蝦</p>
                         <div className="iconmanagement">
                             <button className="buttoninsearch">
                                 <img
-                                    src={heart}
+                                    src="/images/heart.svg"
                                     alt=""
                                     className="iconinsearch"
                                 />
@@ -144,7 +247,7 @@ function Recipesearch() {
                             <p className="iconinsearchp">30</p>
                             <button className="buttoninsearch">
                                 <img
-                                    src={good}
+                                    src="/images/good.svg"
                                     alt=""
                                     className="iconinsearch"
                                 />
@@ -155,11 +258,19 @@ function Recipesearch() {
                         <hr className="hrline" />
 
                         <div className="iconmanagement">
-                            <img src={clock} alt="" className="iconinsearch" />
+                            <img
+                                src="/images/clock.svg"
+                                alt=""
+                                className="iconinsearch"
+                            />
                             <p className="iconinsearchp">30</p>
                         </div>
                         <div className="iconmanagement">
-                            <img src={heat} alt="" className="iconinsearch" />
+                            <img
+                                src="/images/heat.svg"
+                                alt=""
+                                className="iconinsearch"
+                            />
                             <p className="iconinsearchp">30</p>
                         </div>
                     </div>
@@ -169,14 +280,14 @@ function Recipesearch() {
 
                 <div className="recommendlist">
                     <div className="recipephoto">
-                        <img src={dish} alt="" />
+                        <img src="/images/dishimage.jpg" alt="" />
                     </div>
                     <div className="recipeblock">
                         <p>日式黃金炸蝦</p>
                         <div className="iconmanagement">
                             <button className="buttoninsearch">
                                 <img
-                                    src={heart}
+                                    src="/images/heart.svg"
                                     alt=""
                                     className="iconinsearch"
                                 />
@@ -184,7 +295,7 @@ function Recipesearch() {
                             <p className="iconinsearchp">40</p>
                             <button className="buttoninsearch">
                                 <img
-                                    src={good}
+                                    src="/images/good.svg"
                                     alt=""
                                     className="iconinsearch"
                                 />
@@ -195,11 +306,19 @@ function Recipesearch() {
                         <hr className="hrline" />
 
                         <div className="iconmanagement">
-                            <img src={clock} alt="" className="iconinsearch" />
+                            <img
+                                src="/images/clock.svg"
+                                alt=""
+                                className="iconinsearch"
+                            />
                             <p className="iconinsearchp">40</p>
                         </div>
                         <div className="iconmanagement">
-                            <img src={heat} alt="" className="iconinsearch" />
+                            <img
+                                src="/images/heat.svg"
+                                alt=""
+                                className="iconinsearch"
+                            />
                             <p className="iconinsearchp">40</p>
                         </div>
                     </div>
@@ -214,16 +333,16 @@ function Recipesearch() {
 
 export default Recipesearch;
 
-// {data && data.rows
-//   ? data.rows.map((row) => (
-//       <tr key={'mm' + row.sid}>
-//         <th scope="row">{row.sid}</th>
-//         <td>{row.name}</td>
-//         <td>{row.email}</td>
-//         <td>{row.mobile}</td>
-//       </tr>
-//     ))
-//   : null}
+/* {data && data.rows
+            ? data.rows.map((row) => (
+                <tr key={'mm' + row.sid}>
+                <th scope="row">{row.sid}</th>
+                <td>{row.name}</td>
+                <td>{row.email}</td>
+                <td>{row.mobile}</td>
+                </tr>
+            ))
+            : null} */
 
 // const runClock = () => {
 //   const now = new Date();
@@ -238,3 +357,5 @@ export default Recipesearch;
 // runClock();
 
 // style={{ height: 40, width: 40 }}
+
+// react-spinner-animated

@@ -1,18 +1,5 @@
 import React from 'react';
 import './Eachrecipe.css';
-import dish from './../pic/image/1.dishimage.jpg';
-import heart from './../pic/icon/1.heart.svg';
-import good from './../pic/icon/2.good.svg';
-import clock from './../pic/icon/3.clock.png';
-import heat from './../pic/icon/4.heat.png';
-import portion from './../pic/icon/11.portion.png';
-import pot from './../pic/icon/12.pot.png';
-import degree from './../pic/icon/13.degree.png';
-import line from './../pic/icon/14.line.png';
-import twitter from './../pic/icon/15.twitter.png';
-import ig from './../pic/icon/16.ig.png';
-import fb from './../pic/icon/17.fb.png';
-import email from './../pic/icon/18.email.png';
 
 function Eachrecipe() {
     return (
@@ -22,22 +9,28 @@ function Eachrecipe() {
 
             <div className="recipeinfo">
                 <div className="pic">
-                    <img src={dish} alt="" />
+                    <img src="/images/1.dishimage.jpg" alt="" />
                 </div>
                 <div className="recipedetail">
                     <div className="auther">
-                        <p>作者：XXX</p>
+                        <div>
+                            <p>作者：XXX</p>
+                        </div>
                         <div className="likeandcollect">
                             <button className="buttonineach">
                                 <img
-                                    src={heart}
+                                    src="/images/heart.svg"
                                     alt=""
                                     className="iconineach"
                                 />
                             </button>
 
                             <button className="buttonineach">
-                                <img src={good} alt="" className="iconineach" />
+                                <img
+                                    src="/images/good.svg"
+                                    alt=""
+                                    className="iconineach"
+                                />
                             </button>
                         </div>
                     </div>
@@ -47,7 +40,7 @@ function Eachrecipe() {
                     <div className="recipeinfomation">
                         <div className="recipedata">
                             <div className="greencircle">
-                                <img src={clock} alt="" />
+                                <img src="/images/clock.svg" alt="" />
                             </div>
                             <div>
                                 <p>
@@ -61,7 +54,7 @@ function Eachrecipe() {
 
                         <div className="recipedata">
                             <div className="greencircle">
-                                <img src={heat} alt="" />
+                                <img src="/images/heat.svg" alt="" />
                             </div>
                             <div>
                                 <p>
@@ -75,7 +68,7 @@ function Eachrecipe() {
 
                         <div className="recipedata">
                             <div className="greencircle">
-                                <img src={portion} alt="" />
+                                <img src="/images/portion.png" alt="" />
                             </div>
                             <div>
                                 <p>
@@ -89,7 +82,7 @@ function Eachrecipe() {
 
                         <div className="recipedata">
                             <div className="greencircle">
-                                <img src={pot} alt="" />
+                                <img src="/images/pot.png" alt="" />
                             </div>
                             <div>
                                 <p>
@@ -104,7 +97,7 @@ function Eachrecipe() {
 
                         <div className="recipedata">
                             <div className="greencircle">
-                                <img src={degree} alt="" />
+                                <img src="/images/degree.png" alt="" />
                             </div>
                             <div>
                                 <p>
@@ -130,23 +123,31 @@ function Eachrecipe() {
 
             <div className="socialmedia">
                 <button className="buttonineach">
-                    <img src={line} alt="" className="iconineach" />
+                    <img src="/images/line.png" alt="" className="iconineach" />
                 </button>
 
                 <button className="buttonineach">
-                    <img src={twitter} alt="" className="iconineach" />
+                    <img
+                        src="/images/twitter.png"
+                        alt=""
+                        className="iconineach"
+                    />
                 </button>
 
                 <button className="buttonineach">
-                    <img src={ig} alt="" className="iconineach" />
+                    <img src="/images/ig.png" alt="" className="iconineach" />
                 </button>
 
                 <button className="buttonineach">
-                    <img src={fb} alt="" className="iconineach" />
+                    <img src="/images/fb.png" alt="" className="iconineach" />
                 </button>
 
                 <button className="buttonineach">
-                    <img src={email} alt="" className="iconineach" />
+                    <img
+                        src="/images/email.png"
+                        alt=""
+                        className="iconineach"
+                    />
                 </button>
             </div>
 
@@ -201,10 +202,22 @@ function Eachrecipe() {
                 </div>
             </div>
             <div className="buttonlist">
-                <button className="list">食譜列表</button>
-                <button className="create">新增食譜</button>
-                <button className="update">修改食譜</button>
-                <button className="delete">刪除食譜</button>
+                <button className="list">
+                    食譜列表
+                    <img src="/images/files.svg" alt="" className="crud" />
+                </button>
+                <button className="create">
+                    新增食譜
+                    <img src="/images/file-plus.svg" alt="" className="crud" />
+                </button>
+                <button className="update">
+                    修改食譜
+                    <img src="/images/pen.svg" alt="" className="crud" />
+                </button>
+                <button className="delete">
+                    刪除食譜
+                    <img src="/images/trashcan.svg" alt="" className="crud" />
+                </button>
             </div>
         </>
     );

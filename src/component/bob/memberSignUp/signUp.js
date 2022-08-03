@@ -22,7 +22,7 @@ function SignUp(){
             password: document.form1.password.value
         };
 
-        const r = await fetch('http://localhost:7000/signup',{
+        const r = await fetch('http://localhost:3600/member/signup',{
             method:'post',
             body: JSON.stringify(data),
             headers:{

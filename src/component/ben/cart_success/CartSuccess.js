@@ -155,6 +155,9 @@ function CartSuccess() {
                                 </tr>
                             </tbody>
                         </table>
+                        <div className=" text-center mt-5 mb-3">
+                            <button className="btn">回到購物頁面</button>
+                        </div>
                     </div>
                 </div>
             </div>

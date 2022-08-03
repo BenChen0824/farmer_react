@@ -6,10 +6,12 @@ import './Nav.css';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from './images/fresh_LOGO_black.svg';
 import CartCountContext from '../ben/cart_count/CartCountContext';
+import AuthContext from '../bob/component/authContext';
 
 function Nav() {
     const { cartList, setCartList } = useContext(CartCountContext);
     const [navColor, setNavColor] = useState(false);
+    const { authorized, username, logout } = useContext(AuthContext);
 
     const changeColor = () => {
         if (window.scrollY > 100) {
@@ -30,87 +32,118 @@ function Nav() {
         <>
             <header id="Navbar" className={navColor ? a : b}>
                 {/* <Logo className="main_logo" /> */}
-                <Logo
-                    className={
-                        navColor ? 'main_logo_active main_logo' : 'main_logo'
-                    }
-                />
+                <Link to="/" style={{ textDecoration: 'none' }}>
+                    <Logo
+                        className={
+                            navColor
+                                ? 'main_logo_active main_logo'
+                                : 'main_logo'
+                        }
+                    />
+                </Link>
 
                 {/* 選單 */}
                 <nav className=" mt-3">
                     <ul className="header_menu d-flex">
-                        <li>
-                            <a
-                                href="/#"
-                                className={
-                                    navColor
-                                        ? 'menu_items_active menu_items'
-                                        : 'menu_items'
-                                }
-                            >
-                                首頁
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="/#"
-                                className={
-                                    navColor
-                                        ? 'menu_items_active menu_items'
-                                        : 'menu_items'
-                                }
-                            >
-                                小農活動
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="/#"
-                                className={
-                                    navColor
-                                        ? 'menu_items_active menu_items'
-                                        : 'menu_items'
-                                }
-                            >
-                                生鮮商品
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="/#"
-                                className={
-                                    navColor
-                                        ? 'menu_items_active menu_items'
-                                        : 'menu_items'
-                                }
-                            >
-                                食譜分享
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="/#"
-                                className={
-                                    navColor
-                                        ? 'menu_items_active menu_items'
-                                        : 'menu_items'
-                                }
-                            >
-                                客製化餐點
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="/#"
-                                className={
-                                    navColor
-                                        ? 'menu_items_active menu_items'
-                                        : 'menu_items'
-                                }
-                            >
-                                顧客評論
-                            </a>
-                        </li>
+                        <Link to="/game" style={{ textDecoration: 'none' }}>
+                            <li>
+                                <span
+                                    className={
+                                        navColor
+                                            ? 'menu_items_active menu_items'
+                                            : 'menu_items'
+                                    }
+                                >
+                                    每日登入
+                                </span>
+                            </li>
+                        </Link>
+                        <Link
+                            to="/customer_server"
+                            style={{ textDecoration: 'none' }}
+                        >
+                            <li>
+                                <span
+                                    className={
+                                        navColor
+                                            ? 'menu_items_active menu_items'
+                                            : 'menu_items'
+                                    }
+                                >
+                                    專人客服
+                                </span>
+                            </li>
+                        </Link>
+                        <Link to="/activity" style={{ textDecoration: 'none' }}>
+                            <li>
+                                <span
+                                    className={
+                                        navColor
+                                            ? 'menu_items_active menu_items'
+                                            : 'menu_items'
+                                    }
+                                >
+                                    小農活動
+                                </span>
+                            </li>
+                        </Link>
+                        <Link to="/product" style={{ textDecoration: 'none' }}>
+                            <li>
+                                <span
+                                    className={
+                                        navColor
+                                            ? 'menu_items_active menu_items'
+                                            : 'menu_items'
+                                    }
+                                >
+                                    生鮮商品
+                                </span>
+                            </li>
+                        </Link>
+                        <Link to="/recipe" style={{ textDecoration: 'none' }}>
+                            <li>
+                                <span
+                                    className={
+                                        navColor
+                                            ? 'menu_items_active menu_items'
+                                            : 'menu_items'
+                                    }
+                                >
+                                    食譜分享
+                                </span>
+                            </li>
+                        </Link>
+                        <Link
+                            to="/customized_lunch"
+                            style={{ textDecoration: 'none' }}
+                        >
+                            <li>
+                                <a
+                                    href="/#"
+                                    className={
+                                        navColor
+                                            ? 'menu_items_active menu_items'
+                                            : 'menu_items'
+                                    }
+                                >
+                                    客製化餐點
+                                </a>
+                            </li>
+                        </Link>
+                        <Link to="/comment" style={{ textDecoration: 'none' }}>
+                            <li>
+                                <span
+                                    href="/#"
+                                    className={
+                                        navColor
+                                            ? 'menu_items_active menu_items'
+                                            : 'menu_items'
+                                    }
+                                >
+                                    顧客評論
+                                </span>
+                            </li>
+                        </Link>
                     </ul>
                 </nav>
                 {/* ICONS */}
@@ -122,7 +155,19 @@ function Nav() {
                                 : 'nav_icons d-flex '
                         }
                     >
-                        <FaUserCircle size={30} />
+                        {authorized ? (
+                            <div className="row m-0">
+                                <Link className="col-4" to="/member/data">
+                                    <FaUserCircle size={30} />
+                                </Link>
+                                <span className="col-8">{username}</span>
+                            </div>
+                        ) : (
+                            <Link to="/member">
+                                <FaUserCircle size={30} />
+                            </Link>
+                        )}
+
                         <Link to="/cart">
                             <FaShoppingCart
                                 size={30}
@@ -139,6 +184,19 @@ function Nav() {
                         >
                             {cartList.length}
                         </div>
+
+                        {authorized ? (
+                            <button
+                                className="btn btn-sm btn-outline-dark"
+                                onClick={() => {
+                                    logout();
+                                }}
+                            >
+                                登出
+                            </button>
+                        ) : (
+                            ''
+                        )}
                     </div>
                     {/* <div className="cart_number d-flex justify-content-center align-items-center">
                         <p className="fs-5 pl-4">0</p>

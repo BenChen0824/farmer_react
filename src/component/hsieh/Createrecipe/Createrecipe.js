@@ -1,13 +1,9 @@
 import { useState } from 'react';
 import React from 'react';
-import './Creatrecipe.css';
-import trashcan from './../pic/icon/19.trashcan.svg';
-import plus from './../pic/icon/20.plus.svg';
-import move from './../pic/icon/21.move.svg';
-import camera from './../pic/icon/22.camera.svg';
+import './Createrecipe.css';
 
-function Creatrecipe() {
-    // 新增食譜
+function Createrecipe() {
+    // 新增食譜名稱
     const [recipesname, setRecipesname] = useState('');
 
     // 料理簡介
@@ -52,7 +48,7 @@ function Creatrecipe() {
 
     return (
         <>
-            <h2 className="creatrecipe">新增食譜 ／ Creat New Recipes</h2>
+            <h2 className="creatrecipe">新增食譜 ／ Create New Recipes</h2>
             <hr className="hr" />
             <div className="eachdata">
                 <label className="dataname">食譜名稱</label>
@@ -241,7 +237,7 @@ function Creatrecipe() {
 
                         <button className="buttonincreate">
                             <img
-                                src={trashcan}
+                                src="/images/trashcan.svg"
                                 alt=""
                                 className="iconincreate"
                             />
@@ -276,7 +272,7 @@ function Creatrecipe() {
                         </section>
                         <button className="buttonincreate">
                             <img
-                                src={trashcan}
+                                src="/images/trashcan.svg"
                                 alt=""
                                 className="iconincreate"
                             />
@@ -311,7 +307,7 @@ function Creatrecipe() {
                         </section>
                         <button className="buttonincreate">
                             <img
-                                src={trashcan}
+                                src="/images/trashcan.svg"
                                 alt=""
                                 className="iconincreate"
                             />
@@ -321,7 +317,7 @@ function Creatrecipe() {
             </div>
 
             <button className="buttonincreateplus">
-                <img src={plus} alt="" className="iconincreate" />
+                <img src="/images/plus.svg" alt="" className="iconincreate" />
             </button>
 
             <hr className="hr" />
@@ -363,7 +359,11 @@ function Creatrecipe() {
                         </section>
 
                         <button className="buttonincreate">
-                            <img src={move} alt="" className="iconincreate" />
+                            <img
+                                src="/images/move.svg"
+                                alt=""
+                                className="iconincreate"
+                            />
                         </button>
                     </div>
 
@@ -386,7 +386,7 @@ function Creatrecipe() {
             </div>
 
             <button className="buttonincreateplus">
-                <img src={plus} alt="" className="iconincreate" />
+                <img src="/images/plus.svg" alt="" className="iconincreate" />
             </button>
 
             <hr className="hr" />
@@ -394,7 +394,11 @@ function Creatrecipe() {
 
             <div className="photoupload">
                 <button className="buttonincreate">
-                    <img src={camera} alt="" className="iconincreate" />
+                    <img
+                        src="/images/camera.svg"
+                        alt=""
+                        className="iconincreate"
+                    />
                 </button>
             </div>
             <div className="button">
@@ -405,7 +409,10 @@ function Creatrecipe() {
             {/* 分隔線，以下完成按鈕 */}
 
             <div className="button">
-                <button className="finish">新增食譜</button>
+                <button className="finish">
+                    新增食譜
+                    <img src="/images/file-plus.svg" alt="" className="crud" />
+                </button>
             </div>
 
             {/* <section id="step">
@@ -429,4 +436,4 @@ function Creatrecipe() {
     );
 }
 
-export default Creatrecipe;
+export default Createrecipe;
