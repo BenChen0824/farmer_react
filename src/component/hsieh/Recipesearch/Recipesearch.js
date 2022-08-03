@@ -1,10 +1,34 @@
-import { useState } from 'react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { RECIPE_GET_LIST } from './../../../config/recipe-ajax-path';
+import { Link, useLocation } from 'react-router-dom';
 import './Recipesearch.css';
 import Pagination from './Pagination';
 
 function Recipesearch() {
     const [inputText, setInputText] = useState('');
+
+    const [data, setData] = useState({});
+    const location = useLocation();
+    const usp = new URLSearchParams(location.search);
+    // usp.get('page')
+
+    console.log(location);
+
+    const getPageData = async (event, gotoPage) => {
+        if (event) {
+            event.preventDefault();
+        }
+        console.log({ gotoPage });
+
+        const r = await fetch(`${RECIPE_GET_LIST}?page=${gotoPage}`);
+        const obj = await r.json();
+        console.log(obj);
+        setData(obj);
+    };
+
+    useEffect(() => {
+        getPageData(null, +usp.get('page') || 1);
+    }, [location]);
 
     return (
         <>
@@ -141,7 +165,71 @@ function Recipesearch() {
             <div>
                 <p className="titleword">食譜列表 ／ Recipes List</p>
             </div>
+
             <div className="recommend">
+                {data && data.totalPages ? (
+                    <Pagination page={data.page} totalPages={data.totalPages} />
+                ) : null}
+
+                {console.log({ data })}
+                {data && data.rows
+                    ? data.rows.map((row) => (
+                          <div className="recommendlist">
+                              <div className="recipephoto">
+                                  <img src="/images/dishimage.jpg" alt="" />
+                              </div>
+                              <div className="recipeblock">
+                                  <p>{row.recipes_name}</p>
+                                  <div className="iconmanagement">
+                                      <button className="buttoninsearch">
+                                          <img
+                                              src="/images/heart.svg"
+                                              alt=""
+                                              className="iconinsearch"
+                                          />
+                                      </button>
+                                      <p className="iconinsearchp">
+                                          {row.recipes_collection}
+                                      </p>
+                                      <button className="buttoninsearch">
+                                          <img
+                                              src="/images/good.svg"
+                                              alt=""
+                                              className="iconinsearch"
+                                          />
+                                      </button>
+                                      <p className="iconinsearchp">
+                                          {row.recipes_like}
+                                      </p>
+                                  </div>
+
+                                  <hr className="hrline" />
+
+                                  <div className="iconmanagement">
+                                      <img
+                                          src="/images/clock.svg"
+                                          alt=""
+                                          className="iconinsearch"
+                                      />
+                                      <p className="iconinsearchp">
+                                          {row.recipes_time_cost}
+                                      </p>
+                                  </div>
+                                  <div className="iconmanagement">
+                                      <img
+                                          src="/images/heat.svg"
+                                          alt=""
+                                          className="iconinsearch"
+                                      />
+                                      <p className="iconinsearchp">
+                                          {row.recipes_calories}
+                                      </p>
+                                  </div>
+                              </div>
+                          </div>
+                      ))
+                    : null}
+
                 <div className="recommendlist">
                     <div className="recipephoto">
                         <img src="/images/dishimage.jpg" alt="" />
@@ -245,16 +333,16 @@ function Recipesearch() {
 
 export default Recipesearch;
 
-// {data && data.rows
-//   ? data.rows.map((row) => (
-//       <tr key={'mm' + row.sid}>
-//         <th scope="row">{row.sid}</th>
-//         <td>{row.name}</td>
-//         <td>{row.email}</td>
-//         <td>{row.mobile}</td>
-//       </tr>
-//     ))
-//   : null}
+/* {data && data.rows
+            ? data.rows.map((row) => (
+                <tr key={'mm' + row.sid}>
+                <th scope="row">{row.sid}</th>
+                <td>{row.name}</td>
+                <td>{row.email}</td>
+                <td>{row.mobile}</td>
+                </tr>
+            ))
+            : null} */
 
 // const runClock = () => {
 //   const now = new Date();
@@ -269,3 +357,5 @@ export default Recipesearch;
 // runClock();
 
 // style={{ height: 40, width: 40 }}
+
+// react-spinner-animated
