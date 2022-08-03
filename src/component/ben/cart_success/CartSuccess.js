@@ -84,6 +84,7 @@ function CartSuccess() {
         sendEmail();
         sendGoogleData();
         setTimeout(() => {
+            sessionStorage.clear();
             navigate('/product');
         }, 2000);
     };

@@ -9,11 +9,13 @@ import AboutUs from './AboutUs/AboutUs';
 function FarmerFirstPage() {
     return (
         <>
-            <IndexBanner />
-            <AboutUs />
-            <News />
-            <ContactUs />
-            {/* <TopButton /> */}
+            <div className="firstPagePadding">
+                <IndexBanner />
+                <AboutUs />
+                <News />
+                <ContactUs />
+                {/* <TopButton /> */}
+            </div>
         </>
     );
 }
