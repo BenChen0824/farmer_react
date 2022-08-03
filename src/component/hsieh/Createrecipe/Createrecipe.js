@@ -409,7 +409,10 @@ function Createrecipe() {
             {/* 分隔線，以下完成按鈕 */}
 
             <div className="button">
-                <button className="finish">新增食譜</button>
+                <button className="finish">
+                    新增食譜
+                    <img src="/images/file-plus.svg" alt="" className="crud" />
+                </button>
             </div>
 
             {/* <section id="step">
