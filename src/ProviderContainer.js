@@ -2,9 +2,11 @@ import CartCountContextProvider from './component/ben/cart_count/CartCountContex
 import AuthContextProvider from './component/bob/component/authContextProvider';
 
 function ProviderContainer({ children }) {
-    return <AuthContextProvider>
+    return (
+        <AuthContextProvider>
             <CartCountContextProvider>{children}</CartCountContextProvider>
-        </AuthContextProvider>;
+        </AuthContextProvider>
+    );
 }
 
 export default ProviderContainer;
