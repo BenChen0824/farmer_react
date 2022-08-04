@@ -91,7 +91,7 @@ function Canvas(props) {
     }, [dataFromFoodArea]);
     //送資料
     async function sendData(event) {
-        // event.preventDefault()
+        event.preventDefault();
         confirm("訂單即將送出，請確認訂單食材，如確認無誤請按'確定'送出訂單");
         const fd = new FormData(document.form1);
         fd.append('lunch_1', dataFromFoodArea[0].name);
@@ -101,8 +101,7 @@ function Canvas(props) {
         fd.append('lunch_5', dataFromFoodArea[4].name);
         fd.append('total_price', totalPrice);
         fd.append('lunch_pic', sessionStorage.getItem(key));
-        fd.append('member_id', member_info.customer_id);
-        console.log(member_info.customer_id);
+        fd.append('member_id', JSON.parse(member_info).customer_id);
         try {
             const response = await fetch(
                 'http://localhost:3600/customized_lunch/add',

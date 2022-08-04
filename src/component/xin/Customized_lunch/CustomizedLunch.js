@@ -44,7 +44,6 @@ function CustomizedLunch() {
 
     return (
         <>
-            {console.log('render')}
             <div className="container-fluid g-0">
                 <div className="pho-bg row w-100 m-0">
                     <Foods
