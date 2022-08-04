@@ -1,5 +1,5 @@
 .jumbotron {
-    background: url('../../../../public/images/Activity.jpg') no-repeat;
+    /* background: url('../../../../public/images/Activity.jpg') no-repeat; */
     background-size: cover;
     background-position: center;
     min-height: 600px;

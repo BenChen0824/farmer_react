@@ -102,7 +102,7 @@ function Canvas(props) {
         fd.append('total_price', totalPrice);
         fd.append('lunch_pic', sessionStorage.getItem(key));
         fd.append('member_id', member_info.customer_id);
-
+        console.log(member_info.customer_id);
         try {
             const response = await fetch(
                 'http://localhost:3600/customized_lunch/add',
