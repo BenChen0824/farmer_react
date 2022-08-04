@@ -17,7 +17,7 @@ function CartCreditCard() {
             e.target.value.toString().length >= 2 &&
             !expiryMonthRegex.test(e.target.value.slice(0, 2))
         ) {
-            console.log(e.target.value.slice(0, 2));
+            // console.log(e.target.value.slice(0, 2));
             setTimeout(() => {
                 setExpiry('');
                 alert('請確認月份是否正確');

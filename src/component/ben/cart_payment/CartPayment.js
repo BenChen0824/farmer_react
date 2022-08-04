@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { CART_LINEPAY } from './../../../config/ajax-path';
+import { CART_LINEPAY, CART_LIST_ORDERLIST } from './../../../config/ajax-path';
 import CartCountContext from '../cart_count/CartCountContext';
 
 function CartPayment() {
@@ -16,16 +16,79 @@ function CartPayment() {
     const [freshTotalPrice, setFreshPrice] = useState(0);
     const [customizedTotalPrice, setCustomizedPrice] = useState(0);
 
+    //對SQL發送資料 新增Orderlist跟Order Details 並刪除 Orderlist_to_buy資料
+    const sendCheckSQL = () => {
+        setInSessionStorage();
+        const sendData = {
+            member_id: 1,
+            totalPrice: finalValue,
+            customerRemark: '123',
+            freshItems: [
+                ...cartList.filter((v) => {
+                    return +v.ready_to_buy === 1 && +v.cart_product_type === 1;
+                }),
+            ],
+            customizedItems: [
+                ...cartList
+                    .filter((v) => {
+                        return (
+                            +v.ready_to_buy === 1 && +v.cart_product_type === 2
+                        );
+                    })
+                    .map((v) => {
+                        return { ...v, lunch_pic: '' };
+                    }),
+            ],
+        };
+
+        fetch(CART_LIST_ORDERLIST, {
+            method: 'POST',
+            body: JSON.stringify(sendData),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((r) => r.json())
+            .then((obj) => {
+                console.log(setCartList(obj));
+            });
+    };
+
+    const setInSessionStorage = () => {
+        sessionStorage.setItem(
+            'buyfresh',
+            JSON.stringify([
+                ...cartList.filter((v) => {
+                    return +v.ready_to_buy === 1 && +v.cart_product_type === 1;
+                }),
+            ])
+        );
+        sessionStorage.setItem(
+            'buycustomized',
+            JSON.stringify([
+                ...cartList.filter((v) => {
+                    return +v.ready_to_buy === 1 && +v.cart_product_type === 2;
+                }),
+            ])
+        );
+        sessionStorage.setItem('price', totalAmount);
+        sessionStorage.setItem('discount', discount);
+        sessionStorage.setItem('finalPrice', finalValue);
+    };
+
     const paymentLinkto = () => {
         if (formValue === 'linepay') {
+            setInSessionStorage();
             linepay();
+
+            // sendCheckSQL();
         }
         if (formValue === 'creditcard') {
-            // console.log('creditcard');
+            sendCheckSQL();
             navigate('/cart/creditcard');
         }
         if (formValue === 'nonepay') {
-            // console.log('nonepay');
+            sendCheckSQL();
             navigate('/cart/nonepay');
         }
     };
@@ -63,6 +126,33 @@ function CartPayment() {
                 sessionStorage.setItem('transitionID', IDkey.transitionID);
                 sessionStorage.setItem('amount', finalValue);
 
+                const sendData = {
+                    member_id: 1,
+                    totalPrice: finalValue,
+                    customerRemark: '123',
+                    freshItems: [
+                        ...cartList.filter((v) => {
+                            return (
+                                +v.ready_to_buy === 1 &&
+                                +v.cart_product_type === 1
+                            );
+                        }),
+                    ],
+
+                    customizedItems: [
+                        ...cartList
+                            .filter((v) => {
+                                return (
+                                    +v.ready_to_buy === 1 &&
+                                    +v.cart_product_type === 2
+                                );
+                            })
+                            .map((v) => {
+                                return { ...v, lunch_pic: 1 };
+                            }),
+                    ],
+                };
+                sessionStorage.setItem('linepayData', JSON.stringify(sendData));
                 // navigate(redirectURL);
                 window.location = redirectURL;
                 // location.href = redirectURL;
@@ -70,15 +160,25 @@ function CartPayment() {
     };
 
     useEffect(() => {
-        const newCartListAmountArray = cartList
+        const newFreAmountArray = cartList
             .filter((v) => {
-                return +v.ready_to_buy === 1;
+                return +v.ready_to_buy === 1 && v.cart_product_type === 1;
             })
             .map((v, i) => {
                 return v.product_count * v.product_price;
             });
+        const newCusAmountArray = cartList
+            .filter((v) => {
+                return +v.ready_to_buy === 1 && v.cart_product_type === 2;
+            })
+            .map((v, i) => {
+                return v.product_count * v.total_price;
+            });
         let totalPayPrice = 0;
-        for (let i of newCartListAmountArray) {
+        for (let i of newFreAmountArray) {
+            totalPayPrice += i;
+        }
+        for (let i of newCusAmountArray) {
             totalPayPrice += i;
         }
 
@@ -114,7 +214,7 @@ function CartPayment() {
                 return +v.ready_to_buy === 1;
             })
             .map((v, i) => {
-                return +v.product_count * v.product_price;
+                return +v.product_count * v.total_price;
             });
         let customizedprice = 0;
         for (let i of newCustomizedArray) {
@@ -162,9 +262,9 @@ function CartPayment() {
                         })
                         .map((v, i) => {
                             return {
-                                name: v.product_name,
+                                name: v.lunch_name,
                                 quantity: v.product_count,
-                                price: v.product_price,
+                                price: v.total_price,
                             };
                         }),
                 ],
@@ -282,13 +382,13 @@ function CartPayment() {
                                         key={Math.random()}
                                     >
                                         <div className="col-6">
-                                            {v.product_name}
+                                            {v.lunch_name}
                                         </div>
                                         <div className="col-2">
                                             {`${v.product_count}個`}
                                         </div>
                                         <div className="col-4 text-end">
-                                            {v.product_count * v.product_price}
+                                            {v.product_count * v.total_price}
                                         </div>
                                     </div>
                                 );
@@ -440,26 +540,6 @@ function CartPayment() {
                                     id="email"
                                     className="form-control my-2"
                                     placeholder="EX:farmer@gmail.com"
-                                />
-                            </div>
-                            <div className="my-2">
-                                <label htmlFor="">縣/市*</label>
-                                <br />
-                                <input
-                                    type="text"
-                                    name=""
-                                    className="form-control my-2"
-                                    placeholder="縣/市*"
-                                />
-                            </div>
-                            <div className="my-2">
-                                <label htmlFor="">鄉鎮市*</label>
-                                <br />
-                                <input
-                                    type="text"
-                                    name="name"
-                                    className="form-control my-2"
-                                    placeholder="鄉鎮市:"
                                 />
                             </div>
                             <div className="my-2">

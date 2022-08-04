@@ -19,8 +19,7 @@
 .svgicon{
     display: flex;
     align-items: center; 
-    margin-left: 10px;
-    margin-right: 10px;
+    margin:0px 10px;
 }
 
 .svgicon p {
@@ -43,7 +42,9 @@
 }
 
 .subtitleword{
-    font-size: 16px;
+    font-size: 24px;
+    color: rgb(0, 0, 0);
+    -webkit-text-stroke: 0.1px rgb(4, 0, 255);
 }
 
 .searchinput {
@@ -57,17 +58,21 @@
     margin-bottom: 30px;
     display: flex;
     justify-content: space-between;
+    /* border: 1px black solid; */
 }
 
 .recommendlist {
     width: 48%;
     display: flex;
+    margin-bottom: 10px;
+    /* border: 1px black solid; */
 }
 
 .recipephoto {
     width: 250px;
     height: 200px;
     position: relative;
+    border: 1px black solid;
 }
 
 .recipephoto img {
@@ -88,6 +93,7 @@
     line-height: 30px;
     margin-left:10px ;
     margin-bottom: 30px;
+    /* border: 1px black solid; */
 }
 
 .iconmanagement {
@@ -113,6 +119,17 @@
 }
 
 @media screen and (max-width:1050px) {
+    .searchinput {
+        font-size: 20px;
+    }
+
+    .titleword{
+        text-align: center;
+        font-size: 20px;
+        padding-top: 30px;
+        padding-bottom: 15px;
+    }
+
     .recommend {
         width: 70%;
         margin-left: 15%;
@@ -127,6 +144,25 @@
         margin-left: 5%;
         margin-right: 5%;
         display: flex;
+    }
+
+    .recipephoto img {
+        max-height: 100%;  
+        max-width: 100%; 
+        width: auto;
+        height: auto;
+        position: absolute;
+        top: 0;  
+        bottom: 0;  
+        left: 0;  
+        right: 0;  
+        margin: auto;
+    }
+
+    .pa {
+        display: flex;
+        justify-content: center; 
+        align-items: center;
     }
 
 }

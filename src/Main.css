@@ -11,3 +11,7 @@
 .cursor_pointer {
     cursor: pointer;
 }
+
+.firstPagePadding{
+    transform: translateY(-100px);
+}

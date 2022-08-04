@@ -1,9 +1,9 @@
-
-.recipetitle {
-    text-align: center;
-    font-size: 30px;
-    padding-top: 250px;
-    padding-bottom: 100px;
+.eachrecipetitle {
+    text-align: center; 
+    font-size: 30px; 
+    font-weight: 500; 
+    padding-top: 40px; 
+    padding-bottom: 10px;
 }
 
 .line {
@@ -35,62 +35,34 @@
     width: 48%;
 }
 
-@media screen and (max-width:756px) {
-    .recipeinfo {
-    width: 80%;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: 10%;
-    margin-right: 10%;
-    display: flex;
-    flex-wrap: wrap;
-    /* justify-content: space-between; */
-    }
-
-    .pic {
-        width: 90%;
-    }
-
-    .likeandcollect {
-        justify-content: space-between;
-    }
-
-    .recipedetail {
-        width: 90%;
-    }
-
-    .greencircle {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background-color: rgb(130, 202, 53);
-}
-
-.recipedata p {
-    font-size: 12px;
-    padding-left: 5px;
-}
-
-}
-
 /* 分隔線 */
 
 .auther {
     display: flex;
+    justify-content: space-between;
     border-bottom: 1px solid rgb(0, 0, 0);
 }
 
+.authername{
+    font-size: 20px;
+}
+
 .likeandcollect {
-    margin-left: 50px;
-    width: 20%;
+    margin-right: 40px;
+    width: 50px;
     display: flex;
+    /* border: 1px solid black; */
 }
 
 .likeandcollect img {
-    height: 40px;
-    width: 40px;
-    padding-left: 5px;
-    padding-right: 5px;
+    height: 30px;
+    width: 30px;
+}
+
+.buttonineach{
+    margin-right: 0px;
+    border: 0px;
+    background-color: rgb(255, 255, 255);
 }
 
 .recipeinfomation {
@@ -110,6 +82,7 @@
     height: 40px;
     border-radius: 50%;
     background-color: rgb(130, 202, 53);
+    overflow: hidden;
 }
 
 .greencircle img {
@@ -230,7 +203,82 @@
 }
 
 
-@media screen and (max-width:800px) {
+.iconineach {
+    width: 30px;
+    height: 30px;
+}
+
+.buttonlist{
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    flex-wrap: wrap;
+    padding: 20px;
+    background-color: rgb(239, 240, 234);
+}
+
+.recipelistbutton{
+    width: 150px;
+    height: 40px;
+    background-color: rgb(130, 202, 53);
+    border-radius: 12px;
+    border: 0;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    margin: 5px;
+}
+
+.create{
+    width: 150px;
+    height: 40px;
+    background-color: rgb(235, 65, 65);
+    border-radius: 12px;
+    border: 0;
+    font-size: 20px;
+    color: white;
+    margin: 5px;
+}
+
+.update{
+    width: 150px;
+    height: 40px;
+    background-color: rgb(130, 202, 53);
+    border-radius: 12px;
+    border: 0;
+    font-size: 20px;
+    color: white;
+    margin: 5px;
+}
+
+.delete {
+    width: 150px;
+    height: 40px;
+    background-color: rgba(130, 202, 53, 0);
+    border-radius: 12px;
+    border: 0;
+    font-size: 20px;
+    color: rgb(130, 202, 53);
+    border: 1px solid rgb(130, 202, 53);
+    margin: 5px;
+}
+
+.crud{
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+}
+
+
+
+@media screen and (max-width:756px) {
+    .eachrecipetitle {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 500;
+        padding-top: 50px;
+        padding-bottom: 10px;
+    }
+
     .cook {
         width: 100%;
         margin-left: 0;
@@ -249,78 +297,51 @@
     .cooking {
         width: 100%;
     }
-}
-.buttonineach{
-    margin-right: 30px;
-    border: 0px;
-    background-color: rgb(255, 255, 255);
+
+    .recipeinfo {
+        width: 80%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 10%;
+        margin-right: 10%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .pic {
+        width: 90%;
+    }
+
+    .likeandcollect{
+        justify-content: space-between;
+    }
+
+    .recipedetail {
+        width: 90%;
+    }
+
+    .greencircle {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-color: rgb(130, 202, 53);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .greencircle img {
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .recipedata p {
+        font-size: 12px;
+        padding-left: 5px;
+    }
+
 }
 
-.iconineach {
-    width: 30px;
-    height: 30px;
-}
-
-.buttonlist{
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    padding-top: 20px;
-    padding-bottom: 10px;
-    background-color: rgb(239, 240, 234);
-}
-
-.list{
-    width: 150px;
-    height: 40px;
-    background-color: rgb(130, 202, 53);
-    border-radius: 12px;
-    border: 0;
-    font-size: 20px;
-    color: white;
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
-.create{
-    width: 150px;
-    height: 40px;
-    background-color: rgb(235, 65, 65);
-    border-radius: 12px;
-    border: 0;
-    font-size: 20px;
-    color: white;
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
-.update{
-    width: 150px;
-    height: 40px;
-    background-color: rgb(130, 202, 53);
-    border-radius: 12px;
-    border: 0;
-    font-size: 20px;
-    color: white;
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
-.delete {
-    width: 150px;
-    height: 40px;
-    background-color: rgba(130, 202, 53, 0);
-    border-radius: 12px;
-    border: 0;
-    font-size: 20px;
-    color: rgb(130, 202, 53);
-    border: 1px solid rgb(130, 202, 53);
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
-.crud{
-    width: 20px;
-    height: 20px;
-    margin-left: 10px;
-}

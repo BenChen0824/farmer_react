@@ -4,18 +4,17 @@ import './Eachrecipe.css';
 function Eachrecipe() {
     return (
         <>
-            <h2 className="recipetitle">金沙蒜醬焗烤明蝦 (澎湖野生大明蝦)</h2>
+            <p className="eachrecipetitle">金沙蒜醬焗烤明蝦 (澎湖野生大明蝦)</p>
             <hr className="line" align="center" />
 
             <div className="recipeinfo">
                 <div className="pic">
-                    <img src="/images/1.dishimage.jpg" alt="" />
+                    <img src="/images/dishimage.jpg" alt="" />
                 </div>
                 <div className="recipedetail">
                     <div className="auther">
-                        <div>
-                            <p>作者：XXX</p>
-                        </div>
+                        <p className="authername">作者：XXX</p>
+
                         <div className="likeandcollect">
                             <button className="buttonineach">
                                 <img
@@ -202,22 +201,37 @@ function Eachrecipe() {
                 </div>
             </div>
             <div className="buttonlist">
-                <button className="list">
-                    食譜列表
-                    <img src="/images/files.svg" alt="" className="crud" />
-                </button>
-                <button className="create">
-                    新增食譜
-                    <img src="/images/file-plus.svg" alt="" className="crud" />
-                </button>
+                <a href="./">
+                    <button className="recipelistbutton">
+                        食譜列表
+                        <img src="/images/files.svg" alt="" className="crud" />
+                    </button>
+                </a>
+
+                <a href="./createrecipe">
+                    <button className="create">
+                        新增食譜
+                        <img
+                            src="/images/file-plus.svg"
+                            alt=""
+                            className="crud"
+                        />
+                    </button>
+                </a>
+
+                {/* <a href=""> */}
                 <button className="update">
                     修改食譜
                     <img src="/images/pen.svg" alt="" className="crud" />
                 </button>
+                {/* </a> */}
+
+                {/* <a href=""> */}
                 <button className="delete">
                     刪除食譜
                     <img src="/images/trashcan.svg" alt="" className="crud" />
                 </button>
+                {/* </a> */}
             </div>
         </>
     );
