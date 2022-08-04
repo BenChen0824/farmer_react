@@ -1,12 +1,27 @@
 import './profile.css'
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import MemberNavbar from '../component/memberCenter_Navbar';
-
+import axios from 'axios';
 
 function MemberProfile(){
-    
     const hiddenFileInput = useRef('')
     const [image, setImage] = useState({preview:'', data:''})
+    const [profileData, setProfileData] = useState([{
+        username: '',
+        intro:'',
+        profile_img:''
+    }])
+    const [editStatus, setEditStatus] = useState(true)
+    const loginUser = JSON.parse(localStorage.getItem("auth"))
+
+    const getProfileData = async ()=>{
+        const response = await axios.get('http://localhost:3600/member/getintro', { headers: {loginUser: loginUser.customer_id}})
+        setProfileData(response.data)
+    }
+
+    useEffect(()=>{
+        getProfileData()
+    },[editStatus])
 
     const handleClick = (event) => {
         hiddenFileInput.current.click()
@@ -28,9 +43,32 @@ function MemberProfile(){
             preview: URL.createObjectURL(event.target.files[0]),
             data: event.target.files[0],
           }
-
         setImage(img)
         handleSubmit(img)
+    }
+
+    const sendProfile = (event)=>{
+        event.preventDefault()
+        const data = {
+            username: document.form1.username.value,
+            intro: document.form1.intro.value,
+            customer_id: loginUser.customer_id
+        }
+
+        fetch('http://localhost:3600/member/editintro',{
+            method:'post',
+            body: JSON.stringify(data),
+            headers:{
+                'Content-Type':'application/json'
+            }
+        })
+        .then(r=>r.json())
+        .then(obj=>{
+            console.log(obj);
+            if(obj.success){
+                alert('編輯成功')
+            }
+        })
     }
 
     return(
@@ -44,7 +82,7 @@ function MemberProfile(){
                         <div className='row justify-content-center'>
                             <div className='card mb-3 text-white bg-dark shadow-sm' style={{maxWidth: '540px'}}>
                                 <div className='row g-0 p-2'>
-                                    <div className='position-absolute'>
+                                    <div className='col-1 position-absolute bop-camPosition'>
                                         <form style={{display:'none'}} onSubmit={handleSubmit}>
                                             <input id="inputData" name="file" type="file"
                                             ref={hiddenFileInput} 
@@ -59,15 +97,43 @@ function MemberProfile(){
                                                 </svg>
                                         </button>
                                     </div>
-                                    <div className="col-md-4 bop-w150 bop-h150 p-2">
+                                    <div className="col-md-4 bop-w150 bop-h150 p-2 m-auto">
                                         <img className="img-fluid border border-white border-2 rounded-circle w-100 h-100 bop-objft" src={image.preview ? image.preview : '/member_imgs/user.png'} alt="123"/>
                                     </div>
                                     <div className="col-md-8">
-                                        <div className="card-body">
-                                            <button type="button" className="btn btn-success btn-sm m-1">粉絲追蹤</button>
-                                            <button type="button" className="btn btn-success btn-sm m-1">食譜發表</button>
-                                            <p className="card-text">會員暱稱</p>
-                                            <p className="card-text">自我介紹</p>
+                                        <div className="card-body position-relative">
+                                            <form name="form1" onSubmit={sendProfile}>
+                                                <input type="hidden" name="customer_id" defaultValue={loginUser.customer_id}/>
+                                                {editStatus ? (
+                                                    <>
+                                                    <div className="mb-3">
+                                                        <label htmlFor="exampleFormControlInput1" className="form-label">會員暱稱</label>
+                                                        <textarea type="text" name="username" className="form-control-plaintext text-white border-top" readOnly defaultValue={
+                                                            profileData[0] ? (profileData[0].username) : ('')} rows="1"></textarea>
+                                                    </div>
+                                                    <div>
+                                                        <label htmlFor="exampleFormControlTextarea1" className="form-label">會員簡介</label>
+                                                        <textarea className="form-control-plaintext text-white border-top" name="intro" rows="1" readOnly defaultValue={
+                                                            profileData[0] ? (profileData[0].intro) : ('')}></textarea>
+                                                    </div>
+                                                    <button className="btn btn-outline-light btn-sm position-absolute rounded lh-1 bop-editPosition" onClick={(event)=>{
+                                                        event.preventDefault()
+                                                        setEditStatus(false)}}>編輯</button>
+                                                </>
+                                                ) : (
+                                                    <>
+                                                    <div className="mb-3">
+                                                        <label htmlFor="exampleFormControlInput1" className="form-label">會員暱稱</label>
+                                                        <textarea type="text" name="username" className="form-control" rows="1"></textarea>
+                                                    </div>
+                                                    <div>
+                                                        <label htmlFor="exampleFormControlTextarea1" className="form-label">會員簡介</label>
+                                                        <textarea className="form-control" name="intro" rows="1"></textarea>
+                                                    </div>
+                                                    <button className="btn btn-outline-light btn-sm position-absolute rounded lh-1 bop-editPosition" type="submit" onClick={()=>{setEditStatus(true)}}>送出</button>
+                                                </>
+                                                )}
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
