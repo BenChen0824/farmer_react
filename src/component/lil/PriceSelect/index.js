@@ -17,6 +17,7 @@ const customStyles = {
         borderRadius: 20,
         paddingLeft: 12,
         marginBottom: 20,
+        cursor: 'pointer',
     }),
     singleValue: (provided, state) => {
         return { ...provided, fontSize: 13 };
@@ -32,14 +33,12 @@ const customStyles = {
     placeholder: (provided, state) => ({ ...provided, fontSize: 14 }),
 };
 
-function PriceSelect() {
-    const [selectedOption, setSelectedOption] = useState(null);
-
+function PriceSelect({ value, onSelect }) {
     return (
         <Select
             styles={customStyles}
-            value={selectedOption}
-            onChange={setSelectedOption}
+            value={value}
+            onChange={onSelect}
             options={options}
             placeholder="請選擇"
         />
