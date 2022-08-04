@@ -1,8 +1,7 @@
 
 .creatrecipe {
   text-align: center;
-  padding-top: 200px;
-  padding-bottom: 50px;
+  padding:60px 10%;
 }
 
 .hr{
@@ -121,7 +120,37 @@
   border: 0px;
 }
 
+.buttonincreate{
+  border: 0px;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.additemarea{
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+}
+
+.buttonincreateplus{
+  border: 0px;
+  background-color: rgb(255, 255, 255);
+}
+
+.iconincreate{
+  width: 40px;
+  height: 40px;
+  margin-left: 30px;
+}
+
+.iconincreateplus {
+  width: 40px;
+  height: 40px;
+}
+
 @media screen and (max-width:950px) {
+  .creatrecipe {
+    padding:20px 10%;
+  }
 
   .hr {
   width: 70%;
@@ -139,10 +168,11 @@
 
   .dataname {
     font-size: 18px;
+    margin-right: 10px;
   }
 
   .dataform1 {
-    width: 250px;
+    width: 150px;
     height: 30px;
   }
 
@@ -151,9 +181,9 @@
   }
 
   .dataform2 {
-    margin-left: 15px;
-    width: 200px;
-    height: 40px;
+    margin-left: 10px;
+    width: 100px;
+    height: 30px;
   }
 
   .breakpointtitle2 {
@@ -162,14 +192,25 @@
   }
 
   .ingredientuse {
-    width: 150px;
+    width: 100px;
     height: 30px;
   }
 
   .portionuse {
-    width: 100px;
+    width: 80px;
     height: 30px;
-    margin-left: 20px;
+    margin-left: 10px;
+  }
+
+  .iconincreate{
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+  }
+
+  .iconincreateplus {
+    width: 30px;
+    height: 30px;
   }
 
   .plus {
@@ -199,24 +240,3 @@
     position: relative;
   }
 }
-
-.buttonincreate{
-  border: 0px;
-  background-color: rgba(255, 255, 255, 0);
-}
-
-.buttonincreateplus{
-  border: 0px;
-  margin-left: 50%;
-  background-color: rgb(255, 255, 255);
-}
-
-.iconincreate{
-  width: 40px;
-  height: 40px;
-  margin-left: 30px;
-}
-
-/* <button className="buttonincreate">
-<img src={trashcan} alt="" className="iconincreate" />
-</button> */

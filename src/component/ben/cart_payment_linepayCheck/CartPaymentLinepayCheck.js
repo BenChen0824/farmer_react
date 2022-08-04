@@ -1,6 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { CART_LINEPAY_CHECK } from './../../../config/ajax-path';
+import {
+    CART_LINEPAY_CHECK,
+    CART_LIST_ORDERLIST,
+} from './../../../config/ajax-path';
+
 import CartCountContext from '../cart_count/CartCountContext';
 import { DoubleOrbit } from 'react-spinner-animated';
 
@@ -30,9 +34,31 @@ function CartPaymentLinepayCheck() {
                 // console.log(JSON.stringify(obj));
                 sessionStorage.removeItem('transitionID');
                 sessionStorage.removeItem('amount');
-                navigate('/cart/success');
+                // navigate('/cart/success');
             });
     }
+
+    const sqlData = () => {
+        const sendData = sessionStorage.getItem('linepayData');
+        console.log(sendData);
+        fetch(CART_LIST_ORDERLIST, {
+            method: 'POST',
+            body: sendData,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((r) => r.json())
+            .then((obj) => {
+                console.log(setCartList(obj));
+                navigate('/cart/success');
+            });
+    };
+
+    const clickChangeSQLandLineCheck = () => {
+        checkLine();
+        sqlData();
+    };
 
     useEffect(() => {
         const newCartListAmountArray = cartList
@@ -119,8 +145,7 @@ function CartPaymentLinepayCheck() {
                     <span
                         className="cursor_pointer"
                         onClick={() => {
-
-                            checkLine();
+                            clickChangeSQLandLineCheck();
                         }}
                     >
                         {' '}

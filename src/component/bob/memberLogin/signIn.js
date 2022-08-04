@@ -41,7 +41,7 @@ function SignIn() {
         var URL = 'https://access.line.me/oauth2/v2.1/authorize?';
         URL += 'response_type=code';
         URL += '&client_id=1657236186';
-        URL += '&redirect_uri=http://localhost:3500/data';
+        URL += '&redirect_uri=http://127.0.0.1:3000/member/data';
         URL += '&state=abcde';
         URL += '&scope=openid%20profile';
         window.location.href = URL;

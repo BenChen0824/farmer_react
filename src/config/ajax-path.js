@@ -7,6 +7,7 @@ export const CART_LIST_TOBUY = `${SERVER}/cart`;
 export const CART_LIST_CHANGE_COUNT = `${SERVER}/cart/changenum`;
 export const CART_LIST_DELETE = `${SERVER}/cart/delete`;
 export const CART_LIST_CHECK = `${SERVER}/cart/readytobuy`;
+export const CART_LIST_ORDERLIST = `${SERVER}/cart/addtoorderlist`;
 export const CART_LINEPAY = `${SERVER}/linepay`;
 export const CART_LINEPAY_CHECK = `${SERVER}/linepay-check`;
 export const CART_EMAIL = `${SERVER}/cartemail`;

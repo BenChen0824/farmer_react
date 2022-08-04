@@ -7,6 +7,7 @@ function MemberCollections() {
     const [searchInput, setSearchInput] = useState('');
     const [filteredResult, setFilteredResult] = useState([]);
     const [filterCate, setFilterCate] = useState('');
+    const [deleteStatus, setDeleteStatus] = useState(false);
 
     const category = ['蔬菜', '海鮮', '水果'];
 
@@ -22,7 +23,7 @@ function MemberCollections() {
 
     useEffect(() => {
         getCollections();
-    }, []);
+    }, [deleteStatus]);
 
     function searchItems(searchValue) {
         setSearchInput(searchValue);
@@ -53,6 +54,20 @@ function MemberCollections() {
             setFilteredResult(response);
         }
     }
+
+    const deleteProduct = async (event) => {
+        setDeleteStatus(false);
+        const r = await fetch('http://localhost:3600/member/deleteproduct', {
+            method: 'DELETE',
+            headers: {
+                customer_id: loginUser.customer_id,
+                product_id: event.target.id,
+            },
+        });
+        const obj = await r.json();
+        console.log(obj);
+        setDeleteStatus(true);
+    };
 
     return (
         <>
@@ -113,6 +128,15 @@ function MemberCollections() {
                                               style={{ width: '16rem' }}
                                               key={res.product_id}
                                           >
+                                              <div className="position-absolute top-0 end-0">
+                                                  <button
+                                                      id={res.product_id}
+                                                      className="btn btn-sm btn-light rounded-circle py-1 lh-1 boc-lineheight text-end"
+                                                      onClick={deleteProduct}
+                                                  >
+                                                      ×
+                                                  </button>
+                                              </div>
                                               <img
                                                   src={`/images/${res.product_img}`}
                                                   className="card-img-top boc-objft"
@@ -147,6 +171,15 @@ function MemberCollections() {
                                               val={res.customer_id}
                                               key={res.product_id}
                                           >
+                                              <div className="position-absolute top-0 end-0">
+                                                  <button
+                                                      id={res.product_id}
+                                                      className="btn btn-sm btn-light rounded-circle fs-6 px-1 boc-lineheight text-end"
+                                                      onClick={deleteProduct}
+                                                  >
+                                                      ×
+                                                  </button>
+                                              </div>
                                               <img
                                                   src={`/images/${res.product_img}`}
                                                   className="card-img-top boc-objft"

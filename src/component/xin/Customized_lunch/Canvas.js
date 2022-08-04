@@ -4,6 +4,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 function Canvas(props) {
+    const member_info = localStorage.getItem('auth');
     const { totalPrice, foodCount, setFoodCount, dataFromFoodArea } = props;
     const [cache, setCache] = useState({});
     const [textArea, setTextArea] = useState('');
@@ -81,9 +82,7 @@ function Canvas(props) {
     // 存canvas畫布
     let key = 'draw-food';
     const saveCanvas = () => {
-        const imgTxt = cRef.current
-            .toDataURL('image/png')
-            .replace('image/png', 'image/octet-stream');
+        const imgTxt = cRef.current.toDataURL();
         sessionStorage.setItem(key, imgTxt);
     };
 
@@ -102,6 +101,7 @@ function Canvas(props) {
         fd.append('lunch_5', dataFromFoodArea[4].name);
         fd.append('total_price', totalPrice);
         fd.append('lunch_pic', sessionStorage.getItem(key));
+        fd.append('member_id', member_info.customer_id);
 
         try {
             const response = await fetch(
@@ -135,9 +135,7 @@ function Canvas(props) {
                         </li>
                     </ol>
                 </nav>
-                <h2 className="xinCanvasTitle m-0 xin-font-primary-color text-center">
-                    客製化餐點
-                </h2>
+
                 <canvas
                     ref={shadowRef}
                     width="600"
@@ -158,58 +156,61 @@ function Canvas(props) {
                     }}
                 >
                     <div className="xin-canvas-topay d-flex flex-column align-items-center flex-wrap">
-                        <div className="lunch-name-area mb-3">
-                            <label htmlFor="">請幫您的便當取名:</label>
+                        <div className="d-md-flex lunch-name-area mb-3 h4">
+                            <label htmlFor="">便當名稱:</label>
                             <input
                                 type="text"
+                                className="lunch-name-input form-control"
                                 name="lunch_name"
                                 value={inputName}
                                 onChange={(e) => {
                                     setInputName(e.target.value);
                                 }}
                             />
+                            <div className="form-group d-flex align-items-center my-3 my-md-0 ms-md-3">
+                                <label
+                                    htmlFor="exampleFormControlSelect1 "
+                                    className="xin-font-primary-color h4 m-0 pe-1"
+                                >
+                                    便當數量:
+                                </label>
+                                <select
+                                    value={foodCount}
+                                    onChange={(e) => {
+                                        setFoodCount(e.target.value);
+                                    }}
+                                    className="form-select lunchbox_stock  me-3 "
+                                    id="exampleFormControlSelect1"
+                                    name="lunchbox_stock"
+                                    required
+                                >
+                                    {lunchCount()}
+                                </select>
+                            </div>
                         </div>
-                        <div className="form-group d-flex align-items-center  justify-content-center col-md-6 col-12 mb-3">
-                            <label
-                                htmlFor="exampleFormControlSelect1 "
-                                className="xin-font-primary-color h4 m-0 pe-1"
-                            >
-                                請選擇便當數量:
-                            </label>
-                            <select
-                                value={foodCount}
-                                onChange={(e) => {
-                                    setFoodCount(e.target.value);
-                                }}
-                                className="form-select lunchbox_stock  me-3 "
-                                id="exampleFormControlSelect1"
-                                name="lunchbox_stock"
-                                required
-                            >
-                                {lunchCount()}
-                            </select>
-                        </div>
-                        <div className="canvaslabelTitle form-group d-flex flex-column  mb-3">
-                            <label
-                                htmlFor="exampleFormControlTextarea1"
-                                className="canvaslabel"
-                            >
-                                備註欄:
-                            </label>
-                            <textarea
-                                value={textArea}
-                                onChange={(e) => {
-                                    setTextArea(e.target.value);
-                                }}
-                                className="form-control canvasTextArea "
-                                id="exampleFormControlTextarea1"
-                                rows="3"
-                                name="custom_remark"
-                            ></textarea>
+                        <div className="d-flex flex-wrap col-12 justify-content-center w-100">
+                            <div className="canvaslabelTitle form-group d-flex flex-column  mb-3">
+                                <label
+                                    htmlFor="exampleFormControlTextarea1"
+                                    className="canvaslabel"
+                                >
+                                    備註欄:
+                                </label>
+                                <textarea
+                                    value={textArea}
+                                    onChange={(e) => {
+                                        setTextArea(e.target.value);
+                                    }}
+                                    className="form-control canvasTextArea "
+                                    id="exampleFormControlTextarea1"
+                                    rows="3"
+                                    name="custom_remark"
+                                ></textarea>
+                            </div>
                         </div>
 
                         <div className="canvasBtns  d-flex justify-content-center  mb-md-3">
-                            <button className="priceArea price-btn btn btn-success me-3 xin-font-primary-color">
+                            <button className="priceArea price-btn btn btn-success me-3 xin-font-primary-color disabled">
                                 總價:{totalPrice}
                             </button>
                             <button

@@ -42,6 +42,8 @@ function Createrecipe() {
 
     // 料理食材
     const [ingredient, setIngredient] = useState('');
+    // 食材分量
+    const [unit, setUnit] = useState('');
 
     // 料理步驟
     const [step, setStep] = useState('');
@@ -75,7 +77,7 @@ function Createrecipe() {
                         <textarea
                             className="dataform1"
                             value={description}
-                            placeholder="請以100字內簡單描述"
+                            placeholder="請100字內簡單描述"
                             cols="30"
                             rows="3"
                             onChange={(e) => {
@@ -223,14 +225,14 @@ function Createrecipe() {
                             />
                         </section>
 
-                        <section id="ingredient">
+                        <section id="unit">
                             <input
                                 type="text"
                                 className="portionuse"
-                                value={recipesname}
+                                value={unit}
                                 placeholder="請輸入份量"
                                 onChange={(e) => {
-                                    setIngredient(e.target.value);
+                                    setUnit(e.target.value);
                                 }}
                             />
                         </section>
@@ -259,14 +261,14 @@ function Createrecipe() {
                             />
                         </section>
 
-                        <section id="recipesname">
+                        <section id="unit">
                             <input
                                 type="text"
                                 className="portionuse"
-                                value={recipesname}
+                                value={unit}
                                 placeholder="請輸入份量"
                                 onChange={(e) => {
-                                    setRecipesname(e.target.value);
+                                    setUnit(e.target.value);
                                 }}
                             />
                         </section>
@@ -294,14 +296,14 @@ function Createrecipe() {
                             />
                         </section>
 
-                        <section id="ingredient">
+                        <section id="unit">
                             <input
                                 type="text"
                                 className="portionuse"
-                                value={recipesname}
+                                value={unit}
                                 placeholder="請輸入份量"
                                 onChange={(e) => {
-                                    setIngredient(e.target.value);
+                                    setUnit(e.target.value);
                                 }}
                             />
                         </section>
@@ -316,9 +318,15 @@ function Createrecipe() {
                 </div>
             </div>
 
-            <button className="buttonincreateplus">
-                <img src="/images/plus.svg" alt="" className="iconincreate" />
-            </button>
+            <div className="additemarea">
+                <button className="buttonincreateplus">
+                    <img
+                        src="/images/plus.svg"
+                        alt=""
+                        className="iconincreateplus"
+                    />
+                </button>
+            </div>
 
             <hr className="hr" />
             {/* 分隔線，以下料理步驟 */}
@@ -385,9 +393,15 @@ function Createrecipe() {
                 </div>
             </div>
 
-            <button className="buttonincreateplus">
-                <img src="/images/plus.svg" alt="" className="iconincreate" />
-            </button>
+            <div className="additemarea">
+                <button className="buttonincreateplus">
+                    <img
+                        src="/images/plus.svg"
+                        alt=""
+                        className="iconincreateplus"
+                    />
+                </button>
+            </div>
 
             <hr className="hr" />
             {/* 分隔線，以下照片 */}
@@ -414,24 +428,6 @@ function Createrecipe() {
                     <img src="/images/file-plus.svg" alt="" className="crud" />
                 </button>
             </div>
-
-            {/* <section id="step">
-          <textarea
-            className="dataform1"
-            value={step}
-            placeholder="請輸入步驟"
-            onChange={(e) => {
-              setStep(e.target.value)
-            }}
-          />
-        </section> */}
-
-            {/* <div class="row mb-3">
-  <label for="colFormLabel" class="col-sm-2 col-form-label">Email</label>
-  <div class="col-sm-10">
-    <input type="email" class="form-control" id="colFormLabel" placeholder="col-form-label">
-  </div>
-</div> */}
         </>
     );
 }

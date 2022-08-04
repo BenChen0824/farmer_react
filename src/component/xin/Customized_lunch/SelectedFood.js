@@ -139,8 +139,8 @@ function SelectedFood(props) {
                                         <i
                                             className={
                                                 isShowedSelectFood
-                                                    ? 'fa-solid fa-trash '
-                                                    : 'fa-solid fa-trash  hidden'
+                                                    ? 'fa-solid fa-trash'
+                                                    : 'fa-solid fa-trash hidden'
                                             }
                                             onClick={() => {
                                                 const newDelete =

@@ -50,7 +50,7 @@ function CartSuccess() {
         // console.log(data_ar);
         if (data_ar.length !== 0) {
             for (let i in data_ar) {
-                google_order_sid = getFreshItems[i].sid;
+                google_order_sid = getFreshItems[i].product_id;
                 google_product_name = data_ar[i]['product_name'];
                 google_product_price = data_ar[i]['product_price'];
                 google_qty = data_ar[i]['product_count'];
@@ -88,7 +88,14 @@ function CartSuccess() {
             navigate('/product');
         }, 2000);
     };
-
+    const sendBtnOrders = () => {
+        sendEmail();
+        sendGoogleData();
+        setTimeout(() => {
+            sessionStorage.clear();
+            navigate('/member/orders');
+        }, 2000);
+    };
     return (
         <>
             <div className="container">
@@ -158,8 +165,15 @@ function CartSuccess() {
                             付款成功紀錄已寄至您的Email信箱 aaabb@abc.com
                             <br />
                             可於您的【
-                            <Link to="/">
-                                <span className="text-primary">購物明細</span>
+                            <Link to="/member/orders">
+                                <span
+                                    className="text-primary"
+                                    onClick={() => {
+                                        sendBtnOrders();
+                                    }}
+                                >
+                                    購物明細
+                                </span>
                             </Link>
                             】中查詢交易資訊
                             <br />
@@ -202,8 +216,8 @@ function CartSuccess() {
                                         {getCustomizedItems.map((v, i) => {
                                             return (
                                                 <div>
-                                                    {v.product_name}
-                                                    {v.product_price}元 *
+                                                    {v.lunch_name}
+                                                    {v.total_price}元 *
                                                     {v.product_count}個
                                                 </div>
                                             );

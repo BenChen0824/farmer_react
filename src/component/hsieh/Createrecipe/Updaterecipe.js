@@ -3,23 +3,40 @@ import React from 'react';
 import './Createrecipe.css';
 
 function Updaterecipe() {
-    // 新增食譜
+    // 更改食譜名稱
+    // const [updateRecipesname, setUpdateRecipesname] = useState('');
     const [recipesname, setRecipesname] = useState('');
 
     // 料理簡介
+    // const [updateDescription, setUpdateDescription] = useState('');
     const [description, setDescription] = useState('');
 
     // 烹調時間
+    // const [updateTimecost, setUpdateTimecost] = useState('');
     const [timecost, setTimecost] = useState('');
 
     // 料理熱量
+    // const [updateTimecost, setUpdateTimecost] = useState('');
     const [calories, setCalories] = useState('');
 
     // 料理份量
+    // const [updatePortion, setUpdatePortion] = useState('');
+    // const updatePortionOptions = ['1人分', '2人分', '3人分', '4人分', '5人分以上'];
     const [portion, setPortion] = useState('');
     const portionOptions = ['1人分', '2人分', '3人分', '4人分', '5人分以上'];
 
     // select，料理類型
+    //const [updateRecipestype, setUpdateRecipestype] = useState('');
+    //const UpdateRecipestypeOptions = [
+    //     '台灣料理',
+    //     '中華料理',
+    //     '日式料理',
+    //     '韓式料理',
+    //     '南洋料理',
+    //     '歐式料理',
+    //     '美式料理',
+    //     '其他',
+    // ];
     const [recipestype, setRecipestype] = useState('');
     const recipestypeOptions = [
         '台灣料理',
@@ -33,6 +50,12 @@ function Updaterecipe() {
     ];
 
     // select，料理難易度
+    // const [updateRecipesdegree, setUpdateRecipesdegree] = useState('');
+    // const updateRecipesdegreeOptions = [
+    //     '新手輕鬆入門',
+    //     '餐廳廚師料理',
+    //     '米其林名廚作品',
+    // ];
     const [recipesdegree, setRecipesdegree] = useState('');
     const recipesdegreeOptions = [
         '新手輕鬆入門',
@@ -41,9 +64,14 @@ function Updaterecipe() {
     ];
 
     // 料理食材
+    // const [updateIngredient, updateSetIngredient] = useState('');
     const [ingredient, setIngredient] = useState('');
+    // 食材分量
+    // const [updateUnit, updateSetUnit] = useState('');
+    const [unit, setUnit] = useState('');
 
     // 料理步驟
+    // const [updateStep, setUpdateStep]
     const [step, setStep] = useState('');
 
     return (
@@ -75,7 +103,7 @@ function Updaterecipe() {
                         <textarea
                             className="dataform1"
                             value={description}
-                            placeholder="請以100字內簡單描述"
+                            placeholder="請100字內簡單描述"
                             cols="30"
                             rows="3"
                             onChange={(e) => {
@@ -223,14 +251,14 @@ function Updaterecipe() {
                             />
                         </section>
 
-                        <section id="ingredient">
+                        <section id="unit">
                             <input
                                 type="text"
                                 className="portionuse"
-                                value={recipesname}
+                                value={unit}
                                 placeholder="請輸入份量"
                                 onChange={(e) => {
-                                    setIngredient(e.target.value);
+                                    setUnit(e.target.value);
                                 }}
                             />
                         </section>
@@ -259,14 +287,14 @@ function Updaterecipe() {
                             />
                         </section>
 
-                        <section id="recipesname">
+                        <section id="unit">
                             <input
                                 type="text"
                                 className="portionuse"
-                                value={recipesname}
+                                value={unit}
                                 placeholder="請輸入份量"
                                 onChange={(e) => {
-                                    setRecipesname(e.target.value);
+                                    setUnit(e.target.value);
                                 }}
                             />
                         </section>
@@ -294,14 +322,14 @@ function Updaterecipe() {
                             />
                         </section>
 
-                        <section id="ingredient">
+                        <section id="unit">
                             <input
                                 type="text"
                                 className="portionuse"
-                                value={recipesname}
+                                value={unit}
                                 placeholder="請輸入份量"
                                 onChange={(e) => {
-                                    setIngredient(e.target.value);
+                                    setUnit(e.target.value);
                                 }}
                             />
                         </section>
@@ -316,9 +344,15 @@ function Updaterecipe() {
                 </div>
             </div>
 
-            <button className="buttonincreateplus">
-                <img src="/images/plus.svg" alt="" className="iconincreate" />
-            </button>
+            <div className="additemarea">
+                <button className="buttonincreateplus">
+                    <img
+                        src="/images/plus.svg"
+                        alt=""
+                        className="iconincreateplus"
+                    />
+                </button>
+            </div>
 
             <hr className="hr" />
             {/* 分隔線，以下料理步驟 */}
@@ -385,9 +419,15 @@ function Updaterecipe() {
                 </div>
             </div>
 
-            <button className="buttonincreateplus">
-                <img src="/images/plus.svg" alt="" className="iconincreate" />
-            </button>
+            <div className="additemarea">
+                <button className="buttonincreateplus">
+                    <img
+                        src="/images/plus.svg"
+                        alt=""
+                        className="iconincreateplus"
+                    />
+                </button>
+            </div>
 
             <hr className="hr" />
             {/* 分隔線，以下照片 */}
@@ -414,24 +454,6 @@ function Updaterecipe() {
                     <img src="/images/pen.svg" alt="" className="crud" />
                 </button>
             </div>
-
-            {/* <section id="step">
-          <textarea
-            className="dataform1"
-            value={step}
-            placeholder="請輸入步驟"
-            onChange={(e) => {
-              setStep(e.target.value)
-            }}
-          />
-        </section> */}
-
-            {/* <div class="row mb-3">
-  <label for="colFormLabel" class="col-sm-2 col-form-label">Email</label>
-  <div class="col-sm-10">
-    <input type="email" class="form-control" id="colFormLabel" placeholder="col-form-label">
-  </div>
-</div> */}
         </>
     );
 }
