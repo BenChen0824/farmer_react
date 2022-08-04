@@ -50,7 +50,7 @@ function CartSuccess() {
         // console.log(data_ar);
         if (data_ar.length !== 0) {
             for (let i in data_ar) {
-                google_order_sid = getFreshItems[i].sid;
+                google_order_sid = getFreshItems[i].product_id;
                 google_product_name = data_ar[i]['product_name'];
                 google_product_price = data_ar[i]['product_price'];
                 google_qty = data_ar[i]['product_count'];

@@ -461,7 +461,7 @@ function Cart() {
                                                     <div className="mx-2">
                                                         <img
                                                             className="cart_product_img"
-                                                            src={`/images/${v.lunch_pic}`}
+                                                            src={v.lunch_pic}
                                                             alt=""
                                                         />
                                                     </div>
