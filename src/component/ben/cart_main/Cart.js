@@ -9,6 +9,9 @@ import {
 import CartCountContext from '../cart_count/CartCountContext';
 
 function Cart() {
+    const member_info = JSON.parse(localStorage.getItem('auth'))
+        ? JSON.parse(localStorage.getItem('auth'))
+        : null;
     const navigate = useNavigate();
 
     //取得資料庫資料
@@ -23,7 +26,11 @@ function Cart() {
 
     // console.log(cartList);
     const changeCount = (sid, count) => {
-        let changeData = { sid, product_count: count };
+        let changeData = {
+            sid,
+            product_count: count,
+            member_id: member_info.customer_id,
+        };
 
         fetch(`${CART_LIST_CHANGE_COUNT}`, {
             method: 'PUT',
@@ -68,7 +75,7 @@ function Cart() {
 
     // 確認是否要進行購買;
     const productReadyToBuy = (sid, check) => {
-        let changeData = { sid, check };
+        let changeData = { sid, check, member_id: member_info.customer_id };
 
         fetch(`${CART_LIST_CHECK}`, {
             method: 'PUT',
@@ -97,7 +104,7 @@ function Cart() {
     const deleteItem = (sid, name) => {
         const deleteIt = window.confirm(`確定要將${name}移出您的購物車嗎`);
         if (deleteIt) {
-            let deleteData = { sid };
+            let deleteData = { sid, member_id: member_info.customer_id };
             fetch(`${CART_LIST_DELETE}`, {
                 method: 'DELETE',
                 body: JSON.stringify(deleteData),

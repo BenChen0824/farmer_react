@@ -4,7 +4,8 @@
 import { useEffect, useRef, useState } from 'react';
 
 function Canvas(props) {
-    const member_info = localStorage.getItem('auth');
+    const member_info = JSON.parse(localStorage.getItem('auth'));
+    // console.log(member_info.customer_id);
     const { totalPrice, foodCount, setFoodCount, dataFromFoodArea } = props;
     const [cache, setCache] = useState({});
     const [textArea, setTextArea] = useState('');
@@ -101,7 +102,8 @@ function Canvas(props) {
         fd.append('lunch_5', dataFromFoodArea[4].name);
         fd.append('total_price', totalPrice);
         fd.append('lunch_pic', sessionStorage.getItem(key));
-        fd.append('member_id', JSON.parse(member_info).customer_id);
+        fd.append('member_id', member_info.customer_id);
+        // console.log(member_info.customer_id);
         try {
             const response = await fetch(
                 'http://localhost:3600/customized_lunch/add',
