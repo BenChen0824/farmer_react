@@ -3,6 +3,7 @@ import Canvas from './Canvas';
 import SelectedFood from './SelectedFood';
 import './Customized_product.css';
 import { useState } from 'react';
+
 // import foodList from './data/foodList.json'
 //初始化狀態用的函式
 // const initState = (productArray) => {
