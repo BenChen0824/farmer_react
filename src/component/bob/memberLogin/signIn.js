@@ -2,9 +2,11 @@ import './login.css';
 import { useNavigate } from 'react-router-dom';
 import { useState, useContext } from 'react';
 import AuthContext from '../component/authContext';
+import CartCountContext from '../../ben/cart_count/CartCountContext';
 
 function SignIn() {
     const { setAuth } = useContext(AuthContext);
+    const { cartList, setCartList } = useContext(CartCountContext);
     const navigate = useNavigate();
 
     function Login(obj) {
@@ -34,6 +36,7 @@ function SignIn() {
         });
         const obj = await r.json();
         console.log(obj);
+        setCartList(obj.cart);
         Login(obj);
     };
 

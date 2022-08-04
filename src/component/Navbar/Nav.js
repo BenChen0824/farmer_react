@@ -10,9 +10,13 @@ import AuthContext from '../bob/component/authContext';
 
 function Nav() {
     const { cartList, setCartList } = useContext(CartCountContext);
+
     const [navColor, setNavColor] = useState(false);
     const { authorized, username, logout } = useContext(AuthContext);
-
+    const memberLogout = () => {
+        setCartList([]);
+        logout();
+    };
     const changeColor = () => {
         if (window.scrollY > 100) {
             setNavColor(true);
@@ -189,7 +193,7 @@ function Nav() {
                             <button
                                 className="btn btn-sm btn-outline-dark"
                                 onClick={() => {
-                                    logout();
+                                    memberLogout();
                                 }}
                             >
                                 登出
