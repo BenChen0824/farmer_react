@@ -72,6 +72,7 @@
     width: 250px;
     height: 200px;
     position: relative;
+    overflow: hidden;
     border: 1px black solid;
 }
 
@@ -86,6 +87,12 @@
     left: 0;  
     right: 0;  
     margin: auto;
+    transition: 0.35s;
+}
+
+.recipephoto:hover img {
+    transform: scale(1.1, 1.1);
+    opacity: 0.8;
 }
 
 .recipeblock {

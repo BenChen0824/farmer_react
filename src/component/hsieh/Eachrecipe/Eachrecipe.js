@@ -8,7 +8,7 @@ function Eachrecipe() {
             <hr className="line" align="center" />
 
             <div className="recipeinfo">
-                <div className="pic">
+                <div className="pictureineachrecipe">
                     <img src="/images/dishimage.jpg" alt="" />
                 </div>
                 <div className="recipedetail">

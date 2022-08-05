@@ -23,12 +23,19 @@
     justify-content: space-between;
 }
 
-.pic {
+.pictureineachrecipe {
     width: 50%;
+    overflow: hidden;
 }
 
-.pic img {
+.pictureineachrecipe img {
     width: 100%;
+    transition: 0.35s;
+}
+
+.pictureineachrecipe:hover img {
+    transform: scale(1.1, 1.1);
+    opacity: 0.8;
 }
 
 .recipedetail {
@@ -309,7 +316,7 @@
         justify-content: space-between;
     }
 
-    .pic {
+    .pictureineachrecipe {
         width: 90%;
     }
 
