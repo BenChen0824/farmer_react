@@ -35,8 +35,8 @@ export default function ChangeRecord() {
             <table className="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">折價編號#</th>
-                        <th scope="col">折價券</th>
+                        <th scope="col">會員ID</th>
+                        <th scope="col">折價券類型</th>
                         <th scope="col">花費點數</th>
                         <th scope="col">兌換時間</th>
                     </tr>
@@ -45,9 +45,9 @@ export default function ChangeRecord() {
                     {data && data.rows
                         ? data.rows.map((row) => (
                               <tr key={'mm' + row.change_sid}>
-                                  <td>{row.change_point}</td>
-                                  <td>{row.change_coupon50}</td>
-                                  <td>{row.change_coupon100}</td>
+                                  <td>{row.change_memberid}</td>
+                                  <td>{row.change_coupon}</td>
+                                  <td>{row.change_spainpoints}</td>
                                   <td>{row.change_time}</td>
                               </tr>
                           ))
