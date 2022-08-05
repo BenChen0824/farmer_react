@@ -71,12 +71,6 @@
     margin-bottom: 30px;
 }
 
-.iconmanagement {
-    display: flex;
-    margin-left: 10px;
-}
-
-
 .iconinsearch {
     width: 40px;
     height: 40px;
@@ -103,7 +97,7 @@
     align-items: center; 
 }
 
-@media screen and (max-width:400px) {
+@media screen and (max-width:550px) {
     .searchinput {
         font-size: 20px;
     }
@@ -132,8 +126,7 @@
 
     .recommendlist {
         width: 90%;
-        margin-left: 5%;
-        margin-right: 5%;
+        margin: 0 5%  30px;
         flex-wrap: wrap;
     }
 
@@ -145,7 +138,6 @@
 
     .recipephoto img {
         max-width: 100%;
-        margin: auto; 
         transition: 0.35s;
     }
 
@@ -153,17 +145,16 @@
         font-size: 20px;
         line-height: 30px;
         margin-left:5px ;
-        /* margin-bottom: 20px; */
-        border: 1px black solid;
+        /* border: 1px black solid; */
     }
 
     .iconinsearch {
-        width: 30px;
-        height: 30px;
-        margin-right: 5px;
-        margin-left: 5px;
+        width: 25px;
+        height: 25px;
+        margin-right: 10px;
+        margin-left: 10px;
     }
-
+    
 }
 
 

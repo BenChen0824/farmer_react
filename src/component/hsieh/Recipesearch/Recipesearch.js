@@ -87,9 +87,7 @@ function Recipesearch() {
                                     className="iconinsearch"
                                 />
                             </button>
-                            <div className="iconinsearchp">
-                                <p>10</p>
-                            </div>
+                            <p className="iconinsearchp">10</p>
                             <button className="buttoninsearch">
                                 <img
                                     src="/images/good.svg"
@@ -97,9 +95,7 @@ function Recipesearch() {
                                     className="iconinsearch"
                                 />
                             </button>
-                            <div className="iconinsearchp">
-                                <p>10</p>
-                            </div>
+                            <p className="iconinsearchp">10</p>
                         </div>
 
                         <hr className="hrline" />
@@ -110,7 +106,7 @@ function Recipesearch() {
                                 alt=""
                                 className="iconinsearch"
                             />
-                            <p className="iconinsearchp">10</p>
+                            <p className="iconinsearchp">10 分鐘</p>
                         </div>
                         <div className="iconmanagement">
                             <img
@@ -163,7 +159,7 @@ function Recipesearch() {
                                 alt=""
                                 className="iconinsearch"
                             />
-                            <p className="iconinsearchp">20</p>
+                            <p className="iconinsearchp">20 分鐘</p>
                         </div>
                         <div className="iconmanagement">
                             <img
@@ -171,7 +167,7 @@ function Recipesearch() {
                                 alt=""
                                 className="iconinsearch"
                             />
-                            <p className="iconinsearchp">20</p>
+                            <p className="iconinsearchp">約 200 大卡</p>
                         </div>
                     </div>
                 </div>
@@ -243,7 +239,7 @@ function Recipesearch() {
                                           className="iconinsearch"
                                       />
                                       <p className="iconinsearchp">
-                                          {row.recipes_calories}
+                                          約 {row.recipes_calories} 大卡
                                       </p>
                                   </div>
                               </div>
@@ -288,7 +284,7 @@ function Recipesearch() {
                                 alt=""
                                 className="iconinsearch"
                             />
-                            <p className="iconinsearchp">30</p>
+                            <p className="iconinsearchp">30 分鐘</p>
                         </div>
                         <div className="iconmanagement">
                             <img
@@ -296,7 +292,7 @@ function Recipesearch() {
                                 alt=""
                                 className="iconinsearch"
                             />
-                            <p className="iconinsearchp">30</p>
+                            <p className="iconinsearchp">約 300 大卡</p>
                         </div>
                     </div>
                 </div>
@@ -340,7 +336,7 @@ function Recipesearch() {
                                 alt=""
                                 className="iconinsearch"
                             />
-                            <p className="iconinsearchp">40</p>
+                            <p className="iconinsearchp">40 分鐘</p>
                         </div>
                         <div className="iconmanagement">
                             <img
@@ -348,7 +344,7 @@ function Recipesearch() {
                                 alt=""
                                 className="iconinsearch"
                             />
-                            <p className="iconinsearchp">40</p>
+                            <p className="iconinsearchp">約 400 大卡</p>
                         </div>
                     </div>
                 </div>
