@@ -87,7 +87,9 @@ function Recipesearch() {
                                     className="iconinsearch"
                                 />
                             </button>
-                            <p className="iconinsearchp">10</p>
+                            <div className="iconinsearchp">
+                                <p>10</p>
+                            </div>
                             <button className="buttoninsearch">
                                 <img
                                     src="/images/good.svg"
@@ -95,7 +97,9 @@ function Recipesearch() {
                                     className="iconinsearch"
                                 />
                             </button>
-                            <p className="iconinsearchp">10</p>
+                            <div className="iconinsearchp">
+                                <p>10</p>
+                            </div>
                         </div>
 
                         <hr className="hrline" />
@@ -114,7 +118,7 @@ function Recipesearch() {
                                 alt=""
                                 className="iconinsearch"
                             />
-                            <p className="iconinsearchp">10</p>
+                            <p className="iconinsearchp">約 100 大卡</p>
                         </div>
                     </div>
                 </div>
