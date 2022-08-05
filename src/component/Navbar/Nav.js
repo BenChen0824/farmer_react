@@ -25,6 +25,8 @@ function Nav() {
         }
     };
 
+
+
     window.addEventListener('scroll', changeColor);
     //
     const a =
@@ -253,7 +255,7 @@ function Nav() {
                         </Link>
 
                         <div className="cart_number px-2 fs-10">
-                            {cartList.length}
+                            {authorized ? cartList.length : 0}
                         </div>
                     </div>
                     {/* <div className="cart_number d-flex justify-content-center align-items-center">

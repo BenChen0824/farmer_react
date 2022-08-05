@@ -7,10 +7,31 @@ function CartSuccess() {
     const navigate = useNavigate();
     const showtime = new Date(Date.now() + 24 * 60 * 60 * 1000);
     const deliveryTime = showtime.toLocaleDateString();
+
     const getFreshItems = JSON.parse(sessionStorage.getItem('buyfresh'));
+
+    const freshItemsArrayToSend = getFreshItems.map((v, i) => {
+        return {
+            product_name: v.product_name,
+            product_price: v.product_price,
+            product_count: v.product_count,
+        };
+    });
+    // console.log(freshItemsArrayToSend);
+    //fresh 需要product_name product_price product_count
     const getCustomizedItems = JSON.parse(
         sessionStorage.getItem('buycustomized')
     );
+    const customizedItemsArrayToSend = getCustomizedItems.map((v, i) => {
+        return {
+            lunch_name: v.lunch_name,
+            total_price: v.total_price,
+            product_count: v.product_count,
+        };
+    });
+    // console.log(customizedItemsArrayToSend);
+
+    //customized 需要lunch_name total_price product_count
     const amount = sessionStorage.getItem('price');
     const discount = sessionStorage.getItem('discount');
     const finalPrice = sessionStorage.getItem('finalPrice');
@@ -20,10 +41,8 @@ function CartSuccess() {
             method: 'POST',
             body: JSON.stringify({
                 orderId,
-                getFreshItems,
-                getCustomizedItems,
-                amount,
-                discount,
+                freshItemsArrayToSend,
+                customizedItemsArrayToSend,
                 finalPrice,
                 deliveryTime,
             }),
@@ -44,7 +63,7 @@ function CartSuccess() {
     let google_product_price = '';
     let google_qty = '';
     // data_ar = Object.values(data_ar);
-    console.log(data_ar);
+    // console.log(data_ar);
 
     function sendGoogleData() {
         // console.log(data_ar);
@@ -71,7 +90,7 @@ function CartSuccess() {
                     }),
                     async: false,
                     success: function (response) {
-                        if (response == '成功') {
+                        if (response === '成功') {
                             console.log('資料上傳成功');
                         }
                     },
@@ -205,7 +224,7 @@ function CartSuccess() {
                                     <td>
                                         {getFreshItems.map((v, i) => {
                                             return (
-                                                <div>
+                                                <div key={('fresh:', i)}>
                                                     {v.product_name}
                                                     {v.product_price}元 *
                                                     {v.product_count}個
@@ -215,7 +234,7 @@ function CartSuccess() {
 
                                         {getCustomizedItems.map((v, i) => {
                                             return (
-                                                <div>
+                                                <div key={(`cus:`, i)}>
                                                     {v.lunch_name}
                                                     {v.total_price}元 *
                                                     {v.product_count}個

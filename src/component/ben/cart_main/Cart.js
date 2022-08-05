@@ -481,7 +481,7 @@ function Cart() {
                                             </div>
 
                                             <div className="col-2  text-center d-flex flex-column justify-content-center">
-                                                <p>{v.product_price}</p>
+                                                <p>{v.total_price}</p>
                                             </div>
                                             <div className="col-4 d-flex flex-column justify-content-center pb-3 col-md-2  text-center">
                                                 <div className="transformY">

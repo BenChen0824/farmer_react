@@ -50,7 +50,7 @@ function CartPaymentLinepayCheck() {
         })
             .then((r) => r.json())
             .then((obj) => {
-                console.log(setCartList(obj));
+                setCartList(obj);
                 navigate('/cart/success');
             });
     };
