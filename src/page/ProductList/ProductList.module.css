@@ -2,7 +2,7 @@
     background-color: #eff0ea;
 }
 .container {
-    max-width: 1200px;
+    max-width: 1320px;
     margin: auto;
     background-color: #fafafa;
     padding: 50px 20px;
@@ -21,3 +21,14 @@
 .slick {
     margin: 10px;
 }
+.sidebar {
+    position: sticky;
+    top: 50px;
+    /* flex-grow: 1; */
+}
+/* .row {
+    flex-wrap: wrap;
+}
+.main {
+    flex-grow: 999;
+} */

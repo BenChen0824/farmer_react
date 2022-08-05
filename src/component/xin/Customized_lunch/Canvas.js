@@ -1,11 +1,13 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-restricted-globals */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useContext } from 'react';
+import CartCountContext from '../../ben/cart_count/CartCountContext';
 
 function Canvas(props) {
     const member_info = JSON.parse(localStorage.getItem('auth'));
     // console.log(member_info.customer_id);
+    const { cartList, setCartList } = useContext(CartCountContext);
     const { totalPrice, foodCount, setFoodCount, dataFromFoodArea } = props;
     const [cache, setCache] = useState({});
     const [textArea, setTextArea] = useState('');
@@ -92,15 +94,44 @@ function Canvas(props) {
     }, [dataFromFoodArea]);
     //送資料
     async function sendData(event) {
-        event.preventDefault();
-        confirm("訂單即將送出，請確認訂單食材，如確認無誤請按'確定'送出訂單");
+        if (dataFromFoodArea.length === 0) {
+            alert('食材至少選一樣唷:)');
+            event.preventDefault();
+            return;
+        }
+
+        const confirmToCart = confirm(
+            "訂單即將送出，請確認訂單食材，如確認無誤請按'確定'送出訂單"
+        );
+        if (confirmToCart === true) {
+            alert('已送出訂單~感謝購買');
+        } else {
+            event.preventDefault();
+            return;
+        }
+
         const fd = new FormData(document.form1);
-        fd.append('lunch_1', dataFromFoodArea[0].name);
-        fd.append('lunch_2', dataFromFoodArea[1].name);
-        fd.append('lunch_3', dataFromFoodArea[2].name);
-        fd.append('lunch_4', dataFromFoodArea[3].name);
-        fd.append('lunch_5', dataFromFoodArea[4].name);
-        fd.append('total_price', totalPrice);
+        fd.append(
+            'lunch_1',
+            dataFromFoodArea[0].name === '' ? '' : dataFromFoodArea[0].name
+        );
+        fd.append(
+            'lunch_2',
+            dataFromFoodArea[1] ? dataFromFoodArea[1].name : ''
+        );
+        fd.append(
+            'lunch_3',
+            dataFromFoodArea[2] ? dataFromFoodArea[2].name : ''
+        );
+        fd.append(
+            'lunch_4',
+            dataFromFoodArea[3] ? dataFromFoodArea[3].name : ''
+        );
+        fd.append(
+            'lunch_5',
+            dataFromFoodArea[4] ? dataFromFoodArea[4].name : ''
+        );
+        fd.append('total_price', totalPrice / foodCount);
         fd.append('lunch_pic', sessionStorage.getItem(key));
         fd.append('member_id', member_info.customer_id);
         // console.log(member_info.customer_id);
@@ -113,6 +144,7 @@ function Canvas(props) {
                 }
             );
             const result = await response.json();
+            setCartList(result);
         } catch (err) {
             console.log(err);
         }

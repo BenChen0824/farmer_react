@@ -68,11 +68,17 @@ function Recipesearch() {
             </div>
             <div className="recommend">
                 <div className="recommendlist">
+                    {/* <a href="./"> */}
                     <div className="recipephoto">
                         <img src="/images/dishimage.jpg" alt="" />
                     </div>
+                    {/* </a> */}
+
                     <div className="recipeblock">
+                        {/* <a href="./">> */}
                         <p>日式黃金炸蝦</p>
+                        {/* </a> */}
+
                         <div className="iconmanagement">
                             <button className="buttoninsearch">
                                 <img
@@ -116,11 +122,16 @@ function Recipesearch() {
                 {/* 分隔線 */}
 
                 <div className="recommendlist">
+                    {/* <a href="./"> */}
                     <div className="recipephoto">
                         <img src="/images/dishimage.jpg" alt="" />
                     </div>
+                    {/* </a> */}
                     <div className="recipeblock">
+                        {/* <a href="./"> */}
                         <p>日式黃金炸蝦</p>
+                        {/* </a> */}
+
                         <div className="iconmanagement">
                             <button className="buttoninsearch">
                                 <img
@@ -177,11 +188,15 @@ function Recipesearch() {
                 {data && data.rows
                     ? data.rows.map((row) => (
                           <div className="recommendlist">
+                              {/* <a href="./"> */}
                               <div className="recipephoto">
                                   <img src="/images/dishimage.jpg" alt="" />
                               </div>
+                              {/* </a> */}
                               <div className="recipeblock">
+                                  {/* <a href="./"> */}
                                   <p>{row.recipes_name}</p>
+                                  {/* </a> */}
                                   <div className="iconmanagement">
                                       <button className="buttoninsearch">
                                           <img
@@ -233,11 +248,15 @@ function Recipesearch() {
                     : null}
 
                 <div className="recommendlist">
+                    {/* <a href="./"> */}
                     <div className="recipephoto">
                         <img src="/images/dishimage.jpg" alt="" />
                     </div>
+                    {/* <a /> */}
                     <div className="recipeblock">
+                        {/* <a href="./"> */}
                         <p>日式黃金炸蝦</p>
+                        {/* <a /> */}
                         <div className="iconmanagement">
                             <button className="buttoninsearch">
                                 <img
@@ -281,11 +300,15 @@ function Recipesearch() {
                 {/* 分隔線 */}
 
                 <div className="recommendlist">
+                    {/* <a href="./"> */}
                     <div className="recipephoto">
                         <img src="/images/dishimage.jpg" alt="" />
                     </div>
+                    {/* <a /> */}
                     <div className="recipeblock">
+                        {/* <a href="./"> */}
                         <p>日式黃金炸蝦</p>
+                        {/* <a /> */}
                         <div className="iconmanagement">
                             <button className="buttoninsearch">
                                 <img
@@ -359,5 +382,3 @@ export default Recipesearch;
 // runClock();
 
 // style={{ height: 40, width: 40 }}
-
-// react-spinner-animated

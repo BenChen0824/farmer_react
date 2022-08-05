@@ -13,15 +13,15 @@ function MemberEvents(){
 
     const loginUser = JSON.parse(localStorage.getItem("auth"))
 
-    const getCollections = async ()=>{
-        const r = await fetch('http://localhost:7000/member_collections',{ headers: {loginUser: loginUser.customer_id}})
-        const obj = await r.json()
-        setResponse(obj)
-    }
+    // const getCollections = async ()=>{
+    //     const r = await fetch('http://localhost:3600/events',{ headers: {loginUser: loginUser.customer_id}})
+    //     const obj = await r.json()
+    //     setResponse(obj)
+    // }
 
-    useEffect(()=>{
-        getCollections()
-        }, [])
+    // useEffect(()=>{
+    //     getCollections()
+    //     }, [])
 
     function searchItems (searchValue){
         setSearchInput(searchValue)

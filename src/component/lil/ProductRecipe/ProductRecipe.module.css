@@ -1,20 +1,21 @@
 .container {
-  max-width: 1000px;
-  margin: auto;
-  height: 400px;
-  background-color: #ffffff;
-  border: 1px solid #3a2c2c;
+    max-width: 1100px;
+    margin: auto;
+    height: 400px;
+    background-color: #ffffff;
+    border: 1px solid #3a2c2c;
+    padding: 30px 50px;
 }
 .wrap {
-  width: 90%;
-  margin: auto;
-  background-color: #ffffff;
-  margin: auto;
-  display: flex;
+    width: 90%;
+    margin: auto;
+    background-color: #ffffff;
+    margin: auto;
+    display: flex;
 }
 .RCard_info > span {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 .RCard_info > p {
-  margin-bottom: 5px;
+    margin-bottom: 5px;
 }

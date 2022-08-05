@@ -14,25 +14,25 @@ function MemberVerify(){
         }
     }
     
-    const checkForm = async (event)=>{
-        event.preventDefault();
-        const data = {
-            name: document.form1.name.value,
-            email: document.form1.email.value,
-            password: document.form1.password.value
-        };
+    // const checkForm = async (event)=>{
+    //     event.preventDefault();
+    //     const data = {
+    //         name: document.form1.name.value,
+    //         email: document.form1.email.value,
+    //         password: document.form1.password.value
+    //     };
 
-        const r = await fetch('http://localhost:7000/signup',{
-            method:'post',
-            body: JSON.stringify(data),
-            headers:{
-                'Content-Type':'application/json'
-            }
-        })
-        const obj = await r.json()
-        console.log(obj)
-        Login(obj)
-    }
+    //     const r = await fetch('http://localhost:7000/signup',{
+    //         method:'post',
+    //         body: JSON.stringify(data),
+    //         headers:{
+    //             'Content-Type':'application/json'
+    //         }
+    //     })
+    //     const obj = await r.json()
+    //     console.log(obj)
+    //     Login(obj)
+    // }
 
     return (
     <>

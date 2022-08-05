@@ -12,7 +12,7 @@
     stroke: currentColor;
 }
 
-.slick-arrow::after,
-.slick-arrow::before {
-    color: #3a2c2c;
+.slick-arrow:after,
+.slick-arrow:before {
+    color: #3a2c2c !important;
 }

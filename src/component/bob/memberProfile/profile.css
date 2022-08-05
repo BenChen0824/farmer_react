@@ -7,3 +7,10 @@
 .bop-objft{
     object-fit: cover;
 }
+.bop-camPosition{
+    top: 1.5rem
+}
+.bop-editPosition{
+    top: 1rem;
+    right: 1.2rem;
+}

@@ -9,17 +9,15 @@ import ProductCard from '../../component/lil/ProductCard';
 import ProductHashTag from '../../component/lil/ProductHashTag';
 import Pagination from '../../component/lil/Pagination';
 import React, { useEffect, useState, Component } from 'react';
-import { fetchProduct } from '../../api/product';
+import { fetchProduct, getHotSale } from '../../api/product';
 import { HASHTAG } from '../../config/variables';
 import { useQuery } from '../../hooks';
 import Slider from 'react-slick';
-import { AB_GET_HOT_SALES } from '../../config/ajax-path';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleHashTag } from '../../store/slices/product';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const settings = {
-    // focusOnSelect: true,
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -33,28 +31,46 @@ function ProductList() {
     const query = useQuery();
     const page = query['page'] || 1;
     const type = query['type'];
+    const search = query['search'];
+    const [hashTagURL, setHashTagURL] = useSearchParams();
+
     const [hotSales, setHotSale] = useState([]);
     const { hashTag } = useSelector((state) => state.product);
+
+    let orderBy = query['orderBy'] || 'sid';
+    let order = query['order'] || 'DESC';
+
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [selectedOption, setSelectedOption] = useState(null);
 
     const goToPath = (sid) => {
         navigate(`/product/${sid}`);
     };
-
-    const getProduct = async (page, hashTag, type) => {
-        const data = await fetchProduct(page, hashTag, type);
+    const getProduct = async (page, hashTag, type, orderBy, order, search) => {
+        const data = await fetchProduct(
+            page,
+            hashTag,
+            type,
+            orderBy,
+            order,
+            search
+        );
         if (data && data.rows) {
+            console.log(data);
             setData(data);
         }
     };
 
     const getHotSales = async () => {
-        const r = await fetch(AB_GET_HOT_SALES);
-        const obj = await r.json();
-
-        setHotSale(obj);
+        const data = await getHotSale();
+        if (data && data.rows) {
+            setHotSale(data);
+        }
     };
 
     const handleToggleHashTag = (key) => {
+        const { search, ...rest } = query;
+        setHashTagURL({ ...rest, page: 1 });
         dispatch(toggleHashTag(key));
     };
 
@@ -63,21 +79,93 @@ function ProductList() {
     }, []);
 
     useEffect(() => {
-        getProduct(page, hashTag, type);
-    }, [page, hashTag, type]);
+        getProduct(page, hashTag, type, orderBy, order, search);
+    }, [page, hashTag, type, orderBy, order, search]);
+
+    useEffect(() => {
+        const { value: priceOrder } = selectedOption ?? {};
+        let orderBy;
+        let order;
+
+        switch (priceOrder) {
+            case 1: {
+                orderBy = 'price';
+                order = 'ASC';
+                break;
+            }
+            case 2: {
+                orderBy = 'price';
+                order = 'DESC';
+                break;
+            }
+            default: {
+                break;
+            }
+        }
+
+        const q = {
+            ...query,
+            orderBy,
+            order,
+        };
+
+        if (query.orderBy !== orderBy || query.order !== order) {
+            // order = priceOrder === '1' ? 'ASC' : 'DESC'
+            setSearchParams(q);
+        }
+    }, [selectedOption]);
 
     return (
         <>
-            <ProductBanner />
             <div className={styles.page}>
+                <ProductBanner />
                 <div className={styles.container}>
-                    <div className="row">
-                        <div className="col-3">
+                    <div className={clsx('row', styles.row)}>
+                        <div
+                            className={clsx('col-3', styles.sidebar)}
+                            style={{ marginTop: '53px' }}
+                        >
                             <SearchP />
-                            <PriceSelect />
+                            <PriceSelect
+                                value={selectedOption}
+                                onSelect={setSelectedOption}
+                            />
                             <ProductNavBar />
                         </div>
-                        <div className="col-9">
+                        <div className={clsx('col-9', styles.main)}>
+                            <Title zh={'熱銷商品'} eg={'hot sales'} />
+                            <div className={clsx('row', styles.card)}>
+                                <Slider {...settings}>
+                                    {hotSales.rows &&
+                                        hotSales.rows
+                                            .filter((v) => v.hot_sale)
+                                            .map((v, i) => {
+                                                return (
+                                                    <ProductCard
+                                                        key={i}
+                                                        onClick={() =>
+                                                            goToPath(v.sid)
+                                                        }
+                                                        className={styles.slick}
+                                                        name={v.product_name}
+                                                        supplier={
+                                                            v.product_supplier
+                                                        }
+                                                        price={v.product_price}
+                                                        unit={v.product_unit}
+                                                        img={
+                                                            v.product_img &&
+                                                            v.product_img[0]
+                                                        }
+                                                        inventory={
+                                                            v.product_inventory
+                                                        }
+                                                        hotSale={true}
+                                                    />
+                                                );
+                                            })}
+                                </Slider>
+                            </div>
                             <Title zh={'標籤探索'} eg={'Tag exploration'} />
                             <div className={clsx('col-9', styles.hash_tag)}>
                                 {Object.keys(HASHTAG).map((key) => {
@@ -94,39 +182,6 @@ function ProductList() {
                                         />
                                     );
                                 })}
-                            </div>
-                            <Title zh={'熱銷商品'} eg={'hot sales'} />
-                            <div className={clsx('row', styles.card)}>
-                                <Slider {...settings}>
-                                    {hotSales.rows &&
-                                        hotSales.rows
-                                            .filter((v) => v.hot_sale)
-                                            .map((v, i) => {
-                                                return (
-                                                    <ProductCard
-                                                        key={i}
-                                                        onClick={() =>
-                                                            goToPath(v.sid)
-                                                        }
-                                                        // className="col-6 col-lg-4"
-                                                        className={styles.slick}
-                                                        name={v.product_name}
-                                                        supplier={
-                                                            v.product_supplier
-                                                        }
-                                                        price={v.product_price}
-                                                        unit={v.product_unit}
-                                                        img={
-                                                            v.product_img &&
-                                                            v.product_img[0]
-                                                        }
-                                                        inventory={
-                                                            v.product_inventory
-                                                        }
-                                                    />
-                                                );
-                                            })}
-                                </Slider>
                             </div>
 
                             <Title zh={'小農產品'} eg={'products'} />
@@ -152,6 +207,7 @@ function ProductList() {
                                                   inventory={
                                                       v.product_inventory
                                                   }
+                                                  hotSale={false}
                                               />
                                           );
                                       })
