@@ -1,11 +1,13 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-restricted-globals */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useContext } from 'react';
+import CartCountContext from '../../ben/cart_count/CartCountContext';
 
 function Canvas(props) {
     const member_info = JSON.parse(localStorage.getItem('auth'));
     // console.log(member_info.customer_id);
+    const { cartList, setCartList } = useContext(CartCountContext);
     const { totalPrice, foodCount, setFoodCount, dataFromFoodArea } = props;
     const [cache, setCache] = useState({});
     const [textArea, setTextArea] = useState('');
@@ -127,6 +129,7 @@ function Canvas(props) {
                 }
             );
             const result = await response.json();
+            setCartList(result);
         } catch (err) {
             console.log(err);
         }

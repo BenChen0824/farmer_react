@@ -2,8 +2,6 @@ import styles from './ProductHashTag.module.css';
 import clsx from 'clsx';
 
 function ProductHashTag(props) {
-    // const [collect, setCollect] = useState(false)
-
     return (
         <>
             <div

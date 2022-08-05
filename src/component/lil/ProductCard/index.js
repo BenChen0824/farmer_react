@@ -17,6 +17,7 @@ function ProductCard({
     img,
     inventory,
     onClick,
+    hotSale,
 }) {
     const [amount, setAmount] = useState(1);
     const [collect, setCollect] = useState(false);
@@ -99,7 +100,7 @@ function ProductCard({
                         </div>
                     </div>
                 </div>
-                <div className={styles.hotSale}>hot sale</div>
+                {hotSale && <div className={styles.hotSale}>hot sale</div>}
             </div>
         </div>
     );
