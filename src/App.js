@@ -20,7 +20,6 @@ import ChatMain from './component/xin/Customized_service/ChatMain';
 
 import RecipeMain from './component/hsieh/App';
 import GameMain from './component/po/game/gameMain';
-import CompanyLogin from './component/pin/Company_Login';
 import CartMain from './component/ben/App';
 import Activity from './component/pin/Activity/Activity';
 
