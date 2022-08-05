@@ -111,11 +111,26 @@ function Canvas(props) {
         }
 
         const fd = new FormData(document.form1);
-        fd.append('lunch_1', '' ? '' : dataFromFoodArea[0].name);
-        fd.append('lunch_2', '' ? dataFromFoodArea[1].name : '');
-        fd.append('lunch_3', '' ? dataFromFoodArea[2].name : '');
-        fd.append('lunch_4', '' ? dataFromFoodArea[3].name : '');
-        fd.append('lunch_5', '' ? dataFromFoodArea[4].name : '');
+        fd.append(
+            'lunch_1',
+            dataFromFoodArea[0].name === '' ? '' : dataFromFoodArea[0].name
+        );
+        fd.append(
+            'lunch_2',
+            dataFromFoodArea[1] ? dataFromFoodArea[1].name : ''
+        );
+        fd.append(
+            'lunch_3',
+            dataFromFoodArea[2] ? dataFromFoodArea[2].name : ''
+        );
+        fd.append(
+            'lunch_4',
+            dataFromFoodArea[3] ? dataFromFoodArea[3].name : ''
+        );
+        fd.append(
+            'lunch_5',
+            dataFromFoodArea[4] ? dataFromFoodArea[4].name : ''
+        );
         fd.append('total_price', totalPrice / foodCount);
         fd.append('lunch_pic', sessionStorage.getItem(key));
         fd.append('member_id', member_info.customer_id);
