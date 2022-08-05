@@ -6,20 +6,24 @@ import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useQuery } from './../../../hooks';
 import qs from 'qs';
+import { clearHashTag } from '../../../store/slices/product';
+import { useDispatch } from 'react-redux';
 
 function ProductNavBar({ type }) {
     // const menu = ['新鮮蔬果', '優質肉品', '生鮮水產', '美味餐點']
 
     const [selected, setSelected] = useState();
-
+    const dispatch = useDispatch();
     const handleMenuClicked = (id) => {
         setSelected(selected !== id ? id : undefined);
     };
     const query = useQuery();
 
     const getQuery = (id) => {
+        dispatch(clearHashTag());
+        const { search, ...rest } = query;
         const q = {
-            ...query,
+            ...rest,
             type: id,
         };
         return qs.stringify(q);
@@ -120,36 +124,6 @@ function ProductNavBar({ type }) {
                             <Link className="page-link" to={`?${getQuery(8)}`}>
                                 甲殼類
                             </Link>
-                        </li>
-                    </ul>
-                </div>
-                <div className={styles.type}>
-                    <h5>美味餐點</h5>
-                    <p
-                        onClick={() => {
-                            handleMenuClicked(3);
-                        }}
-                    >
-                        {selected !== 3 ? (
-                            <AiOutlinePlus />
-                        ) : (
-                            <AiOutlineMinus />
-                        )}
-                    </p>
-                </div>
-                <div className={clsx({ [styles.hidden]: selected !== 3 })}>
-                    <ul className={styles.productNavUl}>
-                        <li>
-                            <a href="#/">中式餐點</a>
-                        </li>
-                        <li>
-                            <a href="#/">日式餐點</a>
-                        </li>
-                        <li>
-                            <a href="#/">西式餐點</a>
-                        </li>
-                        <li>
-                            <a href="#/">韓式餐點</a>
                         </li>
                     </ul>
                 </div>

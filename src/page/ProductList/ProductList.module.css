@@ -21,3 +21,14 @@
 .slick {
     margin: 10px;
 }
+.sidebar {
+    position: sticky;
+    top: 50px;
+    /* flex-grow: 1; */
+}
+/* .row {
+    flex-wrap: wrap;
+}
+.main {
+    flex-grow: 999;
+} */

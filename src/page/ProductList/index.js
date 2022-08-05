@@ -32,6 +32,7 @@ function ProductList() {
     const page = query['page'] || 1;
     const type = query['type'];
     const search = query['search'];
+    const [hashTagURL, setHashTagURL] = useSearchParams();
 
     const [hotSales, setHotSale] = useState([]);
     const { hashTag } = useSelector((state) => state.product);
@@ -68,6 +69,8 @@ function ProductList() {
     };
 
     const handleToggleHashTag = (key) => {
+        const { search, ...rest } = query;
+        setHashTagURL({ ...rest, page: 1 });
         dispatch(toggleHashTag(key));
     };
 
@@ -114,11 +117,14 @@ function ProductList() {
 
     return (
         <>
-            <ProductBanner />
             <div className={styles.page}>
+                <ProductBanner />
                 <div className={styles.container}>
-                    <div className="row">
-                        <div className="col-3" style={{ marginTop: '53px' }}>
+                    <div className={clsx('row', styles.row)}>
+                        <div
+                            className={clsx('col-3', styles.sidebar)}
+                            style={{ marginTop: '53px' }}
+                        >
                             <SearchP />
                             <PriceSelect
                                 value={selectedOption}
@@ -126,7 +132,7 @@ function ProductList() {
                             />
                             <ProductNavBar />
                         </div>
-                        <div className="col-9">
+                        <div className={clsx('col-9', styles.main)}>
                             <Title zh={'熱銷商品'} eg={'hot sales'} />
                             <div className={clsx('row', styles.card)}>
                                 <Slider {...settings}>
