@@ -64,6 +64,7 @@
 .recommendlist {
     width: 48%;
     display: flex;
+    flex-wrap: wrap;
     margin-bottom: 10px;
     /* border: 1px black solid; */
 }
@@ -71,22 +72,13 @@
 .recipephoto {
     width: 250px;
     height: 200px;
-    position: relative;
     overflow: hidden;
     border: 1px black solid;
 }
 
 .recipephoto img {
-    max-height: 100%;  
-    max-width: 100%; 
-    width: auto;
-    height: auto;
-    position: absolute;
-    top: 0;  
-    bottom: 0;  
-    left: 0;  
-    right: 0;  
-    margin: auto;
+    max-width: 100%;
+    margin: auto; 
     transition: 0.35s;
 }
 
@@ -100,7 +92,6 @@
     line-height: 30px;
     margin-left:10px ;
     margin-bottom: 30px;
-    /* border: 1px black solid; */
 }
 
 .iconmanagement {
@@ -125,7 +116,18 @@
     padding-bottom: 10px;
 }
 
-@media screen and (max-width:1050px) {
+.buttoninsearch{
+    border: 0px;
+    background-color: rgb(255, 255, 255);
+}
+
+.pa {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+@media screen and (max-width:756px) {
     .searchinput {
         font-size: 20px;
     }
@@ -137,11 +139,17 @@
         padding-bottom: 15px;
     }
 
+    .subtitleword{
+        font-size: 16px;
+        color: rgb(0, 0, 0);
+        -webkit-text-stroke: 0.1px rgb(4, 0, 255);
+    }
+
     .recommend {
-        width: 70%;
-        margin-left: 15%;
-        margin-right: 15%;
-        display: flex;
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+        /* display: flex; */
         flex-wrap: wrap;
         position: relative;
     }
@@ -150,39 +158,40 @@
         width: 90%;
         margin-left: 5%;
         margin-right: 5%;
-        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .recipephoto {
+        width: 250px;
+        height: 200px;
+        overflow: hidden;
+        border: 1px black solid;
     }
 
     .recipephoto img {
-        max-height: 100%;  
-        max-width: 100%; 
-        width: auto;
-        height: auto;
-        position: absolute;
-        top: 0;  
-        bottom: 0;  
-        left: 0;  
-        right: 0;  
-        margin: auto;
+        max-width: 100%;
+        margin: auto; 
+        transition: 0.35s;
     }
 
-    .pa {
-        display: flex;
-        justify-content: center; 
-        align-items: center;
+    .recipeblock {
+        font-size: 20px;
+        line-height: 30px;
+        margin-left:5px ;
+        margin-bottom: 20px;
     }
 
-}
+    .iconinsearch {
+        width: 30px;
+        height: 30px;
+        margin-right: 5px;
+        margin-left: 5px;
+    }
 
-.buttoninsearch{
-    border: 0px;
-    background-color: rgb(255, 255, 255);
-}
+    .iconinsearchp {
+        line-height: 10px;
+    }
 
-.pa {
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
 }
 
 
