@@ -44,8 +44,8 @@
 
 .recommendlist {
     width: 48%;
-    display: flex;
-    flex-wrap: wrap;
+    /* display: flex;
+    flex-wrap: wrap; */
 }
 
 .recipephoto {
@@ -119,7 +119,7 @@
         width: 80%;
         margin-left: 10%;
         margin-right: 10%;
-        /* display: flex; */
+        display: flex;
         flex-wrap: wrap;
         position: relative;
     }
