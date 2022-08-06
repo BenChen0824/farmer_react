@@ -8,8 +8,8 @@ import clsx from 'clsx';
 import ProductCard from '../../component/lil/ProductCard';
 import ProductHashTag from '../../component/lil/ProductHashTag';
 import Pagination from '../../component/lil/Pagination';
-import React, { useEffect, useState, Component } from 'react';
-import { fetchProduct, getHotSale } from '../../api/product';
+import React, { useEffect, useState, useContext } from 'react';
+import { fetchProduct, getHotSale, addToCart } from '../../api/product';
 import { HASHTAG } from '../../config/variables';
 import { useQuery } from '../../hooks';
 import Slider from 'react-slick';
@@ -33,6 +33,7 @@ function ProductList() {
     const type = query['type'];
     const search = query['search'];
     const [hashTagURL, setHashTagURL] = useSearchParams();
+    const member_info = JSON.parse(localStorage.getItem('auth'));
 
     const [hotSales, setHotSale] = useState([]);
     const { hashTag } = useSelector((state) => state.product);
@@ -115,6 +116,14 @@ function ProductList() {
         }
     }, [selectedOption]);
 
+    const handleToCart = async (sid, amount) => {
+        await addToCart({
+            product_count: amount,
+            product_id: +sid,
+            member_id: member_info.customer_id,
+        });
+    };
+
     return (
         <>
             <div className={styles.page}>
@@ -161,6 +170,12 @@ function ProductList() {
                                                             v.product_inventory
                                                         }
                                                         hotSale={true}
+                                                        onSubmit={(amount) =>
+                                                            handleToCart(
+                                                                v.sid,
+                                                                amount
+                                                            )
+                                                        }
                                                     />
                                                 );
                                             })}
@@ -208,6 +223,12 @@ function ProductList() {
                                                       v.product_inventory
                                                   }
                                                   hotSale={false}
+                                                  onSubmit={(amount) =>
+                                                      handleToCart(
+                                                          v.sid,
+                                                          amount
+                                                      )
+                                                  }
                                               />
                                           );
                                       })
