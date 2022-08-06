@@ -9,6 +9,8 @@ function Product(props) {
     const [data, setData] = useState({});
     let { sid } = useParams();
     const member_info = JSON.parse(localStorage.getItem('auth'));
+    // key: `history-${userId}`  value: JSON.parse("['sid1', 'sid3']")
+    const userId = member_info.customer_id;
 
     const getItem = async (sid) => {
         const item = await getProductItem(sid);
@@ -17,6 +19,13 @@ function Product(props) {
 
     useEffect(() => {
         getItem(sid);
+
+        // save history
+        const lsKey = `histroy${userId}`;
+        let oldHistory = localStorage.getItem(lsKey) || '{}';
+        oldHistory = JSON.parse(oldHistory);
+        const newHistory = { ...oldHistory, [sid]: true };
+        localStorage.setItem(lsKey, JSON.stringify(newHistory));
     }, [sid]);
 
     const handleSubmit = async (amount, addCart) => {

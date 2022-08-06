@@ -34,6 +34,18 @@ function ProductList() {
     const search = query['search'];
     const [hashTagURL, setHashTagURL] = useSearchParams();
     const member_info = JSON.parse(localStorage.getItem('auth'));
+    const userId = member_info.customer_id;
+    const lsKey = `histroy${userId}`;
+
+    const [historyObj, setHistoryObj] = useState({});
+
+    //取history
+    useEffect(() => {
+        const history = localStorage.getItem(lsKey);
+        if (history) {
+            setHistoryObj(JSON.parse(history));
+        }
+    }, []);
 
     const [hotSales, setHotSale] = useState([]);
     const { hashTag } = useSelector((state) => state.product);
@@ -142,7 +154,7 @@ function ProductList() {
                             <ProductNavBar />
                         </div>
                         <div className={clsx('col-9', styles.main)}>
-                            <Title zh={'熱銷商品'} eg={'hot sales'} />
+                            <Title zh={'熱銷商品'} eg={'Hot Sales'} />
                             <div className={clsx('row', styles.card)}>
                                 <Slider {...settings}>
                                     {hotSales.rows &&
@@ -199,7 +211,7 @@ function ProductList() {
                                 })}
                             </div>
 
-                            <Title zh={'小農產品'} eg={'products'} />
+                            <Title zh={'小農產品'} eg={'Products'} />
 
                             <div className={clsx('row', styles.card)}>
                                 {data && data.rows
@@ -242,6 +254,21 @@ function ProductList() {
                                     />
                                 ) : null}
                             </div>
+                            {/* {historyObj && Object.keys(historyObj).length ? (
+                                <>
+                                    <Title zh={'瀏覽紀錄'} eg={'History'} />
+                                    <div className={clsx('row', styles.card)}>
+                                        {Object.keys(historyObj).map((v, i) => {
+                                            <ProductCard
+                                                hotSale={false}
+                                                // onSubmit={(amount) =>
+                                                //     handleToCart(v.sid, amount)
+                                                // }
+                                            />;
+                                        })}
+                                    </div>{' '}
+                                </>
+                            ) : null} */}
                         </div>
                     </div>
                 </div>
