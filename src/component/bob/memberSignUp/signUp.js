@@ -36,7 +36,7 @@ function SignUp(){
 
     return (
     <>
-        <div className='vh-100 d-flex justify-content-center align-items-center bosu-bodybg'>
+        <div className='bosu-bodyvh d-flex justify-content-center align-items-center bosu-bodybg'>
             <div className='shadow mb-5 bg-body rounded rounded-3 bg-white'>
                 <div id="info-bar" className="alert alert-info" role="alert" style={{display:'none'}}>
                 123
@@ -44,9 +44,10 @@ function SignUp(){
                 <div className="bg-light p-3 rounded-top">
                         <h4 className="fw-semibold text-center m-0">加入會員</h4>
                 </div>
-                <form className="form-signin px-5 pb-4 pt-3 mx-2" name="form1" method="post" onSubmit={checkForm}>
+                <form className="px-5 pb-4 pt-3 mx-2 needs-validation" noValidate name="form1" method="post" onSubmit={checkForm}>
                     <label htmlFor="username" className="sr-only m-2">姓名</label>
-                    <input type="text" id="username" name="username" className="form-control p-2 bg-light" placeholder="請輸入您的姓名"/>
+                    <input type="text" id="username" name="username" required className="form-control p-2 bg-light" placeholder="請輸入您的姓名"/>
+                    <div className="invalid-tooltip">請填寫正確姓名</div>
                     <label htmlFor="email" className="sr-only m-2">E-mail</label>
                     <input type="email" id="email" name="email" className="form-control p-2 bg-light" placeholder="請輸入您的E-mail"/>
                     <label htmlFor="password" className="sr-only m-2">密碼</label>
@@ -56,6 +57,14 @@ function SignUp(){
                     <div className="d-grid gap-2 my-4">
                         <button 
                         className="btn btn btn-success btn-block" type="submit">加入會員</button>
+                    </div>
+                    <div className="d-grid gap-2 my-4">
+                        <button 
+                        className="btn btn btn-dark btn-block" type="button" onClick={(event)=>{
+                            event.preventDefault()
+                            navigate('/member', {
+                            replace: true,
+                        })}}>返回登入頁面</button>
                     </div>
                 </form>
             </div>
