@@ -9,6 +9,7 @@ import {
 } from 'react-icons/ai';
 import Box from '../Box';
 import { UNIT, SUPPLIER, HASHTAG } from '../../../config/variables';
+import LineShare from '../LineShare';
 
 function ProductItemInfo({ data, sid, onSubmit }) {
     const images = data.product_img;
@@ -154,6 +155,7 @@ function ProductItemInfo({ data, sid, onSubmit }) {
                                     );
                                 })}
                         </div>
+                        <LineShare />
                     </div>
                 </div>
             </div>

@@ -9,7 +9,12 @@ import ProductCard from '../../component/lil/ProductCard';
 import ProductHashTag from '../../component/lil/ProductHashTag';
 import Pagination from '../../component/lil/Pagination';
 import React, { useEffect, useState, useContext } from 'react';
-import { fetchProduct, getHotSale, addToCart } from '../../api/product';
+import {
+    fetchProduct,
+    getHotSale,
+    addToCart,
+    getProductItem,
+} from '../../api/product';
 import { HASHTAG } from '../../config/variables';
 import { useQuery } from '../../hooks';
 import Slider from 'react-slick';
@@ -36,16 +41,31 @@ function ProductList() {
     const member_info = JSON.parse(localStorage.getItem('auth'));
     const userId = member_info.customer_id;
     const lsKey = `histroy${userId}`;
+    const [historyData, setHistoryData] = useState([]);
 
     const [historyObj, setHistoryObj] = useState({});
 
     //取history
     useEffect(() => {
-        const history = localStorage.getItem(lsKey);
-        if (history) {
-            setHistoryObj(JSON.parse(history));
+        const json = localStorage.getItem(lsKey);
+        if (json) {
+            const history = JSON.parse(json);
+            const ids = Object.keys(history);
+            if (ids.length) {
+                getProducts(ids);
+            }
         }
     }, []);
+
+    const getProducts = async (ids) => {
+        const getHistoryData = await Promise.all(
+            ids.map((v, i) => {
+                return getProductItem(v);
+            })
+        );
+        // set state
+        setHistoryData(getHistoryData);
+    };
 
     const [hotSales, setHotSale] = useState([]);
     const { hashTag } = useSelector((state) => state.product);
@@ -85,6 +105,7 @@ function ProductList() {
         const { search, ...rest } = query;
         setHashTagURL({ ...rest, page: 1 });
         dispatch(toggleHashTag(key));
+        //TODO:要改
     };
 
     useEffect(() => {
@@ -254,21 +275,41 @@ function ProductList() {
                                     />
                                 ) : null}
                             </div>
-                            {/* {historyObj && Object.keys(historyObj).length ? (
+                            {historyData && historyData.length ? (
                                 <>
                                     <Title zh={'瀏覽紀錄'} eg={'History'} />
                                     <div className={clsx('row', styles.card)}>
-                                        {Object.keys(historyObj).map((v, i) => {
-                                            <ProductCard
-                                                hotSale={false}
-                                                // onSubmit={(amount) =>
-                                                //     handleToCart(v.sid, amount)
-                                                // }
-                                            />;
+                                        {historyData.map((v, i) => {
+                                            return (
+                                                <ProductCard
+                                                    key={v.sid}
+                                                    hotSale={false}
+                                                    onClick={() =>
+                                                        goToPath(v.sid)
+                                                    }
+                                                    className="col-6 col-lg-4"
+                                                    name={v.product_name}
+                                                    supplier={
+                                                        v.product_supplier
+                                                    }
+                                                    price={v.product_price}
+                                                    unit={v.product_unit}
+                                                    img={
+                                                        v.product_img &&
+                                                        v.product_img[0]
+                                                    }
+                                                    onSubmit={(amount) =>
+                                                        handleToCart(
+                                                            v.sid,
+                                                            amount
+                                                        )
+                                                    }
+                                                />
+                                            );
                                         })}
-                                    </div>{' '}
+                                    </div>
                                 </>
-                            ) : null} */}
+                            ) : null}
                         </div>
                     </div>
                 </div>
