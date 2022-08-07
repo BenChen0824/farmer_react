@@ -37,7 +37,7 @@ function Popup() {
                         type="text"
                         className="time"
                         value={timecost}
-                        placeholder="請輸入時間"
+                        placeholder="請輸入時間(單位：分鐘)"
                         onChange={(e) => {
                             setTimecost(e.target.value);
                         }}
@@ -51,7 +51,7 @@ function Popup() {
                         type="text"
                         className="time"
                         value={calories}
-                        placeholder="請輸入熱量"
+                        placeholder="請輸入熱量(單位：大卡)"
                         onChange={(e) => {
                             setCalories(e.target.value);
                         }}
@@ -120,11 +120,7 @@ function Popup() {
                     classc="btn btn-dark"
                     className="ingredient"
                 >
-                    <img
-                        src="/images/vegetable.png"
-                        style={{ height: 30, width: 30 }}
-                        alt=""
-                    />
+                    <img src="/images/vegetable.png" alt="" />
                     蔬菜
                     <FontAwesomeIcon icon={faAngleRight} />
                 </button>
@@ -134,11 +130,7 @@ function Popup() {
                     classc="btn btn-dark"
                     className="ingredient"
                 >
-                    <img
-                        src="/images/fruit.png"
-                        style={{ height: 30, width: 30 }}
-                        alt=""
-                    />
+                    <img src="/images/fruit.png" alt="" />
                     水果
                     <FontAwesomeIcon icon={faAngleRight} />
                 </button>
@@ -148,11 +140,7 @@ function Popup() {
                     classc="btn btn-dark"
                     className="ingredient"
                 >
-                    <img
-                        src="/images/seafood.png"
-                        style={{ height: 30, width: 30 }}
-                        alt=""
-                    />
+                    <img src="/images/seafood.png" alt="" />
                     海鮮
                     <FontAwesomeIcon icon={faAngleRight} />
                 </button>
@@ -161,11 +149,7 @@ function Popup() {
                     classc="btn btn-dark"
                     className="ingredient"
                 >
-                    <img
-                        src="/images/meat.png"
-                        style={{ height: 30, width: 30 }}
-                        alt=""
-                    />
+                    <img src="/images/meat.png" alt="" />
                     肉類
                     <FontAwesomeIcon icon={faAngleRight} />
                 </button>
@@ -174,11 +158,7 @@ function Popup() {
                     classc="btn btn-dark"
                     className="ingredient"
                 >
-                    <img
-                        src="/images/egg.png"
-                        style={{ height: 30, width: 30 }}
-                        alt=""
-                    />
+                    <img src="/images/egg.png" alt="" />
                     蛋
                     <FontAwesomeIcon icon={faAngleRight} />
                 </button>
@@ -187,11 +167,7 @@ function Popup() {
                     classc="btn btn-dark"
                     className="ingredient"
                 >
-                    <img
-                        src="/images/cereals.png"
-                        style={{ height: 30, width: 30 }}
-                        alt=""
-                    />
+                    <img src="/images/cereals.png" alt="" />
                     穀物
                     <FontAwesomeIcon icon={faAngleRight} />
                 </button>

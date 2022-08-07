@@ -6,3 +6,11 @@
   background-position: center center;
   background-repeat: no-repeat;
 }
+.bosi-bodyvh{
+  height: 100vh
+}
+@media screen and (max-width:576px){
+  .bosi-bodyvh{
+    height: 110vh
+  }
+}

@@ -13,6 +13,7 @@ export const CART_LINEPAY_CHECK = `${SERVER}/linepay-check`;
 export const CART_EMAIL = `${SERVER}/cartemail`;
 export const customized_lunch_CHECK = `${SERVER}/customized_lunch/api`;
 export const AB_POST_UPLOAD_PHOTOS = `${SERVER}/try-uploads`;
+export const CART_ADD_PRODUCT = `${SERVER}/cart/addfresh`;
 
 export function getImgUrl(name) {
     return `${SERVER}/images/${name}`;

@@ -52,7 +52,7 @@ function SignIn() {
 
     return (
         <>
-            <div className="vh-100 d-flex justify-content-center align-items-center bosi-bodybg">
+            <div className="d-flex justify-content-center align-items-center bosi-bodybg bosi-bodyvh">
                 <div className="shadow mb-5 bg-body rounded rounded-3 bg-white">
                     <div
                         id="info-bar"

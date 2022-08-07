@@ -10,7 +10,7 @@ import {
 import Box from '../Box';
 import { UNIT, SUPPLIER, HASHTAG } from '../../../config/variables';
 
-function ProductItemInfo({ data, sid }) {
+function ProductItemInfo({ data, sid, onSubmit }) {
     const images = data.product_img;
     const [collect, setCollect] = useState(false);
     const [addCart, setAddCart] = useState(false);
@@ -125,6 +125,7 @@ function ProductItemInfo({ data, sid }) {
                             })}
                             onClick={() => {
                                 setAddCart((prev) => !prev);
+                                onSubmit(amount, addCart);
                             }}
                         >
                             {addCart ? '立刻結帳' : '加入購物車'}

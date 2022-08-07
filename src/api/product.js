@@ -3,6 +3,7 @@ import {
     AB_GET_PRODUCT,
     getImgUrl,
     AB_GET_HOT_SALES,
+    CART_ADD_PRODUCT,
 } from '../config/ajax-path';
 
 export async function fetchProduct(
@@ -98,4 +99,9 @@ export async function AddProduct() {
     const body = {};
     const res = await axios.post(AB_GET_PRODUCT, body);
     console.log(res.data);
+}
+
+export async function addToCart(val) {
+    const { data } = await axios.post(CART_ADD_PRODUCT, val);
+    console.log(data);
 }
