@@ -2,6 +2,8 @@ import Game from '../Game/Game';
 import Coupon from '../Coupon';
 import ChangeRecord from '../ChangeRecord/ChangeRecord';
 
+// your-app.js
+
 function ChangeTab(props) {
     //解構
     const { info, eggpoints, setEggPoints } = props;

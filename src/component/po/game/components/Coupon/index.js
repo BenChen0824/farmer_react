@@ -45,6 +45,7 @@ export default function Coupon(props) {
                 change_memberid: 530,
                 change_coupon: newtype,
                 change_spendpoints: newPointToExchange,
+                change_img: discountArray[i].image,
             })
             .then((result) => {
                 console.log(result.data);
@@ -65,7 +66,7 @@ export default function Coupon(props) {
                     {discountArray.map((v, i) => {
                         return (
                             <div className="col-md-6 coupon" key={v.id}>
-                                <div className="d-flex  border rounded overflow-hidden  mb-4 shadow">
+                                <div className="d-flex  border rounded overflow-hidden  mb-4 shadow ">
                                     <div className="col-8">
                                         <img
                                             className="w-100 objfit"
@@ -74,7 +75,7 @@ export default function Coupon(props) {
                                             alt=""
                                         />
                                     </div>
-                                    <div className="col-4 p-4 d-flex flex-column position-static">
+                                    <div className="col-4 p-4 d-flex flex-column position-static ">
                                         <p
                                             className="d-inline-block mb-1 text-primary text-center"
                                             style={{ fontSize: '2.5rem' }}
@@ -100,10 +101,12 @@ export default function Coupon(props) {
                                             {/* //  onClick={clickchange}>  */}
                                             {v.change === 0
                                                 ? `${v.point}點使用兌換`
-                                                : `已兌換過`}
+                                                : `已完成兌換`}
                                         </button>
                                     </div>
                                 </div>
+                                <div className='circle1'></div>
+                                <div className='circle2'></div>
                             </div>
                         );
                     })}

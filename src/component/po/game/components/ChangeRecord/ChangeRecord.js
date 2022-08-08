@@ -1,40 +1,50 @@
 import React, { useEffect, useState } from 'react';
-import { AB_GET_LIST } from '../../config/ajax-path';
-import { useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
+import { AB_GET_COUPON } from './../../../../../config/ajax-path';
+import axios from 'axios';
 
 // componentDidMount
 // componentDidUpdate
 // componentWillUnmount
 
 export default function ChangeRecord() {
-    const [data, setData] = useState({});
-    const location = useLocation();
-    const usp = new URLSearchParams(location.search);
-    // usp.get('page')
+    const [data, setData] = useState([
+        {
+            sid: '',
+            change_memberid: '',
+            change_coupon: '',
+            change_memberid: '',
+            change_spendpoints: '',
+            change_time: '',
+        },
+    ]);
 
-    console.log(location);
-
-    const getPageData = async (event, gotoPage) => {
-        if (event) {
-            event.preventDefault();
-        }
-        console.log({ gotoPage });
-
-        const r = await fetch(`${AB_GET_LIST}?page=${gotoPage}`);
-        const obj = await r.json();
-        console.log(obj);
-        setData(obj);
-    };
+    //拿資料..
 
     useEffect(() => {
-        getPageData(null, +usp.get('page') || 1);
-    }, [location]);
+        fetch(AB_GET_COUPON, {
+            method: 'GET',
+            headers: { change_memberid: '530' },
+        })
+            .then((r) => r.json())
+            .then((obj) => {
+                console.log(obj);
+                setData(obj);
+            });
+    }, []);
+
+    // axios
+    //     .get(AB_GET_COUPON, { headers: { change_memberid: '530' } })
+    //     .then((result) => {
+    //         console.log(result.data);
+    //     });
 
     return (
         <div className="container bggforblue">
             <table className="table table-striped">
                 <thead>
                     <tr>
+                        <card scope="col">折價券圖片</card>
                         <th scope="col">會員ID</th>
                         <th scope="col">折價券類型</th>
                         <th scope="col">花費點數</th>
@@ -42,12 +52,15 @@ export default function ChangeRecord() {
                     </tr>
                 </thead>
                 <tbody>
-                    {data && data.rows
-                        ? data.rows.map((row) => (
-                              <tr key={'mm' + row.change_sid}>
+                    {data
+                        ? data.map((row) => (
+                              <tr key={'mm' + row.sid}>
+                                  <td>
+                                      <img src={`${row.change_img}`} />
+                                  </td>
                                   <td>{row.change_memberid}</td>
                                   <td>{row.change_coupon}</td>
-                                  <td>{row.change_spainpoints}</td>
+                                  <td>{row.change_spendpoints}</td>
                                   <td>{row.change_time}</td>
                               </tr>
                           ))
