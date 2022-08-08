@@ -2,20 +2,20 @@ import React, { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 import './StarRating.css';
 
-const StarRating = () => {
+const StarRating = (props) => {
     const [rating, setRating] = useState(null);
     const [hover, setHover] = useState(null);
 
     return (
         <>
-            <div>
-                <p>您的評價是{rating}</p>
+            <div className="d-flex">
                 {[...Array(5)].map((star, i) => {
                     const ratingValue = i + 1;
 
                     return (
                         <label>
                             <input
+                                className="StarRatingInput"
                                 type="radio"
                                 name="rating"
                                 value={ratingValue}
@@ -31,10 +31,12 @@ const StarRating = () => {
                                 }
                                 onMouseEnter={() => setHover(ratingValue)}
                                 onMouseLeave={() => setHover(null)}
+                                key={i}
                             />
                         </label>
                     );
                 })}
+                <p>{rating}顆星</p>
             </div>
 
             <div className="row"></div>

@@ -38,7 +38,7 @@
     border-radius: 6px;
     padding: 10px;
   }
-  button {
+  .RatingsubmitBtn {
     background: blue;
     color: #fff;
     margin-top: 10px;
@@ -49,7 +49,7 @@
     font-weight: bolder;
     cursor: pointer;
   }
-  button.disabled {
+  .RatingsubmitBtn.disabled {
     opacity: 0.5;
     pointer-events: none;
   }
