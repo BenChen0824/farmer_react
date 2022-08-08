@@ -112,7 +112,11 @@ function SelectedFood(props) {
                                     >
                                         <img
                                             src={v.image}
-                                            className="man selectedDetil"
+                                            className={
+                                                v.category === 1
+                                                    ? 'man selectedDetil need-obj-cover'
+                                                    : 'man selectedDetil'
+                                            }
                                             alt=""
                                         />
                                     </div>

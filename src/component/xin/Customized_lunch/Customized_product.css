@@ -192,6 +192,10 @@
     height: 5rem;
     object-fit: contain;
 }
+.need-obj-cover {
+    object-fit: cover;
+}
+
 .fa-trash {
     cursor: pointer;
 }
