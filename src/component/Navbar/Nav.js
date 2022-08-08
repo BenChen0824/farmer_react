@@ -25,8 +25,6 @@ function Nav() {
         }
     };
 
-
-
     window.addEventListener('scroll', changeColor);
     //
     const a =
@@ -124,7 +122,7 @@ function Nav() {
                             style={{ textDecoration: 'none' }}
                         >
                             <li>
-                                <a
+                                <span
                                     href="/#"
                                     className={
                                         navColor
@@ -133,7 +131,7 @@ function Nav() {
                                     }
                                 >
                                     客製化餐點
-                                </a>
+                                </span>
                             </li>
                         </Link>
                         <Link to="/comment" style={{ textDecoration: 'none' }}>
