@@ -19,8 +19,10 @@ import CustomizedLunch from './component/xin/Customized_lunch/CustomizedLunch';
 import ChatMain from './component/xin/Customized_service/ChatMain';
 
 import RecipeMain from './component/hsieh/App';
+import Eachrecipe from './component/hsieh/Eachrecipe/Eachrecipe';
+import Createrecipe from './component/hsieh/Createrecipe/Createrecipe';
+import Updaterecipe from './component/hsieh/Createrecipe/Updaterecipe';
 import GameMain from './component/po/game/gameMain';
-import CompanyLogin from './component/pin/Company_Login';
 import CartMain from './component/ben/App';
 import Activity from './component/pin/Activity/Activity';
 
@@ -50,6 +52,18 @@ function App() {
                                     <Route
                                         path="/recipe/*"
                                         element={<RecipeMain />}
+                                    />
+                                    <Route
+                                        path="/recipe/each/:recipes_sid"
+                                        element={<Eachrecipe />}
+                                    />
+                                    <Route
+                                        path="/recipe/Createrecipe"
+                                        element={<Createrecipe />}
+                                    />
+                                    <Route
+                                        path="/recipe/updaterecipe/:recipes_sid"
+                                        element={<Updaterecipe />}
                                     />
 
                                     {/* 宸睿 */}

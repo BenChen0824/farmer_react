@@ -18,6 +18,7 @@ function ProductCard({
     inventory,
     onClick,
     hotSale,
+    onSubmit,
 }) {
     const [amount, setAmount] = useState(1);
     const [collect, setCollect] = useState(false);
@@ -32,6 +33,8 @@ function ProductCard({
 
     const AddToCart = () => {
         setAmount(1);
+        console.log(amount);
+        onSubmit(amount);
     };
 
     return (
@@ -60,46 +63,42 @@ function ProductCard({
                             <div className={styles.slash}>/</div>
                             <div className={styles.type}>{UNIT[unit]}</div>
                         </div>
-                        <div
-                            className={clsx(styles.card_cart, {
-                                [styles.hidden]: hover,
-                            })}
-                        >
-                            <div
-                                className={clsx(styles.collect, {
-                                    [styles.active]: collect,
-                                })}
-                                onClick={() => {
-                                    setCollect((prev) => !prev);
-                                }}
-                            >
-                                <AiOutlineHeart size={24} />{' '}
-                                {/* TODO: 連接收藏 */}
-                            </div>
-                            <div className={styles.count}>
-                                <div
-                                    className={styles.minus}
-                                    onClick={handleClickMinus}
-                                >
-                                    <AiOutlineMinus size={14} />
-                                </div>
-                                <div className={styles.num_box}>
-                                    <div className={styles.num}>{amount}</div>
-                                </div>
-                                <div
-                                    className={styles.plus}
-                                    onClick={handleClickPlus}
-                                >
-                                    <AiOutlinePlus size={14} />
-                                </div>
-                            </div>
-
-                            <div className={styles.buy} onClick={AddToCart}>
-                                <BsCart4 size={24} /> {/* TODO: add to cart */}
-                            </div>
-                        </div>
                     </div>
                 </div>
+                <div
+                    className={clsx(styles.card_cart, {
+                        [styles.hidden]: hover,
+                    })}
+                >
+                    <div
+                        className={clsx(styles.collect, {
+                            [styles.active]: collect,
+                        })}
+                        onClick={() => {
+                            setCollect((prev) => !prev);
+                        }}
+                    >
+                        <AiOutlineHeart size={24} /> {/* TODO: 連接收藏 */}
+                    </div>
+                    <div className={styles.count}>
+                        <div
+                            className={styles.minus}
+                            onClick={handleClickMinus}
+                        >
+                            <AiOutlineMinus size={14} />
+                        </div>
+                        <div className={styles.num_box}>
+                            <div className={styles.num}>{amount}</div>
+                        </div>
+                        <div className={styles.plus} onClick={handleClickPlus}>
+                            <AiOutlinePlus size={14} />
+                        </div>
+                    </div>
+                    <div className={styles.buy} onClick={AddToCart}>
+                        <BsCart4 size={24} /> {/* TODO: add to cart */}
+                    </div>
+                </div>
+
                 {hotSale && <div className={styles.hotSale}>hot sale</div>}
             </div>
         </div>

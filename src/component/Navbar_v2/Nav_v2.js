@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { FaShoppingCart } from 'react-icons/fa';
 import { FaUserCircle } from 'react-icons/fa';
 import { AiOutlineMenu } from 'react-icons/ai';
-import './Nav.css';
+import './Nav_v2.css';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from './images/fresh_LOGO_black.svg';
 import CartCountContext from '../ben/cart_count/CartCountContext';
@@ -24,8 +24,6 @@ function Nav() {
             setNavColor(false);
         }
     };
-
-
 
     window.addEventListener('scroll', changeColor);
     //

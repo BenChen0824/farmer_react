@@ -4,6 +4,18 @@ import { CART_LINEPAY, CART_LIST_ORDERLIST } from './../../../config/ajax-path';
 import CartCountContext from '../cart_count/CartCountContext';
 
 function CartPayment() {
+    const member_info = JSON.parse(localStorage.getItem('auth'));
+    const {
+        address,
+        birthday,
+        customer_id,
+        email,
+        mobile,
+        password,
+        token,
+        username,
+    } = member_info;
+    console.log(username);
     // const location = useLocation();
     const navigate = useNavigate();
     const { cartList, setCartList } = useContext(CartCountContext);
@@ -15,6 +27,13 @@ function CartPayment() {
     const [finalValue, setFinalValue] = useState(0);
     const [freshTotalPrice, setFreshPrice] = useState(0);
     const [customizedTotalPrice, setCustomizedPrice] = useState(0);
+
+    //訂單hook
+    const [paymentName, setPaymentName] = useState(username);
+    const [paymentMobile, setPaymentMobile] = useState(mobile);
+    const [paymentEmail, setPaymentEmail] = useState(email);
+    const [paymentAddress, setPaymentAddress] = useState(address);
+    const [paymentRemark, setPaymentRemark] = useState('');
 
     //對SQL發送資料 新增Orderlist跟Order Details 並刪除 Orderlist_to_buy資料
     const sendCheckSQL = () => {
@@ -127,9 +146,9 @@ function CartPayment() {
                 sessionStorage.setItem('amount', finalValue);
 
                 const sendData = {
-                    member_id: 1,
+                    member_id: customer_id,
                     totalPrice: finalValue,
-                    customerRemark: '123',
+                    customerRemark: paymentRemark,
                     freshItems: [
                         ...cartList.filter((v) => {
                             return (
@@ -516,6 +535,10 @@ function CartPayment() {
                                     type="text"
                                     name="name"
                                     id="name"
+                                    defaultValue={paymentName}
+                                    onChange={(e) => {
+                                        setPaymentName(e.target.value);
+                                    }}
                                     className="form-control my-2"
                                     placeholder="請輸入您的姓名"
                                 />
@@ -527,6 +550,10 @@ function CartPayment() {
                                     type="text"
                                     name="mobile"
                                     id="mobile"
+                                    defaultValue={paymentMobile}
+                                    onChange={(e) => {
+                                        setPaymentMobile(e.target.value);
+                                    }}
                                     className="form-control my-2"
                                     placeholder="09xx-xxx-xxx"
                                 />
@@ -538,6 +565,10 @@ function CartPayment() {
                                     type="text"
                                     name="email"
                                     id="email"
+                                    defaultValue={paymentEmail}
+                                    onChange={(e) => {
+                                        setPaymentEmail(e.target.value);
+                                    }}
                                     className="form-control my-2"
                                     placeholder="EX:farmer@gmail.com"
                                 />
@@ -549,6 +580,10 @@ function CartPayment() {
                                     type="text"
                                     className="form-control my-2"
                                     placeholder="地址:"
+                                    defaultValue={paymentAddress}
+                                    onChange={(e) => {
+                                        setPaymentAddress(e.target.value);
+                                    }}
                                 />
                             </div>
                             <div className="my-2">
@@ -560,7 +595,11 @@ function CartPayment() {
                                     id="cart_comment"
                                     cols="30"
                                     rows="10"
-                                    placeholder="123"
+                                    placeholder="請輸入您的備註..."
+                                    defaultValue={paymentRemark}
+                                    onChange={(e) => {
+                                        setPaymentRemark(e.target.value);
+                                    }}
                                 ></textarea>
                             </div>
                         </form>

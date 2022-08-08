@@ -1,19 +1,61 @@
-import React from 'react';
 import './Eachrecipe.css';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 function Eachrecipe() {
+    const [eachrecipe, setEachrecipe] = useState({
+        recipes_sid: '',
+        recipes_name: '',
+        recipes_time_cost: '',
+        recipes_portion: '',
+        recipes_calories: '',
+        recipes_type: '',
+        recipes_cooking_degree: '',
+        recipes_ingredient: '',
+        recipes_cooking_method: '',
+        recipes_description: '',
+        recipes_img: '',
+        cooking_create_member_Id: '',
+        recipes_collection: '',
+        recipes_like: '',
+        created_at: '',
+    });
+
+    async function eachrecipeinfo(recipes_sid) {
+        const r = await fetch(
+            `http://localhost:3600/recipe/each/${recipes_sid}`
+        );
+        const obj = await r.json();
+        setEachrecipe(obj);
+        console.log(eachrecipe);
+    }
+
+    const params = useParams();
+    useEffect(() => {
+        eachrecipeinfo(params.recipes_sid);
+        window.scrollTo({ top: 0, behavior: 'instant' }); // 調整往下滑
+    }, [params.recipes_sid]);
+
+    // useEffect(() => {
+
+    // }, []);  useEffect基本架構
+
     return (
         <>
-            <p className="eachrecipetitle">金沙蒜醬焗烤明蝦 (澎湖野生大明蝦)</p>
+            <p className="eachrecipetitle">{eachrecipe.recipes_name}</p>
+
             <hr className="line" align="center" />
 
             <div className="recipeinfo">
                 <div className="pictureineachrecipe">
-                    <img src="/images/dishimage.jpg" alt="" />
+                    <img src={`/dishimages/${eachrecipe.recipes_img}`} alt="" />
                 </div>
                 <div className="recipedetail">
                     <div className="auther">
-                        <p className="authername">作者：XXX</p>
+                        <p className="authername">
+                            作者：{eachrecipe.cooking_create_member_Id}
+                        </p>
 
                         <div className="likeandcollect">
                             <button className="buttonineach">
@@ -44,7 +86,9 @@ function Eachrecipe() {
                             <div>
                                 <p>
                                     料理所需時間
-                                    <br />約 20 分鐘
+                                    <br />約 {eachrecipe.recipes_time_cost}
+                                    分鐘
+                                    {/* 引入料理時間 */}
                                 </p>
                             </div>
                         </div>
@@ -58,7 +102,8 @@ function Eachrecipe() {
                             <div>
                                 <p>
                                     熱量
-                                    <br />約 600 大卡
+                                    <br />約 {eachrecipe.recipes_calories}
+                                    大卡
                                 </p>
                             </div>
                         </div>
@@ -72,7 +117,8 @@ function Eachrecipe() {
                             <div>
                                 <p>
                                     份量
-                                    <br />4 人份
+                                    <br />
+                                    {eachrecipe.recipes_portion} 人份
                                 </p>
                             </div>
                         </div>
@@ -86,8 +132,7 @@ function Eachrecipe() {
                             <div>
                                 <p>
                                     料理類型
-                                    <br />
-                                    台灣料理
+                                    <br /> {eachrecipe.recipes_type}
                                 </p>
                             </div>
                         </div>
@@ -102,7 +147,7 @@ function Eachrecipe() {
                                 <p>
                                     料理難易度
                                     <br />
-                                    新手輕鬆入門
+                                    {eachrecipe.recipes_cooking_degree}
                                 </p>
                             </div>
                         </div>
@@ -110,9 +155,7 @@ function Eachrecipe() {
                         {/* 分隔線 */}
 
                         <div>
-                            <p>
-                                來自水質清澈的沙質海底，「澎湖野生大明蝦」肉質Q彈鮮脆，而且非常鮮甜，隻隻肥美、蝦膏濃郁，是老饕的最愛。搭配鹹蛋黃做成的金沙蒜醬，只要焗烤一下，口味香濃的宵夜立即上桌。
-                            </p>
+                            <p>{eachrecipe.recipes_description}</p>
                         </div>
                     </div>
                 </div>
@@ -159,14 +202,7 @@ function Eachrecipe() {
                         <div className="showarea1">
                             <div>
                                 <p className="character1">
-                                    澎湖野生大明蝦 4隻 <br />
-                                    焗烤起司絲 10g <br />
-                                    金沙蒜醬 <br />
-                                    鹹蛋黃 3顆 <br />
-                                    米酒 2匙 <br />
-                                    大蒜 2瓣 <br />
-                                    美乃滋 2匙 <br />
-                                    檸檬汁 1匙
+                                    {eachrecipe.recipes_ingredient}
                                 </p>
                             </div>
                         </div>
@@ -197,18 +233,20 @@ function Eachrecipe() {
                                 將腸泥取出丟掉，大明蝦就處理完成。
                             </p>
                         </div>
+                        {/* 引入料理方式 */}
                     </div>
                 </div>
             </div>
+
             <div className="buttonlist">
-                <a href="./">
+                <Link to={`/recipe`}>
                     <button className="recipelistbutton">
                         食譜列表
                         <img src="/images/files.svg" alt="" className="crud" />
                     </button>
-                </a>
+                </Link>
 
-                <a href="./createrecipe">
+                <Link to={`/recipe/createrecipe`}>
                     <button className="create">
                         新增食譜
                         <img
@@ -217,14 +255,14 @@ function Eachrecipe() {
                             className="crud"
                         />
                     </button>
-                </a>
+                </Link>
 
-                {/* <a href=""> */}
-                <button className="update">
-                    修改食譜
-                    <img src="/images/pen.svg" alt="" className="crud" />
-                </button>
-                {/* </a> */}
+                <Link to={`/recipe/updaterecipe/${eachrecipe.recipes_sid}`}>
+                    <button className="update">
+                        修改食譜
+                        <img src="/images/pen.svg" alt="" className="crud" />
+                    </button>
+                </Link>
 
                 {/* <a href=""> */}
                 <button className="delete">

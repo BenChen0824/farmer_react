@@ -27,17 +27,6 @@ function MemberProfile(){
         hiddenFileInput.current.click()
     }
 
-    function handleSubmit(upimg){
-        const fd = new FormData()
-        fd.append('file', upimg.data)
-
-        fetch('http://localhost:3600/member/profile', {
-            method: 'post',
-            body: fd,
-        }).then(r=>r.json())
-        .then(obj=>console.log(obj))
-    }
-
     function handleOnChange (event) {
         const img = {
             preview: URL.createObjectURL(event.target.files[0]),
@@ -47,10 +36,24 @@ function MemberProfile(){
         handleSubmit(img)
     }
 
+    function handleSubmit(upimg){
+        const fd = new FormData()
+        fd.append('file', upimg.data)
+
+        fetch('http://localhost:3600/member/profile', {
+            method: 'post',
+            body: fd,
+            headers: {
+                customer_id: loginUser.customer_id
+            }
+        }).then(r=>r.json())
+        .then(obj=>console.log(obj))
+    }
+
     const sendProfile = (event)=>{
         event.preventDefault()
         const data = {
-            username: document.form1.username.value,
+            nickname: document.form1.nickname.value,
             intro: document.form1.intro.value,
             customer_id: loginUser.customer_id
         }
@@ -98,7 +101,7 @@ function MemberProfile(){
                                         </button>
                                     </div>
                                     <div className="col-md-4 bop-w150 bop-h150 p-2 m-auto">
-                                        <img className="img-fluid border border-white border-2 rounded-circle w-100 h-100 bop-objft" src={image.preview ? image.preview : '/member_imgs/user.png'} alt="123"/>
+                                        <img className="img-fluid border border-white border-2 rounded-circle w-100 h-100 bop-objft" src={image.preview ? image.preview : ('/images/' + profileData[0].profile_img)} alt="123"/>
                                     </div>
                                     <div className="col-md-8">
                                         <div className="card-body position-relative">
@@ -108,8 +111,8 @@ function MemberProfile(){
                                                     <>
                                                     <div className="mb-3">
                                                         <label htmlFor="exampleFormControlInput1" className="form-label">會員暱稱</label>
-                                                        <textarea type="text" name="username" className="form-control-plaintext text-white border-top" readOnly defaultValue={
-                                                            profileData[0] ? (profileData[0].username) : ('')} rows="1"></textarea>
+                                                        <textarea type="text" name="nickname" className="form-control-plaintext text-white border-top" readOnly defaultValue={
+                                                            profileData[0] ? (profileData[0].nickname) : ('')} rows="1"></textarea>
                                                     </div>
                                                     <div>
                                                         <label htmlFor="exampleFormControlTextarea1" className="form-label">會員簡介</label>
@@ -124,7 +127,7 @@ function MemberProfile(){
                                                     <>
                                                     <div className="mb-3">
                                                         <label htmlFor="exampleFormControlInput1" className="form-label">會員暱稱</label>
-                                                        <textarea type="text" name="username" className="form-control" rows="1"></textarea>
+                                                        <textarea type="text" name="nickname" className="form-control" rows="1"></textarea>
                                                     </div>
                                                     <div>
                                                         <label htmlFor="exampleFormControlTextarea1" className="form-label">會員簡介</label>

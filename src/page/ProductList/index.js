@@ -8,8 +8,8 @@ import clsx from 'clsx';
 import ProductCard from '../../component/lil/ProductCard';
 import ProductHashTag from '../../component/lil/ProductHashTag';
 import Pagination from '../../component/lil/Pagination';
-import React, { useEffect, useState, Component } from 'react';
-import { fetchProduct, getHotSale } from '../../api/product';
+import React, { useEffect, useState, useContext } from 'react';
+import { fetchProduct, getHotSale, addToCart } from '../../api/product';
 import { HASHTAG } from '../../config/variables';
 import { useQuery } from '../../hooks';
 import Slider from 'react-slick';
@@ -33,6 +33,19 @@ function ProductList() {
     const type = query['type'];
     const search = query['search'];
     const [hashTagURL, setHashTagURL] = useSearchParams();
+    const member_info = JSON.parse(localStorage.getItem('auth'));
+    const userId = member_info.customer_id;
+    const lsKey = `histroy${userId}`;
+
+    const [historyObj, setHistoryObj] = useState({});
+
+    //取history
+    useEffect(() => {
+        const history = localStorage.getItem(lsKey);
+        if (history) {
+            setHistoryObj(JSON.parse(history));
+        }
+    }, []);
 
     const [hotSales, setHotSale] = useState([]);
     const { hashTag } = useSelector((state) => state.product);
@@ -115,6 +128,14 @@ function ProductList() {
         }
     }, [selectedOption]);
 
+    const handleToCart = async (sid, amount) => {
+        await addToCart({
+            product_count: amount,
+            product_id: +sid,
+            member_id: member_info.customer_id,
+        });
+    };
+
     return (
         <>
             <div className={styles.page}>
@@ -133,7 +154,7 @@ function ProductList() {
                             <ProductNavBar />
                         </div>
                         <div className={clsx('col-9', styles.main)}>
-                            <Title zh={'熱銷商品'} eg={'hot sales'} />
+                            <Title zh={'熱銷商品'} eg={'Hot Sales'} />
                             <div className={clsx('row', styles.card)}>
                                 <Slider {...settings}>
                                     {hotSales.rows &&
@@ -161,6 +182,12 @@ function ProductList() {
                                                             v.product_inventory
                                                         }
                                                         hotSale={true}
+                                                        onSubmit={(amount) =>
+                                                            handleToCart(
+                                                                v.sid,
+                                                                amount
+                                                            )
+                                                        }
                                                     />
                                                 );
                                             })}
@@ -184,7 +211,7 @@ function ProductList() {
                                 })}
                             </div>
 
-                            <Title zh={'小農產品'} eg={'products'} />
+                            <Title zh={'小農產品'} eg={'Products'} />
 
                             <div className={clsx('row', styles.card)}>
                                 {data && data.rows
@@ -208,6 +235,12 @@ function ProductList() {
                                                       v.product_inventory
                                                   }
                                                   hotSale={false}
+                                                  onSubmit={(amount) =>
+                                                      handleToCart(
+                                                          v.sid,
+                                                          amount
+                                                      )
+                                                  }
                                               />
                                           );
                                       })
@@ -221,6 +254,21 @@ function ProductList() {
                                     />
                                 ) : null}
                             </div>
+                            {/* {historyObj && Object.keys(historyObj).length ? (
+                                <>
+                                    <Title zh={'瀏覽紀錄'} eg={'History'} />
+                                    <div className={clsx('row', styles.card)}>
+                                        {Object.keys(historyObj).map((v, i) => {
+                                            <ProductCard
+                                                hotSale={false}
+                                                // onSubmit={(amount) =>
+                                                //     handleToCart(v.sid, amount)
+                                                // }
+                                            />;
+                                        })}
+                                    </div>{' '}
+                                </>
+                            ) : null} */}
                         </div>
                     </div>
                 </div>

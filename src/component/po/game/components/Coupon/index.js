@@ -1,156 +1,114 @@
-import "./coupon.css"
-import React, { useState } from 'react'
+import './coupon.css';
+import React, { useEffect, useState } from 'react';
 // import Dailypoint from '../../Dailypoint/Dailypoint'
-import ChangeTab from '../ChangeTab'
+//import ChangeTab from '../ChangeTab'
+import axios from 'axios';
+import { couponobj } from './data/couponobj';
 
 export default function Coupon(props) {
-    const {eggpoints} = props
-    //useState 裡面應該要放一個變數
-    const[changeCoupon, setchangeCoupon] = useState(50)
-    //const[CouponState, setCouponState] = useState('100點使用兌換券')
+    //解構蛋的點數
+    const { eggpoints, setEggPoints } = props;
 
-    //兌換判斷式 這個fc還沒寫完..
-    function clickchange () {
-        console.log(eggpoints)
-        console.log(changeCoupon)
-        if (props.eggpoints <= changeCoupon){
-            alert('抱歉點數不足')
+    const discountArray = [...couponobj];
+
+    // 呈現資料畫面是否兌換完成
+    const [CouponState, setCouponState] = useState([]);
+
+    //console.log(CouponState50)
+
+    useEffect(() => {
+        setCouponState(discountArray);
+        //setEggPoints(500)
+    }, []);
+
+    // useEffect(()=>{
+
+    // },[eggpoints])
+
+    const exchange = (i) => {
+        //先拿到陣列裡的point
+        const newPointToExchange = discountArray[i].point;
+        const newtype = discountArray[i].type;
+        // console.log(newPointToExchange);
+        //目前點數比對兌換券的point
+        if (eggpoints >= newPointToExchange) {
+            //alert('兌換完成')
+            console.log('兌換完成');
+            //目前點數減掉兌換後的點數
+            setEggPoints(eggpoints - newPointToExchange);
         } else {
-            alert('兌換成功')
+            alert('抱歉點數不足');
+            console.log('抱歉點數不足');
         }
-    }
+        axios
+            .post('http://localhost:3600/game/coupon', {
+                change_memberid: 530,
+                change_coupon: newtype,
+                change_spendpoints: newPointToExchange,
+            })
+            .then((result) => {
+                console.log(result.data);
+            });
+    };
 
-  return (
-    <>
-        <div className="container">
+    const clickchange = (i) => {
+        let newCouponState = [...discountArray];
+        newCouponState[i].change = 1;
+
+        setCouponState(newCouponState);
+    };
+
+    return (
+        <>
+            <div className="container">
                 <div className="row mb-2">
-                    <div className="col-md-6 coupon">
-                        <div className="d-flex  border rounded overflow-hidden  mb-4 shadow">
-                            <div className="col-8">
-                                <img
-                                    className="w-100 objfit"
-                                    src="/dailypoint-img/52c1abae31a722933f917fce0fccc868.jpg"
-                                    alt=""
-                                />
+                    {discountArray.map((v, i) => {
+                        return (
+                            <div className="col-md-6 coupon" key={v.id}>
+                                <div className="d-flex  border rounded overflow-hidden  mb-4 shadow">
+                                    <div className="col-8">
+                                        <img
+                                            className="w-100 objfit"
+                                            src={v.image}
+                                            // src="/dailypoint-img/52c1abae31a722933f917fce0fccc868.jpg"
+                                            alt=""
+                                        />
+                                    </div>
+                                    <div className="col-4 p-4 d-flex flex-column position-static">
+                                        <p
+                                            className="d-inline-block mb-1 text-primary text-center"
+                                            style={{ fontSize: '2.5rem' }}
+                                        >
+                                            折價券
+                                        </p>
+                                        <p
+                                            className="mb-1 text-center"
+                                            style={{ fontSize: '4rem' }}
+                                        >
+                                            ${v.price}
+                                        </p>
+                                        <p className="card-text mb-3 text-center">
+                                            --消費滿500可使用--
+                                        </p>
+                                        <button
+                                            className="btn btn-primary"
+                                            onClick={() => {
+                                                clickchange(i);
+                                                exchange(i);
+                                            }}
+                                        >
+                                            {/* //  onClick={clickchange}>  */}
+                                            {v.change === 0
+                                                ? `${v.point}點使用兌換`
+                                                : `已兌換過`}
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="col-4 p-4 d-flex flex-column position-static">
-                                <p
-                                    className="d-inline-block mb-1 text-primary text-center"
-                                    style={{ fontSize: '2.5rem' }}
-                                >
-                                    折價券
-                                </p>
-                                <p
-                                    className="mb-1 text-center"
-                                    style={{ fontSize: '4rem' }}
-                                >
-                                    $100
-                                </p>
-                                <p className="card-text mb-3 text-center">
-                                    --消費滿500可使用--
-                                </p>
-                                <button className="btn btn-primary" onClick={clickchange}>
-                                    50點使用兌換
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-6 coupon">
-                        <div className="d-flex  border rounded overflow-hidden  mb-4 shadow">
-                            <div className="col-8">
-                                <img
-                                    className="img-fluid objfit"
-                                    src="/dailypoint-img/top-view-fresh-white-chicken-eggs_114579-82238.jpg"
-                                    alt=""
-                                />
-                            </div>
-                            <div className="col-4 p-4 d-flex flex-column position-static">
-                                <p
-                                    className="d-inline-block mb-1 text-primary text-center"
-                                    style={{ fontSize: '2.5rem' }}
-                                >
-                                    折價券
-                                </p>
-                                <p
-                                    className="mb-1 text-center"
-                                    style={{ fontSize: '4rem' }}
-                                >
-                                    $200
-                                </p>
-                                <p className="card-text mb-3 text-center">
-                                    --消費滿500可使用--
-                                </p>
-                                <button className="btn btn-primary" onClick={clickchange}>
-                                    100點使用兌換
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-6 coupon">
-                        <div className="d-flex  border rounded overflow-hidden  mb-4 shadow">
-                            <div className="col-8">
-                                <img
-                                    className="img-fluid objfit"
-                                    src="/dailypoint-img/4b08287a319a467288279c8499eb2db3.jpg"
-                                    alt=""
-                                />
-                            </div>
-                            <div className="col-4 p-4 d-flex flex-column position-static">
-                                <p
-                                    className="d-inline-block mb-1 text-primary text-center"
-                                    style={{ fontSize: '2.5rem' }}
-                                >
-                                    折價券
-                                </p>
-                                <p
-                                    className="mb-1 text-center"
-                                    style={{ fontSize: '4rem' }}
-                                >
-                                    $300
-                                </p>
-                                <p className="card-text mb-3 text-center">
-                                    --消費滿500可使用--
-                                </p>
-                                <button className="btn btn-primary" onClick={clickchange}>
-                                    150點使用兌換
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-6 coupon">
-                        <div className="d-flex  border rounded overflow-hidden  mb-4 shadow">
-                            <div className="col-8">
-                                <img
-                                    className="img-fluid objfit"
-                                    src="/dailypoint-img/43961109b445769ed853c21b1d646eeb.jpg"
-                                    alt=""
-                                />
-                            </div>
-                            <div className="col-4 p-4 d-flex flex-column position-static">
-                                <p
-                                    className="d-inline-block mb-1 text-primary text-center"
-                                    style={{ fontSize: '2.5rem' }}
-                                >
-                                    折價券
-                                </p>
-                                <p
-                                    className="mb-1 text-center"
-                                    style={{ fontSize: '4rem' }}
-                                >
-                                    $400
-                                </p>
-                                <p className="card-text mb-3 text-center">
-                                    --消費滿500可使用--
-                                </p>
-                                <button className="btn btn-primary" onClick={clickchange}>
-                                    200點使用兌換
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                        );
+                    })}
                 </div>
             </div>
-    </>
- 
-  )
+        </>
+    );
 }

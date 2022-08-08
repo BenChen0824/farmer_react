@@ -1,8 +1,41 @@
-import { useState } from 'react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import './Createrecipe.css';
 
 function Updaterecipe() {
+    const [updaterecipe, setUpdaterecipe] = useState({
+        recipes_sid: '',
+        recipes_name: '',
+        recipes_time_cost: '',
+        recipes_portion: '',
+        recipes_calories: '',
+        recipes_type: '',
+        recipes_cooking_degree: '',
+        recipes_ingredient: '',
+        recipes_cooking_method: '',
+        recipes_description: '',
+        recipes_img: '',
+        cooking_create_member_Id: '',
+        recipes_collection: '',
+        recipes_like: '',
+        created_at: '',
+    });
+
+    async function updateeachrecipe(recipes_sid) {
+        const r = await fetch(
+            `http://localhost:3600/recipe/each/${recipes_sid}`
+        );
+        const obj = await r.json();
+        setUpdaterecipe(obj);
+        console.log(updaterecipe);
+    }
+
+    const params = useParams();
+    useEffect(() => {
+        updateeachrecipe(params.recipes_sid);
+        window.scrollTo({ top: 0, behavior: 'instant' }); // 調整往下滑
+    }, [params.recipes_sid]);
+
     // 更改食譜名稱
     // const [updateRecipesname, setUpdateRecipesname] = useState('');
     const [recipesname, setRecipesname] = useState('');
@@ -84,7 +117,7 @@ function Updaterecipe() {
                     <input
                         type="text"
                         className="dataform1"
-                        value={recipesname}
+                        value={updaterecipe.recipes_name}
                         placeholder="請輸入食譜名稱"
                         onChange={(e) => {
                             setRecipesname(e.target.value);
@@ -102,7 +135,7 @@ function Updaterecipe() {
                     <section id="description">
                         <textarea
                             className="dataform1"
-                            value={description}
+                            value={updaterecipe.recipes_description}
                             placeholder="請100字內簡單描述"
                             cols="30"
                             rows="3"
@@ -125,7 +158,7 @@ function Updaterecipe() {
                     <input
                         className="dataform2"
                         type="text"
-                        value={timecost}
+                        value={updaterecipe.recipes_time_cost}
                         onChange={(e) => {
                             setTimecost(e.target.value);
                         }}
@@ -144,7 +177,7 @@ function Updaterecipe() {
                     <input
                         className="dataform2"
                         type="text"
-                        value={calories}
+                        value={updaterecipe.recipes_calories}
                         onChange={(e) => {
                             setCalories(e.target.value);
                         }}
@@ -162,7 +195,7 @@ function Updaterecipe() {
                 <section id="portion">
                     <select
                         className="dataform2"
-                        value={portion}
+                        value={updaterecipe.recipes_portion}
                         onChange={(e) => {
                             setPortion(e.target.value);
                         }}
@@ -187,7 +220,7 @@ function Updaterecipe() {
                 <section id="select">
                     <select
                         className="dataform1"
-                        value={recipestype}
+                        value={updaterecipe.recipes_type}
                         onChange={(e) => {
                             setRecipestype(e.target.value);
                         }}
@@ -212,7 +245,7 @@ function Updaterecipe() {
                 <section id="select">
                     <select
                         className="dataform1"
-                        value={recipesdegree}
+                        value={updaterecipe.recipes_cooking_degree}
                         onChange={(e) => {
                             setRecipesdegree(e.target.value);
                         }}
@@ -243,7 +276,7 @@ function Updaterecipe() {
                             <input
                                 type="text"
                                 className="ingredientuse"
-                                value={ingredient}
+                                value={updaterecipe.recipes_ingredient}
                                 placeholder="請輸入食材"
                                 onChange={(e) => {
                                     setIngredient(e.target.value);
@@ -368,7 +401,7 @@ function Updaterecipe() {
                         <section id="step">
                             <textarea
                                 className="dataform1"
-                                value={step}
+                                value={updaterecipe.recipes_cooking_method}
                                 placeholder="步驟1"
                                 onChange={(e) => {
                                     setStep(e.target.value);
@@ -449,7 +482,7 @@ function Updaterecipe() {
             {/* 分隔線，以下完成按鈕 */}
 
             <div className="button">
-                <button className="finish">
+                <button className="finish" >
                     修改食譜
                     <img src="/images/pen.svg" alt="" className="crud" />
                 </button>
@@ -457,5 +490,7 @@ function Updaterecipe() {
         </>
     );
 }
+
+// onClick={()}
 
 export default Updaterecipe;

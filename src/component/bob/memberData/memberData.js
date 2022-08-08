@@ -59,9 +59,9 @@ function MemberData(){
         <div className="container">
             <div className="row">
                 <MemberNavbar />
-                <div className="col-9">
+                <div className="col-sm-9">
                     <div className="row justify-content-center mx-0 mt-3">
-                        <div className="col-9">
+                        <div className="col-sm-9">
                             <div className="bg-white">
                                 <div className="card-body">
                                     <h2 className="card-title text-center fw-bold">會員基本資料</h2>
@@ -69,49 +69,49 @@ function MemberData(){
                                     <form className="px-4" name="form1" onSubmit={sendData} noValidate>
                                             <input type="hidden" name="customer_id" defaultValue={memberData[0].customer_id}/>
                                             <div className="mb-1 row border-bottom border-top py-3">
-                                                <label htmlFor="name" className="form-label col-2 my-auto">姓名</label>
-                                                <div className="col-8">
+                                                <label htmlFor="name" className="form-label col-sm-2 my-auto">姓名</label>
+                                                <div className="col-sm-8">
                                                     <input type="text" className="form-control" id="name" name="name" required defaultValue={memberData[0].name} />
                                                 </div>
                                                 <div className="form-text red"></div>
                                             </div>
                                             <div className="mb-1 row border-bottom py-3">
-                                                <label htmlFor="email" className="form-label col-2 my-auto">電郵</label>
-                                                <div className="col-8">
+                                                <label htmlFor="email" className="form-label col-sm-2 my-auto">電郵</label>
+                                                <div className="col-sm-8">
                                                     <input type="email" className="form-control" id="email" name="email" required defaultValue={memberData[0].email} />
                                                 </div>
                                                 <div className="form-text red"></div>
                                             </div>
                                             <div className="mb-1 row border-bottom py-3">
-                                                <label htmlFor="mobile" className="form-label col-2 my-auto">手機</label>
-                                                <div className="col-8">
+                                                <label htmlFor="mobile" className="form-label col-sm-2 my-auto">手機</label>
+                                                <div className="col-sm-8">
                                                     <input type="text" className="form-control" id="mobile" name="mobile" pattern="09\d{8}" required defaultValue={memberData[0].mobile}/>
                                                 </div>
                                             </div>
                                             <div className="mb-1 row border-bottom py-3">
-                                                <label htmlFor="birthday" className="form-label col-2 my-auto">生日</label>
-                                                <div className="col-8">
+                                                <label htmlFor="birthday" className="form-label col-sm-2 my-auto">生日</label>
+                                                <div className="col-sm-8">
                                                     <input type="date" className="form-control" id="birthday" name="birthday" required defaultValue={memberData[0].birthday}/>
                                                 </div>
                                                 <div className="form-text"></div>
                                             </div>
                                             <div className="mb-1 row border-bottom py-3">
-                                                <label htmlFor="address" className="form-label col-2 my-auto">地址</label>
-                                                <div className="col-8">
+                                                <label htmlFor="address" className="form-label col-sm-2 my-auto">地址</label>
+                                                <div className="col-sm-8">
                                                     <input type="text" className="form-control" id="address" name="address" required defaultValue={memberData[0].address}/>
                                                 </div>
                                                 <div className="form-text red"></div>
                                             </div>
                                             <div className="mb-1 row border-bottom py-3">
-                                                <label htmlFor="account" className="form-label col-2 my-auto">帳號</label>
-                                                <div className="col-8">
+                                                <label htmlFor="account" className="form-label col-sm-2 my-auto">帳號</label>
+                                                <div className="col-sm-8">
                                                     <input type="text" className="form-control" id="account" name="account" required defaultValue={memberData[0].account}/>
                                                 </div>
                                                 <div className="form-text red"></div>
                                             </div>
                                             <div className="mb-1 row border-bottom py-3">
-                                                <label htmlFor="password" className="form-label col-2 my-auto">密碼</label>
-                                                <div className="col-8">
+                                                <label htmlFor="password" className="form-label col-sm-2 my-auto">密碼</label>
+                                                <div className="col-sm-8">
                                                     <input type="password" className="form-control" id="password" name="password" required defaultValue={memberData[0].password}/>
                                                 </div>
                                                 <div className="form-text red"></div>
