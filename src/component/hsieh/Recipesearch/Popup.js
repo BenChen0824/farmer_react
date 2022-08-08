@@ -5,6 +5,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 function Popup() {
+    const [recipe, setRecipe] = useState([]);
+    const [recipeDisplay, setRecipeDisplay] = useState([]);
+    const [recipeDisplayAgain, setRecipeDisplayAgain] = useState([]);
+
+    async function getRecipe() {
+        const r = await fetch('http://localhost:3600/recipe/recipe');
+        const obj = await r.json();
+        setRecipe(obj);
+        setRecipeDisplay(obj);
+        setRecipeDisplayAgain(obj);
+    }
+
     const [timecost, setTimecost] = useState('');
     const [calories, setCalories] = useState('');
 
@@ -102,7 +114,15 @@ function Popup() {
             </div>
 
             <div className="buttoninpopup">
-                <button className="searchbutton" onClick="()">
+                <button
+                    className="searchbutton"
+                    // onClick={() => {
+                    //     const data = recipeDisplayAgain.filter((v, i) => {
+                    //         return v.recipes_name.includes(inputText);
+                    //     });
+                    //     setRecipeDisplay(data);
+                    // }}
+                >
                     搜尋
                     <img
                         src="/images/file-plus.svg"
@@ -119,7 +139,12 @@ function Popup() {
                     type="button"
                     classc="btn btn-dark"
                     className="ingredient"
-                    onClick="()"
+                    onClick={() => {
+                        const data = recipeDisplayAgain.filter((v, i) => {
+                            return v.recipes_ingredient.includes('菜');
+                        });
+                        setRecipeDisplay(data);
+                    }}
                 >
                     <img src="/images/vegetable.png" alt="" />
                     蔬菜
@@ -130,7 +155,14 @@ function Popup() {
                     type="button"
                     classc="btn btn-dark"
                     className="ingredient"
-                    onClick="()"
+                    onClick={() => {
+                        const data = recipeDisplayAgain.filter((v, i) => {
+                            return v.recipes_ingredient.includes(
+                                '果' || '梨' || '茄'
+                            );
+                        });
+                        setRecipeDisplay(data);
+                    }}
                 >
                     <img src="/images/fruit.png" alt="" />
                     水果
@@ -141,7 +173,14 @@ function Popup() {
                     type="button"
                     classc="btn btn-dark"
                     className="ingredient"
-                    onClick="()"
+                    onClick={() => {
+                        const data = recipeDisplayAgain.filter((v, i) => {
+                            return v.recipes_ingredient.includes(
+                                '魚' || '蝦' || '貝' || '蟹'
+                            );
+                        });
+                        setRecipeDisplay(data);
+                    }}
                 >
                     <img src="/images/seafood.png" alt="" />
                     海鮮
@@ -151,7 +190,14 @@ function Popup() {
                     type="button"
                     classc="btn btn-dark"
                     className="ingredient"
-                    onClick="()"
+                    onClick={() => {
+                        const data = recipeDisplayAgain.filter((v, i) => {
+                            return v.recipes_ingredient.includes(
+                                '肉' || '雞' || '鴨' || '牛' || '豬' || '牛'
+                            );
+                        });
+                        setRecipeDisplay(data);
+                    }}
                 >
                     <img src="/images/meat.png" alt="" />
                     肉類
@@ -161,7 +207,12 @@ function Popup() {
                     type="button"
                     classc="btn btn-dark"
                     className="ingredient"
-                    onClick="()"
+                    onClick={() => {
+                        const data = recipeDisplayAgain.filter((v, i) => {
+                            return v.recipes_ingredient.includes('蛋');
+                        });
+                        setRecipeDisplay(data);
+                    }}
                 >
                     <img src="/images/egg.png" alt="" />
                     蛋
@@ -171,7 +222,12 @@ function Popup() {
                     type="button"
                     classc="btn btn-dark"
                     className="ingredient"
-                    onClick="()"
+                    onClick={() => {
+                        const data = recipeDisplayAgain.filter((v, i) => {
+                            return v.recipes_ingredient.includes('米');
+                        });
+                        setRecipeDisplay(data);
+                    }}
                 >
                     <img src="/images/cereals.png" alt="" />
                     穀物
