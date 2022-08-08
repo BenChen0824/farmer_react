@@ -15,22 +15,6 @@ function Recipesearch() {
 
     console.log(location);
 
-    // const getPageData = async (event, gotoPage) => {
-    //     if (event) {
-    //         event.preventDefault();
-    //     }
-    //     console.log({ gotoPage });
-
-    //     const r = await fetch(`${RECIPE_GET_LIST}?page=${gotoPage}`);
-    //     const obj = await r.json();
-    //     console.log(obj);
-    //     setData(obj);
-    // };
-
-    // useEffect(() => {
-    //     getPageData(null, +usp.get('page') || 1);
-    // }, [location]);
-
     const [recipe, setRecipe] = useState([]);
     const [recipeDisplay, setRecipeDisplay] = useState([]);
 
@@ -88,8 +72,8 @@ function Recipesearch() {
             <div>
                 <p className="titleword">今日食譜推薦 ／ Recipes Recommend</p>
             </div>
-            <div className="recommend">
-                <div className="recommendlist">
+            <div className="w-100 d-flex justify-content-center flex-wrap">
+                <div className="recommendlist d-flex justify-content-center">
                     {/* <a href="./"> */}
                     <div className="recipephoto">
                         <img src="/images/dishimage.jpg" alt="" />
@@ -143,7 +127,7 @@ function Recipesearch() {
 
                 {/* 分隔線 */}
 
-                <div className="recommendlist">
+                <div className="recommendlist d-flex justify-content-center">
                     {/* <a href="./"> */}
                     <div className="recipephoto">
                         <img src="/images/dishimage.jpg" alt="" />
@@ -206,10 +190,9 @@ function Recipesearch() {
                 {recipeDisplay.map((v, i) => {
                     return (
                         <div
-                            className="recommendlist d-flex justify-content-center col-6"
+                            className="recommendlist d-flex justify-content-center"
                             key={v.recipes_sid}
                         >
-                            {/* <a href="./"> */}
                             <div className="recipephoto">
                                 <Link to={`/recipe/each/${v.recipes_sid}`}>
                                     <img
@@ -218,11 +201,14 @@ function Recipesearch() {
                                     />
                                 </Link>
                             </div>
-                            {/* <a /> */}
+
                             <div className="recipeblock">
-                                {/* <a href="./"> */}
-                                <p>{v.recipes_name}</p>
-                                {/* <a /> */}
+                                <Link
+                                    to={`/recipe/each/${v.recipes_sid}`}
+                                    className="linkinrecipesearch"
+                                >
+                                    <p>{v.recipes_name}</p>
+                                </Link>
                                 <div className="iconmanagement">
                                     <button className="buttoninsearch">
                                         <img
@@ -255,7 +241,7 @@ function Recipesearch() {
                                         className="iconinsearch"
                                     />
                                     <p className="iconinsearchp">
-                                        {v.recipes_time_cost} 分鐘
+                                        約 {v.recipes_time_cost} 分鐘
                                     </p>
                                 </div>
                                 <div className="iconmanagement">
