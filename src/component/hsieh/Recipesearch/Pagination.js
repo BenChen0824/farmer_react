@@ -1,7 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 export default function Pagination({ page, totalPages }) {
+    const location = useLocation();
+    const usp = new URLSearchParams(location.search);
+
     return (
         <nav aria-label="Page navigation example">
             <ul className="pagination">
@@ -11,7 +14,9 @@ export default function Pagination({ page, totalPages }) {
                     </a>
                 </li>
                 {Array(11)
+                    // Array 長度11
                     .fill(1)
+                    // fill填滿，給1
                     .map((v, i) => {
                         const isActive = page === page + i - 5 ? 'active' : '';
 

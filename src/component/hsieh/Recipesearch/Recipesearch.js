@@ -262,7 +262,9 @@ function Recipesearch() {
                 {/* 分隔線 */}
             </div>
             <div className="pa">
-                <Pagination />
+                {/* {data && data.totalPages ? ( */}
+                <Pagination page={data.page} totalPages={data.totalPages} />
+                {/* ) : null} */}
             </div>
         </>
     );
