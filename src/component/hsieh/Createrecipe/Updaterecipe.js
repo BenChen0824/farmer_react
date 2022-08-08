@@ -482,7 +482,7 @@ function Updaterecipe() {
             {/* 分隔線，以下完成按鈕 */}
 
             <div className="button">
-                <button className="finish">
+                <button className="finish" >
                     修改食譜
                     <img src="/images/pen.svg" alt="" className="crud" />
                 </button>
@@ -490,5 +490,7 @@ function Updaterecipe() {
         </>
     );
 }
+
+// onClick={()}
 
 export default Updaterecipe;

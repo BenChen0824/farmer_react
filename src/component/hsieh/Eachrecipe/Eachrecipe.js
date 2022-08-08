@@ -239,14 +239,14 @@ function Eachrecipe() {
             </div>
 
             <div className="buttonlist">
-                <a href="./">
+                <Link to={`/recipe`}>
                     <button className="recipelistbutton">
                         食譜列表
                         <img src="/images/files.svg" alt="" className="crud" />
                     </button>
-                </a>
+                </Link>
 
-                <a href="./createrecipe">
+                <Link to={`/recipe/createrecipe`}>
                     <button className="create">
                         新增食譜
                         <img
@@ -255,7 +255,7 @@ function Eachrecipe() {
                             className="crud"
                         />
                     </button>
-                </a>
+                </Link>
 
                 <Link to={`/recipe/updaterecipe/${eachrecipe.recipes_sid}`}>
                     <button className="update">
