@@ -102,7 +102,7 @@ function Popup() {
             </div>
 
             <div className="buttoninpopup">
-                <button className="searchbutton">
+                <button className="searchbutton" onClick="()">
                     搜尋
                     <img
                         src="/images/file-plus.svg"
@@ -119,6 +119,7 @@ function Popup() {
                     type="button"
                     classc="btn btn-dark"
                     className="ingredient"
+                    onClick="()"
                 >
                     <img src="/images/vegetable.png" alt="" />
                     蔬菜
@@ -129,6 +130,7 @@ function Popup() {
                     type="button"
                     classc="btn btn-dark"
                     className="ingredient"
+                    onClick="()"
                 >
                     <img src="/images/fruit.png" alt="" />
                     水果
@@ -139,6 +141,7 @@ function Popup() {
                     type="button"
                     classc="btn btn-dark"
                     className="ingredient"
+                    onClick="()"
                 >
                     <img src="/images/seafood.png" alt="" />
                     海鮮
@@ -148,6 +151,7 @@ function Popup() {
                     type="button"
                     classc="btn btn-dark"
                     className="ingredient"
+                    onClick="()"
                 >
                     <img src="/images/meat.png" alt="" />
                     肉類
@@ -157,6 +161,7 @@ function Popup() {
                     type="button"
                     classc="btn btn-dark"
                     className="ingredient"
+                    onClick="()"
                 >
                     <img src="/images/egg.png" alt="" />
                     蛋
@@ -166,6 +171,7 @@ function Popup() {
                     type="button"
                     classc="btn btn-dark"
                     className="ingredient"
+                    onClick="()"
                 >
                     <img src="/images/cereals.png" alt="" />
                     穀物

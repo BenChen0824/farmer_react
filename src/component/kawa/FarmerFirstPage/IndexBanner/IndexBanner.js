@@ -39,7 +39,6 @@ export default class Fade extends Component {
         };
         return (
             <div>
-                {/* <h2>Fade</h2> */}
                 <Slider {...settings}>
                     <div>
                         <div className="indexBanner_imgwrap">

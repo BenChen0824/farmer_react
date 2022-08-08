@@ -17,7 +17,7 @@ function Createrecipe() {
 
     // 料理份量
     const [portion, setPortion] = useState('');
-    const portionOptions = ['1人分', '2人分', '3人分', '4人分', '5人分以上'];
+    const portionOptions = ['1', '2', '3', '4', '5'];
 
     // select，料理類型
     const [recipestype, setRecipestype] = useState('');
@@ -28,7 +28,7 @@ function Createrecipe() {
         '韓式料理',
         '南洋料理',
         '歐式料理',
-        '美式料理',
+        '西式料理',
         '其他',
     ];
 
@@ -79,13 +79,15 @@ function Createrecipe() {
                             value={description}
                             placeholder="請100字內簡單描述"
                             cols="30"
-                            rows="3"
+                            rows="5"
                             onChange={(e) => {
                                 setDescription(e.target.value);
                             }}
                         />
                     </section>
-                    <label className="dataform1">剩餘 100 個字</label>
+                    <label className="dataform1">
+                        剩餘 {100 - description.length} 字
+                    </label>
                 </div>
             </div>
 
@@ -151,6 +153,7 @@ function Createrecipe() {
                         })}
                     </select>
                 </section>
+                <label className="breakpointtitle2">人份</label>
             </div>
 
             <hr className="hr" />
@@ -218,14 +221,14 @@ function Createrecipe() {
                                 type="text"
                                 className="ingredientuse"
                                 value={ingredient}
-                                placeholder="請輸入食材"
+                                placeholder="食材與分量，如：雞蛋2顆"
                                 onChange={(e) => {
                                     setIngredient(e.target.value);
                                 }}
                             />
                         </section>
 
-                        <section id="unit">
+                        {/* <section id="unit">
                             <input
                                 type="text"
                                 className="portionuse"
@@ -235,7 +238,7 @@ function Createrecipe() {
                                     setUnit(e.target.value);
                                 }}
                             />
-                        </section>
+                        </section> */}
 
                         <button className="buttonincreate">
                             <img
@@ -254,14 +257,14 @@ function Createrecipe() {
                                 type="text"
                                 className="ingredientuse"
                                 value={ingredient}
-                                placeholder="請輸入食材"
+                                placeholder="食材與分量，如：雞蛋2顆"
                                 onChange={(e) => {
                                     setIngredient(e.target.value);
                                 }}
                             />
                         </section>
 
-                        <section id="unit">
+                        {/* <section id="unit">
                             <input
                                 type="text"
                                 className="portionuse"
@@ -271,7 +274,7 @@ function Createrecipe() {
                                     setUnit(e.target.value);
                                 }}
                             />
-                        </section>
+                        </section> */}
                         <button className="buttonincreate">
                             <img
                                 src="/images/trashcan.svg"
@@ -289,14 +292,14 @@ function Createrecipe() {
                                 type="text"
                                 className="ingredientuse"
                                 value={ingredient}
-                                placeholder="請輸入食材"
+                                placeholder="食材與分量，如：雞蛋2顆"
                                 onChange={(e) => {
                                     setIngredient(e.target.value);
                                 }}
                             />
                         </section>
 
-                        <section id="unit">
+                        {/* <section id="unit">
                             <input
                                 type="text"
                                 className="portionuse"
@@ -306,7 +309,7 @@ function Createrecipe() {
                                     setUnit(e.target.value);
                                 }}
                             />
-                        </section>
+                        </section> */}
                         <button className="buttonincreate">
                             <img
                                 src="/images/trashcan.svg"
@@ -431,5 +434,11 @@ function Createrecipe() {
         </>
     );
 }
+
+// function CreateNewRecipe(){
+//   var
+// }
+
+// onclick = "CreateNewRecipe()"";
 
 export default Createrecipe;
