@@ -21,6 +21,7 @@ import Slider from 'react-slick';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleHashTag } from '../../store/slices/product';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import CartCountContext from '../../component/ben/cart_count/CartCountContext';
 
 const settings = {
     infinite: true,
@@ -30,6 +31,7 @@ const settings = {
 };
 
 function ProductList() {
+    const { cartList, setCartList } = useContext(CartCountContext);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [data, setData] = useState({});
@@ -150,11 +152,13 @@ function ProductList() {
     }, [selectedOption]);
 
     const handleToCart = async (sid, amount) => {
-        await addToCart({
+        const newBuyList = await addToCart({
             product_count: amount,
             product_id: +sid,
             member_id: member_info.customer_id,
         });
+        console.log(newBuyList.cart);
+        setCartList(newBuyList.cart)
     };
 
     return (

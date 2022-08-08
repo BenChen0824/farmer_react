@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import ProductItemInfo from '../../component/lil/ProductItemInfo';
 import ProductTab from '../../component/lil/ProductTab';
 import styles from './Product.module.css';
 import { useParams } from 'react-router-dom';
 import { getProductItem, addToCart } from '../../api/product';
+import CartCountContext from '../../component/ben/cart_count/CartCountContext';
 
 function Product(props) {
+    const { cartList, setCartList } = useContext(CartCountContext);
     const [data, setData] = useState({});
     let { sid } = useParams();
     const member_info = JSON.parse(localStorage.getItem('auth'));
@@ -29,11 +31,13 @@ function Product(props) {
     }, [sid]);
 
     const handleSubmit = async (amount, addCart) => {
-        await addToCart({
+        const newBuyList = await addToCart({
             product_count: amount,
             product_id: +sid,
             member_id: member_info.customer_id,
         });
+        console.log(newBuyList.cart);
+        setCartList(newBuyList.cart);
     };
 
     return (

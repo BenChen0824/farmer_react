@@ -15,18 +15,18 @@ function Canvas(props) {
     const cRef = useRef();
     const shadowRef = useRef();
     const drawLocations = [
-        [120, 320],
-        [130, 330],
-        [150, 185],
+        [135, 330],
+        [160, 180],
+        [320, 185],
         [460, 175],
-        [440, 370],
+        [450, 390],
     ];
     const drawSize = [
-        [280, 180],
-        [250, 150],
-        [170, 115],
+        [280, 175],
+        [130, 110],
+        [100, 115],
         [80, 165],
-        [135, 140],
+        [100, 110],
     ];
     const lunchCount = () => {
         return Array(5)
@@ -66,7 +66,7 @@ function Canvas(props) {
             shadowRef.current.width,
             shadowRef.current.height
         ); // 清除畫面
-        let img = await getImageFromPath(`/images/perferBox2.png`); // 背景圖
+        let img = await getImageFromPath(`/lunch_images/box.png`); // 背景圖
         shadowCtx.drawImage(img, 0, 0, 700, 650);
         for (let item of tmpCart) {
             img = await getImageFromPath(`${item.image}`);
