@@ -17,16 +17,16 @@ function Canvas(props) {
     const drawLocations = [
         [120, 320],
         [130, 330],
-        [150, 185],
-        [460, 175],
-        [440, 370],
+        [150, 165],
+        [330, 170],
+        [400, 320],
     ];
     const drawSize = [
         [280, 180],
         [250, 150],
-        [170, 115],
-        [80, 165],
-        [135, 140],
+        [160, 160],
+        [240, 150],
+        [170, 170],
     ];
     const lunchCount = () => {
         return Array(5)
@@ -243,7 +243,10 @@ function Canvas(props) {
                         </div>
 
                         <div className="canvasBtns  d-flex justify-content-center  mb-md-3">
-                            <button className="priceArea price-btn btn btn-success me-3 xin-font-primary-color disabled">
+                            <button
+                                className="priceArea price-btn btn btn-success me-3 xin-font-primary-color disabled"
+                                style={{ color: '#3a2c2c' }}
+                            >
                                 總價:{totalPrice}
                             </button>
                             <button

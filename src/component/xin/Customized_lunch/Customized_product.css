@@ -170,6 +170,9 @@
     object-fit: cover;
     flex-grow: 1;
 }
+.card .xin-card-img-top.need-obj-contain {
+    object-fit: contain;
+}
 
 .xin-card-body {
     padding: 0;
@@ -185,9 +188,9 @@
   height: 40vh;
 } */
 .selectedDetil {
-    width: 90%;
+    width: 80%;
     height: 5rem;
-    object-fit: cover;
+    object-fit: contain;
 }
 .fa-trash {
     cursor: pointer;
@@ -329,9 +332,9 @@
     }
 
     .card .xin-card-img-top {
-        width: 100%;
-        height: 20vw;
-        object-fit: contain;
+        width: 80%;
+        height: 3rem;
+        object-fit: cover;
         flex-grow: 1;
     }
 
