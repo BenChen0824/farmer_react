@@ -15,6 +15,9 @@ export const customized_lunch_CHECK = `${SERVER}/customized_lunch/api`;
 export const AB_POST_UPLOAD_PHOTOS = `${SERVER}/try-uploads`;
 export const CART_ADD_PRODUCT = `${SERVER}/cart/addfresh`;
 
+export const COMMENT_MAIN = `${SERVER}/comment`;
+export const COMMENT_ITEM = `${SERVER}/comment/sid`;
+
 export function getImgUrl(name) {
     return `${SERVER}/images/${name}`;
 }

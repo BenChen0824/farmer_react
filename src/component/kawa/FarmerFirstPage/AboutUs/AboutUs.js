@@ -8,7 +8,7 @@ const AboutUs = () => {
         <>
             <MarqueeSliderL />
 
-            <div className="aboutUs_section mt-5 mb-5">
+            <div className="aboutUs_section  mt-5 mb-5 ">
                 <div className="aboutUs_imgwarap_area">
                     <div className="aboutUs_imgwarap">
                         <img
@@ -24,7 +24,7 @@ const AboutUs = () => {
                     </div>
                 </div>
 
-                <div className="aboutUs_text_area mt-3">
+                <div className="aboutUs_text_area mt-3 d-flex flex-column align-items-center">
                     <div className="aboutUs_title mb-5">
                         <h2 className="aboutUs_titleText">純淨無毒、</h2>
                         <h2 className="aboutUs_titleText">在地嚴選</h2>
