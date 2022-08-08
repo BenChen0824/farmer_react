@@ -112,7 +112,7 @@ function SelectedFood(props) {
                                     >
                                         <img
                                             src={v.image}
-                                            className=" selectedDetil"
+                                            className="man selectedDetil"
                                             alt=""
                                         />
                                     </div>

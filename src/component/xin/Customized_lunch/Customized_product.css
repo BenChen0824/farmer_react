@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
 }
+
 .xin-nav-link {
     background-color: #3a2c2c;
     padding: 0.5rem 0.25rem;
@@ -164,9 +165,9 @@
 }
 
 .card .xin-card-img-top {
-    width: 100%;
-    height: 7vw;
-    object-fit: contain;
+    width: 80%;
+    height: 7rem;
+    object-fit: cover;
     flex-grow: 1;
 }
 
@@ -184,8 +185,9 @@
   height: 40vh;
 } */
 .selectedDetil {
-    width: 65px;
-    height: 65px;
+    width: 90%;
+    height: 5rem;
+    object-fit: cover;
 }
 .fa-trash {
     cursor: pointer;
@@ -270,6 +272,12 @@
 .lunch-name-input {
     width: 150px;
 }
+
+.man {
+    border-radius: 50%;
+    /* border: 1px solid #000; */
+}
+
 @media screen and (max-width: 992px) {
     .xin-food-area {
         border: none;
