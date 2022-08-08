@@ -151,12 +151,12 @@ function Eachrecipe() {
                                 </p>
                             </div>
                         </div>
+                    </div>
 
-                        {/* 分隔線 */}
+                    {/* 分隔線 */}
 
-                        <div>
-                            <p>{eachrecipe.recipes_description}</p>
-                        </div>
+                    <div className="eachrecipedescription">
+                        <p>{eachrecipe.recipes_description}</p>
                     </div>
                 </div>
             </div>
@@ -201,7 +201,7 @@ function Eachrecipe() {
                         <div className="black">使用食材</div>
                         <div className="showarea1">
                             <div>
-                                <p className="character1">
+                                <p className="chapter1">
                                     {eachrecipe.recipes_ingredient}
                                 </p>
                             </div>
@@ -211,25 +211,23 @@ function Eachrecipe() {
                     {/* 分隔線 */}
 
                     <div className="cooking">
-                        <div className="green">
-                            <p className="character">料理方式</p>
-                        </div>
+                        <div className="green">料理方式</div>
                         <div className="showarea2">
                             <div className="number">1</div>
-                            <div className="character2">
+                            <div className="chapter2">
                                 料理前，將明蝦以流水沖5分鐘即可退冰，更能完整保持野生大明蝦Q彈鮮脆的肉質。
                             </div>
                         </div>
                         <div className="showarea2">
                             <div className="number">2</div>
-                            <p className="character2">
+                            <p className="chapter2">
                                 退冰後的澎湖野生大明蝦，取一把剪刀，從蝦頭和蝦身的間隙，剪開蝦背。
                             </p>
                         </div>
                         <div className="showarea2">
                             <div className="number">3</div>
 
-                            <p className="character2">
+                            <p className="chapter2">
                                 將腸泥取出丟掉，大明蝦就處理完成。
                             </p>
                         </div>
@@ -239,14 +237,14 @@ function Eachrecipe() {
             </div>
 
             <div className="buttonlist">
-                <a href="./">
+                <Link to={`/recipe`}>
                     <button className="recipelistbutton">
                         食譜列表
                         <img src="/images/files.svg" alt="" className="crud" />
                     </button>
-                </a>
+                </Link>
 
-                <a href="./createrecipe">
+                <Link to={`/recipe/createrecipe`}>
                     <button className="create">
                         新增食譜
                         <img
@@ -255,7 +253,7 @@ function Eachrecipe() {
                             className="crud"
                         />
                     </button>
-                </a>
+                </Link>
 
                 <Link to={`/recipe/updaterecipe/${eachrecipe.recipes_sid}`}>
                     <button className="update">
@@ -276,5 +274,3 @@ function Eachrecipe() {
 }
 
 export default Eachrecipe;
-
-// ${recipes_sid}

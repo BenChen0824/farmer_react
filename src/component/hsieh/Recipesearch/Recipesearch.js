@@ -17,12 +17,14 @@ function Recipesearch() {
 
     const [recipe, setRecipe] = useState([]);
     const [recipeDisplay, setRecipeDisplay] = useState([]);
+    const [recipeDisplayAgain, setRecipeDisplayAgain] = useState([]);
 
     async function getRecipe() {
         const r = await fetch('http://localhost:3600/recipe/recipe');
         const obj = await r.json();
         setRecipe(obj);
         setRecipeDisplay(obj);
+        setRecipeDisplayAgain(obj);
     }
 
     useEffect(() => {
@@ -49,8 +51,20 @@ function Recipesearch() {
                         }}
                     />
                     <p className="subtitleword">熱門關鍵字：日式、炸蝦、雞腿</p>
+                    <button
+                        type="button"
+                        class="btn btn-dark"
+                        style={{ margin: 5 }}
+                        onClick={() => {
+                            const data = recipeDisplayAgain.filter((v, i) => {
+                                return v.recipes_name.includes(inputText);
+                            });
+                            setRecipeDisplay(data);
+                        }}
+                    >
+                        搜尋
+                    </button>
                     <a href="/recipe/popup">
-                        <div></div>
                         <button
                             type="button"
                             class="btn btn-dark"
@@ -59,13 +73,6 @@ function Recipesearch() {
                             進階搜尋
                         </button>
                     </a>
-                    <button
-                        type="button"
-                        class="btn btn-dark"
-                        style={{ margin: 5 }}
-                    >
-                        搜尋
-                    </button>
                 </div>
             </div>
 
@@ -262,7 +269,9 @@ function Recipesearch() {
                 {/* 分隔線 */}
             </div>
             <div className="pa">
-                <Pagination />
+                {/* {data && data.totalPages ? ( */}
+                <Pagination page={data.page} totalPages={data.totalPages} />
+                {/* ) : null} */}
             </div>
         </>
     );
@@ -270,16 +279,21 @@ function Recipesearch() {
 
 export default Recipesearch;
 
-/* {data && data.rows
-            ? data.rows.map((row) => (
-                <tr key={'mm' + row.sid}>
-                <th scope="row">{row.sid}</th>
-                <td>{row.name}</td>
-                <td>{row.email}</td>
-                <td>{row.mobile}</td>
-                </tr>
-            ))
-            : null} */
+// function Recommend1 () {
+//   const today = new Date();
+//   const tgm = today.getMilliseconds();
+//   const dataquantity = 總資料數量?
+//   const firstdish = Math.round(tgm % (dataquantity / 2))
+// }
+// Recommend1 ();
+
+// function Recommend2 () {
+//   const today = new Date();
+//   const tgm = today.getMilliseconds();
+//   const dataquantity = 總資料數量?
+//   const seconddish = Math.round((tgm % (dataquantity / 2)) +(dataquantity / 2) +1)
+// }
+// Recommend2 ();
 
 // const runClock = () => {
 //   const now = new Date();
@@ -293,4 +307,8 @@ export default Recipesearch;
 // };
 // runClock();
 
-// style={{ height: 40, width: 40 }}
+// https://github.com/mfee-react/react-bs5-router6
+
+// https://github.com/mfee-react/react-bs5-router6/blob/main/src/pages/StudentSelfPagination.js
+
+// https://ithelp.ithome.com.tw/articles/10187146

@@ -66,7 +66,7 @@ function Canvas(props) {
             shadowRef.current.width,
             shadowRef.current.height
         ); // 清除畫面
-        let img = await getImageFromPath(`/images/perferBox2.png`); // 背景圖
+        let img = await getImageFromPath(`/lunch_images/box.png`); // 背景圖
         shadowCtx.drawImage(img, 0, 0, 700, 650);
         for (let item of tmpCart) {
             img = await getImageFromPath(`${item.image}`);

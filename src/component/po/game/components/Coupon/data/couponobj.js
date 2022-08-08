@@ -12,7 +12,7 @@ export const couponobj = [
         price: 200,
         point: 100,
         type: '100折價券',
-        image: '/dailypoint-img/top-view-fresh-white-chicken-eggs_114579-82238.jpg',
+        image: '/dailypoint-img/4b08287a319a467288279c8499eb2db3.jpg',
         change: 0,
     },
     {

@@ -21,7 +21,7 @@ function CartPaymentLinepayCheck() {
         let data = {};
         data.transitionID = sessionStorage.getItem('transitionID');
         data.amount = sessionStorage.getItem('amount');
-        console.log('IDkey:' + data);
+        // console.log('IDkey:' + data);
         fetch(CART_LINEPAY_CHECK, {
             method: 'POST',
             body: JSON.stringify(data),
@@ -40,7 +40,7 @@ function CartPaymentLinepayCheck() {
 
     const sqlData = () => {
         const sendData = sessionStorage.getItem('linepayData');
-        console.log(sendData);
+        // console.log(sendData);
         fetch(CART_LIST_ORDERLIST, {
             method: 'POST',
             body: sendData,

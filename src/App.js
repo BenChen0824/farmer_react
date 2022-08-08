@@ -20,6 +20,7 @@ import ChatMain from './component/xin/Customized_service/ChatMain';
 
 import RecipeMain from './component/hsieh/App';
 import Eachrecipe from './component/hsieh/Eachrecipe/Eachrecipe';
+import Createrecipe from './component/hsieh/Createrecipe/Createrecipe';
 import Updaterecipe from './component/hsieh/Createrecipe/Updaterecipe';
 import GameMain from './component/po/game/gameMain';
 import CartMain from './component/ben/App';
@@ -55,6 +56,10 @@ function App() {
                                     <Route
                                         path="/recipe/each/:recipes_sid"
                                         element={<Eachrecipe />}
+                                    />
+                                    <Route
+                                        path="/recipe/Createrecipe"
+                                        element={<Createrecipe />}
                                     />
                                     <Route
                                         path="/recipe/updaterecipe/:recipes_sid"
