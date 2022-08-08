@@ -103,5 +103,6 @@ export async function AddProduct() {
 
 export async function addToCart(val) {
     const { data } = await axios.post(CART_ADD_PRODUCT, val);
-    console.log(data);
+    // console.log(data.cart);
+    return data;
 }
