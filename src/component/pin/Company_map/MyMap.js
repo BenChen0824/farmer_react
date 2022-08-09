@@ -84,7 +84,7 @@ function MyMap() {
                         {companyData.features.map((v, i) => {
                             return (
                                 <div
-                                    class="card mb-3 infocards"
+                                    class="mapcard mb-3 infocards"
                                     data-cards="241"
                                     key={v.QualityFarmID}
                                 >

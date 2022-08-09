@@ -25,9 +25,9 @@ function Game(props) {
     const { eggpoints, setEggPoints } = props;
     //跳轉頁面時候先看盤子
     useEffect(() => {
-        // setTimeout(() => {
-        //     setStartFlip(false);
-        // }, 500);
+        setTimeout(() => {
+            setStartFlip(false);
+        }, 500);
         shuffleCards();
     }, []);
 
@@ -43,9 +43,9 @@ function Game(props) {
         setTurn(0);
         setDisabled(false);
         setStartFlip(true);
-        // setTimeout(() => {
-        //     setStartFlip(false);
-        // }, 1000);
+        setTimeout(() => {
+            setStartFlip(false);
+        }, 1000);
     }
 
     function handleChoice(card) {

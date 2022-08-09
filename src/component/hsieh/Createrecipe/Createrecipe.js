@@ -43,8 +43,6 @@ function Createrecipe() {
 
     // 料理食材
     const [ingredient, setIngredient] = useState('');
-    // 食材分量
-    const [unit, setUnit] = useState('');
 
     // 料理步驟
     const [step, setStep] = useState('');
@@ -321,17 +319,29 @@ function Createrecipe() {
                                 />
                             </section>
 
-                            {/* <section id="unit">
-                            <input
-                                type="text"
-                                className="portionuse"
-                                value={unit}
-                                placeholder="請輸入份量"
-                                onChange={(e) => {
-                                    setUnit(e.target.value);
-                                }}
-                            />
-                        </section> */}
+                            <button className="buttonincreate">
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="ingredientandstep">
+                            <section id="ingredient">
+                                <input
+                                    type="text"
+                                    className="ingredientuse"
+                                    value={ingredient}
+                                    placeholder="食材與分量，如：雞蛋2顆"
+                                    onChange={(e) => {
+                                        setIngredient(e.target.value);
+                                    }}
+                                />
+                            </section>
 
                             <button className="buttonincreate">
                                 <img
@@ -357,52 +367,6 @@ function Createrecipe() {
                                 />
                             </section>
 
-                            {/* <section id="unit">
-                            <input
-                                type="text"
-                                className="portionuse"
-                                value={unit}
-                                placeholder="請輸入份量"
-                                onChange={(e) => {
-                                    setUnit(e.target.value);
-                                }}
-                            />
-                        </section> */}
-                            <button className="buttonincreate">
-                                <img
-                                    src="/images/trashcan.svg"
-                                    alt=""
-                                    className="iconincreate"
-                                />
-                            </button>
-                        </div>
-
-                        {/* 分隔線 */}
-
-                        <div className="ingredientandstep">
-                            <section id="ingredient">
-                                <input
-                                    type="text"
-                                    className="ingredientuse"
-                                    value={ingredient}
-                                    placeholder="食材與分量，如：雞蛋2顆"
-                                    onChange={(e) => {
-                                        setIngredient(e.target.value);
-                                    }}
-                                />
-                            </section>
-
-                            {/* <section id="unit">
-                            <input
-                                type="text"
-                                className="portionuse"
-                                value={unit}
-                                placeholder="請輸入份量"
-                                onChange={(e) => {
-                                    setUnit(e.target.value);
-                                }}
-                            />
-                        </section> */}
                             <button className="buttonincreate">
                                 <img
                                     src="/images/trashcan.svg"

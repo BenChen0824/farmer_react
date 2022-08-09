@@ -356,16 +356,6 @@ function Updaterecipe() {
                 </div>
             </div>
 
-            <div className="additemarea">
-                <button className="buttonincreateplus">
-                    <img
-                        src="/images/plus.svg"
-                        alt=""
-                        className="iconincreateplus"
-                    />
-                </button>
-            </div>
-
             <hr className="hrincreaterecipe" />
             {/* 分隔線，以下料理步驟 */}
 
@@ -431,20 +421,10 @@ function Updaterecipe() {
                 </div>
             </div>
 
-            <div className="additemarea">
-                <button className="buttonincreateplus">
-                    <img
-                        src="/images/plus.svg"
-                        alt=""
-                        className="iconincreateplus"
-                    />
-                </button>
-            </div>
-
             <hr className="hrincreaterecipe" />
             {/* 分隔線，以下照片 */}
 
-            <div className="photouploadincreate">
+            <div className="photoareaincreate">
                 <button className="buttonincreate">
                     <img
                         src="/images/camera.svg"
@@ -452,6 +432,18 @@ function Updaterecipe() {
                         className="iconincreate"
                     />
                 </button>
+
+                <div className="photouploadincreate">
+                    <form style={{ display: 'none' }}>
+                        <input
+                            id="inputData"
+                            name="file"
+                            type="file"
+                            accept="image/*"
+                        />
+                    </form>
+                    <img className="shoephotoincreate" alt="123" />
+                </div>
             </div>
             <div className="buttonintextalign">
                 <label>請選擇照片</label>
@@ -463,7 +455,11 @@ function Updaterecipe() {
             <div className="buttonintextalign">
                 <button className="finishincreate">
                     修改食譜
-                    <img src="/images/pen.svg" alt="" className="crud" />
+                    <img
+                        src="/images/pen.svg"
+                        alt=""
+                        className="crudincreate"
+                    />
                 </button>
             </div>
         </>

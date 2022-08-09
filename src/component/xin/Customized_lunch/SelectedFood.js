@@ -16,6 +16,12 @@ function SelectedFood(props) {
         setDataFromFoodArea(newCart);
     };
 
+    const removeAllItem = () => {
+        let newRemoveAll = [...dataFromFoodArea];
+        newRemoveAll = [];
+        setDataFromFoodArea(newRemoveAll);
+    };
+
     return (
         <>
             <div
@@ -32,7 +38,7 @@ function SelectedFood(props) {
                             : 'text-center hidden xin-font-primary-color  '
                     }
                 >
-                    目前已選{calcCount ? calcCount : 0}樣食材
+                    目前已選{calcCount ? calcCount + '樣' : ''}食材
                 </h3>
 
                 <div
@@ -162,6 +168,20 @@ function SelectedFood(props) {
                             );
                         })}
                     </div>
+                </div>
+                <div className="deletAllArea d-flex ">
+                    <button
+                        className={
+                            isShowedSelectFood
+                                ? 'btn btn-danger xin-remove-all-btn'
+                                : 'btn btn-danger hidden '
+                        }
+                        onClick={() => {
+                            removeAllItem();
+                        }}
+                    >
+                        刪除全部
+                    </button>
                 </div>
                 <button
                     className={

@@ -4,6 +4,7 @@ import ChangeTab from '../ChangeTab';
 
 function Pages(props) {
     const { eggpoints, info, setInfo, setEggPoints } = props;
+    const Swal = require('sweetalert2');
 
     return (
         <>
@@ -34,6 +35,12 @@ function Pages(props) {
                     })}
                     onClick={() => {
                         setInfo(2);
+                        Swal.fire({
+                            title: '遊戲說明',
+                            text: '您有5次翻牌機會,每翻牌成功一次獲得兩點',
+                            icon: 'info',
+                            confirmButtonText: '遊戲開始',
+                        });
                     }}
                 >
                     <p>搶點遊戲</p>
