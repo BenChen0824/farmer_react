@@ -212,7 +212,20 @@
 
 .foodCard {
     cursor: pointer;
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition-duration: 400ms;
 }
+
+
+
+.foodcard:hover{
+    transform: scale(1.1, 1.1);
+    border: 1px;
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition-duration: 400ms;
+    transform: scale(1, 1) translate3d(0, 0, 0);
+    box-shadow: 0 1px 6px 3px rgba(194, 188, 188, 0.64);
+} 
 .canvasFood {
     margin-top: -100px;
     margin-left: -100px;
