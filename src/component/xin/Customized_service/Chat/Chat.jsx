@@ -133,7 +133,7 @@ const Chat = ({ socket, user, users, setUsers, messages, setMessages }) => {
                             <img
                                 src={
                                     user.username === '管理員'
-                                        ? 'images/Logo.png'
+                                        ? 'logo/fresh_LOGO_icon.svg'
                                         : 'http://bootdey.com/img/Content/avatar/avatar1.png'
                                 }
                                 className="rounded-circle mx-2"

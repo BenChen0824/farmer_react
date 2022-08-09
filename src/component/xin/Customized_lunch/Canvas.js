@@ -200,7 +200,7 @@ function Canvas(props) {
                                     setInputName(e.target.value);
                                 }}
                             />
-                            <div className="form-group d-flex align-items-center my-3 my-md-0 ms-md-3">
+                            <div className="form-group d-flex align-items-center my-3 my-md-0 ms-md-3 justify-content-center">
                                 <label
                                     htmlFor="exampleFormControlSelect1 "
                                     className="xin-font-primary-color h4 m-0 pe-1"
@@ -242,7 +242,7 @@ function Canvas(props) {
                             </div>
                         </div>
 
-                        <div className="canvasBtns  d-flex justify-content-center  mb-md-3">
+                        <div className="canvasBtns  d-flex justify-content-center  mb-4">
                             <button
                                 className="priceArea price-btn btn btn-success me-3 xin-font-primary-color disabled"
                                 style={{ color: '#3a2c2c' }}
