@@ -186,13 +186,13 @@ function Foods(props) {
                                     return (
                                         <div
                                             key={v.id}
-                                            className="foodCard col-md-4 col-4 mb-3 card xin-card border-0 align-items-center "
+                                            className="foodCard col-md-4 col-4 mb-3 card xin-card border-0 align-items-center  "
                                             onClick={() => {
                                                 addItem(v);
                                             }}
                                         >
                                             <img
-                                                className="man xin-card-img-top"
+                                                className="man xin-card-img-top need-obj-contain"
                                                 src={v.image}
                                                 alt={v.name}
                                             />
@@ -231,7 +231,7 @@ function Foods(props) {
                                             }}
                                         >
                                             <img
-                                                className="man xin-card-img-top"
+                                                className="man xin-card-img-top need-obj-contain"
                                                 src={v.image}
                                                 alt={v.name}
                                             />

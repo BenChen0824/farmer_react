@@ -1,11 +1,12 @@
-.recipetitle {
+
+.recipetitleinpopup {
   text-align: center;
   font-size: 30px;
   padding-top: 50px;
   padding-bottom: 10px;
 }
 
-.form {
+.forminpopup {
   text-align: center;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -16,7 +17,7 @@
   height: 50px;
 }
 
-.form img {
+.forminpopup img {
   height: 30px;
   width: 30px;
 }
@@ -28,7 +29,7 @@
   margin: 20px 10px;
 }
 
-.searchbutton {
+.searchbuttoninpopup {
   width: 200px;
   height: 40px;
   background-color: rgb(130, 202, 53);
@@ -38,13 +39,13 @@
   color: white;
 }
 
-.ia {
+.searchbyingredient {
   width: 80%;
   margin:0 auto 50px auto;
 }
 /* 食材搜尋區域 */
 
-.ingredient {
+.ingredientinpopup {
   width: 30%;
   height: 60px;
   margin:10px;
@@ -52,14 +53,14 @@
   align-items: center; 
 }
 
-.ingredient img {
+.ingredientinpopup img {
   height: 40px;
   width: 40px;
   margin-right: 10px;
 }
 
 @media screen and (max-width:756px) {
-    .recipetitle {
+    .recipetitleinpopup {
     text-align: center;
     font-size: 30px;
     margin: 0px 10%;
@@ -67,7 +68,7 @@
     padding-bottom: 10px;
     }
 
-    .ia {
+    .searchbyingredient {
     width: 70%;
     height: auto;
     margin: 0 15% 50px 15%;
@@ -81,12 +82,12 @@
       height: 36px;
     }
 
-    .ingredient {
+    .ingredientinpopup {
         width: 90%;
         height: 40px;
     }
 
-    .ingredient img {
+    .ingredientinpopup img {
       height: 25px;
       width: 25px;
       margin-right: 10px;

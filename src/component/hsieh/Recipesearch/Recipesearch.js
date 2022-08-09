@@ -17,12 +17,14 @@ function Recipesearch() {
 
     const [recipe, setRecipe] = useState([]);
     const [recipeDisplay, setRecipeDisplay] = useState([]);
+    const [recipeDisplayAgain, setRecipeDisplayAgain] = useState([]);
 
     async function getRecipe() {
         const r = await fetch('http://localhost:3600/recipe/recipe');
         const obj = await r.json();
         setRecipe(obj);
         setRecipeDisplay(obj);
+        setRecipeDisplayAgain(obj);
     }
 
     useEffect(() => {
@@ -37,9 +39,9 @@ function Recipesearch() {
 
     return (
         <>
-            <div className="searching">
+            <div className="hsiehsearching">
                 <div id="inputText">
-                    <p className="subtitleword">搜尋食譜</p>
+                    <p className="subtitlewordinsearch">搜尋食譜</p>
                     <input
                         type="text"
                         value={inputText}
@@ -48,9 +50,23 @@ function Recipesearch() {
                             setInputText(e.target.value);
                         }}
                     />
-                    <p className="subtitleword">熱門關鍵字：日式、炸蝦、雞腿</p>
+                    <p className="subtitlewordinsearch">
+                        熱門關鍵字：日式、炸蝦、雞腿
+                    </p>
+                    <button
+                        type="button"
+                        class="btn btn-dark"
+                        style={{ margin: 5 }}
+                        onClick={() => {
+                            const data = recipeDisplayAgain.filter((v, i) => {
+                                return v.recipes_name.includes(inputText);
+                            });
+                            setRecipeDisplay(data);
+                        }}
+                    >
+                        搜尋
+                    </button>
                     <a href="/recipe/popup">
-                        <div></div>
                         <button
                             type="button"
                             class="btn btn-dark"
@@ -59,33 +75,28 @@ function Recipesearch() {
                             進階搜尋
                         </button>
                     </a>
-                    <button
-                        type="button"
-                        class="btn btn-dark"
-                        style={{ margin: 5 }}
-                    >
-                        搜尋
-                    </button>
                 </div>
             </div>
 
             <div>
-                <p className="titleword">今日食譜推薦 ／ Recipes Recommend</p>
+                <p className="titlewordinsearch">
+                    今日食譜推薦 ／ Recipes Recommend
+                </p>
             </div>
             <div className="w-100 d-flex justify-content-center flex-wrap">
-                <div className="recommendlist d-flex justify-content-center">
+                <div className="recommendlistinsearch d-flex justify-content-center">
                     {/* <a href="./"> */}
-                    <div className="recipephoto">
+                    <div className="recipephotoinsearch">
                         <img src="/images/dishimage.jpg" alt="" />
                     </div>
                     {/* </a> */}
 
-                    <div className="recipeblock">
+                    <div className="recipeblockinsearch">
                         {/* <a href="./">> */}
                         <p>日式黃金炸蝦</p>
                         {/* </a> */}
 
-                        <div className="iconmanagement">
+                        <div className="iconmanagementinsearch">
                             <button className="buttoninsearch">
                                 <img
                                     src="/images/heart.svg"
@@ -104,9 +115,9 @@ function Recipesearch() {
                             <p className="iconinsearchp">10</p>
                         </div>
 
-                        <hr className="hrline" />
+                        <hr className="hrlineinsearch" />
 
-                        <div className="iconmanagement">
+                        <div className="iconmanagementinsearch">
                             <img
                                 src="/images/clock.svg"
                                 alt=""
@@ -114,7 +125,7 @@ function Recipesearch() {
                             />
                             <p className="iconinsearchp">10 分鐘</p>
                         </div>
-                        <div className="iconmanagement">
+                        <div className="iconmanagementinsearch">
                             <img
                                 src="/images/heat.svg"
                                 alt=""
@@ -127,18 +138,18 @@ function Recipesearch() {
 
                 {/* 分隔線 */}
 
-                <div className="recommendlist d-flex justify-content-center">
+                <div className="recommendlistinsearch d-flex justify-content-center">
                     {/* <a href="./"> */}
-                    <div className="recipephoto">
+                    <div className="recipephotoinsearch">
                         <img src="/images/dishimage.jpg" alt="" />
                     </div>
                     {/* </a> */}
-                    <div className="recipeblock">
+                    <div className="recipeblockinsearch">
                         {/* <a href="./"> */}
                         <p>日式黃金炸蝦</p>
                         {/* </a> */}
 
-                        <div className="iconmanagement">
+                        <div className="iconmanagementinsearch">
                             <button className="buttoninsearch">
                                 <img
                                     src="/images/heart.svg"
@@ -157,9 +168,9 @@ function Recipesearch() {
                             <p className="iconinsearchp">20</p>
                         </div>
 
-                        <hr className="hrline" />
+                        <hr className="hrlineinsearch" />
 
-                        <div className="iconmanagement">
+                        <div className="iconmanagementinsearch">
                             <img
                                 src="/images/clock.svg"
                                 alt=""
@@ -167,7 +178,7 @@ function Recipesearch() {
                             />
                             <p className="iconinsearchp">20 分鐘</p>
                         </div>
-                        <div className="iconmanagement">
+                        <div className="iconmanagementinsearch">
                             <img
                                 src="/images/heat.svg"
                                 alt=""
@@ -182,18 +193,17 @@ function Recipesearch() {
             {/* 分隔線 */}
 
             <div>
-                <p className="titleword">食譜列表 ／ Recipes List</p>
+                <p className="titlewordinsearch">食譜列表 ／ Recipes List</p>
             </div>
 
-            {/* <div className="recommend "> */}
             <div className="w-100 d-flex justify-content-center flex-wrap">
                 {recipeDisplay.map((v, i) => {
                     return (
                         <div
-                            className="recommendlist d-flex justify-content-center"
+                            className="recommendlistinsearch d-flex justify-content-center"
                             key={v.recipes_sid}
                         >
-                            <div className="recipephoto">
+                            <div className="recipephotoinsearch">
                                 <Link to={`/recipe/each/${v.recipes_sid}`}>
                                     <img
                                         src={`/dishimages/${v.recipes_img}`}
@@ -202,14 +212,14 @@ function Recipesearch() {
                                 </Link>
                             </div>
 
-                            <div className="recipeblock">
+                            <div className="recipeblockinsearch">
                                 <Link
                                     to={`/recipe/each/${v.recipes_sid}`}
                                     className="linkinrecipesearch"
                                 >
                                     <p>{v.recipes_name}</p>
                                 </Link>
-                                <div className="iconmanagement">
+                                <div className="iconmanagementinsearch">
                                     <button className="buttoninsearch">
                                         <img
                                             src="/images/heart.svg"
@@ -232,9 +242,9 @@ function Recipesearch() {
                                     </p>
                                 </div>
 
-                                <hr className="hrline" />
+                                <hr className="hrlineinsearch" />
 
-                                <div className="iconmanagement">
+                                <div className="iconmanagementinsearch">
                                     <img
                                         src="/images/clock.svg"
                                         alt=""
@@ -244,7 +254,7 @@ function Recipesearch() {
                                         約 {v.recipes_time_cost} 分鐘
                                     </p>
                                 </div>
-                                <div className="iconmanagement">
+                                <div className="iconmanagementinsearch">
                                     <img
                                         src="/images/heat.svg"
                                         alt=""
@@ -261,7 +271,7 @@ function Recipesearch() {
 
                 {/* 分隔線 */}
             </div>
-            <div className="pa">
+            <div className="paginationinsearch">
                 {/* {data && data.totalPages ? ( */}
                 <Pagination page={data.page} totalPages={data.totalPages} />
                 {/* ) : null} */}
@@ -272,16 +282,21 @@ function Recipesearch() {
 
 export default Recipesearch;
 
-/* {data && data.rows
-            ? data.rows.map((row) => (
-                <tr key={'mm' + row.sid}>
-                <th scope="row">{row.sid}</th>
-                <td>{row.name}</td>
-                <td>{row.email}</td>
-                <td>{row.mobile}</td>
-                </tr>
-            ))
-            : null} */
+// function Recommend1 () {
+//   const today = new Date();
+//   const tgm = today.getMilliseconds();
+//   const dataquantity = 總資料數量?
+//   const firstdish = Math.round(tgm % (dataquantity / 2))
+// }
+// Recommend1 ();
+
+// function Recommend2 () {
+//   const today = new Date();
+//   const tgm = today.getMilliseconds();
+//   const dataquantity = 總資料數量?
+//   const seconddish = Math.round((tgm % (dataquantity / 2)) +(dataquantity / 2) +1)
+// }
+// Recommend2 ();
 
 // const runClock = () => {
 //   const now = new Date();
@@ -295,4 +310,8 @@ export default Recipesearch;
 // };
 // runClock();
 
-// style={{ height: 40, width: 40 }}
+// https://github.com/mfee-react/react-bs5-router6
+
+// https://github.com/mfee-react/react-bs5-router6/blob/main/src/pages/StudentSelfPagination.js
+
+// https://ithelp.ithome.com.tw/articles/10187146

@@ -15,18 +15,18 @@ function Canvas(props) {
     const cRef = useRef();
     const shadowRef = useRef();
     const drawLocations = [
-        [135, 330],
-        [160, 180],
-        [320, 185],
-        [460, 175],
-        [450, 390],
+        [120, 320],
+        [130, 330],
+        [150, 165],
+        [330, 170],
+        [400, 320],
     ];
     const drawSize = [
-        [280, 175],
-        [130, 110],
-        [100, 115],
-        [80, 165],
-        [100, 110],
+        [280, 180],
+        [250, 150],
+        [160, 160],
+        [240, 150],
+        [170, 170],
     ];
     const lunchCount = () => {
         return Array(5)
@@ -66,7 +66,7 @@ function Canvas(props) {
             shadowRef.current.width,
             shadowRef.current.height
         ); // 清除畫面
-        let img = await getImageFromPath(`/lunch_images/box.png`); // 背景圖
+        let img = await getImageFromPath(`/images/perferBox2.png`); // 背景圖
         shadowCtx.drawImage(img, 0, 0, 700, 650);
         for (let item of tmpCart) {
             img = await getImageFromPath(`${item.image}`);
@@ -243,7 +243,10 @@ function Canvas(props) {
                         </div>
 
                         <div className="canvasBtns  d-flex justify-content-center  mb-md-3">
-                            <button className="priceArea price-btn btn btn-success me-3 xin-font-primary-color disabled">
+                            <button
+                                className="priceArea price-btn btn btn-success me-3 xin-font-primary-color disabled"
+                                style={{ color: '#3a2c2c' }}
+                            >
                                 總價:{totalPrice}
                             </button>
                             <button

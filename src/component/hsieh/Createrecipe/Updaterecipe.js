@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import './Createrecipe.css';
+import axios from 'axios';
 
 function Updaterecipe() {
     const [updaterecipe, setUpdaterecipe] = useState({
@@ -37,39 +38,23 @@ function Updaterecipe() {
     }, [params.recipes_sid]);
 
     // 更改食譜名稱
-    // const [updateRecipesname, setUpdateRecipesname] = useState('');
-    const [recipesname, setRecipesname] = useState('');
+    const [updateRecipesname, setUpdateRecipesname] = useState('');
 
     // 料理簡介
-    // const [updateDescription, setUpdateDescription] = useState('');
-    const [description, setDescription] = useState('');
+    const [updateDescription, setUpdateDescription] = useState('');
 
     // 烹調時間
     // const [updateTimecost, setUpdateTimecost] = useState('');
     const [timecost, setTimecost] = useState('');
 
     // 料理熱量
-    // const [updateTimecost, setUpdateTimecost] = useState('');
     const [calories, setCalories] = useState('');
 
     // 料理份量
-    // const [updatePortion, setUpdatePortion] = useState('');
-    // const updatePortionOptions = ['1人分', '2人分', '3人分', '4人分', '5人分以上'];
     const [portion, setPortion] = useState('');
-    const portionOptions = ['1人分', '2人分', '3人分', '4人分', '5人分以上'];
+    const portionOptions = ['1', '2', '3', '4', '5'];
 
     // select，料理類型
-    //const [updateRecipestype, setUpdateRecipestype] = useState('');
-    //const UpdateRecipestypeOptions = [
-    //     '台灣料理',
-    //     '中華料理',
-    //     '日式料理',
-    //     '韓式料理',
-    //     '南洋料理',
-    //     '歐式料理',
-    //     '美式料理',
-    //     '其他',
-    // ];
     const [recipestype, setRecipestype] = useState('');
     const recipestypeOptions = [
         '台灣料理',
@@ -78,17 +63,11 @@ function Updaterecipe() {
         '韓式料理',
         '南洋料理',
         '歐式料理',
-        '美式料理',
+        '西式料理',
         '其他',
     ];
 
     // select，料理難易度
-    // const [updateRecipesdegree, setUpdateRecipesdegree] = useState('');
-    // const updateRecipesdegreeOptions = [
-    //     '新手輕鬆入門',
-    //     '餐廳廚師料理',
-    //     '米其林名廚作品',
-    // ];
     const [recipesdegree, setRecipesdegree] = useState('');
     const recipesdegreeOptions = [
         '新手輕鬆入門',
@@ -97,107 +76,106 @@ function Updaterecipe() {
     ];
 
     // 料理食材
-    // const [updateIngredient, updateSetIngredient] = useState('');
     const [ingredient, setIngredient] = useState('');
+
     // 食材分量
-    // const [updateUnit, updateSetUnit] = useState('');
     const [unit, setUnit] = useState('');
 
     // 料理步驟
-    // const [updateStep, setUpdateStep]
     const [step, setStep] = useState('');
 
     return (
         <>
-            <h2 className="creatrecipe">修改食譜 ／ Update Recipes</h2>
-            <hr className="hr" />
-            <div className="eachdata">
-                <label className="dataname">食譜名稱</label>
-                <section id="recipesname">
+            <h2 className="createrecipetitle">修改食譜 ／ Update Recipes</h2>
+            <hr className="hrincreaterecipe" />
+            <div className="eachdataincreaterecipe">
+                <label className="datanameincreaterecipe">食譜名稱</label>
+                <section id="updaterecipe">
                     <input
                         type="text"
-                        className="dataform1"
+                        className="dataform1increate"
                         value={updaterecipe.recipes_name}
                         placeholder="請輸入食譜名稱"
                         onChange={(e) => {
-                            setRecipesname(e.target.value);
+                            setUpdaterecipe(e.target.value);
                         }}
                     />
                 </section>
             </div>
 
-            <hr className="hr" />
+            <hr className="hrincreaterecipe" />
             {/* 分隔線，以下料理簡介 */}
 
-            <div className="eachdata">
-                <label className="dataname">料理簡介</label>
+            <div className="eachdataincreaterecipe">
+                <label className="datanameincreaterecipe">料理簡介</label>
                 <div>
-                    <section id="description">
+                    <section id="updateDupdaterecipeescription">
                         <textarea
-                            className="dataform1"
+                            className="dataform1increate"
                             value={updaterecipe.recipes_description}
-                            placeholder="請100字內簡單描述"
                             cols="30"
-                            rows="3"
+                            rows="5"
                             onChange={(e) => {
-                                setDescription(e.target.value);
+                                setUpdaterecipe(e.target.value);
                             }}
                         />
                     </section>
-                    <label className="dataform1">剩餘 100 個字</label>
+                    <label className="dataform1increate">
+                        {/* 剩餘 {100 - updaterecipe.recipes_description.length} 字 */}
+                    </label>
                 </div>
             </div>
 
-            <hr className="hr" />
+            <hr className="hrincreaterecipe" />
             {/* 分隔線，以下料理花費時間 */}
 
-            <div className="eachdata">
-                <label className="dataname">花費時間</label>
+            <div className="eachdataincreaterecipe">
+                <label className="datanameincreaterecipe">花費時間</label>
                 <label className="breakpointtitle1">約</label>
-                <section id="timecost">
+                <section id="updaterecipe">
                     <input
-                        className="dataform2"
+                        className="dataform2increate"
                         type="text"
                         value={updaterecipe.recipes_time_cost}
                         onChange={(e) => {
-                            setTimecost(e.target.value);
+                            setUpdaterecipe(e.target.value);
                         }}
                     />
                 </section>
                 <label className="breakpointtitle2">分鐘</label>
             </div>
 
-            <hr className="hr" />
+            <hr className="hrincreaterecipe" />
             {/* 分隔線，以下料理熱量 */}
 
-            <div className="eachdata">
-                <label className="dataname">料理熱量</label>
+            <div className="eachdataincreaterecipe">
+                <label className="datanameincreaterecipe">料理熱量</label>
                 <label className="breakpointtitle1">約</label>
-                <section id="calories">
+                <section id="updaterecipe">
                     <input
-                        className="dataform2"
+                        className="dataform2increate"
                         type="text"
                         value={updaterecipe.recipes_calories}
                         onChange={(e) => {
-                            setCalories(e.target.value);
+                            setUpdaterecipe(e.target.value);
                         }}
                     />
                 </section>
                 <label className="breakpointtitle2">大卡</label>
             </div>
 
-            <hr className="hr" />
+            <hr className="hrincreaterecipe" />
             {/* 分隔線，以下料理份量 */}
 
-            <div className="eachdata">
-                <label className="dataname">料理份量</label>
+            <div className="eachdataincreaterecipe">
+                <label className="datanameincreaterecipe">料理份量</label>
                 <label className="breakpointtitle1">約</label>
-                <section id="portion">
+                <section id="updaterecipe">
                     <select
-                        className="dataform2"
+                        className="dataform2increate"
                         value={updaterecipe.recipes_portion}
                         onChange={(e) => {
-                            setPortion(e.target.value);
+                            setUpdaterecipe(e.target.value);
                         }}
                     >
                         <option value="">請選擇</option>
@@ -210,19 +188,20 @@ function Updaterecipe() {
                         })}
                     </select>
                 </section>
+                <label className="breakpointtitle2">人份</label>
             </div>
 
-            <hr className="hr" />
+            <hr className="hrincreaterecipe" />
             {/* 分隔線，以下料理類型 */}
 
-            <div className="eachdata">
-                <label className="dataname">料理類型</label>
-                <section id="select">
+            <div className="eachdataincreaterecipe">
+                <label className="datanameincreaterecipe">料理類型</label>
+                <section id="updaterecipe">
                     <select
-                        className="dataform1"
+                        className="dataform1increate"
                         value={updaterecipe.recipes_type}
                         onChange={(e) => {
-                            setRecipestype(e.target.value);
+                            setUpdaterecipe(e.target.value);
                         }}
                     >
                         <option value="">請選擇</option>
@@ -237,17 +216,17 @@ function Updaterecipe() {
                 </section>
             </div>
 
-            <hr className="hr" />
+            <hr className="hrincreaterecipe" />
             {/* 分隔線，以下料理難易 */}
 
-            <div className="eachdata">
-                <label className="dataname">料理難易</label>
-                <section id="select">
+            <div className="eachdataincreaterecipe">
+                <label className="datanameincreaterecipe">料理難易</label>
+                <section id="updaterecipe">
                     <select
-                        className="dataform1"
+                        className="dataform1increate"
                         value={updaterecipe.recipes_cooking_degree}
                         onChange={(e) => {
-                            setRecipesdegree(e.target.value);
+                            setUpdaterecipe(e.target.value);
                         }}
                     >
                         <option value="">請選擇</option>
@@ -262,39 +241,39 @@ function Updaterecipe() {
                 </section>
             </div>
 
-            <hr className="hr" />
+            <hr className="hrincreaterecipe" />
             {/* 分隔線，以下食材 */}
 
-            <div className="eachdata">
-                <label className="dataname">使用食材</label>
+            <div className="eachdataincreaterecipe">
+                <label className="datanameincreaterecipe">使用食材</label>
             </div>
 
-            <div className="eachdata">
+            <div className="eachdataincreaterecipe">
                 <div>
                     <div className="ingredientandstep">
-                        <section id="ingredient">
+                        <section id="updaterecipe">
                             <input
                                 type="text"
                                 className="ingredientuse"
                                 value={updaterecipe.recipes_ingredient}
                                 placeholder="請輸入食材"
                                 onChange={(e) => {
-                                    setIngredient(e.target.value);
+                                    setUpdaterecipe(e.target.value);
                                 }}
                             />
                         </section>
 
-                        <section id="unit">
+                        {/* <section id="updaterecipe">
                             <input
                                 type="text"
                                 className="portionuse"
-                                value={unit}
+                                value={updaterecipe.recipes_ingredient}
                                 placeholder="請輸入份量"
                                 onChange={(e) => {
-                                    setUnit(e.target.value);
+                                    setUpdaterecipe(e.target.value);
                                 }}
                             />
-                        </section>
+                        </section> */}
 
                         <button className="buttonincreate">
                             <img
@@ -308,29 +287,29 @@ function Updaterecipe() {
                     {/* 分隔線 */}
 
                     <div className="ingredientandstep">
-                        <section id="ingredient">
+                        <section id="updaterecipe">
                             <input
                                 type="text"
                                 className="ingredientuse"
-                                value={ingredient}
+                                value={updaterecipe.recipes_ingredient}
                                 placeholder="請輸入食材"
                                 onChange={(e) => {
-                                    setIngredient(e.target.value);
+                                    setUpdaterecipe(e.target.value);
                                 }}
                             />
                         </section>
 
-                        <section id="unit">
+                        {/* <section id="updaterecipe">
                             <input
                                 type="text"
                                 className="portionuse"
-                                value={unit}
+                                value={updaterecipe.recipes_ingredient}
                                 placeholder="請輸入份量"
                                 onChange={(e) => {
-                                    setUnit(e.target.value);
+                                    setUpdaterecipe(e.target.value);
                                 }}
                             />
-                        </section>
+                        </section> */}
                         <button className="buttonincreate">
                             <img
                                 src="/images/trashcan.svg"
@@ -343,29 +322,29 @@ function Updaterecipe() {
                     {/* 分隔線 */}
 
                     <div className="ingredientandstep">
-                        <section id="ingredient">
+                        <section id="updaterecipe">
                             <input
                                 type="text"
                                 className="ingredientuse"
-                                value={ingredient}
+                                value={updaterecipe.recipes_ingredient}
                                 placeholder="請輸入食材"
                                 onChange={(e) => {
-                                    setIngredient(e.target.value);
+                                    setUpdaterecipe(e.target.value);
                                 }}
                             />
                         </section>
 
-                        <section id="unit">
+                        {/* <section id="updaterecipe">
                             <input
                                 type="text"
                                 className="portionuse"
-                                value={unit}
+                                value={updaterecipe.recipes_ingredient}
                                 placeholder="請輸入份量"
                                 onChange={(e) => {
-                                    setUnit(e.target.value);
+                                    setUpdaterecipe(e.target.value);
                                 }}
                             />
-                        </section>
+                        </section> */}
                         <button className="buttonincreate">
                             <img
                                 src="/images/trashcan.svg"
@@ -387,24 +366,24 @@ function Updaterecipe() {
                 </button>
             </div>
 
-            <hr className="hr" />
+            <hr className="hrincreaterecipe" />
             {/* 分隔線，以下料理步驟 */}
 
-            <div className="eachdata">
-                <label className="dataname">料理步驟</label>
+            <div className="eachdataincreaterecipe">
+                <label className="datanameincreaterecipe">料理步驟</label>
             </div>
 
-            <div className="eachdata">
+            <div className="eachdataincreaterecipe">
                 <div>
                     <div className="ingredientandstep">
-                        <div className="redball">1</div>
-                        <section id="step">
+                        <div className="redballincreate">1</div>
+                        <section id="updaterecipe">
                             <textarea
-                                className="dataform1"
+                                className="dataform1increate"
                                 value={updaterecipe.recipes_cooking_method}
                                 placeholder="步驟1"
                                 onChange={(e) => {
-                                    setStep(e.target.value);
+                                    setUpdaterecipe(e.target.value);
                                 }}
                             />
                         </section>
@@ -413,14 +392,14 @@ function Updaterecipe() {
                     {/* 分隔線 */}
 
                     <div className="ingredientandstep">
-                        <div className="redball">2</div>
-                        <section id="step">
+                        <div className="redballincreate">2</div>
+                        <section id="updaterecipe">
                             <textarea
-                                className="dataform1"
-                                value={step}
+                                className="dataform1increate"
+                                value={updaterecipe.recipes_cooking_method}
                                 placeholder="步驟2"
                                 onChange={(e) => {
-                                    setStep(e.target.value);
+                                    setUpdaterecipe(e.target.value);
                                 }}
                             />
                         </section>
@@ -437,14 +416,14 @@ function Updaterecipe() {
                     {/* 分隔線 */}
 
                     <div className="ingredientandstep">
-                        <div className="redball">3</div>
-                        <section id="step">
+                        <div className="redballincreate">3</div>
+                        <section id="updaterecipe">
                             <textarea
-                                className="dataform1"
-                                value={step}
+                                className="dataform1increate"
+                                value={updaterecipe.recipes_cooking_method}
                                 placeholder="步驟3"
                                 onChange={(e) => {
-                                    setStep(e.target.value);
+                                    setUpdaterecipe(e.target.value);
                                 }}
                             />
                         </section>
@@ -462,10 +441,10 @@ function Updaterecipe() {
                 </button>
             </div>
 
-            <hr className="hr" />
+            <hr className="hrincreaterecipe" />
             {/* 分隔線，以下照片 */}
 
-            <div className="photoupload">
+            <div className="photouploadincreate">
                 <button className="buttonincreate">
                     <img
                         src="/images/camera.svg"
@@ -474,15 +453,15 @@ function Updaterecipe() {
                     />
                 </button>
             </div>
-            <div className="button">
+            <div className="buttonintextalign">
                 <label>請選擇照片</label>
             </div>
 
-            <hr className="hr" />
+            <hr className="hrincreaterecipe" />
             {/* 分隔線，以下完成按鈕 */}
 
-            <div className="button">
-                <button className="finish" >
+            <div className="buttonintextalign">
+                <button className="finishincreate">
                     修改食譜
                     <img src="/images/pen.svg" alt="" className="crud" />
                 </button>
