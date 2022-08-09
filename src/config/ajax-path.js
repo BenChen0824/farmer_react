@@ -19,8 +19,9 @@ export const AB_GET_COUPON = `${SERVER}/game/coupon`;
 export const COMMENT_MAIN = `${SERVER}/comment`;
 export const COMMENT_ITEM = `${SERVER}/comment/sid`;
 
-export const COMMENT_MAIN = `${SERVER}/comment`;
-export const COMMENT_ITEM = `${SERVER}/comment/sid`;
+export const PRODUCT_COLLECT = `${SERVER}/product_collect`;
+// export const COMMENT_MAIN = `${SERVER}/comment`;
+// export const COMMENT_ITEM = `${SERVER}/comment/sid`;
 
 export function getImgUrl(name) {
     return `${SERVER}/images/${name}`;

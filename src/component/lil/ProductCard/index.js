@@ -19,11 +19,13 @@ function ProductCard({
     onClick,
     hotSale,
     onSubmit,
+    onCollect,
+    saved,
 }) {
     const [amount, setAmount] = useState(1);
-    const [collect, setCollect] = useState(false);
+    // const [collect, setCollect] = useState(false);
     const [hover, setHover] = useState(true);
-
+    // const [save, setSave] = useState(false);
     const handleClickMinus = () => {
         setAmount(amount > 1 ? amount - 1 : amount);
     };
@@ -31,7 +33,7 @@ function ProductCard({
         setAmount(amount + 1); //TODO: storage
     };
 
-    const AddToCart = () => {
+    const addToCart = () => {
         setAmount(1);
         console.log(amount);
         onSubmit(amount);
@@ -72,10 +74,10 @@ function ProductCard({
                 >
                     <div
                         className={clsx(styles.collect, {
-                            [styles.active]: collect,
+                            [styles.active]: saved,
                         })}
                         onClick={() => {
-                            setCollect((prev) => !prev);
+                            onCollect(!saved);
                         }}
                     >
                         <AiOutlineHeart size={24} /> {/* TODO: 連接收藏 */}
@@ -94,7 +96,7 @@ function ProductCard({
                             <AiOutlinePlus size={14} />
                         </div>
                     </div>
-                    <div className={styles.buy} onClick={AddToCart}>
+                    <div className={styles.buy} onClick={addToCart}>
                         <BsCart4 size={24} /> {/* TODO: add to cart */}
                     </div>
                 </div>

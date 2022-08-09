@@ -1,26 +1,24 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import clsx from 'clsx';
+import qs from 'qs';
 import styles from './ProductNavBar.module.css';
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
-import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useQuery } from './../../../hooks';
-import qs from 'qs';
 import { clearHashTag } from '../../../store/slices/product';
 import { useDispatch } from 'react-redux';
 
-function ProductNavBar({ type }) {
+function ProductNavBar() {
     // const menu = ['新鮮蔬果', '優質肉品', '生鮮水產', '美味餐點']
-
-    const [selected, setSelected] = useState();
     const dispatch = useDispatch();
+    const [selected, setSelected] = useState();
     const handleMenuClicked = (id) => {
         setSelected(selected !== id ? id : undefined);
     };
     const query = useQuery();
+    const { type } = query;
 
     const getQuery = (id) => {
-        dispatch(clearHashTag());
         const { search, ...rest } = query;
         const q = {
             ...rest,
@@ -28,6 +26,12 @@ function ProductNavBar({ type }) {
         };
         return qs.stringify(q);
     };
+
+    useEffect(() => {
+        if (type) {
+            dispatch(clearHashTag());
+        }
+    }, [type]);
 
     return (
         <>

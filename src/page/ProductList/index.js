@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import ProductBanner from '../../component/lil/ProductBanner';
 import ProductNavBar from '../../component/lil/ProductNavBar';
 import SearchP from '../../component/lil/SearchP';
@@ -8,14 +9,16 @@ import clsx from 'clsx';
 import ProductCard from '../../component/lil/ProductCard';
 import ProductHashTag from '../../component/lil/ProductHashTag';
 import Pagination from '../../component/lil/Pagination';
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, useMemo } from 'react';
 import {
     fetchProduct,
     getHotSale,
     addToCart,
     getProductItem,
+    updateCollect,
+    getCollected,
 } from '../../api/product';
-import { HASHTAG } from '../../config/variables';
+import { HASHTAG, SUPPLIER } from '../../config/variables';
 import { useQuery } from '../../hooks';
 import Slider from 'react-slick';
 import { useSelector, useDispatch } from 'react-redux';
@@ -35,20 +38,60 @@ function ProductList() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [data, setData] = useState({});
+    const [hotSales, setHotSale] = useState([]);
     const query = useQuery();
     const page = query['page'] || 1;
     const type = query['type'];
     const search = query['search'];
     const [hashTagURL, setHashTagURL] = useSearchParams();
-    const member_info = JSON.parse(localStorage.getItem('auth'));
+    const member_info = JSON.parse(localStorage.getItem('auth')) || {};
     const userId = member_info.customer_id;
     const lsKey = `histroy${userId}`;
     const [historyData, setHistoryData] = useState([]);
+    const [collectData, setCollectData] = useState([]);
 
-    const [historyObj, setHistoryObj] = useState({});
+    const productList = useMemo(() => {
+        if (data && data.rows) {
+            return data.rows.map((el) => {
+                // { sid: 112, product_name: "2112", product_type: 2, ... }
+                const { sid } = el;
 
-    //取history
+                // { product_id: 112, saved: 0 }
+                const { saved = 0 } =
+                    _.find(collectData, { product_id: sid }) || {};
+                return { ...el, saved };
+            });
+        }
+        return [];
+    }, [data, collectData]);
+
+    const hotSaleList = useMemo(() => {
+        if (hotSales.rows) {
+            return hotSales.rows.map((el) => {
+                const { sid } = el;
+
+                const { saved = 0 } =
+                    _.find(collectData, { product_id: sid }) || {};
+                return { ...el, saved };
+            });
+        }
+        return [];
+    }, [hotSales, collectData]);
+
+    const historyList = useMemo(() => {
+        if (historyData) {
+            return historyData.map((el) => {
+                const { sid } = el;
+                const { saved = 0 } =
+                    _.find(collectData, { product_id: sid }) || {};
+                return { ...el, saved };
+            });
+        }
+        return [];
+    }, [historyData, collectData]);
+
     useEffect(() => {
+        //取history
         const json = localStorage.getItem(lsKey);
         if (json) {
             const history = JSON.parse(json);
@@ -57,6 +100,14 @@ function ProductList() {
                 getProducts(ids);
             }
         }
+
+        // 取收藏
+        getCollectedItem();
+    }, []);
+
+    useEffect(() => {
+        // 取熱門
+        getHotSales();
     }, []);
 
     const getProducts = async (ids) => {
@@ -69,7 +120,6 @@ function ProductList() {
         setHistoryData(getHistoryData);
     };
 
-    const [hotSales, setHotSale] = useState([]);
     const { hashTag } = useSelector((state) => state.product);
 
     let orderBy = query['orderBy'] || 'sid';
@@ -106,13 +156,10 @@ function ProductList() {
     const handleToggleHashTag = (key) => {
         const { search, ...rest } = query;
         setHashTagURL({ ...rest, page: 1 });
+        console.log({ key });
         dispatch(toggleHashTag(key));
         //TODO:要改
     };
-
-    useEffect(() => {
-        getHotSales();
-    }, []);
 
     useEffect(() => {
         getProduct(page, hashTag, type, orderBy, order, search);
@@ -152,13 +199,56 @@ function ProductList() {
     }, [selectedOption]);
 
     const handleToCart = async (sid, amount) => {
+        if (!member_info.customer_id) {
+            alert('請先登入帳號');
+            return;
+        }
         const newBuyList = await addToCart({
             product_count: amount,
             product_id: +sid,
             member_id: member_info.customer_id,
         });
         console.log(newBuyList.cart);
-        setCartList(newBuyList.cart)
+        setCartList(newBuyList.cart);
+    };
+    const handleCollect = async (sid, saved) => {
+        // update state
+        if (!member_info.customer_id) {
+            alert('請先登入帳號');
+            return;
+        }
+        setCollectData((prev) => {
+            if (_.find(prev, { product_id: sid })) {
+                return prev.map((el) => {
+                    if (el.product_id === sid) {
+                        return { ...el, saved };
+                    }
+                    return el;
+                });
+            }
+            return [
+                ...prev,
+                {
+                    product_id: sid,
+                    saved,
+                },
+            ];
+        });
+
+        // update data
+        await updateCollect({
+            member_id: member_info.customer_id,
+            product_id: +sid,
+            saved: +saved,
+        });
+
+        // console.log(newCollect);
+    };
+
+    const getCollectedItem = async () => {
+        // [{member_id: 530, product_id: 6, saved: 1}]
+        const collected = await getCollected(userId);
+        setCollectData(collected);
     };
 
     return (
@@ -182,40 +272,47 @@ function ProductList() {
                             <Title zh={'熱銷商品'} eg={'Hot Sales'} />
                             <div className={clsx('row', styles.card)}>
                                 <Slider {...settings}>
-                                    {hotSales.rows &&
-                                        hotSales.rows
-                                            .filter((v) => v.hot_sale)
-                                            .map((v, i) => {
-                                                return (
-                                                    <ProductCard
-                                                        key={i}
-                                                        onClick={() =>
-                                                            goToPath(v.sid)
-                                                        }
-                                                        className={styles.slick}
-                                                        name={v.product_name}
-                                                        supplier={
+                                    {hotSaleList &&
+                                        hotSaleList.map((v, i) => {
+                                            return (
+                                                <ProductCard
+                                                    key={i}
+                                                    onClick={() =>
+                                                        goToPath(v.sid)
+                                                    }
+                                                    className={styles.slick}
+                                                    name={v.product_name}
+                                                    supplier={
+                                                        SUPPLIER[
                                                             v.product_supplier
-                                                        }
-                                                        price={v.product_price}
-                                                        unit={v.product_unit}
-                                                        img={
-                                                            v.product_img &&
-                                                            v.product_img[0]
-                                                        }
-                                                        inventory={
-                                                            v.product_inventory
-                                                        }
-                                                        hotSale={true}
-                                                        onSubmit={(amount) =>
-                                                            handleToCart(
-                                                                v.sid,
-                                                                amount
-                                                            )
-                                                        }
-                                                    />
-                                                );
-                                            })}
+                                                        ]
+                                                    }
+                                                    price={v.product_price}
+                                                    unit={v.product_unit}
+                                                    img={
+                                                        v.product_img &&
+                                                        v.product_img[0]
+                                                    }
+                                                    inventory={
+                                                        v.product_inventory
+                                                    }
+                                                    hotSale={true}
+                                                    onSubmit={(amount) =>
+                                                        handleToCart(
+                                                            v.sid,
+                                                            amount
+                                                        )
+                                                    }
+                                                    onCollect={(save) => {
+                                                        handleCollect(
+                                                            v.sid,
+                                                            save
+                                                        );
+                                                    }}
+                                                    saved={v.saved}
+                                                />
+                                            );
+                                        })}
                                 </Slider>
                             </div>
                             <Title zh={'標籤探索'} eg={'Tag exploration'} />
@@ -239,37 +336,34 @@ function ProductList() {
                             <Title zh={'小農產品'} eg={'Products'} />
 
                             <div className={clsx('row', styles.card)}>
-                                {data && data.rows
-                                    ? data.rows.map((v, i) => {
-                                          return (
-                                              <ProductCard
-                                                  key={i}
-                                                  onClick={() =>
-                                                      goToPath(v.sid)
-                                                  }
-                                                  className="col-6 col-lg-4"
-                                                  name={v.product_name}
-                                                  supplier={v.product_supplier}
-                                                  price={v.product_price}
-                                                  unit={v.product_unit}
-                                                  img={
-                                                      v.product_img &&
-                                                      v.product_img[0]
-                                                  }
-                                                  inventory={
-                                                      v.product_inventory
-                                                  }
-                                                  hotSale={false}
-                                                  onSubmit={(amount) =>
-                                                      handleToCart(
-                                                          v.sid,
-                                                          amount
-                                                      )
-                                                  }
-                                              />
-                                          );
-                                      })
-                                    : null}
+                                {productList.map((v, i) => {
+                                    return (
+                                        <ProductCard
+                                            key={i}
+                                            onClick={() => goToPath(v.sid)}
+                                            className="col-6 col-lg-4"
+                                            name={v.product_name}
+                                            supplier={
+                                                SUPPLIER[v.product_supplier]
+                                            }
+                                            price={v.product_price}
+                                            unit={v.product_unit}
+                                            img={
+                                                v.product_img &&
+                                                v.product_img[0]
+                                            }
+                                            inventory={v.product_inventory}
+                                            hotSale={false}
+                                            onSubmit={(amount) =>
+                                                handleToCart(v.sid, amount)
+                                            }
+                                            onCollect={(save) => {
+                                                handleCollect(v.sid, save);
+                                            }}
+                                            saved={v.saved}
+                                        />
+                                    );
+                                })}
                             </div>
                             <div className={styles.pagination}>
                                 {data && data.totalPage ? (
@@ -283,7 +377,7 @@ function ProductList() {
                                 <>
                                     <Title zh={'瀏覽紀錄'} eg={'History'} />
                                     <div className={clsx('row', styles.card)}>
-                                        {historyData.map((v, i) => {
+                                        {historyList.map((v, i) => {
                                             return (
                                                 <ProductCard
                                                     key={v.sid}
@@ -294,7 +388,9 @@ function ProductList() {
                                                     className="col-6 col-lg-4"
                                                     name={v.product_name}
                                                     supplier={
-                                                        v.product_supplier
+                                                        SUPPLIER[
+                                                            v.product_supplier
+                                                        ]
                                                     }
                                                     price={v.product_price}
                                                     unit={v.product_unit}
@@ -308,6 +404,13 @@ function ProductList() {
                                                             amount
                                                         )
                                                     }
+                                                    onCollect={(save) => {
+                                                        handleCollect(
+                                                            v.sid,
+                                                            save
+                                                        );
+                                                    }}
+                                                    saved={v.saved}
                                                 />
                                             );
                                         })}

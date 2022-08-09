@@ -4,6 +4,7 @@ import {
     getImgUrl,
     AB_GET_HOT_SALES,
     CART_ADD_PRODUCT,
+    PRODUCT_COLLECT,
 } from '../config/ajax-path';
 
 export async function fetchProduct(
@@ -95,14 +96,37 @@ export async function getSupplierProduct(supplier) {
     return res.data;
 }
 
-export async function AddProduct() {
+export async function addProduct() {
     const body = {};
     const res = await axios.post(AB_GET_PRODUCT, body);
     console.log(res.data);
 }
 
 export async function addToCart(val) {
-    const { data } = await axios.post(CART_ADD_PRODUCT, val);
-    // console.log(data.cart);
+    // { product_count, product_id, member_id }
+    if (val.member_id) {
+        const { data } = await axios.post(CART_ADD_PRODUCT, val);
+        // console.log(val);
+        return data;
+    }
+    return {};
+}
+
+export async function updateCollect(val) {
+    const { data } = await axios.post(PRODUCT_COLLECT, val);
+    console.log(data);
     return data;
+}
+
+export async function getCollected(user, sid) {
+    if (user) {
+        const params = {
+            user,
+            sid,
+        };
+        const { data } = await axios.get(PRODUCT_COLLECT, { params });
+        // console.log(data);
+        return data;
+    }
+    return [];
 }
