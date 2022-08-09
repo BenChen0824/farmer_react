@@ -42,9 +42,11 @@ function Popup() {
 
     return (
         <>
-            <h2 className="recipetitle">進階搜尋 ／ Search By Information</h2>
+            <h2 className="recipetitleinpopup">
+                進階搜尋 ／ Search By Information
+            </h2>
             <div>
-                <section id="recipesname" className="form">
+                <section id="recipesname" className="forminpopup">
                     <input
                         type="text"
                         className="time"
@@ -58,7 +60,7 @@ function Popup() {
 
                 {/* 分隔線 */}
 
-                <section id="calories" className="form">
+                <section id="calories" className="forminpopup">
                     <input
                         type="text"
                         className="time"
@@ -72,7 +74,7 @@ function Popup() {
 
                 {/* 分隔線 */}
 
-                <section id="select" className="form">
+                <section id="select" className="forminpopup">
                     <select
                         className="time"
                         value={recipestype}
@@ -93,7 +95,7 @@ function Popup() {
 
                 {/* 分隔線 */}
 
-                <section id="select" className="form">
+                <section id="select" className="forminpopup">
                     <select
                         className="time"
                         value={recipesdegree}
@@ -115,7 +117,7 @@ function Popup() {
 
             <div className="buttoninpopup">
                 <button
-                    className="searchbutton"
+                    className="searchbuttoninpopup"
                     // onClick={() => {
                     //     const data = recipeDisplayAgain.filter((v, i) => {
                     //         return v.recipes_name.includes(inputText);
@@ -133,12 +135,14 @@ function Popup() {
                 </button>
             </div>
 
-            <h2 className="recipetitle">食材搜尋 ／ Search By Ingredient</h2>
-            <div className="ia">
+            <h2 className="recipetitleinpopup">
+                食材搜尋 ／ Search By Ingredient
+            </h2>
+            <div className="searchbyingredient">
                 <button
                     type="button"
                     classc="btn btn-dark"
-                    className="ingredient"
+                    className="ingredientinpopup"
                     onClick={() => {
                         const data = recipeDisplayAgain.filter((v, i) => {
                             return v.recipes_ingredient.includes('菜');
@@ -154,7 +158,7 @@ function Popup() {
                 <button
                     type="button"
                     classc="btn btn-dark"
-                    className="ingredient"
+                    className="ingredientinpopup"
                     onClick={() => {
                         const data = recipeDisplayAgain.filter((v, i) => {
                             return v.recipes_ingredient.includes(
@@ -172,7 +176,7 @@ function Popup() {
                 <button
                     type="button"
                     classc="btn btn-dark"
-                    className="ingredient"
+                    className="ingredientinpopup"
                     onClick={() => {
                         const data = recipeDisplayAgain.filter((v, i) => {
                             return v.recipes_ingredient.includes(
@@ -189,7 +193,7 @@ function Popup() {
                 <button
                     type="button"
                     classc="btn btn-dark"
-                    className="ingredient"
+                    className="ingredientinpopup"
                     onClick={() => {
                         const data = recipeDisplayAgain.filter((v, i) => {
                             return v.recipes_ingredient.includes(
@@ -206,7 +210,7 @@ function Popup() {
                 <button
                     type="button"
                     classc="btn btn-dark"
-                    className="ingredient"
+                    className="ingredientinpopup"
                     onClick={() => {
                         const data = recipeDisplayAgain.filter((v, i) => {
                             return v.recipes_ingredient.includes('蛋');
@@ -221,7 +225,7 @@ function Popup() {
                 <button
                     type="button"
                     classc="btn btn-dark"
-                    className="ingredient"
+                    className="ingredientinpopup"
                     onClick={() => {
                         const data = recipeDisplayAgain.filter((v, i) => {
                             return v.recipes_ingredient.includes('米');

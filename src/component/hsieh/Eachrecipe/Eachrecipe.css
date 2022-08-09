@@ -6,7 +6,7 @@
     padding-bottom: 10px;
 }
 
-.line {
+.lineineach {
     color: black;
     width: 80%;
     margin-left: 10%;
@@ -38,30 +38,30 @@
     opacity: 0.8;
 }
 
-.recipedetail {
+.recipedetailineach {
     width: 48%;
 }
 
 /* 分隔線 */
 
-.auther {
+.autherineach {
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid rgb(0, 0, 0);
 }
 
-.authername{
+.authernameineach{
     font-size: 20px;
 }
 
-.likeandcollect {
+.likeandcollectineach {
     margin-right: 40px;
     width: 50px;
     display: flex;
     /* border: 1px solid black; */
 }
 
-.likeandcollect img {
+.likeandcollectineach img {
     height: 30px;
     width: 30px;
 }
@@ -72,19 +72,19 @@
     background-color: rgb(255, 255, 255);
 }
 
-.recipeinfomation {
+.recipeinfomationineach {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
-.recipedata {
+.recipedataineach {
     width:48%;
     padding: 5px;
     display: flex;
 }
 
-.greencircle {
+.greencircleineach {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -92,12 +92,12 @@
     overflow: hidden;
 }
 
-.greencircle img {
+.greencircleineach img {
     width: 100%;
     height: 100%;
 }
 
-.recipedata p {
+.recipedataineach p {
     font-size: 16px;
     padding-left: 5px;
 }
@@ -108,7 +108,7 @@
 
 /* 分隔線 */
 
-.socialmedia {
+.socialmediaineach {
     width: 40%;
     margin-left: 30%;
     margin-right: 30%;
@@ -118,7 +118,7 @@
     align-items: center; 
 }
 
-.socialmedia img {
+.socialmediaineach img {
     height: 30px;
     width: 30px;
 }
@@ -126,11 +126,11 @@
 /* 分隔線 */
 
 
-.gray {
+.grayineachrecipe {
     background-color: rgb(239, 240, 234);
 }
 
-.cook {
+.cookineachrecipe {
     width: 90%;
     margin-left: 5%;
     margin-right: 5%;
@@ -139,13 +139,13 @@
     text-align: justify;
 }
 
-.material {
+.materialineach {
     width: 50%;
     margin-right: 15%;
     display: inline-block;
 }
 
-.black{
+.blackineachrecipe{
     background-color: rgb(58, 44, 44);
     width: 100%;
     height: 50px;
@@ -155,12 +155,12 @@
     padding-left: 30px;
 }
 
-.cooking {
+.cookingineach {
     width: 50%;
     display: inline-block;
 }
 
-.green {
+.greenineachrecipe {
     background-color: rgb(130, 202, 53);
     width: 100%;
     height: 50px;
@@ -170,12 +170,12 @@
     padding-left: 30px;
 }
 
-.showarea1 {
+.showarea1ineach {
     width: 100%;
     background-color: rgb(250, 250, 250);
 }
 
-.chapter1 {
+.chapter1ineach {
     font-size: 24px;
     color: rgb(0, 0, 0);
     line-height: 50px;
@@ -183,7 +183,7 @@
     margin-right: 30px;
 }
 
-.showarea2 {
+.showarea2ineach {
     width: 100%;
     padding: 20px;
     margin-top: 5px;
@@ -195,7 +195,7 @@
     /* outline: 1px solid black; */
 }
 
-.number{
+.numberineachrecipe{
     background-color: rgb(255, 71, 71);
     height: 40px;
     width: 40px;
@@ -205,7 +205,7 @@
     text-align: center;
 }
 
-.chapter2 {
+.chapter2ineach {
     width: 70%;
     font-size: 16px;
     color: rgb(0, 0, 0);
@@ -220,7 +220,7 @@
     height: 30px;
 }
 
-.buttonlist{
+.buttonlistineach{
     display: flex;
     justify-content: center; 
     align-items: center; 
@@ -240,7 +240,7 @@
     margin: 5px;
 }
 
-.create{
+.hsiehcreate{
     width: 150px;
     height: 40px;
     background-color: rgb(235, 65, 65);
@@ -251,7 +251,7 @@
     margin: 5px;
 }
 
-.update{
+.hsiehupdate{
     width: 150px;
     height: 40px;
     background-color: rgb(130, 202, 53);
@@ -262,7 +262,7 @@
     margin: 5px;
 }
 
-.delete {
+.hsiehdelete {
     width: 150px;
     height: 40px;
     background-color: rgba(130, 202, 53, 0);
@@ -274,7 +274,7 @@
     margin: 5px;
 }
 
-.crud{
+.hsiehcrud{
     width: 20px;
     height: 20px;
     margin-left: 10px;
@@ -291,7 +291,7 @@
         padding-bottom: 10px;
     }
 
-    .cook {
+    .cookineachrecipe {
         width: 100%;
         margin-left: 0;
         margin-right: 0;
@@ -300,7 +300,7 @@
         position: relative;
     }
 
-    .material {
+    .materialineach {
         width: 100%;
         margin-left: 0;
         margin-right: 0;
@@ -325,15 +325,15 @@
         width: 90%;
     }
 
-    .likeandcollect{
+    .likeandcollectineach{
         justify-content: space-between;
     }
 
-    .recipedetail {
+    .recipedetailineach {
         width: 90%;
     }
 
-    .greencircle {
+    .greencircleineach {
         width: 25px;
         height: 25px;
         border-radius: 50%;
@@ -342,7 +342,7 @@
         overflow: hidden;
     }
 
-    .greencircle img {
+    .greencircleineach img {
         width: 25px;
         height: 25px;
         position: absolute;
@@ -350,7 +350,7 @@
         left: 0;
     }
 
-    .recipedata p {
+    .recipedataineach p {
         font-size: 12px;
         padding-left: 5px;
     }

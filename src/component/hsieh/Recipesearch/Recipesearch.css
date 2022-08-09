@@ -1,5 +1,5 @@
 
-.searching {
+.hsiehsearching {
     /* background-image:url("/public/images/spaghetti.jpg") ; */
     width: 100%;
     background-size:cover;
@@ -10,20 +10,20 @@
     align-items: center; 
 }
 
-.iconmanagement{
+.iconmanagementinsearch{
     display: flex;
     align-items: center; 
     /* margin-left: 10px; */
 }
 
-.titleword{
+.titlewordinsearch{
     text-align: center;
     font-size: 30px;
     padding-top: 60px;
     padding-bottom: 30px;
 }
 
-.subtitleword{
+.subtitlewordinsearch{
     font-size: 24px;
     color: rgb(0, 0, 0);
     -webkit-text-stroke: 0.1px rgb(4, 0, 255);
@@ -33,38 +33,27 @@
     font-size: 28px;
 }
 
-.recommend {
-    width: 100%;
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-bottom: 30px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.recommendlist {
+.recommendlistinsearchinsearch {
     width: 48%;
-    /* display: flex;
-    flex-wrap: wrap; */
 }
 
-.recipephoto {
+.recipephotoinsearch {
     width: 250px;
     height: 200px;
     overflow: hidden;
 }
 
-.recipephoto img {
+.recipephotoinsearch img {
     max-width: 100%;
     transition: 0.35s;
 }
 
-.recipephoto:hover img {
+.recipephotoinsearch:hover img {
     transform: scale(1.1, 1.1);
     opacity: 0.8;
 }
 
-.recipeblock {
+.recipeblockinsearch {
     font-size: 20px;
     line-height: 30px;
     margin-left:10px ;
@@ -82,7 +71,7 @@
     margin: 0;
 }
 
-.hrline {
+.hrlineinsearch {
     margin: 10px 0;
 }
 
@@ -91,7 +80,7 @@
     background-color: rgb(255, 255, 255);
 }
 
-.pa {
+.paginationinsearch {
     display: flex;
     justify-content: center; 
     align-items: center; 
@@ -107,29 +96,20 @@
         font-size: 20px;
     }
 
-    .titleword{
+    .titlewordinsearch{
         text-align: center;
         font-size: 20px;
         padding-top: 30px;
         padding-bottom: 15px;
     }
 
-    .subtitleword{
+    .subtitlewordinsearch{
         font-size: 16px;
         color: rgb(0, 0, 0);
         -webkit-text-stroke: 0.1px rgb(4, 0, 255);
     }
 
-    .recommend {
-        width: 100%;
-        margin-left: 10%;
-        margin-right: 10%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .recommendlist {
+    .recommendlistinsearch {
         width: 90%;
         margin: 0 5%  30px;
         display: flex;
@@ -137,18 +117,18 @@
         justify-content: center;
     }
 
-    .recipephoto {
+    .recipephotoinsearch {
         width: 200px;
         height: 150px;
         overflow: hidden;
     }
 
-    .recipephoto img {
+    .recipephotoinsearch img {
         max-width: 100%;
         transition: 0.35s;
     }
 
-    .recipeblock {
+    .recipeblockinsearch {
         font-size: 20px;
         line-height: 30px;
         margin-left:5px ;
