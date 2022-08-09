@@ -14,7 +14,7 @@ export default function Coupon(props) {
     // 呈現資料畫面是否兌換完成
     const [CouponState, setCouponState] = useState([]);
 
-    //console.log(CouponState50)
+    const Swal = require('sweetalert2');
 
     useEffect(() => {
         setCouponState(discountArray);
@@ -32,13 +32,23 @@ export default function Coupon(props) {
         // console.log(newPointToExchange);
         //目前點數比對兌換券的point
         if (eggpoints >= newPointToExchange) {
-            //alert('兌換完成')
-            console.log('兌換完成');
+            Swal.fire({
+                position: 'centre',
+                icon: 'success',
+                title: '恭喜兌換完成!!',
+                showConfirmButton: false,
+                timer: 1500,
+            });
             //目前點數減掉兌換後的點數
             setEggPoints(eggpoints - newPointToExchange);
         } else {
-            alert('抱歉點數不足');
-            console.log('抱歉點數不足');
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: '點數不足!',
+                footer: '<a href="">Why do I have this issue?</a>',
+            });
+            //alert('抱歉點數不足');
         }
         axios
             .post('http://localhost:3600/game/coupon', {
@@ -67,7 +77,7 @@ export default function Coupon(props) {
                         return (
                             <div className="col-md-6 coupon" key={v.id}>
                                 <div className="d-flex  border rounded overflow-hidden  mb-4 shadow ">
-                                    <div className="col-8">
+                                    <div className="game-col-8">
                                         <img
                                             className="w-100 objfit"
                                             src={v.image}
@@ -75,9 +85,9 @@ export default function Coupon(props) {
                                             alt=""
                                         />
                                     </div>
-                                    <div className="col-4 p-4 d-flex flex-column position-static ">
+                                    <div className="col-4 p-3 d-flex flex-column position-static ">
                                         <p
-                                            className="d-inline-block mb-1 text-primary text-center"
+                                            className="d-inline-block mb-1 text-primary text-center text-danger"
                                             style={{ fontSize: '2.5rem' }}
                                         >
                                             折價券
@@ -101,12 +111,10 @@ export default function Coupon(props) {
                                             {/* //  onClick={clickchange}>  */}
                                             {v.change === 0
                                                 ? `${v.point}點使用兌換`
-                                                : `已完成兌換`}
+                                                : `${v.point}點使用兌換`}
                                         </button>
                                     </div>
                                 </div>
-                                <div className='circle1'></div>
-                                <div className='circle2'></div>
                             </div>
                         );
                     })}

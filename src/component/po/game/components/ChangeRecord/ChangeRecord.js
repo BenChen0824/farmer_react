@@ -44,7 +44,7 @@ export default function ChangeRecord() {
             <table className="table table-striped">
                 <thead>
                     <tr>
-                        <card scope="col">折價券圖片</card>
+                        <th scope="col">目前折價券</th>
                         <th scope="col">會員ID</th>
                         <th scope="col">折價券類型</th>
                         <th scope="col">花費點數</th>
@@ -56,7 +56,7 @@ export default function ChangeRecord() {
                         ? data.map((row) => (
                               <tr key={'mm' + row.sid}>
                                   <td>
-                                      <img src={`${row.change_img}`} />
+                                      <img src={`${row.change_img}`} alt="" />
                                   </td>
                                   <td>{row.change_memberid}</td>
                                   <td>{row.change_coupon}</td>
@@ -67,11 +67,6 @@ export default function ChangeRecord() {
                         : null}
                 </tbody>
             </table>
-            {/* {data && data.totalPages ? (
-              <Pagination page={data.page} totalPages={data.totalPages} />
-            ) : null} */}
-
-            {console.log({ data })}
         </div>
     );
 }
