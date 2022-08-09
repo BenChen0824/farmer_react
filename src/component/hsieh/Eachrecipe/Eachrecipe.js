@@ -243,7 +243,7 @@ function Eachrecipe() {
                         <img
                             src="/images/files.svg"
                             alt=""
-                            className="hsiehcrud"
+                            className="crudineach"
                         />
                     </button>
                 </Link>
@@ -254,7 +254,7 @@ function Eachrecipe() {
                         <img
                             src="/images/file-plus.svg"
                             alt=""
-                            className="hsiehcrud"
+                            className="crudineach"
                         />
                     </button>
                 </Link>
@@ -265,7 +265,7 @@ function Eachrecipe() {
                         <img
                             src="/images/pen.svg"
                             alt=""
-                            className="hsiehcrud"
+                            className="crudineach"
                         />
                     </button>
                 </Link>
@@ -276,7 +276,7 @@ function Eachrecipe() {
                     <img
                         src="/images/trashcan.svg"
                         alt=""
-                        className="hsiehcrud"
+                        className="crudineach"
                     />
                 </button>
                 {/* </a> */}
