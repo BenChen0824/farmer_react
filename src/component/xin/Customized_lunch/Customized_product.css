@@ -1,6 +1,9 @@
 * {
     box-sizing: border-box;
 }
+.selectedFoodImg{
+    z-index: 999;
+}
 
 .xin-nav-link {
     background-color: #3a2c2c;
@@ -66,7 +69,7 @@
     background: none;
     border: none;
     cursor: pointer;
-    background-color: rgb(243, 178, 178);
+    background-color: rgba(243, 178, 178,0.4);
     border: 2px solid rgb(254, 254, 254);
     border-radius: 10px;
     height: 51px;
@@ -118,7 +121,7 @@
     background: none;
     border: none;
     cursor: pointer;
-    background-color: rgb(13, 220, 92);
+    background-color: rgba(13, 220, 92,0.4);
     border: 2px solid rgb(254, 254, 254);
     /* padding: 20px; */
     border-radius: 10px;
@@ -166,7 +169,7 @@
 
 .card .xin-card-img-top {
     width: 80%;
-    height: 7rem;
+    height: 6.5rem;
     object-fit: cover;
     flex-grow: 1;
 }
@@ -179,14 +182,18 @@
 }
 
 .selectedFoodArea {
-    /* height: 100vh; */
+    position: relative;
     background-color: #fff;
     border-left: 1px solid#000;
 }
+.deletAllArea {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+  transform: translate(-50%, 0);
+}
 
-/* .chooseArea {
-  height: 40vh;
-} */
+
 .selectedDetil {
     width: 80%;
     height: 5rem;
@@ -285,7 +292,21 @@
     /* border: 1px solid #000; */
 }
 
+.xin-remove-all-btn{
+        padding: 15px 10px;
+     }
+    
 @media screen and (max-width: 992px) {
+    .main{
+        min-height: 0;
+    }
+    .lunch-name-input {
+    width: 200px;
+}
+    .deletAllArea{
+        bottom: 25px;
+    }
+
     .xin-food-area {
         border: none;
     }
@@ -322,7 +343,7 @@
 
     .showSideBar {
         position: absolute;
-        height: 100vh;
+        height: 85vh;
         width: 65%;
         border-right: 1px solid #000;
     }
@@ -330,21 +351,21 @@
     .showSelectedFoodSideBar {
         position: absolute;
         right: 0;
-        height: 100vh;
+        height: 85vh;
         width: 65%;
         z-index: 1000;
     }
 
     .card .xin-card-img-top {
-        width: 80%;
-        height: 3rem;
+        width: 70%;
+        height: 3.5rem;
         object-fit: cover;
         flex-grow: 1;
     }
 
     .selectedDetil {
-        width: 50px;
-        height: 50px;
+        width: 80%;
+        height: 3.5rem;
     }
     .canvasFood {
         margin-top: -30px;
