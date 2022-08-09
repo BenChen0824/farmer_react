@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './Createrecipe.css';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function Createrecipe() {
     // 新增食譜名稱
@@ -86,9 +86,61 @@ function Createrecipe() {
         Createrecipe(obj);
     };
 
+    const hiddenFileInput = useRef('');
+    const [image, setImage] = useState({ preview: '', data: '' });
+    const [profileData, setProfileData] = useState([
+        {
+            username: '',
+            intro: '',
+            profile_img: '',
+        },
+    ]);
+    const [editStatus, setEditStatus] = useState(true);
+    const loginUser = JSON.parse(localStorage.getItem('auth'));
+
+    const getRecipeData = async () => {
+        const response = await axios.get(
+            'http://localhost:3600/recipe/createrecipe',
+            { headers: { loginUser: loginUser.customer_id } }
+        );
+        setProfileData(response.data);
+    };
+
+    useEffect(() => {
+        getRecipeData();
+    }, [editStatus]);
+
+    const handleClick = (event) => {
+        hiddenFileInput.current.click();
+    };
+
+    function handleOnChange(event) {
+        const img = {
+            preview: URL.createObjectURL(event.target.files[0]),
+            data: event.target.files[0],
+        };
+        setImage(img);
+        handleSubmit(img);
+    }
+
+    function handleSubmit(upimg) {
+        const fd = new FormData();
+        fd.append('file', upimg.data);
+
+        fetch('http://localhost:3600/member/profile', {
+            method: 'post',
+            body: fd,
+            headers: {
+                customer_id: loginUser.customer_id,
+            },
+        })
+            .then((r) => r.json())
+            .then((obj) => console.log(obj));
+    }
+
     return (
         <>
-            <form name="form1" method="post">
+            <form name="form1" method="post" onSubmit={checkForm}>
                 <h2 className="creatrecipe">新增食譜 ／ Create New Recipes</h2>
                 <hr className="hr" />
                 <div className="eachdata">
@@ -448,14 +500,33 @@ function Createrecipe() {
                 <hr className="hr" />
                 {/* 分隔線，以下照片 */}
 
-                <div className="photoupload">
-                    <button className="buttonincreate">
+                <div className="photoarea">
+                    <button className="buttonincreate" onClick={handleClick}>
                         <img
                             src="/images/camera.svg"
                             alt=""
                             className="iconincreate"
                         />
+
+                        <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                        <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z" />
                     </button>
+
+                    <div className="photoupload">
+                        <form
+                            style={{ display: 'none' }}
+                            onSubmit={handleSubmit}
+                        >
+                            <input
+                                id="inputData"
+                                name="file"
+                                type="file"
+                                ref={hiddenFileInput}
+                                accept="image/*"
+                                onChange={handleOnChange}
+                            />
+                        </form>
+                    </div>
                 </div>
                 <div className="button">
                     <label>請選擇照片</label>

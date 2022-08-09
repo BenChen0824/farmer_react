@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import './Createrecipe.css';
+import axios from 'axios';
 
 function Updaterecipe() {
     const [updaterecipe, setUpdaterecipe] = useState({
@@ -47,27 +48,13 @@ function Updaterecipe() {
     const [timecost, setTimecost] = useState('');
 
     // 料理熱量
-    // const [updateTimecost, setUpdateTimecost] = useState('');
     const [calories, setCalories] = useState('');
 
     // 料理份量
-    // const [updatePortion, setUpdatePortion] = useState('');
-    // const updatePortionOptions = ['1人分', '2人分', '3人分', '4人分', '5人分以上'];
     const [portion, setPortion] = useState('');
     const portionOptions = ['1', '2', '3', '4', '5'];
 
     // select，料理類型
-    //const [updateRecipestype, setUpdateRecipestype] = useState('');
-    //const UpdateRecipestypeOptions = [
-    //     '台灣料理',
-    //     '中華料理',
-    //     '日式料理',
-    //     '韓式料理',
-    //     '南洋料理',
-    //     '歐式料理',
-    //     '美式料理',
-    //     '其他',
-    // ];
     const [recipestype, setRecipestype] = useState('');
     const recipestypeOptions = [
         '台灣料理',
@@ -81,12 +68,6 @@ function Updaterecipe() {
     ];
 
     // select，料理難易度
-    // const [updateRecipesdegree, setUpdateRecipesdegree] = useState('');
-    // const updateRecipesdegreeOptions = [
-    //     '新手輕鬆入門',
-    //     '餐廳廚師料理',
-    //     '米其林名廚作品',
-    // ];
     const [recipesdegree, setRecipesdegree] = useState('');
     const recipesdegreeOptions = [
         '新手輕鬆入門',
@@ -95,14 +76,12 @@ function Updaterecipe() {
     ];
 
     // 料理食材
-    // const [updateIngredient, updateSetIngredient] = useState('');
     const [ingredient, setIngredient] = useState('');
+
     // 食材分量
-    // const [updateUnit, updateSetUnit] = useState('');
     const [unit, setUnit] = useState('');
 
     // 料理步驟
-    // const [updateStep, setUpdateStep]
     const [step, setStep] = useState('');
 
     return (
@@ -284,7 +263,7 @@ function Updaterecipe() {
                             />
                         </section>
 
-                        <section id="updaterecipe">
+                        {/* <section id="updaterecipe">
                             <input
                                 type="text"
                                 className="portionuse"
@@ -294,7 +273,7 @@ function Updaterecipe() {
                                     setUpdaterecipe(e.target.value);
                                 }}
                             />
-                        </section>
+                        </section> */}
 
                         <button className="buttonincreate">
                             <img
@@ -320,7 +299,7 @@ function Updaterecipe() {
                             />
                         </section>
 
-                        <section id="updaterecipe">
+                        {/* <section id="updaterecipe">
                             <input
                                 type="text"
                                 className="portionuse"
@@ -330,7 +309,7 @@ function Updaterecipe() {
                                     setUpdaterecipe(e.target.value);
                                 }}
                             />
-                        </section>
+                        </section> */}
                         <button className="buttonincreate">
                             <img
                                 src="/images/trashcan.svg"
@@ -355,7 +334,7 @@ function Updaterecipe() {
                             />
                         </section>
 
-                        <section id="updaterecipe">
+                        {/* <section id="updaterecipe">
                             <input
                                 type="text"
                                 className="portionuse"
@@ -365,7 +344,7 @@ function Updaterecipe() {
                                     setUpdaterecipe(e.target.value);
                                 }}
                             />
-                        </section>
+                        </section> */}
                         <button className="buttonincreate">
                             <img
                                 src="/images/trashcan.svg"

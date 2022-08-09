@@ -84,24 +84,10 @@
 }
 
 .photoupload {
-  width: 50%;
-  height: 400px;
-  margin-left: 25%;
-  margin-right: 25%;
+  width: 100%;
+  height: 500px;
   background-color: rgb(177, 177, 177);
   position: relative;
-}
-
-.photoupload img {
-  height: 60px;
-  width: 60px;
-  margin-left: 50%;
-  position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	margin: auto;
 }
 
 .button {
@@ -120,8 +106,14 @@
   border: 0px;
 }
 
+.photoarea{
+  /* display: flex; */
+  margin: 0 20%;
+}
+
 .buttonincreate{
   border: 0px;
+  vertical-align: top;
   background-color: rgba(255, 255, 255, 0);
 }
 
@@ -231,12 +223,16 @@
   }
 
   .photoupload {
-    width: 50%;
-    height: 200px;
-    margin-left: 25%;
-    margin-right: 25%;
+    width: 100%;
+    height: 350px;
     margin-bottom: 20px;
     background-color: rgb(177, 177, 177);
     position: relative;
+  }
+}
+
+@media screen and (max-width:600px) {
+  .photoupload {
+    height: 200px;
   }
 }
