@@ -5,6 +5,7 @@ import {
     CART_LIST_CHANGE_COUNT,
     CART_LIST_DELETE,
     CART_LIST_CHECK,
+    CART_DISCOUNT,
 } from './../../../config/ajax-path';
 import CartCountContext from '../cart_count/CartCountContext';
 
@@ -17,6 +18,9 @@ function Cart() {
     //取得資料庫資料
     const { cartList, setCartList } = useContext(CartCountContext);
     const [readyToBuyFreshCheck, setReadyToBuyFreshCheck] = useState([]);
+    const [discountArray, setDiscountArray] = useState([]);
+    const [discountValue, setDiscountValue] = useState(0);
+    const [discountKey, setDiscountKey] = useState(0);
     const [readyToBuyCustomizedCheck, setReadyToBuyCustomizedCheck] = useState(
         []
     );
@@ -138,9 +142,39 @@ function Cart() {
                 navigate('/cart');
             }
         } else {
+            sessionStorage.setItem('discountSid', discountKey);
+            sessionStorage.setItem('discount', discountValue);
             navigate('./payment');
         }
     };
+
+    const getDiscount = () => {
+        fetch(CART_DISCOUNT, {
+            method: 'GET',
+            headers: { change_memberid: member_info.customer_id },
+        })
+            .then((r) => r.json())
+            .then((obj) => {
+                setDiscountArray(obj);
+            });
+    };
+
+    //折價券改變價格
+    const discountChange = (e) => {
+        setDiscountValue(e.target.value);
+        // sessionStorage.setItem('discount', discountValue);
+        +e.target.options.selectedIndex - 1 >= 0
+            ? setDiscountKey(
+                  discountArray[e.target.options.selectedIndex - 1].sid
+              )
+            : setDiscountKey(0);
+
+        // console.log(discountKey);
+    };
+
+    useEffect(() => {
+        getDiscount();
+    }, []);
 
     useEffect(() => {
         const newfreshProductAmountArray = cartList
@@ -179,9 +213,10 @@ function Cart() {
     }, [cartList]);
 
     useEffect(() => {
-        const totalPrice = customizedProducAmount + freshProductAmount;
+        const totalPrice =
+            customizedProducAmount + freshProductAmount - discountValue;
         setTotalAmountAmount(totalPrice);
-    }, [customizedProducAmount, freshProductAmount]);
+    }, [customizedProducAmount, freshProductAmount, discountValue]);
 
     return (
         <>
@@ -556,12 +591,25 @@ function Cart() {
                                     name=""
                                     id="cart_discount_select"
                                     className="ps-3 me-3"
+                                    onChange={(e) => {
+                                        discountChange(e);
+                                    }}
                                 >
-                                    <option value="" disabled>
-                                        --請選擇--
-                                    </option>
+                                    <option value="0">--請選擇--</option>
+                                    {discountArray.map((v, i) => {
+                                        return (
+                                            <option
+                                                value={v.change_spendprice}
+                                                key={v.sid}
+                                                data_key={v.sid}
+                                            >
+                                                {v.change_coupon}
+                                            </option>
+                                        );
+                                    })}
                                 </select>
-                                <div>NT$50</div>
+
+                                <div>NT${discountValue}</div>
                             </div>
                         </div>
                         <div className="col mt-3">
