@@ -511,12 +511,12 @@ function Createrecipe() {
                 {/* 分隔線，以下完成按鈕 */}
 
                 <div className="buttonintextalign">
-                    <button className="finish" type="submit">
+                    <button className="finishincreate" type="submit">
                         新增食譜
                         <img
                             src="/images/file-plus.svg"
                             alt=""
-                            className="crud"
+                            className="crudincreate"
                         />
                     </button>
                 </div>
