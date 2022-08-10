@@ -8,6 +8,7 @@ import axios from 'axios';
 // componentWillUnmount
 
 export default function ChangeRecord() {
+    const loginUser = JSON.parse(localStorage.getItem('auth'));
     const [data, setData] = useState([
         {
             sid: '',
@@ -24,7 +25,7 @@ export default function ChangeRecord() {
     useEffect(() => {
         fetch(AB_GET_COUPON, {
             method: 'GET',
-            headers: { change_memberid: '530' },
+            headers: { change_memberid: loginUser.customer_id },
         })
             .then((r) => r.json())
             .then((obj) => {
@@ -44,7 +45,9 @@ export default function ChangeRecord() {
             <table className="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">目前折價券</th>
+                        <th scope="col" className="w-25">
+                            目前折價券
+                        </th>
                         <th scope="col">會員ID</th>
                         <th scope="col">折價券類型</th>
                         <th scope="col">花費點數</th>
@@ -56,7 +59,13 @@ export default function ChangeRecord() {
                         ? data.map((row) => (
                               <tr key={'mm' + row.sid}>
                                   <td>
-                                      <img src={`${row.change_img}`} alt="" />
+                                      <div className="w-50">
+                                          <img
+                                              className="w-100"
+                                              src={`${row.change_img}`}
+                                              alt=""
+                                          />
+                                      </div>
                                   </td>
                                   <td>{row.change_memberid}</td>
                                   <td>{row.change_coupon}</td>

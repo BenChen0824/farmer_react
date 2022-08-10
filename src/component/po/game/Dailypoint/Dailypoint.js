@@ -17,6 +17,7 @@ function Dailypoint() {
 
     const brokenegg = '/dailypoint-img/44434.png';
     const defaultegg = '/dailypoint-img/812921.png';
+    const loginUser = JSON.parse(localStorage.getItem("auth"))
     //console.log(brokenegg)
 
     const eggClick = (i) => {
@@ -31,11 +32,11 @@ function Dailypoint() {
             setEggPoints(getPoint);
             //每日只領一次
             setDataCheck(false);
-            //送資料到後端 change_memberid:之後要改成柏安的localstorege,http://localhost:3000/auth/custmerid
+            //送資料到後端 change_memberid:之後要改成柏安的localstorege
             axios
                 .post('http://localhost:3600/game/addpoints', {
                     change_points: getPoint,
-                    change_memberid: 530,
+                    change_memberid: loginUser.customer_id,
                 })
                 .then((result) => {
                     console.log(result.data);
