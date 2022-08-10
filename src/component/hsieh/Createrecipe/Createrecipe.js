@@ -72,6 +72,99 @@ function Createrecipe() {
             step: document.form1.step.value,
         };
 
+        // const recipesname_f = document.form1.recipesname;
+        // const description_f = document.form1.description;
+
+        // const timecost_f = document.form1.timecost;
+        // const timecost_re = new RegExp('/[0-9]{3}/');
+
+        // const calories_f = document.form1.calories;
+        // const calories_re = new RegExp('/[0-9]{3}/');
+
+        // const portion_f = document.form1.portion;
+        // const recipestype_f = document.form1.recipestype;
+        // const recipesdegree_f = document.form1.recipesdegree;
+        // const ingredient_f = document.form1.ingredient;
+        // const step_f = document.form1.step;
+
+        // const fields = [recipesname_f, description_f, timecost_f, calories_f, portion_f, recipestype_f, recipesdegree_f, ingredient_f, step_f];
+
+        // const fieldTexts = [];
+        // for (let f of fields) {
+        //     fieldTexts.push(f.nextElementSibling);
+        // }
+
+        // for (let i in fields) {
+        //     fields[i].classList.remove('is-invalid');
+        //     fieldTexts[i].innerText = '';
+        // }
+
+        // let isPass = true;
+
+        // if (recipesname_f.value.length < 1) {
+        //     fields[0].classList.add('is-invalid');
+        //     fieldTexts[0].innerText = '請輸入食譜名稱';
+        //     isPass = false;
+        // }
+
+        // if (description_f.value.length < 1) {
+        //     fields[1].classList.add('is-invalid');
+        //     fieldTexts[1].innerText = '請輸入食譜簡介';
+        //     isPass = false;
+        // }
+
+        // if (!timecost_re.test(data.timecost)) {
+        //     fields[2].classList.add('is-invalid');
+        //     fieldTexts[2].innerText = '請輸入花費時間';
+        //     isPass = false;
+        // }
+
+        // if (!calories_re.test(data.timecost)) {
+        //     fields[3].classList.add('is-invalid');
+        //     fieldTexts[3].innerText = '請輸入熱量';
+        //     isPass = false;
+        // }
+
+        // if (portion_f.value.length < 1) {
+        //     fields[4].classList.add('is-invalid');
+        //     fieldTexts[4].innerText = '請輸入份量';
+        //     isPass = false;
+        // }
+
+        // if (recipestype_f.value.length < 1) {
+        //     fields[5].classList.add('is-invalid');
+        //     fieldTexts[5].innerText = '請輸入料理類型';
+        //     isPass = false;
+        // }
+
+        // if (recipesdegree_f.value.length < 1) {
+        //     fields[6].classList.add('is-invalid');
+        //     fieldTexts[6].innerText = '請選擇料理難易度';
+        //     isPass = false;
+        // }
+
+        // if (ingredient_f.value.length < 1) {
+        //     fields[7].classList.add('is-invalid');
+        //     fieldTexts[7].innerText = '請填寫食材';
+        //     isPass = false;
+        // }
+
+        // if (step_f.value.length < 1) {
+        //     fields[8].classList.add('is-invalid');
+        //     fieldTexts[8].innerText = '請填寫料理步驟';
+        //     isPass = false;
+        // }
+
+        // if (!isPass) {
+        //     return;
+        // }
+        // 結束函式
+
+        // const email_re = new RegExp(
+        //     '^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$'
+        // );
+        // const password_re = new RegExp('^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$');
+
         const r = await fetch('http://localhost:3600/recipe/createrecipe', {
             method: 'post',
             body: JSON.stringify(data),
@@ -81,8 +174,17 @@ function Createrecipe() {
         });
         const obj = await r.json();
         console.log(obj);
-        Createrecipe(obj);
+        register(obj);
     };
+
+    function register(obj) {
+        if (obj.success) {
+            alert('新增食譜成功');
+            navigate('/recipe', { replace: true });
+        } else {
+            alert('請填寫正確資料');
+        }
+    }
 
     const hiddenFileInput = useRef('');
     const [image, setImage] = useState({ preview: '', data: '' });
@@ -145,8 +247,10 @@ function Createrecipe() {
                 <hr className="hrincreaterecipe" />
                 <div className="eachdataincreaterecipe">
                     <label className="datanameincreaterecipe">食譜名稱</label>
-                    <section id="recipesname">
+                    <section>
                         <input
+                            name="recipesname"
+                            id="recipesname"
                             type="text"
                             className="dataform1increate"
                             value={recipesname}
@@ -164,8 +268,10 @@ function Createrecipe() {
                 <div className="eachdataincreaterecipe">
                     <label className="datanameincreaterecipe">料理簡介</label>
                     <div>
-                        <section id="description">
+                        <section>
                             <textarea
+                                name="description"
+                                id="description"
                                 className="dataform1increate"
                                 value={description}
                                 placeholder="請100字內簡單描述"
@@ -188,8 +294,10 @@ function Createrecipe() {
                 <div className="eachdataincreaterecipe">
                     <label className="datanameincreaterecipe">花費時間</label>
                     <label className="breakpointtitle1">約</label>
-                    <section id="timecost">
+                    <section>
                         <input
+                            name="timecost"
+                            id="timecost"
                             className="dataform2increate"
                             type="text"
                             value={timecost}
@@ -207,8 +315,10 @@ function Createrecipe() {
                 <div className="eachdataincreaterecipe">
                     <label className="datanameincreaterecipe">料理熱量</label>
                     <label className="breakpointtitle1">約</label>
-                    <section id="calories">
+                    <section>
                         <input
+                            name="calories"
+                            id="calories"
                             className="dataform2increate"
                             type="text"
                             value={calories}
@@ -226,8 +336,10 @@ function Createrecipe() {
                 <div className="eachdataincreaterecipe">
                     <label className="datanameincreaterecipe">料理份量</label>
                     <label className="breakpointtitle1">約</label>
-                    <section id="portion">
+                    <section>
                         <select
+                            name="portion"
+                            id="portion"
                             className="dataform2increate"
                             value={portion}
                             onChange={(e) => {
@@ -252,8 +364,10 @@ function Createrecipe() {
 
                 <div className="eachdataincreaterecipe">
                     <label className="datanameincreaterecipe">料理類型</label>
-                    <section id="recipestype">
+                    <section>
                         <select
+                            name="recipestype"
+                            id="recipestype"
                             className="dataform1increate"
                             value={recipestype}
                             onChange={(e) => {
@@ -279,6 +393,8 @@ function Createrecipe() {
                     <label className="datanameincreaterecipe">料理難易</label>
                     <section id="recipesdegree">
                         <select
+                            name="recipesdegree"
+                            id="recipesdegree"
                             className="dataform1increate"
                             value={recipesdegree}
                             onChange={(e) => {
@@ -307,8 +423,10 @@ function Createrecipe() {
                 <div className="eachdataincreaterecipe">
                     <div>
                         <div className="ingredientandstep">
-                            <section id="ingredient">
+                            <section>
                                 <input
+                                    name="ingredient"
+                                    id="ingredient"
                                     type="text"
                                     className="ingredientuse"
                                     value={ingredient}
@@ -331,8 +449,10 @@ function Createrecipe() {
                         {/* 分隔線 */}
 
                         <div className="ingredientandstep">
-                            <section id="ingredient">
+                            <section>
                                 <input
+                                    name="ingredient"
+                                    id="ingredient"
                                     type="text"
                                     className="ingredientuse"
                                     value={ingredient}
@@ -355,8 +475,10 @@ function Createrecipe() {
                         {/* 分隔線 */}
 
                         <div className="ingredientandstep">
-                            <section id="ingredient">
+                            <section>
                                 <input
+                                    name="ingredient"
+                                    id="ingredient"
                                     type="text"
                                     className="ingredientuse"
                                     value={ingredient}
@@ -399,8 +521,10 @@ function Createrecipe() {
                     <div>
                         <div className="ingredientandstep">
                             <div className="redballincreate">1</div>
-                            <section id="step">
+                            <section>
                                 <textarea
+                                    name="step"
+                                    id="step"
                                     className="dataform1increate"
                                     value={step}
                                     placeholder="步驟1"
@@ -415,8 +539,10 @@ function Createrecipe() {
 
                         <div className="ingredientandstep">
                             <div className="redballincreate">2</div>
-                            <section id="step">
+                            <section>
                                 <textarea
+                                    name="step"
+                                    id="step"
                                     className="dataform1increate"
                                     value={step}
                                     placeholder="步驟2"
@@ -439,8 +565,10 @@ function Createrecipe() {
 
                         <div className="ingredientandstep">
                             <div className="redballincreate">3</div>
-                            <section id="step">
+                            <section>
                                 <textarea
+                                    name="step"
+                                    id="step"
                                     className="dataform1increate"
                                     value={step}
                                     placeholder="步驟3"
