@@ -621,7 +621,8 @@ function Createrecipe() {
                             />
                         </form>
                         <img
-                            className="img-fluid border border-white border-2 rounded-circle w-100 h-100 bop-objft"
+                            // className="img-fluid border border-white border-2 rounded-circle w-100 h-100 bop-objft"
+                            className="showphotoincreate"
                             src={
                                 image.preview
                                     ? image.preview

@@ -300,6 +300,11 @@
         position: relative;
     }
 
+    .cookingineach {
+        width: 100%;
+        display: inline-block;
+    }
+
     .materialineach {
         width: 100%;
         margin-left: 0;
