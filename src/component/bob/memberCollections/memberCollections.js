@@ -9,7 +9,7 @@ function MemberCollections() {
     const [filterCate, setFilterCate] = useState('');
     const [deleteStatus, setDeleteStatus] = useState(false);
 
-    const category = ['蔬菜', '海鮮', '水果'];
+    const category = ['請選擇分類', '蔬菜', '水果', '肉品', '海鮮', '餐點', '客製化餐點'];
 
     const loginUser = JSON.parse(localStorage.getItem('auth'));
 
@@ -19,6 +19,7 @@ function MemberCollections() {
         });
         const obj = await r.json();
         setResponse(obj);
+        console.log(obj)
     };
 
     useEffect(() => {
@@ -42,12 +43,9 @@ function MemberCollections() {
 
     function searchCategory(searchValue) {
         setFilterCate(searchValue);
-        if (searchValue !== '') {
+        if (searchValue > 0) {
             const filteredData = response.filter((item) => {
-                return Object.values(item)
-                    .join('')
-                    .toLowerCase()
-                    .includes(searchValue.toLowerCase());
+                return item.product_type == searchValue;
             });
             setFilteredResult(filteredData);
         } else {
@@ -60,7 +58,7 @@ function MemberCollections() {
         const r = await fetch('http://localhost:3600/member/deleteproduct', {
             method: 'DELETE',
             headers: {
-                customer_id: loginUser.customer_id,
+                member_id: loginUser.customer_id,
                 product_id: event.target.id,
             },
         });
@@ -88,10 +86,9 @@ function MemberCollections() {
                                             searchCategory(e.target.value);
                                         }}
                                     >
-                                        <option value="">請選擇分類</option>
                                         {category.map((v, i) => {
                                             return (
-                                                <option value={v} key={i}>
+                                                <option value={i} key={i}>
                                                     {v}
                                                 </option>
                                             );
@@ -124,7 +121,7 @@ function MemberCollections() {
                                     ? filteredResult.map((res) => (
                                           <div
                                               className="card p-2 bdr m-1 shadow-sm"
-                                              val={res.customer_id}
+                                              val={res.member_id}
                                               style={{ width: '16rem' }}
                                               key={res.product_id}
                                           >
@@ -138,7 +135,7 @@ function MemberCollections() {
                                                   </button>
                                               </div>
                                               <img
-                                                  src={`/images/${res.product_img}`}
+                                                  src={'/images/' + JSON.parse(res.product_img)[0]}
                                                   className="card-img-top boc-objft"
                                                   width="200px"
                                                   height="175px"
@@ -155,11 +152,11 @@ function MemberCollections() {
                                                   <h5 className="card-title">
                                                       {res.product_name}
                                                   </h5>
-                                                  <p className="card-text">
-                                                      {res.product_source}
+                                                  <p className="card-text boc-multiline-ellipsis">
+                                                      {res.product_details}
                                                   </p>
                                                   <p className="card-text">
-                                                      {res.product_price}
+                                                      $ {res.product_price}
                                                   </p>
                                               </div>
                                           </div>
@@ -168,7 +165,7 @@ function MemberCollections() {
                                           <div
                                               className="card p-2 bdr m-1 shadow-sm"
                                               style={{ width: '16rem' }}
-                                              val={res.customer_id}
+                                              val={res.member_id}
                                               key={res.product_id}
                                           >
                                               <div className="position-absolute top-0 end-0">
@@ -181,7 +178,7 @@ function MemberCollections() {
                                                   </button>
                                               </div>
                                               <img
-                                                  src={`/images/${res.product_img}`}
+                                                  src={'/images/' + JSON.parse(res.product_img)[0]}
                                                   className="card-img-top boc-objft"
                                                   width="200px"
                                                   height="175px"
@@ -191,11 +188,18 @@ function MemberCollections() {
                                                   <h5 className="card-title">
                                                       {res.product_name}
                                                   </h5>
-                                                  <p className="card-text">
-                                                      {res.product_source}
+                                                  <p
+                                                      style={{
+                                                          display: 'none',
+                                                      }}
+                                                  >
+                                                      {res.product_type}
+                                                  </p>
+                                                  <p className="card-text boc-multiline-ellipsis">
+                                                      {res.product_details}
                                                   </p>
                                                   <p className="card-text">
-                                                      {res.product_price}
+                                                      $ {res.product_price}
                                                   </p>
                                               </div>
                                           </div>

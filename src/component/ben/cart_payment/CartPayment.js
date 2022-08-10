@@ -9,10 +9,10 @@ import CartCountContext from '../cart_count/CartCountContext';
 
 function CartPayment() {
     const discountValue = sessionStorage.getItem('discount')
-        ? sessionStorage.getItem('discount')
+        ? +sessionStorage.getItem('discount')
         : 0;
     const discountKey = sessionStorage.getItem('discountSid')
-        ? sessionStorage.getItem('discountSid')
+        ? +sessionStorage.getItem('discountSid')
         : 0;
     const member_info = JSON.parse(localStorage.getItem('auth'));
     const {
@@ -33,7 +33,7 @@ function CartPayment() {
     const [totalAmount, setTotalAmount] = useState(0);
     const [formValue, setFormValue] = useState('creditcardPayment');
     const [finalLinepayArray, setFinalLinepayArray] = useState([]);
-    const [discount, setDiscount] = useState(0);
+    // const [discount, setDiscount] = useState(0);
     const [finalValue, setFinalValue] = useState(0);
     const [freshTotalPrice, setFreshPrice] = useState(0);
     const [customizedTotalPrice, setCustomizedPrice] = useState(0);
@@ -50,11 +50,20 @@ function CartPayment() {
         : 500000000;
 
     //對SQL發送資料 新增Orderlist跟Order Details 並刪除 Orderlist_to_buy資料
+    // const freshInventoryarray = cartList
+    //     .filter((v) => {
+    //         return +v.ready_to_buy === 1 && +v.cart_product_type === 1;
+    //     })
+    //     .map((v2) => {
+    //         return v2.product_inventory;
+    //     });
 
+    // console.log(freshInventoryarray);
     const sendCheckSQL = () => {
         setInSessionStorage();
         const sendData = {
             member_id: member_info_id,
+            discount_value: discountValue,
             totalPrice: finalValue,
             customerRemark: '123',
             freshItems: [
@@ -73,6 +82,17 @@ function CartPayment() {
                         return { ...v, lunch_pic: '' };
                     }),
             ],
+            freshInventoryarray: [
+                ...cartList
+                    .filter((v) => {
+                        return (
+                            +v.ready_to_buy === 1 && +v.cart_product_type === 1
+                        );
+                    })
+                    .map((v) => {
+                        return v.product_inventory;
+                    }),
+            ],
         };
 
         fetch(CART_LIST_ORDERLIST, {
@@ -84,18 +104,19 @@ function CartPayment() {
         })
             .then((r) => r.json())
             .then((obj) => {
-                console.log(setCartList(obj));
+                setCartList(obj);
             });
 
-        if (discountValue !== 0) {
-            fetch(CART_DISCOUNT_CHANGEISUESD, {
-                method: 'PUT',
-                body: JSON.stringify({ sid: discountKey }),
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-        }
+        fetch(CART_DISCOUNT_CHANGEISUESD, {
+            method: 'PUT',
+            body: JSON.stringify({
+                sid: discountKey,
+                discountValue: discountValue,
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
     };
 
     const setInSessionStorage = () => {
@@ -116,7 +137,7 @@ function CartPayment() {
             ])
         );
         sessionStorage.setItem('price', totalAmount);
-        sessionStorage.setItem('discount', discount);
+        // sessionStorage.setItem('discount', discount);
         sessionStorage.setItem('finalPrice', finalValue);
     };
 
@@ -227,7 +248,6 @@ function CartPayment() {
         }
 
         setTotalAmount(totalPayPrice);
-        setFinalValue(totalAmount - discount);
     }, [cartList]);
 
     useEffect(() => {

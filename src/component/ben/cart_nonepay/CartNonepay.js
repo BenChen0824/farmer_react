@@ -6,6 +6,13 @@ import $ from 'jquery';
 
 function CartNonepay() {
     const navigate = useNavigate();
+    const discount = sessionStorage.getItem('discount')
+        ? sessionStorage.getItem('discount')
+        : 0;
+    console.log(discount);
+    const discountKey = sessionStorage.getItem('discountSid')
+        ? sessionStorage.getItem('discountSid')
+        : 0;
     const member_info_email = localStorage.getItem('auth')
         ? JSON.parse(localStorage.getItem('auth')).email
         : '';
@@ -22,11 +29,29 @@ function CartNonepay() {
     var formattedTime = hours + ':' + minutes.substr(-2);
     const deliveryTime = showtime.toLocaleDateString();
     const getFreshItems = JSON.parse(sessionStorage.getItem('buyfresh'));
+
+    const freshItemsArrayToSend = getFreshItems.map((v, i) => {
+        return {
+            product_name: v.product_name,
+            product_price: v.product_price,
+            product_count: v.product_count,
+        };
+    });
+
     const getCustomizedItems = JSON.parse(
         sessionStorage.getItem('buycustomized')
     );
+
+    const customizedItemsArrayToSend = getCustomizedItems.map((v, i) => {
+        return {
+            lunch_name: v.lunch_name,
+            total_price: v.total_price,
+            product_count: v.product_count,
+        };
+    });
+
     const amount = sessionStorage.getItem('price');
-    const discount = sessionStorage.getItem('discount');
+
     const finalPrice = sessionStorage.getItem('finalPrice');
     const orderId = '123123123123';
     function sendEmail() {
@@ -34,12 +59,12 @@ function CartNonepay() {
             method: 'POST',
             body: JSON.stringify({
                 orderId,
-                getFreshItems,
-                getCustomizedItems,
-                amount,
+                freshItemsArrayToSend,
+                customizedItemsArrayToSend,
                 discount,
                 finalPrice,
                 deliveryTime,
+                formattedTime,
             }),
             headers: {
                 'content-type': 'application/json',
