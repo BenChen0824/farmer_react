@@ -29,7 +29,7 @@ function Createrecipe() {
         '韓式料理',
         '南洋料理',
         '歐式料理',
-        '西式料理',
+        '美式料理',
         '其他',
     ];
 
@@ -628,7 +628,7 @@ function Createrecipe() {
                                     ? image.preview
                                     : '/images/' + profileData[0].recipe_img
                             }
-                            alt="123"
+                            alt=""
                         />
                     </div>
                 </div>

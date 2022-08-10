@@ -63,7 +63,7 @@ function Updaterecipe() {
         '韓式料理',
         '南洋料理',
         '歐式料理',
-        '西式料理',
+        '美式料理',
         '其他',
     ];
 
@@ -263,17 +263,29 @@ function Updaterecipe() {
                             />
                         </section>
 
-                        {/* <section id="updaterecipe">
+                        <button className="buttonincreate">
+                            <img
+                                src="/images/trashcan.svg"
+                                alt=""
+                                className="iconincreate"
+                            />
+                        </button>
+                    </div>
+
+                    {/* 分隔線 */}
+
+                    <div className="ingredientandstep">
+                        <section id="updaterecipe">
                             <input
                                 type="text"
-                                className="portionuse"
+                                className="ingredientuse"
                                 value={updaterecipe.recipes_ingredient}
-                                placeholder="請輸入份量"
+                                placeholder="請輸入食材"
                                 onChange={(e) => {
                                     setUpdaterecipe(e.target.value);
                                 }}
                             />
-                        </section> */}
+                        </section>
 
                         <button className="buttonincreate">
                             <img
@@ -299,52 +311,6 @@ function Updaterecipe() {
                             />
                         </section>
 
-                        {/* <section id="updaterecipe">
-                            <input
-                                type="text"
-                                className="portionuse"
-                                value={updaterecipe.recipes_ingredient}
-                                placeholder="請輸入份量"
-                                onChange={(e) => {
-                                    setUpdaterecipe(e.target.value);
-                                }}
-                            />
-                        </section> */}
-                        <button className="buttonincreate">
-                            <img
-                                src="/images/trashcan.svg"
-                                alt=""
-                                className="iconincreate"
-                            />
-                        </button>
-                    </div>
-
-                    {/* 分隔線 */}
-
-                    <div className="ingredientandstep">
-                        <section id="updaterecipe">
-                            <input
-                                type="text"
-                                className="ingredientuse"
-                                value={updaterecipe.recipes_ingredient}
-                                placeholder="請輸入食材"
-                                onChange={(e) => {
-                                    setUpdaterecipe(e.target.value);
-                                }}
-                            />
-                        </section>
-
-                        {/* <section id="updaterecipe">
-                            <input
-                                type="text"
-                                className="portionuse"
-                                value={updaterecipe.recipes_ingredient}
-                                placeholder="請輸入份量"
-                                onChange={(e) => {
-                                    setUpdaterecipe(e.target.value);
-                                }}
-                            />
-                        </section> */}
                         <button className="buttonincreate">
                             <img
                                 src="/images/trashcan.svg"
@@ -442,7 +408,11 @@ function Updaterecipe() {
                             accept="image/*"
                         />
                     </form>
-                    <img className="shoephotoincreate" alt="123" />
+                    <img
+                        className="shoephotoincreate"
+                        src={`/dishimages/${updaterecipe.recipes_img}`}
+                        alt=""
+                    />
                 </div>
             </div>
             <div className="buttonintextalign">
