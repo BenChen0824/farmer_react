@@ -639,7 +639,16 @@ function Createrecipe() {
                 {/* 分隔線，以下完成按鈕 */}
 
                 <div className="buttonintextalign">
-                    <button className="finishincreate" type="submit">
+                    <button
+                        className="finishincreate"
+                        type="submit"
+                        onClick={(event) => {
+                            event.preventDefault();
+                            navigate('/recipe', {
+                                replace: true,
+                            });
+                        }}
+                    >
                         新增食譜
                         <img
                             src="/images/file-plus.svg"
