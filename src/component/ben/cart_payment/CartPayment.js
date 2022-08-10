@@ -61,11 +61,15 @@ function CartPayment() {
     // console.log(freshInventoryarray);
     const sendCheckSQL = () => {
         setInSessionStorage();
+        const order_id =
+            Math.ceil(Math.random() * (9999999 - 1000000)) + 1000000;
+        sessionStorage.setItem('order_id', order_id);
         const sendData = {
+            order_id: order_id,
             member_id: member_info_id,
             discount_value: discountValue,
             totalPrice: finalValue,
-            customerRemark: '123',
+            customerRemark: paymentRemark,
             freshItems: [
                 ...cartList.filter((v) => {
                     return +v.ready_to_buy === 1 && +v.cart_product_type === 1;
@@ -553,7 +557,7 @@ function CartPayment() {
                                         className="form-check-label px-2"
                                         htmlFor="NonePayment"
                                     >
-                                        貨到付款
+                                        到店付款
                                     </label>
                                 </div>
                             </form>
@@ -723,7 +727,7 @@ function CartPayment() {
                                     className="form-check-label px-2"
                                     htmlFor="nonepay"
                                 >
-                                    貨到付款
+                                    到店付款
                                 </label>
                             </div>
                         </form>

@@ -15,6 +15,7 @@ function CartSuccess() {
     const member_info_email = localStorage.getItem('auth')
         ? JSON.parse(localStorage.getItem('auth')).email
         : '';
+    const orderId = sessionStorage.getItem('order_id');
 
     const showtime = new Date(Date.now() + 60 * 60 * 1000);
 
@@ -57,7 +58,7 @@ function CartSuccess() {
     const amount = sessionStorage.getItem('price');
 
     const finalPrice = sessionStorage.getItem('finalPrice');
-    const orderId = '123123123123';
+
     function sendEmail() {
         fetch(CART_EMAIL, {
             method: 'POST',
@@ -236,7 +237,7 @@ function CartSuccess() {
                                     >
                                         訂單編號
                                     </td>
-                                    <td>202212021034</td>
+                                    <td>Farmer{orderId}</td>
                                 </tr>
                                 <tr className="py-5">
                                     <td

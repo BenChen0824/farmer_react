@@ -16,6 +16,7 @@ function CartNonepay() {
     const member_info_email = localStorage.getItem('auth')
         ? JSON.parse(localStorage.getItem('auth')).email
         : '';
+    const orderId = sessionStorage.getItem('order_id');
     const showtime = new Date(Date.now() + 60 * 60 * 1000);
 
     // Hours part from the timestamp
@@ -53,7 +54,7 @@ function CartNonepay() {
     const amount = sessionStorage.getItem('price');
 
     const finalPrice = sessionStorage.getItem('finalPrice');
-    const orderId = '123123123123';
+
     function sendEmail() {
         fetch(CART_EMAIL, {
             method: 'POST',
@@ -233,7 +234,7 @@ function CartNonepay() {
                                     >
                                         訂單編號
                                     </td>
-                                    <td>202212021034</td>
+                                    <td>Farmer{orderId}</td>
                                 </tr>
                                 <tr className="py-5">
                                     <td
@@ -257,7 +258,7 @@ function CartNonepay() {
                                             return (
                                                 <div key={`cus ${i}`}>
                                                     {v.lunch_name}
-                                                    {v.product_price}元 *
+                                                    {v.total_price}元 *
                                                     {v.product_count}個
                                                 </div>
                                             );
