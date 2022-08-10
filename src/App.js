@@ -15,6 +15,7 @@ import Product from './page/Product';
 import Member from './component/bob/App';
 import FarmerFirstPage from './component/kawa/FarmerFirstPage/FarmerFirstPage';
 import CustomerComment from './component/kawa/CustomerComment/CustomerComment';
+import CreateComment from './component/kawa/CustomerComment/CreateComment/CreateComment';
 import CustomizedLunch from './component/xin/Customized_lunch/CustomizedLunch';
 import ChatMain from './component/xin/Customized_service/ChatMain';
 
@@ -46,6 +47,10 @@ function App() {
                                     <Route
                                         path="/comment"
                                         element={<CustomerComment />}
+                                    />
+                                    <Route
+                                        path="/createcomment"
+                                        element={<CreateComment />}
                                     />
                                     {/* 慧敏 */}
 
