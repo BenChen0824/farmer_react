@@ -1,8 +1,7 @@
 import styles from './ProductCard.module.css';
 import { BsCart4 } from 'react-icons/bs';
-import { AiOutlineHeart } from 'react-icons/ai';
-import { AiOutlinePlus } from 'react-icons/ai';
-import { AiOutlineMinus } from 'react-icons/ai';
+import { RiAddFill } from 'react-icons/ri';
+import { AiOutlineMinus, AiOutlinePlus, AiOutlineHeart } from 'react-icons/ai';
 import { useState } from 'react';
 import { UNIT } from '../../../config/variables';
 import clsx from 'clsx';
@@ -21,11 +20,16 @@ function ProductCard({
     onSubmit,
     onCollect,
     saved,
+    onCompare,
+    sid,
+    compared,
+    compareModal,
 }) {
     const [amount, setAmount] = useState(1);
     // const [collect, setCollect] = useState(false);
     const [hover, setHover] = useState(true);
     // const [save, setSave] = useState(false);
+
     const handleClickMinus = () => {
         setAmount(amount > 1 ? amount - 1 : amount);
     };
@@ -37,6 +41,9 @@ function ProductCard({
         setAmount(1);
         console.log(amount);
         onSubmit(amount);
+    };
+    const handleCompare = () => {
+        onCompare(sid);
     };
 
     return (
@@ -50,20 +57,38 @@ function ProductCard({
                     setHover(true);
                 }}
             >
+                <div
+                    className={clsx(styles.card_sold_out, {
+                        [styles.show]: !inventory,
+                    })}
+                >
+                    <div className={styles.sold_out}>已售完</div>
+                </div>
+                <div
+                    className={clsx(styles.checked, {
+                        [styles.checked_active]: compared,
+                        [styles.display]: compareModal,
+                    })}
+                    onClick={handleCompare}
+                >
+                    <RiAddFill size={16} />
+                </div>
                 <div onClick={onClick}>
-                    <Box>
-                        <div className={styles.card_img}>
-                            <img src={img} alt="" />
-                        </div>
-                    </Box>
-                    <div className={styles.card_detail}>
-                        <p>{supplier}</p>
-                        <h3>{name}</h3>
-                        <div className={styles.card_price}>
-                            <div className={styles.dollar_tag}>$</div>
-                            <div className={styles.dollar}>{price}</div>
-                            <div className={styles.slash}>/</div>
-                            <div className={styles.type}>{UNIT[unit]}</div>
+                    <div>
+                        <Box>
+                            <div className={styles.card_img}>
+                                <img src={img} alt="" />
+                            </div>
+                        </Box>
+                        <div className={styles.card_detail}>
+                            <p>{supplier}</p>
+                            <h3>{name}</h3>
+                            <div className={styles.card_price}>
+                                <div className={styles.dollar_tag}>$</div>
+                                <div className={styles.dollar}>{price}</div>
+                                <div className={styles.slash}>/</div>
+                                <div className={styles.type}>{UNIT[unit]}</div>
+                            </div>
                         </div>
                     </div>
                 </div>

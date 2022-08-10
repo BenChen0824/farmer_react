@@ -17,6 +17,7 @@ export const customized_lunch_CHECK = `${SERVER}/customized_lunch/api`;
 export const AB_POST_UPLOAD_PHOTOS = `${SERVER}/try-uploads`;
 export const CART_ADD_PRODUCT = `${SERVER}/cart/addfresh`;
 export const AB_GET_COUPON = `${SERVER}/game/coupon`;
+export const PRODUCT_COMPARE = `${SERVER}/compare-session`;
 
 export const COMMENT_MAIN = `${SERVER}/comment`;
 export const COMMENT_ITEM = `${SERVER}/comment/sid`;

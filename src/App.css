@@ -16,3 +16,7 @@
 .slick-arrow:before {
     color: #3a2c2c !important;
 }
+
+.ReactModal__Overlay{
+    z-index: 10;
+}
