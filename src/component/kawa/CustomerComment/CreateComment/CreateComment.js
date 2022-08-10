@@ -7,7 +7,7 @@ import axios from 'axios';
 export default function CreateComment() {
     const [number, setNumber] = useState(0);
     const [hoverStar, setHoverStar] = useState(undefined);
-
+    // 1
     // const [data, setData] = useState([
     //   {
     //     sid: '',

@@ -9,7 +9,7 @@ import axios from 'axios';
 import { COMMENT_MAIN } from './../../../../config/ajax-path';
 import ReactStars from 'react-rating-stars-component';
 // import { getCommentItem } from '../../api/comment'
-
+// 1
 const Comment = () => {
     // 從資料庫抓資料
     // 抓ajax-path這隻檔案的路由=>COMMENT_MAIN
