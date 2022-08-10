@@ -25,6 +25,7 @@ import Updaterecipe from './component/hsieh/Createrecipe/Updaterecipe';
 import GameMain from './component/po/game/gameMain';
 import CartMain from './component/ben/App';
 import Activity from './component/pin/Activity/Activity';
+import ActivityData from './component/pin/ActivityData/activitydata';
 
 import { io } from 'socket.io-client';
 const socket = io('http://localhost:3600');
@@ -105,13 +106,15 @@ function App() {
                                         element={<GameMain />}
                                     />
                                     {/* po */}
-
                                     <Route
                                         path="/activity"
                                         element={<Activity />}
                                     />
+                                    <Route
+                                        path="/activitydata"
+                                        element={<ActivityData />}
+                                    />
                                     <Route path="/mymap" element={<MyMap />} />
-
                                     {/* pin */}
                                 </Routes>
                             </Container>
