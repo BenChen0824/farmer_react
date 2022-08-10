@@ -5,7 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import $ from 'jquery';
 function CartSuccess() {
     const navigate = useNavigate();
-
+    const discount = sessionStorage.getItem('discount')
+        ? sessionStorage.getItem('discount')
+        : 0;
+    console.log(discount);
+    const discountKey = sessionStorage.getItem('discountSid')
+        ? sessionStorage.getItem('discountSid')
+        : 0;
     const member_info_email = localStorage.getItem('auth')
         ? JSON.parse(localStorage.getItem('auth')).email
         : '';
@@ -49,7 +55,7 @@ function CartSuccess() {
 
     //customized 需要lunch_name total_price product_count
     const amount = sessionStorage.getItem('price');
-    const discount = sessionStorage.getItem('discount');
+
     const finalPrice = sessionStorage.getItem('finalPrice');
     const orderId = '123123123123';
     function sendEmail() {
@@ -59,8 +65,10 @@ function CartSuccess() {
                 orderId,
                 freshItemsArrayToSend,
                 customizedItemsArrayToSend,
+                discount,
                 finalPrice,
                 deliveryTime,
+                formattedTime,
             }),
             headers: {
                 'content-type': 'application/json',
