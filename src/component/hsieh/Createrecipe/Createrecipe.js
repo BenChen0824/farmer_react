@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { useParams } from 'react-router-dom';
 import './Createrecipe.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -47,19 +48,15 @@ function Createrecipe() {
     // 料理步驟
     const [step, setStep] = useState('');
 
-    const navigate = useNavigate();
+    const [recipesnamecorrect, setRecipesnameCorrect] = useState('');
 
-    function Createrecipe(obj) {
-        if (obj.success) {
-            alert('新增食譜成功');
-            navigate('/member/verify', { replace: true });
-        } else {
-            alert('請確實填寫欄位');
-        }
-    }
+    const navigate = useNavigate();
 
     const checkForm = async (event) => {
         event.preventDefault();
+        if (recipesname === '') {
+            setRecipesnameCorrect('請輸入食譜名稱');
+        }
         const data = {
             recipesname: document.form1.recipesname.value,
             description: document.form1.description.value,
@@ -72,92 +69,101 @@ function Createrecipe() {
             step: document.form1.step.value,
         };
 
-        // const recipesname_f = document.form1.recipesname;
-        // const description_f = document.form1.description;
+        const recipesname_f = document.form1.recipesname;
+        const description_f = document.form1.description;
 
-        // const timecost_f = document.form1.timecost;
-        // const timecost_re = new RegExp('/[0-9]{3}/');
+        const timecost_f = document.form1.timecost;
+        const timecost_re = new RegExp('/[0-9]{3}/');
 
-        // const calories_f = document.form1.calories;
-        // const calories_re = new RegExp('/[0-9]{3}/');
+        const calories_f = document.form1.calories;
+        const calories_re = new RegExp('/[0-9]{3}/');
 
-        // const portion_f = document.form1.portion;
-        // const recipestype_f = document.form1.recipestype;
-        // const recipesdegree_f = document.form1.recipesdegree;
-        // const ingredient_f = document.form1.ingredient;
-        // const step_f = document.form1.step;
+        const portion_f = document.form1.portion;
+        const recipestype_f = document.form1.recipestype;
+        const recipesdegree_f = document.form1.recipesdegree;
+        const ingredient_f = document.form1.ingredient;
+        const step_f = document.form1.step;
 
-        // const fields = [recipesname_f, description_f, timecost_f, calories_f, portion_f, recipestype_f, recipesdegree_f, ingredient_f, step_f];
-
-        // const fieldTexts = [];
-        // for (let f of fields) {
-        //     fieldTexts.push(f.nextElementSibling);
-        // }
-
+        const fields = [
+            recipesname_f,
+            description_f,
+            timecost_f,
+            calories_f,
+            portion_f,
+            recipestype_f,
+            recipesdegree_f,
+            ingredient_f,
+            step_f,
+        ];
+        const fieldTexts = [];
+        for (let f of fields) {
+            fieldTexts.push(f.nextElementSibling);
+        }
         // for (let i in fields) {
-        //     fields[i].classList.remove('is-invalid');
-        //     fieldTexts[i].innerText = '';
+        // fields[i].classList.remove('is-invalid');
+        // fieldTexts[i].innerText = null;
         // }
 
-        // let isPass = true;
+        let isPass = true;
+        console.log(recipesname_f.value);
 
-        // if (recipesname_f.value.length < 1) {
-        //     fields[0].classList.add('is-invalid');
-        //     fieldTexts[0].innerText = '請輸入食譜名稱';
-        //     isPass = false;
-        // }
+        if (recipesname_f.value.length < 1) {
+            fields[0].classList.add('is-invalid');
+            fieldTexts[0].innerText = '請輸入食譜名稱';
+            isPass = false;
+        }
 
-        // if (description_f.value.length < 1) {
-        //     fields[1].classList.add('is-invalid');
-        //     fieldTexts[1].innerText = '請輸入食譜簡介';
-        //     isPass = false;
-        // }
+        if (description_f.value.length < 1) {
+            fields[1].classList.add('is-invalid');
+            fieldTexts[1].innerText = '請輸入食譜簡介';
+            isPass = false;
+        }
 
-        // if (!timecost_re.test(data.timecost)) {
-        //     fields[2].classList.add('is-invalid');
-        //     fieldTexts[2].innerText = '請輸入花費時間';
-        //     isPass = false;
-        // }
+        if (!timecost_re.test(data.timecost)) {
+            fields[2].classList.add('is-invalid');
+            fieldTexts[2].innerText = '請輸入花費時間';
+            isPass = false;
+        }
 
-        // if (!calories_re.test(data.timecost)) {
-        //     fields[3].classList.add('is-invalid');
-        //     fieldTexts[3].innerText = '請輸入熱量';
-        //     isPass = false;
-        // }
+        if (!calories_re.test(data.calories)) {
+            fields[3].classList.add('is-invalid');
+            fieldTexts[3].innerText = '請輸入熱量';
+            isPass = false;
+        }
 
-        // if (portion_f.value.length < 1) {
-        //     fields[4].classList.add('is-invalid');
-        //     fieldTexts[4].innerText = '請輸入份量';
-        //     isPass = false;
-        // }
+        if (portion_f.value.length < 1) {
+            fields[4].classList.add('is-invalid');
+            fieldTexts[4].innerText = '請輸入份量';
+            isPass = false;
+        }
 
-        // if (recipestype_f.value.length < 1) {
-        //     fields[5].classList.add('is-invalid');
-        //     fieldTexts[5].innerText = '請輸入料理類型';
-        //     isPass = false;
-        // }
+        if (recipestype_f.value.length < 1) {
+            fields[5].classList.add('is-invalid');
+            fieldTexts[5].innerText = '請輸入料理類型';
+            isPass = false;
+        }
 
-        // if (recipesdegree_f.value.length < 1) {
-        //     fields[6].classList.add('is-invalid');
-        //     fieldTexts[6].innerText = '請選擇料理難易度';
-        //     isPass = false;
-        // }
+        if (recipesdegree_f.value.length < 1) {
+            fields[6].classList.add('is-invalid');
+            fieldTexts[6].innerText = '請選擇料理難易度';
+            isPass = false;
+        }
 
-        // if (ingredient_f.value.length < 1) {
-        //     fields[7].classList.add('is-invalid');
-        //     fieldTexts[7].innerText = '請填寫食材';
-        //     isPass = false;
-        // }
+        if (ingredient_f.value.length < 1) {
+            fields[7].classList.add('is-invalid');
+            fieldTexts[7].innerText = '請填寫食材';
+            isPass = false;
+        }
 
-        // if (step_f.value.length < 1) {
-        //     fields[8].classList.add('is-invalid');
-        //     fieldTexts[8].innerText = '請填寫料理步驟';
-        //     isPass = false;
-        // }
+        if (step_f.value.length < 1) {
+            fields[8].classList.add('is-invalid');
+            fieldTexts[8].innerText = '請填寫料理步驟';
+            isPass = false;
+        }
 
-        // if (!isPass) {
-        //     return;
-        // }
+        if (!isPass) {
+            return;
+        }
         // 結束函式
 
         // const email_re = new RegExp(
@@ -174,10 +180,10 @@ function Createrecipe() {
         });
         const obj = await r.json();
         console.log(obj);
-        register(obj);
+        Createrecipe(obj);
     };
 
-    function register(obj) {
+    function Createrecipe(obj) {
         if (obj.success) {
             alert('新增食譜成功');
             navigate('/recipe', { replace: true });
@@ -240,7 +246,14 @@ function Createrecipe() {
 
     return (
         <>
-            <form name="form1" method="post" onSubmit={checkForm}>
+            <form
+                name="form1"
+                value=""
+                id=""
+                noValidate
+                method="post"
+                onSubmit={checkForm}
+            >
                 <h2 className="createrecipetitle">
                     新增食譜 ／ Create New Recipes
                 </h2>
@@ -252,13 +265,20 @@ function Createrecipe() {
                             name="recipesname"
                             id="recipesname"
                             type="text"
+                            required
                             className="dataform1increate"
-                            value={recipesname}
+                            value={
+                                recipesnamecorrect === ''
+                                    ? recipesname
+                                    : recipesnamecorrect
+                            }
                             placeholder="請輸入食譜名稱"
                             onChange={(e) => {
                                 setRecipesname(e.target.value);
                             }}
+                            onFocus={() => setRecipesnameCorrect('')}
                         />
+                        <div className="invalid-feedback"></div>
                     </section>
                 </div>
 
@@ -272,6 +292,7 @@ function Createrecipe() {
                             <textarea
                                 name="description"
                                 id="description"
+                                required
                                 className="dataform1increate"
                                 value={description}
                                 placeholder="請100字內簡單描述"
@@ -300,6 +321,7 @@ function Createrecipe() {
                             id="timecost"
                             className="dataform2increate"
                             type="text"
+                            required
                             value={timecost}
                             onChange={(e) => {
                                 setTimecost(e.target.value);
@@ -321,6 +343,7 @@ function Createrecipe() {
                             id="calories"
                             className="dataform2increate"
                             type="text"
+                            required
                             value={calories}
                             onChange={(e) => {
                                 setCalories(e.target.value);
@@ -342,6 +365,7 @@ function Createrecipe() {
                             id="portion"
                             className="dataform2increate"
                             value={portion}
+                            required
                             onChange={(e) => {
                                 setPortion(e.target.value);
                             }}
@@ -370,6 +394,7 @@ function Createrecipe() {
                             id="recipestype"
                             className="dataform1increate"
                             value={recipestype}
+                            required
                             onChange={(e) => {
                                 setRecipestype(e.target.value);
                             }}
@@ -397,6 +422,7 @@ function Createrecipe() {
                             id="recipesdegree"
                             className="dataform1increate"
                             value={recipesdegree}
+                            required
                             onChange={(e) => {
                                 setRecipesdegree(e.target.value);
                             }}
@@ -430,6 +456,7 @@ function Createrecipe() {
                                     type="text"
                                     className="ingredientuse"
                                     value={ingredient}
+                                    required
                                     placeholder="食材與分量，如：雞蛋2顆"
                                     onChange={(e) => {
                                         setIngredient(e.target.value);
@@ -456,6 +483,7 @@ function Createrecipe() {
                                     type="text"
                                     className="ingredientuse"
                                     value={ingredient}
+                                    required
                                     placeholder="食材與分量，如：雞蛋2顆"
                                     onChange={(e) => {
                                         setIngredient(e.target.value);
@@ -482,6 +510,7 @@ function Createrecipe() {
                                     type="text"
                                     className="ingredientuse"
                                     value={ingredient}
+                                    required
                                     placeholder="食材與分量，如：雞蛋2顆"
                                     onChange={(e) => {
                                         setIngredient(e.target.value);
@@ -527,6 +556,7 @@ function Createrecipe() {
                                     id="step"
                                     className="dataform1increate"
                                     value={step}
+                                    required
                                     placeholder="步驟1"
                                     onChange={(e) => {
                                         setStep(e.target.value);
@@ -545,6 +575,7 @@ function Createrecipe() {
                                     id="step"
                                     className="dataform1increate"
                                     value={step}
+                                    required
                                     placeholder="步驟2"
                                     onChange={(e) => {
                                         setStep(e.target.value);
@@ -571,6 +602,7 @@ function Createrecipe() {
                                     id="step"
                                     className="dataform1increate"
                                     value={step}
+                                    required
                                     placeholder="步驟3"
                                     onChange={(e) => {
                                         setStep(e.target.value);
@@ -601,9 +633,6 @@ function Createrecipe() {
                             alt=""
                             className="iconincreate"
                         />
-
-                        <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
-                        <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z" />
                     </button>
 
                     <div className="photouploadincreate">
@@ -621,7 +650,6 @@ function Createrecipe() {
                             />
                         </form>
                         <img
-                            // className="img-fluid border border-white border-2 rounded-circle w-100 h-100 bop-objft"
                             className="showphotoincreate"
                             src={
                                 image.preview
@@ -643,12 +671,12 @@ function Createrecipe() {
                     <button
                         className="finishincreate"
                         type="submit"
-                        onClick={(event) => {
-                            event.preventDefault();
-                            navigate('/recipe', {
-                                replace: true,
-                            });
-                        }}
+                        // onClick={(event) => {
+                        // event.preventDefault();
+                        // navigate('/recipe', {
+                        //     replace: true,
+                        // });
+                        // }}
                     >
                         新增食譜
                         <img
