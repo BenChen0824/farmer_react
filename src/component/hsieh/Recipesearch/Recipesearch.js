@@ -3,9 +3,12 @@ import { RECIPE_GET_LIST } from './../../../config/recipe-ajax-path';
 import { Link, useLocation } from 'react-router-dom';
 import './Recipesearch.css';
 import Pagination from './Pagination';
+import Popup from './Popup';
 import axios from 'axios';
 
 function Recipesearch() {
+    const [ButtonPop, setButtonPop] = useState(false);
+
     const [inputText, setInputText] = useState('');
 
     const [data, setData] = useState({});
@@ -66,15 +69,16 @@ function Recipesearch() {
                     >
                         搜尋
                     </button>
-                    <a href="/recipe/popup">
-                        <button
-                            type="button"
-                            class="btn btn-dark"
-                            style={{ margin: 5 }}
-                        >
-                            進階搜尋
-                        </button>
-                    </a>
+
+                    <button
+                        type="button"
+                        class="btn btn-dark"
+                        style={{ margin: 5 }}
+                        onClick={() => setButtonPop(true)}
+                    >
+                        進階搜尋
+                    </button>
+                    <Popup trigger={ButtonPop} setButtonPop={setButtonPop} />
                 </div>
             </div>
 
