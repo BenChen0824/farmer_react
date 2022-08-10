@@ -198,6 +198,7 @@
     width: 80%;
     height: 5rem;
     object-fit: contain;
+
 }
 .need-obj-cover {
     object-fit: cover;

@@ -5,7 +5,23 @@ import { useNavigate } from 'react-router-dom';
 import $ from 'jquery';
 function CartSuccess() {
     const navigate = useNavigate();
-    const showtime = new Date(Date.now() + 24 * 60 * 60 * 1000);
+
+    const member_info_email = localStorage.getItem('auth')
+        ? JSON.parse(localStorage.getItem('auth')).email
+        : '';
+
+    const showtime = new Date(Date.now() + 60 * 60 * 1000);
+
+    // Hours part from the timestamp
+    var hours = showtime.getHours();
+    // Minutes part from the timestamp
+    var minutes = '0' + showtime.getMinutes();
+    // Seconds part from the timestamp
+    var seconds = '0' + showtime.getSeconds();
+
+    // Will display time in 10:30:23 format
+    var formattedTime = hours + ':' + minutes.substr(-2);
+    // console.log(formattedTime);
     const deliveryTime = showtime.toLocaleDateString();
 
     const getFreshItems = JSON.parse(sessionStorage.getItem('buyfresh'));
@@ -181,7 +197,7 @@ function CartSuccess() {
                     <div className="col-12 col-md-8 text-center">
                         <h3>恭喜您 ! 付款成功 !</h3>
                         <p>
-                            付款成功紀錄已寄至您的Email信箱 aaabb@abc.com
+                            付款成功紀錄已寄至您的Email信箱 {member_info_email}
                             <br />
                             可於您的【
                             <Link to="/member/orders">
@@ -284,9 +300,11 @@ function CartSuccess() {
                                         className="w-25"
                                         style={{ backgroundColor: '#dddddd' }}
                                     >
-                                        預計到貨時間
+                                        預計可到店取餐時間
                                     </td>
-                                    <td>{deliveryTime}</td>
+                                    <td>
+                                        {deliveryTime} {formattedTime}
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

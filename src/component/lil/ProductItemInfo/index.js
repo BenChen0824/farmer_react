@@ -9,14 +9,24 @@ import {
 } from 'react-icons/ai';
 import Box from '../Box';
 import { UNIT, SUPPLIER, HASHTAG } from '../../../config/variables';
+import LineShare from '../LineShare';
+import { useNavigate } from 'react-router-dom';
 
-function ProductItemInfo({ data, sid, onSubmit }) {
+function ProductItemInfo({ data, sid, onSubmit, onCollect, saved }) {
     const images = data.product_img;
-    const [collect, setCollect] = useState(false);
+    const navigate = useNavigate();
+    // const [collect, setCollect] = useState(false);
     const [addCart, setAddCart] = useState(false);
     const [amount, setAmount] = useState(1);
+    // const [save, setSave] = useState(false);
     const [selectedImage, setSelectedImage] = useState(0);
     const selectedImgUrl = images && images[selectedImage];
+    const member_info = JSON.parse(localStorage.getItem('auth')) || {};
+    const userId = member_info.customer_id;
+
+    const goToPath = () => {
+        navigate(`/cart`);
+    };
 
     const handleImageClicked = (event, index) => {
         setSelectedImage(index);
@@ -124,21 +134,28 @@ function ProductItemInfo({ data, sid, onSubmit }) {
                                 [styles.added]: addCart,
                             })}
                             onClick={() => {
+                                if (!userId) {
+                                    alert('請先登入帳號');
+                                    return;
+                                }
                                 setAddCart((prev) => !prev);
                                 onSubmit(amount, addCart);
+                                if (addCart) {
+                                    goToPath();
+                                }
                             }}
                         >
                             {addCart ? '立刻結帳' : '加入購物車'}
                         </div>
                         <div
                             className={clsx(styles.add_to_collect, {
-                                [styles.collected]: collect,
+                                [styles.collected]: saved,
                             })}
                             onClick={() => {
-                                setCollect((prev) => !prev);
+                                onCollect(!saved);
                             }}
                         >
-                            {collect ? '已收藏' : '加入收藏'}
+                            {saved ? '已收藏' : '加入收藏'}
                             <AiOutlineHeart
                                 size={20}
                                 className={styles.heart}
@@ -154,6 +171,7 @@ function ProductItemInfo({ data, sid, onSubmit }) {
                                     );
                                 })}
                         </div>
+                        <LineShare />
                     </div>
                 </div>
             </div>

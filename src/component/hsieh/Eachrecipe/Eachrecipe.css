@@ -274,7 +274,7 @@
     margin: 5px;
 }
 
-.hsiehcrud{
+.crudineach {
     width: 20px;
     height: 20px;
     margin-left: 10px;
@@ -298,6 +298,11 @@
         display: flex;
         flex-wrap: wrap;
         position: relative;
+    }
+
+    .cookingineach {
+        width: 100%;
+        display: inline-block;
     }
 
     .materialineach {

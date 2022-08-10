@@ -1,9 +1,19 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { CART_LINEPAY, CART_LIST_ORDERLIST } from './../../../config/ajax-path';
+import {
+    CART_LINEPAY,
+    CART_LIST_ORDERLIST,
+    CART_DISCOUNT_CHANGEISUESD,
+} from './../../../config/ajax-path';
 import CartCountContext from '../cart_count/CartCountContext';
 
 function CartPayment() {
+    const discountValue = sessionStorage.getItem('discount')
+        ? sessionStorage.getItem('discount')
+        : 0;
+    const discountKey = sessionStorage.getItem('discountSid')
+        ? sessionStorage.getItem('discountSid')
+        : 0;
     const member_info = JSON.parse(localStorage.getItem('auth'));
     const {
         address,
@@ -15,7 +25,7 @@ function CartPayment() {
         token,
         username,
     } = member_info;
-    console.log(username);
+    // console.log(username);
     // const location = useLocation();
     const navigate = useNavigate();
     const { cartList, setCartList } = useContext(CartCountContext);
@@ -35,11 +45,16 @@ function CartPayment() {
     const [paymentAddress, setPaymentAddress] = useState(address);
     const [paymentRemark, setPaymentRemark] = useState('');
 
+    const member_info_id = localStorage.getItem('auth')
+        ? JSON.parse(localStorage.getItem('auth')).customer_id
+        : 500000000;
+
     //對SQL發送資料 新增Orderlist跟Order Details 並刪除 Orderlist_to_buy資料
+
     const sendCheckSQL = () => {
         setInSessionStorage();
         const sendData = {
-            member_id: 1,
+            member_id: member_info_id,
             totalPrice: finalValue,
             customerRemark: '123',
             freshItems: [
@@ -71,6 +86,16 @@ function CartPayment() {
             .then((obj) => {
                 console.log(setCartList(obj));
             });
+
+        if (discountValue !== 0) {
+            fetch(CART_DISCOUNT_CHANGEISUESD, {
+                method: 'PUT',
+                body: JSON.stringify({ sid: discountKey }),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+        }
     };
 
     const setInSessionStorage = () => {
@@ -294,7 +319,7 @@ function CartPayment() {
     }, [freshTotalPrice, customizedTotalPrice]);
 
     useEffect(() => {
-        setFinalValue(totalAmount - discount);
+        setFinalValue(totalAmount - discountValue);
     }, [totalAmount]);
 
     return (
@@ -420,7 +445,9 @@ function CartPayment() {
                         </div>
                         <div className="d-flex justify-content-between py-3">
                             <div className="col-6">優惠券</div>
-                            <div className="col-6 text-end">-{discount}</div>
+                            <div className="col-6 text-end">
+                                -{discountValue}
+                            </div>
                         </div>
 
                         <div className="d-flex justify-content-between cart_payment_border_bottom cart_payment_border_top py-3">
