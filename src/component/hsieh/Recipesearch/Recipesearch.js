@@ -3,9 +3,12 @@ import { RECIPE_GET_LIST } from './../../../config/recipe-ajax-path';
 import { Link, useLocation } from 'react-router-dom';
 import './Recipesearch.css';
 import Pagination from './Pagination';
+import Popup from './Popup';
 import axios from 'axios';
 
 function Recipesearch() {
+    const [ButtonPop, setButtonPop] = useState(false);
+
     const [inputText, setInputText] = useState('');
 
     const [data, setData] = useState({});
@@ -66,15 +69,16 @@ function Recipesearch() {
                     >
                         搜尋
                     </button>
-                    <a href="/recipe/popup">
-                        <button
-                            type="button"
-                            class="btn btn-dark"
-                            style={{ margin: 5 }}
-                        >
-                            進階搜尋
-                        </button>
-                    </a>
+
+                    <button
+                        type="button"
+                        class="btn btn-dark"
+                        style={{ margin: 5 }}
+                        onClick={() => setButtonPop(true)}
+                    >
+                        進階搜尋
+                    </button>
+                    <Popup trigger={ButtonPop} setButtonPop={setButtonPop} />
                 </div>
             </div>
 
@@ -83,7 +87,7 @@ function Recipesearch() {
                     今日食譜推薦 ／ Recipes Recommend
                 </p>
             </div>
-            <div className="w-100 d-flex justify-content-center flex-wrap">
+            <div className="w-100 d-flex flex-wrap">
                 <div className="recommendlistinsearch d-flex justify-content-center">
                     {/* <a href="./"> */}
                     <div className="recipephotoinsearch">
@@ -196,7 +200,7 @@ function Recipesearch() {
                 <p className="titlewordinsearch">食譜列表 ／ Recipes List</p>
             </div>
 
-            <div className="w-100 d-flex justify-content-center flex-wrap">
+            <div className="w-100 d-flex flex-wrap">
                 {recipeDisplay.map((v, i) => {
                     return (
                         <div
@@ -273,7 +277,7 @@ function Recipesearch() {
             </div>
             <div className="paginationinsearch">
                 {/* {data && data.totalPages ? ( */}
-                <Pagination page={data.page} totalPages={data.totalPages} />
+                {/* <Pagination page={data.page} totalPages={data.totalPages} /> */}
                 {/* ) : null} */}
             </div>
         </>

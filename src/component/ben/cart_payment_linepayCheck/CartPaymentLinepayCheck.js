@@ -11,6 +11,13 @@ import { DoubleOrbit } from 'react-spinner-animated';
 import 'react-spinner-animated/dist/index.css';
 function CartPaymentLinepayCheck() {
     const navigate = useNavigate();
+    const discount = sessionStorage.getItem('discount')
+        ? sessionStorage.getItem('discount')
+        : 0;
+    // console.log(discount);
+    const discountKey = sessionStorage.getItem('discountSid')
+        ? sessionStorage.getItem('discountSid')
+        : 0;
     const { cartList, setCartList } = useContext(CartCountContext);
 
     const [totalAmount, setTotalAmount] = useState(0);
@@ -39,11 +46,27 @@ function CartPaymentLinepayCheck() {
     }
 
     const sqlData = () => {
-        const sendData = sessionStorage.getItem('linepayData');
+        let sendData = JSON.parse(sessionStorage.getItem('linepayData'));
+        sendData.discount_value = +discount;
         // console.log(sendData);
+        const order_id =
+            Math.ceil(Math.random() * (9999999 - 1000000)) + 1000000;
+        sendData.order_id = order_id;
+
+        // sendData.freshInventoryarray=
+        sessionStorage.setItem('order_id', order_id);
+
+        const freshInventoryarray = cartList
+            .filter((v) => {
+                return +v.ready_to_buy === 1 && +v.cart_product_type === 1;
+            })
+            .map((v) => {
+                return v.product_inventory;
+            });
+        sendData.freshInventoryarray = freshInventoryarray;
         fetch(CART_LIST_ORDERLIST, {
             method: 'POST',
-            body: sendData,
+            body: JSON.stringify(sendData),
             headers: {
                 'Content-Type': 'application/json',
             },

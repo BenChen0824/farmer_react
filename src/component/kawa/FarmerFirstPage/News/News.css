@@ -1,11 +1,12 @@
 
 .news_group {
-    width: 3000px;
+    width: 2000px;
     background-color: #EFF0EA;
 }
 
 .news_card {
     width: 300px;
+    max-height: 600px;
     background-color: #fff;
 }
 

@@ -5,10 +5,17 @@ import { useNavigate } from 'react-router-dom';
 import $ from 'jquery';
 function CartSuccess() {
     const navigate = useNavigate();
-
+    const discount = sessionStorage.getItem('discount')
+        ? sessionStorage.getItem('discount')
+        : 0;
+    console.log(discount);
+    const discountKey = sessionStorage.getItem('discountSid')
+        ? sessionStorage.getItem('discountSid')
+        : 0;
     const member_info_email = localStorage.getItem('auth')
         ? JSON.parse(localStorage.getItem('auth')).email
         : '';
+    const orderId = sessionStorage.getItem('order_id');
 
     const showtime = new Date(Date.now() + 60 * 60 * 1000);
 
@@ -49,9 +56,9 @@ function CartSuccess() {
 
     //customized 需要lunch_name total_price product_count
     const amount = sessionStorage.getItem('price');
-    const discount = sessionStorage.getItem('discount');
+
     const finalPrice = sessionStorage.getItem('finalPrice');
-    const orderId = '123123123123';
+
     function sendEmail() {
         fetch(CART_EMAIL, {
             method: 'POST',
@@ -59,8 +66,10 @@ function CartSuccess() {
                 orderId,
                 freshItemsArrayToSend,
                 customizedItemsArrayToSend,
+                discount,
                 finalPrice,
                 deliveryTime,
+                formattedTime,
             }),
             headers: {
                 'content-type': 'application/json',
@@ -228,7 +237,7 @@ function CartSuccess() {
                                     >
                                         訂單編號
                                     </td>
-                                    <td>202212021034</td>
+                                    <td>Farmer{orderId}</td>
                                 </tr>
                                 <tr className="py-5">
                                     <td
@@ -242,8 +251,10 @@ function CartSuccess() {
                                             return (
                                                 <div key={('fresh:', i)}>
                                                     {v.product_name}
-                                                    {v.product_price}元 *
-                                                    {v.product_count}個
+                                                    <span className="px-2">
+                                                        {v.product_price}元
+                                                    </span>
+                                                    *{v.product_count}個
                                                 </div>
                                             );
                                         })}
@@ -252,8 +263,10 @@ function CartSuccess() {
                                             return (
                                                 <div key={(`cus:`, i)}>
                                                     {v.lunch_name}
-                                                    {v.total_price}元 *
-                                                    {v.product_count}個
+                                                    <span className="px-2">
+                                                        {v.total_price}元
+                                                    </span>
+                                                    *{v.product_count}個
                                                 </div>
                                             );
                                         })}

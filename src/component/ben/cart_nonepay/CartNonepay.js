@@ -6,9 +6,17 @@ import $ from 'jquery';
 
 function CartNonepay() {
     const navigate = useNavigate();
+    const discount = sessionStorage.getItem('discount')
+        ? sessionStorage.getItem('discount')
+        : 0;
+    console.log(discount);
+    const discountKey = sessionStorage.getItem('discountSid')
+        ? sessionStorage.getItem('discountSid')
+        : 0;
     const member_info_email = localStorage.getItem('auth')
         ? JSON.parse(localStorage.getItem('auth')).email
         : '';
+    const orderId = sessionStorage.getItem('order_id');
     const showtime = new Date(Date.now() + 60 * 60 * 1000);
 
     // Hours part from the timestamp
@@ -22,24 +30,42 @@ function CartNonepay() {
     var formattedTime = hours + ':' + minutes.substr(-2);
     const deliveryTime = showtime.toLocaleDateString();
     const getFreshItems = JSON.parse(sessionStorage.getItem('buyfresh'));
+
+    const freshItemsArrayToSend = getFreshItems.map((v, i) => {
+        return {
+            product_name: v.product_name,
+            product_price: v.product_price,
+            product_count: v.product_count,
+        };
+    });
+
     const getCustomizedItems = JSON.parse(
         sessionStorage.getItem('buycustomized')
     );
+
+    const customizedItemsArrayToSend = getCustomizedItems.map((v, i) => {
+        return {
+            lunch_name: v.lunch_name,
+            total_price: v.total_price,
+            product_count: v.product_count,
+        };
+    });
+
     const amount = sessionStorage.getItem('price');
-    const discount = sessionStorage.getItem('discount');
+
     const finalPrice = sessionStorage.getItem('finalPrice');
-    const orderId = '123123123123';
+
     function sendEmail() {
         fetch(CART_EMAIL, {
             method: 'POST',
             body: JSON.stringify({
                 orderId,
-                getFreshItems,
-                getCustomizedItems,
-                amount,
+                freshItemsArrayToSend,
+                customizedItemsArrayToSend,
                 discount,
                 finalPrice,
                 deliveryTime,
+                formattedTime,
             }),
             headers: {
                 'content-type': 'application/json',
@@ -208,7 +234,7 @@ function CartNonepay() {
                                     >
                                         訂單編號
                                     </td>
-                                    <td>202212021034</td>
+                                    <td>Farmer{orderId}</td>
                                 </tr>
                                 <tr className="py-5">
                                     <td
@@ -222,8 +248,10 @@ function CartNonepay() {
                                             return (
                                                 <div key={`fre ${i}`}>
                                                     {v.product_name}
-                                                    {v.product_price}元 *
-                                                    {v.product_count}個
+                                                    <span className="px-2">
+                                                        {v.product_price}元
+                                                    </span>
+                                                    *{v.product_count}個
                                                 </div>
                                             );
                                         })}
@@ -232,8 +260,10 @@ function CartNonepay() {
                                             return (
                                                 <div key={`cus ${i}`}>
                                                     {v.lunch_name}
-                                                    {v.product_price}元 *
-                                                    {v.product_count}個
+                                                    <span className="px-2">
+                                                        {v.total_price}元
+                                                    </span>
+                                                    *{v.product_count}個
                                                 </div>
                                             );
                                         })}

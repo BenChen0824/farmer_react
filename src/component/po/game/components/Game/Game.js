@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './Game.css';
 import Card from './Card.js';
+import axios from 'axios';
 
 const initialCards = [
     { src: '/game-images/bulbasaur.png', matched: false },
@@ -20,6 +21,8 @@ function Game(props) {
     const [startFlip, setStartFlip] = useState(true);
 
     //let [correct, setcorrect] = useState(0)
+
+    // const loginUser = JSON.parse(localStorage.getItem("auth"))
 
     //解構蛋的點數
     const { eggpoints, setEggPoints } = props;
@@ -73,6 +76,14 @@ function Game(props) {
             setDisabled(true);
             if (choiceOne.src === choiceTwo.src) {
                 setEggPoints(eggpoints + 2);
+                // axios
+                //     .post('http://localhost:3600/game/pointsupdate', {
+                //         change_points: setEggPoints,
+                //         change_memberid: loginUser.customer_id,
+                //     })
+                //     .then((result) => {
+                //         console.log(result.data);
+                //     });
                 setCards((prevCards) => {
                     return prevCards.map((card) => {
                         if (card.src === choiceOne.src) {

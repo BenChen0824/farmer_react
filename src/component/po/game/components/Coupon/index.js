@@ -16,6 +16,8 @@ export default function Coupon(props) {
 
     const Swal = require('sweetalert2');
 
+    const loginUser = JSON.parse(localStorage.getItem('auth'));
+
     useEffect(() => {
         setCouponState(discountArray);
         //setEggPoints(500)
@@ -29,6 +31,8 @@ export default function Coupon(props) {
         //先拿到陣列裡的point
         const newPointToExchange = discountArray[i].point;
         const newtype = discountArray[i].type;
+        const newPriceToExchange = discountArray[i].price;
+
         // console.log(newPointToExchange);
         //目前點數比對兌換券的point
         if (eggpoints >= newPointToExchange) {
@@ -39,27 +43,37 @@ export default function Coupon(props) {
                 showConfirmButton: false,
                 timer: 1500,
             });
+            //如果點數足夠送資料到後端
+            axios
+                .post('http://localhost:3600/game/coupon', {
+                    change_memberid: loginUser.customer_id,
+                    change_coupon: newtype,
+                    change_spendpoints: newPointToExchange,
+                    change_spendprice: newPriceToExchange,
+                    change_img: discountArray[i].image,
+                })
+                .then((result) => {
+                    console.log(result.data);
+                });
+            const nowpoints = eggpoints - newPointToExchange;
+            axios
+                .post('http://localhost:3600/game/addpoints', {
+                    change_points: nowpoints,
+                    change_memberid: loginUser.customer_id,
+                })
+                .then((result) => {
+                    console.log(result.data);
+                });
             //目前點數減掉兌換後的點數
-            setEggPoints(eggpoints - newPointToExchange);
+            setEggPoints(nowpoints);
         } else {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
                 text: '點數不足!',
-                footer: '<a href="">Why do I have this issue?</a>',
+                //footer: '<a href="">試試搶點</a>',
             });
-            //alert('抱歉點數不足');
         }
-        axios
-            .post('http://localhost:3600/game/coupon', {
-                change_memberid: 530,
-                change_coupon: newtype,
-                change_spendpoints: newPointToExchange,
-                change_img: discountArray[i].image,
-            })
-            .then((result) => {
-                console.log(result.data);
-            });
     };
 
     const clickchange = (i) => {

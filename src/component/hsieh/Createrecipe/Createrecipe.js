@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { useParams } from 'react-router-dom';
 import './Createrecipe.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -29,7 +30,7 @@ function Createrecipe() {
         '韓式料理',
         '南洋料理',
         '歐式料理',
-        '西式料理',
+        '美式料理',
         '其他',
     ];
 
@@ -47,19 +48,59 @@ function Createrecipe() {
     // 料理步驟
     const [step, setStep] = useState('');
 
-    const navigate = useNavigate();
+    const [recipesnamecorrect, setRecipesnameCorrect] = useState('');
+    const [descriptioncorrect, setDescriptionCorrect] = useState('');
+    const [timecostcorrect, setTimecostCorrect] = useState('');
+    const [caloriescorrect, setCaloriesCorrect] = useState('');
+    const [portioncorrect, setPortionCorrect] = useState('');
+    const [recipestypecorrect, setRecipestypeCorrect] = useState('');
+    const [recipesdegreecorrect, setRecipesdegreeCorrect] = useState('');
+    const [ingredientcorrect, setIngredientCorrect] = useState('');
+    const [stepcorrect, setStepCorrect] = useState('');
 
-    function Createrecipe(obj) {
-        if (obj.success) {
-            alert('新增食譜成功');
-            navigate('/member/verify', { replace: true });
-        } else {
-            alert('請確實填寫欄位');
-        }
-    }
+    const navigate = useNavigate();
 
     const checkForm = async (event) => {
         event.preventDefault();
+
+        let isPass = true;
+
+        if (recipesname === '') {
+            setRecipesnameCorrect('請輸入食譜名稱');
+        }
+
+        if (description === '') {
+            setDescriptionCorrect('請輸入食譜簡介');
+        }
+
+        if (timecost === '') {
+            setTimecostCorrect('請輸入花費時間');
+        }
+
+        if (calories === '') {
+            setCaloriesCorrect('請輸入熱量');
+        }
+
+        if (portion === '') {
+            setPortionCorrect('請輸入份量');
+        }
+
+        if (recipestype === '') {
+            setRecipestypeCorrect('請輸入料理類型');
+        }
+
+        if (recipesdegree === '') {
+            setRecipesdegreeCorrect('請選擇料理難易度');
+        }
+
+        if (ingredient === '') {
+            setIngredientCorrect('請填寫食材');
+        }
+
+        if (step === '') {
+            setStepCorrect('請填寫料理步驟');
+        }
+
         const data = {
             recipesname: document.form1.recipesname.value,
             description: document.form1.description.value,
@@ -72,92 +113,100 @@ function Createrecipe() {
             step: document.form1.step.value,
         };
 
-        // const recipesname_f = document.form1.recipesname;
-        // const description_f = document.form1.description;
+        const recipesname_f = document.form1.recipesname;
+        const description_f = document.form1.description;
 
-        // const timecost_f = document.form1.timecost;
-        // const timecost_re = new RegExp('/[0-9]{3}/');
+        const timecost_f = document.form1.timecost;
+        const timecost_re = new RegExp('/[0-9]{3}/');
 
-        // const calories_f = document.form1.calories;
-        // const calories_re = new RegExp('/[0-9]{3}/');
+        const calories_f = document.form1.calories;
+        const calories_re = new RegExp('/[0-9]{3}/');
 
-        // const portion_f = document.form1.portion;
-        // const recipestype_f = document.form1.recipestype;
-        // const recipesdegree_f = document.form1.recipesdegree;
-        // const ingredient_f = document.form1.ingredient;
-        // const step_f = document.form1.step;
+        const portion_f = document.form1.portion;
+        const recipestype_f = document.form1.recipestype;
+        const recipesdegree_f = document.form1.recipesdegree;
+        const ingredient_f = document.form1.ingredient;
+        const step_f = document.form1.step;
 
-        // const fields = [recipesname_f, description_f, timecost_f, calories_f, portion_f, recipestype_f, recipesdegree_f, ingredient_f, step_f];
-
-        // const fieldTexts = [];
-        // for (let f of fields) {
-        //     fieldTexts.push(f.nextElementSibling);
-        // }
-
+        const fields = [
+            recipesname_f,
+            description_f,
+            timecost_f,
+            calories_f,
+            portion_f,
+            recipestype_f,
+            recipesdegree_f,
+            ingredient_f,
+            step_f,
+        ];
+        const fieldTexts = [];
+        for (let f of fields) {
+            fieldTexts.push(f.nextElementSibling);
+        }
         // for (let i in fields) {
-        //     fields[i].classList.remove('is-invalid');
-        //     fieldTexts[i].innerText = '';
+        // fields[i].classList.remove('is-invalid');
+        // fieldTexts[i].innerText = null;
         // }
 
-        // let isPass = true;
+        console.log(recipesname_f.value);
 
-        // if (recipesname_f.value.length < 1) {
-        //     fields[0].classList.add('is-invalid');
-        //     fieldTexts[0].innerText = '請輸入食譜名稱';
-        //     isPass = false;
-        // }
+        if (recipesname_f.value.length < 1) {
+            fields[0].classList.add('is-invalid');
+            fieldTexts[0].innerText = '請輸入食譜名稱';
+            isPass = false;
+        }
 
-        // if (description_f.value.length < 1) {
-        //     fields[1].classList.add('is-invalid');
-        //     fieldTexts[1].innerText = '請輸入食譜簡介';
-        //     isPass = false;
-        // }
+        if (description_f.value.length < 1) {
+            fields[1].classList.add('is-invalid');
+            fieldTexts[1].innerText = '請輸入食譜簡介';
+            isPass = false;
+        }
 
-        // if (!timecost_re.test(data.timecost)) {
-        //     fields[2].classList.add('is-invalid');
-        //     fieldTexts[2].innerText = '請輸入花費時間';
-        //     isPass = false;
-        // }
+        if (!timecost_re.test(data.timecost)) {
+            fields[2].classList.add('is-invalid');
+            fieldTexts[2].innerText = '請輸入花費時間';
+            isPass = false;
+        }
 
-        // if (!calories_re.test(data.timecost)) {
-        //     fields[3].classList.add('is-invalid');
-        //     fieldTexts[3].innerText = '請輸入熱量';
-        //     isPass = false;
-        // }
+        if (!calories_re.test(data.calories)) {
+            fields[3].classList.add('is-invalid');
+            fieldTexts[3].innerText = '請輸入熱量';
+            isPass = false;
+        }
 
-        // if (portion_f.value.length < 1) {
-        //     fields[4].classList.add('is-invalid');
-        //     fieldTexts[4].innerText = '請輸入份量';
-        //     isPass = false;
-        // }
+        if (portion_f.value.length < 1) {
+            fields[4].classList.add('is-invalid');
+            fieldTexts[4].innerText = '請輸入份量';
+            isPass = false;
+        }
 
-        // if (recipestype_f.value.length < 1) {
-        //     fields[5].classList.add('is-invalid');
-        //     fieldTexts[5].innerText = '請輸入料理類型';
-        //     isPass = false;
-        // }
+        if (recipestype_f.value.length < 1) {
+            fields[5].classList.add('is-invalid');
+            fieldTexts[5].innerText = '請輸入料理類型';
+            isPass = false;
+        }
 
-        // if (recipesdegree_f.value.length < 1) {
-        //     fields[6].classList.add('is-invalid');
-        //     fieldTexts[6].innerText = '請選擇料理難易度';
-        //     isPass = false;
-        // }
+        if (recipesdegree_f.value.length < 1) {
+            fields[6].classList.add('is-invalid');
+            fieldTexts[6].innerText = '請選擇料理難易度';
+            isPass = false;
+        }
 
-        // if (ingredient_f.value.length < 1) {
-        //     fields[7].classList.add('is-invalid');
-        //     fieldTexts[7].innerText = '請填寫食材';
-        //     isPass = false;
-        // }
+        if (ingredient_f.value.length < 1) {
+            fields[7].classList.add('is-invalid');
+            fieldTexts[7].innerText = '請填寫食材';
+            isPass = false;
+        }
 
-        // if (step_f.value.length < 1) {
-        //     fields[8].classList.add('is-invalid');
-        //     fieldTexts[8].innerText = '請填寫料理步驟';
-        //     isPass = false;
-        // }
+        if (step_f.value.length < 1) {
+            fields[8].classList.add('is-invalid');
+            fieldTexts[8].innerText = '請填寫料理步驟';
+            isPass = false;
+        }
 
-        // if (!isPass) {
-        //     return;
-        // }
+        if (!isPass) {
+            return;
+        }
         // 結束函式
 
         // const email_re = new RegExp(
@@ -174,10 +223,10 @@ function Createrecipe() {
         });
         const obj = await r.json();
         console.log(obj);
-        register(obj);
+        Createrecipe(obj);
     };
 
-    function register(obj) {
+    function Createrecipe(obj) {
         if (obj.success) {
             alert('新增食譜成功');
             navigate('/recipe', { replace: true });
@@ -240,7 +289,14 @@ function Createrecipe() {
 
     return (
         <>
-            <form name="form1" method="post" onSubmit={checkForm}>
+            <form
+                name="form1"
+                value=""
+                id=""
+                noValidate
+                method="post"
+                onSubmit={checkForm}
+            >
                 <h2 className="createrecipetitle">
                     新增食譜 ／ Create New Recipes
                 </h2>
@@ -252,13 +308,20 @@ function Createrecipe() {
                             name="recipesname"
                             id="recipesname"
                             type="text"
+                            required
                             className="dataform1increate"
-                            value={recipesname}
+                            value={
+                                recipesnamecorrect === ''
+                                    ? recipesname
+                                    : recipesnamecorrect
+                            }
                             placeholder="請輸入食譜名稱"
                             onChange={(e) => {
                                 setRecipesname(e.target.value);
                             }}
+                            onFocus={() => setRecipesnameCorrect('')}
                         />
+                        <div className="invalid-feedback"></div>
                     </section>
                 </div>
 
@@ -272,15 +335,22 @@ function Createrecipe() {
                             <textarea
                                 name="description"
                                 id="description"
+                                required
                                 className="dataform1increate"
-                                value={description}
+                                value={
+                                    descriptioncorrect === ''
+                                        ? description
+                                        : descriptioncorrect
+                                }
                                 placeholder="請100字內簡單描述"
                                 cols="30"
                                 rows="5"
                                 onChange={(e) => {
                                     setDescription(e.target.value);
                                 }}
+                                onFocus={() => setDescriptionCorrect('')}
                             />
+                            <div className="invalid-feedback"></div>
                         </section>
                         <label className="dataform1increate">
                             剩餘 {100 - description.length} 字
@@ -300,11 +370,18 @@ function Createrecipe() {
                             id="timecost"
                             className="dataform2increate"
                             type="text"
-                            value={timecost}
+                            required
+                            value={
+                                timecostcorrect === ''
+                                    ? timecost
+                                    : timecostcorrect
+                            }
                             onChange={(e) => {
                                 setTimecost(e.target.value);
                             }}
+                            onFocus={() => setTimecostCorrect('')}
                         />
+                        <div className="invalid-feedback"></div>
                     </section>
                     <label className="breakpointtitle2">分鐘</label>
                 </div>
@@ -321,11 +398,18 @@ function Createrecipe() {
                             id="calories"
                             className="dataform2increate"
                             type="text"
-                            value={calories}
+                            required
+                            value={
+                                caloriescorrect === ''
+                                    ? calories
+                                    : caloriescorrect
+                            }
                             onChange={(e) => {
                                 setCalories(e.target.value);
                             }}
+                            onFocus={() => setCaloriesCorrect('')}
                         />
+                        <div className="invalid-feedback"></div>
                     </section>
                     <label className="breakpointtitle2">大卡</label>
                 </div>
@@ -341,10 +425,14 @@ function Createrecipe() {
                             name="portion"
                             id="portion"
                             className="dataform2increate"
-                            value={portion}
+                            value={
+                                portioncorrect === '' ? portion : portioncorrect
+                            }
+                            required
                             onChange={(e) => {
                                 setPortion(e.target.value);
                             }}
+                            onFocus={() => setPortionCorrect('')}
                         >
                             <option value="">請選擇</option>
                             {portionOptions.map((v, i) => {
@@ -355,6 +443,7 @@ function Createrecipe() {
                                 );
                             })}
                         </select>
+                        <div className="invalid-feedback"></div>
                     </section>
                     <label className="breakpointtitle2">人份</label>
                 </div>
@@ -369,10 +458,16 @@ function Createrecipe() {
                             name="recipestype"
                             id="recipestype"
                             className="dataform1increate"
-                            value={recipestype}
+                            value={
+                                recipestypecorrect === ''
+                                    ? recipestype
+                                    : recipestypecorrect
+                            }
+                            required
                             onChange={(e) => {
                                 setRecipestype(e.target.value);
                             }}
+                            onFocus={() => setRecipestypeCorrect('')}
                         >
                             <option value="">請選擇</option>
                             {recipestypeOptions.map((v, i) => {
@@ -383,6 +478,7 @@ function Createrecipe() {
                                 );
                             })}
                         </select>
+                        <div className="invalid-feedback"></div>
                     </section>
                 </div>
 
@@ -396,10 +492,16 @@ function Createrecipe() {
                             name="recipesdegree"
                             id="recipesdegree"
                             className="dataform1increate"
-                            value={recipesdegree}
+                            value={
+                                recipesdegreecorrect === ''
+                                    ? recipesdegree
+                                    : recipesdegreecorrect
+                            }
+                            required
                             onChange={(e) => {
                                 setRecipesdegree(e.target.value);
                             }}
+                            onFocus={() => setRecipesdegreeCorrect('')}
                         >
                             <option value="">請選擇</option>
                             {recipesdegreeOptions.map((v, i) => {
@@ -410,6 +512,7 @@ function Createrecipe() {
                                 );
                             })}
                         </select>
+                        <div className="invalid-feedback"></div>
                     </section>
                 </div>
 
@@ -429,12 +532,52 @@ function Createrecipe() {
                                     id="ingredient"
                                     type="text"
                                     className="ingredientuse"
-                                    value={ingredient}
+                                    value={
+                                        ingredientcorrect === ''
+                                            ? ingredient
+                                            : ingredientcorrect
+                                    }
+                                    required
                                     placeholder="食材與分量，如：雞蛋2顆"
                                     onChange={(e) => {
                                         setIngredient(e.target.value);
                                     }}
+                                    onFocus={() => setIngredientCorrect('')}
                                 />
+                            </section>
+
+                            <button className="buttonincreate">
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+                        <div className="invalid-feedback"></div>
+
+                        {/* 分隔線 */}
+
+                        <div className="ingredientandstep">
+                            <section>
+                                <input
+                                    name="ingredient"
+                                    id="ingredient"
+                                    type="text"
+                                    className="ingredientuse"
+                                    value={
+                                        ingredientcorrect === ''
+                                            ? ingredient
+                                            : ingredientcorrect
+                                    }
+                                    required
+                                    placeholder="食材與分量，如：雞蛋2顆"
+                                    onChange={(e) => {
+                                        setIngredient(e.target.value);
+                                    }}
+                                    onFocus={() => setIngredientCorrect('')}
+                                />
+                                <div className="invalid-feedback"></div>
                             </section>
 
                             <button className="buttonincreate">
@@ -455,38 +598,19 @@ function Createrecipe() {
                                     id="ingredient"
                                     type="text"
                                     className="ingredientuse"
-                                    value={ingredient}
+                                    value={
+                                        ingredientcorrect === ''
+                                            ? ingredient
+                                            : ingredientcorrect
+                                    }
+                                    required
                                     placeholder="食材與分量，如：雞蛋2顆"
                                     onChange={(e) => {
                                         setIngredient(e.target.value);
                                     }}
+                                    onFocus={() => setIngredientCorrect('')}
                                 />
-                            </section>
-
-                            <button className="buttonincreate">
-                                <img
-                                    src="/images/trashcan.svg"
-                                    alt=""
-                                    className="iconincreate"
-                                />
-                            </button>
-                        </div>
-
-                        {/* 分隔線 */}
-
-                        <div className="ingredientandstep">
-                            <section>
-                                <input
-                                    name="ingredient"
-                                    id="ingredient"
-                                    type="text"
-                                    className="ingredientuse"
-                                    value={ingredient}
-                                    placeholder="食材與分量，如：雞蛋2顆"
-                                    onChange={(e) => {
-                                        setIngredient(e.target.value);
-                                    }}
-                                />
+                                <div className="invalid-feedback"></div>
                             </section>
 
                             <button className="buttonincreate">
@@ -526,12 +650,17 @@ function Createrecipe() {
                                     name="step"
                                     id="step"
                                     className="dataform1increate"
-                                    value={step}
+                                    value={
+                                        stepcorrect === '' ? step : stepcorrect
+                                    }
+                                    required
                                     placeholder="步驟1"
                                     onChange={(e) => {
                                         setStep(e.target.value);
                                     }}
+                                    onFocus={() => setStepCorrect('')}
                                 />
+                                <div className="invalid-feedback"></div>
                             </section>
                         </div>
 
@@ -544,12 +673,17 @@ function Createrecipe() {
                                     name="step"
                                     id="step"
                                     className="dataform1increate"
-                                    value={step}
+                                    value={
+                                        stepcorrect === '' ? step : stepcorrect
+                                    }
+                                    required
                                     placeholder="步驟2"
                                     onChange={(e) => {
                                         setStep(e.target.value);
                                     }}
+                                    onFocus={() => setStepCorrect('')}
                                 />
+                                <div className="invalid-feedback"></div>
                             </section>
 
                             <button className="buttonincreate">
@@ -570,12 +704,17 @@ function Createrecipe() {
                                     name="step"
                                     id="step"
                                     className="dataform1increate"
-                                    value={step}
+                                    value={
+                                        stepcorrect === '' ? step : stepcorrect
+                                    }
+                                    required
                                     placeholder="步驟3"
                                     onChange={(e) => {
                                         setStep(e.target.value);
                                     }}
+                                    onFocus={() => setStepCorrect('')}
                                 />
+                                <div className="invalid-feedback"></div>
                             </section>
                         </div>
                     </div>
@@ -601,9 +740,6 @@ function Createrecipe() {
                             alt=""
                             className="iconincreate"
                         />
-
-                        <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
-                        <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z" />
                     </button>
 
                     <div className="photouploadincreate">
@@ -621,13 +757,13 @@ function Createrecipe() {
                             />
                         </form>
                         <img
-                            className="img-fluid border border-white border-2 rounded-circle w-100 h-100 bop-objft"
+                            className="showphotoincreate"
                             src={
                                 image.preview
                                     ? image.preview
                                     : '/images/' + profileData[0].recipe_img
                             }
-                            alt="123"
+                            alt=""
                         />
                     </div>
                 </div>
@@ -639,7 +775,16 @@ function Createrecipe() {
                 {/* 分隔線，以下完成按鈕 */}
 
                 <div className="buttonintextalign">
-                    <button className="finishincreate" type="submit">
+                    <button
+                        className="finishincreate"
+                        type="submit"
+                        // onClick={(event) => {
+                        // event.preventDefault();
+                        // navigate('/recipe', {
+                        //     replace: true,
+                        // });
+                        // }}
+                    >
                         新增食譜
                         <img
                             src="/images/file-plus.svg"

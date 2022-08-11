@@ -151,6 +151,10 @@ function MemberOrders() {
                                                               v.order_no ===
                                                               res.order_no
                                                           );
+                                                      }).filter((v3)=>{
+                                                        return (
+                                                            v3.order_type === '1'
+                                                        )
                                                       })
                                                       .map((v2, i2) => {
                                                           return (
@@ -198,6 +202,69 @@ function MemberOrders() {
                                                                           $
                                                                           {
                                                                               v2.product_price
+                                                                          }
+                                                                      </p>
+                                                                  </td>
+                                                                  <td className="align-middle">
+                                                                      <p>
+                                                                          {
+                                                                              v2.order_status
+                                                                          }
+                                                                      </p>
+                                                                  </td>
+                                                              </tr>
+                                                          );
+                                                      })}
+                                                      {response
+                                                      .filter((v) => {
+                                                          return (
+                                                              v.order_no ===
+                                                              res.order_no
+                                                          );
+                                                      }).filter((v3)=>{
+                                                        return(
+                                                            v3.order_type === "2"
+                                                        )
+                                                      })
+                                                      .map((v2, i2) => {
+                                                          return (
+                                                              <tr key={v2.sid}>
+                                                                  <td className="align-middle">
+                                                                      <div className="bg-light ratio ratio-1x1 rounded">
+                                                                          <img
+                                                                              className="card-img boo-objft"
+                                                                              src={
+                                                                                  v2.lunch_pic
+                                                                              }
+                                                                              alt=""
+                                                                          />
+                                                                      </div>
+                                                                  </td>
+                                                                  <td className="align-middle">
+                                                                      <p>
+                                                                          {
+                                                                              v2.lunch_name
+                                                                          }
+                                                                      </p>
+                                                                      <p>
+                                                                          商品編號-
+                                                                          {
+                                                                              v2.sid
+                                                                          }
+                                                                      </p>
+                                                                  </td>
+                                                                  <td className="align-middle">
+                                                                      <p>
+                                                                          {
+                                                                              v2.lunchbox_stock
+                                                                          }
+                                                                      </p>
+                                                                  </td>
+                                                                  <td className="align-middle">
+                                                                      <p>
+                                                                          $
+                                                                          {
+                                                                              v2.total_price
                                                                           }
                                                                       </p>
                                                                   </td>
@@ -282,6 +349,10 @@ function MemberOrders() {
                                                               v.order_no ===
                                                               res.order_no
                                                           );
+                                                      }).filter((v3) =>{
+                                                        return(
+                                                            v3.order_type === "1"
+                                                        )
                                                       })
                                                       .map((v2, i2) => {
                                                           return (
@@ -294,12 +365,9 @@ function MemberOrders() {
                                                                       <div className="bg-light ratio ratio-1x1 rounded">
                                                                           <img
                                                                               className="card-img boo-objft"
-                                                                              src={
-                                                                                  '/images/' +
-                                                                                  JSON.parse(
-                                                                                      v2.product_img
-                                                                                  )[0]
-                                                                              }
+                                                                              src={`/images/${JSON.parse(
+                                                                                  v2.product_img
+                                                                              )[0]}`}
                                                                               alt=""
                                                                           />
                                                                       </div>
@@ -329,6 +397,69 @@ function MemberOrders() {
                                                                           $
                                                                           {
                                                                               v2.product_price
+                                                                          }
+                                                                      </p>
+                                                                  </td>
+                                                                  <td className="align-middle">
+                                                                      <p>
+                                                                          {
+                                                                              v2.order_status
+                                                                          }
+                                                                      </p>
+                                                                  </td>
+                                                              </tr>
+                                                          );
+                                                      })}
+                                                  {response
+                                                      .filter((v) => {
+                                                          return (
+                                                              v.order_no ===
+                                                              res.order_no
+                                                          );
+                                                      }).filter((v3)=>{
+                                                        return(
+                                                            v3.order_type === "2"
+                                                        )
+                                                      })
+                                                      .map((v2, i2) => {
+                                                          return (
+                                                              <tr key={v2.sid}>
+                                                                  <td className="align-middle">
+                                                                      <div className="bg-light ratio ratio-1x1 rounded">
+                                                                          <img
+                                                                              className="card-img boo-objft"
+                                                                              src={
+                                                                                  v2.lunch_pic
+                                                                              }
+                                                                              alt=""
+                                                                          />
+                                                                      </div>
+                                                                  </td>
+                                                                  <td className="align-middle">
+                                                                      <p>
+                                                                          {
+                                                                              v2.lunch_name
+                                                                          }
+                                                                      </p>
+                                                                      <p>
+                                                                          商品編號-
+                                                                          {
+                                                                              v2.sid
+                                                                          }
+                                                                      </p>
+                                                                  </td>
+                                                                  <td className="align-middle">
+                                                                      <p>
+                                                                          {
+                                                                              v2.lunchbox_stock
+                                                                          }
+                                                                      </p>
+                                                                  </td>
+                                                                  <td className="align-middle">
+                                                                      <p>
+                                                                          $
+                                                                          {
+                                                                              v2.total_price
                                                                           }
                                                                       </p>
                                                                   </td>

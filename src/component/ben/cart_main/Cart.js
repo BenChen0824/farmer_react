@@ -28,7 +28,15 @@ function Cart() {
     const [customizedProducAmount, setCustomizedProductAmount] = useState(0);
     const [totalAmount, setTotalAmountAmount] = useState(0);
 
-    // console.log(cartList);
+    // console.log(
+    //     cartList
+    //         .filter((v) => {
+    //             return v.cart_product_type === 1;
+    //         })
+    //         .map((v) => {
+    //             return v.product_inventory;
+    //         })
+    // );
     const changeCount = (sid, count) => {
         let changeData = {
             sid,
@@ -165,11 +173,14 @@ function Cart() {
         // sessionStorage.setItem('discount', discountValue);
         +e.target.options.selectedIndex - 1 >= 0
             ? setDiscountKey(
-                  discountArray[e.target.options.selectedIndex - 1].sid
+                  discountArray.filter((v) => {
+                      return +v.coupon_isused === 0;
+                  })[e.target.options.selectedIndex - 1].sid
               )
             : setDiscountKey(0);
 
-        // console.log(discountKey);
+        console.log(discountValue);
+        console.log(discountKey);
     };
 
     useEffect(() => {
@@ -402,10 +413,17 @@ function Cart() {
                                                 <button
                                                     className="btn"
                                                     onClick={() => {
-                                                        changeCount(
-                                                            v.sid,
-                                                            v.product_count + 1
-                                                        );
+                                                        v.product_count >=
+                                                        v.product_inventory
+                                                            ? changeCount(
+                                                                  v.sid,
+                                                                  v.product_count
+                                                              )
+                                                            : changeCount(
+                                                                  v.sid,
+                                                                  v.product_count +
+                                                                      1
+                                                              );
                                                     }}
                                                 >
                                                     +
@@ -596,17 +614,21 @@ function Cart() {
                                     }}
                                 >
                                     <option value="0">--請選擇--</option>
-                                    {discountArray.map((v, i) => {
-                                        return (
-                                            <option
-                                                value={v.change_spendprice}
-                                                key={v.sid}
-                                                data_key={v.sid}
-                                            >
-                                                {v.change_coupon}
-                                            </option>
-                                        );
-                                    })}
+                                    {discountArray
+                                        .filter((v) => {
+                                            return +v.coupon_isused === 0;
+                                        })
+                                        .map((v, i) => {
+                                            return (
+                                                <option
+                                                    value={v.change_spendprice}
+                                                    key={v.sid}
+                                                    data_key={v.sid}
+                                                >
+                                                    {v.change_coupon}
+                                                </option>
+                                            );
+                                        })}
                                 </select>
 
                                 <div>NT${discountValue}</div>
