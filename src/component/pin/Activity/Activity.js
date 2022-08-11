@@ -1,4 +1,4 @@
-import './Activity.css';
+import './activity.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useSearchParams } from 'react-router-dom';
