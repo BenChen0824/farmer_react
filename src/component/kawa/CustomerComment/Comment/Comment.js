@@ -1,15 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Comment.css';
 import './CommentCard.css';
-// import TopCommentsBox from './TopCommentsBox/TopCommentsBox'
-// import MessageScroll from './MessageScroll'
-// import SubMessage from './Message/SubMessage/SubMessage'
-
 import axios from 'axios';
 import { COMMENT_MAIN } from './../../../../config/ajax-path';
 import ReactStars from 'react-rating-stars-component';
 // import { getCommentItem } from '../../api/comment'
-// 1
+// import Pages from '../Pages/index';
+
 const Comment = () => {
     // 從資料庫抓資料
     // 抓ajax-path這隻檔案的路由=>COMMENT_MAIN
@@ -18,10 +15,11 @@ const Comment = () => {
     const [commentToShow, setCommentToShow] = useState([totalComment]);
     //   console.log(totalComment)
     const [ratingStarArray, setratingStarArray] = useState([]);
-    const [data, setdata] = useState([]);
-    const [isActive, setIsActive] = useState(false);
 
-    const mountRef = useRef(false);
+    //info頁籤的鉤子
+    const [info, setInfo] = useState(0);
+
+    // const mountRef = useRef(false);
 
     const getData = () => {
         fetch(COMMENT_MAIN, {
@@ -30,21 +28,23 @@ const Comment = () => {
             .then((r) => r.json())
             .then((obj) => {
                 setTotalComment(obj);
-                setdata(obj);
             });
     };
 
-    useEffect(() => {
-        if (mountRef.current) {
-            mountRef.current = true;
-        } else {
-            setCommentToShow(totalComment);
-        }
-        getData();
-    }, [totalComment]);
+    // useEffect(() => {
+    //     if (mountRef.current) {
+    //         mountRef.current = true;
+    //     } else {
+    //         setCommentToShow(totalComment);
+    //     }
+    //     getData();
+    // }, [totalComment]);
 
     useEffect(() => {
         getData();
+    }, []);
+    useEffect(() => {
+        setCommentToShow(totalComment);
     }, []);
 
     useEffect(() => {
@@ -54,13 +54,6 @@ const Comment = () => {
         setratingStarArray(newratingStarArray);
     }, [totalComment]);
 
-    const handleClick = () => {
-        // 👇️ toggle
-        setIsActive((current) => !current);
-
-        // 👇️ or set to true
-        setIsActive(true);
-    };
     // -------------------------------------------------------------------------------------------------
     // -------------------------------------------------------------------------------------------------
 
@@ -94,26 +87,6 @@ const Comment = () => {
         return +v.rating === 1;
     });
 
-    const handleClickRating = () => {
-        const r = totalComment.filter((v) => {
-            return +v.rating === 5;
-        });
-        setdata(r);
-    };
-
-    // -------------------------------------------------------------------------------------------------
-    // -------------------------------------------------------------------------------------------------
-
-    //抓全部資料
-    // const getComment = async () => {
-    //   axios
-    //     .get('http://localhost:3600/comment/comment', {
-    //       likes: 10,
-    //       comment_sid: 10,
-    //     })
-    //     .then((result) => console.log(result.data))
-    // }
-
     // -------------------------------------------------------------------------------------------------
     // -------------------------------------------------------------------------------------------------
 
@@ -127,49 +100,8 @@ const Comment = () => {
     // console.log('average', average); //3.9245283018867925
     const averageNum = Math.round(average);
 
-    // console.log('Math.round(average)', Math.round(average)); //4
-    // console.log('Math.round(average)', typeof Math.round(average)); //Number
-    // -------------------------------------------------------------------------------------------------
-
-    function starRating() {
-        axios
-            .get('http://localhost:3600/comment/comment', {
-                star: 10,
-                comment_sid: 10,
-            })
-            .then((result) => console.log(result.data));
-    }
-
     // -------------------------------------------------------------------------------------------------
     // -------------------------------------------------------------------------------------------------
-
-    const likeIcon = useRef();
-    const numLikes = useRef();
-
-    // 按讚(愛心) 53分左右
-    let toggleLike = false;
-    // let likes = v.likes
-
-    let likesNum = totalComment.filter((v) => {
-        return +v.likes;
-    });
-
-    const likeComment = () => {
-        toggleLike = !toggleLike;
-        if (toggleLike) {
-            likesNum++;
-            likeIcon.current.style.color = 'blue';
-        } else {
-            likesNum--;
-            likeIcon.current.style.color = 'gray';
-        }
-        numLikes.current.innerHTML = likesNum;
-    };
-
-    // const [counts, setCounts] = useState(30)
-    // const likeComment = () => {
-    //   setCounts(counts + 1)
-    // }
 
     return (
         <>
@@ -213,7 +145,6 @@ const Comment = () => {
 
                 {/* ----------------- 評價按鈕 -----------------*/}
                 <h2 className="d-sm-none">評價</h2>
-                {/* 括號內塞資料庫資料 */}
                 <div className="d-flex justify-content-center m-5 ">
                     <div
                         className="starRating_btn"
@@ -230,11 +161,6 @@ const Comment = () => {
                         onClick={(e) => {
                             // console.log(e.target.getAttribute('value'))
                             commentFilter(e);
-                        }}
-                        style={{
-                            backgroundColor: isActive ? '#82CA35' : '',
-                            color: isActive ? 'white' : '',
-                            border: isActive ? '' : 'red',
                         }}
                     >
                         五顆星({fivestarComment.length})
@@ -342,11 +268,7 @@ const Comment = () => {
                                         </p>
 
                                         <div className="d-flex">
-                                            <i
-                                                className="fas fa-thumbs-up"
-                                                ref={likeIcon}
-                                                onClick={likeComment}
-                                            ></i>
+                                            <i className="fas fa-thumbs-up"></i>
                                             <div>{v.likes}</div>
                                         </div>
                                     </div>
@@ -360,6 +282,10 @@ const Comment = () => {
                 {/* <TopCommentsBox autoFocus={false} /> */}
                 {/* <MessageScroll /> */}
                 {/* </div> */}
+
+                {/* <div>
+                    <Pages info={info} setInfo={setInfo} />
+                </div> */}
             </div>
         </>
     );
