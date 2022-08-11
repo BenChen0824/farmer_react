@@ -2,15 +2,17 @@ import React, { useState } from 'react';
 // import 'emoji-mart/css/emoji-mart.css';
 // import data from '@emoji-mart/data';
 import Picker from '@emoji-mart/react';
+import useOutsideClick from './hooks/useOutsideClick';
 
 const ChatInput = ({ message, setMessage, sendMessage }) => {
-    const [showEmoji, setShowEmoji] = useState(false);
+    const { showEmoji, setShowEmoji, ref } = useOutsideClick(false);
     const handleEmojiShow = () => {
         setShowEmoji((v) => !v);
     };
     const handleEmojiSelect = (e) => {
         setMessage((message) => (message += e.native));
     };
+
     return (
         <div className="mt-auto align-items-end border-info py-3 px-4 border-top d-lg-block chat-input">
             <div className="input-group flex-fill ">
@@ -47,7 +49,7 @@ const ChatInput = ({ message, setMessage, sendMessage }) => {
             </div>
             <div>
                 {showEmoji && (
-                    <div className="emoji-area">
+                    <div className="emoji-area" ref={ref}>
                         <Picker
                             onEmojiSelect={handleEmojiSelect}
                             emojiSize={20}

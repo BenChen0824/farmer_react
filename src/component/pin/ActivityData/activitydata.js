@@ -1,8 +1,12 @@
 import './activitydata.css';
-import React from 'react';
 import Slider from 'react-slick';
+// import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 function ActivityData() {
+    let { sid } = useParams();
     const settings = {
         dots: true,
         infinite: true,
@@ -12,6 +16,37 @@ function ActivityData() {
         fade: true,
         autoplay: true,
     };
+    const [data, setData] = useState([
+        {
+            sid: '',
+            company_id: '',
+            card_img: '',
+            card_area: '',
+            card_city: '',
+            card_info: '',
+            card_a: '',
+            card_b: '',
+        },
+    ]);
+
+    const getdata = async () => {
+        fetch('http://localhost:3600/activity/activitydata', {
+            method: 'GET',
+            headers: { sid: sid },
+        })
+            .then((r) => r.json())
+            .then((obj) => {
+                console.log(obj);
+                setData(obj);
+            });
+        // console.log(response);
+        // setData(response.data);
+    };
+    console.log(data);
+    useEffect(() => {
+        getdata();
+    }, []);
+
     return (
         <>
             <div className="container pt-4">

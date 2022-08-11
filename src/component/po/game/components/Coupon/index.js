@@ -15,7 +15,7 @@ export default function Coupon(props) {
     const [CouponState, setCouponState] = useState([]);
 
     const Swal = require('sweetalert2');
-
+    //登入專用
     const loginUser = JSON.parse(localStorage.getItem('auth'));
 
     useEffect(() => {
@@ -106,17 +106,25 @@ export default function Coupon(props) {
                                         >
                                             折價券
                                         </p>
-                                        <p
-                                            className="mb-1 text-center"
-                                            style={{ fontSize: '4rem' }}
-                                        >
-                                            ${v.price}
-                                        </p>
+                                        <div className="text-center">
+                                            <span
+                                                className="mb-1 text-center"
+                                                style={{ fontSize: '2rem' }}
+                                            >
+                                                $
+                                            </span>
+                                            <span
+                                                className="mb-1 text-center"
+                                                style={{ fontSize: '4rem' }}
+                                            >
+                                                {v.price}
+                                            </span>
+                                        </div>
                                         <p className="card-text mb-3 text-center">
                                             --消費滿500可使用--
                                         </p>
                                         <button
-                                            className="btn btn-primary"
+                                            className="btn btn-primary rounded-pill"
                                             onClick={() => {
                                                 clickchange(i);
                                                 exchange(i);

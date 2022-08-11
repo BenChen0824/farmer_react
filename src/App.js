@@ -116,7 +116,7 @@ function App() {
                                         element={<Activity />}
                                     />
                                     <Route
-                                        path="/activitydata"
+                                        path="/activity/:sid"
                                         element={<ActivityData />}
                                     />
                                     <Route path="/mymap" element={<MyMap />} />
