@@ -32,6 +32,7 @@ import CartCountContext from '../../component/ben/cart_count/CartCountContext';
 import { FaNetworkWired } from 'react-icons/fa';
 import Modal from 'react-modal';
 import Compare from '../../component/lil/Compare';
+import { useWindowScrollPosition } from 'rooks';
 
 const customStyles = {
     content: {
@@ -83,7 +84,8 @@ function ProductList() {
     const [compareBTN, setCompareBTN] = useState(false);
     const [compared, setCompared] = useState([]);
     const [modalIsOpen, setIsOpen] = useState(false);
-    const [adShow, setAdShow] = useState(false);
+    const [adShow, setAdShow] = useState();
+    const position = useWindowScrollPosition();
 
     function openModal() {
         setIsOpen(true);
@@ -333,6 +335,19 @@ function ProductList() {
         fetchCompare();
     }, []);
 
+    useEffect(() => {
+        if (position.scrollY > 800 && _.isNil(adShow)) {
+            setAdShow(true);
+        }
+        // window.addEventListener('scroll', () => {
+        //     if (window.scrollY > 800) {
+        //         setAdShow(true);
+        //     } else {
+        //         setAdShow(false);
+        //     }
+        // });
+    }, [position, adShow]);
+
     return (
         <>
             <div className={styles.page}>
@@ -358,7 +373,14 @@ function ProductList() {
                                 onSelect={setSelectedOption}
                             />
                             <ProductNavBar />
-                            <Ad />
+
+                            <div className={styles.ad_wrap}>
+                                <Ad
+                                    className={clsx(styles.ad_hidden, {
+                                        [styles.ad_move]: adShow,
+                                    })}
+                                />
+                            </div>
                         </div>
                         <div className={clsx('col-9', styles.main)}>
                             <Title zh={'熱銷商品'} eg={'Hot Sales'} />
