@@ -65,8 +65,8 @@ function Createrecipe() {
             recipesname: document.form1.recipesname.value,
             description: document.form1.description.value,
             timecost: document.form1.timecost.value,
-            calories: document.form1.calories.value,
             portion: document.form1.portion.value,
+            calories: document.form1.calories.value,
             recipestype: document.form1.recipestype.value,
             recipesdegree: document.form1.recipesdegree.value,
             ingredient: document.form1.ingredient.value,
@@ -91,9 +91,9 @@ function Createrecipe() {
     function alreadycreate(obj) {
         if (obj.success) {
             alert('請填寫正確資料');
-            navigate('/recipe', { replace: true });
         } else {
             alert('新增成功');
+            navigate('/recipe', { replace: true });
         }
     }
 
@@ -597,7 +597,7 @@ function Createrecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="ingredientandstep">
+                        {/* <div className="ingredientandstep">
                             <section>
                                 <input
                                     name="ingredient"
@@ -626,11 +626,11 @@ function Createrecipe() {
                                     className="iconincreate"
                                 />
                             </button>
-                        </div>
+                        </div> */}
 
                         {/* 分隔線 */}
 
-                        <div className="ingredientandstep">
+                        {/* <div className="ingredientandstep">
                             <section>
                                 <input
                                     name="ingredient"
@@ -659,7 +659,7 @@ function Createrecipe() {
                                     className="iconincreate"
                                 />
                             </button>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 
@@ -705,7 +705,7 @@ function Createrecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="ingredientandstep">
+                        {/* <div className="ingredientandstep">
                             <div className="redballincreate">2</div>
                             <section>
                                 <textarea
@@ -732,11 +732,11 @@ function Createrecipe() {
                                     className="iconincreate"
                                 />
                             </button>
-                        </div>
+                        </div> */}
 
                         {/* 分隔線 */}
 
-                        <div className="ingredientandstep">
+                        {/* <div className="ingredientandstep">
                             <div className="redballincreate">3</div>
                             <section>
                                 <textarea
@@ -755,7 +755,7 @@ function Createrecipe() {
                                 />
                                 <div className="invalid-feedback"></div>
                             </section>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 

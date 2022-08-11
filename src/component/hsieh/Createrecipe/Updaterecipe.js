@@ -29,7 +29,6 @@ function Updaterecipe() {
         );
         const obj = await r.json();
         setUpdaterecipe(obj);
-        console.log(updaterecipe);
     }
 
     const params = useParams();
@@ -85,6 +84,7 @@ function Updaterecipe() {
 
     const updateAllInfo = async () => {
         const data = {
+            recipe_sid: params.recipes_sid,
             updateRecipesname: document.form1.updateRecipesname.value,
             updateDescription: document.form1.updateDescription.value,
             updateTimecost: document.form1.updateTimecost.value,
@@ -97,29 +97,25 @@ function Updaterecipe() {
         };
 
         console.log(data);
-        const r = await fetch(
-            'http://localhost:3600/recipe/updaterecipe/${recipes_sid}',
-            {
-                method: 'POST',
-                body: JSON.stringify(data),
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            }
-        );
+        const r = await fetch('http://localhost:3600/recipe/updaterecipe', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        // console.log('abc:');
         const obj = await r.json();
         console.log(obj);
         alreadyupdate(obj);
-
-        console.log(alreadyupdate);
     };
 
     function alreadyupdate(obj) {
         if (obj.success) {
             alert('請填寫正確資料');
-            navigate('/recipe', { replace: true });
         } else {
             alert('更新成功');
+            // navigate('/recipe', { replace: true });
         }
     }
 
@@ -340,7 +336,7 @@ function Updaterecipe() {
                         {/* 分隔線 */}
 
                         <div className="ingredientandstep">
-                            <section>
+                            {/* <section>
                                 <input
                                     name="updateIngredient"
                                     id="updateIngredient"
@@ -352,21 +348,21 @@ function Updaterecipe() {
                                         setUpdaterecipe(e.target.value);
                                     }}
                                 />
-                            </section>
+                            </section> */}
 
-                            <button className="buttonincreate">
+                            {/* <button className="buttonincreate">
                                 <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
                                 />
-                            </button>
+                            </button> */}
                         </div>
 
                         {/* 分隔線 */}
 
                         <div className="ingredientandstep">
-                            <section>
+                            {/* <section>
                                 <input
                                     name="updateIngredient"
                                     id="updateIngredient"
@@ -378,15 +374,15 @@ function Updaterecipe() {
                                         setUpdaterecipe(e.target.value);
                                     }}
                                 />
-                            </section>
+                            </section> */}
 
-                            <button className="buttonincreate">
+                            {/* <button className="buttonincreate">
                                 <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
                                 />
-                            </button>
+                            </button> */}
                         </div>
                     </div>
                 </div>
@@ -418,7 +414,7 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="ingredientandstep">
+                        {/* <div className="ingredientandstep">
                             <div className="redballincreate">2</div>
                             <section>
                                 <textarea
@@ -440,11 +436,11 @@ function Updaterecipe() {
                                     className="iconincreate"
                                 />
                             </button>
-                        </div>
+                        </div> */}
 
                         {/* 分隔線 */}
 
-                        <div className="ingredientandstep">
+                        {/* <div className="ingredientandstep">
                             <div className="redballincreate">3</div>
                             <section>
                                 <textarea
@@ -458,7 +454,7 @@ function Updaterecipe() {
                                     }}
                                 />
                             </section>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 
