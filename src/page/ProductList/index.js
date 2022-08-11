@@ -3,6 +3,7 @@ import ProductBanner from '../../component/lil/ProductBanner';
 import ProductNavBar from '../../component/lil/ProductNavBar';
 import SearchP from '../../component/lil/SearchP';
 import PriceSelect from '../../component/lil/PriceSelect';
+import Ad from '../../component/lil/Ad';
 import Title from '../../component/lil/Title';
 import styles from './ProductList.module.css';
 import clsx from 'clsx';
@@ -82,6 +83,7 @@ function ProductList() {
     const [compareBTN, setCompareBTN] = useState(false);
     const [compared, setCompared] = useState([]);
     const [modalIsOpen, setIsOpen] = useState(false);
+    const [adShow, setAdShow] = useState(false);
 
     function openModal() {
         setIsOpen(true);
@@ -356,6 +358,7 @@ function ProductList() {
                                 onSelect={setSelectedOption}
                             />
                             <ProductNavBar />
+                            <Ad />
                         </div>
                         <div className={clsx('col-9', styles.main)}>
                             <Title zh={'熱銷商品'} eg={'Hot Sales'} />
