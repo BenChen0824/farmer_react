@@ -111,10 +111,10 @@ export default function CreateComment() {
     // }
     return (
         <form name="form1" onSubmit={sendComment}>
-            <div className="App">
-                <div className="popup">
-                    <div className="content">
-                        <div className="product">
+            <div className="CreateComment_App">
+                <div className="CreateComment_popup">
+                    <div className="CreateComment_content">
+                        <div className="CreateComment_product">
                             {/* <img
               style={{ width: 60, height: 60, objectFit: 'cover' }}
               src="https://tanhungphatit.vn/images/detailed/93/iphone-13-blue-1-600x600.jpg"
@@ -162,6 +162,7 @@ export default function CreateComment() {
                         <textarea
                             name="comment"
                             placeholder={handlePlaceHolder()}
+                            className="CreateComment_textarea"
                         ></textarea>
                         {/* <button className={` ${!number && 'disabled'} `}>Submit</button> */}
                         <button className="RatingsubmitBtn mt-5" type="submit">
