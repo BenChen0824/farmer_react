@@ -251,8 +251,10 @@ function CartSuccess() {
                                             return (
                                                 <div key={('fresh:', i)}>
                                                     {v.product_name}
-                                                    {v.product_price}元 *
-                                                    {v.product_count}個
+                                                    <span className="px-2">
+                                                        {v.product_price}元
+                                                    </span>
+                                                    *{v.product_count}個
                                                 </div>
                                             );
                                         })}
@@ -261,8 +263,10 @@ function CartSuccess() {
                                             return (
                                                 <div key={(`cus:`, i)}>
                                                     {v.lunch_name}
-                                                    {v.total_price}元 *
-                                                    {v.product_count}個
+                                                    <span className="px-2">
+                                                        {v.total_price}元
+                                                    </span>
+                                                    *{v.product_count}個
                                                 </div>
                                             );
                                         })}
