@@ -33,6 +33,7 @@ function Recipesearch() {
     useEffect(() => {
         getRecipe();
     }, []);
+    // 獲取食譜資訊
 
     // useEffect(() => {
     //     axios.get('http://localhost:3600/recipe/recipe').then((res) => {
