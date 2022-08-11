@@ -36,6 +36,7 @@ function Eachrecipe() {
         eachrecipeinfo(params.recipes_sid);
         window.scrollTo({ top: 0, behavior: 'instant' }); // 調整往下滑
     }, [params.recipes_sid]);
+    // 獲取食譜個別資訊
 
     // useEffect(() => {
 

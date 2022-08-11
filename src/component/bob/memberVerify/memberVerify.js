@@ -1,37 +1,10 @@
 import './memberVerify.css';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import axios from 'axios';
 
 function MemberVerify() {
     const navigate = useNavigate();
-
-    function Login(obj) {
-        if (obj.success) {
-            alert('恭喜註冊成功');
-            navigate('/data', { replace: true });
-        } else {
-            alert('請填寫正確資料');
-        }
-    }
-
-    // const checkForm = async (event)=>{
-    //     event.preventDefault();
-    //     const data = {
-    //         name: document.form1.name.value,
-    //         email: document.form1.email.value,
-    //         password: document.form1.password.value
-    //     };
-
-    //     const r = await fetch('http://localhost:7000/signup',{
-    //         method:'post',
-    //         body: JSON.stringify(data),
-    //         headers:{
-    //             'Content-Type':'application/json'
-    //         }
-    //     })
-    //     const obj = await r.json()
-    //     console.log(obj)
-    //     Login(obj)
-    // }
 
     return (
         <>

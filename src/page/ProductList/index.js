@@ -3,6 +3,7 @@ import ProductBanner from '../../component/lil/ProductBanner';
 import ProductNavBar from '../../component/lil/ProductNavBar';
 import SearchP from '../../component/lil/SearchP';
 import PriceSelect from '../../component/lil/PriceSelect';
+import Ad from '../../component/lil/Ad';
 import Title from '../../component/lil/Title';
 import styles from './ProductList.module.css';
 import clsx from 'clsx';
@@ -17,6 +18,9 @@ import {
     getProductItem,
     updateCollect,
     getCollected,
+    updateCompare,
+    deleteCompare,
+    getCompare,
 } from '../../api/product';
 import { HASHTAG, SUPPLIER } from '../../config/variables';
 import { useQuery } from '../../hooks';
@@ -25,6 +29,32 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toggleHashTag } from '../../store/slices/product';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import CartCountContext from '../../component/ben/cart_count/CartCountContext';
+import { FaNetworkWired } from 'react-icons/fa';
+import Modal from 'react-modal';
+import Compare from '../../component/lil/Compare';
+
+const customStyles = {
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)',
+        border: 0,
+        padding: 0,
+        backgroundColor: 'transparent',
+    },
+    overlay: {
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.50)',
+    },
+};
+Modal.setAppElement('#root');
 
 const settings = {
     infinite: true,
@@ -34,6 +64,7 @@ const settings = {
 };
 
 function ProductList() {
+    let subtitle;
     const { cartList, setCartList } = useContext(CartCountContext);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -49,6 +80,22 @@ function ProductList() {
     const lsKey = `histroy${userId}`;
     const [historyData, setHistoryData] = useState([]);
     const [collectData, setCollectData] = useState([]);
+    const [compareBTN, setCompareBTN] = useState(false);
+    const [compared, setCompared] = useState([]);
+    const [modalIsOpen, setIsOpen] = useState(false);
+    const [adShow, setAdShow] = useState(false);
+
+    function openModal() {
+        setIsOpen(true);
+    }
+
+    function afterOpenModal() {
+        subtitle.style.color = '#f00';
+    }
+
+    function closeModal() {
+        setIsOpen(false);
+    }
 
     const productList = useMemo(() => {
         if (data && data.rows) {
@@ -158,7 +205,6 @@ function ProductList() {
         setHashTagURL({ ...rest, page: 1 });
         console.log({ key });
         dispatch(toggleHashTag(key));
-        //TODO:要改
     };
 
     useEffect(() => {
@@ -251,9 +297,54 @@ function ProductList() {
         setCollectData(collected);
     };
 
+    useEffect(() => {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                setCompareBTN(true);
+            } else {
+                setCompareBTN(false);
+            }
+        });
+    }, []);
+
+    const handleCompare = async (sid) => {
+        if (compared.includes(sid)) {
+            // deleted
+            const data = await deleteCompare(sid);
+            setCompared(data);
+        } else if (compared.length < 3) {
+            const data = await updateCompare(sid);
+            setCompared(data);
+
+            // add
+        } else {
+            // hint
+            alert('只能比較三個商品喔！');
+            return;
+        }
+    };
+
+    const fetchCompare = async () => {
+        const data = await getCompare();
+        setCompared(data);
+    };
+
+    useEffect(() => {
+        fetchCompare();
+    }, []);
+
     return (
         <>
             <div className={styles.page}>
+                {compareBTN && (
+                    <div
+                        className={styles.comparebtn}
+                        onClick={() => openModal()}
+                    >
+                        <FaNetworkWired size={30} />
+                    </div>
+                )}
+
                 <ProductBanner />
                 <div className={styles.container}>
                     <div className={clsx('row', styles.row)}>
@@ -267,6 +358,7 @@ function ProductList() {
                                 onSelect={setSelectedOption}
                             />
                             <ProductNavBar />
+                            <Ad />
                         </div>
                         <div className={clsx('col-9', styles.main)}>
                             <Title zh={'熱銷商品'} eg={'Hot Sales'} />
@@ -310,6 +402,7 @@ function ProductList() {
                                                         );
                                                     }}
                                                     saved={v.saved}
+                                                    compareModal={true}
                                                 />
                                             );
                                         })}
@@ -342,6 +435,7 @@ function ProductList() {
                                             key={i}
                                             onClick={() => goToPath(v.sid)}
                                             className="col-6 col-lg-4"
+                                            sid={v.sid}
                                             name={v.product_name}
                                             supplier={
                                                 SUPPLIER[v.product_supplier]
@@ -361,6 +455,9 @@ function ProductList() {
                                                 handleCollect(v.sid, save);
                                             }}
                                             saved={v.saved}
+                                            onCompare={handleCompare}
+                                            compared={compared.includes(v.sid)}
+                                            compareModal={false}
                                         />
                                     );
                                 })}
@@ -411,6 +508,7 @@ function ProductList() {
                                                         );
                                                     }}
                                                     saved={v.saved}
+                                                    compareModal={true}
                                                 />
                                             );
                                         })}
@@ -421,6 +519,14 @@ function ProductList() {
                     </div>
                 </div>
             </div>
+            <Modal
+                isOpen={modalIsOpen}
+                onAfterOpen={afterOpenModal}
+                onRequestClose={closeModal}
+                style={customStyles}
+            >
+                <Compare onClose={closeModal} sid={compared} />
+            </Modal>
         </>
     );
 }

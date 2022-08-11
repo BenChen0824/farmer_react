@@ -1,3 +1,25 @@
+.emojistyle {
+    height: 30px;
+    width: 30px;
+}
+/* .btn.btn-info.xin-btn-nofocus {
+    box-shadow: none;
+} */
+.xin-btn-nofocus:focus {
+    box-shadow: none;
+}
+.btn.btn-info.xin-btn-nofocus:focus {
+    box-shadow: none;
+    background-color: none;
+}
+.emoji-area {
+    position: absolute;
+    bottom: 60px;
+    right: 100px;
+}
+.chat-input {
+    position: relative;
+}
 .xin-bg-color {
     background-color: #82ca35;
 }

@@ -5,7 +5,10 @@ import {
     AB_GET_HOT_SALES,
     CART_ADD_PRODUCT,
     PRODUCT_COLLECT,
+    PRODUCT_COMPARE,
 } from '../config/ajax-path';
+
+axios.defaults.withCredentials = true;
 
 export async function fetchProduct(
     page,
@@ -129,4 +132,19 @@ export async function getCollected(user, sid) {
         return data;
     }
     return [];
+}
+
+export async function getCompare() {
+    const { data } = await axios.get(PRODUCT_COMPARE);
+    return data;
+}
+
+export async function updateCompare(sid) {
+    const { data } = await axios.put(PRODUCT_COMPARE, { sid });
+    return data;
+}
+
+export async function deleteCompare(sid) {
+    const { data } = await axios.delete(PRODUCT_COMPARE, { data: { sid } });
+    return data;
 }
