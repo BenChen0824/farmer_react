@@ -23,7 +23,7 @@ const ChatBody = ({ user, messages }) => {
                         >
                             <div
                                 className="flex-shrink-1  py-2 px-3 ml-3"
-                                ref={scroll}
+                                // ref={scroll}
                             >
                                 {message.message.includes('http') ? (
                                     <a href={message.message}>
