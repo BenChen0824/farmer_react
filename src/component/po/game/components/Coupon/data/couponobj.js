@@ -20,7 +20,7 @@ export const couponobj = [
         price: 300,
         point: 150,
         type: '300元折價券',
-        image: '/dailypoint-img/4b08287a319a467288279c8499eb2db3.jpg',
+        image: '/dailypoint-img/1660103279629.jpg',
         change: 0,
     },
     {
@@ -28,7 +28,7 @@ export const couponobj = [
         price: 400,
         point: 200,
         type: '400元折價券',
-        image: '/dailypoint-img/43961109b445769ed853c21b1d646eeb.jpg',
+        image: '/dailypoint-img/1660103279629.jpg',
         change: 0,
     },
 ];

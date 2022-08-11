@@ -15,6 +15,7 @@ import Product from './page/Product';
 import Member from './component/bob/App';
 import FarmerFirstPage from './component/kawa/FarmerFirstPage/FarmerFirstPage';
 import CustomerComment from './component/kawa/CustomerComment/CustomerComment';
+import CreateComment from './component/kawa/CustomerComment/CreateComment/CreateComment';
 import CustomizedLunch from './component/xin/Customized_lunch/CustomizedLunch';
 import ChatMain from './component/xin/Customized_service/ChatMain';
 
@@ -25,6 +26,7 @@ import Updaterecipe from './component/hsieh/Createrecipe/Updaterecipe';
 import GameMain from './component/po/game/gameMain';
 import CartMain from './component/ben/App';
 import Activity from './component/pin/Activity/Activity';
+import ActivityData from './component/pin/ActivityData/activitydata';
 
 import { io } from 'socket.io-client';
 const socket = io('http://localhost:3600');
@@ -46,6 +48,10 @@ function App() {
                                     <Route
                                         path="/comment"
                                         element={<CustomerComment />}
+                                    />
+                                    <Route
+                                        path="/createcomment"
+                                        element={<CreateComment />}
                                     />
                                     {/* 慧敏 */}
 
@@ -105,13 +111,15 @@ function App() {
                                         element={<GameMain />}
                                     />
                                     {/* po */}
-
                                     <Route
                                         path="/activity"
                                         element={<Activity />}
                                     />
+                                    <Route
+                                        path="/activitydata"
+                                        element={<ActivityData />}
+                                    />
                                     <Route path="/mymap" element={<MyMap />} />
-
                                     {/* pin */}
                                 </Routes>
                             </Container>

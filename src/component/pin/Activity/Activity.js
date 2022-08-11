@@ -5,15 +5,14 @@ import axios from 'axios';
 function Activity() {
     const [data, setData] = useState([
         {
-            activity_img: '',
-            activity_ad: '',
-            activity_adm: '',
-            activity_schedule1: '',
-            activity_schedule2: '',
-            activity_schedule3: '',
-            activity_schedule4: '',
-            activity_schedule5: '',
-            activity_schedule6: '',
+            sid: '',
+            company_id: '',
+            card_img: '',
+            card_area: '',
+            card_city: '',
+            card_info: '',
+            card_a: '',
+            card_b: '',
         },
     ]);
 
@@ -48,37 +47,38 @@ function Activity() {
                             ? data.map((row) => (
                                   <div
                                       className="col-12 col-md-4 g-3 "
-                                      key={'mm' + row.id}
+                                      key={'mm' + row.sid}
                                   >
                                       <div className="col px-2">
                                           <div
-                                              className="card shadow-sm style={{
-                                                      Width: '100%'
-                                                  }}"
+                                              className="card shadow-sm "
+                                              style={{
+                                                  width: '100%',
+                                              }}
                                           >
                                               <img
                                                   className=""
                                                   style={{
                                                       Width: '100%',
-                                                      height: '100%',
+
                                                   }}
-                                                  src={`/imgs/${row.activity_img}`}
+                                                  src={`/images/activity/${row.card_img}`}
                                                   alt=""
                                               />
                                               <div className="card-body  ">
                                                   <div className="text-center pb-2">
-                                                      <h5 className="mb-0">{`${row.activity_ad}`}</h5>
-                                                      <div className="mb-1 text-muted">{`${row.activity_adm}`}</div>
+                                                      <h5 className="mb-0">{`${row.card_area}`}</h5>
+                                                      <div className="mb-1 text-muted">{`${row.card_city}`}</div>
                                                   </div>
                                                   <p className="card-text pinp  ">
-                                                      {`${row.activity_info}`}
+                                                      {`${row.card_info}`}
                                                   </p>
                                                   <ul className="list-group list-group-flush pt-4 ">
                                                       <li>
                                                           建議行程：
                                                           <ul className="pt-1">
                                                               <li>
-                                                                  {`${row.activity_schedule1}`}
+                                                                  {`${row.card_a}`}
                                                               </li>
                                                           </ul>
                                                       </li>
@@ -86,7 +86,7 @@ function Activity() {
                                                           體驗活動：
                                                           <ul className="pt-1 ">
                                                               <li>
-                                                                  {`${row.activity_schedule2}`}
+                                                                  {`${row.card_b}`}
                                                               </li>
                                                           </ul>
                                                       </li>

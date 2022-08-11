@@ -44,7 +44,7 @@ const ChatMain = ({ socket }) => {
     };
 
     return (
-        <main className="content">
+        <main className="chat-content">
             <div className="container mt-3">
                 {user.userId && (
                     <Chat

@@ -87,7 +87,7 @@ function Recipesearch() {
                     今日食譜推薦 ／ Recipes Recommend
                 </p>
             </div>
-            <div className="w-100 d-flex justify-content-center flex-wrap">
+            <div className="w-100 d-flex flex-wrap">
                 <div className="recommendlistinsearch d-flex justify-content-center">
                     {/* <a href="./"> */}
                     <div className="recipephotoinsearch">
@@ -200,7 +200,7 @@ function Recipesearch() {
                 <p className="titlewordinsearch">食譜列表 ／ Recipes List</p>
             </div>
 
-            <div className="w-100 d-flex justify-content-center flex-wrap">
+            <div className="w-100 d-flex flex-wrap">
                 {recipeDisplay.map((v, i) => {
                     return (
                         <div
@@ -277,7 +277,7 @@ function Recipesearch() {
             </div>
             <div className="paginationinsearch">
                 {/* {data && data.totalPages ? ( */}
-                <Pagination page={data.page} totalPages={data.totalPages} />
+                {/* <Pagination page={data.page} totalPages={data.totalPages} /> */}
                 {/* ) : null} */}
             </div>
         </>

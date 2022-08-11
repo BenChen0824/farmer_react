@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import './Createrecipe.css';
+// import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function Updaterecipe() {
@@ -44,7 +45,6 @@ function Updaterecipe() {
     const [updateDescription, setUpdateDescription] = useState('');
 
     // 烹調時間
-    // const [updateTimecost, setUpdateTimecost] = useState('');
     const [timecost, setTimecost] = useState('');
 
     // 料理熱量
@@ -78,9 +78,6 @@ function Updaterecipe() {
     // 料理食材
     const [ingredient, setIngredient] = useState('');
 
-    // 食材分量
-    const [unit, setUnit] = useState('');
-
     // 料理步驟
     const [step, setStep] = useState('');
 
@@ -109,7 +106,7 @@ function Updaterecipe() {
             <div className="eachdataincreaterecipe">
                 <label className="datanameincreaterecipe">料理簡介</label>
                 <div>
-                    <section id="updateDupdaterecipeescription">
+                    <section id="updaterecipe">
                         <textarea
                             className="dataform1increate"
                             value={updaterecipe.recipes_description}
