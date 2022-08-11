@@ -17,8 +17,8 @@ function Dailypoint() {
 
     const brokenegg = '/dailypoint-img/44434.png';
     const defaultegg = '/dailypoint-img/812921.png';
+    //for會員
     const loginUser = JSON.parse(localStorage.getItem("auth"))
-    //console.log(brokenegg)
 
     const eggClick = (i) => {
         // console.log({i})
@@ -92,7 +92,7 @@ function Dailypoint() {
                     </div>
                     <br />
                     <div className="">
-                        <p className="lead mb-0 text-center bg-danger">
+                        <p className="lead mb-0 text-center bg-danger bg-gradient rounded-pill bg-opacity-75">
                             {showup}
                         </p>
                     </div>

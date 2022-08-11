@@ -37,7 +37,7 @@ function Pages(props) {
                         setInfo(2);
                         Swal.fire({
                             title: '遊戲說明',
-                            text: '您有5次翻牌機會,每翻牌成功一次獲得兩點',
+                            text: '您有10次翻牌機會,每翻牌成功一次獲得兩點',
                             icon: 'info',
                             confirmButtonText: '遊戲開始',
                         });
