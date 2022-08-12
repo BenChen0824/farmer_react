@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Picker from '@emoji-mart/react';
 import useOutsideClick from './hooks/useOutsideClick';
 
-const ChatInput = ({ message, setMessage, sendMessage }) => {
+const ChatInput = ({ message, setMessage, sendMessage, selectFile }) => {
     const { showEmoji, setShowEmoji, ref } = useOutsideClick(false);
     const handleEmojiShow = () => {
         setShowEmoji((v) => !v);
@@ -28,6 +28,21 @@ const ChatInput = ({ message, setMessage, sendMessage }) => {
                     onKeyPress={(e) =>
                         e.code === 'Enter' ? sendMessage() : null
                     }
+                />
+                <label htmlFor="file-input">
+                    <div className="btn xin-btn-nofocus">
+                        <img
+                            src="/images/emojiIcon.png"
+                            alt="emoji"
+                            className="emojistyle"
+                        />
+                    </div>
+                </label>
+                <input
+                    type="file"
+                    id="file-input"
+                    className="file-input"
+                    onChange={selectFile}
                 />
                 <button
                     className="btn xin-btn-nofocus"
