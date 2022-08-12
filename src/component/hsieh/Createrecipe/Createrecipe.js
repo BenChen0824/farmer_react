@@ -63,6 +63,8 @@ function Createrecipe() {
     const [ingredientcorrect, setIngredientCorrect] = useState('');
     const [stepcorrect, setStepCorrect] = useState('');
 
+    const [previewimg, setPreviewimg] = useState('');
+
     const navigate = useNavigate();
 
     const sentAllInfo = async (event) => {
@@ -155,22 +157,27 @@ function Createrecipe() {
             .then((obj) => console.log(obj));
     }
 
-    function previewFile() {
-        var preview = document.querySelector('.photouploadincreate');
-        var file = document.querySelector('input[type=file]').files[0];
-        var reader = new FileReader();
+    // function previewFile() {
+    //     var preview = document.querySelector('img');
+    //     var file = document.querySelector('input[type=file]').files[0];
+    //     var reader = new FileReader();
 
-        reader.addEventListener(
-            'load',
-            function () {
-                preview.src = reader.result;
-            },
-            false
-        );
+    //     reader.addEventListener(
+    //         'load',
+    //         function () {
+    //             preview.src = reader.result;
+    //         },
+    //         false
+    //     );
 
-        if (file) {
-            reader.readAsDataURL(file);
-        }
+    //     if (file) {
+    //         reader.readAsDataURL(file);
+    //     }
+    // }
+
+    function qwert() {
+        const a = previewimg.substring(12);
+        return a;
     }
 
     return (
@@ -515,31 +522,34 @@ function Createrecipe() {
                         className="iconincreate"
                     />
                 </button> */}
-                    <input
+                    {/* <input
                         type="file"
                         name="recipes_img"
                         onchange="previewFile()"
-                    />
+                    /> */}
                     {/* 上傳按鈕 */}
-                    <img src="" height="200" alt="" />
+                    {/* <img src="" height="200" alt="" /> */}
 
-                    <div className="photouploadincreate" src="">
-                        {/* <form style={{ display: 'none' }}>
-                            <input
-                                id="inputData"
-                                name="file"
-                                type="file"
-                                ref={hiddenFileInput}
-                                accept="image/*"
-                                onChange={handleOnChange}
-                            />
-                        </form> */}
-                        <img className="showphotoincreate" src="" alt="" />
+                    <div className="photouploadincreate">
+                        <input
+                            type="file"
+                            name="recipes_img"
+                            // onchange={previewFile}
+                            onChange={(e) => {
+                                setPreviewimg(e.target.value);
+                            }}
+                        />
+
+                        <img
+                            className="showphotoincreate"
+                            src={`/images/${qwert()}`}
+                            alt=""
+                        />
                     </div>
                 </div>
-                <div className="buttonintextalign">
+                {/* <div className="buttonintextalign">
                     <label>請選擇照片</label>
-                </div>
+                </div> */}
 
                 <hr className="hrincreaterecipe" />
                 {/* 分隔線，以下完成按鈕 */}
