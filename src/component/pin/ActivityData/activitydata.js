@@ -17,28 +17,28 @@ function ActivityData() {
         autoplay: true,
     };
     const [data, setData] = useState([
-        {
-            sid: '',
-            company_id: '',
-            card_img: '',
-            address: '',
-            phone: '',
-            fax: '',
-            card_area: '',
-            card_city: '',
-            card_info: '',
-            card_info1: '',
-            card_info2: '',
-            card_info3: '',
-            card_info4: '',
-            card_info5: '',
-            card_a: '',
-            card_b: '',
-            card_c: '',
-            card_d: '',
-            Map_a: '',
-            Map_b: '',
-        },
+        // {
+        //     sid: '',
+        //     company_id: '',
+        //     card_img: '',
+        //     address: '',
+        //     phone: '',
+        //     fax: '',
+        //     card_area: '',
+        //     card_city: '',
+        //     card_info: '',
+        //     card_info1: '',
+        //     card_info2: '',
+        //     card_info3: '',
+        //     card_info4: '',
+        //     card_info5: '',
+        //     card_a: '',
+        //     card_b: '',
+        //     card_c: '',
+        //     card_d: '',
+        //     Map_a: '',
+        //     Map_b: '',
+        // },
     ]);
 
     const getdata = async () => {
@@ -75,27 +75,33 @@ function ActivityData() {
                                   <div className="col-md-8 mb-3 pt-3">
                                       <div>
                                           <Slider {...settings}>
-                                              <div className="">
-                                                  <img
-                                                      src="/images/activity/1.jpg"
-                                                      className="d-block w-100"
-                                                      alt=""
-                                                  />
-                                              </div>
-                                              <div>
-                                                  <img
-                                                      src="/images/activity/2.jpg"
-                                                      className="d-block w-100"
-                                                      alt=""
-                                                  />
-                                              </div>
-                                              <div>
-                                                  <img
-                                                      src="/images/activity/3.jpg"
-                                                      className="d-block w-100"
-                                                      alt=""
-                                                  />
-                                              </div>
+                                              {/* {console.log(
+                                                  JSON.parse(
+                                                      row.company_infoImg
+                                                  )
+                                              )} */}
+                                              {JSON.parse(
+                                                  row.company_infoImg
+                                              ).map((v2, i2) => {
+                                                  return (
+                                                      <div
+                                                          className=""
+                                                          key={i2}
+                                                      >
+                                                          <img
+                                                              src={`/images/activity/${v2}`}
+                                                              className="d-block w-100 "
+                                                              style={
+                                                                  {
+                                                                      //   height: '75vh',
+                                                                      //   width: '100vh',
+                                                                  }
+                                                              }
+                                                              alt=""
+                                                          />
+                                                      </div>
+                                                  );
+                                              })}
                                           </Slider>
                                       </div>
                                       {/* <img
@@ -200,21 +206,12 @@ function ActivityData() {
                                               type="radio"
                                           />
                                           <div>
-                                              <p className="">
-                                                  {`${row.card_info1}`}
-                                              </p>
-                                              <p className="">
-                                                  {`${row.card_info2}`}
-                                              </p>
-                                              <p className="">
-                                                  {`${row.card_info3}`}
-                                              </p>
-                                              <p className="">
-                                                  {`${row.card_info4}`}
-                                              </p>
-                                              <p className="">
-                                                  {`${row.card_info5}`}
-                                              </p>
+                                              <p
+                                                  className=""
+                                                  dangerouslySetInnerHTML={{
+                                                      __html: `${row.card_info1}`,
+                                                  }}
+                                              ></p>
                                               <h5 className="pt-3">體驗活動</h5>
                                               <div className="normal">
                                                   <p className="">
@@ -229,23 +226,32 @@ function ActivityData() {
                                               </div>
                                               <h5 className="pt-3">建議遊程</h5>
                                               <div className="normal">
-                                                  <p className="">
-                                                      {`${row.card_c}`}
-                                                  </p>
+                                                  <p
+                                                      className=""
+                                                      dangerouslySetInnerHTML={{
+                                                          __html: `${row.card_c}`,
+                                                      }}
+                                                  ></p>
                                               </div>
                                               <h5 className="pt-3">在地美食</h5>
                                               <div className="normal">
-                                                  <p className="">
-                                                      {`${row.card_d}`}
-                                                  </p>
+                                                  <p
+                                                      className=""
+                                                      dangerouslySetInnerHTML={{
+                                                          __html: `${row.card_d}`,
+                                                      }}
+                                                  ></p>
                                               </div>
                                               <h5 className="pt-3">
                                                   伴手禮與農特產
                                               </h5>
                                               <div className="">
-                                                  <p className="">
-                                                      {`${row.card_e}`}
-                                                  </p>
+                                                  <p
+                                                      className=""
+                                                      dangerouslySetInnerHTML={{
+                                                          __html: `${row.card_e}`,
+                                                      }}
+                                                  ></p>
                                               </div>
                                           </div>
                                       </div>
@@ -258,7 +264,7 @@ function ActivityData() {
                                           />
                                           <div>
                                               <iframe
-                                                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3633.8556041430024!2d120.8216862149935!3d24.38632608427973!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3469015ff3afd2a7%3A0xc7cb5bcf91be6511!2z6JaR6bq75ZyS!5e0!3m2!1szh-TW!2stw!4v1660065745595!5m2!1szh-TW!2stw"
+                                                  src={`${row.Map_a}`}
                                                   width="100%"
                                                   height="550"
                                                   style={{ border: 'none' }}
@@ -267,24 +273,17 @@ function ActivityData() {
                                                   referrerPolicy="no-referrer-when-downgrade"
                                               ></iframe>
                                               <div className="pt-5">
-                                                  <span className="">
-                                                      苗栗公館交流道下:
-                                                  </span>
-                                                  {`${row.Map_b}`}
-                                                  <br />
-                                                  往苗栗方向接東西向72號快速道路(行至盡頭靠右往大湖方向行駛)→接台三線於137.5公里處右轉→接苗130線(遊客服務中心位在苗130線26.5公里處左側)&nbsp;
-                                                  <br />
-                                                  <br />
-                                                  <span>三義交流道下:</span>
-                                                  <br />
-                                                  右轉進入台13線(往三義市區方向)，經過三義木雕街至光復路，看到第二個天橋後第一個紅綠燈
-                                                  (48k處)
-                                                  即右轉，進入苗130線，直行至第二個叉路右轉往大湖方向，延著苗130線直行至26.5公里處右側即見遊客服務中心。
-                                                  <br />
-                                                  <br />
-                                                  <span>國道四號:</span>
-                                                  <br />
-                                                  中山高轉國道４號至石岡終點左轉往東勢的方向,經石岡市區左轉過橋後往卓蘭方向→接台三線續行→於台三線137.5公里(即見富麗農村薑麻園入口意象指示牌)左轉接苗130線至26.5公里處(遊客服務中心)。
+                                                  <h5 className="pt-3">
+                                                      交通路線：
+                                                  </h5>
+                                                  <div className="">
+                                                      <p
+                                                          className=""
+                                                          dangerouslySetInnerHTML={{
+                                                              __html: `${row.Map_b}`,
+                                                          }}
+                                                      ></p>
+                                                  </div>
                                               </div>
                                           </div>
                                       </div>

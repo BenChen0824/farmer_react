@@ -38,21 +38,6 @@ function MemberOrders() {
     function searchItems(searchValue) {
         setSearchInput(searchValue);
         if (searchValue !== '') {
-            const filteredData = response.filter((item) => {
-                return Object.values(item)
-                    .join('')
-                    .toLowerCase()
-                    .includes(searchValue.toLowerCase());
-            });
-            setFilteredResult(filteredData);
-        } else {
-            setFilteredResult(response);
-        }
-    }
-
-    function searchCategory(searchValue) {
-        setFilterCate(searchValue);
-        if (searchValue !== '') {
             const filteredData = orderList.filter((item) => {
                 return Object.values(item)
                     .join('')
@@ -62,6 +47,21 @@ function MemberOrders() {
             setFilteredResult(filteredData);
         } else {
             setFilteredResult(orderList);
+        }
+    }
+
+    function searchCategory(searchValue) {
+        setFilterCate(searchValue);
+        if (searchValue !== '') {
+            const filteredData = response.filter((item) => {
+                return Object.values(item)
+                    .join('')
+                    .toLowerCase()
+                    .includes(searchValue.toLowerCase());
+            });
+            setFilteredResult(filteredData);
+        } else {
+            setFilteredResult(response);
         }
     }
 
@@ -99,7 +99,7 @@ function MemberOrders() {
                                             id="text"
                                             type="search"
                                             name="search"
-                                            placeholder="請搜尋商品名稱"
+                                            placeholder="請搜尋訂單編號"
                                             aria-label="search"
                                             onChange={(e) => {
                                                 searchItems(e.target.value);
@@ -140,6 +140,9 @@ function MemberOrders() {
                                                       </th>
                                                       <th scope="col">
                                                           訂單狀態
+                                                      </th>
+                                                      <th scope="col">
+                                                          商品評價
                                                       </th>
                                                   </tr>
                                               </thead>
@@ -211,6 +214,9 @@ function MemberOrders() {
                                                                           }
                                                                       </p>
                                                                   </td>
+                                                                  <td className="align-middle">
+                                                                    <button className="btn btn-success btn-sm">來去評價</button>
+                                                                  </td>
                                                               </tr>
                                                           );
                                                       })}
@@ -274,6 +280,9 @@ function MemberOrders() {
                                                                           }
                                                                       </p>
                                                                   </td>
+                                                                  <td className="align-middle">
+                                                                    <button className="btn btn-success btn-sm">來去評價</button>
+                                                                  </td>
                                                               </tr>
                                                           );
                                                       })}
@@ -281,7 +290,7 @@ function MemberOrders() {
                                               <tfoot>
                                                   <tr>
                                                       <td
-                                                          colSpan="4"
+                                                          colSpan="5"
                                                           className="text-end border-0"
                                                       >
                                                           <h5>訂單編號：</h5>
@@ -294,7 +303,7 @@ function MemberOrders() {
                                                   </tr>
                                                   <tr>
                                                       <td
-                                                          colSpan="4"
+                                                          colSpan="5"
                                                           className="text-end border-0 py-0"
                                                       >
                                                           <h5>訂單總金額：</h5>
@@ -338,6 +347,9 @@ function MemberOrders() {
                                                       </th>
                                                       <th scope="col">
                                                           訂單狀態
+                                                      </th>
+                                                      <th scope="col">
+                                                          商品評價
                                                       </th>
                                                   </tr>
                                               </thead>
@@ -406,6 +418,9 @@ function MemberOrders() {
                                                                           }
                                                                       </p>
                                                                   </td>
+                                                                  <td className="align-middle">
+                                                                    <button className="btn btn-success btn-sm">來去評價</button>
+                                                                  </td>
                                                               </tr>
                                                           );
                                                       })}
@@ -468,6 +483,10 @@ function MemberOrders() {
                                                                               v2.order_status
                                                                           }
                                                                       </p>
+                                                                      
+                                                                  </td>
+                                                                  <td className="align-middle">
+                                                                    <button className="btn btn-success btn-sm">來去評價</button>
                                                                   </td>
                                                               </tr>
                                                           );
@@ -476,7 +495,7 @@ function MemberOrders() {
                                               <tfoot>
                                                   <tr>
                                                       <td
-                                                          colSpan="4"
+                                                          colSpan="5"
                                                           className="text-end border-0"
                                                       >
                                                           <h5>訂單編號：</h5>
@@ -489,7 +508,7 @@ function MemberOrders() {
                                                   </tr>
                                                   <tr>
                                                       <td
-                                                          colSpan="4"
+                                                          colSpan="5"
                                                           className="text-end border-0 py-0"
                                                       >
                                                           <h5>訂單總金額：</h5>

@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function Updaterecipe() {
+    const loginUser = JSON.parse(localStorage.getItem('auth'));
+
     const [updaterecipe, setUpdaterecipe] = useState({
         recipes_sid: '',
         recipes_name: '',
@@ -80,9 +82,14 @@ function Updaterecipe() {
     // 料理步驟
     const [updateStep, setUpdateStep] = useState('');
 
+    // 料理照片
+    const [updateRecipe_img, setUpdateRecipe_img] = useState([]);
+
     const navigate = useNavigate();
 
-    const updateAllInfo = async () => {
+    const updateAllInfo = async (event) => {
+        event.preventDefault();
+
         const data = {
             recipe_sid: params.recipes_sid,
             updateRecipesname: document.form1.updateRecipesname.value,
@@ -94,6 +101,8 @@ function Updaterecipe() {
             updateRecipesdegree: document.form1.updateRecipesdegree.value,
             updateIngredient: document.form1.updateIngredient.value,
             updateStep: document.form1.updateStep.value,
+            recipes_img: document.form1.recipes_img.value,
+            customer_id: loginUser.customer_id,
         };
 
         console.log(data);
@@ -108,6 +117,9 @@ function Updaterecipe() {
         const obj = await r.json();
         console.log(obj);
         alreadyupdate(obj);
+
+        console.log(alreadyupdate);
+        setUpdateRecipe_img(obj);
     };
 
     function alreadyupdate(obj) {
@@ -115,7 +127,7 @@ function Updaterecipe() {
             alert('請填寫正確資料');
         } else {
             alert('更新成功');
-            // navigate('/recipe', { replace: true });
+            navigate('/recipe', { replace: true });
         }
     }
 
@@ -127,7 +139,7 @@ function Updaterecipe() {
                 id=""
                 noValidate
                 method="post"
-                // onSubmit={checkForm}
+                onSubmit={updateAllInfo}
             >
                 <h2 className="createrecipetitle">
                     修改食譜 ／ Update Recipes
@@ -334,56 +346,6 @@ function Updaterecipe() {
                         </div>
 
                         {/* 分隔線 */}
-
-                        <div className="ingredientandstep">
-                            {/* <section>
-                                <input
-                                    name="updateIngredient"
-                                    id="updateIngredient"
-                                    type="text"
-                                    className="ingredientuse"
-                                    value={updaterecipe.recipes_ingredient}
-                                    placeholder="請輸入食材"
-                                    onChange={(e) => {
-                                        setUpdaterecipe(e.target.value);
-                                    }}
-                                />
-                            </section> */}
-
-                            {/* <button className="buttonincreate">
-                                <img
-                                    src="/images/trashcan.svg"
-                                    alt=""
-                                    className="iconincreate"
-                                />
-                            </button> */}
-                        </div>
-
-                        {/* 分隔線 */}
-
-                        <div className="ingredientandstep">
-                            {/* <section>
-                                <input
-                                    name="updateIngredient"
-                                    id="updateIngredient"
-                                    type="text"
-                                    className="ingredientuse"
-                                    value={updaterecipe.recipes_ingredient}
-                                    placeholder="請輸入食材"
-                                    onChange={(e) => {
-                                        setUpdaterecipe(e.target.value);
-                                    }}
-                                />
-                            </section> */}
-
-                            {/* <button className="buttonincreate">
-                                <img
-                                    src="/images/trashcan.svg"
-                                    alt=""
-                                    className="iconincreate"
-                                />
-                            </button> */}
-                        </div>
                     </div>
                 </div>
 
@@ -413,48 +375,6 @@ function Updaterecipe() {
                         </div>
 
                         {/* 分隔線 */}
-
-                        {/* <div className="ingredientandstep">
-                            <div className="redballincreate">2</div>
-                            <section>
-                                <textarea
-                                    name="updateStep"
-                                    id="updateStep"
-                                    className="dataform1increate"
-                                    value={updaterecipe.recipes_cooking_method}
-                                    placeholder="步驟2"
-                                    onChange={(e) => {
-                                        setUpdaterecipe(e.target.value);
-                                    }}
-                                />
-                            </section>
-
-                            <button className="buttonincreate">
-                                <img
-                                    src="/images/move.svg"
-                                    alt=""
-                                    className="iconincreate"
-                                />
-                            </button>
-                        </div> */}
-
-                        {/* 分隔線 */}
-
-                        {/* <div className="ingredientandstep">
-                            <div className="redballincreate">3</div>
-                            <section>
-                                <textarea
-                                    name="updateStep"
-                                    id="updateStep"
-                                    className="dataform1increate"
-                                    value={updaterecipe.recipes_cooking_method}
-                                    placeholder="步驟3"
-                                    onChange={(e) => {
-                                        setUpdaterecipe(e.target.value);
-                                    }}
-                                />
-                            </section>
-                        </div> */}
                     </div>
                 </div>
 
@@ -462,28 +382,26 @@ function Updaterecipe() {
                 {/* 分隔線，以下照片 */}
 
                 <div className="photoareaincreate">
-                    <button className="buttonincreate">
+                    {/* <button className="buttonincreate">
                         <img
                             src="/images/camera.svg"
                             alt=""
                             className="iconincreate"
                         />
-                    </button>
+                    </button> */}
+                    <input type="file" name="recipes_img" />
+                    {/* 上傳按鈕 */}
 
                     <div className="photouploadincreate">
-                        <form style={{ display: 'none' }}>
+                        {/* <form style={{ display: 'none' }}>
                             <input
                                 id="inputData"
                                 name="file"
                                 type="file"
                                 accept="image/*"
                             />
-                        </form>
-                        <img
-                            className="shoephotoincreate"
-                            src={`/dishimages/${updaterecipe.recipes_img}`}
-                            alt=""
-                        />
+                        </form> */}
+                        <img className="shoephotoincreate" src="" alt="" />
                     </div>
                 </div>
                 <div className="buttonintextalign">
@@ -494,11 +412,7 @@ function Updaterecipe() {
                 {/* 分隔線，以下完成按鈕 */}
 
                 <div className="buttonintextalign">
-                    <button
-                        className="finishincreate"
-                        type="button"
-                        onClick={(e) => updateAllInfo()}
-                    >
+                    <button className="finishincreate" type="submit">
                         修改食譜
                         <img
                             src="/images/pen.svg"

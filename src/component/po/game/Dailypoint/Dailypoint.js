@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './dailypoint.css';
 import Pages from '../components/Pages';
 import axios from 'axios';
@@ -9,7 +9,7 @@ function Dailypoint() {
     const [eggpoints, setEggPoints] = useState(0);
     //info頁籤的鉤子
     const [info, setInfo] = useState(0);
-
+    //限定一天一次領取點數提示
     const [showup, setShowup] = useState();
 
     const pointArray = [100, 150, 100, 200, 300, 500];
@@ -18,34 +18,56 @@ function Dailypoint() {
     const brokenegg = '/dailypoint-img/44434.png';
     const defaultegg = '/dailypoint-img/812921.png';
     //for會員
-    const loginUser = JSON.parse(localStorage.getItem("auth"))
+    const loginUser = JSON.parse(localStorage.getItem('auth'));
+
+    const getMemberData = () => {
+        fetch('http://localhost:3600/game/member', {
+            method: 'GET',
+            headers: { change_memberid: loginUser.customer_id },
+        })
+            .then((r) => r.json())
+            .then((obj) => {
+                // console.log(obj[0].daily_points);
+                setEggPoints(obj[0].daily_points);
+            });
+    };
+
+    useEffect(() => {
+        getMemberData();
+    }, []);
+
+    const updateEggPoint = (points) => {
+        axios
+            .post('http://localhost:3600/game/addpoints', {
+                change_points: points,
+                change_memberid: loginUser.customer_id,
+            })
+            .then((result) => {
+                console.log(result.data);
+            });
+    };
 
     const eggClick = (i) => {
-        // console.log({i})
         if (dataCheck) {
             const newEggStates = [...eggStates];
             newEggStates[i] = 1;
             setEggStates(newEggStates);
 
             let getPoint = pointArray[randomNum];
-            //console.log(getPoint);
-            setEggPoints(getPoint);
+            // console.log(getPoint);
+            // console.log(eggpoints + getPoint);
+            setEggPoints(eggpoints + getPoint);
+            // console.log(eggpoints);
+            updateEggPoint(eggpoints + getPoint);
             //每日只領一次
             setDataCheck(false);
             //送資料到後端 change_memberid:之後要改成柏安的localstorege
-            axios
-                .post('http://localhost:3600/game/addpoints', {
-                    change_points: getPoint,
-                    change_memberid: loginUser.customer_id,
-                })
-                .then((result) => {
-                    console.log(result.data);
-                });
         } else {
             // alert("今天領過囉")
             setShowup('今日已完成兌換囉...');
         }
     };
+    useEffect(() => {}, [eggStates]);
 
     return (
         <>

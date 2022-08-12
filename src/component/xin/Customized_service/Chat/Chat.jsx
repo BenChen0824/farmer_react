@@ -7,6 +7,7 @@ import ChatInput from './ChatContainer/Chatinput';
 const Chat = ({ socket, user, users, setUsers, messages, setMessages }) => {
     const [message, setMessage] = useState('');
     const [selectedUser, setselectedUser] = useState({});
+    const [file, setFile] = useState();
     const currentSelectedUser = useRef({});
     const findUser = useCallback(
         (userId) => {
@@ -102,18 +103,48 @@ const Chat = ({ socket, user, users, setUsers, messages, setMessages }) => {
     }, [socket, userConnected, userDisconnected, privateMessage, userMessages]);
 
     const sendMessage = () => {
-        socket.emit('private message', {
-            content: message,
-            to: selectedUser.userId,
-        });
-        const newMessage = {
-            userId: user.userId,
-            username: user.username,
-            message,
-        };
-        setMessages([...messages, newMessage]);
-        setMessage('');
+        if (file) {
+            const newMessage = {
+                userId: user.userId,
+                username: user.username,
+                message,
+                type: 'file',
+                body: file,
+                mimeType: file.type,
+                fileName: file.name,
+            };
+
+            socket.emit('private message', {
+                content: message,
+                to: selectedUser.userId,
+            });
+            setMessages([...messages, newMessage]);
+            setMessage('');
+            setFile();
+        } else {
+            socket.emit('private message', {
+                content: message,
+                to: selectedUser.userId,
+            });
+            const newMessage = {
+                userId: user.userId,
+                username: user.username,
+                message,
+            };
+            setMessages([...messages, newMessage]);
+            setMessage('');
+            setFile();
+        }
     };
+    function selectFile(e) {
+        if (typeof e.target.value[0] !== 'undefined') {
+            console.log(e.target.files[0]);
+            setMessage(e.target.files[0].name);
+            setFile(e.target.files[0]);
+        } else {
+            return null;
+        }
+    }
 
     const selectUser = (user) => {
         setselectedUser(user);
@@ -204,6 +235,7 @@ const Chat = ({ socket, user, users, setUsers, messages, setMessages }) => {
                     <ChatHeader user={selectedUser} />
                     <ChatBody user={user} messages={messages} />
                     <ChatInput
+                        selectFile={selectFile}
                         message={message}
                         setMessage={setMessage}
                         sendMessage={sendMessage}

@@ -50,3 +50,19 @@
      justify-content: center;
      z-index: 10;
 }
+
+.ad_wrap {
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+    margin-top: 200px;
+}
+
+.ad_hidden{
+    transform: translateX(-300px);
+    transition: all 1s ease-out ;
+}
+
+.ad_move{
+    transform: translateX(0);
+}
