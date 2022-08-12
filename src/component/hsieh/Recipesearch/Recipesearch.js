@@ -59,7 +59,7 @@ function Recipesearch() {
                     </p>
                     <button
                         type="button"
-                        class="btn btn-dark"
+                        className="btn btn-dark"
                         style={{ margin: 5 }}
                         onClick={() => {
                             const data = recipeDisplayAgain.filter((v, i) => {
@@ -73,7 +73,7 @@ function Recipesearch() {
 
                     <button
                         type="button"
-                        class="btn btn-dark"
+                        className="btn btn-dark"
                         style={{ margin: 5 }}
                         onClick={() => setButtonPop(true)}
                     >

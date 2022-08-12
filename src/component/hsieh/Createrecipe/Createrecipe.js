@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function Createrecipe() {
+    const loginUser = JSON.parse(localStorage.getItem('auth'));
+
     // 新增食譜名稱
     const [recipesname, setRecipesname] = useState('');
 
@@ -48,6 +50,9 @@ function Createrecipe() {
     // 料理步驟
     const [step, setStep] = useState('');
 
+    // 料理照片
+    const [recipe_img, setRecipe_img] = useState([]);
+
     const [recipesnamecorrect, setRecipesnameCorrect] = useState('');
     const [descriptioncorrect, setDescriptionCorrect] = useState('');
     const [timecostcorrect, setTimecostCorrect] = useState('');
@@ -60,44 +65,57 @@ function Createrecipe() {
 
     const navigate = useNavigate();
 
-    // const sentAllInfo = async (event) => {
-    //     event.preventDefault();
+    const sentAllInfo = async (event) => {
+        event.preventDefault();
 
-    //     const data = {
-    //         recipesname: document.form1.recipesname.value,
-    //         description: document.form1.description.value,
-    //         timecost: document.form1.timecost.value,
-    //         portion: document.form1.portion.value,
-    //         calories: document.form1.calories.value,
-    //         recipestype: document.form1.recipestype.value,
-    //         recipesdegree: document.form1.recipesdegree.value,
-    //         ingredient: document.form1.ingredient.value,
-    //         step: document.form1.step.value,
-    //     };
+        // const fd = new FormData(document.form1);
+        // fd.append('file', event.target.recipe_img);
+        // const r = await fetch('http://localhost:3600/recipe/createrecipe', {
+        //     method: 'POST',
+        //     body: fd,
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        // });
 
-    //     console.log(data);
-    //     const r = await fetch('http://localhost:3600/recipe/createrecipe', {
-    //         method: 'POST',
-    //         body: JSON.stringify(data),
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //     });
-    //     const obj = await r.json();
-    //     console.log(obj);
-    //     alreadycreate(obj);
+        const data = {
+            recipesname: document.form1.recipesname.value,
+            description: document.form1.description.value,
+            timecost: document.form1.timecost.value,
+            portion: document.form1.portion.value,
+            calories: document.form1.calories.value,
+            recipestype: document.form1.recipestype.value,
+            recipesdegree: document.form1.recipesdegree.value,
+            ingredient: document.form1.ingredient.value,
+            step: document.form1.step.value,
+            recipes_img: document.form1.recipes_img.value,
+            customer_id: loginUser.customer_id,
+        };
 
-    //     console.log(alreadycreate);
-    // };
+        console.log(data);
+        const r = await fetch('http://localhost:3600/recipe/createrecipe', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        const obj = await r.json();
+        console.log(obj);
+        alreadycreate(obj);
 
-    // function alreadycreate(obj) {
-    //     if (obj.success) {
-    //         alert('請填寫正確資料');
-    //     } else {
-    //         alert('新增成功');
-    //         navigate('/recipe', { replace: true });
-    //     }
-    // }
+        console.log(alreadycreate);
+        setRecipe_img(obj);
+    };
+
+    function alreadycreate(obj) {
+        if (obj.success) {
+            alert('請填寫正確資料');
+        } else {
+            alert('新增成功');
+            navigate('/recipe', { replace: true });
+        }
+    }
 
     const hiddenFileInput = useRef('');
     const [image, setImage] = useState({ preview: '', data: '' });
@@ -108,7 +126,6 @@ function Createrecipe() {
             recipe_img: '',
         },
     ]);
-    const loginUser = JSON.parse(localStorage.getItem('auth'));
 
     const handleClick = (event) => {
         hiddenFileInput.current.click();
@@ -138,6 +155,24 @@ function Createrecipe() {
             .then((obj) => console.log(obj));
     }
 
+    function previewFile() {
+        var preview = document.querySelector('.photouploadincreate');
+        var file = document.querySelector('input[type=file]').files[0];
+        var reader = new FileReader();
+
+        reader.addEventListener(
+            'load',
+            function () {
+                preview.src = reader.result;
+            },
+            false
+        );
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    }
+
     return (
         <>
             <form
@@ -146,7 +181,7 @@ function Createrecipe() {
                 id=""
                 noValidate
                 method="post"
-                // onSubmit={checkForm}
+                onSubmit={sentAllInfo}
             >
                 <h2 className="createrecipetitle">
                     新增食譜 ／ Create New Recipes
@@ -408,70 +443,6 @@ function Createrecipe() {
                         <div className="invalid-feedback"></div>
 
                         {/* 分隔線 */}
-
-                        {/* <div className="ingredientandstep">
-                            <section>
-                                <input
-                                    name="ingredient"
-                                    id="ingredient"
-                                    type="text"
-                                    className="ingredientuse"
-                                    value={
-                                        ingredientcorrect === ''
-                                            ? ingredient
-                                            : ingredientcorrect
-                                    }
-                                    required
-                                    placeholder="食材與分量，如：雞蛋2顆"
-                                    onChange={(e) => {
-                                        setIngredient(e.target.value);
-                                    }}
-                                    onFocus={() => setIngredientCorrect('')}
-                                />
-                                <div className="invalid-feedback"></div>
-                            </section>
-
-                            <button className="buttonincreate">
-                                <img
-                                    src="/images/trashcan.svg"
-                                    alt=""
-                                    className="iconincreate"
-                                />
-                            </button>
-                        </div> */}
-
-                        {/* 分隔線 */}
-
-                        {/* <div className="ingredientandstep">
-                            <section>
-                                <input
-                                    name="ingredient"
-                                    id="ingredient"
-                                    type="text"
-                                    className="ingredientuse"
-                                    value={
-                                        ingredientcorrect === ''
-                                            ? ingredient
-                                            : ingredientcorrect
-                                    }
-                                    required
-                                    placeholder="食材與分量，如：雞蛋2顆"
-                                    onChange={(e) => {
-                                        setIngredient(e.target.value);
-                                    }}
-                                    onFocus={() => setIngredientCorrect('')}
-                                />
-                                <div className="invalid-feedback"></div>
-                            </section>
-
-                            <button className="buttonincreate">
-                                <img
-                                    src="/images/trashcan.svg"
-                                    alt=""
-                                    className="iconincreate"
-                                />
-                            </button>
-                        </div> */}
                     </div>
                 </div>
 
@@ -516,58 +487,6 @@ function Createrecipe() {
                         </div>
 
                         {/* 分隔線 */}
-
-                        {/* <div className="ingredientandstep">
-                            <div className="redballincreate">2</div>
-                            <section>
-                                <textarea
-                                    name="step"
-                                    id="step"
-                                    className="dataform1increate"
-                                    value={
-                                        stepcorrect === '' ? step : stepcorrect
-                                    }
-                                    required
-                                    placeholder="步驟2"
-                                    onChange={(e) => {
-                                        setStep(e.target.value);
-                                    }}
-                                    onFocus={() => setStepCorrect('')}
-                                />
-                                <div className="invalid-feedback"></div>
-                            </section>
-
-                            <button className="buttonincreate">
-                                <img
-                                    src="/images/move.svg"
-                                    alt=""
-                                    className="iconincreate"
-                                />
-                            </button>
-                        </div> */}
-
-                        {/* 分隔線 */}
-
-                        {/* <div className="ingredientandstep">
-                            <div className="redballincreate">3</div>
-                            <section>
-                                <textarea
-                                    name="step"
-                                    id="step"
-                                    className="dataform1increate"
-                                    value={
-                                        stepcorrect === '' ? step : stepcorrect
-                                    }
-                                    required
-                                    placeholder="步驟3"
-                                    onChange={(e) => {
-                                        setStep(e.target.value);
-                                    }}
-                                    onFocus={() => setStepCorrect('')}
-                                />
-                                <div className="invalid-feedback"></div>
-                            </section>
-                        </div> */}
                     </div>
                 </div>
 
@@ -585,19 +504,27 @@ function Createrecipe() {
                 {/* 分隔線，以下照片 */}
 
                 <div className="photoareaincreate">
-                    <button className="buttonincreate" onClick={handleClick}>
-                        <img
-                            src="/images/camera.svg"
-                            alt=""
-                            className="iconincreate"
-                        />
-                    </button>
+                    {/* <button
+                    className="buttonincreate"
+                    type="button"
+                    onClick={handleClick}
+                >
+                    <img
+                        src="/images/camera.svg"
+                        alt=""
+                        className="iconincreate"
+                    />
+                </button> */}
+                    <input
+                        type="file"
+                        name="recipes_img"
+                        onchange="previewFile()"
+                    />
+                    {/* 上傳按鈕 */}
+                    <img src="" height="200" alt="" />
 
-                    <div className="photouploadincreate">
-                        <form
-                            style={{ display: 'none' }}
-                            onSubmit={handleSubmit}
-                        >
+                    <div className="photouploadincreate" src="">
+                        {/* <form style={{ display: 'none' }}>
                             <input
                                 id="inputData"
                                 name="file"
@@ -606,16 +533,8 @@ function Createrecipe() {
                                 accept="image/*"
                                 onChange={handleOnChange}
                             />
-                        </form>
-                        <img
-                            className="showphotoincreate"
-                            src={
-                                image.preview
-                                    ? image.preview
-                                    : '/images/' + profileData[0].recipe_img
-                            }
-                            alt=""
-                        />
+                        </form> */}
+                        <img className="showphotoincreate" src="" alt="" />
                     </div>
                 </div>
                 <div className="buttonintextalign">
@@ -626,11 +545,7 @@ function Createrecipe() {
                 {/* 分隔線，以下完成按鈕 */}
 
                 <div className="buttonintextalign">
-                    <button
-                        className="finishincreate"
-                        type="button"
-                        // onClick={(e) => sentAllInfo()}
-                    >
+                    <button className="finishincreate" type="submit">
                         新增食譜
                         <img
                             src="/images/file-plus.svg"
@@ -649,5 +564,7 @@ function Createrecipe() {
 // }
 
 // onclick = "CreateNewRecipe()"";
+
+// onSubmit={handleSubmit}
 
 export default Createrecipe;
