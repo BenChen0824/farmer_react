@@ -89,6 +89,7 @@ function Game(props) {
                         .then((result) => {
                             console.log(result.data);
                         });
+                    Swal.fire('Good luck!', '已完成扣點.', 'success');
                 } else {
                     Swal.fire({
                         icon: 'error',
@@ -97,7 +98,6 @@ function Game(props) {
                         //footer: '<a href="">試試搶點</a>',
                     });
                 }
-                Swal.fire('Good luck!', '已完成扣點.', 'success');
             }
         });
     }
