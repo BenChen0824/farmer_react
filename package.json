@@ -36,6 +36,7 @@
         "react-share": "^4.4.0",
         "react-slick": "^0.29.0",
         "react-spinner-animated": "^3.1.1",
+        "rooks": "^6.4.2",
         "slick-carousel": "^1.8.1",
         "socket.io-client": "^4.5.1",
         "sweetalert2": "^11.4.26",

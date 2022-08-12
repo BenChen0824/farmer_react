@@ -1,12 +1,14 @@
 import React from 'react';
 import styles from './Ad.module.css';
-function Ad() {
+import clsx from 'clsx';
+
+function Ad({ className }) {
     return (
-        <div className={styles.hidden_box}>
-            <div className={styles.wrap}>
-                <img src="images/Mesa de trabajo 1-100.jpg" alt="" />
-            </div>
-        </div>
+        <img
+            className={clsx(styles.img, className)}
+            src="/images/Mesa de trabajo 1-100.jpg"
+            alt=""
+        />
     );
 }
 export default Ad;

@@ -38,21 +38,6 @@ function MemberOrders() {
     function searchItems(searchValue) {
         setSearchInput(searchValue);
         if (searchValue !== '') {
-            const filteredData = response.filter((item) => {
-                return Object.values(item)
-                    .join('')
-                    .toLowerCase()
-                    .includes(searchValue.toLowerCase());
-            });
-            setFilteredResult(filteredData);
-        } else {
-            setFilteredResult(response);
-        }
-    }
-
-    function searchCategory(searchValue) {
-        setFilterCate(searchValue);
-        if (searchValue !== '') {
             const filteredData = orderList.filter((item) => {
                 return Object.values(item)
                     .join('')
@@ -62,6 +47,21 @@ function MemberOrders() {
             setFilteredResult(filteredData);
         } else {
             setFilteredResult(orderList);
+        }
+    }
+
+    function searchCategory(searchValue) {
+        setFilterCate(searchValue);
+        if (searchValue !== '') {
+            const filteredData = response.filter((item) => {
+                return Object.values(item)
+                    .join('')
+                    .toLowerCase()
+                    .includes(searchValue.toLowerCase());
+            });
+            setFilteredResult(filteredData);
+        } else {
+            setFilteredResult(response);
         }
     }
 
@@ -99,7 +99,7 @@ function MemberOrders() {
                                             id="text"
                                             type="search"
                                             name="search"
-                                            placeholder="請搜尋商品名稱"
+                                            placeholder="請搜尋訂單編號"
                                             aria-label="search"
                                             onChange={(e) => {
                                                 searchItems(e.target.value);
