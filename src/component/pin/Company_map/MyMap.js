@@ -83,8 +83,9 @@ function MyMap() {
                     >
                         {companyData.features.map((v, i) => {
                             return (
+                                // CSS 更動
                                 <div
-                                    class="mapcard mb-3 infocards"
+                                    class="pinmycard card mb-3 infocards"
                                     data-cards="241"
                                     key={v.QualityFarmID}
                                 >

@@ -1,15 +1,15 @@
-.boc-objft{
+.bore-objft{
     object-fit: cover;
 }
-.boc-lineheight{
+.bore-lineheight{
     line-height: 1.1rem;
 }
-.boc-multiline-ellipsis { 
+.bore-multiline-ellipsis { 
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     overflow: hidden;
 }
-.boc-switchpx{
+.bore-switchpx{
     padding: 0 10%;
 }

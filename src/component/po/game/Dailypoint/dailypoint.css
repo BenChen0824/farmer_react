@@ -1,16 +1,19 @@
 .bggforblue{
-    /* background-image: url(/public/dailypoint-img/ed648e3d23accf40422277d8447529a5.jpg); */
+    background-image: url(/public/dailypoint-img/ed648e3d23accf40422277d8447529a5.jpg);
     background-size: contain;
     width: 100%;
     height: auto;
 }
 
 .bgg{
-    /* background-image: url(/public/dailypoint-img/BG.jpg); */
+    background-image: url(/public/dailypoint-img/BG.jpg);
     background-size: contain;
     width: 100%;
     height: 800px;
 }
+/* .dailypointstext{
+    background-color: #D6D6D6;
+} */
 .egg{
     width: 100px;
     height: 100px;

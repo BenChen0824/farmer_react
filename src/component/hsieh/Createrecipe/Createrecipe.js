@@ -60,180 +60,44 @@ function Createrecipe() {
 
     const navigate = useNavigate();
 
-    const checkForm = async (event) => {
-        event.preventDefault();
+    // const sentAllInfo = async (event) => {
+    //     event.preventDefault();
 
-        let isPass = true;
+    //     const data = {
+    //         recipesname: document.form1.recipesname.value,
+    //         description: document.form1.description.value,
+    //         timecost: document.form1.timecost.value,
+    //         portion: document.form1.portion.value,
+    //         calories: document.form1.calories.value,
+    //         recipestype: document.form1.recipestype.value,
+    //         recipesdegree: document.form1.recipesdegree.value,
+    //         ingredient: document.form1.ingredient.value,
+    //         step: document.form1.step.value,
+    //     };
 
-        if (recipesname === '') {
-            setRecipesnameCorrect('請輸入食譜名稱');
-        }
+    //     console.log(data);
+    //     const r = await fetch('http://localhost:3600/recipe/createrecipe', {
+    //         method: 'POST',
+    //         body: JSON.stringify(data),
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //     });
+    //     const obj = await r.json();
+    //     console.log(obj);
+    //     alreadycreate(obj);
 
-        if (description === '') {
-            setDescriptionCorrect('請輸入食譜簡介');
-        }
+    //     console.log(alreadycreate);
+    // };
 
-        if (timecost === '') {
-            setTimecostCorrect('請輸入花費時間');
-        }
-
-        if (calories === '') {
-            setCaloriesCorrect('請輸入熱量');
-        }
-
-        if (portion === '') {
-            setPortionCorrect('請輸入份量');
-        }
-
-        if (recipestype === '') {
-            setRecipestypeCorrect('請輸入料理類型');
-        }
-
-        if (recipesdegree === '') {
-            setRecipesdegreeCorrect('請選擇料理難易度');
-        }
-
-        if (ingredient === '') {
-            setIngredientCorrect('請填寫食材');
-        }
-
-        if (step === '') {
-            setStepCorrect('請填寫料理步驟');
-        }
-
-        const data = {
-            recipesname: document.form1.recipesname.value,
-            description: document.form1.description.value,
-            timecost: document.form1.timecost.value,
-            calories: document.form1.calories.value,
-            portion: document.form1.portion.value,
-            recipestype: document.form1.recipestype.value,
-            recipesdegree: document.form1.recipesdegree.value,
-            ingredient: document.form1.ingredient.value,
-            step: document.form1.step.value,
-        };
-
-        const recipesname_f = document.form1.recipesname;
-        const description_f = document.form1.description;
-
-        const timecost_f = document.form1.timecost;
-        const timecost_re = new RegExp('/[0-9]{3}/');
-
-        const calories_f = document.form1.calories;
-        const calories_re = new RegExp('/[0-9]{3}/');
-
-        const portion_f = document.form1.portion;
-        const recipestype_f = document.form1.recipestype;
-        const recipesdegree_f = document.form1.recipesdegree;
-        const ingredient_f = document.form1.ingredient;
-        const step_f = document.form1.step;
-
-        const fields = [
-            recipesname_f,
-            description_f,
-            timecost_f,
-            calories_f,
-            portion_f,
-            recipestype_f,
-            recipesdegree_f,
-            ingredient_f,
-            step_f,
-        ];
-        const fieldTexts = [];
-        for (let f of fields) {
-            fieldTexts.push(f.nextElementSibling);
-        }
-        // for (let i in fields) {
-        // fields[i].classList.remove('is-invalid');
-        // fieldTexts[i].innerText = null;
-        // }
-
-        console.log(recipesname_f.value);
-
-        if (recipesname_f.value.length < 1) {
-            fields[0].classList.add('is-invalid');
-            fieldTexts[0].innerText = '請輸入食譜名稱';
-            isPass = false;
-        }
-
-        if (description_f.value.length < 1) {
-            fields[1].classList.add('is-invalid');
-            fieldTexts[1].innerText = '請輸入食譜簡介';
-            isPass = false;
-        }
-
-        if (!timecost_re.test(data.timecost)) {
-            fields[2].classList.add('is-invalid');
-            fieldTexts[2].innerText = '請輸入花費時間';
-            isPass = false;
-        }
-
-        if (!calories_re.test(data.calories)) {
-            fields[3].classList.add('is-invalid');
-            fieldTexts[3].innerText = '請輸入熱量';
-            isPass = false;
-        }
-
-        if (portion_f.value.length < 1) {
-            fields[4].classList.add('is-invalid');
-            fieldTexts[4].innerText = '請輸入份量';
-            isPass = false;
-        }
-
-        if (recipestype_f.value.length < 1) {
-            fields[5].classList.add('is-invalid');
-            fieldTexts[5].innerText = '請輸入料理類型';
-            isPass = false;
-        }
-
-        if (recipesdegree_f.value.length < 1) {
-            fields[6].classList.add('is-invalid');
-            fieldTexts[6].innerText = '請選擇料理難易度';
-            isPass = false;
-        }
-
-        if (ingredient_f.value.length < 1) {
-            fields[7].classList.add('is-invalid');
-            fieldTexts[7].innerText = '請填寫食材';
-            isPass = false;
-        }
-
-        if (step_f.value.length < 1) {
-            fields[8].classList.add('is-invalid');
-            fieldTexts[8].innerText = '請填寫料理步驟';
-            isPass = false;
-        }
-
-        if (!isPass) {
-            return;
-        }
-        // 結束函式
-
-        // const email_re = new RegExp(
-        //     '^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$'
-        // );
-        // const password_re = new RegExp('^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$');
-
-        const r = await fetch('http://localhost:3600/recipe/createrecipe', {
-            method: 'post',
-            body: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-        const obj = await r.json();
-        console.log(obj);
-        Createrecipe(obj);
-    };
-
-    function Createrecipe(obj) {
-        if (obj.success) {
-            alert('新增食譜成功');
-            navigate('/recipe', { replace: true });
-        } else {
-            alert('請填寫正確資料');
-        }
-    }
+    // function alreadycreate(obj) {
+    //     if (obj.success) {
+    //         alert('請填寫正確資料');
+    //     } else {
+    //         alert('新增成功');
+    //         navigate('/recipe', { replace: true });
+    //     }
+    // }
 
     const hiddenFileInput = useRef('');
     const [image, setImage] = useState({ preview: '', data: '' });
@@ -244,20 +108,7 @@ function Createrecipe() {
             recipe_img: '',
         },
     ]);
-    const [editStatus, setEditStatus] = useState(true);
     const loginUser = JSON.parse(localStorage.getItem('auth'));
-
-    const getRecipeData = async () => {
-        const response = await axios.get(
-            'http://localhost:3600/recipe/createrecipe',
-            { headers: { loginUser: loginUser.customer_id } }
-        );
-        setProfileData(response.data);
-    };
-
-    useEffect(() => {
-        getRecipeData();
-    }, [editStatus]);
 
     const handleClick = (event) => {
         hiddenFileInput.current.click();
@@ -276,7 +127,7 @@ function Createrecipe() {
         const fd = new FormData();
         fd.append('file', upimg.data);
 
-        fetch('http://localhost:3600/member/profile', {
+        fetch('http://localhost:3600/recipe/uploadimg', {
             method: 'post',
             body: fd,
             headers: {
@@ -295,7 +146,7 @@ function Createrecipe() {
                 id=""
                 noValidate
                 method="post"
-                onSubmit={checkForm}
+                // onSubmit={checkForm}
             >
                 <h2 className="createrecipetitle">
                     新增食譜 ／ Create New Recipes
@@ -558,7 +409,7 @@ function Createrecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="ingredientandstep">
+                        {/* <div className="ingredientandstep">
                             <section>
                                 <input
                                     name="ingredient"
@@ -587,11 +438,11 @@ function Createrecipe() {
                                     className="iconincreate"
                                 />
                             </button>
-                        </div>
+                        </div> */}
 
                         {/* 分隔線 */}
 
-                        <div className="ingredientandstep">
+                        {/* <div className="ingredientandstep">
                             <section>
                                 <input
                                     name="ingredient"
@@ -620,7 +471,7 @@ function Createrecipe() {
                                     className="iconincreate"
                                 />
                             </button>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 
@@ -666,7 +517,7 @@ function Createrecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="ingredientandstep">
+                        {/* <div className="ingredientandstep">
                             <div className="redballincreate">2</div>
                             <section>
                                 <textarea
@@ -693,11 +544,11 @@ function Createrecipe() {
                                     className="iconincreate"
                                 />
                             </button>
-                        </div>
+                        </div> */}
 
                         {/* 分隔線 */}
 
-                        <div className="ingredientandstep">
+                        {/* <div className="ingredientandstep">
                             <div className="redballincreate">3</div>
                             <section>
                                 <textarea
@@ -716,7 +567,7 @@ function Createrecipe() {
                                 />
                                 <div className="invalid-feedback"></div>
                             </section>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 
@@ -777,13 +628,8 @@ function Createrecipe() {
                 <div className="buttonintextalign">
                     <button
                         className="finishincreate"
-                        type="submit"
-                        // onClick={(event) => {
-                        // event.preventDefault();
-                        // navigate('/recipe', {
-                        //     replace: true,
-                        // });
-                        // }}
+                        type="button"
+                        // onClick={(e) => sentAllInfo()}
                     >
                         新增食譜
                         <img
