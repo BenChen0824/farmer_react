@@ -115,7 +115,7 @@ function Updaterecipe() {
             alert('請填寫正確資料');
         } else {
             alert('更新成功');
-            // navigate('/recipe', { replace: true });
+            navigate('/recipe', { replace: true });
         }
     }
 
