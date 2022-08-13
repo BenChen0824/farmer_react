@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './dailypoint.css';
 import Pages from '../components/Pages';
 import axios from 'axios';
+import Pointtime from '../components/Pointtime';
 
 function Dailypoint() {
     const [dataCheck, setDataCheck] = useState(true);
@@ -11,6 +12,7 @@ function Dailypoint() {
     const [info, setInfo] = useState(0);
     //限定一天一次領取點數提示
     const [showup, setShowup] = useState();
+    const [timezone, setTimezone] = useState(0);
 
     const pointArray = [100, 150, 100, 200, 300, 500];
     const randomNum = Math.ceil(Math.random() * 6) - 1;
@@ -61,9 +63,7 @@ function Dailypoint() {
             updateEggPoint(eggpoints + getPoint);
             //每日只領一次
             setDataCheck(false);
-            //送資料到後端 change_memberid:之後要改成柏安的localstorege
         } else {
-            // alert("今天領過囉")
             setShowup('今日已完成兌換囉...');
         }
     };
@@ -105,18 +105,21 @@ function Dailypoint() {
                     </div>
                     <br />
                     <div className="">
-                        <h1 className="display-6 text-center">點擊領取</h1>
+                        <h2 className="display-6 text-center">點擊領取</h2>
                     </div>
                     <div className="">
-                        <h1 className="display-7 text-center ">
+                        <h2 className="display-7 text-center ">
                             目前點數:{eggpoints}
-                        </h1>
+                        </h2>
                     </div>
                     <br />
                     <div className="">
                         <p className="lead mb-0 text-center bg-danger bg-gradient rounded-pill bg-opacity-75">
                             {showup}
                         </p>
+                    </div>
+                    <div>
+                        <Pointtime />
                     </div>
                 </div>
             </div>
