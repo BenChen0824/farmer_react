@@ -464,15 +464,11 @@ function Createrecipe() {
                         <div className="ingredientincreate">
                             <section>
                                 <input
-                                    name="ingredient"
+                                    name="[ingredient]"
                                     id="ingredient"
                                     type="text"
                                     className="ingredientuse"
-                                    value={
-                                        ingredientcorrect === ''
-                                            ? ingredient
-                                            : ingredientcorrect
-                                    }
+                                    value={ingredient}
                                     required
                                     placeholder="食材與份量，如：雞蛋2顆"
                                     onChange={(e) => {
@@ -500,7 +496,7 @@ function Createrecipe() {
                         <div className="ingredientincreate1">
                             <section>
                                 <input
-                                    name="ingredient1"
+                                    name="[ingredient]"
                                     id="ingredient1"
                                     type="text"
                                     className="ingredientuse"
@@ -529,7 +525,7 @@ function Createrecipe() {
                         <div className="ingredientincreate1">
                             <section>
                                 <input
-                                    name="ingredient2"
+                                    name="[ingredient]"
                                     id="ingredient2"
                                     type="text"
                                     className="ingredientuse"
@@ -560,7 +556,7 @@ function Createrecipe() {
                         <div className="ingredientincreate1">
                             <section>
                                 <input
-                                    name="ingredient3"
+                                    name="[ingredient]"
                                     id="ingredient3"
                                     type="text"
                                     className="ingredientuse"
@@ -591,7 +587,7 @@ function Createrecipe() {
                         <div className="ingredientincreate1">
                             <section>
                                 <input
-                                    name="ingredient4"
+                                    name="[ingredient]"
                                     id="ingredient4"
                                     type="text"
                                     className="ingredientuse"
@@ -622,7 +618,7 @@ function Createrecipe() {
                         <div className="ingredientincreate1">
                             <section>
                                 <input
-                                    name="ingredient5"
+                                    name="[ingredient]"
                                     id="ingredient5"
                                     type="text"
                                     className="ingredientuse"
@@ -653,7 +649,7 @@ function Createrecipe() {
                         <div className="ingredientincreate1">
                             <section>
                                 <input
-                                    name="ingredient6"
+                                    name="[ingredient]"
                                     id="ingredient6"
                                     type="text"
                                     className="ingredientuse"
@@ -684,7 +680,7 @@ function Createrecipe() {
                         <div className="ingredientincreate1">
                             <section>
                                 <input
-                                    name="ingredient7"
+                                    name="[ingredient]"
                                     id="ingredient7"
                                     type="text"
                                     className="ingredientuse"
@@ -715,7 +711,7 @@ function Createrecipe() {
                         <div className="ingredientincreate1">
                             <section>
                                 <input
-                                    name="ingredient8"
+                                    name="[ingredient]"
                                     id="ingredient8"
                                     type="text"
                                     className="ingredientuse"
@@ -746,7 +742,7 @@ function Createrecipe() {
                         <div className="ingredientincreate1">
                             <section>
                                 <input
-                                    name="ingredient9"
+                                    name="[ingredient]"
                                     id="ingredient9"
                                     type="text"
                                     className="ingredientuse"
@@ -815,7 +811,7 @@ function Createrecipe() {
                             <div className="redballincreate">1</div>
                             <section>
                                 <textarea
-                                    name="step"
+                                    name="[step]"
                                     id="step"
                                     className="stepoftextareaincreate"
                                     value={step}
@@ -846,7 +842,7 @@ function Createrecipe() {
                             <div className="redballincreate">2</div>
                             <section>
                                 <textarea
-                                    name="step1"
+                                    name="[step]"
                                     id="step1"
                                     className="stepoftextareaincreate"
                                     value={step1}
@@ -877,7 +873,7 @@ function Createrecipe() {
                             <div className="redballincreate">3</div>
                             <section>
                                 <textarea
-                                    name="step2"
+                                    name="[step]"
                                     id="step2"
                                     className="stepoftextareaincreate"
                                     value={step2}
@@ -908,7 +904,7 @@ function Createrecipe() {
                             <div className="redballincreate">4</div>
                             <section>
                                 <textarea
-                                    name="step3"
+                                    name="[step]"
                                     id="step3"
                                     className="stepoftextareaincreate"
                                     value={step3}
@@ -939,7 +935,7 @@ function Createrecipe() {
                             <div className="redballincreate">5</div>
                             <section>
                                 <textarea
-                                    name="step4"
+                                    name="[step]"
                                     id="step4"
                                     className="stepoftextareaincreate"
                                     value={step4}
@@ -970,7 +966,7 @@ function Createrecipe() {
                             <div className="redballincreate">6</div>
                             <section>
                                 <textarea
-                                    name="step5"
+                                    name="[step]"
                                     id="step5"
                                     className="stepoftextareaincreate"
                                     value={step5}
@@ -1001,7 +997,7 @@ function Createrecipe() {
                             <div className="redballincreate">7</div>
                             <section>
                                 <textarea
-                                    name="step6"
+                                    name="[step]"
                                     id="step6"
                                     className="stepoftextareaincreate"
                                     value={step6}
@@ -1032,7 +1028,7 @@ function Createrecipe() {
                             <div className="redballincreate">8</div>
                             <section>
                                 <textarea
-                                    name="step7"
+                                    name="[step]"
                                     id="step7"
                                     className="stepoftextareaincreate"
                                     value={step7}
@@ -1063,7 +1059,7 @@ function Createrecipe() {
                             <div className="redballincreate">9</div>
                             <section>
                                 <textarea
-                                    name="step8"
+                                    name="[step]"
                                     id="step8"
                                     className="stepoftextareaincreate"
                                     value={step8}
@@ -1094,7 +1090,7 @@ function Createrecipe() {
                             <div className="redballincreate">10</div>
                             <section>
                                 <textarea
-                                    name="step9"
+                                    name="[step]"
                                     id="step9"
                                     className="stepoftextareaincreate"
                                     value={step9}

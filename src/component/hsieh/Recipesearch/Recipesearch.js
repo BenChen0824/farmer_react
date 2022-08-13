@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import './Recipesearch.css';
 import Pagination from './Pagination';
 import Popup from './Popup';
+import Leftside from './Leftside';
 import axios from 'axios';
 
 function Recipesearch() {
