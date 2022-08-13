@@ -46,9 +46,27 @@ function Createrecipe() {
 
     // 料理食材
     const [ingredient, setIngredient] = useState('');
+    const [ingredient1, setIngredient1] = useState('');
+    const [ingredient2, setIngredient2] = useState('');
+    const [ingredient3, setIngredient3] = useState('');
+    const [ingredient4, setIngredient4] = useState('');
+    const [ingredient5, setIngredient5] = useState('');
+    const [ingredient6, setIngredient6] = useState('');
+    const [ingredient7, setIngredient7] = useState('');
+    const [ingredient8, setIngredient8] = useState('');
+    const [ingredient9, setIngredient9] = useState('');
 
     // 料理步驟
     const [step, setStep] = useState('');
+    const [step1, setStep1] = useState('');
+    const [step2, setStep2] = useState('');
+    const [step3, setStep3] = useState('');
+    const [step4, setStep4] = useState('');
+    const [step5, setStep5] = useState('');
+    const [step6, setStep6] = useState('');
+    const [step7, setStep7] = useState('');
+    const [step8, setStep8] = useState('');
+    const [step9, setStep9] = useState('');
 
     // 料理照片
     const [recipe_img, setRecipe_img] = useState([]);
@@ -179,6 +197,31 @@ function Createrecipe() {
         const a = previewimg.substring(12);
         return a;
     }
+
+    function plusoneingredient() {
+        var elem = document.querySelectorAll('div.ingredientincreate1');
+        elem[0].className = 'ingredientincreate';
+    }
+
+    function minusoneingredient() {
+        var elem = document.querySelectorAll('div.ingredientincreate');
+        elem[elem.length - 1].className = 'ingredientincreate1';
+    }
+
+    function plusonestep() {
+        var elem = document.querySelectorAll('div.stepincreate1');
+        elem[0].className = 'stepincreate';
+    }
+
+    function minusonestep() {
+        var elem = document.querySelectorAll('div.stepincreate');
+        elem[elem.length - 1].className = 'stepincreate1';
+    }
+
+    // function cleaninput() {
+    //     var elem = document.querySelectorAll('input.ingredientuse');
+    //     elem[elem.length - 1].value = '';
+    // }
 
     return (
         <>
@@ -418,7 +461,7 @@ function Createrecipe() {
 
                 <div className="eachdataincreaterecipe">
                     <div>
-                        <div className="ingredientandstep">
+                        <div className="ingredientincreate">
                             <section>
                                 <input
                                     name="ingredient"
@@ -431,9 +474,41 @@ function Createrecipe() {
                                             : ingredientcorrect
                                     }
                                     required
-                                    placeholder="食材與分量，如：雞蛋2顆"
+                                    placeholder="食材與份量，如：雞蛋2顆"
                                     onChange={(e) => {
                                         setIngredient(e.target.value);
+                                    }}
+                                    onFocus={() => setIngredientCorrect('')}
+                                />
+                            </section>
+
+                            <button
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+                        <div className="invalid-feedback"></div>
+
+                        {/* 分隔線 */}
+
+                        <div className="ingredientincreate1">
+                            <section>
+                                <input
+                                    name="ingredient1"
+                                    id="ingredient1"
+                                    type="text"
+                                    className="ingredientuse"
+                                    value={ingredient1}
+                                    required
+                                    placeholder="食材與份量，如：雞蛋2顆"
+                                    onChange={(e) => {
+                                        setIngredient1(e.target.value);
                                     }}
                                     onFocus={() => setIngredientCorrect('')}
                                 />
@@ -450,15 +525,279 @@ function Createrecipe() {
                         <div className="invalid-feedback"></div>
 
                         {/* 分隔線 */}
+
+                        <div className="ingredientincreate1">
+                            <section>
+                                <input
+                                    name="ingredient2"
+                                    id="ingredient2"
+                                    type="text"
+                                    className="ingredientuse"
+                                    value={ingredient2}
+                                    required
+                                    placeholder="食材與份量，如：雞蛋2顆"
+                                    onChange={(e) => {
+                                        setIngredient2(e.target.value);
+                                    }}
+                                    onFocus={() => setIngredientCorrect('')}
+                                />
+                            </section>
+
+                            <button
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="ingredientincreate1">
+                            <section>
+                                <input
+                                    name="ingredient3"
+                                    id="ingredient3"
+                                    type="text"
+                                    className="ingredientuse"
+                                    value={ingredient3}
+                                    required
+                                    placeholder="食材與份量，如：雞蛋2顆"
+                                    onChange={(e) => {
+                                        setIngredient3(e.target.value);
+                                    }}
+                                    onFocus={() => setIngredientCorrect('')}
+                                />
+                            </section>
+
+                            <button
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="ingredientincreate1">
+                            <section>
+                                <input
+                                    name="ingredient4"
+                                    id="ingredient4"
+                                    type="text"
+                                    className="ingredientuse"
+                                    value={ingredient4}
+                                    required
+                                    placeholder="食材與份量，如：雞蛋2顆"
+                                    onChange={(e) => {
+                                        setIngredient4(e.target.value);
+                                    }}
+                                    onFocus={() => setIngredientCorrect('')}
+                                />
+                            </section>
+
+                            <button
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="ingredientincreate1">
+                            <section>
+                                <input
+                                    name="ingredient5"
+                                    id="ingredient5"
+                                    type="text"
+                                    className="ingredientuse"
+                                    value={ingredient5}
+                                    required
+                                    placeholder="食材與份量，如：雞蛋2顆"
+                                    onChange={(e) => {
+                                        setIngredient5(e.target.value);
+                                    }}
+                                    onFocus={() => setIngredientCorrect('')}
+                                />
+                            </section>
+
+                            <button
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="ingredientincreate1">
+                            <section>
+                                <input
+                                    name="ingredient6"
+                                    id="ingredient6"
+                                    type="text"
+                                    className="ingredientuse"
+                                    value={ingredient6}
+                                    required
+                                    placeholder="食材與份量，如：雞蛋2顆"
+                                    onChange={(e) => {
+                                        setIngredient6(e.target.value);
+                                    }}
+                                    onFocus={() => setIngredientCorrect('')}
+                                />
+                            </section>
+
+                            <button
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="ingredientincreate1">
+                            <section>
+                                <input
+                                    name="ingredient7"
+                                    id="ingredient7"
+                                    type="text"
+                                    className="ingredientuse"
+                                    value={ingredient7}
+                                    required
+                                    placeholder="食材與份量，如：雞蛋2顆"
+                                    onChange={(e) => {
+                                        setIngredient7(e.target.value);
+                                    }}
+                                    onFocus={() => setIngredientCorrect('')}
+                                />
+                            </section>
+
+                            <button
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="ingredientincreate1">
+                            <section>
+                                <input
+                                    name="ingredient8"
+                                    id="ingredient8"
+                                    type="text"
+                                    className="ingredientuse"
+                                    value={ingredient8}
+                                    required
+                                    placeholder="食材與份量，如：雞蛋2顆"
+                                    onChange={(e) => {
+                                        setIngredient8(e.target.value);
+                                    }}
+                                    onFocus={() => setIngredientCorrect('')}
+                                />
+                            </section>
+
+                            <button
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="ingredientincreate1">
+                            <section>
+                                <input
+                                    name="ingredient9"
+                                    id="ingredient9"
+                                    type="text"
+                                    className="ingredientuse"
+                                    value={ingredient9}
+                                    required
+                                    placeholder="食材與份量，如：雞蛋2顆"
+                                    onChange={(e) => {
+                                        setIngredient9(e.target.value);
+                                    }}
+                                    onFocus={() => setIngredientCorrect('')}
+                                />
+                            </section>
+
+                            <button
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="invalid-feedback"></div>
                     </div>
                 </div>
 
                 <div className="additemarea">
-                    <button className="buttonincreateplus">
+                    <button
+                        className="plusbuttonincreate"
+                        onClick={plusoneingredient}
+                    >
                         <img
                             src="/images/plus.svg"
                             alt=""
                             className="iconincreateplus"
+                        />
+                    </button>
+
+                    <button
+                        className="buttonincreate"
+                        onClick={minusoneingredient}
+                    >
+                        <img
+                            src="/images/minus.svg"
+                            alt=""
+                            className="iconincreate"
                         />
                     </button>
                 </div>
@@ -472,16 +811,14 @@ function Createrecipe() {
 
                 <div className="eachdataincreaterecipe">
                     <div>
-                        <div className="ingredientandstep">
+                        <div className="stepincreate">
                             <div className="redballincreate">1</div>
                             <section>
                                 <textarea
                                     name="step"
                                     id="step"
-                                    className="dataform1increate"
-                                    value={
-                                        stepcorrect === '' ? step : stepcorrect
-                                    }
+                                    className="stepoftextareaincreate"
+                                    value={step}
                                     required
                                     placeholder="步驟1"
                                     onChange={(e) => {
@@ -491,6 +828,295 @@ function Createrecipe() {
                                 />
                                 <div className="invalid-feedback"></div>
                             </section>
+                            <button
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="stepincreate1">
+                            <div className="redballincreate">2</div>
+                            <section>
+                                <textarea
+                                    name="step1"
+                                    id="step1"
+                                    className="stepoftextareaincreate"
+                                    value={step1}
+                                    required
+                                    placeholder="步驟2"
+                                    onChange={(e) => {
+                                        setStep1(e.target.value);
+                                    }}
+                                    onFocus={() => setStepCorrect('')}
+                                />
+                                <div className="invalid-feedback"></div>
+                            </section>
+                            <button
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="stepincreate1">
+                            <div className="redballincreate">3</div>
+                            <section>
+                                <textarea
+                                    name="step2"
+                                    id="step2"
+                                    className="stepoftextareaincreate"
+                                    value={step2}
+                                    required
+                                    placeholder="步驟3"
+                                    onChange={(e) => {
+                                        setStep2(e.target.value);
+                                    }}
+                                    onFocus={() => setStepCorrect('')}
+                                />
+                                <div className="invalid-feedback"></div>
+                            </section>
+                            <button
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="stepincreate1">
+                            <div className="redballincreate">4</div>
+                            <section>
+                                <textarea
+                                    name="step3"
+                                    id="step3"
+                                    className="stepoftextareaincreate"
+                                    value={step3}
+                                    required
+                                    placeholder="步驟4"
+                                    onChange={(e) => {
+                                        setStep3(e.target.value);
+                                    }}
+                                    onFocus={() => setStepCorrect('')}
+                                />
+                                <div className="invalid-feedback"></div>
+                            </section>
+                            <button
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="stepincreate1">
+                            <div className="redballincreate">5</div>
+                            <section>
+                                <textarea
+                                    name="step4"
+                                    id="step4"
+                                    className="stepoftextareaincreate"
+                                    value={step4}
+                                    required
+                                    placeholder="步驟5"
+                                    onChange={(e) => {
+                                        setStep4(e.target.value);
+                                    }}
+                                    onFocus={() => setStepCorrect('')}
+                                />
+                                <div className="invalid-feedback"></div>
+                            </section>
+                            <button
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="stepincreate1">
+                            <div className="redballincreate">6</div>
+                            <section>
+                                <textarea
+                                    name="step5"
+                                    id="step5"
+                                    className="stepoftextareaincreate"
+                                    value={step5}
+                                    required
+                                    placeholder="步驟6"
+                                    onChange={(e) => {
+                                        setStep5(e.target.value);
+                                    }}
+                                    onFocus={() => setStepCorrect('')}
+                                />
+                                <div className="invalid-feedback"></div>
+                            </section>
+                            <button
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="stepincreate1">
+                            <div className="redballincreate">7</div>
+                            <section>
+                                <textarea
+                                    name="step6"
+                                    id="step6"
+                                    className="stepoftextareaincreate"
+                                    value={step6}
+                                    required
+                                    placeholder="步驟7"
+                                    onChange={(e) => {
+                                        setStep6(e.target.value);
+                                    }}
+                                    onFocus={() => setStepCorrect('')}
+                                />
+                                <div className="invalid-feedback"></div>
+                            </section>
+                            <button
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="stepincreate1">
+                            <div className="redballincreate">8</div>
+                            <section>
+                                <textarea
+                                    name="step7"
+                                    id="step7"
+                                    className="stepoftextareaincreate"
+                                    value={step7}
+                                    required
+                                    placeholder="步驟8"
+                                    onChange={(e) => {
+                                        setStep7(e.target.value);
+                                    }}
+                                    onFocus={() => setStepCorrect('')}
+                                />
+                                <div className="invalid-feedback"></div>
+                            </section>
+                            <button
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="stepincreate1">
+                            <div className="redballincreate">9</div>
+                            <section>
+                                <textarea
+                                    name="step8"
+                                    id="step8"
+                                    className="stepoftextareaincreate"
+                                    value={step8}
+                                    required
+                                    placeholder="步驟9"
+                                    onChange={(e) => {
+                                        setStep8(e.target.value);
+                                    }}
+                                    onFocus={() => setStepCorrect('')}
+                                />
+                                <div className="invalid-feedback"></div>
+                            </section>
+                            <button
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="stepincreate1">
+                            <div className="redballincreate">10</div>
+                            <section>
+                                <textarea
+                                    name="step9"
+                                    id="step9"
+                                    className="stepoftextareaincreate"
+                                    value={step9}
+                                    required
+                                    placeholder="步驟10"
+                                    onChange={(e) => {
+                                        setStep9(e.target.value);
+                                    }}
+                                    onFocus={() => setStepCorrect('')}
+                                />
+                                <div className="invalid-feedback"></div>
+                            </section>
+                            <button
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
                         </div>
 
                         {/* 分隔線 */}
@@ -498,11 +1124,22 @@ function Createrecipe() {
                 </div>
 
                 <div className="additemarea">
-                    <button className="buttonincreateplus">
+                    <button
+                        className="plusbuttonincreate"
+                        onClick={plusonestep}
+                    >
                         <img
                             src="/images/plus.svg"
                             alt=""
                             className="iconincreateplus"
+                        />
+                    </button>
+
+                    <button className="buttonincreate" onClick={minusonestep}>
+                        <img
+                            src="/images/minus.svg"
+                            alt=""
+                            className="iconincreate"
                         />
                     </button>
                 </div>
@@ -569,6 +1206,8 @@ function Createrecipe() {
     );
 }
 
+export default Createrecipe;
+
 // function CreateNewRecipe(){
 //   var
 // }
@@ -576,5 +1215,3 @@ function Createrecipe() {
 // onclick = "CreateNewRecipe()"";
 
 // onSubmit={handleSubmit}
-
-export default Createrecipe;

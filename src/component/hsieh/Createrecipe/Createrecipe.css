@@ -28,6 +28,11 @@
   height: 40px;
 }
 
+.stepoftextareaincreate {
+  width: 400px;
+  height: 40px;
+}
+
 .breakpointtitle1 {
   font-size: 26px;
 }
@@ -43,10 +48,26 @@
   margin-left: 15px;
 }
 
-.ingredientandstep {
+.ingredientincreate {
   display: flex;
   margin-bottom: 15px;
 }
+
+.ingredientincreate1 {
+  display: none;
+  margin-bottom: 15px;
+}
+
+.stepincreate{
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.stepincreate1{
+  display: none;
+  margin-bottom: 15px;
+}
+
 
 .ingredientuse {
   width: 500px;
@@ -109,7 +130,7 @@
   align-items: center; 
 }
 
-.buttonincreateplus{
+.plusbuttonincreate{
   border: 0px;
   background-color: rgb(255, 255, 255);
 }
@@ -176,6 +197,10 @@
   }
 
   .dataform1increate {
+    width: 150px;
+    height: 30px;
+  }
+  .stepoftextareaincreate {
     width: 150px;
     height: 30px;
   }
@@ -254,4 +279,10 @@
   .photouploadincreate {
     height: 200px;
   }
+}
+
+
+.fgh{
+  /* display: none; */
+  display: block;
 }

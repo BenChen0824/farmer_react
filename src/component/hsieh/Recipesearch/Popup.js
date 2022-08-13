@@ -129,11 +129,10 @@ export default function Popup(props) {
                         >
                             搜尋
                             <img
-                                src="/images/file-plus.svg"
+                                src="/images/search.svg"
                                 alt=""
                                 className="iconineach"
                             />
-                            {/* 要替換icon成search.svg */}
                         </button>
                     </div>
 
