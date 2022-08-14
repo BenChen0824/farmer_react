@@ -7,9 +7,8 @@ function Card(props) {
     function handleChoice() {
         if (!props.disabled) {
             if (props.turn >= 5) {
-                //alert('哭哭');
                 Swal.fire({
-                    title: 'QQ.. Try again',
+                    title: '今日已完成搶點',
                     showClass: {
                         popup: 'animate__animated animate__fadeInDown',
                     },
@@ -17,7 +16,7 @@ function Card(props) {
                         popup: 'animate__animated animate__fadeOutUp',
                     },
                 });
-                props.checkwin();
+                //props.checkwin();
             } else {
                 props.handleChoice(props.card);
                 // console.log(props);

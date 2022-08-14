@@ -10,3 +10,6 @@
     -webkit-line-clamp: 2;
     overflow: hidden;
 }
+.boc-switchpx{
+    padding: 0 10%;
+}

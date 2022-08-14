@@ -15,7 +15,7 @@ export default function Coupon(props) {
     const [CouponState, setCouponState] = useState([]);
 
     const Swal = require('sweetalert2');
-
+    //登入專用
     const loginUser = JSON.parse(localStorage.getItem('auth'));
 
     useEffect(() => {
@@ -85,38 +85,46 @@ export default function Coupon(props) {
 
     return (
         <>
-            <div className="container">
+            <div className="container po_couponspace">
                 <div className="row mb-2">
                     {discountArray.map((v, i) => {
                         return (
-                            <div className="col-md-6 coupon" key={v.id}>
-                                <div className="d-flex  border rounded overflow-hidden  mb-4 shadow ">
-                                    <div className="game-col-8">
+                            <div className="col-md-6 coupon " key={v.id}>
+                                <div className="d-flex   rounded overflow-hidden mb-4 ">
+                                    <div className="w-65 game-col-8 ps-3 po_couponCss">
                                         <img
-                                            className="w-100 objfit"
+                                            className=" couponobjfit"
                                             src={v.image}
                                             // src="/dailypoint-img/52c1abae31a722933f917fce0fccc868.jpg"
                                             alt=""
                                         />
                                     </div>
-                                    <div className="col-4 p-3 d-flex flex-column position-static ">
+                                    <div className="col-4 p-3 d-flex flex-column position-static w-35 shadow border">
                                         <p
                                             className="d-inline-block mb-1 text-primary text-center text-danger"
                                             style={{ fontSize: '2.5rem' }}
                                         >
                                             折價券
                                         </p>
-                                        <p
-                                            className="mb-1 text-center"
-                                            style={{ fontSize: '4rem' }}
-                                        >
-                                            ${v.price}
-                                        </p>
+                                        <div className="text-center">
+                                            <span
+                                                className="mb-1 text-center"
+                                                style={{ fontSize: '2rem' }}
+                                            >
+                                                $
+                                            </span>
+                                            <span
+                                                className="mb-1 text-center"
+                                                style={{ fontSize: '4rem' }}
+                                            >
+                                                {v.price}
+                                            </span>
+                                        </div>
                                         <p className="card-text mb-3 text-center">
                                             --消費滿500可使用--
                                         </p>
                                         <button
-                                            className="btn btn-primary"
+                                            className="btn btn-primary rounded-pill"
                                             onClick={() => {
                                                 clickchange(i);
                                                 exchange(i);

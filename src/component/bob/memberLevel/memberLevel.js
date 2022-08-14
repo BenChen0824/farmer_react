@@ -1,93 +1,183 @@
-import './level.css'
+import './level.css';
 import { useState, useEffect } from 'react';
 import MemberNavbar from '../component/memberCenter_Navbar';
+import axios from 'axios';
 
+function MemberLevel() {
+    const [myCoupons, setMyCoupons] = useState([]);
+    const [myRecord, setMyRecord] = useState([]);
+    const [myPoints, setMyPoints] = useState([]);
 
-function MemberLevel(){
-    const [response, setResponse] = useState([]);
-    const [searchInput, setSearchInput] = useState('')
-    const [filteredResult, setFilteredResult] = useState([])
-    const [filterCate, setFilterCate] = useState('')
+    const loginUser = JSON.parse(localStorage.getItem('auth'));
 
-    const category = ['已結束','即將到來','進行中']
+    const getCouponData = async () => {
+        const coupons = await axios.get(
+            'http://localhost:3600/member/coupons',
+            { headers: { loginUser: loginUser.customer_id } }
+        );
+        setMyCoupons(coupons.data);
+        console.log(coupons.data);
+    };
 
-    const loginUser = JSON.parse(localStorage.getItem("auth"))
+    const getRecordData = async () => {
+        const record = await axios.get(
+            'http://localhost:3600/member/purchaseRecord',
+            { headers: { loginUser: loginUser.customer_id } }
+        );
 
-    // const getCollections = async ()=>{
-    //     const r = await fetch('http://localhost:3600/level',{ headers: {loginUser: loginUser.customer_id}})
-    //     const obj = await r.json()
-    //     setResponse(obj)
-    // }
+        const recordSum = record.data.reduce((a, b) => {
+            return a + b.product_amount_total;
+        }, 0);
 
-    // useEffect(()=>{
-    //     getCollections()
-    //     }, [])
+        setMyRecord(recordSum);
+        console.log(recordSum);
+    };
 
-    function searchItems (searchValue){
-        setSearchInput(searchValue)
-        if (searchValue !== '') {
-            const filteredData = response.filter((item)=>{
-                return Object.values(item).join('').toLowerCase().includes(searchValue.toLowerCase())
-            })
-            setFilteredResult(filteredData)
+    const getPointsData = async () => {
+        const points = await axios.get(
+            'http://localhost:3600/member/myPoints',
+            { headers: { loginUser: loginUser.customer_id } }
+        );
+
+        setMyPoints(points.data);
+        console.log(myPoints);
+    };
+
+    useEffect(() => {
+        getCouponData();
+        getRecordData();
+        getPointsData();
+    }, []);
+
+    function myLevel() {
+        if (myRecord < 5000) {
+            return '銅卡會員';
+        } else if (myRecord > 5000 && myRecord < 10000) {
+            return '銀卡會員';
         } else {
-            setFilteredResult(response)
+            return '金卡會員';
         }
     }
 
-    function searchCategory(searchValue){
-        setFilterCate(searchValue)
-        if (searchValue !== '') {
-            const filteredData = response.filter((item)=>{
-                return Object.values(item).join('').toLowerCase().includes(searchValue.toLowerCase())
-            })
-            setFilteredResult(filteredData)
+    function presentCard() {
+        if (myRecord < 5000) {
+            return 'level_copper.jpg';
+        } else if (myRecord > 5000 && myRecord < 10000) {
+            return 'level_silver.jpg';
         } else {
-            setFilteredResult(response)
+            return 'level_gold.jpg';
         }
     }
-    
+
     return (
         <>
-        <div className="container">
-            <div className="row">
-                <MemberNavbar/>
+            <div className="container">
+                <div className="row">
+                    <MemberNavbar />
                     <div className="col-9">
                         <div className="container row justify-content-center">
-                            <h2 className="text-center fw-bold m-3">我的會員級別</h2>
-                            <div className="card text-white bg-dark mb-3 shadow-sm" style={{maxWidth: "540px"}}>
+                            <h2 className="text-center fw-bold m-3">
+                                我的會員級別
+                            </h2>
+                            <div
+                                className="card text-white bg-dark mb-3 shadow-sm"
+                                style={{ maxWidth: '540px' }}
+                            >
                                 <div className="row">
                                     <div className="col-5 p-3">
-                                        <img src="upload/gold.png" className="img-fluid rounded h-100 bol-objft" alt=""/>
+                                        <img
+                                            src={`/images/${presentCard()}`}
+                                            className="img-fluid rounded h-100 bol-objft"
+                                            alt=""
+                                        />
                                     </div>
                                     <div className="col-7 m-auto p-0">
                                         <div className="card-body">
                                             <dl className="row border-bottom mx-0">
                                                 <dt className="col-6 p-0">
-                                                    <h5 className="card-title">會員級別</h5>
+                                                    <h5 className="card-title">
+                                                        會員級別
+                                                    </h5>
                                                 </dt>
                                                 <dd className="col-6 text-end p-0">
-                                                    <h5 className="card-title bol-farmColor mb-0">金卡會員</h5>
+                                                    <h5 className="card-title bol-farmColor mb-0">
+                                                        {myLevel()}
+                                                    </h5>
                                                 </dd>
                                             </dl>
                                             <dl className="row border-bottom mx-0">
                                                 <dt className="col-8 p-0">
-                                                    <h5 className="card-title">年度累積消費</h5>
+                                                    <h5 className="card-title">
+                                                        年度累積消費
+                                                    </h5>
                                                 </dt>
                                                 <dd className="col-4 text-end p-0">
-                                                    <h5 className="card-title bol-farmColor mb-0">$ 5,000</h5>
+                                                    <h5 className="card-title bol-farmColor mb-0">
+                                                        ${' '}
+                                                        {myRecord
+                                                            ? myRecord
+                                                            : 0}
+                                                    </h5>
                                                 </dd>
                                             </dl>
                                             <dl className="row m-0">
                                                 <dt className="col-4 p-0">
-                                                    <h5 className="card-text">我的點數</h5>
+                                                    <h5 className="card-text">
+                                                        我的點數
+                                                    </h5>
                                                 </dt>
                                                 <dd className="col-8 text-end p-0 m-0">
-                                                    <h5 className="card-text bol-farmColor">50</h5>
+                                                    <h5 className="card-text bol-farmColor">
+                                                        {myPoints[0]
+                                                            ? myPoints[0]
+                                                                  .daily_points
+                                                            : 0}
+                                                    </h5>
                                                 </dd>
                                             </dl>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                            <h2 className="text-center fw-bold m-5">
+                                我的優惠券
+                            </h2>
+                            <div className="container col-9 mt-2">
+                                <div className="row justify-content-center">
+                                    {myCoupons[0] ? 
+                                    myCoupons.map((v, i) => {
+                                        return (
+                                            <div
+                                                className="bol-couponCss mb-3"
+                                                style={{ maxWidth: '420px' }}
+                                                key={v.sid}
+                                            >
+                                                <div className="d-flex">
+                                                    <div className="col-5 p-3">
+                                                        <img
+                                                            src={v.change_img}
+                                                            className="img-fluid rounded-start h-100 boe-objft"
+                                                            alt=""
+                                                        />
+                                                    </div>
+                                                    <div className="col-8 d-flex align-items-center">
+                                                        <div className="card-body">
+                                                            <h2 className="bol-goldText">
+                                                                {
+                                                                    v.change_coupon
+                                                                }
+                                                            </h2>
+                                                            <h6 className="text-light">
+                                                                兌換時間：
+                                                                {v.change_time}
+                                                            </h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        );
+                                    }) :
+                                    <p className="text-muted text-center mt-5">尚無可使用的優惠券</p>}
                                 </div>
                             </div>
                         </div>
@@ -95,7 +185,7 @@ function MemberLevel(){
                 </div>
             </div>
         </>
-    )
-};
+    );
+}
 
 export default MemberLevel;

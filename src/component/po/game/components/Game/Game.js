@@ -19,11 +19,11 @@ function Game(props) {
     const [choiceTwo, setChoiceTwo] = useState(null);
     const [disabled, setDisabled] = useState(true);
     const [startFlip, setStartFlip] = useState(true);
-
-    //let [correct, setcorrect] = useState(0)
+    const loginUser = JSON.parse(localStorage.getItem('auth'));
 
     // const loginUser = JSON.parse(localStorage.getItem("auth"))
 
+    const Swal = require('sweetalert2');
     //解構蛋的點數
     const { eggpoints, setEggPoints } = props;
     //跳轉頁面時候先看盤子
@@ -65,10 +65,41 @@ function Game(props) {
     }
 
     function checkwin() {
-        if (turn >= 5) {
-            setTurn(0);
-            shuffleCards();
-        }
+        const nowpoints = eggpoints - 5;
+        Swal.fire({
+            title: '是否花費5點繼續搶點?',
+            // text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '搶起來!',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                //確認是否花費點數再翻一次
+                if (eggpoints >= 5) {
+                    setEggPoints(eggpoints - 5);
+                    setTurn(0);
+                    shuffleCards();
+                    axios
+                        .post('http://localhost:3600/game/addpoints', {
+                            change_points: nowpoints,
+                            change_memberid: loginUser.customer_id,
+                        })
+                        .then((result) => {
+                            console.log(result.data);
+                        });
+                    Swal.fire('Good luck!', '已完成扣點.', 'success');
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: '點數不足!',
+                        //footer: '<a href="">試試搶點</a>',
+                    });
+                }
+            }
+        });
     }
 
     useEffect(() => {
@@ -76,14 +107,14 @@ function Game(props) {
             setDisabled(true);
             if (choiceOne.src === choiceTwo.src) {
                 setEggPoints(eggpoints + 2);
-                // axios
-                //     .post('http://localhost:3600/game/pointsupdate', {
-                //         change_points: setEggPoints,
-                //         change_memberid: loginUser.customer_id,
-                //     })
-                //     .then((result) => {
-                //         console.log(result.data);
-                //     });
+                axios
+                    .post('http://localhost:3600/game/addpoints', {
+                        change_points: eggpoints + 2,
+                        change_memberid: loginUser.customer_id,
+                    })
+                    .then((result) => {
+                        console.log(result.data);
+                    });
                 setCards((prevCards) => {
                     return prevCards.map((card) => {
                         if (card.src === choiceOne.src) {
@@ -126,7 +157,8 @@ function Game(props) {
                     />
                 ))}
             </div>
-            <button onClick={shuffleCards}>New Game</button>
+            {/* <button onClick={shuffleCards}>New Game</button> */}
+            <button onClick={checkwin}>New Game</button>
         </div>
     );
 }

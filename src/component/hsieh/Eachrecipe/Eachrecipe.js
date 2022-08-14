@@ -2,6 +2,7 @@ import './Eachrecipe.css';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Eachrecipe() {
     const [eachrecipe, setEachrecipe] = useState({
@@ -22,6 +23,8 @@ function Eachrecipe() {
         created_at: '',
     });
 
+    const navigate = useNavigate();
+
     async function eachrecipeinfo(recipes_sid) {
         const r = await fetch(
             `http://localhost:3600/recipe/each/${recipes_sid}`
@@ -36,10 +39,38 @@ function Eachrecipe() {
         eachrecipeinfo(params.recipes_sid);
         window.scrollTo({ top: 0, behavior: 'instant' }); // 調整往下滑
     }, [params.recipes_sid]);
+    // 獲取食譜個別資訊
 
     // useEffect(() => {
 
     // }, []);  useEffect基本架構
+
+    const Delectrecipe = async () => {
+        const data = {
+            recipes_sid: params.recipes_sid,
+        };
+        const r = await fetch('http://localhost:3600/recipe/delete', {
+            method: 'DELETE',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        // console.log('abc:');
+        const obj = await r.json();
+        console.log(obj);
+        alreadydelete(obj);
+        console.log(alreadydelete);
+    };
+
+    function alreadydelete(obj) {
+        if (obj.success) {
+            alert('');
+        } else {
+            alert('刪除成功');
+            navigate('/recipe', { replace: true });
+        }
+    }
 
     return (
         <>
@@ -112,7 +143,7 @@ function Eachrecipe() {
 
                         <div className="recipedataineach">
                             <div className="greencircleineach">
-                                <img src="/images/portion.png" alt="" />
+                                <img src="/images/portion.svg" alt="" />
                             </div>
                             <div>
                                 <p>
@@ -127,7 +158,7 @@ function Eachrecipe() {
 
                         <div className="recipedataineach">
                             <div className="greencircleineach">
-                                <img src="/images/pot.png" alt="" />
+                                <img src="/images/cooking.svg" alt="" />
                             </div>
                             <div>
                                 <p>
@@ -141,7 +172,7 @@ function Eachrecipe() {
 
                         <div className="recipedataineach">
                             <div className="greencircleineach">
-                                <img src="/images/degree.png" alt="" />
+                                <img src="/images/degree.svg" alt="" />
                             </div>
                             <div>
                                 <p>
@@ -159,38 +190,6 @@ function Eachrecipe() {
                         <p>{eachrecipe.recipes_description}</p>
                     </div>
                 </div>
-            </div>
-
-            {/* 分隔線 */}
-
-            <div className="socialmediaineach">
-                <button className="buttonineach">
-                    <img src="/images/line.png" alt="" className="iconineach" />
-                </button>
-
-                <button className="buttonineach">
-                    <img
-                        src="/images/twitter.png"
-                        alt=""
-                        className="iconineach"
-                    />
-                </button>
-
-                <button className="buttonineach">
-                    <img src="/images/ig.png" alt="" className="iconineach" />
-                </button>
-
-                <button className="buttonineach">
-                    <img src="/images/fb.png" alt="" className="iconineach" />
-                </button>
-
-                <button className="buttonineach">
-                    <img
-                        src="/images/email.png"
-                        alt=""
-                        className="iconineach"
-                    />
-                </button>
             </div>
 
             {/* 分隔線 */}
@@ -215,21 +214,8 @@ function Eachrecipe() {
                         <div className="showarea2ineach">
                             <div className="numberineachrecipe">1</div>
                             <div className="chapter2ineach">
-                                料理前，將明蝦以流水沖5分鐘即可退冰，更能完整保持野生大明蝦Q彈鮮脆的肉質。
+                                {eachrecipe.recipes_cooking_method}
                             </div>
-                        </div>
-                        <div className="showarea2ineach">
-                            <div className="numberineachrecipe">2</div>
-                            <p className="chapter2ineach">
-                                退冰後的澎湖野生大明蝦，取一把剪刀，從蝦頭和蝦身的間隙，剪開蝦背。
-                            </p>
-                        </div>
-                        <div className="showarea2ineach">
-                            <div className="numberineachrecipe">3</div>
-
-                            <p className="chapter2ineach">
-                                將腸泥取出丟掉，大明蝦就處理完成。
-                            </p>
                         </div>
                         {/* 引入料理方式 */}
                     </div>
@@ -270,16 +256,19 @@ function Eachrecipe() {
                     </button>
                 </Link>
 
-                {/* <a href=""> */}
-                <button className="hsiehdelete">
-                    刪除食譜
-                    <img
-                        src="/images/trashcan.svg"
-                        alt=""
-                        className="crudineach"
-                    />
-                </button>
-                {/* </a> */}
+                <Link to={`http://localhost:3600/recipe/delete`}>
+                    <button
+                        className="hsiehdelete"
+                        onClick={(e) => Delectrecipe()}
+                    >
+                        刪除食譜
+                        <img
+                            src="/images/trashcan.svg"
+                            alt=""
+                            className="crudineach"
+                        />
+                    </button>
+                </Link>
             </div>
         </>
     );

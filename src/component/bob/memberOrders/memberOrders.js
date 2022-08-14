@@ -9,7 +9,7 @@ function MemberOrders() {
     const [filteredResult, setFilteredResult] = useState([]);
     const [filterCate, setFilterCate] = useState('');
 
-    const category = ['已完成付款', '出貨中', '已送達'];
+    const category = ['已完成付款', '待取貨'];
 
     const loginUser = JSON.parse(localStorage.getItem('auth'));
 
@@ -38,21 +38,6 @@ function MemberOrders() {
     function searchItems(searchValue) {
         setSearchInput(searchValue);
         if (searchValue !== '') {
-            const filteredData = response.filter((item) => {
-                return Object.values(item)
-                    .join('')
-                    .toLowerCase()
-                    .includes(searchValue.toLowerCase());
-            });
-            setFilteredResult(filteredData);
-        } else {
-            setFilteredResult(response);
-        }
-    }
-
-    function searchCategory(searchValue) {
-        setFilterCate(searchValue);
-        if (searchValue !== '') {
             const filteredData = orderList.filter((item) => {
                 return Object.values(item)
                     .join('')
@@ -62,6 +47,21 @@ function MemberOrders() {
             setFilteredResult(filteredData);
         } else {
             setFilteredResult(orderList);
+        }
+    }
+
+    function searchCategory(searchValue) {
+        setFilterCate(searchValue);
+        if (searchValue !== '') {
+            const filteredData = response.filter((item) => {
+                return Object.values(item)
+                    .join('')
+                    .toLowerCase()
+                    .includes(searchValue.toLowerCase());
+            });
+            setFilteredResult(filteredData);
+        } else {
+            setFilteredResult(response);
         }
     }
 
@@ -76,9 +76,9 @@ function MemberOrders() {
                                 訂單查詢
                             </h2>
                             <div className="row justify-content-center">
-                                <form className="d-flex col-8 mb-3">
+                                <form className="d-flex col-sm-7 mb-3">
                                     <select
-                                        className="form-select mx-2"
+                                        className="form-select mx-2 shadow-none"
                                         value={filterCate}
                                         onChange={(e) => {
                                             searchCategory(e.target.value);
@@ -93,23 +93,22 @@ function MemberOrders() {
                                             );
                                         })}
                                     </select>
-                                    <input
-                                        className="form-control me-2"
-                                        id="text"
-                                        type="search"
-                                        name="search"
-                                        placeholder="請搜尋商品名稱"
-                                        aria-label="search"
-                                        onChange={(e) => {
-                                            searchItems(e.target.value);
-                                        }}
-                                    />
-                                    <button
-                                        className="btn btn-outline-success"
-                                        type="submit"
-                                    >
-                                        Search
-                                    </button>
+                                    <div className="border rounded col-sm-7 d-flex align-items-center">
+                                        <input
+                                            className="form-control me-2 border-0 shadow-none"
+                                            id="text"
+                                            type="search"
+                                            name="search"
+                                            placeholder="請搜尋訂單編號"
+                                            aria-label="search"
+                                            onChange={(e) => {
+                                                searchItems(e.target.value);
+                                            }}
+                                        />
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search col-sm-2" viewBox="0 0 16 16">
+                                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                        </svg>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -141,6 +140,9 @@ function MemberOrders() {
                                                       </th>
                                                       <th scope="col">
                                                           訂單狀態
+                                                      </th>
+                                                      <th scope="col">
+                                                          顧客回饋
                                                       </th>
                                                   </tr>
                                               </thead>
@@ -212,6 +214,9 @@ function MemberOrders() {
                                                                           }
                                                                       </p>
                                                                   </td>
+                                                                  <td className="align-middle">
+                                                                    <button className="btn btn-success btn-sm">來去評價</button>
+                                                                  </td>
                                                               </tr>
                                                           );
                                                       })}
@@ -275,6 +280,9 @@ function MemberOrders() {
                                                                           }
                                                                       </p>
                                                                   </td>
+                                                                  <td className="align-middle">
+                                                                    <button className="btn btn-success btn-sm">來去評價</button>
+                                                                  </td>
                                                               </tr>
                                                           );
                                                       })}
@@ -282,7 +290,7 @@ function MemberOrders() {
                                               <tfoot>
                                                   <tr>
                                                       <td
-                                                          colSpan="4"
+                                                          colSpan="5"
                                                           className="text-end border-0"
                                                       >
                                                           <h5>訂單編號：</h5>
@@ -295,7 +303,7 @@ function MemberOrders() {
                                                   </tr>
                                                   <tr>
                                                       <td
-                                                          colSpan="4"
+                                                          colSpan="5"
                                                           className="text-end border-0 py-0"
                                                       >
                                                           <h5>訂單總金額：</h5>
@@ -339,6 +347,9 @@ function MemberOrders() {
                                                       </th>
                                                       <th scope="col">
                                                           訂單狀態
+                                                      </th>
+                                                      <th scope="col">
+                                                          顧客回饋
                                                       </th>
                                                   </tr>
                                               </thead>
@@ -407,6 +418,9 @@ function MemberOrders() {
                                                                           }
                                                                       </p>
                                                                   </td>
+                                                                  <td className="align-middle">
+                                                                    <button className="btn btn-success btn-sm">來去評價</button>
+                                                                  </td>
                                                               </tr>
                                                           );
                                                       })}
@@ -469,6 +483,10 @@ function MemberOrders() {
                                                                               v2.order_status
                                                                           }
                                                                       </p>
+                                                                      
+                                                                  </td>
+                                                                  <td className="align-middle">
+                                                                    <button className="btn btn-success btn-sm">來去評價</button>
                                                                   </td>
                                                               </tr>
                                                           );
@@ -477,7 +495,7 @@ function MemberOrders() {
                                               <tfoot>
                                                   <tr>
                                                       <td
-                                                          colSpan="4"
+                                                          colSpan="5"
                                                           className="text-end border-0"
                                                       >
                                                           <h5>訂單編號：</h5>
@@ -490,7 +508,7 @@ function MemberOrders() {
                                                   </tr>
                                                   <tr>
                                                       <td
-                                                          colSpan="4"
+                                                          colSpan="5"
                                                           className="text-end border-0 py-0"
                                                       >
                                                           <h5>訂單總金額：</h5>

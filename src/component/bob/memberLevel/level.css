@@ -11,3 +11,14 @@
 .bol-farmColor {
     color: #709D40
 }
+.bol-couponCss {  background-image: radial-gradient( circle at 1px 8px, transparent 6px, #000000 6px, #222222 0px), radial-gradient( circle at 199px 8px, transparent 6px, #000000 6px, #222222 0px); background-size: 200px 18px; background-position: 0 0, 200px 0; background-repeat-x: no-repeat; }
+
+.bol-multiline-ellipsis { 
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+}
+.bol-goldText {
+    color: rgb(251, 200, 70)
+}

@@ -10,6 +10,7 @@ import MemberData from './memberData/memberData';
 import MemberOrders from './memberOrders/memberOrders';
 import MemberEvents from './memberEvents/memberEvents';
 import MemberLevel from './memberLevel/memberLevel';
+import MemberRecipe from './memberRecipe/memberRecipe';
 
 function Member() {
 
@@ -24,6 +25,7 @@ function Member() {
           <Route path="/level" element={<MemberLevel/>}/>
           <Route path="/events" element={<MemberEvents/>}/>
           <Route path="/collections" element={<MemberCollections/>}/>
+          <Route path="/recipe" element={<MemberRecipe/>}/>
           <Route path="/profile" element={<MemberProfile/>}/>
         </Routes>
     </>

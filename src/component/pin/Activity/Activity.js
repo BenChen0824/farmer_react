@@ -1,8 +1,13 @@
 import './Activity.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 function Activity() {
+    const navigate = useNavigate();
+    const goToPath = (sid) => {
+        navigate(`/activity/${sid}`);
+    };
     const [data, setData] = useState([
         {
             sid: '',
@@ -26,6 +31,8 @@ function Activity() {
     useEffect(() => {
         getdata();
     }, []);
+
+
     return (
         <>
             <div className="jumbotron jumbotron-fluid">
@@ -60,7 +67,6 @@ function Activity() {
                                                   className=""
                                                   style={{
                                                       Width: '100%',
-
                                                   }}
                                                   src={`/images/activity/${row.card_img}`}
                                                   alt=""
@@ -96,6 +102,11 @@ function Activity() {
                                                           <button
                                                               type="button"
                                                               className="btn btn-sm btn-outline-secondary"
+                                                              onClick={() =>
+                                                                  goToPath(
+                                                                      `${row.sid}`
+                                                                  )
+                                                              }
                                                           >
                                                               詳細資訊
                                                           </button>
