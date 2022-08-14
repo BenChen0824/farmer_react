@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { RECIPE_GET_LIST } from './../../../config/recipe-ajax-path';
 import { Link, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Recipesearch.css';
 import './Leftsidemenu.css';
 import Pagination from './Pagination';
@@ -23,6 +24,8 @@ function Recipesearch() {
     const [recipeDisplay, setRecipeDisplay] = useState([]);
     const [recipeDisplayAgain, setRecipeDisplayAgain] = useState([]);
 
+    const navigate = useNavigate();
+
     async function getRecipe() {
         const r = await fetch('http://localhost:3600/recipe/recipe');
         const obj = await r.json();
@@ -42,11 +45,19 @@ function Recipesearch() {
     //     });
     // }, []);
 
+    // function tocreate {
+    //     return ( XXX === 正確 ? navigate('/recipe/createrecipe', { replace: true }); : alert('請先登入'));
+    // }
+
     return (
         <>
             <div className="menuincreate">
                 <Link to={`/recipe/createrecipe`}>
-                    <button className="leftsidebutton">
+                    <button
+                        className="leftsidebutton"
+                        // onClick={tocreate}
+                        // TODO：身分判別式
+                    >
                         新增食譜
                         <img
                             src="/images/file-plus.svg"
