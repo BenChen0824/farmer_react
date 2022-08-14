@@ -6,6 +6,7 @@ import { countries, townships } from './data/townships';
 import { useState, useRef } from 'react';
 
 import companyData from './data/company.json';
+
 import './MyMap.css';
 // import { data } from './Data/company_1'
 // import { data } from './Data/company_1'
