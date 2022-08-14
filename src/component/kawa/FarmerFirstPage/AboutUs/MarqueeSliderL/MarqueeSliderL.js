@@ -2,7 +2,7 @@ import Marquee from 'react-fast-marquee';
 import './MarqueeSliderL.css';
 
 const MarqueeSliderL = () => {
-    // https://www.npmjs.com/package/react-fast-marquee
+    // https://www.npmjs.com/package/react-fast-marquee 
 
     const settings = {
         pauseOnClick: true,

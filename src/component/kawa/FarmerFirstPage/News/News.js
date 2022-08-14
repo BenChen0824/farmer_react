@@ -44,7 +44,7 @@ const News = () => {
                 <div className="news_card  mx-3 col-3">
                     <img src="./index_images/main_banner_04.jpg" alt="" />
                     <div className="card-body">
-                        <h5 className="card_title">黃金小鎮休閒農業區</h5>
+                        <h5 className="card_title">黃金小鎮休閒農業區 </h5>
                         <h5 className="card_title">屏東市</h5>
                         <h5 className="">2022-05-14</h5>
                         <p className="card-text">
