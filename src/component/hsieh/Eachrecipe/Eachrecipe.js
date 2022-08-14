@@ -143,7 +143,7 @@ function Eachrecipe() {
 
                         <div className="recipedataineach">
                             <div className="greencircleineach">
-                                <img src="/images/portion.png" alt="" />
+                                <img src="/images/portion.svg" alt="" />
                             </div>
                             <div>
                                 <p>
@@ -158,7 +158,7 @@ function Eachrecipe() {
 
                         <div className="recipedataineach">
                             <div className="greencircleineach">
-                                <img src="/images/pot.png" alt="" />
+                                <img src="/images/cooking.svg" alt="" />
                             </div>
                             <div>
                                 <p>
@@ -172,7 +172,7 @@ function Eachrecipe() {
 
                         <div className="recipedataineach">
                             <div className="greencircleineach">
-                                <img src="/images/degree.png" alt="" />
+                                <img src="/images/degree.svg" alt="" />
                             </div>
                             <div>
                                 <p>
@@ -190,38 +190,6 @@ function Eachrecipe() {
                         <p>{eachrecipe.recipes_description}</p>
                     </div>
                 </div>
-            </div>
-
-            {/* 分隔線 */}
-
-            <div className="socialmediaineach">
-                <button className="buttonineach">
-                    <img src="/images/line.png" alt="" className="iconineach" />
-                </button>
-
-                <button className="buttonineach">
-                    <img
-                        src="/images/twitter.png"
-                        alt=""
-                        className="iconineach"
-                    />
-                </button>
-
-                <button className="buttonineach">
-                    <img src="/images/ig.png" alt="" className="iconineach" />
-                </button>
-
-                <button className="buttonineach">
-                    <img src="/images/fb.png" alt="" className="iconineach" />
-                </button>
-
-                <button className="buttonineach">
-                    <img
-                        src="/images/email.png"
-                        alt=""
-                        className="iconineach"
-                    />
-                </button>
             </div>
 
             {/* 分隔線 */}
