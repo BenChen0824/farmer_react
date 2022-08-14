@@ -1,8 +1,12 @@
+.CommentCard_section {
+    padding: 10px;
+}
+
 .CommentCard {
     min-height: 200px;
     background-color: rgb(255, 255, 255);
     border-radius: 2px 2px 2px 2px;
-    margin: 10px;
+    /* margin: 10px; */
     border: 2px solid rgb(213, 225, 228);
     padding: 10px;
     /* box-shadow: #333; */
@@ -27,6 +31,37 @@
     width: 100px;
 }
 
+.CommentProductItem {
+    color: white;
+    background-color: #4C5642;
+    word-wrap: break-word;
+    padding: 10px 0px 10px 10px;
+    max-width: 400px;
+}
+
+.CommentProductItem::before {
+    content: '1. ';
+    background-color: #666666;
+    max-width: 400px;
+}
+
+.likes_area {
+    /* background-color: rgb(127, 80, 80); */
+    /* width: 100px; */
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.likes_icons {
+    margin-right: 10px;
+}
+
+.likes_icons, .likes_number {
+    color: rgb(36, 36, 36);
+}
 
 
-/* justify-content-between */
+
+/* 以下桌機 */
+@media screen and (min-width:768px) {
+}

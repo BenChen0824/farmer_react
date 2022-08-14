@@ -5,7 +5,7 @@ const MarqueeSliderR = () => {
     // https://www.npmjs.com/package/react-fast-marquee
 
     const settings = {
-        pauseOnHover: true,
+        pauseOnClick: true,
         direction: 'right',
         speed: 20,
         delay: 0,
@@ -19,34 +19,34 @@ const MarqueeSliderR = () => {
             <Marquee {...settings}>
                 <div className="slider d-flex">
                     <div className="Marquee_img_wrap">
-                        <img src="./images/farmerpic_01.jpg" alt="" />
+                        <img src="./index_images/farmerpic_11.jpg" alt="" />
                     </div>
                     <div className="Marquee_img_wrap">
-                        <img src="./images/farmerpic_02.jpg" alt="" />
+                        <img src="./index_images/farmerpic_12.jpg" alt="" />
                     </div>
                     <div className="Marquee_img_wrap">
-                        <img src="./images/farmerpic_03.jpg" alt="" />
+                        <img src="./index_images/farmerpic_13.jpg" alt="" />
                     </div>
                     <div className="Marquee_img_wrap">
-                        <img src="./images/farmerpic_04.jpg" alt="" />
+                        <img src="./index_images/farmerpic_14.jpg" alt="" />
                     </div>
                     <div className="Marquee_img_wrap">
-                        <img src="./images/farmerpic_05.jpg" alt="" />
+                        <img src="./index_images/farmerpic_15.jpg" alt="" />
                     </div>
                     <div className="Marquee_img_wrap  mx-auto">
-                        <img src="./images/farmerpic_06.jpg" alt="" />
+                        <img src="./index_images/farmerpic_16.jpg" alt="" />
                     </div>
                     <div className="Marquee_img_wrap">
-                        <img src="./images/farmerpic_07.jpg" alt="" />
+                        <img src="./index_images/farmerpic_17.jpg" alt="" />
                     </div>
                     <div className="Marquee_img_wrap">
-                        <img src="./images/farmerpic_08.jpg" alt="" />
+                        <img src="./index_images/farmerpic_18.jpg" alt="" />
                     </div>
                     <div className="Marquee_img_wrap">
-                        <img src="./images/farmerpic_09.jpg" alt="" />
+                        <img src="./index_images/farmerpic_19.jpg" alt="" />
                     </div>
                     <div className="Marquee_img_wrap">
-                        <img src="./images/farmerpic_10.jpg" alt="" />
+                        <img src="./index_images/farmerpic_20.jpg" alt="" />
                     </div>
                 </div>
             </Marquee>
