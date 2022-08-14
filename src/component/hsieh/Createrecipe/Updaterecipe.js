@@ -78,9 +78,27 @@ function Updaterecipe() {
 
     // 料理食材
     const [updateIngredient, setUpdateIngredient] = useState('');
+    const [updateIngredient1, setUpdateIngredient1] = useState('');
+    const [updateIngredient2, setUpdateIngredient2] = useState('');
+    const [updateIngredient3, setUpdateIngredient3] = useState('');
+    const [updateIngredient4, setUpdateIngredient4] = useState('');
+    const [updateIngredient5, setUpdateIngredient5] = useState('');
+    const [updateIngredient6, setUpdateIngredient6] = useState('');
+    const [updateIngredient7, setUpdateIngredient7] = useState('');
+    const [updateIngredient8, setUpdateIngredient8] = useState('');
+    const [updateIngredient9, setUpdateIngredient9] = useState('');
 
     // 料理步驟
     const [updateStep, setUpdateStep] = useState('');
+    const [updateStep1, setUpdateStep1] = useState('');
+    const [updateStep2, setUpdateStep2] = useState('');
+    const [updateStep3, setUpdateStep3] = useState('');
+    const [updateStep4, setUpdateStep4] = useState('');
+    const [updateStep5, setUpdateStep5] = useState('');
+    const [updateStep6, setUpdateStep6] = useState('');
+    const [updateStep7, setUpdateStep7] = useState('');
+    const [updateStep8, setUpdateStep8] = useState('');
+    const [updateStep9, setUpdateStep9] = useState('');
 
     // 料理照片
     const [updateRecipe_img, setUpdateRecipe_img] = useState([]);
@@ -130,6 +148,31 @@ function Updaterecipe() {
             navigate('/recipe', { replace: true });
         }
     }
+
+    function plusoneingredient() {
+        var elem = document.querySelectorAll('div.ingredientincreate1');
+        elem[0].className = 'ingredientincreate';
+    }
+
+    function minusoneingredient() {
+        var elem = document.querySelectorAll('div.ingredientincreate');
+        elem[elem.length - 1].className = 'ingredientincreate1';
+    }
+
+    function plusonestep() {
+        var elem = document.querySelectorAll('div.stepincreate1');
+        elem[0].className = 'stepincreate';
+    }
+
+    function minusonestep() {
+        var elem = document.querySelectorAll('div.stepincreate');
+        elem[elem.length - 1].className = 'stepincreate1';
+    }
+
+    // function cleaninput() {
+    //     var elem = document.querySelectorAll('input.ingredientuse');
+    //     elem[elem.length - 1].value = '';
+    // }
 
     return (
         <>
@@ -321,22 +364,301 @@ function Updaterecipe() {
 
                 <div className="eachdataincreaterecipe">
                     <div>
-                        <div className="ingredientandstep">
+                        <div className="ingredientincreate">
                             <section>
                                 <input
-                                    name="updateIngredient"
+                                    name="[updateIngredient]"
                                     id="updateIngredient"
                                     type="text"
                                     className="ingredientuse"
                                     value={updaterecipe.recipes_ingredient}
-                                    placeholder="請輸入食材"
+                                    placeholder="食材與份量，如：雞蛋2顆"
                                     onChange={(e) => {
                                         setUpdaterecipe(e.target.value);
                                     }}
                                 />
                             </section>
 
-                            <button className="buttonincreate">
+                            <button type="button" className="buttonincreate">
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="ingredientincreate1">
+                            <section>
+                                <input
+                                    name="[updateIngredient1]"
+                                    id="updateIngredient1"
+                                    type="text"
+                                    className="ingredientuse"
+                                    value={updaterecipe.recipes_ingredient}
+                                    required
+                                    placeholder="食材與份量，如：雞蛋2顆"
+                                    onChange={(e) => {
+                                        setUpdateIngredient1(e.target.value);
+                                    }}
+                                />
+                            </section>
+
+                            <button
+                                type="button"
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="ingredientincreate1">
+                            <section>
+                                <input
+                                    name="[ingredient]"
+                                    id="ingredient2"
+                                    type="text"
+                                    className="ingredientuse"
+                                    value={updaterecipe.recipes_ingredient}
+                                    required
+                                    placeholder="食材與份量，如：雞蛋2顆"
+                                    onChange={(e) => {
+                                        setUpdateIngredient2(e.target.value);
+                                    }}
+                                />
+                            </section>
+
+                            <button
+                                type="button"
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="ingredientincreate1">
+                            <section>
+                                <input
+                                    name="[ingredient]"
+                                    id="ingredient3"
+                                    type="text"
+                                    className="ingredientuse"
+                                    value={updaterecipe.recipes_ingredient}
+                                    required
+                                    placeholder="食材與份量，如：雞蛋2顆"
+                                    onChange={(e) => {
+                                        setUpdateIngredient3(e.target.value);
+                                    }}
+                                />
+                            </section>
+
+                            <button
+                                type="button"
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="ingredientincreate1">
+                            <section>
+                                <input
+                                    name="[ingredient]"
+                                    id="ingredient4"
+                                    type="text"
+                                    className="ingredientuse"
+                                    value={updaterecipe.recipes_ingredient}
+                                    required
+                                    placeholder="食材與份量，如：雞蛋2顆"
+                                    onChange={(e) => {
+                                        setUpdateIngredient4(e.target.value);
+                                    }}
+                                />
+                            </section>
+
+                            <button
+                                type="button"
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="ingredientincreate1">
+                            <section>
+                                <input
+                                    name="[ingredient]"
+                                    id="ingredient5"
+                                    type="text"
+                                    className="ingredientuse"
+                                    value={updaterecipe.recipes_ingredient}
+                                    required
+                                    placeholder="食材與份量，如：雞蛋2顆"
+                                    onChange={(e) => {
+                                        setUpdateIngredient5(e.target.value);
+                                    }}
+                                />
+                            </section>
+
+                            <button
+                                type="button"
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="ingredientincreate1">
+                            <section>
+                                <input
+                                    name="[ingredient]"
+                                    id="ingredient6"
+                                    type="text"
+                                    className="ingredientuse"
+                                    value={updaterecipe.recipes_ingredient}
+                                    required
+                                    placeholder="食材與份量，如：雞蛋2顆"
+                                    onChange={(e) => {
+                                        setUpdateIngredient6(e.target.value);
+                                    }}
+                                />
+                            </section>
+
+                            <button
+                                type="button"
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="ingredientincreate1">
+                            <section>
+                                <input
+                                    name="[ingredient]"
+                                    id="ingredient7"
+                                    type="text"
+                                    className="ingredientuse"
+                                    value={updaterecipe.recipes_ingredient}
+                                    required
+                                    placeholder="食材與份量，如：雞蛋2顆"
+                                    onChange={(e) => {
+                                        setUpdateIngredient7(e.target.value);
+                                    }}
+                                />
+                            </section>
+
+                            <button
+                                type="button"
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="ingredientincreate1">
+                            <section>
+                                <input
+                                    name="[ingredient]"
+                                    id="ingredient8"
+                                    type="text"
+                                    className="ingredientuse"
+                                    value={updaterecipe.recipes_ingredient}
+                                    required
+                                    placeholder="食材與份量，如：雞蛋2顆"
+                                    onChange={(e) => {
+                                        setUpdateIngredient8(e.target.value);
+                                    }}
+                                />
+                            </section>
+
+                            <button
+                                type="button"
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="ingredientincreate1">
+                            <section>
+                                <input
+                                    name="[ingredient]"
+                                    id="ingredient9"
+                                    type="text"
+                                    className="ingredientuse"
+                                    value={updaterecipe.recipes_ingredient}
+                                    required
+                                    placeholder="食材與份量，如：雞蛋2顆"
+                                    onChange={(e) => {
+                                        setUpdateIngredient9(e.target.value);
+                                    }}
+                                />
+                            </section>
+
+                            <button
+                                type="button"
+                                className="buttonincreate"
+                                // onClick={}
+                            >
                                 <img
                                     src="/images/trashcan.svg"
                                     alt=""
@@ -349,6 +671,32 @@ function Updaterecipe() {
                     </div>
                 </div>
 
+                <div className="additemarea">
+                    <button
+                        type="button"
+                        className="plusbuttonincreate"
+                        onClick={plusoneingredient}
+                    >
+                        <img
+                            src="/images/plus.svg"
+                            alt=""
+                            className="iconincreateplus"
+                        />
+                    </button>
+
+                    <button
+                        type="button"
+                        className="buttonincreate"
+                        onClick={minusoneingredient}
+                    >
+                        <img
+                            src="/images/minus.svg"
+                            alt=""
+                            className="iconincreate"
+                        />
+                    </button>
+                </div>
+
                 <hr className="hrincreaterecipe" />
                 {/* 分隔線，以下料理步驟 */}
 
@@ -358,24 +706,340 @@ function Updaterecipe() {
 
                 <div className="eachdataincreaterecipe">
                     <div>
-                        <div className="ingredientandstep">
+                        <div className="stepincreate">
                             <div className="redballincreate">1</div>
                             <section>
                                 <textarea
-                                    name="updateStep"
+                                    name="[updateStep]"
                                     id="updateStep"
                                     className="dataform1increate"
                                     value={updaterecipe.recipes_cooking_method}
                                     placeholder="步驟1"
                                     onChange={(e) => {
-                                        setUpdaterecipe(e.target.value);
+                                        setUpdateStep(e.target.value);
                                     }}
                                 />
                             </section>
+                            <button
+                                type="button"
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="stepincreate1">
+                            <div className="redballincreate">2</div>
+                            <section>
+                                <textarea
+                                    name="[step1]"
+                                    id="step1"
+                                    className="stepoftextareaincreate"
+                                    value={updaterecipe.recipes_cooking_method}
+                                    required
+                                    placeholder="步驟2"
+                                    onChange={(e) => {
+                                        setUpdateStep1(e.target.value);
+                                    }}
+                                />
+                                <div className="invalid-feedback"></div>
+                            </section>
+                            <button
+                                type="button"
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="stepincreate1">
+                            <div className="redballincreate">3</div>
+                            <section>
+                                <textarea
+                                    name="[step2]"
+                                    id="step2"
+                                    className="stepoftextareaincreate"
+                                    value={updaterecipe.recipes_cooking_method}
+                                    required
+                                    placeholder="步驟3"
+                                    onChange={(e) => {
+                                        setUpdateStep2(e.target.value);
+                                    }}
+                                />
+                                <div className="invalid-feedback"></div>
+                            </section>
+                            <button
+                                type="button"
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="stepincreate1">
+                            <div className="redballincreate">4</div>
+                            <section>
+                                <textarea
+                                    name="[step3]"
+                                    id="step3"
+                                    className="stepoftextareaincreate"
+                                    value={updaterecipe.recipes_cooking_method}
+                                    required
+                                    placeholder="步驟4"
+                                    onChange={(e) => {
+                                        setUpdateStep3(e.target.value);
+                                    }}
+                                />
+                                <div className="invalid-feedback"></div>
+                            </section>
+                            <button
+                                type="button"
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="stepincreate1">
+                            <div className="redballincreate">5</div>
+                            <section>
+                                <textarea
+                                    name="[step4]"
+                                    id="step4"
+                                    className="stepoftextareaincreate"
+                                    value={updaterecipe.recipes_cooking_method}
+                                    required
+                                    placeholder="步驟5"
+                                    onChange={(e) => {
+                                        setUpdateStep4(e.target.value);
+                                    }}
+                                />
+                                <div className="invalid-feedback"></div>
+                            </section>
+                            <button
+                                type="button"
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="stepincreate1">
+                            <div className="redballincreate">6</div>
+                            <section>
+                                <textarea
+                                    name="[step5]"
+                                    id="step5"
+                                    className="stepoftextareaincreate"
+                                    value={updaterecipe.recipes_cooking_method}
+                                    required
+                                    placeholder="步驟6"
+                                    onChange={(e) => {
+                                        setUpdateStep5(e.target.value);
+                                    }}
+                                />
+                                <div className="invalid-feedback"></div>
+                            </section>
+                            <button
+                                type="button"
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="stepincreate1">
+                            <div className="redballincreate">7</div>
+                            <section>
+                                <textarea
+                                    name="[step6]"
+                                    id="step6"
+                                    className="stepoftextareaincreate"
+                                    value={updaterecipe.recipes_cooking_method}
+                                    required
+                                    placeholder="步驟7"
+                                    onChange={(e) => {
+                                        setUpdateStep6(e.target.value);
+                                    }}
+                                />
+                                <div className="invalid-feedback"></div>
+                            </section>
+                            <button
+                                type="button"
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="stepincreate1">
+                            <div className="redballincreate">8</div>
+                            <section>
+                                <textarea
+                                    name="[step7]"
+                                    id="step7"
+                                    className="stepoftextareaincreate"
+                                    value={updaterecipe.recipes_cooking_method}
+                                    required
+                                    placeholder="步驟8"
+                                    onChange={(e) => {
+                                        setUpdateStep7(e.target.value);
+                                    }}
+                                />
+                                <div className="invalid-feedback"></div>
+                            </section>
+                            <button
+                                type="button"
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="stepincreate1">
+                            <div className="redballincreate">9</div>
+                            <section>
+                                <textarea
+                                    name="[step8]"
+                                    id="step8"
+                                    className="stepoftextareaincreate"
+                                    value={updaterecipe.recipes_cooking_method}
+                                    required
+                                    placeholder="步驟9"
+                                    onChange={(e) => {
+                                        setUpdateStep8(e.target.value);
+                                    }}
+                                />
+                                <div className="invalid-feedback"></div>
+                            </section>
+                            <button
+                                type="button"
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="stepincreate1">
+                            <div className="redballincreate">10</div>
+                            <section>
+                                <textarea
+                                    name="[step9]"
+                                    id="step9"
+                                    className="stepoftextareaincreate"
+                                    value={updaterecipe.recipes_cooking_method}
+                                    required
+                                    placeholder="步驟10"
+                                    onChange={(e) => {
+                                        setUpdateStep9(e.target.value);
+                                    }}
+                                />
+                                <div className="invalid-feedback"></div>
+                            </section>
+                            <button
+                                type="button"
+                                className="buttonincreate"
+                                // onClick={}
+                            >
+                                <img
+                                    src="/images/trashcan.svg"
+                                    alt=""
+                                    className="iconincreate"
+                                />
+                            </button>
                         </div>
 
                         {/* 分隔線 */}
                     </div>
+                </div>
+
+                <div className="additemarea">
+                    <button
+                        type="button"
+                        className="plusbuttonincreate"
+                        onClick={plusonestep}
+                    >
+                        <img
+                            src="/images/plus.svg"
+                            alt=""
+                            className="iconincreateplus"
+                        />
+                    </button>
+
+                    <button
+                        type="button"
+                        className="buttonincreate"
+                        onClick={minusonestep}
+                    >
+                        <img
+                            src="/images/minus.svg"
+                            alt=""
+                            className="iconincreate"
+                        />
+                    </button>
                 </div>
 
                 <hr className="hrincreaterecipe" />

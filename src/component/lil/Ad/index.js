@@ -1,14 +1,21 @@
 import React from 'react';
 import styles from './Ad.module.css';
 import clsx from 'clsx';
-
-function Ad({ className }) {
+import { IoIosCloseCircle } from 'react-icons/io';
+function Ad({ className, onClick }) {
     return (
-        <img
-            className={clsx(styles.img, className)}
-            src="/images/Mesa de trabajo 1-100.jpg"
-            alt=""
-        />
+        <div className={clsx(styles.ad, className)}>
+            <IoIosCloseCircle
+                className={styles.close}
+                size={24}
+                onClick={onClick}
+            />
+            <img
+                className={styles.img}
+                src="/images/Mesa de trabajo 1-100.jpg"
+                alt=""
+            />
+        </div>
     );
 }
 export default Ad;

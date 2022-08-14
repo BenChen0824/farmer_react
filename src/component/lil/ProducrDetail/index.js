@@ -1,24 +1,25 @@
 import styles from './ProductDetail.module.css';
 import clsx from 'clsx';
-function ProductDetail() {
+import _ from 'lodash';
+
+function ProductDetail({ data = {} }) {
+    // console.log(data);
     return (
         <>
             <div className={styles.container}>
                 <div className={clsx(styles.wrap, 'row')}>
-                    <div className={clsx(styles.part1, 'col-6')}>
+                    <div className={clsx(styles.part1, 'col-lg-6')}>
                         <div className={styles.photo}>
-                            <img src="/images/apples-02.jpg" alt="" />
+                            <img src={_.get(data, 'product_img.0')} alt="" />
                         </div>
                     </div>
-                    <div className={clsx(styles.part2, 'col-6')}>
+                    <div className={clsx(styles.part2, 'col-lg-6')}>
                         <div className={styles.title}>
-                            <h5>在地小農有機商品</h5>
-                            <h4>檸檬檸檬檸檬</h4>
+                            <h5>在地小農商品</h5>
+                            <h4>{data.product_name}</h4>
                         </div>
                         <div className={styles.info}>
-                            <p>
-                                好吃嘚好吃嘚好吃嘚好吃嘚好吃嘚好吃嘚好吃嘚好吃嘚好吃嘚好吃嘚好吃嘚好吃嘚好吃嘚好吃嘚好吃嘚好吃嘚好吃嘚好吃嘚好吃嘚好吃嘚好吃嘚好吃嘚好吃嘚好吃嘚
-                            </p>
+                            <p>{data.product_details}</p>
                         </div>
                     </div>
                 </div>
