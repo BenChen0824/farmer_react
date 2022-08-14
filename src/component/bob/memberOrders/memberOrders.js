@@ -142,7 +142,7 @@ function MemberOrders() {
                                                           訂單狀態
                                                       </th>
                                                       <th scope="col">
-                                                          商品評價
+                                                          顧客回饋
                                                       </th>
                                                   </tr>
                                               </thead>
@@ -349,7 +349,7 @@ function MemberOrders() {
                                                           訂單狀態
                                                       </th>
                                                       <th scope="col">
-                                                          商品評價
+                                                          顧客回饋
                                                       </th>
                                                   </tr>
                                               </thead>

@@ -9,17 +9,6 @@ function SignIn() {
     const { cartList, setCartList } = useContext(CartCountContext);
     const navigate = useNavigate();
 
-    function Login(obj) {
-        if (obj.success) {
-            localStorage.setItem('auth', JSON.stringify(obj.data));
-            setAuth({ ...obj.data, authorized: true });
-            alert('歡迎登入');
-            navigate('/member/data', { replace: true });
-        } else {
-            alert('帳號/密碼錯誤');
-        }
-    }
-
     const checkForm = async (event) => {
         event.preventDefault();
         const data = {
@@ -39,6 +28,17 @@ function SignIn() {
         setCartList(obj.cart);
         Login(obj);
     };
+
+    function Login(obj) {
+        if (obj.success) {
+            localStorage.setItem('auth', JSON.stringify(obj.data));
+            setAuth({ ...obj.data, authorized: true });
+            alert('歡迎登入');
+            navigate('/member/data', { replace: true });
+        } else {
+            alert('帳號/密碼錯誤');
+        }
+    }
 
     const LineAuth = () => {
         var URL = 'https://access.line.me/oauth2/v2.1/authorize?';
@@ -81,7 +81,7 @@ function SignIn() {
                             id="email"
                             name="email"
                             className="form-control p-2 bg-light"
-                            placeholder="會員帳號"
+                            placeholder="請輸入您的E-mail"
                         />
                         <label htmlFor="password" className="m-2">
                             密碼
@@ -91,7 +91,7 @@ function SignIn() {
                             id="password"
                             name="password"
                             className="form-control p-2 bg-light"
-                            placeholder="會員密碼"
+                            placeholder="請輸入您的密碼"
                         />
                         <div className="checkbox m-3 text-end">
                             <label>
@@ -103,9 +103,9 @@ function SignIn() {
                                 </a>
                             </label>
                         </div>
-                        <div className="d-grid gap-2">
+                        <div className="d-grid gap-2 mb-3">
                             <button
-                                className="btn btn btn-info btn-block"
+                                className="btn btn btn-success btn-block"
                                 type="submit"
                             >
                                 登入
@@ -120,15 +120,6 @@ function SignIn() {
                                 }}
                             >
                                 立即加入會員
-                            </button>
-                        </div>
-                        <p className="m-3 text-center">——— 其他方式登入 ———</p>
-                        <div className="d-grid gap-2 col-10 mx-auto mb-2">
-                            <button
-                                className="btn btn btn-success btn-block"
-                                onClick={LineAuth}
-                            >
-                                使用 LINE 帳號登入
                             </button>
                         </div>
                     </form>

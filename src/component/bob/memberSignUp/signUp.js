@@ -81,7 +81,7 @@ function SignUp() {
 
     function register(obj) {
         if (obj.success) {
-            alert('恭喜註冊成功');
+            alert('註冊申請成功，請繼續完成信箱驗證');
             navigate('/member/verify', { replace: true });
         } else {
             alert('請填寫正確資料');
@@ -104,7 +104,7 @@ function SignUp() {
                         method="post"
                         onSubmit={checkForm}
                     >
-                        <label htmlFor="username" className="sr-only m-2">
+                        <label htmlFor="username" className="m-2">
                             姓名
                         </label>
                         <input
@@ -116,7 +116,7 @@ function SignUp() {
                             placeholder="請輸入您的姓名"
                         />
                         <div className="invalid-feedback"></div>
-                        <label htmlFor="email" className="sr-only m-2">
+                        <label htmlFor="email" className="m-2">
                             E-mail
                         </label>
                         <input
@@ -128,7 +128,7 @@ function SignUp() {
                             placeholder="請輸入您的E-mail"
                         />
                         <div className="invalid-feedback"></div>
-                        <label htmlFor="password" className="sr-only m-2">
+                        <label htmlFor="password" className="m-2">
                             密碼
                         </label>
                         <input
@@ -140,7 +140,7 @@ function SignUp() {
                             placeholder="請輸入您的密碼"
                         />
                         <div className="invalid-feedback"></div>
-                        <label htmlFor="checkPassword" className="sr-only m-2">
+                        <label htmlFor="checkPassword" className="m-2">
                             確認密碼
                         </label>
                         <input

@@ -72,9 +72,11 @@ function MemberRecipe(){
                     <div className="col-sm-9">
                         <div className="container">
                             <h2 className="text-center fw-bold">我的收藏清單</h2>
-                            <div className="btn-group bore-switchpx d-flex justify-content-center">
-                                <button className="btn btn-outline-dark text-center fw-bold my-4" onClick={()=>{navigate('/member/collections',{replace:true})}}>已收藏商品</button>
-                                <button className="btn btn-outline-dark text-center fw-bold my-4 active" onClick={()=>{navigate('/member/recipe',{replace:true})}}>已收藏食譜</button>
+                            <div className="container">
+                                <div className="btn-group bore-switchpx d-flex justify-content-center">
+                                    <button className="btn btn-outline-dark text-center fw-bold my-4" onClick={()=>{navigate('/member/collections',{replace:true})}}>已收藏商品</button>
+                                    <button className="btn btn-outline-dark text-center fw-bold my-4 active" onClick={()=>{navigate('/member/recipe',{replace:true})}}>已收藏食譜</button>
+                                </div>
                             </div>
                             <div className="row justify-content-center">
                                 <form className="d-flex col-sm-7 mb-3">
@@ -96,11 +98,11 @@ function MemberRecipe(){
                         </div>
                         <div className="container">
                             <div className="row justify-content-center">
-                            {searchInput.length >= 1 || filterCate.length >=1 ? 
+                            {response[0] ? searchInput.length >= 1 || filterCate.length >=1 ? 
                             (filteredResult.map((res)=>
                                 <div className="card p-2 bdr m-1 shadow-sm position-relative" val={res.member_id} style={{width: '16rem'}} key={res.product_id}>
                                     <div className="position-absolute top-0 end-0">
-                                        <button id={res.product_id} className="btn btn-sm btn-light rounded-circle py-1 lh-1 bore-lineheight" onClick={deleteProduct}>╳</button>
+                                        <button id={res.product_id} className="btn btn-sm btn-light rounded-circle px-1 fs-6 bore-lineheight" onClick={deleteProduct}>×</button>
                                     </div>
                                     <img src={`/images/${JSON.parse(res.product_img)[0]}`} className="card-img-top bore-objft" width="200px" height="175px" alt="..."/>
                                     <div className="card-body text-center">
@@ -108,6 +110,7 @@ function MemberRecipe(){
                                         <h5 className="card-title">{res.product_name}</h5>
                                         <p className="card-text bore-multiline-ellipsis">{res.product_details}</p>
                                         <p className="card-text">$ {res.product_price}</p>
+                                        <button className="btn btn-sm btn-success" onClick={()=>{navigate(`/product/${res.product_id}`, {replace:true})}}>查看商品</button>
                                     </div>
                                 </div>
                             ))
@@ -115,7 +118,7 @@ function MemberRecipe(){
                             (response.map((res)=>
                                 <div className="card p-2 bdr m-1 shadow-sm position-relative" style={{width: '16rem'}} val={res.member_id} key={res.product_id}>
                                     <div className="position-absolute top-0 end-0">
-                                        <button id={res.product_id} className="btn btn-sm btn-light rounded-circle py-1 lh-1 bore-lineheight" onClick={deleteProduct}>╳</button>
+                                        <button id={res.product_id} className="btn btn-sm btn-light rounded-circle px-1 fs-6 bore-lineheight" onClick={deleteProduct}>×</button>
                                     </div>
                                     <img src={`/images/${JSON.parse(res.product_img)[0]}`} className="card-img-top bore-objft" width="200px" height="175px" alt="..."/>
                                     <div className="card-body text-center">
@@ -123,9 +126,11 @@ function MemberRecipe(){
                                         <h5 className="card-title">{res.product_name}</h5>
                                         <p className="card-text bore-multiline-ellipsis">{res.product_details}</p>
                                         <p className="card-text">價格 $ {res.product_price}</p>
+                                        <button className="btn btn-sm btn-success" onClick={()=>{navigate(`/product/${res.product_id}`, {replace:true})}}>查看商品</button>
                                     </div>
                                 </div>
-                            ))}
+                            )) :
+                            <p className="text-muted text-center mt-5">尚無已收藏的食譜</p>}
                             </div>
                         </div>
                     </div>

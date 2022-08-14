@@ -7,7 +7,6 @@ function MemberLevel() {
     const [myCoupons, setMyCoupons] = useState([]);
     const [myRecord, setMyRecord] = useState([]);
     const [myPoints, setMyPoints] = useState([]);
-    const [levelCard, setLevelCard] = useState('/images/silver.jpg');
 
     const loginUser = JSON.parse(localStorage.getItem('auth'));
 
@@ -52,21 +51,21 @@ function MemberLevel() {
 
     function myLevel() {
         if (myRecord < 5000) {
-            return '銀卡會員';
+            return '銅卡會員';
         } else if (myRecord > 5000 && myRecord < 10000) {
-            return '金卡會員';
+            return '銀卡會員';
         } else {
-            return '白金會員';
+            return '金卡會員';
         }
     }
 
     function presentCard() {
         if (myRecord < 5000) {
-            return 'silver.png';
+            return 'level_copper.jpg';
         } else if (myRecord > 5000 && myRecord < 10000) {
-            return 'gold.jpg';
+            return 'level_silver.jpg';
         } else {
-            return 'platium.jpg';
+            return 'level_gold.jpg';
         }
     }
 
@@ -140,12 +139,13 @@ function MemberLevel() {
                                     </div>
                                 </div>
                             </div>
-                            <h2 className="text-center fw-bold m-3">
+                            <h2 className="text-center fw-bold m-5">
                                 我的優惠券
                             </h2>
                             <div className="container col-9 mt-2">
                                 <div className="row justify-content-center">
-                                    {myCoupons.map((v, i) => {
+                                    {myCoupons[0] ? 
+                                    myCoupons.map((v, i) => {
                                         return (
                                             <div
                                                 className="bol-couponCss mb-3"
@@ -176,7 +176,8 @@ function MemberLevel() {
                                                 </div>
                                             </div>
                                         );
-                                    })}
+                                    }) :
+                                    <p className="text-muted text-center mt-5">尚無可使用的優惠券</p>}
                                 </div>
                             </div>
                         </div>

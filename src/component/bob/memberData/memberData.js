@@ -103,14 +103,14 @@ function MemberData(){
                                                 <div className="form-text red"></div>
                                             </div>
                                             <div className="mb-1 row border-bottom py-3">
-                                                <label htmlFor="account" className="form-label col-sm-2 my-auto">帳號</label>
+                                                <label htmlFor="account" className="form-label col-sm-2 my-auto">密碼</label>
                                                 <div className="col-sm-8">
-                                                    <input type="text" className="form-control" id="account" name="account" required defaultValue={memberData[0].account}/>
+                                                    <input type="password" className="form-control" id="account" name="account" required defaultValue={memberData[0].password}/>
                                                 </div>
                                                 <div className="form-text red"></div>
                                             </div>
                                             <div className="mb-1 row border-bottom py-3">
-                                                <label htmlFor="password" className="form-label col-sm-2 my-auto">密碼</label>
+                                                <label htmlFor="password" className="form-label col-sm-2 my-auto">確認密碼</label>
                                                 <div className="col-sm-8">
                                                     <input type="password" className="form-control" id="password" name="password" required defaultValue={memberData[0].password}/>
                                                 </div>

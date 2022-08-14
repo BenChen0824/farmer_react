@@ -119,7 +119,7 @@ function MemberCollections() {
                         </div>
                         <div className="container">
                             <div className="row justify-content-center">
-                                {searchInput.length >= 1 ||
+                                {response[0] ? searchInput.length >= 1 ||
                                 filterCate.length >= 1
                                     ? filteredResult.map((res) => (
                                           <div
@@ -131,7 +131,7 @@ function MemberCollections() {
                                               <div className="position-absolute top-0 end-0">
                                                   <button
                                                       id={res.product_id}
-                                                      className="btn btn-sm btn-light rounded-circle py-1 lh-1 boc-lineheight text-end"
+                                                      className="btn btn-sm btn-light rounded-circle fs-6 px-1 boc-lineheight text-end"
                                                       onClick={deleteProduct}
                                                   >
                                                       ×
@@ -161,6 +161,7 @@ function MemberCollections() {
                                                   <p className="card-text">
                                                       $ {res.product_price}
                                                   </p>
+                                                  <button className="btn btn-sm btn-success" onClick={()=>{navigate(`/product/${res.product_id}`, {replace:true})}}>查看商品</button>
                                               </div>
                                           </div>
                                       ))
@@ -204,9 +205,11 @@ function MemberCollections() {
                                                   <p className="card-text">
                                                       $ {res.product_price}
                                                   </p>
+                                                  <button className="btn btn-sm btn-success" onClick={()=>{navigate(`/product/${res.product_id}`, {replace:true})}}>查看商品</button>
                                               </div>
                                           </div>
-                                      ))}
+                                      )) : 
+                                <p className="text-muted text-center mt-5">尚無已收藏的商品</p>}
                             </div>
                         </div>
                     </div>
