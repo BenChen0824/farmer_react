@@ -479,6 +479,7 @@ function Createrecipe() {
                             </section>
 
                             <button
+                                type="button"
                                 className="buttonincreate"
                                 // onClick={}
                             >
@@ -510,7 +511,7 @@ function Createrecipe() {
                                 />
                             </section>
 
-                            <button className="buttonincreate">
+                            <button type="button" className="buttonincreate">
                                 <img
                                     src="/images/trashcan.svg"
                                     alt=""
@@ -540,6 +541,7 @@ function Createrecipe() {
                             </section>
 
                             <button
+                                type="button"
                                 className="buttonincreate"
                                 // onClick={}
                             >
@@ -571,6 +573,7 @@ function Createrecipe() {
                             </section>
 
                             <button
+                                type="button"
                                 className="buttonincreate"
                                 // onClick={}
                             >
@@ -602,6 +605,7 @@ function Createrecipe() {
                             </section>
 
                             <button
+                                type="button"
                                 className="buttonincreate"
                                 // onClick={}
                             >
@@ -633,6 +637,7 @@ function Createrecipe() {
                             </section>
 
                             <button
+                                type="button"
                                 className="buttonincreate"
                                 // onClick={}
                             >
@@ -664,6 +669,7 @@ function Createrecipe() {
                             </section>
 
                             <button
+                                type="button"
                                 className="buttonincreate"
                                 // onClick={}
                             >
@@ -695,6 +701,7 @@ function Createrecipe() {
                             </section>
 
                             <button
+                                type="button"
                                 className="buttonincreate"
                                 // onClick={}
                             >
@@ -726,6 +733,7 @@ function Createrecipe() {
                             </section>
 
                             <button
+                                type="button"
                                 className="buttonincreate"
                                 // onClick={}
                             >
@@ -757,6 +765,7 @@ function Createrecipe() {
                             </section>
 
                             <button
+                                type="button"
                                 className="buttonincreate"
                                 // onClick={}
                             >
@@ -776,6 +785,7 @@ function Createrecipe() {
 
                 <div className="additemarea">
                     <button
+                        type="button"
                         className="plusbuttonincreate"
                         onClick={plusoneingredient}
                     >
@@ -787,6 +797,7 @@ function Createrecipe() {
                     </button>
 
                     <button
+                        type="button"
                         className="buttonincreate"
                         onClick={minusoneingredient}
                     >
@@ -825,6 +836,7 @@ function Createrecipe() {
                                 <div className="invalid-feedback"></div>
                             </section>
                             <button
+                                type="button"
                                 className="buttonincreate"
                                 // onClick={}
                             >
@@ -856,6 +868,7 @@ function Createrecipe() {
                                 <div className="invalid-feedback"></div>
                             </section>
                             <button
+                                type="button"
                                 className="buttonincreate"
                                 // onClick={}
                             >
@@ -887,6 +900,7 @@ function Createrecipe() {
                                 <div className="invalid-feedback"></div>
                             </section>
                             <button
+                                type="button"
                                 className="buttonincreate"
                                 // onClick={}
                             >
@@ -918,6 +932,7 @@ function Createrecipe() {
                                 <div className="invalid-feedback"></div>
                             </section>
                             <button
+                                type="button"
                                 className="buttonincreate"
                                 // onClick={}
                             >
@@ -949,6 +964,7 @@ function Createrecipe() {
                                 <div className="invalid-feedback"></div>
                             </section>
                             <button
+                                type="button"
                                 className="buttonincreate"
                                 // onClick={}
                             >
@@ -980,6 +996,7 @@ function Createrecipe() {
                                 <div className="invalid-feedback"></div>
                             </section>
                             <button
+                                type="button"
                                 className="buttonincreate"
                                 // onClick={}
                             >
@@ -1011,6 +1028,7 @@ function Createrecipe() {
                                 <div className="invalid-feedback"></div>
                             </section>
                             <button
+                                type="button"
                                 className="buttonincreate"
                                 // onClick={}
                             >
@@ -1042,6 +1060,7 @@ function Createrecipe() {
                                 <div className="invalid-feedback"></div>
                             </section>
                             <button
+                                type="button"
                                 className="buttonincreate"
                                 // onClick={}
                             >
@@ -1073,6 +1092,7 @@ function Createrecipe() {
                                 <div className="invalid-feedback"></div>
                             </section>
                             <button
+                                type="button"
                                 className="buttonincreate"
                                 // onClick={}
                             >
@@ -1104,6 +1124,7 @@ function Createrecipe() {
                                 <div className="invalid-feedback"></div>
                             </section>
                             <button
+                                type="button"
                                 className="buttonincreate"
                                 // onClick={}
                             >
@@ -1121,6 +1142,7 @@ function Createrecipe() {
 
                 <div className="additemarea">
                     <button
+                        type="button"
                         className="plusbuttonincreate"
                         onClick={plusonestep}
                     >
@@ -1131,7 +1153,11 @@ function Createrecipe() {
                         />
                     </button>
 
-                    <button className="buttonincreate" onClick={minusonestep}>
+                    <button
+                        type="button"
+                        className="buttonincreate"
+                        onClick={minusonestep}
+                    >
                         <img
                             src="/images/minus.svg"
                             alt=""
