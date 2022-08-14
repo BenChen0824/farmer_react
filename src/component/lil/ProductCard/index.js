@@ -27,7 +27,7 @@ function ProductCard({
 }) {
     const [amount, setAmount] = useState(1);
     // const [collect, setCollect] = useState(false);
-    const [hover, setHover] = useState(true);
+    const [hover, setHover] = useState(false);
     // const [save, setSave] = useState(false);
 
     const handleClickMinus = () => {
@@ -51,10 +51,10 @@ function ProductCard({
             <div
                 className={clsx(styles.card, { [styles.transition]: hover })}
                 onMouseOver={() => {
-                    setHover(false);
+                    setHover(true);
                 }}
                 onMouseOut={() => {
-                    setHover(true);
+                    setHover(false);
                 }}
             >
                 <div
