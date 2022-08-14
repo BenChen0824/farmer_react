@@ -1,6 +1,6 @@
 import styles from './ProductCard.module.css';
 import { BsCart4 } from 'react-icons/bs';
-import { RiAddFill } from 'react-icons/ri';
+import { MdAdd } from 'react-icons/md';
 import { AiOutlineMinus, AiOutlinePlus, AiOutlineHeart } from 'react-icons/ai';
 import { useState } from 'react';
 import { UNIT } from '../../../config/variables';
@@ -49,7 +49,7 @@ function ProductCard({
     return (
         <div className={className}>
             <div
-                className={styles.card}
+                className={clsx(styles.card, { [styles.transition]: hover })}
                 onMouseOver={() => {
                     setHover(false);
                 }}
@@ -71,7 +71,7 @@ function ProductCard({
                     })}
                     onClick={handleCompare}
                 >
-                    <RiAddFill size={16} />
+                    <MdAdd size={28} />
                 </div>
                 <div onClick={onClick}>
                     <div>
@@ -93,9 +93,10 @@ function ProductCard({
                     </div>
                 </div>
                 <div
-                    className={clsx(styles.card_cart, {
-                        [styles.hidden]: hover,
-                    })}
+                    // className={clsx(styles.card_cart, {
+                    //     [styles.hidden]: hover,
+                    // })}
+                    className={styles.card_cart}
                 >
                     <div
                         className={clsx(styles.collect, {

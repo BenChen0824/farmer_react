@@ -1,16 +1,14 @@
 import styles from './ProductItemInfo.module.css';
+import _ from 'lodash';
 import clsx from 'clsx';
-import { useState } from 'react';
-import {
-    AiTwotoneStar,
-    AiOutlinePlus,
-    AiOutlineMinus,
-    AiOutlineHeart,
-} from 'react-icons/ai';
+import { useEffect, useState } from 'react';
+import { AiOutlinePlus, AiOutlineMinus, AiOutlineHeart } from 'react-icons/ai';
 import Box from '../Box';
 import { UNIT, SUPPLIER, HASHTAG } from '../../../config/variables';
 import LineShare from '../LineShare';
 import { useNavigate } from 'react-router-dom';
+import { getStarRating } from '../../../api/product';
+import ReactStars from 'react-rating-stars-component';
 
 function ProductItemInfo({ data, sid, onSubmit, onCollect, saved }) {
     const images = data.product_img;
@@ -23,6 +21,7 @@ function ProductItemInfo({ data, sid, onSubmit, onCollect, saved }) {
     const selectedImgUrl = images && images[selectedImage];
     const member_info = JSON.parse(localStorage.getItem('auth')) || {};
     const userId = member_info.customer_id;
+    const [rating, setRating] = useState({});
 
     const goToPath = () => {
         navigate(`/cart`);
@@ -32,14 +31,29 @@ function ProductItemInfo({ data, sid, onSubmit, onCollect, saved }) {
         setSelectedImage(index);
     };
 
+    const countRating = async (sid) => {
+        const data = await getStarRating(sid);
+        //{average: 4.04, rows: 13}
+        setRating(data);
+    };
+    useEffect(() => {
+        countRating(sid);
+    }, [sid]);
+
     return (
         <>
             <div className={styles.container}>
                 <div className="bread">
                     <p>商品/水果/屏東現採有機萊姆</p>
                 </div>
-                <div className={styles.product_info_wrap}>
-                    <div className={styles.product_imgs}>
+                <div className={clsx(styles.product_info_wrap, 'row')}>
+                    <div
+                        className={clsx(
+                            styles.product_imgs,
+                            'col-md-6',
+                            'col-12'
+                        )}
+                    >
                         <div className={styles.img_main}>
                             <div className={styles.img_1}>
                                 <Box>
@@ -72,19 +86,33 @@ function ProductItemInfo({ data, sid, onSubmit, onCollect, saved }) {
                                 ))}
                         </div>
                     </div>
-                    <div className={styles.product_info}>
+                    <div
+                        className={clsx(
+                            styles.product_info,
+                            'col-md-6',
+                            // 'col-sm-12',
+                            'col-12'
+                        )}
+                    >
                         <h2>{data.product_name}</h2>
                         <p>{SUPPLIER[data.product_supplier]}</p>
                         <div className={styles.star}>
                             <div className={styles.star_area}>
-                                <AiTwotoneStar size={18} />
-                                <AiTwotoneStar size={18} />
-                                <AiTwotoneStar size={18} />
-                                <AiTwotoneStar size={18} />
-                                <AiTwotoneStar size={18} />
+                                {!_.isNil(rating.average) && (
+                                    <ReactStars
+                                        size={16}
+                                        value={rating.average}
+                                        edit={false}
+                                        isHalf
+                                    />
+                                )}
                             </div>
-                            <div className={styles.point}>5.0</div>
-                            <div className={styles.total_point}>(39)</div>
+                            <div className={styles.point}>{`${
+                                rating.average || 0
+                            }`}</div>
+                            <div className={styles.total_point}>{`(${
+                                rating.rows || 0
+                            })`}</div>
                         </div>
                         <div className={styles.info_price}>
                             <div className={styles.dollar_tag}>$</div>
