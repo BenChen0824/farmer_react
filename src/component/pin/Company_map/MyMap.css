@@ -21,19 +21,13 @@
 	border-right: 1px solid;
 }
 
-
-/* .container{
-    width: 100%;
-    height: 100%;
-} */
-
 .infocards{
 background-color: #f7fff7;
 }
 
 .leaflet-container {
     width: 100%;
-    height: 100vh;
+    height: 112vh;
 }
 .texts{
 	font-size: 20px;

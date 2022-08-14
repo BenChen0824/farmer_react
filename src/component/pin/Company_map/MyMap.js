@@ -1,9 +1,8 @@
-import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import { Icon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { countries, townships } from './data/townships';
-import { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 
 import companyData from './data/company.json';
 
@@ -17,10 +16,23 @@ const skater = new Icon({
     iconAnchor: [10, 41],
     popupAnchor: [2, -40],
 });
+
+const disneyLandLatLng = [24.7269191, 121.704412];
+
 function MyMap() {
     const [countryIndex, setCountryIndex] = useState(-1);
     const [townshipIndex, setTownshipIndex] = useState(-1);
 
+    const mapRef = useRef();
+
+    function handleOnFlyTo() {
+        const { current = {} } = mapRef;
+        const { leafletElement: map } = current;
+
+        map.flyTo(disneyLandLatLng, 15, {
+            duration: 2,
+        });
+    }
     return (
         <>
             <div className="row no-gutter w-100">
@@ -33,11 +45,8 @@ function MyMap() {
                                     className="form-control jscounty"
                                     value={countryIndex}
                                     onChange={(e) => {
-                                        // 注意e.target.value為字串類型(由網頁上傳入都是字串值)
-                                        // 為了保持countryIndex(state狀態)的資料類型都一致相同，所以要轉為數字
                                         setCountryIndex(Number(e.target.value));
 
-                                        // 重置townshipIndex的值為-1
                                         setTownshipIndex(-1);
                                     }}
                                 >
@@ -57,15 +66,13 @@ function MyMap() {
                                     className="form-control jstown"
                                     value={townshipIndex}
                                     onChange={(e) => {
-                                        // 注意e.target.value為字串類型(由網頁上傳入都是字串值)
-                                        // 為了保持setTownshipIndex(state狀態)的資料類型都一致相同，所以要轉為數字
                                         setTownshipIndex(
                                             Number(e.target.value)
                                         );
                                     }}
                                 >
                                     <option value="-1">請選擇區域</option>
-                                    {/* 當有選擇縣市(countryIndex >)時才要作map，呈現其它的區域選項 */}
+
                                     {countryIndex > -1 &&
                                         townships[countryIndex].map((v, i) => {
                                             return (
@@ -80,11 +87,12 @@ function MyMap() {
                     </form>
                     <section
                         className="content bg-w overflow-auto w-100 px-3 pt-3 mx-2"
-                        style={{ height: '59vh' }}
+                        style={{ height: '100vh' }}
                     >
                         {companyData.features.map((v, i) => {
                             return (
                                 // CSS 更動
+
                                 <div
                                     class="pinmycard card mb-3 infocards"
                                     data-cards="241"
@@ -103,6 +111,13 @@ function MyMap() {
                                             {v.Time}
                                         </li>
                                     </ul>
+                                    <button
+                                        type="button"
+                                        class="btn btn-success"
+                                        onClick={handleOnFlyTo}
+                                    >
+                                        立即查詢
+                                    </button>
                                 </div>
                             );
                         })}
@@ -110,10 +125,10 @@ function MyMap() {
                 </div>
                 <div className="col-sm-6 col-md-8 col-xl-9 px-0">
                     <div>
-                        <MapContainer center={[23.645, 121.064]} zoom={8}>
+                        <Map ref={mapRef} center={[23.645, 121.064]} zoom={8}>
                             <TileLayer
-                                url="https://wmts.nlsc.gov.tw/wmts/EMAP/default/GoogleMapsCompatible/{z}/{y}/{x}.png"
-                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                             />
                             {companyData.features.map((company) => (
                                 <Marker
@@ -140,7 +155,7 @@ function MyMap() {
                                     </Popup>
                                 </Marker>
                             ))}
-                        </MapContainer>
+                        </Map>
                     </div>
                 </div>
             </div>
