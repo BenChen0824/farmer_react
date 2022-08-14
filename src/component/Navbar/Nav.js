@@ -188,10 +188,15 @@ function Nav() {
                         >
                             {cartList.length}
                         </div>
-
+                        {/* btn-outline-dark */}
                         {authorized ? (
                             <button
-                                className="btn btn-sm btn-outline-dark"
+                                // className="btn btn-sm  loginout_btn"
+                                className={
+                                    navColor
+                                        ? '.loginout_btn_active btn btn-sm'
+                                        : 'btn btn-sm'
+                                }
                                 onClick={() => {
                                     memberLogout();
                                 }}

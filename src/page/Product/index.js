@@ -87,7 +87,7 @@ function Product() {
                         onCollect={handleCollect}
                         saved={saved.saved}
                     />
-                    <ProductTab />
+                    <ProductTab data={data} />
                 </div>
             </div>
         </>

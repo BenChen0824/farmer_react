@@ -10,7 +10,7 @@ import Slider from 'react-slick';
 //     <>
 //       <div>
 //         <div className="indexBanner_imgwrap">
-//           <img src="./images/main_banner_05.jpg" alt="" />
+//           <img src="./index_images/main_banner_05.jpg" alt="" />
 //         </div>
 
 //         <div className="indexBanner_text_area">
@@ -42,7 +42,10 @@ export default class Fade extends Component {
                 <Slider {...settings}>
                     <div>
                         <div className="indexBanner_imgwrap">
-                            <img src="./images/main_banner_05.jpg" alt="" />
+                            <img
+                                src="./index_images/main_banner_05.jpg"
+                                alt=""
+                            />
                         </div>
 
                         <div className="indexBanner_text_area">
@@ -57,7 +60,10 @@ export default class Fade extends Component {
 
                     <div>
                         <div className="indexBanner_imgwrap">
-                            <img src="./images/main_banner_04.jpg" alt="" />
+                            <img
+                                src="./index_images/main_banner_04.jpg"
+                                alt=""
+                            />
                         </div>
 
                         <div className="indexBanner_text_area">
@@ -72,7 +78,10 @@ export default class Fade extends Component {
 
                     <div>
                         <div className="indexBanner_imgwrap">
-                            <img src="./images/main_banner_03.jpg" alt="" />
+                            <img
+                                src="./index_images/main_banner_03.jpg"
+                                alt=""
+                            />
                         </div>
 
                         <div className="indexBanner_text_area">
@@ -87,7 +96,10 @@ export default class Fade extends Component {
 
                     <div>
                         <div className="indexBanner_imgwrap">
-                            <img src="./images/main_banner_02.jpg" alt="" />
+                            <img
+                                src="./index_images/main_banner_02.jpg"
+                                alt=""
+                            />
                         </div>
 
                         <div className="indexBanner_text_area">

@@ -86,6 +86,7 @@ function ProductList() {
     const [modalIsOpen, setIsOpen] = useState(false);
     const [adShow, setAdShow] = useState();
     const position = useWindowScrollPosition();
+    const [navFixed, setNavFixed] = useState(false);
 
     function openModal() {
         setIsOpen(true);
@@ -146,7 +147,7 @@ function ProductList() {
             const history = JSON.parse(json);
             const ids = Object.keys(history);
             if (ids.length) {
-                getProducts(ids);
+                getHistoryProducts(ids);
             }
         }
 
@@ -159,7 +160,7 @@ function ProductList() {
         getHotSales();
     }, []);
 
-    const getProducts = async (ids) => {
+    const getHistoryProducts = async (ids) => {
         const getHistoryData = await Promise.all(
             ids.map((v, i) => {
                 return getProductItem(v);
@@ -335,19 +336,23 @@ function ProductList() {
         fetchCompare();
     }, []);
 
+    const handleAdClose = () => {
+        setAdShow(false);
+    };
+
     useEffect(() => {
         if (position.scrollY > 800 && _.isNil(adShow)) {
             setAdShow(true);
         }
-        // window.addEventListener('scroll', () => {
-        //     if (window.scrollY > 800) {
-        //         setAdShow(true);
-        //     } else {
-        //         setAdShow(false);
-        //     }
-        // });
     }, [position, adShow]);
 
+    useEffect(() => {
+        if (position.scrollY > 400) {
+            setNavFixed(true);
+        } else {
+            setNavFixed(false);
+        }
+    }, [position, navFixed]);
     return (
         <>
             <div className={styles.page}>
@@ -356,6 +361,9 @@ function ProductList() {
                         className={styles.comparebtn}
                         onClick={() => openModal()}
                     >
+                        <div className={styles.compareNum}>
+                            {compared.length}
+                        </div>
                         <FaNetworkWired size={30} />
                     </div>
                 )}
@@ -367,18 +375,20 @@ function ProductList() {
                             className={clsx('col-3', styles.sidebar)}
                             style={{ marginTop: '53px' }}
                         >
-                            <SearchP />
-                            <PriceSelect
-                                value={selectedOption}
-                                onSelect={setSelectedOption}
-                            />
-                            <ProductNavBar />
-
+                            <div className={clsx({ [styles.fixed]: navFixed })}>
+                                <SearchP />
+                                <PriceSelect
+                                    value={selectedOption}
+                                    onSelect={setSelectedOption}
+                                />
+                                <ProductNavBar />
+                            </div>
                             <div className={styles.ad_wrap}>
                                 <Ad
                                     className={clsx(styles.ad_hidden, {
                                         [styles.ad_move]: adShow,
                                     })}
+                                    onClick={handleAdClose}
                                 />
                             </div>
                         </div>
@@ -510,6 +520,9 @@ function ProductList() {
                                                         SUPPLIER[
                                                             v.product_supplier
                                                         ]
+                                                    }
+                                                    inventory={
+                                                        v.product_inventory
                                                     }
                                                     price={v.product_price}
                                                     unit={v.product_unit}

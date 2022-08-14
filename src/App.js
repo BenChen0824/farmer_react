@@ -25,8 +25,8 @@ import Createrecipe from './component/hsieh/Createrecipe/Createrecipe';
 import Updaterecipe from './component/hsieh/Createrecipe/Updaterecipe';
 // import GameMain from './component/po/game/gameMain';
 import CartMain from './component/ben/App';
-import Activity from './component/pin/activity/Activity';
-import ActivityData from './component/pin/activityData/activitydata';
+import Activity from './component/pin/Activity/Activity';
+import ActivityData from './component/pin/ActivityData/activitydata';
 
 import { io } from 'socket.io-client';
 const socket = io('http://localhost:3600');

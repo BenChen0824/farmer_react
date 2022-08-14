@@ -6,6 +6,7 @@ import {
     CART_ADD_PRODUCT,
     PRODUCT_COLLECT,
     PRODUCT_COMPARE,
+    PRODUCT_COMMENT,
 } from '../config/ajax-path';
 
 axios.defaults.withCredentials = true;
@@ -147,4 +148,18 @@ export async function updateCompare(sid) {
 export async function deleteCompare(sid) {
     const { data } = await axios.delete(PRODUCT_COMPARE, { data: { sid } });
     return data;
+}
+
+export async function getStarRating(sid) {
+    const params = { sid };
+    const { data } = await axios.get(PRODUCT_COMMENT, { params });
+    //console.log(data);  [{…}, {…}, {…}, {…}, {…}, {rating: '5'}]
+    const rows = data.length;
+    const sum = data.reduce((total, obj) => {
+        return total + Number(obj.rating);
+    }, 0);
+
+    const average = Math.round((sum / rows) * 100) / 100;
+    // console.log({ average, rows });
+    return { average, rows };
 }

@@ -4,12 +4,14 @@ import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 // import { COMMENT_ADD_ITEM } from './../../config/ajax-path'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { GrClose } from 'react-icons/gr';
 
 export default function CreateComment() {
     const navigate = useNavigate();
     const [number, setNumber] = useState(0);
     const [hoverStar, setHoverStar] = useState(undefined);
     const [commentContent, setCommentContent] = useState('');
+    // const [ButtonClose, setButtonClose] = useState(false);
 
     const loginUser = JSON.parse(localStorage.getItem('auth'));
 
@@ -18,6 +20,7 @@ export default function CreateComment() {
         axios
             .post('http://localhost:3600/comment/createcomment', {
                 member_id: loginUser.customer_id,
+                // member_id: 30,
                 // avatar: '',
                 rating: number,
                 comment: document.form1.comment.value,
@@ -89,6 +92,12 @@ export default function CreateComment() {
             <div className="CreateComment_App">
                 <div className="CreateComment_popup">
                     <div className="CreateComment_content">
+                        <div>
+                            <GrClose
+                                className="CreateComment_closeBtn"
+                                size={40}
+                            />
+                        </div>
                         <div className="CreateComment_product">
                             {/* <img
               style={{ width: 60, height: 60, objectFit: 'cover' }}
