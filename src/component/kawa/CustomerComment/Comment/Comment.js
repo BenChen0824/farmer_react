@@ -201,14 +201,6 @@ const Comment = () => {
             setLikes(likes + 1);
         }
         setIsClicked(!isClicked);
-
-        // const newtotalComment = totalComment.filter((v) => {
-        //     return +v.rating === +e.target.getAttribute('value');
-        //     // data-value
-        // });
-        // // console.log('newtotalComment', newtotalComment);
-        // setCommentToShow(newtotalComment);
-        // console.log(getPicURL(e.target.getAttribute('value')));
     };
 
     return (
