@@ -199,11 +199,30 @@ function Eachrecipe() {
                     <div className="materialineach">
                         <div className="blackineachrecipe">使用食材</div>
                         <div className="showarea1ineach">
-                            <div>
-                                <p className="chapter1ineach">
-                                    {eachrecipe.recipes_ingredient}
-                                </p>
-                            </div>
+                            <p className="chapter1ineach">
+                                {eachrecipe.recipes_ingredient}
+                                <br />
+                                {/* 食材1 */}
+                                <br />
+                                {/* 食材2 */}
+                                <br />
+                                {/* 食材3 */}
+                                <br />
+                                {/* 食材4 */}
+                                <br />
+                                {/* 食材5 */}
+                                <br />
+                                {/* 食材6 */}
+                                <br />
+                                {/* 食材7 */}
+                                <br />
+                                {/* 食材8 */}
+                                <br />
+                                {/* 食材9 */}
+                                <br />
+                                {/* 食材10 */}
+                                <br />
+                            </p>
                         </div>
                     </div>
 
@@ -212,12 +231,142 @@ function Eachrecipe() {
                     <div className="cookingineach">
                         <div className="greenineachrecipe">料理方式</div>
                         <div className="showarea2ineach">
+                            {/* 步驟呈現的區域 */}
                             <div className="numberineachrecipe">1</div>
                             <div className="chapter2ineach">
                                 {eachrecipe.recipes_cooking_method}
+                                {/* 步驟1 */}
                             </div>
                         </div>
-                        {/* 引入料理方式 */}
+
+                        {/* 分隔線 */}
+
+                        <div className="showarea2ineach1">
+                            <div className="numberineachrecipe">2</div>
+                            <div className="chapter2ineach">
+                                {/* {eachrecipe.recipes_cooking_method} */}
+                                {/* 步驟2 */}
+                                {/* 
+                                var elem = document.querySelectorAll('div.showarea2ineach1');
+                                elem[0].className = 'showarea2ineach';
+                                return ({eachrecipe.recipes_cooking_method}.length === 0 ? elem[0].className =showarea2ineach1 : elem[0].className =showarea2ineach);
+                                 */}
+                            </div>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="showarea2ineach1">
+                            <div className="numberineachrecipe">3</div>
+                            <div className="chapter2ineach">
+                                {/* {eachrecipe.recipes_cooking_method} */}
+                                {/* 步驟3 */}
+                                {/* 
+                                var elem = document.querySelectorAll('div.showarea2ineach1');
+                                elem[0].className = 'showarea2ineach';
+                                return ({eachrecipe.recipes_cooking_method}.length === 0 ? elem[0].className =showarea2ineach1 : elem[0].className =showarea2ineach);
+                                 */}
+                            </div>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="showarea2ineach1">
+                            <div className="numberineachrecipe">4</div>
+                            <div className="chapter2ineach">
+                                {/* {eachrecipe.recipes_cooking_method} */}
+                                {/* 步驟4 */}
+                                {/* 
+                                var elem = document.querySelectorAll('div.showarea2ineach1');
+                                elem[0].className = 'showarea2ineach';
+                                return ({eachrecipe.recipes_cooking_method}.length === 0 ? elem[0].className =showarea2ineach1 : elem[0].className =showarea2ineach);
+                                 */}
+                            </div>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="showarea2ineach1">
+                            <div className="numberineachrecipe">5</div>
+                            <div className="chapter2ineach">
+                                {/* {eachrecipe.recipes_cooking_method} */}
+                                {/* 步驟5 */}
+                                {/* 
+                                var elem = document.querySelectorAll('div.showarea2ineach1');
+                                elem[0].className = 'showarea2ineach';
+                                return ({eachrecipe.recipes_cooking_method}.length === 0 ? elem[0].className =showarea2ineach1 : elem[0].className =showarea2ineach);
+                                 */}
+                            </div>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="showarea2ineach1">
+                            <div className="numberineachrecipe">6</div>
+                            <div className="chapter2ineach">
+                                {/* {eachrecipe.recipes_cooking_method} */}
+                                {/* 步驟6 */}
+                                {/* 
+                                var elem = document.querySelectorAll('div.showarea2ineach1');
+                                elem[0].className = 'showarea2ineach';
+                                return ({eachrecipe.recipes_cooking_method}.length === 0 ? elem[0].className =showarea2ineach1 : elem[0].className =showarea2ineach);
+                                 */}
+                            </div>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div className="showarea2ineach1">
+                            <div className="numberineachrecipe">7</div>
+                            <div className="chapter2ineach">
+                                {/* {eachrecipe.recipes_cooking_method} */}
+                                {/* 步驟7 */}
+                                {/* 
+                                var elem = document.querySelectorAll('div.showarea2ineach1');
+                                elem[0].className = 'showarea2ineach';
+                                return ({eachrecipe.recipes_cooking_method}.length === 0 ? elem[0].className =showarea2ineach1 : elem[0].className =showarea2ineach);
+                                 */}
+                            </div>
+                        </div>
+
+                        <div className="showarea2ineach1">
+                            <div className="numberineachrecipe">8</div>
+                            <div className="chapter2ineach">
+                                {/* {eachrecipe.recipes_cooking_method} */}
+                                {/* 步驟8 */}
+                                {/* 
+                                var elem = document.querySelectorAll('div.showarea2ineach1');
+                                elem[0].className = 'showarea2ineach';
+                                return ({eachrecipe.recipes_cooking_method}.length === 0 ? elem[0].className =showarea2ineach1 : elem[0].className =showarea2ineach);
+                                 */}
+                            </div>
+                        </div>
+
+                        <div className="showarea2ineach1">
+                            <div className="numberineachrecipe">9</div>
+                            <div className="chapter2ineach">
+                                {/* {eachrecipe.recipes_cooking_method} */}
+                                {/* 步驟9 */}
+                                {/* 
+                                var elem = document.querySelectorAll('div.showarea2ineach1');
+                                elem[0].className = 'showarea2ineach';
+                                return ({eachrecipe.recipes_cooking_method}.length === 0 ? elem[0].className =showarea2ineach1 : elem[0].className =showarea2ineach);
+                                 */}
+                            </div>
+                        </div>
+
+                        <div className="showarea2ineach1">
+                            <div className="numberineachrecipe">10</div>
+                            <div className="chapter2ineach">
+                                {/* {eachrecipe.recipes_cooking_method} */}
+                                {/* 步驟10 */}
+                                {/* 
+                                var elem = document.querySelectorAll('div.showarea2ineach1');
+                                elem[0].className = 'showarea2ineach';
+                                return ({eachrecipe.recipes_cooking_method}.length === 0 ? elem[0].className =showarea2ineach1 : elem[0].className =showarea2ineach);
+                                 */}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

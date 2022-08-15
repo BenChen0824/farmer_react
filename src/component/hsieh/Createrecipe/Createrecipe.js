@@ -273,11 +273,7 @@ function Createrecipe() {
                                 id="description"
                                 required
                                 className="dataform1increate"
-                                value={
-                                    descriptioncorrect === ''
-                                        ? description
-                                        : descriptioncorrect
-                                }
+                                value={description}
                                 placeholder="請100字內簡單描述"
                                 cols="30"
                                 rows="5"
@@ -307,11 +303,7 @@ function Createrecipe() {
                             className="dataform2increate"
                             type="text"
                             required
-                            value={
-                                timecostcorrect === ''
-                                    ? timecost
-                                    : timecostcorrect
-                            }
+                            value={timecost}
                             onChange={(e) => {
                                 setTimecost(e.target.value);
                             }}
@@ -335,11 +327,7 @@ function Createrecipe() {
                             className="dataform2increate"
                             type="text"
                             required
-                            value={
-                                caloriescorrect === ''
-                                    ? calories
-                                    : caloriescorrect
-                            }
+                            value={calories}
                             onChange={(e) => {
                                 setCalories(e.target.value);
                             }}
@@ -361,9 +349,7 @@ function Createrecipe() {
                             name="portion"
                             id="portion"
                             className="dataform2increate"
-                            value={
-                                portioncorrect === '' ? portion : portioncorrect
-                            }
+                            value={portion}
                             required
                             onChange={(e) => {
                                 setPortion(e.target.value);
@@ -394,11 +380,7 @@ function Createrecipe() {
                             name="recipestype"
                             id="recipestype"
                             className="dataform1increate"
-                            value={
-                                recipestypecorrect === ''
-                                    ? recipestype
-                                    : recipestypecorrect
-                            }
+                            value={recipestype}
                             required
                             onChange={(e) => {
                                 setRecipestype(e.target.value);
@@ -428,11 +410,7 @@ function Createrecipe() {
                             name="recipesdegree"
                             id="recipesdegree"
                             className="dataform1increate"
-                            value={
-                                recipesdegreecorrect === ''
-                                    ? recipesdegree
-                                    : recipesdegreecorrect
-                            }
+                            value={recipesdegree}
                             required
                             onChange={(e) => {
                                 setRecipesdegree(e.target.value);
@@ -511,7 +489,11 @@ function Createrecipe() {
                                 />
                             </section>
 
-                            <button type="button" className="buttonincreate">
+                            <button
+                                type="button"
+                                className="buttonincreate"
+                                // onClick={}
+                            >
                                 <img
                                     src="/images/trashcan.svg"
                                     alt=""
@@ -1170,24 +1152,7 @@ function Createrecipe() {
                 {/* 分隔線，以下照片 */}
 
                 <div className="photoareaincreate">
-                    {/* <button
-                    className="buttonincreate"
-                    type="button"
-                    onClick={handleClick}
-                >
-                    <img
-                        src="/images/camera.svg"
-                        alt=""
-                        className="iconincreate"
-                    />
-                </button> */}
-                    {/* <input
-                        type="file"
-                        name="recipes_img"
-                        onchange="previewFile()"
-                    /> */}
                     {/* 上傳按鈕 */}
-                    {/* <img src="" height="200" alt="" /> */}
 
                     <div className="photouploadincreate">
                         <input
@@ -1201,7 +1166,7 @@ function Createrecipe() {
 
                         <img
                             className="showphotoincreate"
-                            src={`/images/${qwert()}`}
+                            src={`/dishimages/${qwert()}`}
                             alt=""
                         />
                     </div>

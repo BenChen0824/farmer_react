@@ -103,6 +103,8 @@ function Updaterecipe() {
     // 料理照片
     const [updateRecipe_img, setUpdateRecipe_img] = useState([]);
 
+    const [previewimg, setPreviewimg] = useState('');
+
     const navigate = useNavigate();
 
     const updateAllInfo = async (event) => {
@@ -147,6 +149,11 @@ function Updaterecipe() {
             alert('更新成功');
             navigate('/recipe', { replace: true });
         }
+    }
+
+    function qwert() {
+        const a = previewimg.substring(12);
+        return a;
     }
 
     function plusoneingredient() {
@@ -361,7 +368,6 @@ function Updaterecipe() {
                 <div className="eachdataincreaterecipe">
                     <label className="datanameincreaterecipe">使用食材</label>
                 </div>
-
                 <div className="eachdataincreaterecipe">
                     <div>
                         <div className="ingredientincreate">
@@ -379,7 +385,11 @@ function Updaterecipe() {
                                 />
                             </section>
 
-                            <button type="button" className="buttonincreate">
+                            <button
+                                type="button"
+                                className="buttonincreate"
+                                // onClick={}
+                            >
                                 <img
                                     src="/images/trashcan.svg"
                                     alt=""
@@ -1046,28 +1056,27 @@ function Updaterecipe() {
                 {/* 分隔線，以下照片 */}
 
                 <div className="photoareaincreate">
-                    {/* <button className="buttonincreate">
-                        <img
-                            src="/images/camera.svg"
-                            alt=""
-                            className="iconincreate"
-                        />
-                    </button> */}
-                    <input type="file" name="recipes_img" />
                     {/* 上傳按鈕 */}
 
                     <div className="photouploadincreate">
-                        {/* <form style={{ display: 'none' }}>
-                            <input
-                                id="inputData"
-                                name="file"
-                                type="file"
-                                accept="image/*"
-                            />
-                        </form> */}
-                        <img className="shoephotoincreate" src="" alt="" />
+                        <input
+                            type="file"
+                            name="recipes_img"
+                            id="inputData"
+                            // value={updaterecipe.recipes_img}
+                            onChange={(e) => {
+                                setPreviewimg(e.target.value);
+                            }}
+                        />
+
+                        <img
+                            className="showphotoincreate"
+                            src={`/dishimages/${updaterecipe.recipes_img}`}
+                            alt=""
+                        />
                     </div>
                 </div>
+                {/* value={updaterecipe.recipes_cooking_method} */}
                 <div className="buttonintextalign">
                     <label>請選擇照片</label>
                 </div>
@@ -1090,6 +1099,6 @@ function Updaterecipe() {
     );
 }
 
-// onClick={()}
-
 export default Updaterecipe;
+
+// onClick={()}
