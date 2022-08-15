@@ -203,105 +203,138 @@ function Eachrecipe() {
                                 {eachrecipe.recipes_ingredient}
                                 {/* 食材1 */}
                             </p>
+                            {/* 分隔線 */}
+                            <div
+                                className={
+                                    eachrecipe.recipes_ingredient1.length === 0
+                                        ? 'chapter1ineach1'
+                                        : 'chapter1ineach'
+                                }
+                            >
+                                <p>
+                                    {eachrecipe.recipes_ingredient1}
+                                    {/* 食材2 */}
+                                </p>
+                            </div>
 
                             {/* 分隔線 */}
 
-                            <p className="chapter1ineach1">
-                                {eachrecipe.recipes_ingredient}
-                                {/* 食材2 */}
-                                {/* 
-                                const ingr = document.querySelectorAll('div.chapter1ineach1');
-                                return ({eachrecipe.recipes_ingredient}.length === 0 ? ingr[0].className =chapter1ineach1 : ingr[0].className =chapter1ineach);
-                                 */}
-                            </p>
+                            <div
+                                className={
+                                    eachrecipe.recipes_ingredient2.length === 0
+                                        ? 'chapter1ineach1'
+                                        : 'chapter1ineach'
+                                }
+                            >
+                                <p>
+                                    {eachrecipe.recipes_ingredient2}
+                                    {/* 食材3 */}
+                                </p>
+                            </div>
+
+                            {/* 分隔線 */}
+                            <div
+                                className={
+                                    eachrecipe.recipes_ingredient3.length === 0
+                                        ? 'chapter1ineach1'
+                                        : 'chapter1ineach'
+                                }
+                            >
+                                <p>
+                                    {eachrecipe.recipes_ingredient3}
+                                    {/* 食材4 */}
+                                </p>
+                            </div>
 
                             {/* 分隔線 */}
 
-                            <p className="chapter1ineach1">
-                                {eachrecipe.recipes_ingredient}
-                                {/* 食材3 */}
-                                {/* 
-                                const ingr = document.querySelectorAll('div.chapter1ineach1');
-                                return ({eachrecipe.recipes_ingredient}.length === 0 ? ingr[0].className =chapter1ineach1 : ingr[0].className =chapter1ineach);
-                                 */}
-                            </p>
+                            <div
+                                className={
+                                    eachrecipe.recipes_ingredient4.length === 0
+                                        ? 'chapter1ineach1'
+                                        : 'chapter1ineach'
+                                }
+                            >
+                                <p>
+                                    {eachrecipe.recipes_ingredient4}
+                                    {/* 食材5 */}
+                                </p>
+                            </div>
 
                             {/* 分隔線 */}
 
-                            <p className="chapter1ineach1">
-                                {eachrecipe.recipes_ingredient}
-                                {/* 食材4 */}
-                                {/* 
-                                const ingr = document.querySelectorAll('div.chapter1ineach1');
-                                return ({eachrecipe.recipes_ingredient}.length === 0 ? ingr[0].className =chapter1ineach1 : ingr[0].className =chapter1ineach);
-                                 */}
-                            </p>
+                            <div
+                                className={
+                                    eachrecipe.recipes_ingredient5.length === 0
+                                        ? 'chapter1ineach1'
+                                        : 'chapter1ineach'
+                                }
+                            >
+                                <p>
+                                    {eachrecipe.recipes_ingredient5}
+                                    {/* 食材6 */}
+                                </p>
+                            </div>
 
                             {/* 分隔線 */}
 
-                            <p className="chapter1ineach1">
-                                {eachrecipe.recipes_ingredient}
-                                {/* 食材5 */}
-                                {/* 
-                                const ingr = document.querySelectorAll('div.chapter1ineach1');
-                                return ({eachrecipe.recipes_ingredient}.length === 0 ? ingr[0].className =chapter1ineach1 : ingr[0].className =chapter1ineach);
-                                 */}
-                            </p>
+                            <div
+                                className={
+                                    eachrecipe.recipes_ingredient6.length === 0
+                                        ? 'chapter1ineach1'
+                                        : 'chapter1ineach'
+                                }
+                            >
+                                <p>
+                                    {eachrecipe.recipes_ingredient6}
+                                    {/* 食材7 */}
+                                </p>
+                            </div>
 
                             {/* 分隔線 */}
 
-                            <p className="chapter1ineach1">
-                                {eachrecipe.recipes_ingredient}
-                                {/* 食材6 */}
-                                {/* 
-                                const ingr = document.querySelectorAll('div.chapter1ineach1');
-                                return ({eachrecipe.recipes_ingredient}.length === 0 ? ingr[0].className =chapter1ineach1 : ingr[0].className =chapter1ineach);
-                                 */}
-                            </p>
+                            <div
+                                className={
+                                    eachrecipe.recipes_ingredient7.length === 0
+                                        ? 'chapter1ineach1'
+                                        : 'chapter1ineach'
+                                }
+                            >
+                                <p>
+                                    {eachrecipe.recipes_ingredient7}
+                                    {/* 食材8 */}
+                                </p>
+                            </div>
 
                             {/* 分隔線 */}
 
-                            <p className="chapter1ineach1">
-                                {eachrecipe.recipes_ingredient}
-                                {/* 食材7 */}
-                                {/* 
-                                const ingr = document.querySelectorAll('div.chapter1ineach1');
-                                return ({eachrecipe.recipes_ingredient}.length === 0 ? ingr[0].className =chapter1ineach1 : ingr[0].className =chapter1ineach);
-                                 */}
-                            </p>
+                            <div
+                                className={
+                                    eachrecipe.recipes_ingredient8.length === 0
+                                        ? 'chapter1ineach1'
+                                        : 'chapter1ineach'
+                                }
+                            >
+                                <p>
+                                    {eachrecipe.recipes_ingredient8}
+                                    {/* 食材9 */}
+                                </p>
+                            </div>
 
                             {/* 分隔線 */}
 
-                            <p className="chapter1ineach1">
-                                {eachrecipe.recipes_ingredient}
-                                {/* 食材8 */}
-                                {/* 
-                                const ingr = document.querySelectorAll('div.chapter1ineach1');
-                                return ({eachrecipe.recipes_ingredient}.length === 0 ? ingr[0].className =chapter1ineach1 : ingr[0].className =chapter1ineach);
-                                 */}
-                            </p>
-
-                            {/* 分隔線 */}
-
-                            <p className="chapter1ineach1">
-                                {eachrecipe.recipes_ingredient}
-                                {/* 食材9 */}
-                                {/* 
-                                const ingr = document.querySelectorAll('div.chapter1ineach1');
-                                return ({eachrecipe.recipes_ingredient}.length === 0 ? ingr[0].className =chapter1ineach1 : ingr[0].className =chapter1ineach);
-                                 */}
-                            </p>
-
-                            {/* 分隔線 */}
-
-                            <p className="chapter1ineach1">
-                                {eachrecipe.recipes_ingredient}
-                                {/* 食材10 */}
-                                {/* 
-                                const ingr = document.querySelectorAll('div.chapter1ineach1');
-                                return ({eachrecipe.recipes_ingredient}.length === 0 ? ingr[0].className =chapter1ineach1 : ingr[0].className =chapter1ineach);
-                                 */}
-                            </p>
+                            <div
+                                className={
+                                    eachrecipe.recipes_ingredient9.length === 0
+                                        ? 'chapter1ineach1'
+                                        : 'chapter1ineach'
+                                }
+                            >
+                                <p>
+                                    {eachrecipe.recipes_ingredient9}
+                                    {/* 食材10 */}
+                                </p>
+                            </div>
                         </div>
                     </div>
 
@@ -320,121 +353,139 @@ function Eachrecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="showarea2ineach1">
+                        <div
+                            className={
+                                eachrecipe.recipes_step1.length === 0
+                                    ? 'showarea2ineach1'
+                                    : 'showarea2ineach'
+                            }
+                        >
                             <div className="numberineachrecipe">2</div>
                             <div className="chapter2ineach">
-                                {/* {eachrecipe.recipes_step} */}
+                                {eachrecipe.recipes_step1}
                                 {/* 步驟2 */}
-                                {/* 
-                                var step = document.querySelectorAll('div.showarea2ineach1');
-                                return ({eachrecipe.recipes_step}.length === 0 ? step[0].className =showarea2ineach1 : step[0].className =showarea2ineach);
-                                 */}
                             </div>
                         </div>
 
                         {/* 分隔線 */}
 
-                        <div className="showarea2ineach1">
+                        <div
+                            className={
+                                eachrecipe.recipes_step2.length === 0
+                                    ? 'showarea2ineach1'
+                                    : 'showarea2ineach'
+                            }
+                        >
                             <div className="numberineachrecipe">3</div>
                             <div className="chapter2ineach">
-                                {/* {eachrecipe.recipes_step} */}
+                                {eachrecipe.recipes_step2}
                                 {/* 步驟3 */}
-                                {/* 
-                                var step = document.querySelectorAll('div.showarea2ineach1');
-                                return ({eachrecipe.recipes_step}.length === 0 ? step[0].className =showarea2ineach1 : step[0].className =showarea2ineach);
-                                 */}
                             </div>
                         </div>
 
                         {/* 分隔線 */}
 
-                        <div className="showarea2ineach1">
+                        <div
+                            className={
+                                eachrecipe.recipes_step3.length === 0
+                                    ? 'showarea2ineach1'
+                                    : 'showarea2ineach'
+                            }
+                        >
                             <div className="numberineachrecipe">4</div>
                             <div className="chapter2ineach">
-                                {/* {eachrecipe.recipes_step} */}
+                                {eachrecipe.recipes_step3}
                                 {/* 步驟4 */}
-                                {/* 
-                                var step = document.querySelectorAll('div.showarea2ineach1');
-                                return ({eachrecipe.recipes_step}.length === 0 ? step[0].className =showarea2ineach1 : step[0].className =showarea2ineach);
-                                 */}
                             </div>
                         </div>
 
                         {/* 分隔線 */}
 
-                        <div className="showarea2ineach1">
+                        <div
+                            className={
+                                eachrecipe.recipes_step4.length === 0
+                                    ? 'showarea2ineach1'
+                                    : 'showarea2ineach'
+                            }
+                        >
                             <div className="numberineachrecipe">5</div>
                             <div className="chapter2ineach">
-                                {/* {eachrecipe.recipes_step} */}
+                                {eachrecipe.recipes_step4}
                                 {/* 步驟5 */}
-                                {/* 
-                                var step = document.querySelectorAll('div.showarea2ineach1');
-                                return ({eachrecipe.recipes_step}.length === 0 ? step[0].className =showarea2ineach1 : step[0].className =showarea2ineach);
-                                 */}
                             </div>
                         </div>
 
                         {/* 分隔線 */}
 
-                        <div className="showarea2ineach1">
+                        <div
+                            className={
+                                eachrecipe.recipes_step5.length === 0
+                                    ? 'showarea2ineach1'
+                                    : 'showarea2ineach'
+                            }
+                        >
                             <div className="numberineachrecipe">6</div>
                             <div className="chapter2ineach">
-                                {/* {eachrecipe.recipes_step} */}
+                                {eachrecipe.recipes_step5}
                                 {/* 步驟6 */}
-                                {/* 
-                                var step = document.querySelectorAll('div.showarea2ineach1');
-                                return ({eachrecipe.recipes_step}.length === 0 ? step[0].className =showarea2ineach1 : step[0].className =showarea2ineach);
-                                 */}
                             </div>
                         </div>
 
                         {/* 分隔線 */}
 
-                        <div className="showarea2ineach1">
+                        <div
+                            className={
+                                eachrecipe.recipes_step6.length === 0
+                                    ? 'showarea2ineach1'
+                                    : 'showarea2ineach'
+                            }
+                        >
                             <div className="numberineachrecipe">7</div>
                             <div className="chapter2ineach">
-                                {/* {eachrecipe.recipes_step} */}
+                                {eachrecipe.recipes_step6}
                                 {/* 步驟7 */}
-                                {/* 
-                                var step = document.querySelectorAll('div.showarea2ineach1');
-                                return ({eachrecipe.recipes_step}.length === 0 ? step[0].className =showarea2ineach1 : step[0].className =showarea2ineach);
-                                 */}
                             </div>
                         </div>
 
-                        <div className="showarea2ineach1">
+                        <div
+                            className={
+                                eachrecipe.recipes_step7.length === 0
+                                    ? 'showarea2ineach1'
+                                    : 'showarea2ineach'
+                            }
+                        >
                             <div className="numberineachrecipe">8</div>
                             <div className="chapter2ineach">
-                                {/* {eachrecipe.recipes_step} */}
+                                {eachrecipe.recipes_step7}
                                 {/* 步驟8 */}
-                                {/* 
-                                var step = document.querySelectorAll('div.showarea2ineach1');
-                                return ({eachrecipe.recipes_step}.length === 0 ? step[0].className =showarea2ineach1 : step[0].className =showarea2ineach);
-                                 */}
                             </div>
                         </div>
 
-                        <div className="showarea2ineach1">
+                        <div
+                            className={
+                                eachrecipe.recipes_step8.length === 0
+                                    ? 'showarea2ineach1'
+                                    : 'showarea2ineach'
+                            }
+                        >
                             <div className="numberineachrecipe">9</div>
                             <div className="chapter2ineach">
-                                {/* {eachrecipe.recipes_step} */}
+                                {eachrecipe.recipes_step8}
                                 {/* 步驟9 */}
-                                {/* 
-                                var step = document.querySelectorAll('div.showarea2ineach1');
-                                return ({eachrecipe.recipes_step}.length === 0 ? step[0].className =showarea2ineach1 : step[0].className =showarea2ineach);
-                                 */}
                             </div>
                         </div>
 
-                        <div className="showarea2ineach1">
+                        <div
+                            className={
+                                eachrecipe.recipes_step9.length === 0
+                                    ? 'showarea2ineach1'
+                                    : 'showarea2ineach'
+                            }
+                        >
                             <div className="numberineachrecipe">10</div>
                             <div className="chapter2ineach">
-                                {/* {eachrecipe.recipes_step} */}
+                                {eachrecipe.recipes_step9}
                                 {/* 步驟10 */}
-                                {/* 
-                                var step = document.querySelectorAll('div.showarea2ineach1');
-                                return ({eachrecipe.recipes_step}.length === 0 ? step[0].className =showarea2ineach1 : step[0].className =showarea2ineach);
-                                 */}
                             </div>
                         </div>
                     </div>

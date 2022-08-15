@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { RECIPE_GET_LIST } from './../../../config/recipe-ajax-path';
+// import { RECIPE_GET_LIST } from './../../../config/recipe-ajax-path';
 import { Link, useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './Recipesearch.css';

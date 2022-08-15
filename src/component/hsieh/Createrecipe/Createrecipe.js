@@ -127,8 +127,8 @@ function Createrecipe() {
             step8: document.form1.step8.value,
             step9: document.form1.step9.value,
             recipes_img: document.form1.recipes_img.value,
-            customer_id: loginUser.customer_id,
             recipe_creater: loginUser.name,
+            customer_id: loginUser.customer_id,
         };
 
         console.log(data);
@@ -188,6 +188,7 @@ function Createrecipe() {
             body: fd,
             headers: {
                 customer_id: loginUser.customer_id,
+                recipe_creater: loginUser.name,
             },
         })
             .then((r) => r.json())

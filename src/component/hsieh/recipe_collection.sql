@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2022-08-14 16:39:23
+-- 產生時間： 2022-08-15 11:57:45
 -- 伺服器版本： 10.4.24-MariaDB
 -- PHP 版本： 7.4.29
 
@@ -24,13 +24,13 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `like_and_collection`
+-- 資料表結構 `recipe_collection`
 --
 
-CREATE TABLE `like_and_collection` (
+CREATE TABLE `recipe_collection` (
+  `customer_collection` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
-  `customer_like` int(11) NOT NULL,
-  `customer_collection` int(11) NOT NULL
+  `recipes_sid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -38,10 +38,10 @@ CREATE TABLE `like_and_collection` (
 --
 
 --
--- 資料表索引 `like_and_collection`
+-- 資料表索引 `recipe_collection`
 --
-ALTER TABLE `like_and_collection`
-  ADD PRIMARY KEY (`customer_id`);
+ALTER TABLE `recipe_collection`
+  ADD PRIMARY KEY (`customer_collection`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
