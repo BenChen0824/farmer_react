@@ -85,7 +85,7 @@ function Eachrecipe() {
                 <div className="recipedetailineach">
                     <div className="autherineach">
                         <p className="authernameineach">
-                            作者：{eachrecipe.cooking_create_member_Id}
+                            作者：{eachrecipe.recipe_creater}
                         </p>
 
                         <div className="likeandcollectineach">

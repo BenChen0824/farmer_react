@@ -110,6 +110,7 @@ function Createrecipe() {
             step: document.form1.step.value,
             recipes_img: document.form1.recipes_img.value,
             customer_id: loginUser.customer_id,
+            recipe_creater: loginUser.name,
         };
 
         console.log(data);
