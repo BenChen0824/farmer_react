@@ -16,7 +16,7 @@ function Updaterecipe() {
         recipes_type: '',
         recipes_cooking_degree: '',
         recipes_ingredient: '',
-        recipes_cooking_method: '',
+        recipes_step: '',
         recipes_description: '',
         recipes_img: '',
         cooking_create_member_Id: '',
@@ -120,7 +120,25 @@ function Updaterecipe() {
             updateRecipestype: document.form1.updateRecipestype.value,
             updateRecipesdegree: document.form1.updateRecipesdegree.value,
             updateIngredient: document.form1.updateIngredient.value,
+            updateIngredient1: document.form1.updateIngredient.value,
+            updateIngredient2: document.form1.updateIngredient.value,
+            updateIngredient3: document.form1.updateIngredient.value,
+            updateIngredient4: document.form1.updateIngredient.value,
+            updateIngredient5: document.form1.updateIngredient.value,
+            updateIngredient6: document.form1.updateIngredient.value,
+            updateIngredient7: document.form1.updateIngredient.value,
+            updateIngredient8: document.form1.updateIngredient.value,
+            updateIngredient9: document.form1.updateIngredient.value,
             updateStep: document.form1.updateStep.value,
+            updateStep1: document.form1.updateStep.value,
+            updateStep2: document.form1.updateStep.value,
+            updateStep3: document.form1.updateStep.value,
+            updateStep4: document.form1.updateStep.value,
+            updateStep5: document.form1.updateStep.value,
+            updateStep6: document.form1.updateStep.value,
+            updateStep7: document.form1.updateStep.value,
+            updateStep8: document.form1.updateStep.value,
+            updateStep9: document.form1.updateStep.value,
             recipes_img: document.form1.recipes_img.value,
             customer_id: loginUser.customer_id,
         };
@@ -407,7 +425,7 @@ function Updaterecipe() {
                                     id="updateIngredient1"
                                     type="text"
                                     className="ingredientuse"
-                                    value={updaterecipe.recipes_ingredient}
+                                    value={updaterecipe.recipes_ingredient1}
                                     required
                                     placeholder="食材與份量，如：雞蛋2顆"
                                     onChange={(e) => {
@@ -434,11 +452,11 @@ function Updaterecipe() {
                         <div className="ingredientincreate1">
                             <section>
                                 <input
-                                    name="[ingredient]"
+                                    name="ingredient2"
                                     id="ingredient2"
                                     type="text"
                                     className="ingredientuse"
-                                    value={updaterecipe.recipes_ingredient}
+                                    value={updaterecipe.recipes_ingredient2}
                                     required
                                     placeholder="食材與份量，如：雞蛋2顆"
                                     onChange={(e) => {
@@ -465,11 +483,11 @@ function Updaterecipe() {
                         <div className="ingredientincreate1">
                             <section>
                                 <input
-                                    name="[ingredient]"
+                                    name="ingredient3"
                                     id="ingredient3"
                                     type="text"
                                     className="ingredientuse"
-                                    value={updaterecipe.recipes_ingredient}
+                                    value={updaterecipe.recipes_ingredient3}
                                     required
                                     placeholder="食材與份量，如：雞蛋2顆"
                                     onChange={(e) => {
@@ -496,11 +514,11 @@ function Updaterecipe() {
                         <div className="ingredientincreate1">
                             <section>
                                 <input
-                                    name="[ingredient]"
+                                    name="ingredient4"
                                     id="ingredient4"
                                     type="text"
                                     className="ingredientuse"
-                                    value={updaterecipe.recipes_ingredient}
+                                    value={updaterecipe.recipes_ingredient4}
                                     required
                                     placeholder="食材與份量，如：雞蛋2顆"
                                     onChange={(e) => {
@@ -527,11 +545,11 @@ function Updaterecipe() {
                         <div className="ingredientincreate1">
                             <section>
                                 <input
-                                    name="[ingredient]"
+                                    name="ingredient5"
                                     id="ingredient5"
                                     type="text"
                                     className="ingredientuse"
-                                    value={updaterecipe.recipes_ingredient}
+                                    value={updaterecipe.recipes_ingredient5}
                                     required
                                     placeholder="食材與份量，如：雞蛋2顆"
                                     onChange={(e) => {
@@ -558,11 +576,11 @@ function Updaterecipe() {
                         <div className="ingredientincreate1">
                             <section>
                                 <input
-                                    name="[ingredient]"
+                                    name="ingredient6"
                                     id="ingredient6"
                                     type="text"
                                     className="ingredientuse"
-                                    value={updaterecipe.recipes_ingredient}
+                                    value={updaterecipe.recipes_ingredient6}
                                     required
                                     placeholder="食材與份量，如：雞蛋2顆"
                                     onChange={(e) => {
@@ -589,11 +607,11 @@ function Updaterecipe() {
                         <div className="ingredientincreate1">
                             <section>
                                 <input
-                                    name="[ingredient]"
+                                    name="ingredient7"
                                     id="ingredient7"
                                     type="text"
                                     className="ingredientuse"
-                                    value={updaterecipe.recipes_ingredient}
+                                    value={updaterecipe.recipes_ingredient7}
                                     required
                                     placeholder="食材與份量，如：雞蛋2顆"
                                     onChange={(e) => {
@@ -620,11 +638,11 @@ function Updaterecipe() {
                         <div className="ingredientincreate1">
                             <section>
                                 <input
-                                    name="[ingredient]"
+                                    name="ingredient8"
                                     id="ingredient8"
                                     type="text"
                                     className="ingredientuse"
-                                    value={updaterecipe.recipes_ingredient}
+                                    value={updaterecipe.recipes_ingredient8}
                                     required
                                     placeholder="食材與份量，如：雞蛋2顆"
                                     onChange={(e) => {
@@ -651,11 +669,11 @@ function Updaterecipe() {
                         <div className="ingredientincreate1">
                             <section>
                                 <input
-                                    name="[ingredient]"
+                                    name="ingredient9"
                                     id="ingredient9"
                                     type="text"
                                     className="ingredientuse"
-                                    value={updaterecipe.recipes_ingredient}
+                                    value={updaterecipe.recipes_ingredient9}
                                     required
                                     placeholder="食材與份量，如：雞蛋2顆"
                                     onChange={(e) => {
@@ -723,7 +741,7 @@ function Updaterecipe() {
                                     name="[updateStep]"
                                     id="updateStep"
                                     className="dataform1increate"
-                                    value={updaterecipe.recipes_cooking_method}
+                                    value={updaterecipe.recipes_step}
                                     placeholder="步驟1"
                                     onChange={(e) => {
                                         setUpdateStep(e.target.value);
@@ -752,7 +770,7 @@ function Updaterecipe() {
                                     name="[step1]"
                                     id="step1"
                                     className="stepoftextareaincreate"
-                                    value={updaterecipe.recipes_cooking_method}
+                                    value={updaterecipe.recipes_step}
                                     required
                                     placeholder="步驟2"
                                     onChange={(e) => {
@@ -783,7 +801,7 @@ function Updaterecipe() {
                                     name="[step2]"
                                     id="step2"
                                     className="stepoftextareaincreate"
-                                    value={updaterecipe.recipes_cooking_method}
+                                    value={updaterecipe.recipes_step}
                                     required
                                     placeholder="步驟3"
                                     onChange={(e) => {
@@ -814,7 +832,7 @@ function Updaterecipe() {
                                     name="[step3]"
                                     id="step3"
                                     className="stepoftextareaincreate"
-                                    value={updaterecipe.recipes_cooking_method}
+                                    value={updaterecipe.recipes_step}
                                     required
                                     placeholder="步驟4"
                                     onChange={(e) => {
@@ -845,7 +863,7 @@ function Updaterecipe() {
                                     name="[step4]"
                                     id="step4"
                                     className="stepoftextareaincreate"
-                                    value={updaterecipe.recipes_cooking_method}
+                                    value={updaterecipe.recipes_step}
                                     required
                                     placeholder="步驟5"
                                     onChange={(e) => {
@@ -876,7 +894,7 @@ function Updaterecipe() {
                                     name="[step5]"
                                     id="step5"
                                     className="stepoftextareaincreate"
-                                    value={updaterecipe.recipes_cooking_method}
+                                    value={updaterecipe.recipes_step}
                                     required
                                     placeholder="步驟6"
                                     onChange={(e) => {
@@ -907,7 +925,7 @@ function Updaterecipe() {
                                     name="[step6]"
                                     id="step6"
                                     className="stepoftextareaincreate"
-                                    value={updaterecipe.recipes_cooking_method}
+                                    value={updaterecipe.recipes_step}
                                     required
                                     placeholder="步驟7"
                                     onChange={(e) => {
@@ -938,7 +956,7 @@ function Updaterecipe() {
                                     name="[step7]"
                                     id="step7"
                                     className="stepoftextareaincreate"
-                                    value={updaterecipe.recipes_cooking_method}
+                                    value={updaterecipe.recipes_step}
                                     required
                                     placeholder="步驟8"
                                     onChange={(e) => {
@@ -969,7 +987,7 @@ function Updaterecipe() {
                                     name="[step8]"
                                     id="step8"
                                     className="stepoftextareaincreate"
-                                    value={updaterecipe.recipes_cooking_method}
+                                    value={updaterecipe.recipes_step}
                                     required
                                     placeholder="步驟9"
                                     onChange={(e) => {
@@ -1000,7 +1018,7 @@ function Updaterecipe() {
                                     name="[step9]"
                                     id="step9"
                                     className="stepoftextareaincreate"
-                                    value={updaterecipe.recipes_cooking_method}
+                                    value={updaterecipe.recipes_step}
                                     required
                                     placeholder="步驟10"
                                     onChange={(e) => {
@@ -1076,7 +1094,7 @@ function Updaterecipe() {
                         />
                     </div>
                 </div>
-                {/* value={updaterecipe.recipes_cooking_method} */}
+
                 <div className="buttonintextalign">
                     <label>請選擇照片</label>
                 </div>

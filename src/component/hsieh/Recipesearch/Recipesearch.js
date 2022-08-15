@@ -125,7 +125,11 @@ function Recipesearch() {
                     >
                         進階搜尋
                     </button>
-                    <Popup trigger={ButtonPop} setButtonPop={setButtonPop} />
+                    <Popup
+                        className="popuptosearch"
+                        trigger={ButtonPop}
+                        setButtonPop={setButtonPop}
+                    />
                 </div>
             </div>
 

@@ -14,10 +14,10 @@ function Eachrecipe() {
         recipes_type: '',
         recipes_cooking_degree: '',
         recipes_ingredient: '',
-        recipes_cooking_method: '',
+        recipes_step: '',
         recipes_description: '',
         recipes_img: '',
-        cooking_create_member_Id: '',
+        recipe_creater: '',
         recipes_collection: '',
         recipes_like: '',
         created_at: '',
@@ -313,7 +313,7 @@ function Eachrecipe() {
                             {/* 步驟呈現的區域 */}
                             <div className="numberineachrecipe">1</div>
                             <div className="chapter2ineach">
-                                {eachrecipe.recipes_cooking_method}
+                                {eachrecipe.recipes_step}
                                 {/* 步驟1 */}
                             </div>
                         </div>
@@ -323,11 +323,11 @@ function Eachrecipe() {
                         <div className="showarea2ineach1">
                             <div className="numberineachrecipe">2</div>
                             <div className="chapter2ineach">
-                                {/* {eachrecipe.recipes_cooking_method} */}
+                                {/* {eachrecipe.recipes_step} */}
                                 {/* 步驟2 */}
                                 {/* 
                                 var step = document.querySelectorAll('div.showarea2ineach1');
-                                return ({eachrecipe.recipes_cooking_method}.length === 0 ? step[0].className =showarea2ineach1 : step[0].className =showarea2ineach);
+                                return ({eachrecipe.recipes_step}.length === 0 ? step[0].className =showarea2ineach1 : step[0].className =showarea2ineach);
                                  */}
                             </div>
                         </div>
@@ -337,11 +337,11 @@ function Eachrecipe() {
                         <div className="showarea2ineach1">
                             <div className="numberineachrecipe">3</div>
                             <div className="chapter2ineach">
-                                {/* {eachrecipe.recipes_cooking_method} */}
+                                {/* {eachrecipe.recipes_step} */}
                                 {/* 步驟3 */}
                                 {/* 
                                 var step = document.querySelectorAll('div.showarea2ineach1');
-                                return ({eachrecipe.recipes_cooking_method}.length === 0 ? step[0].className =showarea2ineach1 : step[0].className =showarea2ineach);
+                                return ({eachrecipe.recipes_step}.length === 0 ? step[0].className =showarea2ineach1 : step[0].className =showarea2ineach);
                                  */}
                             </div>
                         </div>
@@ -351,11 +351,11 @@ function Eachrecipe() {
                         <div className="showarea2ineach1">
                             <div className="numberineachrecipe">4</div>
                             <div className="chapter2ineach">
-                                {/* {eachrecipe.recipes_cooking_method} */}
+                                {/* {eachrecipe.recipes_step} */}
                                 {/* 步驟4 */}
                                 {/* 
                                 var step = document.querySelectorAll('div.showarea2ineach1');
-                                return ({eachrecipe.recipes_cooking_method}.length === 0 ? step[0].className =showarea2ineach1 : step[0].className =showarea2ineach);
+                                return ({eachrecipe.recipes_step}.length === 0 ? step[0].className =showarea2ineach1 : step[0].className =showarea2ineach);
                                  */}
                             </div>
                         </div>
@@ -365,11 +365,11 @@ function Eachrecipe() {
                         <div className="showarea2ineach1">
                             <div className="numberineachrecipe">5</div>
                             <div className="chapter2ineach">
-                                {/* {eachrecipe.recipes_cooking_method} */}
+                                {/* {eachrecipe.recipes_step} */}
                                 {/* 步驟5 */}
                                 {/* 
                                 var step = document.querySelectorAll('div.showarea2ineach1');
-                                return ({eachrecipe.recipes_cooking_method}.length === 0 ? step[0].className =showarea2ineach1 : step[0].className =showarea2ineach);
+                                return ({eachrecipe.recipes_step}.length === 0 ? step[0].className =showarea2ineach1 : step[0].className =showarea2ineach);
                                  */}
                             </div>
                         </div>
@@ -379,11 +379,11 @@ function Eachrecipe() {
                         <div className="showarea2ineach1">
                             <div className="numberineachrecipe">6</div>
                             <div className="chapter2ineach">
-                                {/* {eachrecipe.recipes_cooking_method} */}
+                                {/* {eachrecipe.recipes_step} */}
                                 {/* 步驟6 */}
                                 {/* 
                                 var step = document.querySelectorAll('div.showarea2ineach1');
-                                return ({eachrecipe.recipes_cooking_method}.length === 0 ? step[0].className =showarea2ineach1 : step[0].className =showarea2ineach);
+                                return ({eachrecipe.recipes_step}.length === 0 ? step[0].className =showarea2ineach1 : step[0].className =showarea2ineach);
                                  */}
                             </div>
                         </div>
@@ -393,11 +393,11 @@ function Eachrecipe() {
                         <div className="showarea2ineach1">
                             <div className="numberineachrecipe">7</div>
                             <div className="chapter2ineach">
-                                {/* {eachrecipe.recipes_cooking_method} */}
+                                {/* {eachrecipe.recipes_step} */}
                                 {/* 步驟7 */}
                                 {/* 
                                 var step = document.querySelectorAll('div.showarea2ineach1');
-                                return ({eachrecipe.recipes_cooking_method}.length === 0 ? step[0].className =showarea2ineach1 : step[0].className =showarea2ineach);
+                                return ({eachrecipe.recipes_step}.length === 0 ? step[0].className =showarea2ineach1 : step[0].className =showarea2ineach);
                                  */}
                             </div>
                         </div>
@@ -405,11 +405,11 @@ function Eachrecipe() {
                         <div className="showarea2ineach1">
                             <div className="numberineachrecipe">8</div>
                             <div className="chapter2ineach">
-                                {/* {eachrecipe.recipes_cooking_method} */}
+                                {/* {eachrecipe.recipes_step} */}
                                 {/* 步驟8 */}
                                 {/* 
                                 var step = document.querySelectorAll('div.showarea2ineach1');
-                                return ({eachrecipe.recipes_cooking_method}.length === 0 ? step[0].className =showarea2ineach1 : step[0].className =showarea2ineach);
+                                return ({eachrecipe.recipes_step}.length === 0 ? step[0].className =showarea2ineach1 : step[0].className =showarea2ineach);
                                  */}
                             </div>
                         </div>
@@ -417,11 +417,11 @@ function Eachrecipe() {
                         <div className="showarea2ineach1">
                             <div className="numberineachrecipe">9</div>
                             <div className="chapter2ineach">
-                                {/* {eachrecipe.recipes_cooking_method} */}
+                                {/* {eachrecipe.recipes_step} */}
                                 {/* 步驟9 */}
                                 {/* 
                                 var step = document.querySelectorAll('div.showarea2ineach1');
-                                return ({eachrecipe.recipes_cooking_method}.length === 0 ? step[0].className =showarea2ineach1 : step[0].className =showarea2ineach);
+                                return ({eachrecipe.recipes_step}.length === 0 ? step[0].className =showarea2ineach1 : step[0].className =showarea2ineach);
                                  */}
                             </div>
                         </div>
@@ -429,11 +429,11 @@ function Eachrecipe() {
                         <div className="showarea2ineach1">
                             <div className="numberineachrecipe">10</div>
                             <div className="chapter2ineach">
-                                {/* {eachrecipe.recipes_cooking_method} */}
+                                {/* {eachrecipe.recipes_step} */}
                                 {/* 步驟10 */}
                                 {/* 
                                 var step = document.querySelectorAll('div.showarea2ineach1');
-                                return ({eachrecipe.recipes_cooking_method}.length === 0 ? step[0].className =showarea2ineach1 : step[0].className =showarea2ineach);
+                                return ({eachrecipe.recipes_step}.length === 0 ? step[0].className =showarea2ineach1 : step[0].className =showarea2ineach);
                                  */}
                             </div>
                         </div>
