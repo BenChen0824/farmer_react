@@ -16,7 +16,25 @@ function Updaterecipe() {
         recipes_type: '',
         recipes_cooking_degree: '',
         recipes_ingredient: '',
+        recipes_ingredient1: '',
+        recipes_ingredient2: '',
+        recipes_ingredient3: '',
+        recipes_ingredient4: '',
+        recipes_ingredient5: '',
+        recipes_ingredient6: '',
+        recipes_ingredient7: '',
+        recipes_ingredient8: '',
+        recipes_ingredient9: '',
         recipes_step: '',
+        recipes_step1: '',
+        recipes_step2: '',
+        recipes_step3: '',
+        recipes_step4: '',
+        recipes_step5: '',
+        recipes_step6: '',
+        recipes_step7: '',
+        recipes_step8: '',
+        recipes_step9: '',
         recipes_description: '',
         recipes_img: '',
         cooking_create_member_Id: '',
@@ -418,7 +436,13 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="ingredientincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_ingredient1.length === 0
+                                    ? 'ingredientincreate1'
+                                    : 'ingredientincreate'
+                            }
+                        >
                             <section>
                                 <input
                                     name="[updateIngredient1]"
@@ -449,7 +473,13 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="ingredientincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_ingredient2.length === 0
+                                    ? 'ingredientincreate1'
+                                    : 'ingredientincreate'
+                            }
+                        >
                             <section>
                                 <input
                                     name="ingredient2"
@@ -480,7 +510,13 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="ingredientincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_ingredient3.length === 0
+                                    ? 'ingredientincreate1'
+                                    : 'ingredientincreate'
+                            }
+                        >
                             <section>
                                 <input
                                     name="ingredient3"
@@ -511,7 +547,13 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="ingredientincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_ingredient4.length === 0
+                                    ? 'ingredientincreate1'
+                                    : 'ingredientincreate'
+                            }
+                        >
                             <section>
                                 <input
                                     name="ingredient4"
@@ -542,7 +584,13 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="ingredientincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_ingredient5.length === 0
+                                    ? 'ingredientincreate1'
+                                    : 'ingredientincreate'
+                            }
+                        >
                             <section>
                                 <input
                                     name="ingredient5"
@@ -573,7 +621,13 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="ingredientincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_ingredient6.length === 0
+                                    ? 'ingredientincreate1'
+                                    : 'ingredientincreate'
+                            }
+                        >
                             <section>
                                 <input
                                     name="ingredient6"
@@ -604,7 +658,13 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="ingredientincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_ingredient7.length === 0
+                                    ? 'ingredientincreate1'
+                                    : 'ingredientincreate'
+                            }
+                        >
                             <section>
                                 <input
                                     name="ingredient7"
@@ -635,7 +695,13 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="ingredientincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_ingredient8.length === 0
+                                    ? 'ingredientincreate1'
+                                    : 'ingredientincreate'
+                            }
+                        >
                             <section>
                                 <input
                                     name="ingredient8"
@@ -666,7 +732,13 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="ingredientincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_ingredient9.length === 0
+                                    ? 'ingredientincreate1'
+                                    : 'ingredientincreate'
+                            }
+                        >
                             <section>
                                 <input
                                     name="ingredient9"
@@ -728,13 +800,27 @@ function Updaterecipe() {
                 <hr className="hrincreaterecipe" />
                 {/* 分隔線，以下料理步驟 */}
 
+                {/* <div
+                            className={
+                                updaterecipe.recipes_step.length === 0
+                                    ? 'stepincreate1'
+                                    : 'stepincreate'
+                            }
+                        ></div> */}
+
                 <div className="eachdataincreaterecipe">
                     <label className="datanameincreaterecipe">料理步驟</label>
                 </div>
 
                 <div className="eachdataincreaterecipe">
                     <div>
-                        <div className="stepincreate">
+                        <div
+                            className={
+                                updaterecipe.recipes_step.length === 0
+                                    ? 'stepincreate1'
+                                    : 'stepincreate'
+                            }
+                        >
                             <div className="redballincreate">1</div>
                             <section>
                                 <textarea
@@ -763,14 +849,20 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="stepincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_step1.length === 0
+                                    ? 'stepincreate1'
+                                    : 'stepincreate'
+                            }
+                        >
                             <div className="redballincreate">2</div>
                             <section>
                                 <textarea
                                     name="[step1]"
                                     id="step1"
                                     className="stepoftextareaincreate"
-                                    value={updaterecipe.recipes_step}
+                                    value={updaterecipe.recipes_step1}
                                     required
                                     placeholder="步驟2"
                                     onChange={(e) => {
@@ -794,14 +886,20 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="stepincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_step2.length === 0
+                                    ? 'stepincreate1'
+                                    : 'stepincreate'
+                            }
+                        >
                             <div className="redballincreate">3</div>
                             <section>
                                 <textarea
                                     name="[step2]"
                                     id="step2"
                                     className="stepoftextareaincreate"
-                                    value={updaterecipe.recipes_step}
+                                    value={updaterecipe.recipes_step2}
                                     required
                                     placeholder="步驟3"
                                     onChange={(e) => {
@@ -825,14 +923,20 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="stepincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_step3.length === 0
+                                    ? 'stepincreate1'
+                                    : 'stepincreate'
+                            }
+                        >
                             <div className="redballincreate">4</div>
                             <section>
                                 <textarea
                                     name="[step3]"
                                     id="step3"
                                     className="stepoftextareaincreate"
-                                    value={updaterecipe.recipes_step}
+                                    value={updaterecipe.recipes_step3}
                                     required
                                     placeholder="步驟4"
                                     onChange={(e) => {
@@ -856,14 +960,20 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="stepincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_step4.length === 0
+                                    ? 'stepincreate1'
+                                    : 'stepincreate'
+                            }
+                        >
                             <div className="redballincreate">5</div>
                             <section>
                                 <textarea
                                     name="[step4]"
                                     id="step4"
                                     className="stepoftextareaincreate"
-                                    value={updaterecipe.recipes_step}
+                                    value={updaterecipe.recipes_step4}
                                     required
                                     placeholder="步驟5"
                                     onChange={(e) => {
@@ -887,14 +997,20 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="stepincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_step5.length === 0
+                                    ? 'stepincreate1'
+                                    : 'stepincreate'
+                            }
+                        >
                             <div className="redballincreate">6</div>
                             <section>
                                 <textarea
                                     name="[step5]"
                                     id="step5"
                                     className="stepoftextareaincreate"
-                                    value={updaterecipe.recipes_step}
+                                    value={updaterecipe.recipes_step5}
                                     required
                                     placeholder="步驟6"
                                     onChange={(e) => {
@@ -918,14 +1034,20 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="stepincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_step6.length === 0
+                                    ? 'stepincreate1'
+                                    : 'stepincreate'
+                            }
+                        >
                             <div className="redballincreate">7</div>
                             <section>
                                 <textarea
                                     name="[step6]"
                                     id="step6"
                                     className="stepoftextareaincreate"
-                                    value={updaterecipe.recipes_step}
+                                    value={updaterecipe.recipes_step6}
                                     required
                                     placeholder="步驟7"
                                     onChange={(e) => {
@@ -949,14 +1071,20 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="stepincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_step7.length === 0
+                                    ? 'stepincreate1'
+                                    : 'stepincreate'
+                            }
+                        >
                             <div className="redballincreate">8</div>
                             <section>
                                 <textarea
                                     name="[step7]"
                                     id="step7"
                                     className="stepoftextareaincreate"
-                                    value={updaterecipe.recipes_step}
+                                    value={updaterecipe.recipes_step7}
                                     required
                                     placeholder="步驟8"
                                     onChange={(e) => {
@@ -980,14 +1108,20 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="stepincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_step8.length === 0
+                                    ? 'stepincreate1'
+                                    : 'stepincreate'
+                            }
+                        >
                             <div className="redballincreate">9</div>
                             <section>
                                 <textarea
                                     name="[step8]"
                                     id="step8"
                                     className="stepoftextareaincreate"
-                                    value={updaterecipe.recipes_step}
+                                    value={updaterecipe.recipes_step8}
                                     required
                                     placeholder="步驟9"
                                     onChange={(e) => {
@@ -1011,14 +1145,20 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="stepincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_step9.length === 0
+                                    ? 'stepincreate1'
+                                    : 'stepincreate'
+                            }
+                        >
                             <div className="redballincreate">10</div>
                             <section>
                                 <textarea
                                     name="[step9]"
                                     id="step9"
                                     className="stepoftextareaincreate"
-                                    value={updaterecipe.recipes_step}
+                                    value={updaterecipe.recipes_step9}
                                     required
                                     placeholder="步驟10"
                                     onChange={(e) => {

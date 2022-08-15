@@ -7,6 +7,7 @@ import './Leftsidemenu.css';
 import Pagination from './Pagination';
 import Popup from './Popup';
 import axios from 'axios';
+import Title from './../../lil/Title/index';
 
 function Recipesearch() {
     const [ButtonPop, setButtonPop] = useState(false);
@@ -135,7 +136,7 @@ function Recipesearch() {
 
             <div>
                 <p className="titlewordinsearch">
-                    今日食譜推薦 ／ Recipes Recommend
+                    <Title zh={'今日食譜推薦'} eg={'Recipes Recommend'} />
                 </p>
             </div>
             <div className="w-100 d-flex flex-wrap">
@@ -248,7 +249,9 @@ function Recipesearch() {
             {/* 分隔線 */}
 
             <div>
-                <p className="titlewordinsearch">食譜列表 ／ Recipes List</p>
+                <p className="titlewordinsearch">
+                    <Title zh={'食譜列表'} eg={'Recipes List'} />
+                </p>
             </div>
 
             <div className="w-100 d-flex flex-wrap">
