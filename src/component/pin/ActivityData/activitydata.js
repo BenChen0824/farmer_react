@@ -3,9 +3,11 @@ import Slider from 'react-slick';
 // import React, { useState, useEffect } from 'react';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 
 function ActivityData() {
+    const member_info_id = localStorage.getItem('auth')
+        ? JSON.parse(localStorage.getItem('auth')).customer_id
+        : 500000000;
     let { sid } = useParams();
     const settings = {
         dots: true,
@@ -17,6 +19,39 @@ function ActivityData() {
         autoplay: true,
     };
     const [data, setData] = useState([]);
+    const [like, setLike] = useState(0);
+    const [count, setCount] = useState(0);
+
+    const checkLike = () => {
+        fetch('http://localhost:3600/activity/checkisliked', {
+            method: 'GET',
+            headers: { customer_id: member_info_id, activity_sid: sid },
+        })
+            .then((r) => r.json())
+            .then((obj) => {
+                setLike(obj);
+            });
+    };
+    const checkLikeClick = () => {
+        // console.log(sid);
+        const packageToSend = {
+            customer_id: member_info_id,
+            activity_sid: sid,
+            isliked: like === 1 ? 0 : 1,
+        };
+        fetch('http://localhost:3600/activity/islikedchange', {
+            method: 'POST',
+            body: JSON.stringify(packageToSend),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((r) => r.json())
+            .then((obj) => {
+                // console.log(obj);
+                setCount(count + 1);
+            });
+    };
 
     const getdata = async () => {
         fetch('http://localhost:3600/activity/activitydata', {
@@ -25,17 +60,22 @@ function ActivityData() {
         })
             .then((r) => r.json())
             .then((obj) => {
-                console.log(obj);
+                // console.log(obj);
                 setData(obj);
             });
         // console.log(response);
         // setData(response.data);
     };
-    console.log(data);
+    // console.log(data);
 
     useEffect(() => {
         getdata();
+        checkLike();
     }, []);
+
+    useEffect(() => {
+        checkLike();
+    }, [count]);
 
     return (
         <>
@@ -89,7 +129,14 @@ function ActivityData() {
                                     <div className="col-12 mb-3">
                                         <button
                                             type="button"
-                                            className="btn btn-outline-success w-100"
+                                            className={
+                                                like === 1
+                                                    ? 'btn btn-outline-danger w-100'
+                                                    : 'btn btn-outline-success w-100'
+                                            }
+                                            onClick={() => {
+                                                checkLikeClick();
+                                            }}
                                         >
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
@@ -101,7 +148,9 @@ function ActivityData() {
                                             >
                                                 <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
                                             </svg>
-                                            加入收藏
+                                            {like === 1
+                                                ? '已加入收藏'
+                                                : '加入收藏'}
                                         </button>
                                     </div>
                                 </div>
