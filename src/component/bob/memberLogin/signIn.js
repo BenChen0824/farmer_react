@@ -93,7 +93,7 @@ function SignIn() {
                         </div>
                         <div className="d-grid gap-2 mb-3">
                             <button
-                                className="btn btn btn-success btn-block"
+                                className="btn btn bosi-buttonColor btn-block text-white"
                                 type="submit"
                             >
                                 登入

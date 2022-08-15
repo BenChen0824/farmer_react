@@ -162,7 +162,7 @@ function SignUp() {
                         <div className="invalid-feedback"></div>
                         <div className="d-grid gap-2 my-4">
                             <button
-                                className="btn btn btn-success btn-block"
+                                className="btn btn bosu-buttonColor btn-block text-white"
                                 type="submit"
                             >
                                 加入會員

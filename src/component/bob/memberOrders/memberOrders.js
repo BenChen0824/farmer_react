@@ -10,7 +10,7 @@ function MemberOrders() {
     const [filteredResult, setFilteredResult] = useState([]);
     const [filterCate, setFilterCate] = useState('');
 
-    const category = ['已完成付款', '待取貨'];
+    const dateCategory = ['三個月內', '半年內', '一年內'];
 
     const loginUser = JSON.parse(localStorage.getItem('auth'));
     const navigate = useNavigate();
@@ -54,16 +54,23 @@ function MemberOrders() {
 
     function searchCategory(searchValue) {
         setFilterCate(searchValue);
-        if (searchValue !== '') {
-            const filteredData = response.filter((item) => {
-                return Object.values(item)
-                    .join('')
-                    .toLowerCase()
-                    .includes(searchValue.toLowerCase());
+        if (searchValue === '三個月內') {
+            const filteredData = orderList.filter((item) => {
+                return Date.parse(item.created_time) > (Date.now() - 1000*60*60*24*90);
+            });
+            setFilteredResult(filteredData);
+        } else if (searchValue === '半年內') {
+            const filteredData = orderList.filter((item) => {
+                return Date.parse(item.created_time) > (Date.now() - 1000*60*60*24*180);
+            });
+            setFilteredResult(filteredData);
+        } else if (searchValue === '一年內') {
+            const filteredData = orderList.filter((item) => {
+                return Date.parse(item.created_time) > (Date.now() - 1000*60*60*24*365);
             });
             setFilteredResult(filteredData);
         } else {
-            setFilteredResult(response);
+            setFilteredResult(orderList);
         }
     }
 
@@ -87,12 +94,10 @@ function MemberOrders() {
                                         }}
                                     >
                                         <option value="">請選擇狀態</option>
-                                        {category.map((v, i) => {
-                                            return (
-                                                <option value={v} key={i}>
-                                                    {v}
-                                                </option>
-                                            );
+                                        {dateCategory.map((v,i)=>{
+                                            return(
+                                                <option value={v} key={i}>{v}</option>
+                                            )
                                         })}
                                     </select>
                                     <div className="border rounded col-sm-7 d-flex align-items-center">
