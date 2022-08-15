@@ -88,14 +88,22 @@ function SignUp() {
         }
     }
 
+    function autoInput() {
+        document.form1.username.value = 'bob';
+        document.form1.email.value = 'bob791224@gmail.com';
+        document.form1.password.value = 'a123456';
+        document.form1.checkPassword.value = 'a123456';
+    }
+
     return (
         <>
             <div className="bosu-bodyvh d-flex justify-content-center align-items-center bosu-bodybg">
                 <div className="shadow mb-5 bg-body rounded rounded-3 bg-white">
-                    <div className="bg-light p-3 rounded-top">
+                    <div className="bg-light p-3 rounded-top position-relative">
                         <h4 className="fw-semibold text-center m-0">
                             加入會員
                         </h4>
+                        <button className="btn btn-outline-light btn-small position-absolute top-0 end-0 shadow-none" type="button" onClick={autoInput}>填寫</button>
                     </div>
                     <form
                         className="px-5 pb-4 pt-3 mx-2 needs-validation"

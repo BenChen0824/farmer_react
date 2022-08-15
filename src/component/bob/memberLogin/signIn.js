@@ -40,32 +40,20 @@ function SignIn() {
         }
     }
 
-    const LineAuth = () => {
-        var URL = 'https://access.line.me/oauth2/v2.1/authorize?';
-        URL += 'response_type=code';
-        URL += '&client_id=1657236186';
-        URL += '&redirect_uri=http://127.0.0.1:3000/member/data';
-        URL += '&state=abcde';
-        URL += '&scope=openid%20profile';
-        window.location.href = URL;
-    };
+    function autoInput() {
+        document.form1.email.value = 'test0801@test.com';
+        document.form1.password.value = '123456';
+    }
 
     return (
         <>
             <div className="d-flex justify-content-center align-items-center bosi-bodybg bosi-bodyvh">
                 <div className="shadow mb-5 bg-body rounded rounded-3 bg-white">
-                    <div
-                        id="info-bar"
-                        className="alert alert-info"
-                        role="alert"
-                        style={{ display: 'none' }}
-                    >
-                        123
-                    </div>
-                    <div className="bg-light p-3 rounded-top">
+                    <div className="bg-light p-3 rounded-top position-relative">
                         <h4 className="fw-semibold text-center m-0">
                             會員登入
                         </h4>
+                        <button className="btn btn-outline-light btn-small position-absolute top-0 end-0 shadow-none" type="button" onClick={autoInput}>填寫</button>
                     </div>
                     <form
                         className="form-signin px-5 pb-4 pt-3 mx-2"

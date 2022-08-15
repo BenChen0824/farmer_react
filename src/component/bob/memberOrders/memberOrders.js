@@ -1,6 +1,7 @@
 import './orders.css';
 import { useState, useEffect } from 'react';
 import MemberNavbar from '../component/memberCenter_Navbar';
+import { useNavigate } from 'react-router-dom';
 
 function MemberOrders() {
     const [response, setResponse] = useState([]);
@@ -12,6 +13,7 @@ function MemberOrders() {
     const category = ['已完成付款', '待取貨'];
 
     const loginUser = JSON.parse(localStorage.getItem('auth'));
+    const navigate = useNavigate();
 
     const getOrders = async () => {
         const r = await fetch('http://localhost:3600/member/orders', {
@@ -113,7 +115,7 @@ function MemberOrders() {
                             </div>
                         </div>
                         <div className="container row justify-content-center">
-                            {searchInput.length >= 1 || filterCate.length >= 1
+                            {orderList[0] ? searchInput.length >= 1 || filterCate.length >= 1
                                 ? filteredResult.map((res) => (
                                       <div
                                           className="card p-4 col-10 shadow-sm mb-4"
@@ -215,7 +217,10 @@ function MemberOrders() {
                                                                       </p>
                                                                   </td>
                                                                   <td className="align-middle">
-                                                                    <button className="btn btn-success btn-sm">來去評價</button>
+                                                                    <button type="button" className="btn btn-success btn-sm" onClick={()=>{
+                                                                        localStorage.setItem('comment_product',`${v2.sid}`);
+                                                                        navigate('/createcomment', {replace:true});
+                                                                    }}>來去評價</button>
                                                                   </td>
                                                               </tr>
                                                           );
@@ -281,7 +286,10 @@ function MemberOrders() {
                                                                       </p>
                                                                   </td>
                                                                   <td className="align-middle">
-                                                                    <button className="btn btn-success btn-sm">來去評價</button>
+                                                                    <button type="button" className="btn btn-success btn-sm" onClick={()=>{
+                                                                        localStorage.setItem('comment_product',`${v2.sid}`);
+                                                                        navigate('/createcomment', {replace:true});
+                                                                    }}>來去評價</button>
                                                                   </td>
                                                               </tr>
                                                           );
@@ -419,7 +427,10 @@ function MemberOrders() {
                                                                       </p>
                                                                   </td>
                                                                   <td className="align-middle">
-                                                                    <button className="btn btn-success btn-sm">來去評價</button>
+                                                                    <button type="button" className="btn btn-success btn-sm" onClick={()=>{
+                                                                        localStorage.setItem('comment_product',`${v2.sid}`);
+                                                                        navigate('/createcomment', {replace:true});
+                                                                    }}>來去評價</button>
                                                                   </td>
                                                               </tr>
                                                           );
@@ -486,7 +497,10 @@ function MemberOrders() {
                                                                       
                                                                   </td>
                                                                   <td className="align-middle">
-                                                                    <button className="btn btn-success btn-sm">來去評價</button>
+                                                                    <button type="button" className="btn btn-success btn-sm" onClick={()=>{
+                                                                        localStorage.setItem('comment_product',`${v2.sid}`);
+                                                                        navigate('/createcomment', {replace:true});
+                                                                    }}>來去評價</button>
                                                                   </td>
                                                               </tr>
                                                           );
@@ -525,7 +539,9 @@ function MemberOrders() {
                                               </tfoot>
                                           </table>
                                       </div>
-                                  ))}
+                                  )) :
+                                  <p className="text-muted text-center mt-5">尚無訂單資訊</p>
+                                  }
                         </div>
                     </div>
                 </div>
