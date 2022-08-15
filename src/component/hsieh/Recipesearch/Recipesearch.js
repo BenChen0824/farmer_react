@@ -67,7 +67,7 @@ function Recipesearch() {
                     </button>
                 </Link>
                 <br />
-                <Link to={`/recipe/createrecipe`}>
+                {/* <Link to={`/recipe/createrecipe`}>
                     <button className="leftsidebutton">
                         新增食譜
                         <img
@@ -76,9 +76,9 @@ function Recipesearch() {
                             className="crudineach"
                         />
                     </button>
-                </Link>
-                <br />
-                <Link to={`/recipe/createrecipe`}>
+                </Link> */}
+                {/* <br /> */}
+                {/* <Link to={`/recipe/createrecipe`}>
                     <button className="leftsidebutton">
                         新增食譜
                         <img
@@ -87,7 +87,7 @@ function Recipesearch() {
                             className="crudineach"
                         />
                     </button>
-                </Link>
+                </Link> */}
             </div>
             <div className="hsiehsearching">
                 <div id="inputText">

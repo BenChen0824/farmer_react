@@ -165,9 +165,16 @@
     font-size: 24px;
     color: rgb(0, 0, 0);
     line-height: 50px;
-    padding-top: 20px;
-    margin-left: 30px;
-    margin-right: 30px;
+    padding: 20px 30px;
+}
+
+.chapter1ineach1 {
+    height: auto;
+    font-size: 24px;
+    color: rgb(0, 0, 0);
+    line-height: 50px;
+    padding: 20px 30px;
+    display: none;
 }
 
 .showarea2ineach {
