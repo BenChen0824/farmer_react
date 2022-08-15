@@ -17,17 +17,49 @@ const skater = new Icon({
     popupAnchor: [2, -40],
 });
 
-const disneyLandLatLng = [24.7269191, 121.704412];
-
 function MyMap() {
     const [countryIndex, setCountryIndex] = useState(-1);
     const [townshipIndex, setTownshipIndex] = useState(-1);
+    const [companyShowInfo, setCompanyShowInfo] = useState(
+        companyData.features
+    );
+    // console.log(countries);
+
+    const countySelect = (e) => {
+        // console.log(countries[e.target.value]);
+        const newShowInfo = companyData.features.filter((v) => {
+            // console.log(v.County);
+            return v.County === countries[e.target.value];
+        });
+
+        // console.log(newShowInfo);
+        setCompanyShowInfo(newShowInfo);
+    };
 
     const mapRef = useRef();
 
-    function handleOnFlyTo() {
+    function handleOnFlyTo(i) {
         const { current = {} } = mapRef;
         const { leafletElement: map } = current;
+        // console.log(companyData.features);
+        // console.log(i);
+        const disneyLandLatLng = [
+            companyShowInfo[i].Latitude,
+            companyShowInfo[i].Longitude,
+        ];
+        // console.log(disneyLandLatLng);
+
+        map.flyTo(disneyLandLatLng, 15, {
+            duration: 2,
+        });
+    }
+    function handleOnFlyToMark(latitude, longitude) {
+        const { current = {} } = mapRef;
+        const { leafletElement: map } = current;
+        // console.log(companyData.features);
+        // console.log(i);
+        const disneyLandLatLng = [latitude, longitude];
+        // console.log(disneyLandLatLng);
 
         map.flyTo(disneyLandLatLng, 15, {
             duration: 2,
@@ -39,13 +71,14 @@ function MyMap() {
                 <div className="col-sm-6 col-md-4 col-xl-3 bg-w l_menu">
                     <form className="ml-3 mt-4 mb-3">
                         <div className="  d-flex form-row select px-4 ">
-                            <div className="form-group col-md-6  ">
+                            <div className="form-group col-md  ">
                                 <label htmlFor="citys">選擇縣市</label>
                                 <select
                                     className="form-control jscounty"
                                     value={countryIndex}
                                     onChange={(e) => {
                                         setCountryIndex(Number(e.target.value));
+                                        countySelect(e);
 
                                         setTownshipIndex(-1);
                                     }}
@@ -60,61 +93,40 @@ function MyMap() {
                                     })}
                                 </select>
                             </div>
-                            <div className="form-group col-md-6">
-                                <label htmlFor="zones">選擇鄉鎮區</label>
-                                <select
-                                    className="form-control jstown"
-                                    value={townshipIndex}
-                                    onChange={(e) => {
-                                        setTownshipIndex(
-                                            Number(e.target.value)
-                                        );
-                                    }}
-                                >
-                                    <option value="-1">請選擇區域</option>
-
-                                    {countryIndex > -1 &&
-                                        townships[countryIndex].map((v, i) => {
-                                            return (
-                                                <option key={i} value={i}>
-                                                    {v}
-                                                </option>
-                                            );
-                                        })}
-                                </select>
-                            </div>
                         </div>
                     </form>
                     <section
                         className="content bg-w overflow-auto w-100 px-3 pt-3 mx-2"
                         style={{ height: '100vh' }}
                     >
-                        {companyData.features.map((v, i) => {
+                        {companyShowInfo.map((v, i) => {
                             return (
                                 // CSS 更動
 
                                 <div
-                                    class="pinmycard card mb-3 infocards"
+                                    className="pinmycard card mb-3 infocards"
                                     data-cards="241"
                                     key={v.QualityFarmID}
                                 >
-                                    <h5 class="title m-3">{v.FarmNm_CH}</h5>
+                                    <h5 className="title m-3">{v.FarmNm_CH}</h5>
                                     <img src={v.Photo} />
-                                    <ul class="list-group">
-                                        <li class="list-group-item list-group-item-action">
+                                    <ul className="list-group">
+                                        <li className="list-group-item list-group-item-action">
                                             {v.TEL}
                                         </li>
-                                        <li class="list-group-item list-group-item-action">
+                                        <li className="list-group-item list-group-item-action">
                                             {v.Address_CH}
                                         </li>
-                                        <li class="list-group-item list-group-item-action">
-                                            {v.Time}
+                                        <li className="list-group-item list-group-item-action">
+                                            {v.Time3}
                                         </li>
                                     </ul>
                                     <button
                                         type="button"
-                                        class="btn btn-success"
-                                        onClick={handleOnFlyTo}
+                                        className="btn btn-success"
+                                        onClick={() => {
+                                            handleOnFlyTo(i);
+                                        }}
                                     >
                                         立即查詢
                                     </button>
@@ -138,6 +150,12 @@ function MyMap() {
                                         company.Longitude,
                                     ]}
                                     icon={skater}
+                                    onClick={(i) => {
+                                        handleOnFlyToMark(
+                                            company.Latitude,
+                                            company.Longitude
+                                        );
+                                    }}
                                 >
                                     <Popup
                                         position={[
@@ -151,6 +169,16 @@ function MyMap() {
                                             <p>
                                                 {'地址： ' + company.Address_CH}
                                             </p>
+                                            <p>營業時間：</p>
+                                            <ul>
+                                                <li>{company.Time1}</li>
+                                                <li>{company.Time2}</li>
+                                                <li>{company.Time3}</li>
+                                                <li>{company.Time4}</li>
+                                                <li>{company.Time5}</li>
+                                                <li>{company.Time6}</li>
+                                                <li>{company.Time7}</li>
+                                            </ul>
                                         </div>
                                     </Popup>
                                 </Marker>
