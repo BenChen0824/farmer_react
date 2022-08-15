@@ -23,7 +23,7 @@ import RecipeMain from './component/hsieh/App';
 import Eachrecipe from './component/hsieh/Eachrecipe/Eachrecipe';
 import Createrecipe from './component/hsieh/Createrecipe/Createrecipe';
 import Updaterecipe from './component/hsieh/Createrecipe/Updaterecipe';
-// import GameMain from './component/po/game/gameMain';
+import GameMain from './component/po/game/gameMain';
 import CartMain from './component/ben/App';
 import Activity from './component/pin/Activity/Activity';
 import ActivityData from './component/pin/ActivityData/activitydata';
@@ -106,10 +106,10 @@ function App() {
                                     />
                                     {/* 阿鑫 */}
 
-                                    {/* <Route
+                                    <Route
                                         path="/game/*"
                                         element={<GameMain />}
-                                    /> */}
+                                    />
                                     {/* po */}
                                     <Route
                                         path="/activity"
