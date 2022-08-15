@@ -7,6 +7,7 @@ import {
     PRODUCT_COLLECT,
     PRODUCT_COMPARE,
     PRODUCT_COMMENT,
+    RECOMMEND_RECIPE,
 } from '../config/ajax-path';
 
 axios.defaults.withCredentials = true;
@@ -162,4 +163,10 @@ export async function getStarRating(sid) {
     const average = Math.round((sum / rows) * 100) / 100;
     // console.log({ average, rows });
     return { average, rows };
+}
+
+export async function getRecommendRecipe(sid) {
+    const params = { sid };
+    const { data } = await axios.get(RECOMMEND_RECIPE, { params });
+    return data ? data[0] : {};
 }

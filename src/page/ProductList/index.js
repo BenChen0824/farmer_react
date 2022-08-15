@@ -191,7 +191,7 @@ function ProductList() {
             search
         );
         if (data && data.rows) {
-            console.log(data);
+            // console.log(data);
             setData(data);
         }
     };
