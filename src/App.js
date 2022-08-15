@@ -19,11 +19,11 @@ import CreateComment from './component/kawa/CustomerComment/CreateComment/Create
 import CustomizedLunch from './component/xin/Customized_lunch/CustomizedLunch';
 import ChatMain from './component/xin/Customized_service/ChatMain';
 
-// import RecipeMain from './component/hsieh/App';
-// import Eachrecipe from './component/hsieh/Eachrecipe/Eachrecipe';
-// import Createrecipe from './component/hsieh/Createrecipe/Createrecipe';
-// import Updaterecipe from './component/hsieh/Createrecipe/Updaterecipe';
-// import GameMain from './component/po/game/gameMain';
+import RecipeMain from './component/hsieh/App';
+import Eachrecipe from './component/hsieh/Eachrecipe/Eachrecipe';
+import Createrecipe from './component/hsieh/Createrecipe/Createrecipe';
+import Updaterecipe from './component/hsieh/Createrecipe/Updaterecipe';
+import GameMain from './component/po/game/gameMain';
 import CartMain from './component/ben/App';
 import Activity from './component/pin/Activity/Activity';
 import ActivityData from './component/pin/ActivityData/activitydata';
@@ -55,22 +55,22 @@ function App() {
                                     />
                                     {/* 慧敏 */}
 
-                                    {/* <Route
+                                    <Route
                                         path="/recipe/*"
                                         element={<RecipeMain />}
-                                    /> */}
-                                    {/* <Route
+                                    />
+                                    <Route
                                         path="/recipe/each/:recipes_sid"
                                         element={<Eachrecipe />}
-                                    /> */}
-                                    {/* <Route
+                                    />
+                                    <Route
                                         path="/recipe/Createrecipe"
                                         element={<Createrecipe />}
-                                    /> */}
-                                    {/* <Route
+                                    />
+                                    <Route
                                         path="/recipe/updaterecipe/:recipes_sid"
                                         element={<Updaterecipe />}
-                                    /> */}
+                                    />
 
                                     {/* 宸睿 */}
 
@@ -106,10 +106,10 @@ function App() {
                                     />
                                     {/* 阿鑫 */}
 
-                                    {/* <Route
+                                    <Route
                                         path="/game/*"
                                         element={<GameMain />}
-                                    /> */}
+                                    />
                                     {/* po */}
                                     <Route
                                         path="/activity"
