@@ -370,7 +370,7 @@ const Comment = () => {
                                     {/* ----------- */}
                                     <div className="CommentCard_imgwrap ">
                                         <img
-                                            src={`./member_imgs/${v.profile_img}`}
+                                            src={`./member_images/${v.profile_img}`}
                                             alt=""
                                         />
                                     </div>
