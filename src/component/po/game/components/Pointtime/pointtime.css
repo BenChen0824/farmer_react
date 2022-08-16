@@ -1,0 +1,32 @@
+.pointtimer{
+    /* background-color: rgba(236, 232, 232, 0.5); */
+    /* opacity: 0.3; */
+    /* display: flex;
+    flex: column;
+    align-items: center;
+    justify-content: center; */
+    width: 60%;    
+    margin-left: 250px;
+}
+.pointtimer div:first-child{
+    text-align: center;
+}
+
+.pointtimer div:first-child p {
+    color: #f8f8f8;
+}
+.pointtimer div:last-child{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-top: 2em;
+    padding: 2em;
+    text-align: center;
+}
+section p:first-child, .timer div:last-child span{
+    font-size: 2em;
+}
+
+.timer_text{
+    text-align: center;
+    margin-top: 25px;
+}

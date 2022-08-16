@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { RECIPE_GET_LIST } from './../../../config/recipe-ajax-path';
+// import { RECIPE_GET_LIST } from './../../../config/recipe-ajax-path';
 import { Link, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Recipesearch.css';
+import './Leftsidemenu.css';
 import Pagination from './Pagination';
 import Popup from './Popup';
 import axios from 'axios';
+import Title from './../../lil/Title/index';
 
 function Recipesearch() {
     const [ButtonPop, setButtonPop] = useState(false);
@@ -21,6 +24,8 @@ function Recipesearch() {
     const [recipe, setRecipe] = useState([]);
     const [recipeDisplay, setRecipeDisplay] = useState([]);
     const [recipeDisplayAgain, setRecipeDisplayAgain] = useState([]);
+
+    const navigate = useNavigate();
 
     async function getRecipe() {
         const r = await fetch('http://localhost:3600/recipe/recipe');
@@ -41,8 +46,50 @@ function Recipesearch() {
     //     });
     // }, []);
 
+    // function tocreate {
+    //     return ( XXX === 正確 ? navigate('/recipe/createrecipe', { replace: true }); : alert('請先登入'));
+    // }
+
     return (
         <>
+            <div className="menuincreate">
+                <Link to={`/recipe/createrecipe`}>
+                    <button
+                        className="leftsidebutton"
+                        // onClick={tocreate}
+                        // TODO：身分判別式
+                    >
+                        新增食譜
+                        <img
+                            src="/images/file-plus.svg"
+                            alt=""
+                            className="crudineach"
+                        />
+                    </button>
+                </Link>
+                <br />
+                {/* <Link to={`/recipe/createrecipe`}>
+                    <button className="leftsidebutton">
+                        新增食譜
+                        <img
+                            src="/images/file-plus.svg"
+                            alt=""
+                            className="crudineach"
+                        />
+                    </button>
+                </Link> */}
+                {/* <br /> */}
+                {/* <Link to={`/recipe/createrecipe`}>
+                    <button className="leftsidebutton">
+                        新增食譜
+                        <img
+                            src="/images/file-plus.svg"
+                            alt=""
+                            className="crudineach"
+                        />
+                    </button>
+                </Link> */}
+            </div>
             <div className="hsiehsearching">
                 <div id="inputText">
                     <p className="subtitlewordinsearch">搜尋食譜</p>
@@ -59,7 +106,7 @@ function Recipesearch() {
                     </p>
                     <button
                         type="button"
-                        class="btn btn-dark"
+                        className="btn btn-dark"
                         style={{ margin: 5 }}
                         onClick={() => {
                             const data = recipeDisplayAgain.filter((v, i) => {
@@ -73,19 +120,23 @@ function Recipesearch() {
 
                     <button
                         type="button"
-                        class="btn btn-dark"
+                        className="btn btn-dark"
                         style={{ margin: 5 }}
                         onClick={() => setButtonPop(true)}
                     >
                         進階搜尋
                     </button>
-                    <Popup trigger={ButtonPop} setButtonPop={setButtonPop} />
+                    <Popup
+                        className="popuptosearch"
+                        trigger={ButtonPop}
+                        setButtonPop={setButtonPop}
+                    />
                 </div>
             </div>
 
             <div>
                 <p className="titlewordinsearch">
-                    今日食譜推薦 ／ Recipes Recommend
+                    <Title zh={'今日食譜推薦'} eg={'Recipes Recommend'} />
                 </p>
             </div>
             <div className="w-100 d-flex flex-wrap">
@@ -198,7 +249,9 @@ function Recipesearch() {
             {/* 分隔線 */}
 
             <div>
-                <p className="titlewordinsearch">食譜列表 ／ Recipes List</p>
+                <p className="titlewordinsearch">
+                    <Title zh={'食譜列表'} eg={'Recipes List'} />
+                </p>
             </div>
 
             <div className="w-100 d-flex flex-wrap">

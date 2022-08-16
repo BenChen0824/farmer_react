@@ -2,6 +2,7 @@ import './Eachrecipe.css';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Eachrecipe() {
     const [eachrecipe, setEachrecipe] = useState({
@@ -13,14 +14,34 @@ function Eachrecipe() {
         recipes_type: '',
         recipes_cooking_degree: '',
         recipes_ingredient: '',
-        recipes_cooking_method: '',
+        recipes_ingredient1: '',
+        recipes_ingredient2: '',
+        recipes_ingredient3: '',
+        recipes_ingredient4: '',
+        recipes_ingredient5: '',
+        recipes_ingredient6: '',
+        recipes_ingredient7: '',
+        recipes_ingredient8: '',
+        recipes_ingredient9: '',
+        recipes_step: '',
+        recipes_step1: '',
+        recipes_step2: '',
+        recipes_step3: '',
+        recipes_step4: '',
+        recipes_step5: '',
+        recipes_step6: '',
+        recipes_step7: '',
+        recipes_step8: '',
+        recipes_step9: '',
         recipes_description: '',
         recipes_img: '',
-        cooking_create_member_Id: '',
+        recipe_creater: '',
         recipes_collection: '',
         recipes_like: '',
         created_at: '',
     });
+
+    const navigate = useNavigate();
 
     async function eachrecipeinfo(recipes_sid) {
         const r = await fetch(
@@ -42,6 +63,33 @@ function Eachrecipe() {
 
     // }, []);  useEffect基本架構
 
+    const Delectrecipe = async () => {
+        const data = {
+            recipes_sid: params.recipes_sid,
+        };
+        const r = await fetch('http://localhost:3600/recipe/delete', {
+            method: 'DELETE',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        // console.log('abc:');
+        const obj = await r.json();
+        console.log(obj);
+        alreadydelete(obj);
+        console.log(alreadydelete);
+    };
+
+    function alreadydelete(obj) {
+        if (obj.success) {
+            alert('');
+        } else {
+            alert('刪除成功');
+            navigate('/recipe', { replace: true });
+        }
+    }
+
     return (
         <>
             <p className="eachrecipetitle">{eachrecipe.recipes_name}</p>
@@ -55,7 +103,7 @@ function Eachrecipe() {
                 <div className="recipedetailineach">
                     <div className="autherineach">
                         <p className="authernameineach">
-                            作者：{eachrecipe.cooking_create_member_Id}
+                            作者：{eachrecipe.recipe_creater}
                         </p>
 
                         <div className="likeandcollectineach">
@@ -113,7 +161,7 @@ function Eachrecipe() {
 
                         <div className="recipedataineach">
                             <div className="greencircleineach">
-                                <img src="/images/portion.png" alt="" />
+                                <img src="/images/portion.svg" alt="" />
                             </div>
                             <div>
                                 <p>
@@ -128,7 +176,7 @@ function Eachrecipe() {
 
                         <div className="recipedataineach">
                             <div className="greencircleineach">
-                                <img src="/images/pot.png" alt="" />
+                                <img src="/images/cooking.svg" alt="" />
                             </div>
                             <div>
                                 <p>
@@ -142,7 +190,7 @@ function Eachrecipe() {
 
                         <div className="recipedataineach">
                             <div className="greencircleineach">
-                                <img src="/images/degree.png" alt="" />
+                                <img src="/images/degree.svg" alt="" />
                             </div>
                             <div>
                                 <p>
@@ -164,46 +212,145 @@ function Eachrecipe() {
 
             {/* 分隔線 */}
 
-            <div className="socialmediaineach">
-                <button className="buttonineach">
-                    <img src="/images/line.png" alt="" className="iconineach" />
-                </button>
-
-                <button className="buttonineach">
-                    <img
-                        src="/images/twitter.png"
-                        alt=""
-                        className="iconineach"
-                    />
-                </button>
-
-                <button className="buttonineach">
-                    <img src="/images/ig.png" alt="" className="iconineach" />
-                </button>
-
-                <button className="buttonineach">
-                    <img src="/images/fb.png" alt="" className="iconineach" />
-                </button>
-
-                <button className="buttonineach">
-                    <img
-                        src="/images/email.png"
-                        alt=""
-                        className="iconineach"
-                    />
-                </button>
-            </div>
-
-            {/* 分隔線 */}
-
             <div className="grayineachrecipe">
                 <div className="cookineachrecipe">
                     <div className="materialineach">
                         <div className="blackineachrecipe">使用食材</div>
                         <div className="showarea1ineach">
-                            <div>
-                                <p className="chapter1ineach">
-                                    {eachrecipe.recipes_ingredient}
+                            <p className="chapter1ineach">
+                                {eachrecipe.recipes_ingredient}
+                                {/* 食材1 */}
+                            </p>
+                            {/* 分隔線 */}
+                            <div
+                                className={
+                                    eachrecipe.recipes_ingredient1.length === 0
+                                        ? 'chapter1ineach1'
+                                        : 'chapter1ineach'
+                                }
+                            >
+                                <p>
+                                    {eachrecipe.recipes_ingredient1}
+                                    {/* 食材2 */}
+                                </p>
+                            </div>
+
+                            {/* 分隔線 */}
+
+                            <div
+                                className={
+                                    eachrecipe.recipes_ingredient2.length === 0
+                                        ? 'chapter1ineach1'
+                                        : 'chapter1ineach'
+                                }
+                            >
+                                <p>
+                                    {eachrecipe.recipes_ingredient2}
+                                    {/* 食材3 */}
+                                </p>
+                            </div>
+
+                            {/* 分隔線 */}
+                            <div
+                                className={
+                                    eachrecipe.recipes_ingredient3.length === 0
+                                        ? 'chapter1ineach1'
+                                        : 'chapter1ineach'
+                                }
+                            >
+                                <p>
+                                    {eachrecipe.recipes_ingredient3}
+                                    {/* 食材4 */}
+                                </p>
+                            </div>
+
+                            {/* 分隔線 */}
+
+                            <div
+                                className={
+                                    eachrecipe.recipes_ingredient4.length === 0
+                                        ? 'chapter1ineach1'
+                                        : 'chapter1ineach'
+                                }
+                            >
+                                <p>
+                                    {eachrecipe.recipes_ingredient4}
+                                    {/* 食材5 */}
+                                </p>
+                            </div>
+
+                            {/* 分隔線 */}
+
+                            <div
+                                className={
+                                    eachrecipe.recipes_ingredient5.length === 0
+                                        ? 'chapter1ineach1'
+                                        : 'chapter1ineach'
+                                }
+                            >
+                                <p>
+                                    {eachrecipe.recipes_ingredient5}
+                                    {/* 食材6 */}
+                                </p>
+                            </div>
+
+                            {/* 分隔線 */}
+
+                            <div
+                                className={
+                                    eachrecipe.recipes_ingredient6.length === 0
+                                        ? 'chapter1ineach1'
+                                        : 'chapter1ineach'
+                                }
+                            >
+                                <p>
+                                    {eachrecipe.recipes_ingredient6}
+                                    {/* 食材7 */}
+                                </p>
+                            </div>
+
+                            {/* 分隔線 */}
+
+                            <div
+                                className={
+                                    eachrecipe.recipes_ingredient7.length === 0
+                                        ? 'chapter1ineach1'
+                                        : 'chapter1ineach'
+                                }
+                            >
+                                <p>
+                                    {eachrecipe.recipes_ingredient7}
+                                    {/* 食材8 */}
+                                </p>
+                            </div>
+
+                            {/* 分隔線 */}
+
+                            <div
+                                className={
+                                    eachrecipe.recipes_ingredient8.length === 0
+                                        ? 'chapter1ineach1'
+                                        : 'chapter1ineach'
+                                }
+                            >
+                                <p>
+                                    {eachrecipe.recipes_ingredient8}
+                                    {/* 食材9 */}
+                                </p>
+                            </div>
+
+                            {/* 分隔線 */}
+
+                            <div
+                                className={
+                                    eachrecipe.recipes_ingredient9.length === 0
+                                        ? 'chapter1ineach1'
+                                        : 'chapter1ineach'
+                                }
+                            >
+                                <p>
+                                    {eachrecipe.recipes_ingredient9}
+                                    {/* 食材10 */}
                                 </p>
                             </div>
                         </div>
@@ -214,25 +361,151 @@ function Eachrecipe() {
                     <div className="cookingineach">
                         <div className="greenineachrecipe">料理方式</div>
                         <div className="showarea2ineach">
+                            {/* 步驟呈現的區域 */}
                             <div className="numberineachrecipe">1</div>
                             <div className="chapter2ineach">
-                                料理前，將明蝦以流水沖5分鐘即可退冰，更能完整保持野生大明蝦Q彈鮮脆的肉質。
+                                {eachrecipe.recipes_step}
+                                {/* 步驟1 */}
                             </div>
                         </div>
-                        <div className="showarea2ineach">
-                            <div className="numberineachrecipe">2</div>
-                            <p className="chapter2ineach">
-                                退冰後的澎湖野生大明蝦，取一把剪刀，從蝦頭和蝦身的間隙，剪開蝦背。
-                            </p>
-                        </div>
-                        <div className="showarea2ineach">
-                            <div className="numberineachrecipe">3</div>
 
-                            <p className="chapter2ineach">
-                                將腸泥取出丟掉，大明蝦就處理完成。
-                            </p>
+                        {/* 分隔線 */}
+
+                        <div
+                            className={
+                                eachrecipe.recipes_step1.length === 0
+                                    ? 'showarea2ineach1'
+                                    : 'showarea2ineach'
+                            }
+                        >
+                            <div className="numberineachrecipe">2</div>
+                            <div className="chapter2ineach">
+                                {eachrecipe.recipes_step1}
+                                {/* 步驟2 */}
+                            </div>
                         </div>
-                        {/* 引入料理方式 */}
+
+                        {/* 分隔線 */}
+
+                        <div
+                            className={
+                                eachrecipe.recipes_step2.length === 0
+                                    ? 'showarea2ineach1'
+                                    : 'showarea2ineach'
+                            }
+                        >
+                            <div className="numberineachrecipe">3</div>
+                            <div className="chapter2ineach">
+                                {eachrecipe.recipes_step2}
+                                {/* 步驟3 */}
+                            </div>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div
+                            className={
+                                eachrecipe.recipes_step3.length === 0
+                                    ? 'showarea2ineach1'
+                                    : 'showarea2ineach'
+                            }
+                        >
+                            <div className="numberineachrecipe">4</div>
+                            <div className="chapter2ineach">
+                                {eachrecipe.recipes_step3}
+                                {/* 步驟4 */}
+                            </div>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div
+                            className={
+                                eachrecipe.recipes_step4.length === 0
+                                    ? 'showarea2ineach1'
+                                    : 'showarea2ineach'
+                            }
+                        >
+                            <div className="numberineachrecipe">5</div>
+                            <div className="chapter2ineach">
+                                {eachrecipe.recipes_step4}
+                                {/* 步驟5 */}
+                            </div>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div
+                            className={
+                                eachrecipe.recipes_step5.length === 0
+                                    ? 'showarea2ineach1'
+                                    : 'showarea2ineach'
+                            }
+                        >
+                            <div className="numberineachrecipe">6</div>
+                            <div className="chapter2ineach">
+                                {eachrecipe.recipes_step5}
+                                {/* 步驟6 */}
+                            </div>
+                        </div>
+
+                        {/* 分隔線 */}
+
+                        <div
+                            className={
+                                eachrecipe.recipes_step6.length === 0
+                                    ? 'showarea2ineach1'
+                                    : 'showarea2ineach'
+                            }
+                        >
+                            <div className="numberineachrecipe">7</div>
+                            <div className="chapter2ineach">
+                                {eachrecipe.recipes_step6}
+                                {/* 步驟7 */}
+                            </div>
+                        </div>
+
+                        <div
+                            className={
+                                eachrecipe.recipes_step7.length === 0
+                                    ? 'showarea2ineach1'
+                                    : 'showarea2ineach'
+                            }
+                        >
+                            <div className="numberineachrecipe">8</div>
+                            <div className="chapter2ineach">
+                                {eachrecipe.recipes_step7}
+                                {/* 步驟8 */}
+                            </div>
+                        </div>
+
+                        <div
+                            className={
+                                eachrecipe.recipes_step8.length === 0
+                                    ? 'showarea2ineach1'
+                                    : 'showarea2ineach'
+                            }
+                        >
+                            <div className="numberineachrecipe">9</div>
+                            <div className="chapter2ineach">
+                                {eachrecipe.recipes_step8}
+                                {/* 步驟9 */}
+                            </div>
+                        </div>
+
+                        <div
+                            className={
+                                eachrecipe.recipes_step9.length === 0
+                                    ? 'showarea2ineach1'
+                                    : 'showarea2ineach'
+                            }
+                        >
+                            <div className="numberineachrecipe">10</div>
+                            <div className="chapter2ineach">
+                                {eachrecipe.recipes_step9}
+                                {/* 步驟10 */}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -271,16 +544,19 @@ function Eachrecipe() {
                     </button>
                 </Link>
 
-                {/* <a href=""> */}
-                <button className="hsiehdelete">
-                    刪除食譜
-                    <img
-                        src="/images/trashcan.svg"
-                        alt=""
-                        className="crudineach"
-                    />
-                </button>
-                {/* </a> */}
+                <Link to={`http://localhost:3600/recipe/delete`}>
+                    <button
+                        className="hsiehdelete"
+                        onClick={(e) => Delectrecipe()}
+                    >
+                        刪除食譜
+                        <img
+                            src="/images/trashcan.svg"
+                            alt=""
+                            className="crudineach"
+                        />
+                    </button>
+                </Link>
             </div>
         </>
     );

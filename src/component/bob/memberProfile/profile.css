@@ -14,3 +14,15 @@
     top: 1rem;
     right: 1.2rem;
 }
+.bop-objft{
+    object-fit: cover;
+}
+.bop-lineheight{
+    line-height: 1.1rem;
+}
+.bop-multiline-ellipsis { 
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}

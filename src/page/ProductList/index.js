@@ -32,6 +32,7 @@ import CartCountContext from '../../component/ben/cart_count/CartCountContext';
 import { FaNetworkWired } from 'react-icons/fa';
 import Modal from 'react-modal';
 import Compare from '../../component/lil/Compare';
+import { useWindowScrollPosition } from 'rooks';
 
 const customStyles = {
     content: {
@@ -83,7 +84,9 @@ function ProductList() {
     const [compareBTN, setCompareBTN] = useState(false);
     const [compared, setCompared] = useState([]);
     const [modalIsOpen, setIsOpen] = useState(false);
-    const [adShow, setAdShow] = useState(false);
+    const [adShow, setAdShow] = useState();
+    const position = useWindowScrollPosition();
+    const [navFixed, setNavFixed] = useState(false);
 
     function openModal() {
         setIsOpen(true);
@@ -144,7 +147,7 @@ function ProductList() {
             const history = JSON.parse(json);
             const ids = Object.keys(history);
             if (ids.length) {
-                getProducts(ids);
+                getHistoryProducts(ids);
             }
         }
 
@@ -157,7 +160,7 @@ function ProductList() {
         getHotSales();
     }, []);
 
-    const getProducts = async (ids) => {
+    const getHistoryProducts = async (ids) => {
         const getHistoryData = await Promise.all(
             ids.map((v, i) => {
                 return getProductItem(v);
@@ -333,6 +336,23 @@ function ProductList() {
         fetchCompare();
     }, []);
 
+    const handleAdClose = () => {
+        setAdShow(false);
+    };
+
+    useEffect(() => {
+        if (position.scrollY > 800 && _.isNil(adShow)) {
+            setAdShow(true);
+        }
+    }, [position, adShow]);
+
+    useEffect(() => {
+        if (position.scrollY > 400) {
+            setNavFixed(true);
+        } else {
+            setNavFixed(false);
+        }
+    }, [position, navFixed]);
     return (
         <>
             <div className={styles.page}>
@@ -341,6 +361,9 @@ function ProductList() {
                         className={styles.comparebtn}
                         onClick={() => openModal()}
                     >
+                        <div className={styles.compareNum}>
+                            {compared.length}
+                        </div>
                         <FaNetworkWired size={30} />
                     </div>
                 )}
@@ -352,13 +375,22 @@ function ProductList() {
                             className={clsx('col-3', styles.sidebar)}
                             style={{ marginTop: '53px' }}
                         >
-                            <SearchP />
-                            <PriceSelect
-                                value={selectedOption}
-                                onSelect={setSelectedOption}
-                            />
-                            <ProductNavBar />
-                            <Ad />
+                            <div className={clsx({ [styles.fixed]: navFixed })}>
+                                <SearchP />
+                                <PriceSelect
+                                    value={selectedOption}
+                                    onSelect={setSelectedOption}
+                                />
+                                <ProductNavBar />
+                            </div>
+                            <div className={styles.ad_wrap}>
+                                <Ad
+                                    className={clsx(styles.ad_hidden, {
+                                        [styles.ad_move]: adShow,
+                                    })}
+                                    onClick={handleAdClose}
+                                />
+                            </div>
                         </div>
                         <div className={clsx('col-9', styles.main)}>
                             <Title zh={'熱銷商品'} eg={'Hot Sales'} />
@@ -488,6 +520,9 @@ function ProductList() {
                                                         SUPPLIER[
                                                             v.product_supplier
                                                         ]
+                                                    }
+                                                    inventory={
+                                                        v.product_inventory
                                                     }
                                                     price={v.product_price}
                                                     unit={v.product_unit}

@@ -98,3 +98,7 @@ select:focus {
 .slick-arrow{
   display: none !important;
 }
+.slick-dots{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

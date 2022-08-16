@@ -50,3 +50,37 @@
      justify-content: center;
      z-index: 10;
 }
+
+.ad_wrap {
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+    margin-top: 200px;
+}
+
+.ad_hidden{
+    transform: translateX(-300px);
+    transition: all 1s ease-out ;
+}
+
+.ad_move{
+    transform: translateX(0);
+}
+.fixed{
+    position: fixed;
+    top: 150px;
+}
+.compareNum{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #fa4747;
+    color: #fff;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    text-align: center;
+    line-height: 20px;
+    font-weight: bold;
+    font-size: 14px;
+}

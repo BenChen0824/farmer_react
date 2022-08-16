@@ -1,6 +1,7 @@
 import './orders.css';
 import { useState, useEffect } from 'react';
 import MemberNavbar from '../component/memberCenter_Navbar';
+import { useNavigate } from 'react-router-dom';
 
 function MemberOrders() {
     const [response, setResponse] = useState([]);
@@ -9,9 +10,10 @@ function MemberOrders() {
     const [filteredResult, setFilteredResult] = useState([]);
     const [filterCate, setFilterCate] = useState('');
 
-    const category = ['已完成付款', '待取貨'];
+    const dateCategory = ['三個月內', '半年內', '一年內'];
 
     const loginUser = JSON.parse(localStorage.getItem('auth'));
+    const navigate = useNavigate();
 
     const getOrders = async () => {
         const r = await fetch('http://localhost:3600/member/orders', {
@@ -38,7 +40,7 @@ function MemberOrders() {
     function searchItems(searchValue) {
         setSearchInput(searchValue);
         if (searchValue !== '') {
-            const filteredData = response.filter((item) => {
+            const filteredData = orderList.filter((item) => {
                 return Object.values(item)
                     .join('')
                     .toLowerCase()
@@ -46,18 +48,25 @@ function MemberOrders() {
             });
             setFilteredResult(filteredData);
         } else {
-            setFilteredResult(response);
+            setFilteredResult(orderList);
         }
     }
 
     function searchCategory(searchValue) {
         setFilterCate(searchValue);
-        if (searchValue !== '') {
+        if (searchValue === '三個月內') {
             const filteredData = orderList.filter((item) => {
-                return Object.values(item)
-                    .join('')
-                    .toLowerCase()
-                    .includes(searchValue.toLowerCase());
+                return Date.parse(item.created_time) > (Date.now() - 1000*60*60*24*90);
+            });
+            setFilteredResult(filteredData);
+        } else if (searchValue === '半年內') {
+            const filteredData = orderList.filter((item) => {
+                return Date.parse(item.created_time) > (Date.now() - 1000*60*60*24*180);
+            });
+            setFilteredResult(filteredData);
+        } else if (searchValue === '一年內') {
+            const filteredData = orderList.filter((item) => {
+                return Date.parse(item.created_time) > (Date.now() - 1000*60*60*24*365);
             });
             setFilteredResult(filteredData);
         } else {
@@ -85,12 +94,10 @@ function MemberOrders() {
                                         }}
                                     >
                                         <option value="">請選擇狀態</option>
-                                        {category.map((v, i) => {
-                                            return (
-                                                <option value={v} key={i}>
-                                                    {v}
-                                                </option>
-                                            );
+                                        {dateCategory.map((v,i)=>{
+                                            return(
+                                                <option value={v} key={i}>{v}</option>
+                                            )
                                         })}
                                     </select>
                                     <div className="border rounded col-sm-7 d-flex align-items-center">
@@ -99,7 +106,7 @@ function MemberOrders() {
                                             id="text"
                                             type="search"
                                             name="search"
-                                            placeholder="請搜尋商品名稱"
+                                            placeholder="請搜尋訂單編號"
                                             aria-label="search"
                                             onChange={(e) => {
                                                 searchItems(e.target.value);
@@ -113,7 +120,7 @@ function MemberOrders() {
                             </div>
                         </div>
                         <div className="container row justify-content-center">
-                            {searchInput.length >= 1 || filterCate.length >= 1
+                            {orderList[0] ? searchInput.length >= 1 || filterCate.length >= 1
                                 ? filteredResult.map((res) => (
                                       <div
                                           className="card p-4 col-10 shadow-sm mb-4"
@@ -140,6 +147,9 @@ function MemberOrders() {
                                                       </th>
                                                       <th scope="col">
                                                           訂單狀態
+                                                      </th>
+                                                      <th scope="col">
+                                                          顧客回饋
                                                       </th>
                                                   </tr>
                                               </thead>
@@ -211,6 +221,12 @@ function MemberOrders() {
                                                                           }
                                                                       </p>
                                                                   </td>
+                                                                  <td className="align-middle">
+                                                                    <button type="button" className="btn btn-success btn-sm" onClick={()=>{
+                                                                        localStorage.setItem('comment_product',`${v2.sid}`);
+                                                                        navigate('/createcomment', {replace:true});
+                                                                    }}>來去評價</button>
+                                                                  </td>
                                                               </tr>
                                                           );
                                                       })}
@@ -274,6 +290,12 @@ function MemberOrders() {
                                                                           }
                                                                       </p>
                                                                   </td>
+                                                                  <td className="align-middle">
+                                                                    <button type="button" className="btn btn-success btn-sm" onClick={()=>{
+                                                                        localStorage.setItem('comment_product',`${v2.sid}`);
+                                                                        navigate('/createcomment', {replace:true});
+                                                                    }}>來去評價</button>
+                                                                  </td>
                                                               </tr>
                                                           );
                                                       })}
@@ -281,7 +303,7 @@ function MemberOrders() {
                                               <tfoot>
                                                   <tr>
                                                       <td
-                                                          colSpan="4"
+                                                          colSpan="5"
                                                           className="text-end border-0"
                                                       >
                                                           <h5>訂單編號：</h5>
@@ -294,7 +316,7 @@ function MemberOrders() {
                                                   </tr>
                                                   <tr>
                                                       <td
-                                                          colSpan="4"
+                                                          colSpan="5"
                                                           className="text-end border-0 py-0"
                                                       >
                                                           <h5>訂單總金額：</h5>
@@ -338,6 +360,9 @@ function MemberOrders() {
                                                       </th>
                                                       <th scope="col">
                                                           訂單狀態
+                                                      </th>
+                                                      <th scope="col">
+                                                          顧客回饋
                                                       </th>
                                                   </tr>
                                               </thead>
@@ -406,6 +431,12 @@ function MemberOrders() {
                                                                           }
                                                                       </p>
                                                                   </td>
+                                                                  <td className="align-middle">
+                                                                    <button type="button" className="btn btn-success btn-sm" onClick={()=>{
+                                                                        localStorage.setItem('comment_product',`${v2.sid}`);
+                                                                        navigate('/createcomment', {replace:true});
+                                                                    }}>來去評價</button>
+                                                                  </td>
                                                               </tr>
                                                           );
                                                       })}
@@ -468,6 +499,13 @@ function MemberOrders() {
                                                                               v2.order_status
                                                                           }
                                                                       </p>
+                                                                      
+                                                                  </td>
+                                                                  <td className="align-middle">
+                                                                    <button type="button" className="btn btn-success btn-sm" onClick={()=>{
+                                                                        localStorage.setItem('comment_product',`${v2.sid}`);
+                                                                        navigate('/createcomment', {replace:true});
+                                                                    }}>來去評價</button>
                                                                   </td>
                                                               </tr>
                                                           );
@@ -476,7 +514,7 @@ function MemberOrders() {
                                               <tfoot>
                                                   <tr>
                                                       <td
-                                                          colSpan="4"
+                                                          colSpan="5"
                                                           className="text-end border-0"
                                                       >
                                                           <h5>訂單編號：</h5>
@@ -489,7 +527,7 @@ function MemberOrders() {
                                                   </tr>
                                                   <tr>
                                                       <td
-                                                          colSpan="4"
+                                                          colSpan="5"
                                                           className="text-end border-0 py-0"
                                                       >
                                                           <h5>訂單總金額：</h5>
@@ -506,7 +544,9 @@ function MemberOrders() {
                                               </tfoot>
                                           </table>
                                       </div>
-                                  ))}
+                                  )) :
+                                  <p className="text-muted text-center mt-5">尚無訂單資訊</p>
+                                  }
                         </div>
                     </div>
                 </div>

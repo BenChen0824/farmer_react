@@ -1,11 +1,12 @@
 import React, { useEffect, useRef } from 'react';
-
+import Uploadimages from './hooks/Uploadimages';
 const ChatBody = ({ user, messages }) => {
     const scroll = useRef();
     //滾動到最後訊息
     useEffect(() => {
         scroll.current?.scrollIntoView({ behavior: 'smooth' });
     }, [messages]);
+
     return (
         <div className="position-relative overflow-auto chat-height ">
             <div className="p-4 d-flex flex-column">
