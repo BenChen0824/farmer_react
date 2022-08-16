@@ -97,6 +97,7 @@ function ActivityData() {
                                                       row.company_infoImg
                                                   )
                                               )} */}
+                                              {/* {console.log(row.company_infoImg)} */}
                                         {JSON.parse(row.company_infoImg).map(
                                             (v2, i2) => {
                                                 return (
