@@ -1,7 +1,9 @@
 import './profile.css';
 import { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import MemberNavbar from '../component/memberCenter_Navbar';
 import axios from 'axios';
+import { FaHeart } from "react-icons/fa";
 
 function MemberProfile() {
     const hiddenFileInput = useRef('');
@@ -14,7 +16,9 @@ function MemberProfile() {
         },
     ]);
     const [editStatus, setEditStatus] = useState(true);
+    const [postRecipe, setPostRecipe] = useState([]);
     const loginUser = JSON.parse(localStorage.getItem('auth'));
+    const navigate = useNavigate()
 
     const getProfileData = async () => {
         const response = await axios.get(
@@ -24,8 +28,17 @@ function MemberProfile() {
         setProfileData(response.data);
     };
 
+    const getRecipeData = async () => {
+        const response = await axios.get(
+            'http://localhost:3600/member/postrecipe',
+            { headers: { loginUser: loginUser.customer_id } }
+        );
+        setPostRecipe(response.data);
+    };
+
     useEffect(() => {
         getProfileData();
+        getRecipeData();
     }, [editStatus]);
 
     const handleClick = (event) => {
@@ -73,12 +86,8 @@ function MemberProfile() {
         })
             .then((r) => r.json())
             .then((obj) => {
-                console.log(obj);
-                if (obj.success) {
-                    alert('編輯成功');
-                }
-            });
-    };
+                console.log(obj);});
+        };
 
     return (
         <>
@@ -256,6 +265,50 @@ function MemberProfile() {
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                            <h2 className="text-center fw-bold my-5">我的食譜發表</h2>
+                            <div className="container my-5">
+                                <div className="row justify-content-center">
+                                    {postRecipe[0] ? postRecipe.map((v,i)=>{
+                                        return(
+                                            <div
+                                              className="card p-2 bdr m-1 shadow-sm"
+                                              style={{ width: '16rem' }}
+                                              val={v.customer_id}
+                                              key={v.recipes_sid}
+                                          >
+                                              <img
+                                                  src={'/images/' + v.recipes_img}
+                                                  className="card-img-top bop-objft"
+                                                  width="200px"
+                                                  height="175px"
+                                                  alt="..."
+                                              />
+                                              <div className="card-body text-center">
+                                                  <h5 className="card-title">
+                                                      {v.recipes_name}
+                                                  </h5>
+                                                  <p
+                                                      style={{
+                                                          display: 'none',
+                                                      }}
+                                                  >
+                                                      {v.recipes_type}
+                                                  </p>
+                                                  <p className="card-text bop-multiline-ellipsis">
+                                                      {v.recipes_description}
+                                                  </p>
+                                                  <p className="card-text">
+                                                    <FaHeart></FaHeart> {v.recipes_collection}人收藏
+                                                  </p>
+                                                  <button className="btn btn-sm bop-buttonColor text-white" onClick={()=>{navigate(`/recipe/each/${v.recipes_sid}`, {replace:true})}}>查看食譜</button>
+                                              </div>
+                                          </div>
+                                        )
+                                    }) : 
+                                    <p className="text-muted text-center mt-5">您尚無發表過食譜</p>
+                                    }
                                 </div>
                             </div>
                         </div>

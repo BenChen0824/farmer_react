@@ -16,7 +16,25 @@ function Updaterecipe() {
         recipes_type: '',
         recipes_cooking_degree: '',
         recipes_ingredient: '',
-        recipes_cooking_method: '',
+        recipes_ingredient1: '',
+        recipes_ingredient2: '',
+        recipes_ingredient3: '',
+        recipes_ingredient4: '',
+        recipes_ingredient5: '',
+        recipes_ingredient6: '',
+        recipes_ingredient7: '',
+        recipes_ingredient8: '',
+        recipes_ingredient9: '',
+        recipes_step: '',
+        recipes_step1: '',
+        recipes_step2: '',
+        recipes_step3: '',
+        recipes_step4: '',
+        recipes_step5: '',
+        recipes_step6: '',
+        recipes_step7: '',
+        recipes_step8: '',
+        recipes_step9: '',
         recipes_description: '',
         recipes_img: '',
         cooking_create_member_Id: '',
@@ -103,6 +121,8 @@ function Updaterecipe() {
     // 料理照片
     const [updateRecipe_img, setUpdateRecipe_img] = useState([]);
 
+    const [previewimg, setPreviewimg] = useState('');
+
     const navigate = useNavigate();
 
     const updateAllInfo = async (event) => {
@@ -118,7 +138,25 @@ function Updaterecipe() {
             updateRecipestype: document.form1.updateRecipestype.value,
             updateRecipesdegree: document.form1.updateRecipesdegree.value,
             updateIngredient: document.form1.updateIngredient.value,
+            updateIngredient1: document.form1.updateIngredient.value,
+            updateIngredient2: document.form1.updateIngredient.value,
+            updateIngredient3: document.form1.updateIngredient.value,
+            updateIngredient4: document.form1.updateIngredient.value,
+            updateIngredient5: document.form1.updateIngredient.value,
+            updateIngredient6: document.form1.updateIngredient.value,
+            updateIngredient7: document.form1.updateIngredient.value,
+            updateIngredient8: document.form1.updateIngredient.value,
+            updateIngredient9: document.form1.updateIngredient.value,
             updateStep: document.form1.updateStep.value,
+            updateStep1: document.form1.updateStep.value,
+            updateStep2: document.form1.updateStep.value,
+            updateStep3: document.form1.updateStep.value,
+            updateStep4: document.form1.updateStep.value,
+            updateStep5: document.form1.updateStep.value,
+            updateStep6: document.form1.updateStep.value,
+            updateStep7: document.form1.updateStep.value,
+            updateStep8: document.form1.updateStep.value,
+            updateStep9: document.form1.updateStep.value,
             recipes_img: document.form1.recipes_img.value,
             customer_id: loginUser.customer_id,
         };
@@ -147,6 +185,11 @@ function Updaterecipe() {
             alert('更新成功');
             navigate('/recipe', { replace: true });
         }
+    }
+
+    function qwert() {
+        const a = previewimg.substring(12);
+        return a;
     }
 
     function plusoneingredient() {
@@ -361,7 +404,6 @@ function Updaterecipe() {
                 <div className="eachdataincreaterecipe">
                     <label className="datanameincreaterecipe">使用食材</label>
                 </div>
-
                 <div className="eachdataincreaterecipe">
                     <div>
                         <div className="ingredientincreate">
@@ -379,7 +421,11 @@ function Updaterecipe() {
                                 />
                             </section>
 
-                            <button type="button" className="buttonincreate">
+                            <button
+                                type="button"
+                                className="buttonincreate"
+                                // onClick={}
+                            >
                                 <img
                                     src="/images/trashcan.svg"
                                     alt=""
@@ -390,14 +436,20 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="ingredientincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_ingredient1.length === 0
+                                    ? 'ingredientincreate1'
+                                    : 'ingredientincreate'
+                            }
+                        >
                             <section>
                                 <input
                                     name="[updateIngredient1]"
                                     id="updateIngredient1"
                                     type="text"
                                     className="ingredientuse"
-                                    value={updaterecipe.recipes_ingredient}
+                                    value={updaterecipe.recipes_ingredient1}
                                     required
                                     placeholder="食材與份量，如：雞蛋2顆"
                                     onChange={(e) => {
@@ -421,14 +473,20 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="ingredientincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_ingredient2.length === 0
+                                    ? 'ingredientincreate1'
+                                    : 'ingredientincreate'
+                            }
+                        >
                             <section>
                                 <input
-                                    name="[ingredient]"
+                                    name="ingredient2"
                                     id="ingredient2"
                                     type="text"
                                     className="ingredientuse"
-                                    value={updaterecipe.recipes_ingredient}
+                                    value={updaterecipe.recipes_ingredient2}
                                     required
                                     placeholder="食材與份量，如：雞蛋2顆"
                                     onChange={(e) => {
@@ -452,14 +510,20 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="ingredientincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_ingredient3.length === 0
+                                    ? 'ingredientincreate1'
+                                    : 'ingredientincreate'
+                            }
+                        >
                             <section>
                                 <input
-                                    name="[ingredient]"
+                                    name="ingredient3"
                                     id="ingredient3"
                                     type="text"
                                     className="ingredientuse"
-                                    value={updaterecipe.recipes_ingredient}
+                                    value={updaterecipe.recipes_ingredient3}
                                     required
                                     placeholder="食材與份量，如：雞蛋2顆"
                                     onChange={(e) => {
@@ -483,14 +547,20 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="ingredientincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_ingredient4.length === 0
+                                    ? 'ingredientincreate1'
+                                    : 'ingredientincreate'
+                            }
+                        >
                             <section>
                                 <input
-                                    name="[ingredient]"
+                                    name="ingredient4"
                                     id="ingredient4"
                                     type="text"
                                     className="ingredientuse"
-                                    value={updaterecipe.recipes_ingredient}
+                                    value={updaterecipe.recipes_ingredient4}
                                     required
                                     placeholder="食材與份量，如：雞蛋2顆"
                                     onChange={(e) => {
@@ -514,14 +584,20 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="ingredientincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_ingredient5.length === 0
+                                    ? 'ingredientincreate1'
+                                    : 'ingredientincreate'
+                            }
+                        >
                             <section>
                                 <input
-                                    name="[ingredient]"
+                                    name="ingredient5"
                                     id="ingredient5"
                                     type="text"
                                     className="ingredientuse"
-                                    value={updaterecipe.recipes_ingredient}
+                                    value={updaterecipe.recipes_ingredient5}
                                     required
                                     placeholder="食材與份量，如：雞蛋2顆"
                                     onChange={(e) => {
@@ -545,14 +621,20 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="ingredientincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_ingredient6.length === 0
+                                    ? 'ingredientincreate1'
+                                    : 'ingredientincreate'
+                            }
+                        >
                             <section>
                                 <input
-                                    name="[ingredient]"
+                                    name="ingredient6"
                                     id="ingredient6"
                                     type="text"
                                     className="ingredientuse"
-                                    value={updaterecipe.recipes_ingredient}
+                                    value={updaterecipe.recipes_ingredient6}
                                     required
                                     placeholder="食材與份量，如：雞蛋2顆"
                                     onChange={(e) => {
@@ -576,14 +658,20 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="ingredientincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_ingredient7.length === 0
+                                    ? 'ingredientincreate1'
+                                    : 'ingredientincreate'
+                            }
+                        >
                             <section>
                                 <input
-                                    name="[ingredient]"
+                                    name="ingredient7"
                                     id="ingredient7"
                                     type="text"
                                     className="ingredientuse"
-                                    value={updaterecipe.recipes_ingredient}
+                                    value={updaterecipe.recipes_ingredient7}
                                     required
                                     placeholder="食材與份量，如：雞蛋2顆"
                                     onChange={(e) => {
@@ -607,14 +695,20 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="ingredientincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_ingredient8.length === 0
+                                    ? 'ingredientincreate1'
+                                    : 'ingredientincreate'
+                            }
+                        >
                             <section>
                                 <input
-                                    name="[ingredient]"
+                                    name="ingredient8"
                                     id="ingredient8"
                                     type="text"
                                     className="ingredientuse"
-                                    value={updaterecipe.recipes_ingredient}
+                                    value={updaterecipe.recipes_ingredient8}
                                     required
                                     placeholder="食材與份量，如：雞蛋2顆"
                                     onChange={(e) => {
@@ -638,14 +732,20 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="ingredientincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_ingredient9.length === 0
+                                    ? 'ingredientincreate1'
+                                    : 'ingredientincreate'
+                            }
+                        >
                             <section>
                                 <input
-                                    name="[ingredient]"
+                                    name="ingredient9"
                                     id="ingredient9"
                                     type="text"
                                     className="ingredientuse"
-                                    value={updaterecipe.recipes_ingredient}
+                                    value={updaterecipe.recipes_ingredient9}
                                     required
                                     placeholder="食材與份量，如：雞蛋2顆"
                                     onChange={(e) => {
@@ -700,20 +800,34 @@ function Updaterecipe() {
                 <hr className="hrincreaterecipe" />
                 {/* 分隔線，以下料理步驟 */}
 
+                {/* <div
+                            className={
+                                updaterecipe.recipes_step.length === 0
+                                    ? 'stepincreate1'
+                                    : 'stepincreate'
+                            }
+                        ></div> */}
+
                 <div className="eachdataincreaterecipe">
                     <label className="datanameincreaterecipe">料理步驟</label>
                 </div>
 
                 <div className="eachdataincreaterecipe">
                     <div>
-                        <div className="stepincreate">
+                        <div
+                            className={
+                                updaterecipe.recipes_step.length === 0
+                                    ? 'stepincreate1'
+                                    : 'stepincreate'
+                            }
+                        >
                             <div className="redballincreate">1</div>
                             <section>
                                 <textarea
                                     name="[updateStep]"
                                     id="updateStep"
                                     className="dataform1increate"
-                                    value={updaterecipe.recipes_cooking_method}
+                                    value={updaterecipe.recipes_step}
                                     placeholder="步驟1"
                                     onChange={(e) => {
                                         setUpdateStep(e.target.value);
@@ -735,14 +849,20 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="stepincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_step1.length === 0
+                                    ? 'stepincreate1'
+                                    : 'stepincreate'
+                            }
+                        >
                             <div className="redballincreate">2</div>
                             <section>
                                 <textarea
                                     name="[step1]"
                                     id="step1"
                                     className="stepoftextareaincreate"
-                                    value={updaterecipe.recipes_cooking_method}
+                                    value={updaterecipe.recipes_step1}
                                     required
                                     placeholder="步驟2"
                                     onChange={(e) => {
@@ -766,14 +886,20 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="stepincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_step2.length === 0
+                                    ? 'stepincreate1'
+                                    : 'stepincreate'
+                            }
+                        >
                             <div className="redballincreate">3</div>
                             <section>
                                 <textarea
                                     name="[step2]"
                                     id="step2"
                                     className="stepoftextareaincreate"
-                                    value={updaterecipe.recipes_cooking_method}
+                                    value={updaterecipe.recipes_step2}
                                     required
                                     placeholder="步驟3"
                                     onChange={(e) => {
@@ -797,14 +923,20 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="stepincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_step3.length === 0
+                                    ? 'stepincreate1'
+                                    : 'stepincreate'
+                            }
+                        >
                             <div className="redballincreate">4</div>
                             <section>
                                 <textarea
                                     name="[step3]"
                                     id="step3"
                                     className="stepoftextareaincreate"
-                                    value={updaterecipe.recipes_cooking_method}
+                                    value={updaterecipe.recipes_step3}
                                     required
                                     placeholder="步驟4"
                                     onChange={(e) => {
@@ -828,14 +960,20 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="stepincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_step4.length === 0
+                                    ? 'stepincreate1'
+                                    : 'stepincreate'
+                            }
+                        >
                             <div className="redballincreate">5</div>
                             <section>
                                 <textarea
                                     name="[step4]"
                                     id="step4"
                                     className="stepoftextareaincreate"
-                                    value={updaterecipe.recipes_cooking_method}
+                                    value={updaterecipe.recipes_step4}
                                     required
                                     placeholder="步驟5"
                                     onChange={(e) => {
@@ -859,14 +997,20 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="stepincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_step5.length === 0
+                                    ? 'stepincreate1'
+                                    : 'stepincreate'
+                            }
+                        >
                             <div className="redballincreate">6</div>
                             <section>
                                 <textarea
                                     name="[step5]"
                                     id="step5"
                                     className="stepoftextareaincreate"
-                                    value={updaterecipe.recipes_cooking_method}
+                                    value={updaterecipe.recipes_step5}
                                     required
                                     placeholder="步驟6"
                                     onChange={(e) => {
@@ -890,14 +1034,20 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="stepincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_step6.length === 0
+                                    ? 'stepincreate1'
+                                    : 'stepincreate'
+                            }
+                        >
                             <div className="redballincreate">7</div>
                             <section>
                                 <textarea
                                     name="[step6]"
                                     id="step6"
                                     className="stepoftextareaincreate"
-                                    value={updaterecipe.recipes_cooking_method}
+                                    value={updaterecipe.recipes_step6}
                                     required
                                     placeholder="步驟7"
                                     onChange={(e) => {
@@ -921,14 +1071,20 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="stepincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_step7.length === 0
+                                    ? 'stepincreate1'
+                                    : 'stepincreate'
+                            }
+                        >
                             <div className="redballincreate">8</div>
                             <section>
                                 <textarea
                                     name="[step7]"
                                     id="step7"
                                     className="stepoftextareaincreate"
-                                    value={updaterecipe.recipes_cooking_method}
+                                    value={updaterecipe.recipes_step7}
                                     required
                                     placeholder="步驟8"
                                     onChange={(e) => {
@@ -952,14 +1108,20 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="stepincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_step8.length === 0
+                                    ? 'stepincreate1'
+                                    : 'stepincreate'
+                            }
+                        >
                             <div className="redballincreate">9</div>
                             <section>
                                 <textarea
                                     name="[step8]"
                                     id="step8"
                                     className="stepoftextareaincreate"
-                                    value={updaterecipe.recipes_cooking_method}
+                                    value={updaterecipe.recipes_step8}
                                     required
                                     placeholder="步驟9"
                                     onChange={(e) => {
@@ -983,14 +1145,20 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div className="stepincreate1">
+                        <div
+                            className={
+                                updaterecipe.recipes_step9.length === 0
+                                    ? 'stepincreate1'
+                                    : 'stepincreate'
+                            }
+                        >
                             <div className="redballincreate">10</div>
                             <section>
                                 <textarea
                                     name="[step9]"
                                     id="step9"
                                     className="stepoftextareaincreate"
-                                    value={updaterecipe.recipes_cooking_method}
+                                    value={updaterecipe.recipes_step9}
                                     required
                                     placeholder="步驟10"
                                     onChange={(e) => {
@@ -1046,28 +1214,27 @@ function Updaterecipe() {
                 {/* 分隔線，以下照片 */}
 
                 <div className="photoareaincreate">
-                    {/* <button className="buttonincreate">
-                        <img
-                            src="/images/camera.svg"
-                            alt=""
-                            className="iconincreate"
-                        />
-                    </button> */}
-                    <input type="file" name="recipes_img" />
                     {/* 上傳按鈕 */}
 
                     <div className="photouploadincreate">
-                        {/* <form style={{ display: 'none' }}>
-                            <input
-                                id="inputData"
-                                name="file"
-                                type="file"
-                                accept="image/*"
-                            />
-                        </form> */}
-                        <img className="shoephotoincreate" src="" alt="" />
+                        <input
+                            type="file"
+                            name="recipes_img"
+                            id="inputData"
+                            // value={updaterecipe.recipes_img}
+                            onChange={(e) => {
+                                setPreviewimg(e.target.value);
+                            }}
+                        />
+
+                        <img
+                            className="showphotoincreate"
+                            src={`/dishimages/${updaterecipe.recipes_img}`}
+                            alt=""
+                        />
                     </div>
                 </div>
+
                 <div className="buttonintextalign">
                     <label>請選擇照片</label>
                 </div>
@@ -1090,6 +1257,6 @@ function Updaterecipe() {
     );
 }
 
-// onClick={()}
-
 export default Updaterecipe;
+
+// onClick={()}

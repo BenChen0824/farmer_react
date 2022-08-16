@@ -12,9 +12,9 @@ function Dailypoint() {
     const [info, setInfo] = useState(0);
     //限定一天一次領取點數提示
     const [showup, setShowup] = useState();
-    const [timezone, setTimezone] = useState(0);
+    const [showuptime, setShowupTime] = useState()
 
-    const pointArray = [100, 150, 100, 200, 300, 500];
+    const pointArray = [100, 50, 60, 40, 30, 20];
     const randomNum = Math.ceil(Math.random() * 6) - 1;
 
     const brokenegg = '/dailypoint-img/44434.png';
@@ -58,6 +58,7 @@ function Dailypoint() {
             let getPoint = pointArray[randomNum];
             // console.log(getPoint);
             // console.log(eggpoints + getPoint);
+
             setEggPoints(eggpoints + getPoint);
             // console.log(eggpoints);
             updateEggPoint(eggpoints + getPoint);
@@ -65,6 +66,7 @@ function Dailypoint() {
             setDataCheck(false);
         } else {
             setShowup('今日已完成兌換囉...');
+            setShowupTime(<Pointtime />);
         }
     };
     useEffect(() => {}, [eggStates]);
@@ -119,7 +121,8 @@ function Dailypoint() {
                         </p>
                     </div>
                     <div>
-                        <Pointtime />
+                        {showuptime}
+                        {/* <Pointtime /> */}
                     </div>
                 </div>
             </div>

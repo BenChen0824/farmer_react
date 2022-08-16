@@ -1,15 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import './Comment.css';
 import './CommentCard.css';
 import Title from '../Title/index';
-import axios from 'axios';
-import { COMMENT_MAIN } from './../../../../config/ajax-path';
+// import axios from 'axios';//
+import {
+    COMMENT_MAIN,
+    COMMENT_SEARCHNAME,
+    COMMENT_CHECKLIKE,
+    COMMENT_ALLLIKE,
+} from './../../../../config/ajax-path';
 // import clsx from 'clsx';
 import { fetchComment } from '../../../../api/comment';
 import { useQuery } from '../../../../hooks';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import SearchC from '../SearchC/index';
-import getCommentItem from '../api/getCommentItem';
+
+// import SearchC from '../SearchC/index';
+// import getCommentItem from '../api/getCommentItem';
 
 const Comment = () => {
     // 從資料庫抓資料
@@ -18,10 +24,10 @@ const Comment = () => {
     // 從抓出來的資料做篩選
     const [commentToShow, setCommentToShow] = useState([totalComment]);
     const [ratingStarArray, setratingStarArray] = useState([]);
-
-    // const [searchComment, setSearchComment] = useState([]);
-    // const [searchCommentAgain, setSearchCommentAgain] = useState([]);
-    // const [inputText, setInputText] = useState('');
+    const [count, setCount] = useState(0);
+    const member_info_id = localStorage.getItem('auth')
+        ? JSON.parse(localStorage.getItem('auth')).customer_id
+        : 500000000;
 
     const getData = () => {
         fetch(COMMENT_MAIN, {
@@ -29,19 +35,53 @@ const Comment = () => {
         })
             .then((r) => r.json())
             .then((obj) => {
-                console.log(obj);
+                // console.log(obj);
                 setTotalComment(obj);
-                // setSearchComment(obj);
-                // setSearchCommentAgain(obj);
+            });
+    };
+    const getData1 = () => {
+        fetch(COMMENT_MAIN, {
+            method: 'GET',
+        })
+            .then((r) => r.json())
+            .then((obj) => {
+                // console.log(obj);
+                // setTotalComment(obj);
+                setCommentToShow(obj);
+            });
+    };
+
+    const likeChange = (sid) => {
+        const packageToSend = {
+            customer_id: member_info_id,
+            comment_sid: sid,
+        };
+        fetch(COMMENT_CHECKLIKE, {
+            method: 'POST',
+            body: JSON.stringify(packageToSend),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((r) => r.json())
+            .then((obj) => {
+                setCount(count + 1);
+                console.log(obj);
+                // setTotalComment(obj);
             });
     };
 
     useEffect(() => {
         getData();
     }, []);
+
     useEffect(() => {
         setCommentToShow(totalComment);
     }, []);
+
+    useEffect(() => {
+        getData1();
+    }, [count]);
 
     useEffect(() => {
         const newratingStarArray = totalComment.map((v) => {
@@ -49,9 +89,6 @@ const Comment = () => {
         });
         setratingStarArray(newratingStarArray);
     }, [totalComment]);
-
-    // -------------------------------------------------------------------------------------------------
-    // -------------------------------------------------------------------------------------------------
 
     // 1~5星的筆數
     const commentFilter = (e) => {
@@ -101,78 +138,93 @@ const Comment = () => {
         return +v.rating === 1;
     });
 
-    // 按讚 預設是0
-    // const [clickLikes, setClickLikes] = useState(clickLikes);
-    // const clickLikes = totalComment.likes
+    //按讚
+    const [likes, setLikes] = useState(0);
+    const [isClicked, setIsClicked] = useState(false);
 
-    // -------------------------------------------------------------------------------------------------
-    // -------------------------------------------------------------------------------------------------
-    // -------------------------------------------------------------------------------------------------
-    // -------------------------------------------------------------------------------------------------
+    const handleClick = (e) => {
+        // const newlikes = totalComment.map((v) => {
+        //     return +v.likes === +e.target;
+        // });
 
-    const navigate = useNavigate();
-    const [data, setData] = useState({});
+        // console.log('newlikes', newlikes);
+
+        if (isClicked) {
+            setLikes(likes - 1);
+        } else {
+            setLikes(likes + 1);
+        }
+        setIsClicked(!isClicked);
+    };
+
+    // ---------------------------------------------------------------
+    const inputRef = useRef();
+    // const dispatch = useDispatch();
     const query = useQuery();
-    const page = query['page'] || 1;
-    const type = query['type'];
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [value, setValue] = useState();
     const search = query['search'];
 
-    const member_info = JSON.parse(localStorage.getItem('auth')) || {};
-    const userId = member_info.customer_id;
+    const handleChange = (e) => {
+        const value = e.target.value;
+        // console.log(value);
+        setValue(value);
+    };
 
-    let orderBy = query['orderBy'] || 'sid'; // 這個我沒有
-    let order = query['order'] || 'DESC'; //time 這邊要去node看，取同樣的名字 //DESC大到小 ，預設呈現
-
-    const [searchParams, setSearchParams] = useSearchParams();
-    const [selectedOption, setSelectedOption] = useState(null);
-
-    //這邊是取後端的東西，並且拿前端ㄉ東西給後端
-    const getProduct = async (page, order, search) => {
-        const data = await fetchComment(page, order, search);
-        if (data && data.rows) {
-            console.log(data);
-            setData(data);
+    const handleRootClicked = () => {
+        if (inputRef.current) {
+            inputRef.current.focus();
         }
     };
 
-    useEffect(() => {
-        getProduct(page, order, search);
-    }, [page, order, search]);
+    const clickSearchFunction = (name) => {
+        const readyToSend = { product_name: name };
+        fetch(COMMENT_SEARCHNAME, {
+            method: 'POST',
+            body: JSON.stringify(readyToSend),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((r) => r.json())
+            .then((obj) => {
+                setCommentToShow(obj);
+                console.log(obj);
+            });
+    };
 
-    useEffect(() => {
-        const { value: priceOrder } = selectedOption ?? {};
-        let order;
-        switch (priceOrder) {
-            case '1': {
-                order = 'ASC';
-                break;
-            }
-            case '2': {
-                order = 'DESC';
-                break;
-            }
-            default: {
-                break;
-            }
-        }
+    const handleIconClicked = (e) => {
+        // e.stopPropagation();
+        console.log('click on icon');
 
-        // q是紀錄原本的網址的樣子(複製原本的資料)，再加新的(EX:篩選、搜尋)
         const q = {
             ...query,
-            orderBy,
-            order,
+            page: 1,
+            search: value,
         };
+        // clickSearchFunction();
+        setSearchParams(q);
+        // api/Comment.js會幫我處理搜尋or篩選出來的東西，
+    };
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            const q = {
+                ...query,
+                page: 1,
+                search: value,
+            };
 
-        if (query.orderBy !== orderBy || query.order !== order) {
-            // order = priceOrder === '1' ? 'ASC' : 'DESC'
             setSearchParams(q);
-            // 這邊塞回去，url網址才會變更
+            // dispatch(clearHashTag());
         }
-    }, [selectedOption]);
-
-    // -------------------------------------------------------------------------------------------------
-    // -------------------------------------------------------------------------------------------------
-    //SearchP_copy/index.js
+    };
+    useEffect(() => {
+        if (search) {
+            setValue(search);
+            // 渲染的地方 ↑ useeffect
+            // 有搜尋的話就渲染
+        }
+    }, [search]);
 
     return (
         <>
@@ -180,12 +232,30 @@ const Comment = () => {
                 {/* ----------------- Title ----------------- */}
                 <Title />
                 {/* ----------------- 搜尋 ----------------- */}
-                {/* <div className="CommentSearch_area d-flex justify-content-center m-5">
-                    <input type="text" placeholder="TEST..." />
-                    <button className="">搜尋</button>
-                </div> */}
+                <div
+                    className="CommentSearch_area d-flex justify-content-center m-5"
+                    onClick={handleRootClicked}
+                >
+                    <input
+                        ref={inputRef}
+                        type="text"
+                        placeholder="水蜜桃 鮭魚 和牛..."
+                        value={value}
+                        // ↑要補上的
+                        onChange={handleChange}
+                        onKeyDown={handleKeyDown}
+                    />
+                    <button
+                        className=""
+                        onClick={(e) => {
+                            handleIconClicked();
+                            clickSearchFunction(value);
+                        }}
+                    >
+                        搜尋
+                    </button>
+                </div>
 
-                <SearchC />
                 {/* --------------- 熱門關鍵字 ---------------*/}
                 {/*  ----------------- 顯示  ----------------- */}
                 <div className="HotSearch_and_Time_area">
@@ -272,7 +342,6 @@ const Comment = () => {
                 </div>
 
                 {/* --------------------------------------------------------- */}
-                {/* --------------------------------------------------------- */}
 
                 <div className="CommentCard_Area d-flex flex-wrap">
                     {commentToShow.map((v, i) => {
@@ -280,19 +349,15 @@ const Comment = () => {
                             v.created_at
                         ).toLocaleString();
 
-                        // 將資料庫的rating字串抓出來，並轉換成數字
-                        // 轉換完帶入套件的value中
-
-                        const starnum = +v.rating;
-                        const firstExample = {
-                            size: 30,
-                            value: `${starnum}`,
-                            edit: false,
-                            isHalf: true,
-                        };
-
                         return (
-                            <div className="col-sm-6 col-12" key={i}>
+                            <div
+                                className="CommentCard_section col-sm-6 col-12"
+                                key={i}
+                            >
+                                <div className="CommentProductItem">
+                                    {v.product_name}
+                                </div>
+
                                 <div className="CommentCard d-flex">
                                     {/* ----------- */}
                                     <div className="CommentCard_imgwrap me-3">
@@ -303,16 +368,6 @@ const Comment = () => {
                                     </div>
                                     {/* ----------- */}
                                     <div>
-                                        {/* <ReactStars {...firstExample} /> */}
-                                        {/* {!isNaN(starnum) && (
-                                            <ReactStars
-                                                size={30}
-                                                value={starnum}
-                                                edit={false}
-                                                isHalf
-                                            />
-                                        )} */}
-                                        {/* <StarRating ratingStarArray={ratingStarArray} index={i} /> */}
                                         <img
                                             src={getPicURL(+v.rating)}
                                             // getPicURL(e.target.getAttribute('value'))
@@ -332,16 +387,20 @@ const Comment = () => {
                                         <p className="CommentContext">
                                             {v.comment}
                                         </p>
-                                        <hr />
-                                        <p className="CommentProductItem">
-                                            評論項目: {v.product_name}
-                                        </p>
 
-                                        <div className="d-flex">
-                                            <i className="fas fa-thumbs-up"></i>
-
-                                            <div>{v.likes}</div>
+                                        <div className="likes_area d-flex mt-3">
+                                            <i
+                                                className="likes_icons fas fa-thumbs-up"
+                                                onClick={() => {
+                                                    likeChange(v.comment_sid);
+                                                    handleClick();
+                                                }}
+                                            ></i>
+                                            <div className="likes_number">
+                                                {v.likes}
+                                            </div>
                                         </div>
+                                        {/* <span className="likes-counter">{`Like | ${v.likes}`}</span> */}
                                     </div>
                                 </div>
                             </div>

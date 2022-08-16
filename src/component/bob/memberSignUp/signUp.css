@@ -9,6 +9,13 @@
 .bosu-bodyvh{
   height: 100vh
 }
+.bosu-buttonColor{
+  background-color: #709D40;
+}
+.bosu-buttonColor:hover{
+  background-color: #466b1f;
+  transition: linear 0.2s;
+}
 @media screen and (max-width:576px){
   .bosu-bodyvh{
     height: 110vh

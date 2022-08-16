@@ -142,7 +142,6 @@ export default function Popup(props) {
                     <div className="searchbyingredient">
                         <button
                             type="button"
-                            value={'菜'}
                             classc="btn btn-dark"
                             className="ingredientinpopup"
                             onClick={() => {
@@ -220,7 +219,7 @@ export default function Popup(props) {
                                                 '鴨' ||
                                                 '牛' ||
                                                 '豬' ||
-                                                '牛'
+                                                '羊'
                                         );
                                     }
                                 );

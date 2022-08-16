@@ -9,7 +9,7 @@
     font-weight: bold;
     font-size: large;
     text-align: left;
-    /* z-index: 5; */
+    z-index: 5;
     border: solid hsla(80, 90%, 40%, 0.5);
     border-right: none;
     padding: 0.5em 15px 0.5em 5px;

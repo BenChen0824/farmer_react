@@ -49,6 +49,19 @@ function Nav() {
                 {/* 選單 */}
                 <nav className=" mt-3">
                     <ul className="header_menu d-flex">
+                    <Link to="/mymap" style={{ textDecoration: 'none' }}>
+                            <li>
+                                <span
+                                    className={
+                                        navColor
+                                            ? 'menu_items_active menu_items'
+                                            : 'menu_items'
+                                    }
+                                >
+                                    合作小農
+                                </span>
+                            </li>
+                        </Link>
                         <Link to="/game" style={{ textDecoration: 'none' }}>
                             <li>
                                 <span
@@ -188,10 +201,15 @@ function Nav() {
                         >
                             {cartList.length}
                         </div>
-
+                        {/* btn-outline-dark */}
                         {authorized ? (
                             <button
-                                className="btn btn-sm btn-outline-dark"
+                                // className="btn btn-sm  loginout_btn"
+                                className={
+                                    navColor
+                                        ? '.loginout_btn_active btn btn-sm'
+                                        : 'btn btn-sm'
+                                }
                                 onClick={() => {
                                     memberLogout();
                                 }}

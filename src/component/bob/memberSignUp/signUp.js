@@ -1,5 +1,6 @@
 import './signUp.css';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 function SignUp() {
     const navigate = useNavigate();
@@ -81,21 +82,42 @@ function SignUp() {
 
     function register(obj) {
         if (obj.success) {
-            alert('註冊申請成功，請繼續完成信箱驗證');
-            navigate('/member/verify', { replace: true });
+            Swal.fire({
+                icon: 'success',
+                title: '註冊申請成功',
+                showConfirmButton: true,
+                confirmButtonText: '進入驗證頁面',
+                confirmButtonColor: "#709D40"
+            }).then(()=>{
+                navigate('/member/verify', { replace: true });
+            })
         } else {
-            alert('請填寫正確資料');
+            Swal.fire({
+                icon: 'error',
+                title: '註冊申請失敗',
+                showConfirmButton: true,
+                confirmButtonText: '請填寫正確資料',
+                confirmButtonColor: "#709D40"
+            })
         }
+    }
+
+    function autoInput() {
+        document.form1.username.value = 'bob';
+        document.form1.email.value = 'bob791224@gmail.com';
+        document.form1.password.value = 'a123456';
+        document.form1.checkPassword.value = 'a123456';
     }
 
     return (
         <>
             <div className="bosu-bodyvh d-flex justify-content-center align-items-center bosu-bodybg">
                 <div className="shadow mb-5 bg-body rounded rounded-3 bg-white">
-                    <div className="bg-light p-3 rounded-top">
+                    <div className="bg-light p-3 rounded-top position-relative">
                         <h4 className="fw-semibold text-center m-0">
                             加入會員
                         </h4>
+                        <button className="btn btn-outline-light btn-small position-absolute top-0 end-0 shadow-none" type="button" onClick={autoInput}>填寫</button>
                     </div>
                     <form
                         className="px-5 pb-4 pt-3 mx-2 needs-validation"
@@ -154,7 +176,7 @@ function SignUp() {
                         <div className="invalid-feedback"></div>
                         <div className="d-grid gap-2 my-4">
                             <button
-                                className="btn btn btn-success btn-block"
+                                className="border-0 shadow-sm rounded py-2 bosu-buttonColor btn-block text-white"
                                 type="submit"
                             >
                                 加入會員

@@ -12,13 +12,13 @@ const AboutUs = () => {
                 <div className="aboutUs_imgwarap_area">
                     <div className="aboutUs_imgwarap">
                         <img
-                            src="./images/hydroponics-system-planting-vegetables-herbs-without-using-soil-health.jpg"
+                            src="./index_images/hydroponics-system-planting-vegetables-herbs-without-using-soil-health.jpg"
                             alt=""
                         />
                     </div>
                     <div className="aboutUs_imgwarap">
                         <img
-                            src="./images/portrait-asian-farmer-man-woman-holding-wooden-box-full-fresh-raw-vegetables-organic-farm-concept.jpg"
+                            src="./index_images/portrait-asian-farmer-man-woman-holding-wooden-box-full-fresh-raw-vegetables-organic-farm-concept.jpg"
                             alt=""
                         />
                     </div>

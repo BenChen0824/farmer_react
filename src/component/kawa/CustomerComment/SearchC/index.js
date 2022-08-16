@@ -16,6 +16,7 @@ function SearchP(searchComment) {
 
     const handleChange = (e) => {
         const value = e.target.value;
+        // console.log(value);
         setValue(value);
     };
 

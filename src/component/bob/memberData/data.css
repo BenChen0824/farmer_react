@@ -1,3 +1,10 @@
 .bod-farmColor {
     color: #709D40;
 }
+.bod-buttonColor{
+    background-color: #709D40;
+  }
+.bod-buttonColor:hover{
+    background-color: #466b1f;
+    transition: linear 0.2s;
+  }

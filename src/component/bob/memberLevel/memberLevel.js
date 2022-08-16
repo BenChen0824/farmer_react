@@ -2,6 +2,7 @@ import './level.css';
 import { useState, useEffect } from 'react';
 import MemberNavbar from '../component/memberCenter_Navbar';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function MemberLevel() {
     const [myCoupons, setMyCoupons] = useState([]);
@@ -9,6 +10,7 @@ function MemberLevel() {
     const [myPoints, setMyPoints] = useState([]);
 
     const loginUser = JSON.parse(localStorage.getItem('auth'));
+    const navigate = useNavigate()
 
     const getCouponData = async () => {
         const coupons = await axios.get(
@@ -161,7 +163,7 @@ function MemberLevel() {
                                                         />
                                                     </div>
                                                     <div className="col-8 d-flex align-items-center">
-                                                        <div className="card-body">
+                                                        <div className="card-body d-flex flex-column justify-content-center">
                                                             <h2 className="bol-goldText">
                                                                 {
                                                                     v.change_coupon
@@ -171,6 +173,11 @@ function MemberLevel() {
                                                                 兌換時間：
                                                                 {v.change_time}
                                                             </h6>
+                                                            <div className="row col-6">
+                                                                <button className="btn btn-sm bol-buttonColor text-white ms-5" onClick={()=>{
+                                                                    navigate('/product', {replace: true,})
+                                                                }}>來去使用</button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>

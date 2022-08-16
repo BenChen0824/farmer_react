@@ -107,6 +107,7 @@ function Game(props) {
             setDisabled(true);
             if (choiceOne.src === choiceTwo.src) {
                 setEggPoints(eggpoints + 2);
+                // Swal.fire('搶到2點')
                 axios
                     .post('http://localhost:3600/game/addpoints', {
                         change_points: eggpoints + 2,

@@ -18,7 +18,10 @@ function RecipeMain() {
                         element={<Eachrecipe />}
                     />
                     <Route path="/createrecipe" element={<Createrecipe />} />
-                    <Route path="/updaterecipe" element={<Updaterecipe />} />
+                    <Route
+                        path="/updaterecipe/:sid"
+                        element={<Updaterecipe />}
+                    />
                     {/* 宸睿 */}
                 </Routes>
             </ScrollToTop>

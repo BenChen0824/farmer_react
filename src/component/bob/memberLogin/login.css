@@ -9,6 +9,13 @@
 .bosi-bodyvh{
   height: 100vh
 }
+.bosi-buttonColor{
+  background-color: #709D40;
+}
+.bosi-buttonColor:hover{
+  background-color: #466b1f;
+  transition: linear 0.2s;
+}
 @media screen and (max-width:576px){
   .bosi-bodyvh{
     height: 110vh

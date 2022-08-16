@@ -118,7 +118,7 @@ function CartCreditCard() {
                     <div className="col-12 col-md-6 mt-5 mt-md-0">
                         <form className="" name="form1">
                             <div className="mb-2">
-                                <label className="col-3 pb-2 " htmlFor="number">
+                                <label className="col-4 pb-2 " htmlFor="number">
                                     信用卡號碼
                                 </label>
                                 <br />
@@ -141,7 +141,7 @@ function CartCreditCard() {
                                 />
                             </div>
                             <div className="my-2">
-                                <label className="col-3 pb-2" htmlFor="name">
+                                <label className="col-4 pb-2" htmlFor="name">
                                     信用卡名稱
                                 </label>
                                 <br />

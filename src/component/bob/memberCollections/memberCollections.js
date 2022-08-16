@@ -152,7 +152,7 @@ function MemberCollections() {
                                                   >
                                                       {res.product_type}
                                                   </p>
-                                                  <h5 className="card-title">
+                                                  <h5 className="card-title boc-multiline-ellipsis-detail">
                                                       {res.product_name}
                                                   </h5>
                                                   <p className="card-text boc-multiline-ellipsis">
@@ -161,7 +161,7 @@ function MemberCollections() {
                                                   <p className="card-text">
                                                       $ {res.product_price}
                                                   </p>
-                                                  <button className="btn btn-sm btn-success" onClick={()=>{navigate(`/product/${res.product_id}`, {replace:true})}}>查看商品</button>
+                                                  <button className="btn btn-sm boc-buttonColor text-white" onClick={()=>{navigate(`/product/${res.product_id}`, {replace:true})}}>查看商品</button>
                                               </div>
                                           </div>
                                       ))
@@ -189,7 +189,7 @@ function MemberCollections() {
                                                   alt="..."
                                               />
                                               <div className="card-body text-center">
-                                                  <h5 className="card-title">
+                                                  <h5 className="card-title boc-multiline-ellipsis-detail">
                                                       {res.product_name}
                                                   </h5>
                                                   <p
@@ -205,7 +205,7 @@ function MemberCollections() {
                                                   <p className="card-text">
                                                       $ {res.product_price}
                                                   </p>
-                                                  <button className="btn btn-sm btn-success" onClick={()=>{navigate(`/product/${res.product_id}`, {replace:true})}}>查看商品</button>
+                                                  <button className="btn btn-sm boc-buttonColor text-white" onClick={()=>{navigate(`/product/${res.product_id}`, {replace:true})}}>查看商品</button>
                                               </div>
                                           </div>
                                       )) : 

@@ -10,7 +10,7 @@ function Pointtime() {
     let interval = useRef();
 
     const startTimer = () => {
-        const countdownDate = new Date('August 14 2022 00:00:00').getTime();
+        const countdownDate = new Date('August 25 2022 00:00:00').getTime();
         interval = setInterval(() => {
             const now = new Date().getTime();
             const distance = countdownDate - now;
@@ -22,9 +22,7 @@ function Pointtime() {
             const minutes = Math.floor(
                 (distance % (1000 * 60 * 60)) / (1000 * 60)
             );
-            const seconds = Math.floor(
-                (distance % (1000 * 60 * 60 * 24)) / 1000
-            );
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             if (distance < 0) {
                 clearInterval(interval.current);
@@ -45,39 +43,38 @@ function Pointtime() {
     });
 
     return (
-        <section className="timer_container">
-            <section className="timer">
-                <div className="">
-                    <span className=""></span>
-                    <h4>距離下次領取時間</h4>
-                    {/* <p>bra bra bra</p> */}
-                </div>
-                <div className="">
+        <section className="d-flex flex-column justify-content-center align-items-center">
+            <div className="timer_text">
+                <span className=""></span>
+                <h4 className="mt-lg-3">距離下次領取時間</h4>
+            </div>
+            <section className="pointtimer col-lg-8">
+                <div className="text-center">
                     <section>
                         <p>{timerDays}</p>
                         <p>
-                            <small>days</small>
+                            <small>Days</small>
                         </p>
                     </section>
-                    <span>:</span>
+                    <span className="pt-4">:</span>
                     <section>
                         <p>{timerHours}</p>
                         <p>
-                            <small>hours</small>
+                            <small>Hours</small>
                         </p>
                     </section>
-                    <span>:</span>
+                    <span className="pt-4">:</span>
                     <section>
                         <p>{timerMinutes}</p>
                         <p>
-                            <small>min</small>
+                            <small>Min</small>
                         </p>
                     </section>
-                    <span>:</span>
+                    <span className="pt-4">:</span>
                     <section>
                         <p>{timerSeconds}</p>
                         <p>
-                            <small>sec</small>
+                            <small>Sec</small>
                         </p>
                     </section>
                 </div>
