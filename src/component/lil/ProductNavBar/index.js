@@ -121,12 +121,12 @@ function ProductNavBar() {
                     <ul className={styles.productNavUl}>
                         <li>
                             <Link className="page-link" to={`?${getQuery(7)}`}>
-                                魚類
+                                甲殼類
                             </Link>
                         </li>
                         <li>
                             <Link className="page-link" to={`?${getQuery(8)}`}>
-                                甲殼類
+                                魚類
                             </Link>
                         </li>
                     </ul>

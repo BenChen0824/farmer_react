@@ -66,6 +66,7 @@ const settings = {
 };
 
 function ProductList() {
+    const Swal = require('sweetalert2');
     let subtitle;
     const { cartList, setCartList } = useContext(CartCountContext);
     const dispatch = useDispatch();
@@ -250,7 +251,8 @@ function ProductList() {
 
     const handleToCart = async (sid, amount) => {
         if (!member_info.customer_id) {
-            alert('請先登入帳號');
+            Swal.fire('請先登入帳號');
+            // alert('請先登入帳號');
             return;
         }
         const newBuyList = await addToCart({
@@ -264,7 +266,7 @@ function ProductList() {
     const handleCollect = async (sid, saved) => {
         // update state
         if (!member_info.customer_id) {
-            alert('請先登入帳號');
+            Swal.fire('請先登入帳號');
             return;
         }
         setCollectData((prev) => {
