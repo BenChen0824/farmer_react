@@ -41,6 +41,8 @@ function Eachrecipe() {
         created_at: '',
     });
 
+    const loginUser = JSON.parse(localStorage.getItem('auth'));
+
     const navigate = useNavigate();
 
     async function eachrecipeinfo(recipes_sid) {
@@ -63,22 +65,27 @@ function Eachrecipe() {
 
     // }, []);  useEffect基本架構
 
-    const Delectrecipe = async () => {
+    const Deleterecipe = async () => {
         const data = {
             recipes_sid: params.recipes_sid,
         };
-        const r = await fetch('http://localhost:3600/recipe/delete', {
-            method: 'DELETE',
-            body: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-        // console.log('abc:');
-        const obj = await r.json();
-        console.log(obj);
-        alreadydelete(obj);
-        console.log(alreadydelete);
+
+        if (loginUser.customer_id != eachrecipe.customer_id) {
+            alert('您並非本食譜提供者');
+            navigate('/recipe', { replace: true });
+        } else {
+            const r = await fetch('http://localhost:3600/recipe/delete', {
+                method: 'DELETE',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            const obj = await r.json();
+            console.log(obj);
+            alreadydelete(obj);
+            console.log(alreadydelete);
+        }
     };
 
     function alreadydelete(obj) {
@@ -533,6 +540,7 @@ function Eachrecipe() {
                     </button>
                 </Link>
 
+                {/* <Link to={`/recipe/updaterecipe/${eachrecipe.recipes_sid}`}> */}
                 <Link to={`/recipe/updaterecipe/${eachrecipe.recipes_sid}`}>
                     <button className="hsiehupdate">
                         修改食譜
@@ -547,7 +555,7 @@ function Eachrecipe() {
                 <Link to={`http://localhost:3600/recipe/delete`}>
                     <button
                         className="hsiehdelete"
-                        onClick={(e) => Delectrecipe()}
+                        onClick={(e) => Deleterecipe()}
                     >
                         刪除食譜
                         <img
