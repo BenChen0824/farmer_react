@@ -132,6 +132,7 @@ const News = () => {
                 <FiArrowLeftCircle size={50} />
                 <FiArrowRightCircle size={50} />
             </div> */}
+            
         </>
     );
 };
