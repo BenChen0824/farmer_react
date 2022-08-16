@@ -124,7 +124,7 @@ export default function Coupon(props) {
                                             --消費滿500可使用--
                                         </p>
                                         <button
-                                            className="btn btn-primary rounded-pill w-75"
+                                            className="btn btn-primary po_buttonColor rounded-pill w-75"
                                             onClick={() => {
                                                 clickchange(i);
                                                 exchange(i);

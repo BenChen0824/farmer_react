@@ -4,6 +4,12 @@
   padding: 15px;
   margin-bottom: 10px;
 }
+/* 兌換按鈕 */
+.po_buttonColor{
+  background-color: #82CA35;
+  transition: linear 0.2s;
+  border: none;
+}
 
 .coupon:hover{
     transform:translate(-15px, -10px) scale(1);
