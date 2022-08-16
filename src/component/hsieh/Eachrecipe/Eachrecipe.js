@@ -41,6 +41,8 @@ function Eachrecipe() {
         created_at: '',
     });
 
+    const loginUser = JSON.parse(localStorage.getItem('auth'));
+
     const navigate = useNavigate();
 
     async function eachrecipeinfo(recipes_sid) {
@@ -63,10 +65,17 @@ function Eachrecipe() {
 
     // }, []);  useEffect基本架構
 
-    const Delectrecipe = async () => {
+    const Deleterecipe = async () => {
         const data = {
             recipes_sid: params.recipes_sid,
         };
+
+        // if (loginUser.customer_id != eachrecipe.customer_id) {
+        //         alert('您並非本食譜提供者');
+        //     } else {
+        //
+        //     }
+
         const r = await fetch('http://localhost:3600/recipe/delete', {
             method: 'DELETE',
             body: JSON.stringify(data),
@@ -89,6 +98,15 @@ function Eachrecipe() {
             navigate('/recipe', { replace: true });
         }
     }
+
+    // function alreadydelete(obj) {
+    //     if (loginUser.customer_id != eachrecipe.customer_id) {
+    //         alert('您並非本食譜提供者');
+    //     } else {
+    //         alert('刪除成功');
+    //         navigate('/recipe', { replace: true });
+    //     }
+    // }
 
     return (
         <>
@@ -547,7 +565,7 @@ function Eachrecipe() {
                 <Link to={`http://localhost:3600/recipe/delete`}>
                     <button
                         className="hsiehdelete"
-                        onClick={(e) => Delectrecipe()}
+                        onClick={(e) => Deleterecipe()}
                     >
                         刪除食譜
                         <img
