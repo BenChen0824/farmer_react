@@ -1,30 +1,14 @@
 header {
     width: 100%;
     height: 100px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255);
     position: fixed;
     z-index: 999;
     justify-content: space-around;
     transition: 0.3s;
+    box-shadow: 8px 3px 3px rgba(74, 74, 74, 0.2);
 }
 
-/* header:hover {
-    background-color: #fff;
-    box-shadow: #333333;
-}
-
-header:hover .menu_items {
-    color: #333333;
-}
-
-header:hover .login_icon,
-header:hover .cart_icon {
-    fill: #333;
-}
-header:hover .cart_number {
-    color: #E5C391;
-    border-left: 1px solid #333;
-} */
 
 
 nav ul li {
@@ -40,7 +24,7 @@ nav ul li {
     width: 100%;
     height: 80px;
     font-size: 1em;
-    color: rgb(255, 255, 255);
+    color: #333;
     text-decoration: none;
     font-weight: 500;
     letter-spacing: 2px;
@@ -52,41 +36,32 @@ nav ul li {
 }
 
 header .navbar_toggle svg{
-    color: rgb(255, 255, 255);
+    color: #333;
 }
 
-
 .nav_icons svg {
-    color: rgb(255, 255, 255);
+    color: #333;
     padding: 5px;
     /* border: 1px solid red; */
 }
 
 
-/* header:hover .nav_icons svg {
-    color: #333;
-} */
-
 
 .main_logo {
     width: 280px;
     padding: 0 10px;
-    fill: rgb(255, 255, 255);
+    fill: #333;
     /* background-color: #fff; */
 }
 
-/* header:hover .main_logo {
-    fill: #333;
-    background-color: #fff;
-} */
 
 .cart_number{
-border-left: 1px solid #fff;
-color: #fff;
+border-left: 1px solid #333;
+color: #E5C391;
 }
 
 .nav_active {
-    background-color: rgb(255, 255, 255);
+    background-color: #333;
     color: #333;
     box-shadow: 8px 3px 3px rgba(74, 74, 74, 0.2);
 
@@ -110,4 +85,20 @@ color: #fff;
 .cart_number_active {
     color: #E5C391;
     border-left: 1px solid #333;
+}
+
+.loginout_btn {
+    color:  rgb(255, 255, 255);
+    border-radius: 10px;
+    border: 1px solid rgb(255, 255, 255);
+    color: red;
+}
+
+
+
+.loginout_btn_active {
+    background-color: rgb(166, 1, 1);
+    /* border-radius: 20px; */
+    border: 1px solid red;
+    color:  red;
 }
