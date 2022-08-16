@@ -46,19 +46,21 @@ function Recipesearch() {
     //     });
     // }, []);
 
-    // function tocreate {
-    //     return ( XXX === 正確 ? navigate('/recipe/createrecipe', { replace: true }); : alert('請先登入'));
-    // }
+    const loginUser = JSON.parse(localStorage.getItem('auth'));
+
+    function tocreate() {
+        if (loginUser.customer_id === '' || null) {
+            alert('請先登入帳號');
+        } else {
+            navigate('/recipe/createrecipe', { replace: false });
+        }
+    }
 
     return (
         <>
             <div className="menuincreate">
                 <Link to={`/recipe/createrecipe`}>
-                    <button
-                        className="leftsidebutton"
-                        // onClick={tocreate}
-                        // TODO：身分判別式
-                    >
+                    <button className="leftsidebutton">
                         新增食譜
                         <img
                             src="/images/file-plus.svg"
@@ -68,28 +70,18 @@ function Recipesearch() {
                     </button>
                 </Link>
                 <br />
-                {/* <Link to={`/recipe/createrecipe`}>
-                    <button className="leftsidebutton">
-                        新增食譜
-                        <img
-                            src="/images/file-plus.svg"
-                            alt=""
-                            className="crudineach"
-                        />
-                    </button>
-                </Link> */}
-                {/* <br /> */}
-                {/* <Link to={`/recipe/createrecipe`}>
-                    <button className="leftsidebutton">
-                        新增食譜
-                        <img
-                            src="/images/file-plus.svg"
-                            alt=""
-                            className="crudineach"
-                        />
-                    </button>
-                </Link> */}
+                {/* <Link to={`/recipe/createrecipe`}> */}
+                <button className="leftsidebutton" onClick={tocreate}>
+                    新增食譜
+                    <img
+                        src="/images/file-plus.svg"
+                        alt=""
+                        className="crudineach"
+                    />
+                </button>
+                {/* </Link> */}
             </div>
+
             <div className="hsiehsearching">
                 <div id="inputText">
                     <p className="subtitlewordinsearch">搜尋食譜</p>

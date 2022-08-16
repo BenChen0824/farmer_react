@@ -72,7 +72,7 @@ function Eachrecipe() {
 
         if (loginUser.customer_id != eachrecipe.customer_id) {
             alert('您並非本食譜提供者');
-            // navigate('/recipe', { replace: true });
+            navigate('/recipe', { replace: true });
         } else {
             const r = await fetch('http://localhost:3600/recipe/delete', {
                 method: 'DELETE',
@@ -94,6 +94,17 @@ function Eachrecipe() {
         } else {
             alert('刪除成功');
             navigate('/recipe', { replace: true });
+        }
+    }
+
+    function sendtoupdate() {
+        if (loginUser.customer_id != eachrecipe.customer_id) {
+            alert('您並非本食譜提供者');
+            navigate('/recipe', { replace: true });
+        } else {
+            navigate('/recipe/updaterecipe/:recipes_sid', {
+                replace: false,
+            });
         }
     }
 
@@ -540,8 +551,7 @@ function Eachrecipe() {
                     </button>
                 </Link>
 
-                {/* <Link to={`/recipe/updaterecipe/${eachrecipe.recipes_sid}`}> */}
-                <Link to={`/recipe/updaterecipe/${eachrecipe.recipes_sid}`}>
+                {/* <Link to={`/recipe/updaterecipe/${eachrecipe.recipes_sid}`}>
                     <button className="hsiehupdate">
                         修改食譜
                         <img
@@ -550,7 +560,12 @@ function Eachrecipe() {
                             className="crudineach"
                         />
                     </button>
-                </Link>
+                </Link> */}
+
+                <button className="hsiehupdate" onClick={sendtoupdate}>
+                    修改食譜
+                    <img src="/images/pen.svg" alt="" className="crudineach" />
+                </button>
 
                 <Link to={`http://localhost:3600/recipe/delete`}>
                     <button
