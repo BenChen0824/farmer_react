@@ -72,7 +72,7 @@ function Eachrecipe() {
 
         if (loginUser.customer_id != eachrecipe.customer_id) {
             alert('您並非本食譜提供者');
-            navigate('/recipe', { replace: true });
+            // navigate('/recipe', { replace: true });
         } else {
             const r = await fetch('http://localhost:3600/recipe/delete', {
                 method: 'DELETE',
@@ -86,19 +86,6 @@ function Eachrecipe() {
             alreadydelete(obj);
             console.log(alreadydelete);
         }
-
-        const r = await fetch('http://localhost:3600/recipe/delete', {
-            method: 'DELETE',
-            body: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-        // console.log('abc:');
-        const obj = await r.json();
-        console.log(obj);
-        alreadydelete(obj);
-        console.log(alreadydelete);
     };
 
     function alreadydelete(obj) {
