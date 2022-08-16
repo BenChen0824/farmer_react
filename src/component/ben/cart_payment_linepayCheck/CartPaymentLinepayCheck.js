@@ -118,7 +118,7 @@ function CartPaymentLinepayCheck() {
                             <div className="col-1 d-flex justify-content-center align-items-center flex-column cart_step_opacity">
                                 →
                             </div>
-                            <div className="col-2">
+                            <div className="col-2 cart_step_opacity">
                                 <div className="text-center pb-2">STEP2</div>
                                 <div className="cart_step_block mx-auto d-flex justify-content-center align-items-center flex-column">
                                     <i className="text-light fs-2 fa-solid fa-clipboard-list"></i>
@@ -129,10 +129,10 @@ function CartPaymentLinepayCheck() {
                                     件人資料
                                 </div>
                             </div>
-                            <div className="col-1 d-flex justify-content-center align-items-center flex-column">
+                            <div className="col-1 d-flex justify-content-center align-items-center flex-column cart_step_opacity">
                                 →
                             </div>
-                            <div className="col-2 cart_step_opacity">
+                            <div className="col-2">
                                 <div className="text-center pb-2">STEP3</div>
                                 <div className="cart_step_block mx-auto d-flex justify-content-center align-items-center flex-column">
                                     <i className="text-light fs-2 fa-solid fa-sack-dollar"></i>
@@ -143,7 +143,7 @@ function CartPaymentLinepayCheck() {
                                     <div>貨到付款</div>
                                 </div>
                             </div>
-                            <div className="col-1 d-flex justify-content-center align-items-center flex-column cart_step_opacity">
+                            <div className="col-1 d-flex justify-content-center align-items-center flex-column">
                                 →
                             </div>
                             <div className="col-2 cart_step_opacity">
