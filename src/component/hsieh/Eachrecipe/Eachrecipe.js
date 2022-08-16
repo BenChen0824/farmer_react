@@ -102,11 +102,19 @@ function Eachrecipe() {
             alert('您並非本食譜提供者');
             navigate('/recipe', { replace: true });
         } else {
-            navigate('/recipe/updaterecipe/:recipes_sid', {
+            navigate(`/recipe/updaterecipe/${params.recipes_sid}`, {
                 replace: false,
             });
         }
     }
+
+    // function like() {
+
+    // }
+
+    // function collection() {
+
+    // }
 
     return (
         <>
@@ -148,7 +156,7 @@ function Eachrecipe() {
                     <div className="recipeinfomationineach">
                         <div className="recipedataineach">
                             <div className="greencircleineach">
-                                <img src="/images/clock.svg" alt="" />
+                                <img src="/images/clock1.svg" alt="" />
                             </div>
                             <div>
                                 <p>
@@ -164,7 +172,7 @@ function Eachrecipe() {
 
                         <div className="recipedataineach">
                             <div className="greencircleineach">
-                                <img src="/images/heat.svg" alt="" />
+                                <img src="/images/heat1.svg" alt="" />
                             </div>
                             <div>
                                 <p>
@@ -551,7 +559,7 @@ function Eachrecipe() {
                     </button>
                 </Link>
 
-                {/* <Link to={`/recipe/updaterecipe/${eachrecipe.recipes_sid}`}>
+                <Link to={`/recipe/updaterecipe/${eachrecipe.recipes_sid}`}>
                     <button className="hsiehupdate">
                         修改食譜
                         <img
@@ -560,7 +568,7 @@ function Eachrecipe() {
                             className="crudineach"
                         />
                     </button>
-                </Link> */}
+                </Link>
 
                 <button className="hsiehupdate" onClick={sendtoupdate}>
                     修改食譜

@@ -48,7 +48,7 @@ function Recipesearch() {
 
     const loginUser = JSON.parse(localStorage.getItem('auth'));
 
-    function tocreate() {
+    function gotocreate() {
         if (loginUser.customer_id === '' || null) {
             alert('請先登入帳號');
         } else {
@@ -70,8 +70,8 @@ function Recipesearch() {
                     </button>
                 </Link>
                 <br />
-                {/* <Link to={`/recipe/createrecipe`}> */}
-                <button className="leftsidebutton" onClick={tocreate}>
+
+                <button className="leftsidebutton" onClick={gotocreate}>
                     新增食譜
                     <img
                         src="/images/file-plus.svg"
@@ -79,7 +79,6 @@ function Recipesearch() {
                         className="crudineach"
                     />
                 </button>
-                {/* </Link> */}
             </div>
 
             <div className="hsiehsearching">
