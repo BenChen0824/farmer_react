@@ -58,10 +58,11 @@ const customStyles = {
 Modal.setAppElement('#root');
 
 const settings = {
+    dots: true,
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 1,
-    speed: 500,
+    speed: 1000,
 };
 
 function ProductList() {

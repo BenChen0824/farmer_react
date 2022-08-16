@@ -4,7 +4,7 @@ function ProductBanner() {
         <>
             <div className={styles.banner}>
                 <img src="images/seafood-space.jpg" alt="" />
-                <h3>海鮮</h3>
+                <h3>生鮮</h3>
             </div>
         </>
     );

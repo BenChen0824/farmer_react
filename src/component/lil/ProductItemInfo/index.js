@@ -43,9 +43,9 @@ function ProductItemInfo({ data, sid, onSubmit, onCollect, saved }) {
     return (
         <>
             <div className={styles.container}>
-                <div className="bread">
+                {/* <div className="bread">
                     <p>商品/水果/屏東現採有機萊姆</p>
-                </div>
+                </div> */}
                 <div className={clsx(styles.product_info_wrap, 'row')}>
                     <div
                         className={clsx(
