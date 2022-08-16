@@ -87,18 +87,18 @@ function SignUp() {
                 title: '註冊申請成功',
                 showConfirmButton: true,
                 confirmButtonText: '進入驗證頁面',
-                confirmButtonColor: "#709D40"
-            }).then(()=>{
+                confirmButtonColor: '#709D40',
+            }).then(() => {
                 navigate('/member/verify', { replace: true });
-            })
+            });
         } else {
             Swal.fire({
                 icon: 'error',
                 title: '註冊申請失敗',
                 showConfirmButton: true,
                 confirmButtonText: '請填寫正確資料',
-                confirmButtonColor: "#709D40"
-            })
+                confirmButtonColor: '#709D40',
+            });
         }
     }
 
@@ -117,7 +117,13 @@ function SignUp() {
                         <h4 className="fw-semibold text-center m-0">
                             加入會員
                         </h4>
-                        <button className="btn btn-outline-light btn-small position-absolute top-0 end-0 shadow-none" type="button" onClick={autoInput}>填寫</button>
+                        <button
+                            className="btn btn-outline-light btn-small position-absolute top-0 end-0 shadow-none"
+                            type="button"
+                            onClick={autoInput}
+                        >
+                            填寫
+                        </button>
                     </div>
                     <form
                         className="px-5 pb-4 pt-3 mx-2 needs-validation"
