@@ -135,7 +135,7 @@ function Game(props) {
     }, [choiceOne, choiceTwo]);
 
     return (
-        <div className="game-container">
+        <div className="game-container po_couponspace">
             <p className="gametext">Turns: {turn}</p>
             <div className="game-grid">
                 {cards.map((card) => (

@@ -10,7 +10,7 @@ function Pointtime() {
     let interval = useRef();
 
     const startTimer = () => {
-        const countdownDate = new Date('August 16 2022 00:00:00').getTime();
+        const countdownDate = new Date('August 25 2022 00:00:00').getTime();
         interval = setInterval(() => {
             const now = new Date().getTime();
             const distance = countdownDate - now;
@@ -43,12 +43,12 @@ function Pointtime() {
     });
 
     return (
-        <section className="container">
+        <section className="d-flex flex-column justify-content-center align-items-center">
             <div className="timer_text">
                 <span className=""></span>
-                <h4>距離下次領取時間</h4>
+                <h4 className="mt-lg-3">距離下次領取時間</h4>
             </div>
-            <section className="pointtimer">
+            <section className="pointtimer col-lg-8">
                 <div className="text-center">
                     <section>
                         <p>{timerDays}</p>
@@ -56,21 +56,21 @@ function Pointtime() {
                             <small>Days</small>
                         </p>
                     </section>
-                    <span>:</span>
+                    <span className="pt-4">:</span>
                     <section>
                         <p>{timerHours}</p>
                         <p>
                             <small>Hours</small>
                         </p>
                     </section>
-                    <span>:</span>
+                    <span className="pt-4">:</span>
                     <section>
                         <p>{timerMinutes}</p>
                         <p>
                             <small>Min</small>
                         </p>
                     </section>
-                    <span>:</span>
+                    <span className="pt-4">:</span>
                     <section>
                         <p>{timerSeconds}</p>
                         <p>

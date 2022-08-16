@@ -17,7 +17,7 @@
 
 .CommentCard_imgwrap {
     background-color: rgb(101, 132, 168);
-    min-width: 100px;
+    width: 100px;
     height: 100px;
     border-radius: 50%;
     overflow: hidden;
@@ -28,19 +28,20 @@
 
 .CommentCard_imgwrap img {
     object-fit: cover;
-    width: 100px;
+    width: 100%;
+    height: 100%;
 }
 
 .CommentProductItem {
     color: white;
-    background-color: #4C5642;
+    background-color: #333;
     word-wrap: break-word;
     padding: 10px 0px 10px 10px;
-    max-width: 400px;
+    /* max-width: 400px; */
 }
 
 .CommentProductItem::before {
-    content: '1. ';
+    /* content: '1. '; */
     background-color: #666666;
     max-width: 400px;
 }
@@ -59,6 +60,17 @@
 .likes_icons, .likes_number {
     color: rgb(36, 36, 36);
 }
+
+.CommentCardAccount_and_Time {
+    /* margin-top: 50px; */
+    display: flex;
+   
+}
+
+.star_and_likes {
+    /* flex-direction: column; */
+}
+
 
 
 

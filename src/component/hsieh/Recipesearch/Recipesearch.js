@@ -19,7 +19,7 @@ function Recipesearch() {
     const usp = new URLSearchParams(location.search);
     // usp.get('page')
 
-    console.log(location);
+    // console.log(location);
 
     const [recipe, setRecipe] = useState([]);
     const [recipeDisplay, setRecipeDisplay] = useState([]);
@@ -27,17 +27,27 @@ function Recipesearch() {
 
     const navigate = useNavigate();
 
+    const [count, setCount] = useState(0);
+
     async function getRecipe() {
         const r = await fetch('http://localhost:3600/recipe/recipe');
         const obj = await r.json();
+        console.log(obj);
         setRecipe(obj);
         setRecipeDisplay(obj);
         setRecipeDisplayAgain(obj);
+    }
+    async function getRecipe1() {
+        const r = await fetch('http://localhost:3600/recipe/recipe');
+        const obj = await r.json();
+        console.log(obj);
+        setRecipeDisplay(obj);
     }
 
     useEffect(() => {
         getRecipe();
     }, []);
+
     // 獲取食譜資訊
 
     // useEffect(() => {
@@ -46,19 +56,75 @@ function Recipesearch() {
     //     });
     // }, []);
 
-    // function tocreate {
-    //     return ( XXX === 正確 ? navigate('/recipe/createrecipe', { replace: true }); : alert('請先登入'));
-    // }
+    const loginUser = JSON.parse(localStorage.getItem('auth'));
+
+    function gotocreate() {
+        if (loginUser.customer_id === '' || null) {
+            alert('請先登入帳號');
+        } else {
+            navigate('/recipe/createrecipe', { replace: false });
+        }
+    }
+
+    // 按讚
+
+    const [likes, setLikes] = useState(0);
+    const [isLiked, setIsLiked] = useState(false);
+
+    const recipelike = (e) => {
+        if (isLiked) {
+            setLikes(likes - 1);
+        } else {
+            setLikes(likes + 1);
+        }
+        setIsLiked(!isLiked);
+    };
+
+    const likeChange = (sid) => {
+        const packageToSend = {
+            customer_id: loginUser.customer_id,
+            recipes_sid: sid,
+        };
+        fetch('http://localhost:3600/recipe/recipelikes', {
+            method: 'POST',
+            body: JSON.stringify(packageToSend),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((r) => r.json())
+            .then((obj) => {
+                setCount(count + 1);
+                console.log(obj);
+                // setTotalComment(obj);
+            });
+    };
+
+    useEffect(() => {
+        getRecipe1();
+    }, [count]);
+
+    // 收藏
+    const [collection, setCollection] = useState(0);
+    const [isCollected, setIsCollected] = useState(false);
+
+    const collected = (e) => {
+        if (isCollected) {
+            setCollection(collection - 1);
+        } else {
+            setCollection(collection + 1);
+        }
+        setIsCollected(!isCollected);
+    };
 
     return (
         <>
             <div className="menuincreate">
-                <Link to={`/recipe/createrecipe`}>
-                    <button
-                        className="leftsidebutton"
-                        // onClick={tocreate}
-                        // TODO：身分判別式
-                    >
+                <button className="rightsidebutton" onClick={gotocreate}>
+                    <img src="/images/file-plus.svg" alt="" />
+                </button>
+                {/* <Link to={`/recipe/createrecipe`}>
+                    <button className="leftsidebutton">
                         新增食譜
                         <img
                             src="/images/file-plus.svg"
@@ -68,28 +134,17 @@ function Recipesearch() {
                     </button>
                 </Link>
                 <br />
-                {/* <Link to={`/recipe/createrecipe`}>
-                    <button className="leftsidebutton">
-                        新增食譜
-                        <img
-                            src="/images/file-plus.svg"
-                            alt=""
-                            className="crudineach"
-                        />
-                    </button>
-                </Link> */}
-                {/* <br /> */}
-                {/* <Link to={`/recipe/createrecipe`}>
-                    <button className="leftsidebutton">
-                        新增食譜
-                        <img
-                            src="/images/file-plus.svg"
-                            alt=""
-                            className="crudineach"
-                        />
-                    </button>
-                </Link> */}
+
+                <button className="leftsidebutton" onClick={gotocreate}>
+                    新增食譜
+                    <img
+                        src="/images/file-plus.svg"
+                        alt=""
+                        className="crudineach"
+                    />
+                </button> */}
             </div>
+
             <div className="hsiehsearching">
                 <div id="inputText">
                     <p className="subtitlewordinsearch">搜尋食譜</p>
@@ -278,7 +333,10 @@ function Recipesearch() {
                                     <p>{v.recipes_name}</p>
                                 </Link>
                                 <div className="iconmanagementinsearch">
-                                    <button className="buttoninsearch">
+                                    <button
+                                        className="buttoninsearch"
+                                        onClick={collected}
+                                    >
                                         <img
                                             src="/images/heart.svg"
                                             alt=""
@@ -288,7 +346,14 @@ function Recipesearch() {
                                     <p className="iconinsearchp">
                                         {v.recipes_collection}
                                     </p>
-                                    <button className="buttoninsearch">
+                                    <button
+                                        name={v.recipes_sid}
+                                        className="buttoninsearch"
+                                        onClick={() => {
+                                            likeChange(v.recipes_sid);
+                                            recipelike();
+                                        }}
+                                    >
                                         <img
                                             src="/images/good.svg"
                                             alt=""

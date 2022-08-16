@@ -5,8 +5,8 @@
     flex: column;
     align-items: center;
     justify-content: center; */
-    width: 60%;    
-    margin-left: 250px;
+    /* width: 60%;     */
+    /* margin-left: 250px; */
 }
 .pointtimer div:first-child{
     text-align: center;
@@ -18,15 +18,18 @@
 .pointtimer div:last-child{
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    margin-top: 2em;
-    padding: 2em;
+    /* margin-top: 2em; */
+    /* padding: 1em; */
     text-align: center;
 }
 section p:first-child, .timer div:last-child span{
-    font-size: 2em;
+    font-size: 3em;
+    font-weight: 600;
 }
 
 .timer_text{
     text-align: center;
-    margin-top: 25px;
+    margin-top: 5px;
 }
+
+

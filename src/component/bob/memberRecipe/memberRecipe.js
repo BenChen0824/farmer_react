@@ -110,10 +110,10 @@ function MemberRecipe(){
                                     <img src={`/images/${res.recipes_img}`} className="card-img-top bore-objft" width="200px" height="175px" alt="..."/>
                                     <div className="card-body text-center">
                                         <p style={{display:'none'}}>{res.recipes_type}</p>
-                                        <h5 className="card-title">{res.recipes_name}</h5>
+                                        <h5 className="card-title bore-multiline-ellipsis-details">{res.recipes_name}</h5>
                                         <p className="card-text bore-multiline-ellipsis">{res.recipes_description}</p>
                                         <p className="card-text"><FaThumbsUp></FaThumbsUp> {res.recipes_like}位會員按讚</p>
-                                        <button className="btn btn-sm btn-success" onClick={()=>{navigate(`/recipe/each/${res.recipes_sid}`, {replace:true})}}>查看食譜</button>
+                                        <button className="btn btn-sm bore-buttonColor text-white" onClick={()=>{navigate(`/recipe/each/${res.recipes_sid}`, {replace:true})}}>查看食譜</button>
                                     </div>
                                 </div>
                             ))
@@ -126,10 +126,10 @@ function MemberRecipe(){
                                     <img src={`/images/${res.recipes_img}`} className="card-img-top bore-objft" width="200px" height="175px" alt="..."/>
                                     <div className="card-body text-center">
                                         <p style={{display:'none'}}>{res.recipes_type}</p>
-                                        <h5 className="card-title">{res.recipes_name}</h5>
+                                        <h5 className="card-title bore-multiline-ellipsis-details">{res.recipes_name}</h5>
                                         <p className="card-text bore-multiline-ellipsis">{res.recipes_description}</p>
                                         <p className="card-text"><FaThumbsUp></FaThumbsUp> {res.recipes_like}位會員按讚</p>
-                                        <button className="btn btn-sm btn-success" onClick={()=>{navigate(`/recipe/each/${res.recipes_sid}`, {replace:true})}}>查看食譜</button>
+                                        <button className="btn btn-sm bore-buttonColor text-white" onClick={()=>{navigate(`/recipe/each/${res.recipes_sid}`, {replace:true})}}>查看食譜</button>
                                     </div>
                                 </div>
                             )) :

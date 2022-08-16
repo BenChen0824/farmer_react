@@ -41,7 +41,7 @@
      background-color: #5887C3;
      color: #fff;
      position: fixed;
-     left: 0;
+     right: 0;
      bottom: 100px;
      padding: 10px;
      border-radius: 2px;
@@ -78,7 +78,7 @@
     color: #fff;
     position: absolute;
     top: -5px;
-    right: -5px;
+    left: -5px;
     text-align: center;
     line-height: 20px;
     font-weight: bold;

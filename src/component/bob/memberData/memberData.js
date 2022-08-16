@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios';
 import MemberNavbar from '../component/memberCenter_Navbar';
+import Swal from 'sweetalert2';
+import './data.css'
+import { useNavigate } from 'react-router-dom';
 
 function MemberData(){
     const [memberData, setMemberData] = useState([{
@@ -14,6 +17,7 @@ function MemberData(){
     }])
 
     const loginUser = JSON.parse(localStorage.getItem("auth"))
+    const navigate = useNavigate()
 
     const getMemberData = async ()=>{
         const response = await axios.get('http://localhost:3600/member/data', { headers: {loginUser: loginUser.customer_id}})
@@ -48,7 +52,13 @@ function MemberData(){
         .then(obj=>{
             console.log(obj);
             if(obj.success){
-                alert('編輯成功')
+                Swal.fire({
+                    position: 'top',
+                    icon: 'success',
+                    title: '資料編輯成功',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
             }
         })
     };
@@ -117,17 +127,9 @@ function MemberData(){
                                                 <div className="form-text red"></div>
                                             </div>
                                             <div className="d-grid col-6 mx-auto my-3">
-                                                <button type="submit" className="btn btn-success">修改資料</button>
+                                                <button type="submit" className="bod-buttonColor text-white border-0 rounded shadow-sm py-2">修改資料</button>
                                             </div>
                                     </form>
-                                    <div className="d-flex justify-content-center align-items-center">
-                                        <div id="spinners" className="spinner-border text-info" role="status" style={{display: 'none'}}>
-                                            <span className="sr-only">Loading...</span>
-                                        </div>
-                                        <div id="info-bar" className="text-info px-3" role="alert" style={{display: 'none'}}>
-                                        資料編輯成功
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>

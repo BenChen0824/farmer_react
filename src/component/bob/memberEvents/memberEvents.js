@@ -2,6 +2,7 @@ import './events.css'
 import { useState, useEffect } from 'react';
 import MemberNavbar from '../component/memberCenter_Navbar';
 import { Navigate, useNavigate } from 'react-router-dom';
+import { FaPhoneAlt } from 'react-icons/fa'
 
 
 function MemberEvents(){
@@ -92,7 +93,7 @@ function MemberEvents(){
                                                     <h5 className="card-title">{v.card_area}</h5>
                                                 </dt>
                                                 <dd className="col-6 text-end p-0">
-                                                    <button className="btn btn-sm btn-success mb-0" onClick={()=>{navigate(`/activity/${v.activity_sid}`,{replace:true})}}>查看詳情</button>
+                                                    <button className="btn btn-sm boe-buttonColor text-white mb-0" onClick={()=>{navigate(`/activity/${v.activity_sid}`,{replace:true})}}>查看詳情</button>
                                                 </dd>
                                             </dl>
                                             <p className="card-text lh-sm boe-multiline-ellipsis">{v.card_info1}
@@ -102,7 +103,7 @@ function MemberEvents(){
                                                     <p className="card-text boe-farmColor">{v.card_city}</p>
                                                 </dt>
                                                 <dd className="col-8 text-end p-0 m-0">
-                                                    <p className="card-text">{v.phone}</p>
+                                                    <p className="card-text"><FaPhoneAlt></FaPhoneAlt> {v.phone}</p>
                                                 </dd>
                                             </dl>
                                         </div>
@@ -126,7 +127,7 @@ function MemberEvents(){
                                                     <h5 className="card-title">{v.card_area}</h5>
                                                 </dt>
                                                 <dd className="col-6 text-end p-0">
-                                                    <button className="btn btn-sm btn-success mb-0" onClick={()=>{navigate(`/activity/${v.activity_sid}`,{replace:true})}}>查看詳情</button>
+                                                    <button className="btn btn-sm boe-buttonColor text-white mb-0" onClick={()=>{navigate(`/activity/${v.activity_sid}`,{replace:true})}}>查看詳情</button>
                                                 </dd>
                                             </dl>
                                             <p className="card-text lh-sm boe-multiline-ellipsis">{v.card_info1}
@@ -136,7 +137,7 @@ function MemberEvents(){
                                                     <p className="card-text boe-farmColor">{v.card_city}</p>
                                                 </dt>
                                                 <dd className="col-8 text-end p-0 m-0">
-                                                    <p className="card-text">{v.phone}</p>
+                                                    <p className="card-text"><FaPhoneAlt></FaPhoneAlt> {v.phone}</p>
                                                 </dd>
                                             </dl>
                                         </div>

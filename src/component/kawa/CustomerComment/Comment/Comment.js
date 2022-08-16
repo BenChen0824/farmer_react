@@ -7,6 +7,7 @@ import {
     COMMENT_MAIN,
     COMMENT_SEARCHNAME,
     COMMENT_CHECKLIKE,
+    COMMENT_ALLLIKE,
 } from './../../../../config/ajax-path';
 // import clsx from 'clsx';
 import { fetchComment } from '../../../../api/comment';
@@ -23,9 +24,11 @@ const Comment = () => {
     // 從抓出來的資料做篩選
     const [commentToShow, setCommentToShow] = useState([totalComment]);
     const [ratingStarArray, setratingStarArray] = useState([]);
+    const [count, setCount] = useState(0);
     const member_info_id = localStorage.getItem('auth')
         ? JSON.parse(localStorage.getItem('auth')).customer_id
         : 500000000;
+
     const getData = () => {
         fetch(COMMENT_MAIN, {
             method: 'GET',
@@ -34,6 +37,25 @@ const Comment = () => {
             .then((obj) => {
                 // console.log(obj);
                 setTotalComment(obj);
+            });
+    };
+
+    const changeRow = () => {
+        const newArray = [...commentToShow];
+        newArray.reverse();
+        // console.log(commentToShow);
+        // console.log(newArray);
+        setCommentToShow(newArray);
+    };
+    const getData1 = () => {
+        fetch(COMMENT_MAIN, {
+            method: 'GET',
+        })
+            .then((r) => r.json())
+            .then((obj) => {
+                // console.log(obj);
+                // setTotalComment(obj);
+                setCommentToShow(obj);
             });
     };
 
@@ -51,6 +73,7 @@ const Comment = () => {
         })
             .then((r) => r.json())
             .then((obj) => {
+                setCount(count + 1);
                 console.log(obj);
                 // setTotalComment(obj);
             });
@@ -59,9 +82,14 @@ const Comment = () => {
     useEffect(() => {
         getData();
     }, []);
+
     useEffect(() => {
         setCommentToShow(totalComment);
     }, []);
+
+    useEffect(() => {
+        getData1();
+    }, [count]);
 
     useEffect(() => {
         const newratingStarArray = totalComment.map((v) => {
@@ -123,12 +151,6 @@ const Comment = () => {
     const [isClicked, setIsClicked] = useState(false);
 
     const handleClick = (e) => {
-        // const newlikes = totalComment.map((v) => {
-        //     return +v.likes === +e.target;
-        // });
-
-        // console.log('newlikes', newlikes);
-
         if (isClicked) {
             setLikes(likes - 1);
         } else {
@@ -248,7 +270,13 @@ const Comment = () => {
 
                     <div className="CommentTimeSearch d-flex">
                         <p>顯示:</p>
-                        <select name="" id="">
+                        <select
+                            name=""
+                            id=""
+                            onChange={() => {
+                                changeRow();
+                            }}
+                        >
                             <option value="1">由新到舊</option>
                             <option value="2">由舊到新</option>
                         </select>

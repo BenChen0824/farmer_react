@@ -37,20 +37,50 @@ const News = () => {
     return (
         <>
             <h2 className="justify-content-center d-flex mt-5">
-                最新消息 / News
+                最新活動 / News
             </h2>
+            {/* 
+            <div className="news_group d-flex mt-5 justify-content-center container ">
+                {data
+                    ? data.map((row) => (
+                          <div
+                              className="news_card  mx-3 col-4"
+                              key={'mm' + row.sid}
+                          >
+                              <img
+                                  src={`/images/activity/${row.card_img}`}
+                                  alt=""
+                              />
+                              <div className="card-body">
+                                  <h5 className="card_title">
+                                      {`${row.card_area}`}
+                                  </h5>
+                                  <h5 className="card_title">{`${row.card_city}`}</h5>
+                                  <p className="card-text">{`${row.card_info}`}</p>
+                                  <a
+                                      href="/#"
+                                      className="btn btn-primary"
+                                      onClick={() => goToPath(`${row.sid}`)}
+                                  >
+                                      活動詳情
+                                  </a>
+                              </div>
+                          </div>
+                      ))
+                    : null}
+            </div> */}
 
             <div className=" news_group d-flex mt-5 justify-content-center container">
                 <div className="news_card  mx-3 col-3">
                     <img src="./index_images/main_banner_04.jpg" alt="" />
                     <div className="card-body">
-                        <h5 className="card_title">黃金小鎮休閒農業區 </h5>
-                        <h5 className="card_title">屏東市</h5>
-                        <h5 className="">2022-05-14</h5>
+                        <h5 className="card_title">金小鎮休閒農業區 </h5>
+                        <h5 className="card_title mb-3">栗縣 公館鄉</h5>
+
                         <p className="card-text">
-                            產、官、學共同合作典範，組織極具整合、發展共識，營運良好；善用生態、農業及觀光資源；體驗活動、遊程持續創新，帶動區域穩定成長、共好。
+                            芋頭、紅棗等主要農特產開發多元農遊商品，青農返鄉密度高，鏈結大學生駐地創新經營及國際志工、青年壯遊等，注入創新及國際化新思維，展現組織活力。
                         </p>
-                        <a href="/#" className="btn btn-primary ">
+                        <a href="/#" className="btn btn-primary po_buttonColor">
                             活動詳情
                         </a>
                     </div>
@@ -58,13 +88,13 @@ const News = () => {
                 <div className="news_card  mx-3 col-3">
                     <img src="./index_images/main_banner_04.jpg" alt="" />
                     <div className="card-body">
-                        <h5 className="card_title">黃金小鎮休閒農業區</h5>
-                        <h5 className="card_title">屏東市</h5>
-                        <h5 className="">2022-05-14</h5>
+                        <h5 className="card_title">梨之鄉休閒農業區</h5>
+                        <h5 className="card_title mb-3">臺中市 東勢區</h5>
+
                         <p className="card-text">
-                            產、官、學共同合作典範，組織極具整合、發展共識，營運良好；善用生態、農業及觀光資源；體驗活動、遊程持續創新，帶動區域穩定成長、共好。
+                            高接梨的發源地，運用梨、甜柿、柑橘及賞螢，發展四季採果及生態遊程；辦理客家媽媽料理廚房，開發多項水果DIY料理，結合推廣食農教育，吸引國際遊客到訪與認養梨樹，成果豐碩。
                         </p>
-                        <a href="/#" className="btn btn-primary ">
+                        <a href="/#" className="btn btn-primary po_buttonColor">
                             活動詳情
                         </a>
                     </div>
@@ -72,13 +102,13 @@ const News = () => {
                 <div className="news_card  mx-3 col-3">
                     <img src="./index_images/main_banner_04.jpg" alt="" />
                     <div className="card-body">
-                        <h5 className="card_title">黃金小鎮休閒農業區</h5>
-                        <h5 className="card_title">屏東市</h5>
-                        <h5 className="">2022-05-14</h5>
+                        <h5 className="card_title">桃米休閒農業區</h5>
+                        <h5 className="card_title mb-3">南投縣 埔里鎮</h5>
+
                         <p className="card-text">
                             產、官、學共同合作典範，組織極具整合、發展共識，營運良好；善用生態、農業及觀光資源；體驗活動、遊程持續創新，帶動區域穩定成長、共好。
                         </p>
-                        <a href="/#" className="btn btn-primary ">
+                        <a href="/#" className="btn btn-primary po_buttonColor">
                             活動詳情
                         </a>
                     </div>
@@ -86,86 +116,22 @@ const News = () => {
                 <div className="news_card  mx-3 col-3">
                     <img src="./index_images/main_banner_04.jpg" alt="" />
                     <div className="card-body">
-                        <h5 className="card_title">黃金小鎮休閒農業區</h5>
-                        <h5 className="card_title">屏東市</h5>
-                        <h5 className="">2022-05-14</h5>
+                        <h5 className="card_title">枕頭山休閒農業區</h5>
+                        <h5 className="card_title mb-3">宜蘭縣 員山鄉</h5>
                         <p className="card-text">
-                            產、官、學共同合作典範，組織極具整合、發展共識，營運良好；善用生態、農業及觀光資源；體驗活動、遊程持續創新，帶動區域穩定成長、共好。
+                            全國第一個休閒農業區，生產水果及觀葉植物，紅心芭樂、金棗尤富盛名。組織專業分工，創新特色農產伴手與體驗產品，異業合作展通路。主題遊程「花果野食趣」帶領遊客親近土地，領略農村魅力。
                         </p>
-                        <a href="/#" className="btn btn-primary ">
+                        <a href="/#" className="btn btn-primary po_buttonColor">
                             活動詳情
                         </a>
                     </div>
                 </div>
             </div>
 
-            {/* {data
-                ? data.map((row) => (
-                      <div
-                          className="col-12 col-md-4 g-3 "
-                          key={'mm' + row.sid}
-                      >
-                          <div className="col px-2">
-                              <div
-                                  className="card shadow-sm "
-                                  style={{
-                                      width: '100%',
-                                  }}
-                              >
-                                  <img
-                                      className=""
-                                      style={{
-                                          Width: '100%',
-                                      }}
-                                      src={`/images/activity/${row.card_img}`}
-                                      alt=""
-                                  />
-                                  <div className="card-body  ">
-                                      <div className="text-center pb-2">
-                                          <h5 className="mb-0">{`${row.card_area}`}</h5>
-                                          <div className="mb-1 text-muted">{`${row.card_city}`}</div>
-                                      </div>
-                                      <p className="card-text pinp  ">
-                                          {`${row.card_info}`}
-                                      </p>
-                                      <ul className="list-group list-group-flush pt-4 ">
-                                          <li>
-                                              建議行程：
-                                              <ul className="pt-1">
-                                                  <li>{`${row.card_a}`}</li>
-                                              </ul>
-                                          </li>
-                                          <li className="pt-3 ">
-                                              體驗活動：
-                                              <ul className="pt-1 ">
-                                                  <li>{`${row.card_b}`}</li>
-                                              </ul>
-                                          </li>
-                                      </ul>
-                                      <div className="d-flex justify-content-end align-items-center pt-2">
-                                          <div className="btn-group ">
-                                              <button
-                                                  type="button"
-                                                  className="btn btn-sm btn-outline-secondary"
-                                                  onClick={() =>
-                                                      goToPath(`${row.sid}`)
-                                                  }
-                                              >
-                                                  詳細資訊
-                                              </button>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  ))
-                : null} */}
-
-            <div className="news_arrow_btn">
+            {/* <div className="news_arrow_btn">
                 <FiArrowLeftCircle size={50} />
                 <FiArrowRightCircle size={50} />
-            </div>
+            </div> */}
         </>
     );
 };

@@ -21,9 +21,11 @@ export const PRODUCT_COMPARE = `${SERVER}/compare-session`;
 export const PRODUCT_COMMENT = `${AB_GET_PRODUCT}/rating`;
 
 export const COMMENT_MAIN = `${SERVER}/comment`;
+export const COMMENT_ALLLIKE = `${SERVER}/comment/getAllLike`;
 export const COMMENT_CHECKLIKE = `${SERVER}/comment/islikedchange`;
 export const COMMENT_SEARCHNAME = `${SERVER}/comment/getproductbyname`;
-export const COMMENT_ITEM = `${SERVER}/comment/sid`;
+
+export const RECOMMEND_RECIPE = `${SERVER}/recommend_recipe`;
 
 export const PRODUCT_COLLECT = `${SERVER}/product_collect`;
 // export const COMMENT_MAIN = `${SERVER}/comment`;
