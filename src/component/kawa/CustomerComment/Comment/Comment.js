@@ -7,6 +7,7 @@ import {
     COMMENT_MAIN,
     COMMENT_SEARCHNAME,
     COMMENT_CHECKLIKE,
+    COMMENT_ALLLIKE,
 } from './../../../../config/ajax-path';
 // import clsx from 'clsx';
 import { fetchComment } from '../../../../api/comment';
@@ -23,9 +24,11 @@ const Comment = () => {
     // 從抓出來的資料做篩選
     const [commentToShow, setCommentToShow] = useState([totalComment]);
     const [ratingStarArray, setratingStarArray] = useState([]);
+    const [count, setCount] = useState(0);
     const member_info_id = localStorage.getItem('auth')
         ? JSON.parse(localStorage.getItem('auth')).customer_id
         : 500000000;
+
     const getData = () => {
         fetch(COMMENT_MAIN, {
             method: 'GET',
@@ -34,6 +37,17 @@ const Comment = () => {
             .then((obj) => {
                 // console.log(obj);
                 setTotalComment(obj);
+            });
+    };
+    const getData1 = () => {
+        fetch(COMMENT_MAIN, {
+            method: 'GET',
+        })
+            .then((r) => r.json())
+            .then((obj) => {
+                // console.log(obj);
+                // setTotalComment(obj);
+                setCommentToShow(obj);
             });
     };
 
@@ -51,6 +65,7 @@ const Comment = () => {
         })
             .then((r) => r.json())
             .then((obj) => {
+                setCount(count + 1);
                 console.log(obj);
                 // setTotalComment(obj);
             });
@@ -59,9 +74,14 @@ const Comment = () => {
     useEffect(() => {
         getData();
     }, []);
+
     useEffect(() => {
         setCommentToShow(totalComment);
     }, []);
+
+    useEffect(() => {
+        getData1();
+    }, [count]);
 
     useEffect(() => {
         const newratingStarArray = totalComment.map((v) => {
