@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useContext } from 'react';
 import AuthContext from '../component/authContext';
 import CartCountContext from '../../ben/cart_count/CartCountContext';
+import Swal from 'sweetalert2';
 
 function SignIn() {
     const { setAuth } = useContext(AuthContext);
@@ -33,10 +34,25 @@ function SignIn() {
         if (obj.success) {
             localStorage.setItem('auth', JSON.stringify(obj.data));
             setAuth({ ...obj.data, authorized: true });
-            alert('歡迎登入');
-            navigate('/member/data', { replace: true });
+            Swal.fire({
+                icon: 'success',
+                title: '歡迎登入',
+                showConfirmButton: true,
+                confirmButtonText: '確認',
+                confirmButtonColor: "#709D40"
+            }).then(()=>{
+                navigate('/member/data', { replace: true });
+            })
         } else {
-            alert('帳號/密碼錯誤');
+            Swal.fire({
+                icon: 'error',
+                title: '帳號密碼錯誤',
+                showConfirmButton: true,
+                confirmButtonText: '請輸入正確資訊',
+                confirmButtonColor: "#709D40"
+            }).then(()=>{
+                navigate('/member/', { replace: true });
+            })
         }
     }
 
@@ -93,13 +109,13 @@ function SignIn() {
                         </div>
                         <div className="d-grid gap-2 mb-3">
                             <button
-                                className="btn btn bosi-buttonColor btn-block text-white"
+                                className="border-0 shadow-sm rounded py-2 mb-2 bosi-buttonColor btn-block text-white"
                                 type="submit"
                             >
                                 登入
                             </button>
                             <button
-                                className="btn btn btn-dark btn-block"
+                                className="btn btn-dark btn-block"
                                 type="button"
                                 onClick={() => {
                                     navigate('/member/signup', {

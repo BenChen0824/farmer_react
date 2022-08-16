@@ -2,6 +2,7 @@ import './memberVerify.css';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useContext } from 'react';
 import AuthContext from '../component/authContext';
+import Swal from 'sweetalert2';
 
 function MemberVerify() {
     const { setAuth } = useContext(AuthContext)
@@ -29,10 +30,25 @@ function MemberVerify() {
         if (obj.success) {
             localStorage.setItem('auth', JSON.stringify(obj.data));
             setAuth({ ...obj.data, authorized: true });
-            alert('恭喜您完成註冊。歡迎加入有機の小鱻肉');
-            navigate('/member/data', { replace: true });
+            Swal.fire({
+                icon: 'success',
+                title: '驗證成功',
+                showConfirmButton: true,
+                confirmButtonText: 'Welcome',
+                confirmButtonColor: "#709D40"
+            }).then(()=>{
+                navigate('/member/data', { replace: true });
+            })
         } else {
-            alert('驗證碼錯誤');
+            Swal.fire({
+                icon: 'error',
+                title: '驗證失敗',
+                showConfirmButton: true,
+                confirmButtonText: '請輸入正確驗證碼',
+                confirmButtonColor: "#709D40"
+            }).then(()=>{
+                navigate('/member/verify', { replace: true });
+            })
         }
     }
 
@@ -64,10 +80,10 @@ function MemberVerify() {
                     </div>
                     <div className="d-grid gap-2 col-sm-7 mx-auto my-3">
                         <form name="form1" onSubmit={checkForm}>
-                            <input type="text" name="checknumber" className="form-control shadow-none border-dark text-center" />
+                            <input type="text" name="checknumber" className="form-control shadow-none border-dark text-center fw-bolder fs-4" />
                             <div className="d-grid gap-2 col-sm-9 mx-auto mt-4">
-                                <button className="btn bover-buttonColor text-white" type="submit">驗證</button>
-                                <button className="btn btn btn-dark" type="button">重新寄送驗證信</button>
+                                <button className="border-0 shadow-sm rounded py-2 bover-buttonColor text-white" type="submit">驗證</button>
+                                <button className="btn btn-dark" type="button">重新寄送驗證信</button>
                             </div>
                         </form>
                     </div>

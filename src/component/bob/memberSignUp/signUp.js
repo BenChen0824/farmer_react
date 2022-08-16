@@ -1,5 +1,6 @@
 import './signUp.css';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 function SignUp() {
     const navigate = useNavigate();
@@ -81,10 +82,23 @@ function SignUp() {
 
     function register(obj) {
         if (obj.success) {
-            alert('註冊申請成功，請繼續完成信箱驗證');
-            navigate('/member/verify', { replace: true });
+            Swal.fire({
+                icon: 'success',
+                title: '註冊申請成功',
+                showConfirmButton: true,
+                confirmButtonText: '進入驗證頁面',
+                confirmButtonColor: "#709D40"
+            }).then(()=>{
+                navigate('/member/verify', { replace: true });
+            })
         } else {
-            alert('請填寫正確資料');
+            Swal.fire({
+                icon: 'error',
+                title: '註冊申請失敗',
+                showConfirmButton: true,
+                confirmButtonText: '請填寫正確資料',
+                confirmButtonColor: "#709D40"
+            })
         }
     }
 
@@ -162,7 +176,7 @@ function SignUp() {
                         <div className="invalid-feedback"></div>
                         <div className="d-grid gap-2 my-4">
                             <button
-                                className="btn btn bosu-buttonColor btn-block text-white"
+                                className="border-0 shadow-sm rounded py-2 bosu-buttonColor btn-block text-white"
                                 type="submit"
                             >
                                 加入會員

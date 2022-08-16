@@ -14,6 +14,7 @@
 }
 .bover-buttonColor:hover{
   background-color: #466b1f;
+  transition: linear 0.2s;
 }
 .bover-svgColor{
   color:#709D40;

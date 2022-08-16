@@ -302,7 +302,7 @@ function MemberProfile() {
                                                   <p className="card-text">
                                                     <FaHeart></FaHeart> {v.recipes_collection}人收藏
                                                   </p>
-                                                  <button className="btn btn-sm btn-dark" onClick={()=>{navigate(`/recipe/each/${v.recipes_sid}`, {replace:true})}}>查看食譜</button>
+                                                  <button className="btn btn-sm bop-buttonColor text-white" onClick={()=>{navigate(`/recipe/each/${v.recipes_sid}`, {replace:true})}}>查看食譜</button>
                                               </div>
                                           </div>
                                         )
