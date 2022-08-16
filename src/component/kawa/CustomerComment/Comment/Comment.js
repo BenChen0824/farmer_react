@@ -39,6 +39,14 @@ const Comment = () => {
                 setTotalComment(obj);
             });
     };
+
+    const changeRow = () => {
+        const newArray = [...commentToShow];
+        newArray.reverse();
+        // console.log(commentToShow);
+        // console.log(newArray);
+        setCommentToShow(newArray);
+    };
     const getData1 = () => {
         fetch(COMMENT_MAIN, {
             method: 'GET',
@@ -143,12 +151,6 @@ const Comment = () => {
     const [isClicked, setIsClicked] = useState(false);
 
     const handleClick = (e) => {
-        // const newlikes = totalComment.map((v) => {
-        //     return +v.likes === +e.target;
-        // });
-
-        // console.log('newlikes', newlikes);
-
         if (isClicked) {
             setLikes(likes - 1);
         } else {
@@ -268,7 +270,13 @@ const Comment = () => {
 
                     <div className="CommentTimeSearch d-flex">
                         <p>顯示:</p>
-                        <select name="" id="">
+                        <select
+                            name=""
+                            id=""
+                            onChange={() => {
+                                changeRow();
+                            }}
+                        >
                             <option value="1">由新到舊</option>
                             <option value="2">由舊到新</option>
                         </select>

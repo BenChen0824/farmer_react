@@ -49,11 +49,11 @@ export default class Fade extends Component {
                         </div>
 
                         <div className="indexBanner_text_area">
-                            <h2 className="pb-3">食在安心。1</h2>
+                            <h2 className="pb-3">食在安心</h2>
                             <p>
-                                ローズウッド仕上げの⽊製キャビネット
+                                體現出對於有機食材的堅持，
                                 <br />
-                                オンラインストア限定
+                                讓客戶能有一個更健康、更安心的選擇
                             </p>
                         </div>
                     </div>
@@ -67,11 +67,11 @@ export default class Fade extends Component {
                         </div>
 
                         <div className="indexBanner_text_area">
-                            <h2 className="pb-3">食在安心。2</h2>
+                            <h2 className="pb-3">食在安心</h2>
                             <p>
-                                ローズウッド仕上げの⽊製キャビネット
+                                體現出對於有機食材的堅持，
                                 <br />
-                                オンラインストア限定
+                                讓客戶能有一個更健康、更安心的選擇
                             </p>
                         </div>
                     </div>
@@ -85,11 +85,11 @@ export default class Fade extends Component {
                         </div>
 
                         <div className="indexBanner_text_area">
-                            <h2 className="pb-3">食在安心。3</h2>
+                            <h2 className="pb-3">食在安心</h2>
                             <p>
-                                ローズウッド仕上げの⽊製キャビネット
+                                體現出對於有機食材的堅持，
                                 <br />
-                                オンラインストア限定
+                                讓客戶能有一個更健康、更安心的選擇
                             </p>
                         </div>
                     </div>
@@ -103,11 +103,11 @@ export default class Fade extends Component {
                         </div>
 
                         <div className="indexBanner_text_area">
-                            <h2 className="pb-3">食在安心。4</h2>
+                            <h2 className="pb-3">食在安心</h2>
                             <p>
-                                ローズウッド仕上げの⽊製キャビネット
+                                體現出對於有機食材的堅持，
                                 <br />
-                                オンラインストア限定
+                                讓客戶能有一個更健康、更安心的選擇
                             </p>
                         </div>
                     </div>

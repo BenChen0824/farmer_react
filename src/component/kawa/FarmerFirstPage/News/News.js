@@ -80,7 +80,7 @@ const News = () => {
                         <p className="card-text">
                             芋頭、紅棗等主要農特產開發多元農遊商品，青農返鄉密度高，鏈結大學生駐地創新經營及國際志工、青年壯遊等，注入創新及國際化新思維，展現組織活力。
                         </p>
-                        <a href="/#" className="btn btn-primary ">
+                        <a href="/#" className="btn btn-primary po_buttonColor">
                             活動詳情
                         </a>
                     </div>
@@ -94,7 +94,7 @@ const News = () => {
                         <p className="card-text">
                             高接梨的發源地，運用梨、甜柿、柑橘及賞螢，發展四季採果及生態遊程；辦理客家媽媽料理廚房，開發多項水果DIY料理，結合推廣食農教育，吸引國際遊客到訪與認養梨樹，成果豐碩。
                         </p>
-                        <a href="/#" className="btn btn-primary ">
+                        <a href="/#" className="btn btn-primary po_buttonColor">
                             活動詳情
                         </a>
                     </div>
@@ -108,7 +108,7 @@ const News = () => {
                         <p className="card-text">
                             產、官、學共同合作典範，組織極具整合、發展共識，營運良好；善用生態、農業及觀光資源；體驗活動、遊程持續創新，帶動區域穩定成長、共好。
                         </p>
-                        <a href="/#" className="btn btn-primary ">
+                        <a href="/#" className="btn btn-primary po_buttonColor">
                             活動詳情
                         </a>
                     </div>
@@ -121,7 +121,7 @@ const News = () => {
                         <p className="card-text">
                             全國第一個休閒農業區，生產水果及觀葉植物，紅心芭樂、金棗尤富盛名。組織專業分工，創新特色農產伴手與體驗產品，異業合作展通路。主題遊程「花果野食趣」帶領遊客親近土地，領略農村魅力。
                         </p>
-                        <a href="/#" className="btn btn-primary ">
+                        <a href="/#" className="btn btn-primary po_buttonColor">
                             活動詳情
                         </a>
                     </div>
@@ -132,8 +132,6 @@ const News = () => {
                 <FiArrowLeftCircle size={50} />
                 <FiArrowRightCircle size={50} />
             </div> */}
-
-            
         </>
     );
 };
