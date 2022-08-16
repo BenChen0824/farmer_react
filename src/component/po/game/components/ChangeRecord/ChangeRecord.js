@@ -42,7 +42,7 @@ export default function ChangeRecord() {
 
     return (
         <div className="container bggforblue">
-            <table className="table table-striped">
+            <table className="table table-striped mb-5">
                 <thead>
                     <tr>
                         <th scope="col" className="w-25">
