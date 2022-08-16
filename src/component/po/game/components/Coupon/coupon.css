@@ -1,6 +1,12 @@
+/* 邊框線 */
+.po_couponspace{
+  border: 1px solid #3a2c2c;
+  padding: 15px;
+  margin-bottom: 10px;
+}
 
 .coupon:hover{
-    transform:translate(-20px, -10px) scale(1);
+    transform:translate(-15px, -10px) scale(1);
     /* transition: width 2s, height 4s; */
 }
 

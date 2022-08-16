@@ -41,7 +41,7 @@ export default function ChangeRecord() {
     //     });
 
     return (
-        <div className="container bggforblue">
+        <div className="container bggforblue po_couponspace">
             <table className="table table-striped mb-5">
                 <thead>
                     <tr>
