@@ -25,8 +25,12 @@ function Activity() {
         const response = await axios.get(
             'http://localhost:3600/activity/getdata'
         );
-        console.log(response);
-        setData(response.data);
+        // const obj = await response.data.json();
+        const newArrayToShow = response.data.map((v) => {
+            return { ...v, card_img: JSON.parse(v.card_img) };
+        });
+        console.log(newArrayToShow);
+        setData(newArrayToShow);
     };
     useEffect(() => {
         getdata();
@@ -48,7 +52,7 @@ function Activity() {
                             <hr className="w-25" />
                         </div>
                     </div>
-                    <div className="row ">
+                    <div className="row">
                         {data
                             ? data.map((row) => (
                                   <div
@@ -59,7 +63,7 @@ function Activity() {
                                           <div className="img-wrap">
                                               <img
                                                   className="w-100 h-100"
-                                                  src={`/images/activity/${row.card_img}`}
+                                                  src={`/images/activity/${row.card_img[0]}`}
                                                   alt=""
                                               />
                                           </div>
