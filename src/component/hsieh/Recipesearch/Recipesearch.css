@@ -38,13 +38,24 @@
 }
 
 .recommendlistinsearch {
-    width: 48%;
+    width: 40%;
+    margin: 30px 0px;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: left;
+}
+
+.xyz{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .recipephotoinsearch {
     width: 250px;
     height: 200px;
     overflow: hidden;
+
 }
 
 .recipephotoinsearch img {
@@ -98,6 +109,8 @@
     text-decoration:none;
 }
 
+
+
 @media screen and (max-width:1000px) {
     .searchinput {
         font-size: 20px;
@@ -118,7 +131,7 @@
 
     .recommendlistinsearch {
         width: 90%;
-        margin: 0 5%  30px;
+        margin: 10px 0px;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
