@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import './Createrecipe.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Title from './../../lil/Title/index';
 
 function Updaterecipe() {
     const loginUser = JSON.parse(localStorage.getItem('auth'));
@@ -227,10 +228,10 @@ function Updaterecipe() {
                 method="post"
                 onSubmit={updateAllInfo}
             >
-                <h2 className="createrecipetitle">
-                    修改食譜 ／ Update Recipes
-                </h2>
-                <hr className="hrincreaterecipe" />
+                <br />
+                <div className="createrecipetitle">
+                    <Title zh={'修改食譜'} eg={'Update Recipes'} />
+                </div>
                 <div className="eachdataincreaterecipe">
                     <label className="datanameincreaterecipe">食譜名稱</label>
                     <section>

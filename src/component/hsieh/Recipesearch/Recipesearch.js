@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import './Recipesearch.css';
 import './Rightsidemenu.css';
 import Pagination from './Pagination';
-import Popup from './Popup';
+// import Popup from './Popup';
 import axios from 'axios';
 import Title from './../../lil/Title/index';
 
@@ -136,7 +136,6 @@ function Recipesearch() {
             .then((obj) => {
                 setCount(count + 1);
                 console.log(obj);
-                // setTotalComment(obj);
             });
     };
 
@@ -176,7 +175,7 @@ function Recipesearch() {
                         搜尋
                     </button>
 
-                    <button
+                    {/* <button
                         type="button"
                         className="btn btn-dark"
                         style={{ margin: 5 }}
@@ -188,7 +187,7 @@ function Recipesearch() {
                         className="popuptosearch"
                         trigger={ButtonPop}
                         setButtonPop={setButtonPop}
-                    />
+                    /> */}
                 </div>
             </div>
 
@@ -199,69 +198,22 @@ function Recipesearch() {
             </div>
             <div className="w-100 d-flex flex-wrap">
                 <div className="recommendlistinsearch d-flex justify-content-center">
-                    {/* <a href="./"> */}
                     <div className="recipephotoinsearch">
-                        <img src="/images/dishimage.jpg" alt="" />
+                        <Link to={`/recipe/each/18`}>
+                            <img
+                                src="/images/dishimages/b0fd632a003a439d13eef6fef4027a0a.jpg"
+                                alt=""
+                            />
+                        </Link>
                     </div>
-                    {/* </a> */}
 
                     <div className="recipeblockinsearch">
-                        {/* <a href="./">> */}
-                        <p>日式黃金炸蝦</p>
-                        {/* </a> */}
-
-                        <div className="iconmanagementinsearch">
-                            <button className="buttoninsearch">
-                                <img
-                                    src="/images/heart.svg"
-                                    alt=""
-                                    className="iconinsearch"
-                                />
-                            </button>
-                            <p className="iconinsearchp">10</p>
-                            <button className="buttoninsearch">
-                                <img
-                                    src="/images/good.svg"
-                                    alt=""
-                                    className="iconinsearch"
-                                />
-                            </button>
-                            <p className="iconinsearchp">10</p>
-                        </div>
-
-                        <hr className="hrlineinsearch" />
-
-                        <div className="iconmanagementinsearch">
-                            <img
-                                src="/images/clock.svg"
-                                alt=""
-                                className="iconinsearch"
-                            />
-                            <p className="iconinsearchp">10 分鐘</p>
-                        </div>
-                        <div className="iconmanagementinsearch">
-                            <img
-                                src="/images/heat.svg"
-                                alt=""
-                                className="iconinsearch"
-                            />
-                            <p className="iconinsearchp">約 100 大卡</p>
-                        </div>
-                    </div>
-                </div>
-
-                {/* 分隔線 */}
-
-                <div className="recommendlistinsearch d-flex justify-content-center">
-                    {/* <a href="./"> */}
-                    <div className="recipephotoinsearch">
-                        <img src="/images/dishimage.jpg" alt="" />
-                    </div>
-                    {/* </a> */}
-                    <div className="recipeblockinsearch">
-                        {/* <a href="./"> */}
-                        <p>日式黃金炸蝦</p>
-                        {/* </a> */}
+                        <Link
+                            to={`/recipe/each/18`}
+                            className="linkinrecipesearch"
+                        >
+                            <p>紙包檸檬鮭魚菲力</p>
+                        </Link>
 
                         <div className="iconmanagementinsearch">
                             <button className="buttoninsearch">
@@ -279,7 +231,7 @@ function Recipesearch() {
                                     className="iconinsearch"
                                 />
                             </button>
-                            <p className="iconinsearchp">20</p>
+                            <p className="iconinsearchp">14</p>
                         </div>
 
                         <hr className="hrlineinsearch" />
@@ -298,7 +250,67 @@ function Recipesearch() {
                                 alt=""
                                 className="iconinsearch"
                             />
-                            <p className="iconinsearchp">約 200 大卡</p>
+                            <p className="iconinsearchp">約 600 大卡</p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* 分隔線 */}
+
+                <div className="recommendlistinsearch d-flex justify-content-center">
+                    <div className="recipephotoinsearch">
+                        <Link to={`/recipe/each/17`}>
+                            <img
+                                src="/images/dishimages/b161f75f968c10be8f35001b502d14c0.jpg"
+                                alt=""
+                            />
+                        </Link>
+                    </div>
+
+                    <div className="recipeblockinsearch">
+                        <Link
+                            to={`/recipe/each/17`}
+                            className="linkinrecipesearch"
+                        >
+                            <p>煎蛋湯</p>
+                        </Link>
+
+                        <div className="iconmanagementinsearch">
+                            <button className="buttoninsearch">
+                                <img
+                                    src="/images/heart.svg"
+                                    alt=""
+                                    className="iconinsearch"
+                                />
+                            </button>
+                            <p className="iconinsearchp">22</p>
+                            <button className="buttoninsearch">
+                                <img
+                                    src="/images/good.svg"
+                                    alt=""
+                                    className="iconinsearch"
+                                />
+                            </button>
+                            <p className="iconinsearchp">11</p>
+                        </div>
+
+                        <hr className="hrlineinsearch" />
+
+                        <div className="iconmanagementinsearch">
+                            <img
+                                src="/images/clock.svg"
+                                alt=""
+                                className="iconinsearch"
+                            />
+                            <p className="iconinsearchp">10 分鐘</p>
+                        </div>
+                        <div className="iconmanagementinsearch">
+                            <img
+                                src="/images/heat.svg"
+                                alt=""
+                                className="iconinsearch"
+                            />
+                            <p className="iconinsearchp">約 500 大卡</p>
                         </div>
                     </div>
                 </div>
