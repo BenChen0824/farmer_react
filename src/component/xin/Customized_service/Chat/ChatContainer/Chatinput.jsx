@@ -33,7 +33,7 @@ const ChatInput = ({ message, setMessage, sendMessage, selectFile }) => {
                     <div className="btn xin-btn-nofocus">
                         <img
                             src="/images/uploadimgicon.png"
-                            alt="emoji"
+                            alt="file"
                             className="emojistyle"
                         />
                     </div>

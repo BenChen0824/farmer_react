@@ -5,6 +5,7 @@ import { useEffect, useRef, useState, useContext } from 'react';
 import CartCountContext from '../../ben/cart_count/CartCountContext';
 
 function Canvas(props) {
+    const Swal = require('sweetalert2');
     const member_info = JSON.parse(localStorage.getItem('auth'));
     // console.log(member_info.customer_id);
     const { cartList, setCartList } = useContext(CartCountContext);
@@ -95,20 +96,49 @@ function Canvas(props) {
     //送資料
     async function sendData(event) {
         if (dataFromFoodArea.length === 0) {
-            alert('食材至少選一樣唷:)');
+            Swal.fire({
+                icon: 'error',
+                title: '食材至少選擇一樣唷:)',
+            });
             event.preventDefault();
             return;
+        } else {
+            Swal.fire({
+                title: '訂單即將送出',
+                text: '請確認選擇食材是否正確:D',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '確認',
+                cancelButtonText: '取消',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    console.log(result);
+                    Swal.fire({
+                        title: '訂單已送出~感謝您的訂購',
+                        showConfirmButton: false,
+                    });
+                    setTimeout(function () {
+                        window.location.href =
+                            'http://localhost:3000/customized_lunch';
+                    }, 1500);
+                }
+            });
+            event.preventDefault();
         }
 
-        const confirmToCart = confirm(
-            "訂單即將送出，請確認訂單食材，如確認無誤請按'確定'送出訂單"
-        );
-        if (confirmToCart === true) {
-            alert('已送出訂單~感謝購買');
-        } else {
-            event.preventDefault();
-            return;
-        }
+        // const confirmToCart = await confirm(
+        //     "訂單即將送出，請確認訂單食材，如確認無誤請按'確定'送出訂單"
+        // );
+
+        // if (confirmToCart === true) {
+        //     // Swal.fire('Any fool can use a computer');
+        //     alert('已送出訂單~感謝購買');
+        // } else {
+        //     event.preventDefault();
+        //     return;
+        // }
 
         const fd = new FormData(document.form1);
         fd.append(

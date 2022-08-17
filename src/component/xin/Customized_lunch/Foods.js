@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import axios from 'axios';
 
 function Foods(props) {
+    const Swal = require('sweetalert2');
     const {
         dataFromFoodArea,
         setDataFromFoodArea,
@@ -17,7 +18,10 @@ function Foods(props) {
             const newItem = { ...item, tid: +Date.now() };
             setDataFromFoodArea([...dataFromFoodArea, newItem]);
         } else {
-            alert('食材只能選五樣唷:)');
+            Swal.fire({
+                icon: 'error',
+                title: '食材只能選五樣唷:)',
+            });
             return;
         }
     };
