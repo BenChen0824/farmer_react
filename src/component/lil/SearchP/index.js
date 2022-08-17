@@ -34,6 +34,7 @@ function SearchP(searchProduct) {
             page: 1,
             search: value,
         };
+        delete q.type;
 
         setSearchParams(q);
         dispatch(clearHashTag());
@@ -45,6 +46,7 @@ function SearchP(searchProduct) {
                 page: 1,
                 search: value,
             };
+            delete q.type;
 
             setSearchParams(q);
             dispatch(clearHashTag());
