@@ -169,8 +169,7 @@ function Eachrecipe() {
                             <div>
                                 <p>
                                     料理所需時間
-                                    <br />約 {eachrecipe.recipes_time_cost}
-                                    分鐘
+                                    <br />約 {eachrecipe.recipes_time_cost} 分鐘
                                     {/* 引入料理時間 */}
                                 </p>
                             </div>
@@ -185,8 +184,7 @@ function Eachrecipe() {
                             <div>
                                 <p>
                                     熱量
-                                    <br />約 {eachrecipe.recipes_calories}
-                                    大卡
+                                    <br />約 {eachrecipe.recipes_calories} 大卡
                                 </p>
                             </div>
                         </div>

@@ -196,7 +196,7 @@ function Recipesearch() {
                     <Title zh={'今日食譜推薦'} eg={'Recipes Recommend'} />
                 </p>
             </div>
-            <div className="xyz">
+            <div className="recipeinfoinsearch">
                 <div className="recommendlistinsearch">
                     <div className="recipephotoinsearch">
                         <Link to={`/recipe/each/18`}>
@@ -324,7 +324,7 @@ function Recipesearch() {
                 </p>
             </div>
 
-            <div className="xyz">
+            <div className="recipeinfoinsearch">
                 {recipeDisplay.map((v, i) => {
                     return (
                         <div
