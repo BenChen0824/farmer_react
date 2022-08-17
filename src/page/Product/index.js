@@ -10,9 +10,11 @@ import {
     getCollected,
 } from '../../api/product';
 import CartCountContext from '../../component/ben/cart_count/CartCountContext';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+const MySwal = withReactContent(Swal);
 
 function Product() {
-    const Swal = require('sweetalert2');
     const { cartList, setCartList } = useContext(CartCountContext);
     const [data, setData] = useState({});
     let { sid } = useParams();
@@ -39,7 +41,10 @@ function Product() {
 
     const handleSubmit = async (amount, addCart) => {
         if (!member_info.customer_id) {
-            Swal.fire('請先登入帳號');
+            MySwal.fire({
+                title: '請先登入帳號',
+                confirmButtonColor: '#82CA35',
+            });
             return;
         }
         const newBuyList = await addToCart({
@@ -53,7 +58,10 @@ function Product() {
 
     const handleCollect = async (save) => {
         if (!member_info.customer_id) {
-            Swal.fire('請先登入帳號');
+            MySwal.fire({
+                title: '請先登入帳號',
+                confirmButtonColor: '#82CA35',
+            });
             return;
         }
         const newCollect = await updateCollect({

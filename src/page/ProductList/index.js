@@ -33,6 +33,9 @@ import { FaNetworkWired } from 'react-icons/fa';
 import Modal from 'react-modal';
 import Compare from '../../component/lil/Compare';
 import { useWindowScrollPosition } from 'rooks';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+const MySwal = withReactContent(Swal);
 
 const customStyles = {
     content: {
@@ -66,7 +69,6 @@ const settings = {
 };
 
 function ProductList() {
-    const Swal = require('sweetalert2');
     let subtitle;
     const { cartList, setCartList } = useContext(CartCountContext);
     const dispatch = useDispatch();
@@ -251,7 +253,10 @@ function ProductList() {
 
     const handleToCart = async (sid, amount) => {
         if (!member_info.customer_id) {
-            Swal.fire('請先登入帳號');
+            MySwal.fire({
+                title: '請先登入帳號',
+                confirmButtonColor: '#82CA35',
+            });
             // alert('請先登入帳號');
             return;
         }
@@ -266,7 +271,10 @@ function ProductList() {
     const handleCollect = async (sid, saved) => {
         // update state
         if (!member_info.customer_id) {
-            Swal.fire('請先登入帳號');
+            MySwal.fire({
+                title: '請先登入帳號',
+                confirmButtonColor: '#82CA35',
+            });
             return;
         }
         setCollectData((prev) => {

@@ -108,12 +108,12 @@ function MemberLevel() {
                                                 </dd>
                                             </dl>
                                             <dl className="row border-bottom mx-0">
-                                                <dt className="col-8 p-0">
+                                                <dt className="col-7 p-0">
                                                     <h5 className="card-title">
                                                         年度累積消費
                                                     </h5>
                                                 </dt>
-                                                <dd className="col-4 text-end p-0">
+                                                <dd className="col-5 text-end p-0">
                                                     <h5 className="card-title bol-farmColor mb-0">
                                                         ${' '}
                                                         {myRecord

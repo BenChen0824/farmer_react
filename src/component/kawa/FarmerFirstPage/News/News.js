@@ -72,7 +72,7 @@ const News = () => {
 
             <div className=" news_group d-flex mt-5 justify-content-center container">
                 <div className="news_card  mx-3 col-3">
-                    <img src="./index_images/main_banner_04.jpg" alt="" />
+                    <img src="/images/index_images/main_banner_04.jpg" alt="" />
                     <div className="card-body">
                         <h5 className="card_title">金小鎮休閒農業區 </h5>
                         <h5 className="card_title mb-3">栗縣 公館鄉</h5>
@@ -86,7 +86,7 @@ const News = () => {
                     </div>
                 </div>
                 <div className="news_card  mx-3 col-3">
-                    <img src="./index_images/main_banner_04.jpg" alt="" />
+                    <img src="/images/index_images/main_banner_04.jpg" alt="" />
                     <div className="card-body">
                         <h5 className="card_title">梨之鄉休閒農業區</h5>
                         <h5 className="card_title mb-3">臺中市 東勢區</h5>
@@ -100,7 +100,7 @@ const News = () => {
                     </div>
                 </div>
                 <div className="news_card  mx-3 col-3">
-                    <img src="./index_images/main_banner_04.jpg" alt="" />
+                    <img src="/images/index_images/main_banner_04.jpg" alt="" />
                     <div className="card-body">
                         <h5 className="card_title">桃米休閒農業區</h5>
                         <h5 className="card_title mb-3">南投縣 埔里鎮</h5>
@@ -114,7 +114,7 @@ const News = () => {
                     </div>
                 </div>
                 <div className="news_card  mx-3 col-3">
-                    <img src="./index_images/main_banner_04.jpg" alt="" />
+                    <img src="/images/index_images/main_banner_04.jpg" alt="" />
                     <div className="card-body">
                         <h5 className="card_title">枕頭山休閒農業區</h5>
                         <h5 className="card_title mb-3">宜蘭縣 員山鄉</h5>

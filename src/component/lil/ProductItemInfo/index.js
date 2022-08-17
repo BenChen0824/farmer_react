@@ -9,6 +9,9 @@ import LineShare from '../LineShare';
 import { useNavigate } from 'react-router-dom';
 import { getStarRating } from '../../../api/product';
 import ReactStars from 'react-rating-stars-component';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+const MySwal = withReactContent(Swal);
 
 function ProductItemInfo({ data, sid, onSubmit, onCollect, saved }) {
     const images = data.product_img;
@@ -163,7 +166,10 @@ function ProductItemInfo({ data, sid, onSubmit, onCollect, saved }) {
                             })}
                             onClick={() => {
                                 if (!userId) {
-                                    alert('請先登入帳號');
+                                    MySwal.fire({
+                                        title: '請先登入帳號',
+                                        confirmButtonColor: '#82CA35',
+                                    });
                                     return;
                                 }
                                 setAddCart((prev) => !prev);
