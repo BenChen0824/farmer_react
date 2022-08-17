@@ -70,11 +70,10 @@ function Eachrecipe() {
         const data = {
             recipes_sid: params.recipes_sid,
         };
-
-        if (loginUser.customer_id != eachrecipe.customer_id) {
+        if (eachrecipe.customer_id != loginUser.customer_id) {
             alert('您並非本食譜撰寫者');
-            navigate('/', { replace: false });
-            // return;
+            navigate(`/recipe/each/${params.recipes_sid}`, { replace: true });
+            return;
         } else {
             const r = await fetch('http://localhost:3600/recipe/delete', {
                 method: 'DELETE',
@@ -100,9 +99,9 @@ function Eachrecipe() {
     }
 
     function sendtoupdate() {
-        if (loginUser.customer_id != eachrecipe.customer_id) {
-            alert('您並非本食譜提供者');
-            navigate('/recipe', { replace: true });
+        if (eachrecipe.customer_id != loginUser.customer_id) {
+            alert('您並非本食譜撰寫者');
+            navigate(`/recipe/each/${params.recipes_sid}`, { replace: true });
         } else {
             navigate(`/recipe/updaterecipe/${params.recipes_sid}`, {
                 replace: false,
@@ -112,11 +111,11 @@ function Eachrecipe() {
 
     function gotocreate() {
         // console.log(loginUser.customer_id);
-        if (loginUser.customer_id === '' || null) {
+        if (loginUser.customer_id != '' || null) {
+            navigate('/recipe/createrecipe', { replace: false });
+        } else {
             alert('請先登入帳號');
             return;
-        } else {
-            navigate('/recipe/createrecipe', { replace: false });
         }
     }
 
@@ -557,29 +556,7 @@ function Eachrecipe() {
                     </button>
                 </Link>
 
-                <Link to={`/recipe/createrecipe`}>
-                    <button className="hsiehcreate">
-                        新增食譜
-                        <img
-                            src="/images/file-plus.svg"
-                            alt=""
-                            className="crudineach"
-                        />
-                    </button>
-                </Link>
-
-                <Link to={`/recipe/updaterecipe/${eachrecipe.recipes_sid}`}>
-                    <button className="hsiehupdate">
-                        修改食譜
-                        <img
-                            src="/images/pen.svg"
-                            alt=""
-                            className="crudineach"
-                        />
-                    </button>
-                </Link>
-
-                <button className="hsiehupdate" onClick={sendtoupdate}>
+                <button className="hsiehcreate" onClick={sendtoupdate}>
                     修改食譜
                     <img src="/images/pen.svg" alt="" className="crudineach" />
                 </button>
