@@ -8,6 +8,7 @@ import { ReactComponent as Logo } from './images/fresh_LOGO_black.svg';
 import CartCountContext from '../ben/cart_count/CartCountContext';
 import AuthContext from '../bob/component/authContext';
 
+
 function Nav() {
     const { cartList, setCartList } = useContext(CartCountContext);
 
@@ -28,34 +29,35 @@ function Nav() {
     window.addEventListener('scroll', changeColor);
     //
     const a =
-        'nav_active main_logo_active d-none d-md-flex justify-content-between align-items-center';
+        'nav_forIndex_active main_logo_forIndex_active d-none d-md-flex justify-content-between align-items-center header_forIndex';
     //
-    const b = ' d-none d-md-flex justify-content-between align-items-center';
+    const b =
+        ' d-none d-md-flex justify-content-between align-items-center header_forIndex';
 
     return (
         <>
             <header id="Navbar" className={navColor ? a : b}>
-                {/* <Logo className="main_logo" /> */}
+                {/* <Logo className="main_logo_forIndex" /> */}
                 <Link to="/" style={{ textDecoration: 'none' }}>
                     <Logo
                         className={
                             navColor
-                                ? 'main_logo_active main_logo'
-                                : 'main_logo'
+                                ? 'main_logo_forIndex_active main_logo_forIndex'
+                                : 'main_logo_forIndex'
                         }
                     />
                 </Link>
 
                 {/* 選單 */}
-                <nav className=" mt-3">
-                    <ul className="header_menu d-flex">
+                <nav className="Index_nav mt-3">
+                    <ul className="header_menu_forIndex d-flex Index_ul">
                         <Link to="/mymap" style={{ textDecoration: 'none' }}>
-                            <li>
+                            <li className="Index_li">
                                 <span
                                     className={
                                         navColor
-                                            ? 'menu_items_active menu_items'
-                                            : 'menu_items'
+                                            ? 'menu_items_forIndex_active menu_items_forIndex'
+                                            : 'menu_items_forIndex'
                                     }
                                 >
                                     合作小農
@@ -67,8 +69,8 @@ function Nav() {
                                 <span
                                     className={
                                         navColor
-                                            ? 'menu_items_active menu_items'
-                                            : 'menu_items'
+                                            ? 'menu_items_forIndex_active menu_items_forIndex'
+                                            : 'menu_items_forIndex'
                                     }
                                 >
                                     每日登入
@@ -83,8 +85,8 @@ function Nav() {
                                 <span
                                     className={
                                         navColor
-                                            ? 'menu_items_active menu_items'
-                                            : 'menu_items'
+                                            ? 'menu_items_forIndex_active menu_items_forIndex'
+                                            : 'menu_items_forIndex'
                                     }
                                 >
                                     專人客服
@@ -96,8 +98,8 @@ function Nav() {
                                 <span
                                     className={
                                         navColor
-                                            ? 'menu_items_active menu_items'
-                                            : 'menu_items'
+                                            ? 'menu_items_forIndex_active menu_items_forIndex'
+                                            : 'menu_items_forIndex'
                                     }
                                 >
                                     小農活動
@@ -109,8 +111,8 @@ function Nav() {
                                 <span
                                     className={
                                         navColor
-                                            ? 'menu_items_active menu_items'
-                                            : 'menu_items'
+                                            ? 'menu_items_forIndex_active menu_items_forIndex'
+                                            : 'menu_items_forIndex'
                                     }
                                 >
                                     生鮮商品
@@ -122,8 +124,8 @@ function Nav() {
                                 <span
                                     className={
                                         navColor
-                                            ? 'menu_items_active menu_items'
-                                            : 'menu_items'
+                                            ? 'menu_items_forIndex_active menu_items_forIndex'
+                                            : 'menu_items_forIndex'
                                     }
                                 >
                                     食譜分享
@@ -139,8 +141,8 @@ function Nav() {
                                     href="/#"
                                     className={
                                         navColor
-                                            ? 'menu_items_active menu_items'
-                                            : 'menu_items'
+                                            ? 'menu_items_forIndex_active menu_items_forIndex'
+                                            : 'menu_items_forIndex'
                                     }
                                 >
                                     客製化餐點
@@ -153,8 +155,8 @@ function Nav() {
                                     href="/#"
                                     className={
                                         navColor
-                                            ? 'menu_items_active menu_items'
-                                            : 'menu_items'
+                                            ? 'menu_items_forIndex_active menu_items_forIndex'
+                                            : 'menu_items_forIndex'
                                     }
                                 >
                                     顧客評論
@@ -168,8 +170,8 @@ function Nav() {
                     <div
                         className={
                             navColor
-                                ? 'nav_icons_active nav_icons d-flex'
-                                : 'nav_icons d-flex '
+                                ? 'nav_icons_forIndex_active nav_icons_forIndex d-flex'
+                                : 'nav_icons_forIndex d-flex '
                         }
                     >
                         {authorized ? (
@@ -180,8 +182,8 @@ function Nav() {
                                 <span
                                     className={
                                         navColor
-                                            ? 'nav_username_active nav_username col-8 nav_username'
-                                            : 'col-8 nav_username'
+                                            ? 'nav_username_forIndex_active nav_username_forIndex col-8 nav_username_forIndex'
+                                            : 'col-8 nav_username_forIndex'
                                     }
                                 >
                                     {username}
@@ -203,8 +205,8 @@ function Nav() {
                         <div
                             className={
                                 navColor
-                                    ? 'cart_number_active cart_number px-3 fs-5'
-                                    : 'cart_number px-3 fs-5'
+                                    ? 'cart_number_forIndex_active cart_number_forIndex px-3 fs-5'
+                                    : 'cart_number_forIndex px-3 fs-5'
                             }
                         >
                             {cartList ? cartList.length : 0}
@@ -212,11 +214,11 @@ function Nav() {
                         {/* btn-outline-dark */}
                         {authorized ? (
                             <button
-                                // className="btn btn-sm  loginout_btn"
+                                // className="btn btn-sm  loginout_btn_forIndex_forIndex"
                                 className={
                                     navColor
-                                        ? 'loginout_btn_active  loginout_btn btn btn-sm'
-                                        : ' loginout_btn btn btn-sm'
+                                        ? 'loginout_btn_forIndex_forIndex_active  loginout_btn_forIndex btn btn-sm'
+                                        : ' loginout_btn_forIndex btn btn-sm'
                                 }
                                 onClick={() => {
                                     memberLogout();
@@ -228,7 +230,7 @@ function Nav() {
                             ''
                         )}
                     </div>
-                    {/* <div className="cart_number d-flex justify-content-center align-items-center">
+                    {/* <div className="cart_number_forIndex d-flex justify-content-center align-items-center">
                         <p className="fs-5 pl-4">0</p>
                     </div> */}
                 </div>
@@ -282,7 +284,7 @@ function Nav() {
                             {authorized ? cartList.length : 0}
                         </div>
                     </div>
-                    {/* <div className="cart_number d-flex justify-content-center align-items-center">
+                    {/* <div className="cart_number_forIndex d-flex justify-content-center align-items-center">
                         <p className="fs-5 pl-4">0</p>
                     </div> */}
                 </div>
