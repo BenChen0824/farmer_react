@@ -12,6 +12,7 @@ function ProductRecipe() {
     const getRecipeData = async () => {
         // 3 ids to get data
         const ids = getRandoms();
+        console.log(ids);
 
         const data = await Promise.all(ids.map((el) => getRecommendRecipe(el)));
 
@@ -42,7 +43,7 @@ function ProductRecipe() {
                             <div className={styles.RCard_img}>
                                 <Box>
                                     <img
-                                        src="/images/d_japanese_eel-don_2.jpg"
+                                        src={`/images/dishimages/${v.recipes_img}`}
                                         alt=""
                                         style={{
                                             width: ' 100%',
@@ -80,7 +81,7 @@ function getRandoms() {
     let sids = [];
 
     while (sids.length < 3) {
-        let ran = parseInt(Math.random() * 41) + 1;
+        let ran = parseInt(Math.random() * 39) + 1;
 
         for (let j = 0; j < sids.length; j++) {
             if (sids[j] === ran) {

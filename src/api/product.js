@@ -18,7 +18,8 @@ export async function fetchProduct(
     type,
     orderBy,
     order,
-    search
+    search,
+    status
 ) {
     const params = {
         page,
@@ -27,6 +28,7 @@ export async function fetchProduct(
         orderBy,
         order,
         search,
+        status,
     };
     const res = await axios.get(AB_GET_PRODUCT, { params });
     const { data } = res;

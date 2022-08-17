@@ -192,7 +192,8 @@ function ProductList() {
             type,
             orderBy,
             order,
-            search
+            search,
+            1
         );
         if (data && data.rows) {
             // console.log(data);
