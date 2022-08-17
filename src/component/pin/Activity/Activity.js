@@ -32,7 +32,6 @@ function Activity() {
         getdata();
     }, []);
 
-
     return (
         <>
             <div className="jumbotron jumbotron-fluid">
@@ -49,69 +48,58 @@ function Activity() {
                             <hr className="w-25" />
                         </div>
                     </div>
-                    <div className="row">
+                    <div className="row ">
                         {data
                             ? data.map((row) => (
                                   <div
-                                      className="col-12 col-md-4 g-3 "
+                                      className="col-12 col-md-4 g-4 px-3"
                                       key={'mm' + row.sid}
                                   >
-                                      <div className="col px-2">
-                                          <div
-                                              className="card shadow-sm "
-                                              style={{
-                                                  width: '100%',
-                                              }}
-                                          >
+                                      <div className="card card shadow-sm  h-100  ">
+                                          <div className="img-wrap">
                                               <img
-                                                  className=""
-                                                  style={{
-                                                      Width: '100%',
-                                                  }}
+                                                  className="w-100 h-100"
                                                   src={`/images/activity/${row.card_img}`}
                                                   alt=""
                                               />
-                                              <div className="card-body  ">
-                                                  <div className="text-center pb-2">
-                                                      <h5 className="mb-0">{`${row.card_area}`}</h5>
-                                                      <div className="mb-1 text-muted">{`${row.card_city}`}</div>
+                                          </div>
+                                          <div className="card-body d-flex flex-column h-100 ">
+                                              <div className="text-center pb-2">
+                                                  <h5 className="mb-0">
+                                                      {`${row.card_area}`}
+                                                  </h5>
+                                                  <div className="mb-1 text-muted">
+                                                      {`${row.card_city}`}
                                                   </div>
-                                                  <p className="card-text pinp  ">
-                                                      {`${row.card_info}`}
-                                                  </p>
-                                                  <ul className="list-group list-group-flush pt-4 ">
-                                                      <li>
-                                                          建議行程：
-                                                          <ul className="pt-1">
-                                                              <li>
-                                                                  {`${row.card_a}`}
-                                                              </li>
-                                                          </ul>
-                                                      </li>
-                                                      <li className="pt-3 ">
-                                                          體驗活動：
-                                                          <ul className="pt-1 ">
-                                                              <li>
-                                                                  {`${row.card_b}`}
-                                                              </li>
-                                                          </ul>
+                                              </div>
+                                              <p className="">
+                                                  {`${row.card_info}`}
+                                              </p>
+                                              <div className="flex-grow-1">
+                                                  <ul className="list-group list-group-flush">
+                                                      建議行程：
+                                                      <li className="list-group ps-3">
+                                                          {`${row.card_a}`}
                                                       </li>
                                                   </ul>
-                                                  <div className="d-flex justify-content-end align-items-center pt-2">
-                                                      <div className="btn-group ">
-                                                          <button
-                                                              type="button"
-                                                              className="btn btn-sm btn-outline-secondary"
-                                                              onClick={() =>
-                                                                  goToPath(
-                                                                      `${row.sid}`
-                                                                  )
-                                                              }
-                                                          >
-                                                              詳細資訊
-                                                          </button>
-                                                      </div>
-                                                  </div>
+                                                  <ul className="list-group list-group-flush">
+                                                      體驗活動：
+                                                      <li className="list-group ps-3">
+                                                          {`${row.card_b}`}
+                                                      </li>
+                                                  </ul>
+                                              </div>
+
+                                              <div className="d-flex justify-content-end p-3 ">
+                                                  <button
+                                                      type="button"
+                                                      className="btn btn-outline-success"
+                                                      onClick={() =>
+                                                          goToPath(`${row.sid}`)
+                                                      }
+                                                  >
+                                                      詳細資訊
+                                                  </button>
                                               </div>
                                           </div>
                                       </div>

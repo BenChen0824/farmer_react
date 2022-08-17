@@ -12,13 +12,13 @@ const AboutUs = () => {
                 <div className="aboutUs_imgwarap_area">
                     <div className="aboutUs_imgwarap">
                         <img
-                            src="./images/hydroponics-system-planting-vegetables-herbs-without-using-soil-health.jpg"
+                            src="./index_images/hydroponics-system-planting-vegetables-herbs-without-using-soil-health.jpg"
                             alt=""
                         />
                     </div>
                     <div className="aboutUs_imgwarap">
                         <img
-                            src="./images/portrait-asian-farmer-man-woman-holding-wooden-box-full-fresh-raw-vegetables-organic-farm-concept.jpg"
+                            src="./index_images/portrait-asian-farmer-man-woman-holding-wooden-box-full-fresh-raw-vegetables-organic-farm-concept.jpg"
                             alt=""
                         />
                     </div>
@@ -31,9 +31,11 @@ const AboutUs = () => {
                     </div>
 
                     <p>
-                        在地小農新鮮現採生鮮宅配 純淨無毒食材小鱻肉在地嚴選
-                        提供您多元種類的新鮮蔬果箱宅配、美式賣場專區優惠便宜價格提供您
-                        安心、放心、信任的鮮食選擇
+                        有機の小鱻肉本著健康、安心、在地化的根本，與小農合作推出一系列
+                        有機食品，並提供客製化便當料理讓顧客真正決定自己想要吃的東西。
+                        透過平台拉近台灣在地小農跟民眾間的距離，不僅讓消費者能吃到真正
+                        自然無汙染的食材，同時協助商家開發並推廣自家品牌。提供雙方互利互惠的
+                        平台環境，也為台灣的無毒食安貢獻一份心力。
                     </p>
                 </div>
             </div>

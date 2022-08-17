@@ -85,21 +85,21 @@ export default function Coupon(props) {
 
     return (
         <>
-            <div className="container">
+            <div className="container po_couponspace">
                 <div className="row mb-2">
                     {discountArray.map((v, i) => {
                         return (
                             <div className="col-md-6 coupon" key={v.id}>
-                                <div className="d-flex  border rounded overflow-hidden  mb-4 shadow ">
-                                    <div className="game-col-8">
+                                <div className="d-flex rounded overflow-hidden mb-4 flex-wrap">
+                                    <div className="col-12 col-lg-8 ps-3 po_couponCss">
                                         <img
-                                            className="w-100 objfit"
+                                            className="couponobjfit w-100"
                                             src={v.image}
                                             // src="/dailypoint-img/52c1abae31a722933f917fce0fccc868.jpg"
                                             alt=""
                                         />
                                     </div>
-                                    <div className="col-4 p-3 d-flex flex-column position-static ">
+                                    <div className="col-12 col-lg-4 p-3 d-flex  align-items-center flex-column position-static w-35 shadow   po_couponCss_left ">
                                         <p
                                             className="d-inline-block mb-1 text-primary text-center text-danger"
                                             style={{ fontSize: '2.5rem' }}
@@ -108,23 +108,23 @@ export default function Coupon(props) {
                                         </p>
                                         <div className="text-center">
                                             <span
-                                                className="mb-1 text-center"
+                                                className="text-center"
                                                 style={{ fontSize: '2rem' }}
                                             >
                                                 $
                                             </span>
                                             <span
-                                                className="mb-1 text-center"
+                                                className="text-center"
                                                 style={{ fontSize: '4rem' }}
                                             >
                                                 {v.price}
                                             </span>
                                         </div>
-                                        <p className="card-text mb-3 text-center">
+                                        <p className="text-center">
                                             --消費滿500可使用--
                                         </p>
                                         <button
-                                            className="btn btn-primary rounded-pill"
+                                            className="btn btn-primary po_buttonColor rounded-pill w-75"
                                             onClick={() => {
                                                 clickchange(i);
                                                 exchange(i);
@@ -132,8 +132,8 @@ export default function Coupon(props) {
                                         >
                                             {/* //  onClick={clickchange}>  */}
                                             {v.change === 0
-                                                ? `${v.point}點使用兌換`
-                                                : `${v.point}點使用兌換`}
+                                                ? `${v.point}點兌換`
+                                                : `${v.point}點兌換`}
                                         </button>
                                     </div>
                                 </div>

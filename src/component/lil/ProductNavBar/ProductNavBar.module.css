@@ -19,7 +19,7 @@
 .nav {
     width: 200px;
     padding: 10px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .type {

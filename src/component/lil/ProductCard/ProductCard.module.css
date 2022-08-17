@@ -53,7 +53,8 @@
 .card_detail > p {
     font-size: 14px;
     font-weight: normal;
-    color: #79ab4e;
+    /* color: #79ab4e; */
+    color: #82CA35;
     padding: 5px 0;
     margin-bottom: 0;
 }
@@ -105,12 +106,16 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #79ab4e;
+    /* color: #79ab4e; */
+    color: #82CA35;
+
 }
 
 .buy:active {
     color: #ededed;
-    background-color: #79ab4e;
+    /* background-color: #79ab4e; */
+    background-color: #82CA35;
+
 }
 
 .collect {
@@ -122,19 +127,25 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #79ab4e;
+    /* color: #79ab4e; */
+    color: #82CA35;
+
 }
 
 .active {
     color: #ededed;
-    background-color: #79ab4e;
+    /* background-color: #79ab4e; */
+    background-color: #82CA35;
+
 }
 
 .count > .minus {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background-color: #79ab4e;
+    /* background-color: #79ab4e; */
+    background-color: #82CA35;
+
     text-align: center;
     line-height: 0.8;
     color: #fff;
@@ -144,7 +155,9 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background-color: #79ab4e;
+    /* background-color: #79ab4e; */
+    background-color: #82CA35;
+
     text-align: center;
     line-height: 0.85;
     color: #fff;
@@ -190,25 +203,25 @@
     white-space: nowrap;
 }
 .checked{
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
-    border: 1px solid #ae9c9c;
+    border: 2px solid #ae9c9c;
     color:#ae9c9c ;
     position: absolute;
     top:10px;
-    left: 10px;
+    right: 10px;
     z-index: 1;
-    background-color: rgba(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.76);
 
 }
 .checked > svg{
     position: relative;
-    top: -5px;
-    left: 1px;
+     top: -1px; 
+    left: -1px;
 }
 .checked:hover{
-    border: 1px solid #3a2c2c;
+    border: 2px solid #3a2c2c;
     color:#3a2c2c ;
 }
 .checked_active{
@@ -218,4 +231,9 @@
 }
 .display{
     display: none;
+}
+.transition{
+    transform: translate(-5px,-5px);
+   
+       
 }

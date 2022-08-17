@@ -41,14 +41,14 @@ export default function ChangeRecord() {
     //     });
 
     return (
-        <div className="container bggforblue">
-            <table className="table table-striped">
+        <div className="container bggforblue po_couponspace">
+            <table className="table table-striped mb-5">
                 <thead>
                     <tr>
                         <th scope="col" className="w-25">
                             目前折價券
                         </th>
-                        <th scope="col">會員ID</th>
+                        {/* <th scope="col">會員ID</th> */}
                         <th scope="col">折價券類型</th>
                         <th scope="col">花費點數</th>
                         <th scope="col">兌換時間</th>
@@ -67,7 +67,7 @@ export default function ChangeRecord() {
                                           />
                                       </div>
                                   </td>
-                                  <td>{row.change_memberid}</td>
+                                  {/* <td>{row.change_memberid}</td> */}
                                   <td>{row.change_coupon}</td>
                                   <td>{row.change_spendpoints}</td>
                                   <td>{row.change_time}</td>

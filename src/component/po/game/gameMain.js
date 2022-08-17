@@ -1,6 +1,6 @@
 import Dailypoint from './Dailypoint/Dailypoint';
 // import ChangeTab from './components/ChangeTab'
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 function GameMain() {
     return (

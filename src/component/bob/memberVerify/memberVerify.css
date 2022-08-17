@@ -9,6 +9,16 @@
 .bover-bodyvh{
   height: 100vh
 }
+.bover-buttonColor{
+  background-color: #709D40;
+}
+.bover-buttonColor:hover{
+  background-color: #466b1f;
+  transition: linear 0.2s;
+}
+.bover-svgColor{
+  color:#709D40;
+}
 @media screen and (max-width:576px){
   .bover-bodyvh{
     height: 110vh

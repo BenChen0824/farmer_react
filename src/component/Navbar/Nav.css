@@ -114,3 +114,38 @@ color: #fff;
     color: #E5C391;
     border-left: 1px solid #333;
 }
+
+.loginout_btn {
+    color:  rgb(255, 255, 255);
+    border-radius: 10px;
+    border: 1px solid rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+}
+
+header:hover .loginout_btn {
+    /* background-color: rgb(142, 0, 0); */
+    border-radius: 10px;
+    border: 1px solid #333;
+    color:  #333;
+}
+
+.loginout_btn_active {
+    /* border-radius: 20px; */
+    border: 1px solid #333;
+    color:  #333;
+}
+
+.nav_username {
+    /* border-radius: 20px; */
+    color:  rgb(255, 255, 255);
+}
+
+.nav_username_active {
+    /* border-radius: 20px; */
+    color:  #333;
+}
+
+header:hover .nav_username {
+    /* border-radius: 20px; */
+    color:  #333;
+}

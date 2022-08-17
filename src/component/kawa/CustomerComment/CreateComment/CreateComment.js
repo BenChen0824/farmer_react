@@ -3,55 +3,33 @@ import { useState } from 'react';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 // import { COMMENT_ADD_ITEM } from './../../config/ajax-path'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { GrClose } from 'react-icons/gr';
 
 export default function CreateComment() {
+    const navigate = useNavigate();
     const [number, setNumber] = useState(0);
     const [hoverStar, setHoverStar] = useState(undefined);
-    // 1
-    // const [data, setData] = useState([
-    //   {
-    //     sid: '',
-    //     change_memberid: '',
-    //     change_coupon: '',
-    //     change_memberid: '',
-    //     change_spendpoints: '',
-    //     change_time: '',
-    //   },
-    // ])
-
-    // //拿資料..
-
-    // useEffect(() => {
-    //   fetch(COMMENT_ADD_ITEM, {
-    //     method: 'GET',
-    //     headers: { change_memberid: '530' },
-    //   })
-    //     .then((r) => r.json())
-    //     .then((obj) => {
-    //       console.log(obj)
-    //       setData(obj)
-    //     })
-    // }, [])
+    const [commentContent, setCommentContent] = useState('');
+    // const [ButtonClose, setButtonClose] = useState(false);
 
     const loginUser = JSON.parse(localStorage.getItem('auth'));
 
     const sendComment = (event) => {
-        //先拿到陣列裡的point
-        // const newPointToExchange = discountArray[i].point
-        // const newtype = discountArray[i].type
         event.preventDefault();
         axios
-            .post('http://localhost:3600/comment/commentcreate', {
+            .post('http://localhost:3600/comment/createcomment', {
                 member_id: loginUser.customer_id,
-                nickname: '小白',
-                avatar: '',
-                rating: '5',
-                likes: 0,
+                // member_id: 30,
+                // avatar: '',
+                rating: number,
                 comment: document.form1.comment.value,
                 product_sid: 30,
             })
-            .then((result) => {
-                console.log(result.data);
+            .then(() => {
+                setTimeout(() => {
+                    navigate('/comment');
+                }, 1000);
             });
     };
 
@@ -114,14 +92,19 @@ export default function CreateComment() {
             <div className="CreateComment_App">
                 <div className="CreateComment_popup">
                     <div className="CreateComment_content">
+                        <div>
+                            <GrClose
+                                className="CreateComment_closeBtn"
+                                size={40}
+                            />
+                        </div>
                         <div className="CreateComment_product">
                             {/* <img
               style={{ width: 60, height: 60, objectFit: 'cover' }}
               src="https://tanhungphatit.vn/images/detailed/93/iphone-13-blue-1-600x600.jpg"
               alt="name"
             /> */}
-                            <h1>HI acount 請輸入您的評論</h1>
-                            <h1>HI nickname</h1>
+                            <h1>請輸入您的評論</h1>
                         </div>
                         <div>
                             <h1>{handleText()}</h1>
@@ -163,6 +146,8 @@ export default function CreateComment() {
                             name="comment"
                             placeholder={handlePlaceHolder()}
                             className="CreateComment_textarea"
+                            value={commentContent}
+                            onChange={(e) => setCommentContent(e.target.value)}
                         ></textarea>
                         {/* <button className={` ${!number && 'disabled'} `}>Submit</button> */}
                         <button className="RatingsubmitBtn mt-5" type="submit">

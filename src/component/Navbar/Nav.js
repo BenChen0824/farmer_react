@@ -49,6 +49,19 @@ function Nav() {
                 {/* 選單 */}
                 <nav className=" mt-3">
                     <ul className="header_menu d-flex">
+                        <Link to="/mymap" style={{ textDecoration: 'none' }}>
+                            <li>
+                                <span
+                                    className={
+                                        navColor
+                                            ? 'menu_items_active menu_items'
+                                            : 'menu_items'
+                                    }
+                                >
+                                    合作小農
+                                </span>
+                            </li>
+                        </Link>
                         <Link to="/game" style={{ textDecoration: 'none' }}>
                             <li>
                                 <span
@@ -164,7 +177,15 @@ function Nav() {
                                 <Link className="col-4" to="/member/data">
                                     <FaUserCircle size={30} />
                                 </Link>
-                                <span className="col-8">{username}</span>
+                                <span
+                                    className={
+                                        navColor
+                                            ? 'nav_username_active nav_username col-8 nav_username'
+                                            : 'col-8 nav_username'
+                                    }
+                                >
+                                    {username}
+                                </span>
                             </div>
                         ) : (
                             <Link to="/member">
@@ -188,10 +209,15 @@ function Nav() {
                         >
                             {cartList.length}
                         </div>
-
+                        {/* btn-outline-dark */}
                         {authorized ? (
                             <button
-                                className="btn btn-sm btn-outline-dark"
+                                // className="btn btn-sm  loginout_btn"
+                                className={
+                                    navColor
+                                        ? 'loginout_btn_active  loginout_btn btn btn-sm'
+                                        : ' loginout_btn btn btn-sm'
+                                }
                                 onClick={() => {
                                     memberLogout();
                                 }}

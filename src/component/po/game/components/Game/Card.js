@@ -6,7 +6,7 @@ function Card(props) {
 
     function handleChoice() {
         if (!props.disabled) {
-            if (props.turn >= 10) {
+            if (props.turn >= 5) {
                 Swal.fire({
                     title: '今日已完成搶點',
                     showClass: {

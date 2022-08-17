@@ -1,23 +1,10 @@
 .btn {
-  width: 180px;
+width: 100%;
   height: 40px;
   border-radius: 20px;
   font-weight: bold;
   font-size: 20px;
-}
-.active {
-  background-color: #82ca35;
-  color: #ffffff;
-}
-
-.green {
-  background-color: #ffffff;
-  border: 1px solid #82ca35;
-  color: #82ca35;
-}
-.green_active {
-  background-color: #82ca35;
-  color: #ffffff;
+  margin-top: 30px
 }
 
 .brown {
@@ -28,4 +15,15 @@
 .brown_active {
   background-color: #3a2c2c;
   color: #ffffff;
+}
+.btn:hover{
+  background-color: #3a2c2c;
+  color: #ffffff;
+}
+
+@media screen and (max-width: 800px) {
+  .btn {
+    font-size: 16px;
+      
+  }
 }

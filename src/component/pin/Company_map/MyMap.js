@@ -1,11 +1,11 @@
-import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import { Icon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { countries, townships } from './data/townships';
-import { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 
 import companyData from './data/company.json';
+
 import './MyMap.css';
 // import { data } from './Data/company_1'
 // import { data } from './Data/company_1'
@@ -16,27 +16,70 @@ const skater = new Icon({
     iconAnchor: [10, 41],
     popupAnchor: [2, -40],
 });
+
 function MyMap() {
     const [countryIndex, setCountryIndex] = useState(-1);
     const [townshipIndex, setTownshipIndex] = useState(-1);
+    const [companyShowInfo, setCompanyShowInfo] = useState(
+        companyData.features
+    );
+    // console.log(countries);
 
+    const countySelect = (e) => {
+        // console.log(countries[e.target.value]);
+        const newShowInfo = companyData.features.filter((v) => {
+            // console.log(v.County);
+            return v.County === countries[e.target.value];
+        });
+
+        // console.log(newShowInfo);
+        setCompanyShowInfo(newShowInfo);
+    };
+
+    const mapRef = useRef();
+
+    function handleOnFlyTo(i) {
+        const { current = {} } = mapRef;
+        const { leafletElement: map } = current;
+        // console.log(companyData.features);
+        // console.log(i);
+        const disneyLandLatLng = [
+            companyShowInfo[i].Latitude,
+            companyShowInfo[i].Longitude,
+        ];
+        // console.log(disneyLandLatLng);
+
+        map.flyTo(disneyLandLatLng, 15, {
+            duration: 2,
+        });
+    }
+    function handleOnFlyToMark(latitude, longitude) {
+        const { current = {} } = mapRef;
+        const { leafletElement: map } = current;
+        // console.log(companyData.features);
+        // console.log(i);
+        const disneyLandLatLng = [latitude, longitude];
+        // console.log(disneyLandLatLng);
+
+        map.flyTo(disneyLandLatLng, 15, {
+            duration: 2,
+        });
+    }
     return (
         <>
             <div className="row no-gutter w-100">
                 <div className="col-sm-6 col-md-4 col-xl-3 bg-w l_menu">
                     <form className="ml-3 mt-4 mb-3">
                         <div className="  d-flex form-row select px-4 ">
-                            <div className="form-group col-md-6  ">
+                            <div className="form-group col-md  ">
                                 <label htmlFor="citys">選擇縣市</label>
                                 <select
                                     className="form-control jscounty"
                                     value={countryIndex}
                                     onChange={(e) => {
-                                        // 注意e.target.value為字串類型(由網頁上傳入都是字串值)
-                                        // 為了保持countryIndex(state狀態)的資料類型都一致相同，所以要轉為數字
                                         setCountryIndex(Number(e.target.value));
+                                        countySelect(e);
 
-                                        // 重置townshipIndex的值為-1
                                         setTownshipIndex(-1);
                                     }}
                                 >
@@ -50,58 +93,43 @@ function MyMap() {
                                     })}
                                 </select>
                             </div>
-                            <div className="form-group col-md-6">
-                                <label htmlFor="zones">選擇鄉鎮區</label>
-                                <select
-                                    className="form-control jstown"
-                                    value={townshipIndex}
-                                    onChange={(e) => {
-                                        // 注意e.target.value為字串類型(由網頁上傳入都是字串值)
-                                        // 為了保持setTownshipIndex(state狀態)的資料類型都一致相同，所以要轉為數字
-                                        setTownshipIndex(
-                                            Number(e.target.value)
-                                        );
-                                    }}
-                                >
-                                    <option value="-1">請選擇區域</option>
-                                    {/* 當有選擇縣市(countryIndex >)時才要作map，呈現其它的區域選項 */}
-                                    {countryIndex > -1 &&
-                                        townships[countryIndex].map((v, i) => {
-                                            return (
-                                                <option key={i} value={i}>
-                                                    {v}
-                                                </option>
-                                            );
-                                        })}
-                                </select>
-                            </div>
                         </div>
                     </form>
                     <section
                         className="content bg-w overflow-auto w-100 px-3 pt-3 mx-2"
-                        style={{ height: '59vh' }}
+                        style={{ height: '100vh' }}
                     >
-                        {companyData.features.map((v, i) => {
+                        {companyShowInfo.map((v, i) => {
                             return (
                                 // CSS 更動
+
                                 <div
-                                    class="pinmycard card mb-3 infocards"
+                                    className="pinmycard card mb-3 infocards"
                                     data-cards="241"
                                     key={v.QualityFarmID}
                                 >
-                                    <h5 class="title m-3">{v.FarmNm_CH}</h5>
+                                    <h5 className="title m-3">{v.FarmNm_CH}</h5>
                                     <img src={v.Photo} />
-                                    <ul class="list-group">
-                                        <li class="list-group-item list-group-item-action">
+                                    <ul className="list-group">
+                                        <li className="list-group-item list-group-item-action">
                                             {v.TEL}
                                         </li>
-                                        <li class="list-group-item list-group-item-action">
+                                        <li className="list-group-item list-group-item-action">
                                             {v.Address_CH}
                                         </li>
-                                        <li class="list-group-item list-group-item-action">
-                                            {v.Time}
+                                        <li className="list-group-item list-group-item-action">
+                                            {v.Time3}
                                         </li>
                                     </ul>
+                                    <button
+                                        type="button"
+                                        className="btn btn-success"
+                                        onClick={() => {
+                                            handleOnFlyTo(i);
+                                        }}
+                                    >
+                                        立即查詢
+                                    </button>
                                 </div>
                             );
                         })}
@@ -109,10 +137,10 @@ function MyMap() {
                 </div>
                 <div className="col-sm-6 col-md-8 col-xl-9 px-0">
                     <div>
-                        <MapContainer center={[23.645, 121.064]} zoom={8}>
+                        <Map ref={mapRef} center={[23.645, 121.064]} zoom={8}>
                             <TileLayer
-                                url="https://wmts.nlsc.gov.tw/wmts/EMAP/default/GoogleMapsCompatible/{z}/{y}/{x}.png"
-                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                             />
                             {companyData.features.map((company) => (
                                 <Marker
@@ -122,6 +150,12 @@ function MyMap() {
                                         company.Longitude,
                                     ]}
                                     icon={skater}
+                                    onClick={(i) => {
+                                        handleOnFlyToMark(
+                                            company.Latitude,
+                                            company.Longitude
+                                        );
+                                    }}
                                 >
                                     <Popup
                                         position={[
@@ -135,11 +169,21 @@ function MyMap() {
                                             <p>
                                                 {'地址： ' + company.Address_CH}
                                             </p>
+                                            <p>營業時間：</p>
+                                            <ul>
+                                                <li>{company.Time1}</li>
+                                                <li>{company.Time2}</li>
+                                                <li>{company.Time3}</li>
+                                                <li>{company.Time4}</li>
+                                                <li>{company.Time5}</li>
+                                                <li>{company.Time6}</li>
+                                                <li>{company.Time7}</li>
+                                            </ul>
                                         </div>
                                     </Popup>
                                 </Marker>
                             ))}
-                        </MapContainer>
+                        </Map>
                     </div>
                 </div>
             </div>

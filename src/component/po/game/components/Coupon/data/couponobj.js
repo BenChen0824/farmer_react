@@ -4,7 +4,7 @@ export const couponobj = [
         price: 100,
         point: 50,
         type: '100元折價券',
-        image: '/dailypoint-img/52c1abae31a722933f917fce0fccc868.jpg',
+        image: '/dailypoint-img/fresh-fish-sea-bass-raw-with-salt-pepper-parsley-olive-oil-lemon-cutting-board-light-gray-concrete-rustic-background-food-cooking-background-top-view-copy-space_253362-17914.jpg',
         change: 0,
     },
     {
@@ -12,7 +12,7 @@ export const couponobj = [
         price: 200,
         point: 100,
         type: '200元折價券',
-        image: '/dailypoint-img/4b08287a319a467288279c8499eb2db3.jpg',
+        image: '/dailypoint-img/1660103279629.jpg',
         change: 0,
     },
     {
@@ -20,7 +20,7 @@ export const couponobj = [
         price: 300,
         point: 150,
         type: '300元折價券',
-        image: '/dailypoint-img/1660103279629.jpg',
+        image: '/dailypoint-img/tofu-cheese-organic-tofu-soy-cheese-with-rosemary-cut-into-pieces-plate-stone-background_187166-23502.jpg',
         change: 0,
     },
     {
@@ -28,7 +28,7 @@ export const couponobj = [
         price: 400,
         point: 200,
         type: '400元折價券',
-        image: '/dailypoint-img/1660103279629.jpg',
+        image: '/dailypoint-img/beef-steak-fresh-raw-beef-rib-eye-steak-with-fork-rosemary-salt-pepper-grill-pan-grey-stone-background-top-view-mockup-design-idea_253362-17716.jpg',
         change: 0,
     },
 ];

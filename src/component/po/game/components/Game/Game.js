@@ -89,6 +89,7 @@ function Game(props) {
                         .then((result) => {
                             console.log(result.data);
                         });
+                    Swal.fire('Good luck!', '已完成扣點.', 'success');
                 } else {
                     Swal.fire({
                         icon: 'error',
@@ -97,7 +98,6 @@ function Game(props) {
                         //footer: '<a href="">試試搶點</a>',
                     });
                 }
-                Swal.fire('Good luck!', '已完成扣點.', 'success');
             }
         });
     }
@@ -107,6 +107,7 @@ function Game(props) {
             setDisabled(true);
             if (choiceOne.src === choiceTwo.src) {
                 setEggPoints(eggpoints + 2);
+                // Swal.fire('搶到2點')
                 axios
                     .post('http://localhost:3600/game/addpoints', {
                         change_points: eggpoints + 2,
@@ -134,7 +135,7 @@ function Game(props) {
     }, [choiceOne, choiceTwo]);
 
     return (
-        <div className="game-container">
+        <div className="game-container po_couponspace">
             <p className="gametext">Turns: {turn}</p>
             <div className="game-grid">
                 {cards.map((card) => (

@@ -10,6 +10,18 @@
     -webkit-line-clamp: 2;
     overflow: hidden;
 }
+.bore-multiline-ellipsis-details { 
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
 .bore-switchpx{
     padding: 0 10%;
 }
+.bore-buttonColor{
+    background-color: #709D40;
+  }
+.bore-buttonColor:hover{
+    background-color: #466b1f;
+  }

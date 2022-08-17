@@ -22,3 +22,9 @@
 .bol-goldText {
     color: rgb(251, 200, 70)
 }
+.bol-buttonColor{
+    background-color: #709D40;
+  }
+.bol-buttonColor:hover{
+    background-color: #466b1f;
+  }

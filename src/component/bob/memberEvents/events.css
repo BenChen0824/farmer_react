@@ -11,3 +11,9 @@
 .boe-farmColor {
     color: #709D40
 }
+.boe-buttonColor{
+    background-color: #709D40;
+}
+.boe-buttonColor:hover{
+    background-color: #466b1f;
+  }

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from './Button.module.css';
 import clsx from 'clsx';
-
+import { useNavigate } from 'react-router-dom';
 // classes = { button, active }
 // example:
 // <Button classes={{ button: 'anotherClass', active: 'anotherClass' }}>
@@ -10,23 +10,23 @@ import clsx from 'clsx';
 
 function Button(props) {
     const [clicked, setClicked] = useState(false);
+    const navigate = useNavigate();
 
-    const buttonClasses = () => {
-        const { classes } = props;
-        const { button = '', active = '' } = classes || {};
-        return clsx(styles.btn, button, {
-            [styles.active]: clicked,
-            [active]: clicked,
-        });
+    const goToPath = (sid) => {
+        console.log(props.sid);
+        navigate(`/recipe/each/${props.sid}`);
     };
 
     return (
         <>
             <button
                 type="submit"
-                className={buttonClasses()}
+                className={clsx(styles.brown, styles.btn, {
+                    [styles.brown_active]: clicked,
+                })}
                 onClick={() => {
                     setClicked(!clicked);
+                    goToPath();
                 }}
             >
                 {props.name}

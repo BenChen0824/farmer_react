@@ -1,6 +1,8 @@
 import './events.css'
 import { useState, useEffect } from 'react';
 import MemberNavbar from '../component/memberCenter_Navbar';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { FaPhoneAlt } from 'react-icons/fa'
 
 
 function MemberEvents(){
@@ -8,20 +10,21 @@ function MemberEvents(){
     const [searchInput, setSearchInput] = useState('')
     const [filteredResult, setFilteredResult] = useState([])
     const [filterCate, setFilterCate] = useState('')
+    const navigate = useNavigate();
 
-    const category = ['已結束','即將到來','進行中']
+    const category = ['基隆市','新北市','台北市','桃園市','新竹市','苗栗縣','臺中市','南投縣','彰化縣','雲林縣','嘉義縣','台南市','高雄市','屏東縣']
 
     const loginUser = JSON.parse(localStorage.getItem("auth"))
 
-    // const getCollections = async ()=>{
-    //     const r = await fetch('http://localhost:3600/events',{ headers: {loginUser: loginUser.customer_id}})
-    //     const obj = await r.json()
-    //     setResponse(obj)
-    // }
+    const getEventsData = async ()=>{
+        const r = await fetch('http://localhost:3600/member/myevents',{ headers: {loginUser: loginUser.customer_id}})
+        const obj = await r.json();
+        setResponse(obj);
+    }
 
-    // useEffect(()=>{
-    //     getCollections()
-    //     }, [])
+    useEffect(()=>{
+        getEventsData();
+        }, [])
 
     function searchItems (searchValue){
         setSearchInput(searchValue)
@@ -58,7 +61,7 @@ function MemberEvents(){
                             <div className="row justify-content-center">
                                 <form className="d-flex col-sm-7 mb-3">
                                     <select className="form-select mx-2 shadow-none" value={filterCate} onChange={(e)=>{searchCategory(e.target.value)}}>
-                                        <option value="">請選擇活動狀態</option>
+                                        <option value="">請選擇活動地區</option>
                                         {category.map((v,i)=>{
                                             return (
                                                 <option value={v} key={i}>{v}</option>
@@ -75,35 +78,76 @@ function MemberEvents(){
                             </div>
                         </div>
                         <div className="container row justify-content-center">
-                            <div className="card mb-3 shadow-sm" style={{maxWidth: "640px"}}>
+                            {response[0] ? searchInput.length >= 1 || filterCate.length >=1 ? 
+                            filteredResult.map((v,i)=>{
+                                return(
+                                    <div className="card mb-3 shadow-sm" style={{maxWidth: "640px"}} key={v.activity_sid}>
                                 <div className="row">
                                     <div className="col-4 p-0">
-                                        <img src="upload/activities_1.jpg" className="img-fluid rounded-start h-100 boe-objft" alt=""/>
+                                        <img src={`/images/${v.card_img}`} className="img-fluid rounded-start h-100 boe-objft" alt=""/>
                                     </div>
                                     <div className="col-8">
                                         <div className="card-body">
                                             <dl className="row border-bottom mx-0">
                                                 <dt className="col-6 p-0">
-                                                    <h5 className="card-title">小小果農一日體驗</h5>
+                                                    <h5 className="card-title">{v.card_area}</h5>
                                                 </dt>
                                                 <dd className="col-6 text-end p-0">
-                                                    <h5 className="card-title mb-0">$ 1,200</h5>
+                                                    <button className="btn btn-sm boe-buttonColor text-white mb-0" onClick={()=>{navigate(`/activity/${v.activity_sid}`,{replace:true})}}>查看詳情</button>
                                                 </dd>
                                             </dl>
-                                            <p className="card-text lh-sm boe-multiline-ellipsis">說曙光玫瑰農場是為玫瑰而生一點也不誇張，老闆因為愛玫瑰成癡，在阿里山下建立5公頃的有機玫瑰園。曙光有機玫瑰以樹玫瑰為主，園區內玫瑰品種超過百種，並發展出獨特的玫瑰導覽，透過感官體驗，聽玫瑰故事、用舌尖、鼻子和手指感受玫瑰全方位的優雅，紓解身心的壓力與煩惱。此外，還有玫瑰足湯舒壓體驗，將腳伸入灑滿玫瑰花瓣的水桶，讓疲倦在水中和淡淡的花香中解放，也可以將玫瑰足浴包帶回家使用。
+                                            <p className="card-text lh-sm boe-multiline-ellipsis">{v.card_info1}
                                             </p>
                                             <dl className="row m-0">
                                                 <dt className="col-4 p-0">
-                                                    <p className="card-text boe-farmColor">屏東xxx農場</p>
+                                                    <p className="card-text boe-farmColor">{v.card_city}</p>
                                                 </dt>
                                                 <dd className="col-8 text-end p-0 m-0">
-                                                    <p className="card-text">2022-08-24｜9:00 - 17:00</p>
+                                                    <p className="card-text"><FaPhoneAlt></FaPhoneAlt> {v.phone}</p>
                                                 </dd>
                                             </dl>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                                </div>
+                                )
+                            })
+                            : 
+                            response.map((v,i)=>{
+                                return(
+                                <div className="card mb-3 shadow-sm" style={{maxWidth: "640px"}} key={v.activity_sid}>
+                                <div className="row">
+                                    <div className="col-4 p-0">
+                                        <img src={`/images/${v.card_img}`} className="img-fluid rounded-start h-100 boe-objft" alt=""/>
+                                    </div>
+                                    <div className="col-8">
+                                        <div className="card-body">
+                                            <dl className="row border-bottom mx-0">
+                                                <dt className="col-6 p-0">
+                                                    <h5 className="card-title">{v.card_area}</h5>
+                                                </dt>
+                                                <dd className="col-6 text-end p-0">
+                                                    <button className="btn btn-sm boe-buttonColor text-white mb-0" onClick={()=>{navigate(`/activity/${v.activity_sid}`,{replace:true})}}>查看詳情</button>
+                                                </dd>
+                                            </dl>
+                                            <p className="card-text lh-sm boe-multiline-ellipsis">{v.card_info1}
+                                            </p>
+                                            <dl className="row m-0">
+                                                <dt className="col-4 p-0">
+                                                    <p className="card-text boe-farmColor">{v.card_city}</p>
+                                                </dt>
+                                                <dd className="col-8 text-end p-0 m-0">
+                                                    <p className="card-text"><FaPhoneAlt></FaPhoneAlt> {v.phone}</p>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                )
+                            }) : 
+                            <p className="text-muted text-center mt-5">尚無收藏的行程</p>
+                            }
                         </div>
                     </div>
                 </div>

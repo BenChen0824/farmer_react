@@ -11,22 +11,12 @@ import AuthContext from '../bob/component/authContext';
 function Nav() {
     const { cartList, setCartList } = useContext(CartCountContext);
 
-    const [navColor, setNavColor] = useState(false);
     const { authorized, username, logout } = useContext(AuthContext);
     const memberLogout = () => {
         setCartList([]);
         logout();
     };
-    const changeColor = () => {
-        if (window.scrollY > 100) {
-            setNavColor(true);
-        } else {
-            setNavColor(false);
-        }
-    };
 
-    window.addEventListener('scroll', changeColor);
-    //
     const a =
         'nav_active main_logo_active d-none d-md-flex justify-content-between align-items-center';
     //
@@ -34,32 +24,26 @@ function Nav() {
 
     return (
         <>
-            <header id="Navbar" className={navColor ? a : b}>
+            <header
+                id="Navbar"
+                className=" d-none d-md-flex justify-content-between align-items-center"
+            >
                 {/* <Logo className="main_logo" /> */}
                 <Link to="/" style={{ textDecoration: 'none' }}>
-                    <Logo
-                        className={
-                            navColor
-                                ? 'main_logo_active main_logo'
-                                : 'main_logo'
-                        }
-                    />
+                    <Logo className="main_logo" />
                 </Link>
 
                 {/* 選單 */}
                 <nav className=" mt-3">
                     <ul className="header_menu d-flex">
+                        <Link to="/mymap" style={{ textDecoration: 'none' }}>
+                            <li>
+                                <span className="menu_items">合作小農</span>
+                            </li>
+                        </Link>
                         <Link to="/game" style={{ textDecoration: 'none' }}>
                             <li>
-                                <span
-                                    className={
-                                        navColor
-                                            ? 'menu_items_active menu_items'
-                                            : 'menu_items'
-                                    }
-                                >
-                                    每日登入
-                                </span>
+                                <span className="menu_items">每日登入</span>
                             </li>
                         </Link>
                         <Link
@@ -67,54 +51,22 @@ function Nav() {
                             style={{ textDecoration: 'none' }}
                         >
                             <li>
-                                <span
-                                    className={
-                                        navColor
-                                            ? 'menu_items_active menu_items'
-                                            : 'menu_items'
-                                    }
-                                >
-                                    專人客服
-                                </span>
+                                <span className="menu_items">專人客服</span>
                             </li>
                         </Link>
                         <Link to="/activity" style={{ textDecoration: 'none' }}>
                             <li>
-                                <span
-                                    className={
-                                        navColor
-                                            ? 'menu_items_active menu_items'
-                                            : 'menu_items'
-                                    }
-                                >
-                                    小農活動
-                                </span>
+                                <span className="menu_items">小農活動</span>
                             </li>
                         </Link>
                         <Link to="/product" style={{ textDecoration: 'none' }}>
                             <li>
-                                <span
-                                    className={
-                                        navColor
-                                            ? 'menu_items_active menu_items'
-                                            : 'menu_items'
-                                    }
-                                >
-                                    生鮮商品
-                                </span>
+                                <span className="menu_items">生鮮商品</span>
                             </li>
                         </Link>
                         <Link to="/recipe" style={{ textDecoration: 'none' }}>
                             <li>
-                                <span
-                                    className={
-                                        navColor
-                                            ? 'menu_items_active menu_items'
-                                            : 'menu_items'
-                                    }
-                                >
-                                    食譜分享
-                                </span>
+                                <span className="menu_items">食譜分享</span>
                             </li>
                         </Link>
                         <Link
@@ -122,28 +74,14 @@ function Nav() {
                             style={{ textDecoration: 'none' }}
                         >
                             <li>
-                                <a
-                                    href="/#"
-                                    className={
-                                        navColor
-                                            ? 'menu_items_active menu_items'
-                                            : 'menu_items'
-                                    }
-                                >
+                                <span href="/#" className="menu_items">
                                     客製化餐點
-                                </a>
+                                </span>
                             </li>
                         </Link>
                         <Link to="/comment" style={{ textDecoration: 'none' }}>
                             <li>
-                                <span
-                                    href="/#"
-                                    className={
-                                        navColor
-                                            ? 'menu_items_active menu_items'
-                                            : 'menu_items'
-                                    }
-                                >
+                                <span href="/#" className="menu_items">
                                     顧客評論
                                 </span>
                             </li>
@@ -152,13 +90,7 @@ function Nav() {
                 </nav>
                 {/* ICONS */}
                 <div className="d-flex px-5">
-                    <div
-                        className={
-                            navColor
-                                ? 'nav_icons_active nav_icons d-flex'
-                                : 'nav_icons d-flex '
-                        }
-                    >
+                    <div className="nav_icons d-flex">
                         {authorized ? (
                             <div className="row m-0">
                                 <Link className="col-4" to="/member/data">
@@ -179,19 +111,14 @@ function Nav() {
                             />
                         </Link>
 
-                        <div
-                            className={
-                                navColor
-                                    ? 'cart_number_active cart_number px-3 fs-5'
-                                    : 'cart_number px-3 fs-5'
-                            }
-                        >
+                        <div className="cart_number px-3 fs-5">
                             {cartList.length}
                         </div>
-
+                        {/* btn-outline-dark */}
                         {authorized ? (
                             <button
-                                className="btn btn-sm btn-outline-dark"
+                                // className="btn btn-sm  loginout_btn"
+                                className="btn btn-sm"
                                 onClick={() => {
                                     memberLogout();
                                 }}

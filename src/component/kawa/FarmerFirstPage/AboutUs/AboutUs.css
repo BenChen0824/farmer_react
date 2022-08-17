@@ -1,5 +1,5 @@
 .aboutUs_section {
-    width: 80%;
+    width: 50%;
     margin: auto;
 }
 
@@ -104,6 +104,8 @@
     .aboutUs_text_area p{
         width: 70%;
         margin: auto;
+        letter-spacing: 2px;
+        line-height: 35px;
     }
 
 }

@@ -12,6 +12,7 @@ import {
 import CartCountContext from '../../component/ben/cart_count/CartCountContext';
 
 function Product() {
+    const Swal = require('sweetalert2');
     const { cartList, setCartList } = useContext(CartCountContext);
     const [data, setData] = useState({});
     let { sid } = useParams();
@@ -38,7 +39,7 @@ function Product() {
 
     const handleSubmit = async (amount, addCart) => {
         if (!member_info.customer_id) {
-            alert('請先登入帳號');
+            Swal.fire('請先登入帳號');
             return;
         }
         const newBuyList = await addToCart({
@@ -52,7 +53,7 @@ function Product() {
 
     const handleCollect = async (save) => {
         if (!member_info.customer_id) {
-            alert('請先登入帳號');
+            Swal.fire('請先登入帳號');
             return;
         }
         const newCollect = await updateCollect({
@@ -87,7 +88,7 @@ function Product() {
                         onCollect={handleCollect}
                         saved={saved.saved}
                     />
-                    <ProductTab />
+                    <ProductTab data={data} />
                 </div>
             </div>
         </>

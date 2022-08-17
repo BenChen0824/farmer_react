@@ -129,11 +129,10 @@ export default function Popup(props) {
                         >
                             搜尋
                             <img
-                                src="/images/file-plus.svg"
+                                src="/images/search.svg"
                                 alt=""
                                 className="iconineach"
                             />
-                            {/* 要替換icon成search.svg */}
                         </button>
                     </div>
 
@@ -143,7 +142,6 @@ export default function Popup(props) {
                     <div className="searchbyingredient">
                         <button
                             type="button"
-                            value={'菜'}
                             classc="btn btn-dark"
                             className="ingredientinpopup"
                             onClick={() => {
@@ -221,7 +219,7 @@ export default function Popup(props) {
                                                 '鴨' ||
                                                 '牛' ||
                                                 '豬' ||
-                                                '牛'
+                                                '羊'
                                         );
                                     }
                                 );
@@ -275,7 +273,7 @@ export default function Popup(props) {
                             className="close-btn"
                             onClick={() => props.setButtonPop(false)}
                         >
-                            關閉視窗
+                            關閉視窗 ×
                         </button>
                     </div>
                 </div>

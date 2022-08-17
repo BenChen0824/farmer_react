@@ -5,7 +5,7 @@
     justify-content: space-between;
 }
 .tab {
-    width: 33%;
+    width: 49.5%;
     height: 40px;
     text-align: center;
     line-height: 40px;
@@ -25,4 +25,10 @@
     border-bottom: 1px solid #ffffff;
     height: 50px;
     margin-bottom: -1px;
+}
+
+@media screen and (max-width: 450px){
+    .tab > p{
+        letter-spacing: 3px;
+    }
 }
