@@ -1,11 +1,20 @@
+/* 以下手機 */
+.starRating_btn_area {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* margin: auto; */
+
+}
+
 .starRating_btn {
     background-color: #333;
     color: white;
-    width: 180px;
+    width: 100%;
     text-align: center;
-    border-radius: 20px;
+    margin: auto;
     padding: 5px 10px 5px 10px;
-    margin-left: 10px;
+    margin: 10px 0px;
 }
 
 .starRating_btn:hover {
@@ -47,10 +56,23 @@
 }
 
 
+.starRating_title {
+    display: flex;
+    justify-content: center;
+}
+
+
+
 
 
 /* 以下桌機 */
 @media screen and (min-width:768px) {
+
+    .starRating_btn_area {
+        display: flex;
+        flex-direction: row;
+    }
+
 
     .starRating_btn {
         background-color: #333;
@@ -104,6 +126,22 @@
     }
 
 
+.Comment_Banner_imgwrap {
+    height: 400px;
+    width: 100%;
+    background-color: #AAA;
+    margin-bottom: 100px;
+    overflow: hidden;
+    position: relative;
+}
+
+
+.Comment_Banner_imgwrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+}
 
 
 

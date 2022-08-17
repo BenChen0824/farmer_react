@@ -230,6 +230,10 @@ const Comment = () => {
 
     return (
         <>
+            {/* ----------------- Banner ----------------- */}
+            <div className="Comment_Banner_imgwrap">
+                <img src="/images/index_images/main_banner_01.jpg" alt="" />
+            </div>
             <div className="container">
                 {/* ----------------- Title ----------------- */}
                 <Title className="Comment_Title" />
@@ -284,10 +288,10 @@ const Comment = () => {
                 </div>
 
                 {/* ----------------- 評價按鈕 -----------------*/}
-                <h2 className="d-sm-none">評價</h2>
-                <div className="d-flex justify-content-center m-5 ">
+                <h2 className="starRating_title d-sm-none">評價</h2>
+                <div className="m-5 starRating_btn_area">
                     <div
-                        className="starRating_btn"
+                        className="starRating_btn rounded-pill"
                         onClick={(e) => {
                             // console.log(e.target.getAttribute('value'))
                             setCommentToShow(totalComment);
@@ -296,7 +300,7 @@ const Comment = () => {
                         全部({allstarComment.length})
                     </div>
                     <div
-                        className="starRating_btn"
+                        className="starRating_btn rounded-pill"
                         value={5}
                         onClick={(e) => {
                             // console.log(e.target.getAttribute('value'))
@@ -307,7 +311,7 @@ const Comment = () => {
                     </div>
 
                     <div
-                        className="starRating_btn"
+                        className="starRating_btn rounded-pill"
                         value={4}
                         onClick={(e) => {
                             // console.log(e.target.getAttribute('value'))
@@ -318,7 +322,7 @@ const Comment = () => {
                         四顆星({fourstarComment.length})
                     </div>
                     <div
-                        className="starRating_btn"
+                        className="starRating_btn rounded-pill"
                         value={3}
                         onClick={(e) => {
                             // console.log(e.target.getAttribute('value'))
@@ -328,7 +332,7 @@ const Comment = () => {
                         三顆星({threestarComment.length})
                     </div>
                     <div
-                        className="starRating_btn"
+                        className="starRating_btn rounded-pill"
                         value={2}
                         onClick={(e) => {
                             // console.log(e.target.getAttribute('value'))
@@ -338,7 +342,7 @@ const Comment = () => {
                         二顆星({twostarComment.length})
                     </div>
                     <div
-                        className="starRating_btn"
+                        className="starRating_btn rounded-pill"
                         value={1}
                         onClick={(e) => {
                             // console.log(e.target.getAttribute('value'))
@@ -375,7 +379,7 @@ const Comment = () => {
                                         />
                                     </div>
                                     {/* ----------- */}
-                                    <div className="col-9">
+                                    <div className="col-9 CommentCard_right">
                                         <img
                                             src={getPicURL(+v.rating)}
                                             // getPicURL(e.target.getAttribute('value'))
