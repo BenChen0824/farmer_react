@@ -196,8 +196,8 @@ function Recipesearch() {
                     <Title zh={'今日食譜推薦'} eg={'Recipes Recommend'} />
                 </p>
             </div>
-            <div className="w-100 d-flex flex-wrap">
-                <div className="recommendlistinsearch d-flex justify-content-center">
+            <div className="xyz">
+                <div className="recommendlistinsearch">
                     <div className="recipephotoinsearch">
                         <Link to={`/recipe/each/18`}>
                             <img
@@ -242,7 +242,7 @@ function Recipesearch() {
                                 alt=""
                                 className="iconinsearch"
                             />
-                            <p className="iconinsearchp">20 分鐘</p>
+                            <p className="iconinsearchp">約 20 分鐘</p>
                         </div>
                         <div className="iconmanagementinsearch">
                             <img
@@ -257,7 +257,7 @@ function Recipesearch() {
 
                 {/* 分隔線 */}
 
-                <div className="recommendlistinsearch d-flex justify-content-center">
+                <div className="recommendlistinsearch">
                     <div className="recipephotoinsearch">
                         <Link to={`/recipe/each/17`}>
                             <img
@@ -302,7 +302,7 @@ function Recipesearch() {
                                 alt=""
                                 className="iconinsearch"
                             />
-                            <p className="iconinsearchp">10 分鐘</p>
+                            <p className="iconinsearchp">約 10 分鐘</p>
                         </div>
                         <div className="iconmanagementinsearch">
                             <img
@@ -316,7 +316,7 @@ function Recipesearch() {
                 </div>
             </div>
 
-            {/* 分隔線 */}
+            {/* 分隔線，以下為食譜列表 */}
 
             <div>
                 <p className="titlewordinsearch">
@@ -324,11 +324,11 @@ function Recipesearch() {
                 </p>
             </div>
 
-            <div className="w-100 d-flex flex-wrap">
+            <div className="xyz">
                 {recipeDisplay.map((v, i) => {
                     return (
                         <div
-                            className="recommendlistinsearch d-flex justify-content-center"
+                            className="recommendlistinsearch"
                             key={v.recipes_sid}
                         >
                             <div className="recipephotoinsearch">
@@ -409,9 +409,10 @@ function Recipesearch() {
                         </div>
                     );
                 })}
-
-                {/* 分隔線 */}
             </div>
+
+            {/* 分隔線 */}
+
             <div className="paginationinsearch">
                 {/* {data && data.totalPages ? ( */}
                 {/* <Pagination page={data.page} totalPages={data.totalPages} /> */}

@@ -246,18 +246,26 @@ function Createrecipe() {
     // }
 
     function autoInput() {
-        document.form1.recipesname.value = 'bob';
-        document.form1.description.value = 'bob791224@gmail.com';
-        document.form1.timecost.value = 'a123456';
-        document.form1.calories.value = 'a123456';
-        document.form1.ingredient.value = 'a123456';
-        document.form1.ingredient1.value = 'a123456';
-        document.form1.ingredient2.value = 'a123456';
-        document.form1.ingredient3.value = 'a123456';
-        document.form1.step.value = 'a123456';
-        document.form1.step1.value = 'a123456';
-        document.form1.step2.value = 'a123456';
-        document.form1.step3.value = 'a123456';
+        document.form1.recipesname.value = '藜麥沙拉';
+        document.form1.description.value =
+            '炎炎夏日影響胃口？簡單的幾步料理方式，就能吃到營養健康又有飽足感的夏日減脂好滋味哦！';
+        document.form1.timecost.value = '20';
+        document.form1.calories.value = '300';
+        document.form1.ingredient.value = '藜麥  40～50克';
+        document.form1.ingredient1.value = '花椰菜  適量';
+        document.form1.ingredient2.value = '橄欖油  2勺';
+        document.form1.ingredient3.value = '蜂蜜  1小勺';
+        document.form1.ingredient4.value = '小番茄  10顆';
+        document.form1.ingredient5.value = '白醋或黑醋或蘋果醋  1小勺';
+        document.form1.ingredient6.value = '黑胡椒  少許';
+        document.form1.step.value =
+            '準備好食材，雞蛋水煮、花椰菜燙熟、小番茄切半';
+        document.form1.step1.value =
+            '藜麥加兩倍水，滾水煮開至出小芽加到食材裡面';
+        document.form1.step2.value = '把調好的油醋汁倒入';
+        document.form1.step3.value = '攪拌均勻即可';
+        document.form1.step4.value =
+            '藜麥+蔬菜+優質蛋白質，營養豐富又有飽足感！';
     }
 
     return (
