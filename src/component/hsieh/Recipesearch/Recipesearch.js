@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './Recipesearch.css';
-import './Leftsidemenu.css';
+import './Rightsidemenu.css';
 import Pagination from './Pagination';
 import Popup from './Popup';
 import axios from 'axios';
@@ -37,6 +37,7 @@ function Recipesearch() {
         setRecipeDisplay(obj);
         setRecipeDisplayAgain(obj);
     }
+
     async function getRecipe1() {
         const r = await fetch('http://localhost:3600/recipe/recipe');
         const obj = await r.json();
@@ -59,8 +60,10 @@ function Recipesearch() {
     const loginUser = JSON.parse(localStorage.getItem('auth'));
 
     function gotocreate() {
+        // console.log(loginUser.customer_id);
         if (loginUser.customer_id === '' || null) {
             alert('請先登入帳號');
+            return;
         } else {
             navigate('/recipe/createrecipe', { replace: false });
         }
@@ -117,32 +120,32 @@ function Recipesearch() {
         setIsCollected(!isCollected);
     };
 
+    const collectionchange = (sid) => {
+        const packageToSend = {
+            customer_id: loginUser.customer_id,
+            recipes_sid: sid,
+        };
+        fetch('http://localhost:3600/recipe/recipecollection', {
+            method: 'POST',
+            body: JSON.stringify(packageToSend),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((r) => r.json())
+            .then((obj) => {
+                setCount(count + 1);
+                console.log(obj);
+                // setTotalComment(obj);
+            });
+    };
+
     return (
         <>
             <div className="menuincreate">
                 <button className="rightsidebutton" onClick={gotocreate}>
                     <img src="/images/file-plus.svg" alt="" />
                 </button>
-                {/* <Link to={`/recipe/createrecipe`}>
-                    <button className="leftsidebutton">
-                        新增食譜
-                        <img
-                            src="/images/file-plus.svg"
-                            alt=""
-                            className="crudineach"
-                        />
-                    </button>
-                </Link>
-                <br />
-
-                <button className="leftsidebutton" onClick={gotocreate}>
-                    新增食譜
-                    <img
-                        src="/images/file-plus.svg"
-                        alt=""
-                        className="crudineach"
-                    />
-                </button> */}
             </div>
 
             <div className="hsiehsearching">
@@ -198,10 +201,7 @@ function Recipesearch() {
                 <div className="recommendlistinsearch d-flex justify-content-center">
                     {/* <a href="./"> */}
                     <div className="recipephotoinsearch">
-                        <img
-                            src="/images/dishimages/0f06264e9e2497a0449ac3dbdcf68533.jpg"
-                            alt=""
-                        />
+                        <img src="/images/dishimage.jpg" alt="" />
                     </div>
                     {/* </a> */}
 
@@ -255,10 +255,7 @@ function Recipesearch() {
                 <div className="recommendlistinsearch d-flex justify-content-center">
                     {/* <a href="./"> */}
                     <div className="recipephotoinsearch">
-                        <img
-                            src="/images/dishimages/0f06264e9e2497a0449ac3dbdcf68533.jpg"
-                            alt=""
-                        />
+                        <img src="/images/dishimage.jpg" alt="" />
                     </div>
                     {/* </a> */}
                     <div className="recipeblockinsearch">
@@ -325,7 +322,7 @@ function Recipesearch() {
                             <div className="recipephotoinsearch">
                                 <Link to={`/recipe/each/${v.recipes_sid}`}>
                                     <img
-                                        src={`/images/dishimages/${v.recipes_img}`}
+                                        src={`/dishimages/${v.recipes_img}`}
                                         alt=""
                                     />
                                 </Link>
@@ -341,7 +338,10 @@ function Recipesearch() {
                                 <div className="iconmanagementinsearch">
                                     <button
                                         className="buttoninsearch"
-                                        onClick={collected}
+                                        onClick={() => {
+                                            collectionchange(v.recipes_sid);
+                                            collected();
+                                        }}
                                     >
                                         <img
                                             src="/images/heart.svg"

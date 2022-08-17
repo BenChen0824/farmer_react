@@ -1,4 +1,5 @@
 import './Eachrecipe.css';
+import './../Recipesearch/Rightsidemenu.css';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link, useLocation } from 'react-router-dom';
