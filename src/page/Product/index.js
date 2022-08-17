@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext, useMemo } from 'react';
 import ProductItemInfo from '../../component/lil/ProductItemInfo';
 import ProductTab from '../../component/lil/ProductTab';
 import styles from './Product.module.css';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import {
     getProductItem,
     addToCart,
@@ -27,6 +27,9 @@ function Product() {
         const item = await getProductItem(sid);
         setData(item);
     };
+    // const location = useLocation();
+    const location = window.location.pathname;
+    console.log(location);
 
     useEffect(() => {
         getItem(sid);
@@ -57,6 +60,7 @@ function Product() {
     };
 
     const handleCollect = async (save) => {
+        console.log('click');
         if (!member_info.customer_id) {
             MySwal.fire({
                 title: '請先登入帳號',
@@ -64,11 +68,13 @@ function Product() {
             });
             return;
         }
+
         const newCollect = await updateCollect({
             member_id: member_info.customer_id,
             product_id: +sid,
             saved: +save,
         });
+        console.log(saved);
         console.log(newCollect);
     };
 
