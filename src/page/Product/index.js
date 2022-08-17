@@ -21,7 +21,7 @@ function Product() {
     const member_info = JSON.parse(localStorage.getItem('auth')) || {};
     // key: `history-${userId}`  value: JSON.parse("['sid1', 'sid3']")
     const userId = member_info.customer_id;
-    const [saved, setSaved] = useState({});
+    const [saved, setSaved] = useState(false);
 
     const getItem = async (sid) => {
         const item = await getProductItem(sid);
@@ -74,13 +74,16 @@ function Product() {
             product_id: +sid,
             saved: +save,
         });
+
+        setSaved(save);
         console.log(saved);
         console.log(newCollect);
     };
 
     const getSaveData = async () => {
+        // {member_id: 530, product_id: 1, saved: 1}
         const [data = {}] = await getCollected(userId, sid);
-        setSaved(data);
+        setSaved(Boolean(data.saved));
     };
 
     useEffect(() => {
@@ -100,7 +103,7 @@ function Product() {
                         sid={sid}
                         onSubmit={handleSubmit}
                         onCollect={handleCollect}
-                        saved={saved.saved}
+                        saved={saved}
                     />
                     <ProductTab data={data} />
                 </div>
