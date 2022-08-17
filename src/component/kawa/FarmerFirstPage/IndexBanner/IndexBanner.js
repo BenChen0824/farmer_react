@@ -43,7 +43,7 @@ export default class Fade extends Component {
                     <div>
                         <div className="indexBanner_imgwrap">
                             <img
-                                src="./index_images/main_banner_05.jpg"
+                                src="/images/index_images/main_banner_05.jpg"
                                 alt=""
                             />
                         </div>
@@ -61,7 +61,7 @@ export default class Fade extends Component {
                     <div>
                         <div className="indexBanner_imgwrap">
                             <img
-                                src="./index_images/main_banner_04.jpg"
+                                src="/images/index_images/main_banner_04.jpg"
                                 alt=""
                             />
                         </div>
@@ -79,7 +79,7 @@ export default class Fade extends Component {
                     <div>
                         <div className="indexBanner_imgwrap">
                             <img
-                                src="./index_images/main_banner_03.jpg"
+                                src="/images/index_images/main_banner_03.jpg"
                                 alt=""
                             />
                         </div>
@@ -97,7 +97,7 @@ export default class Fade extends Component {
                     <div>
                         <div className="indexBanner_imgwrap">
                             <img
-                                src="./index_images/main_banner_02.jpg"
+                                src="/images/index_images/main_banner_02.jpg"
                                 alt=""
                             />
                         </div>
