@@ -408,7 +408,6 @@ const Comment = () => {
                                                 {v.likes}
                                             </div>
                                         </div>
-                                        {/* <span className="likes-counter">{`Like | ${v.likes}`}</span> */}
                                     </div>
                                 </div>
                             </div>

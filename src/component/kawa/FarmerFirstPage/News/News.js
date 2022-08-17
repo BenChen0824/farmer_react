@@ -132,11 +132,6 @@ const News = () => {
                     </div>
                 </div>
             </div>
-
-            {/* <div className="news_arrow_btn">
-                <FiArrowLeftCircle size={50} />
-                <FiArrowRightCircle size={50} />
-            </div> */}
         </>
     );
 };
