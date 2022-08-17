@@ -30,8 +30,12 @@ yarn-error.log*
 package-lock.json
 .vscode
 public/game-img
+public/member_imgs
+public/lunch_images
+public/logo
 public/images
-public/fontawesome-free-6.1.1-web
+public/activity
+public/fontawesome
 public/dailypoint-img
 public/game-images
 public/images/**

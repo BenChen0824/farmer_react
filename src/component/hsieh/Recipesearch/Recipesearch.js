@@ -198,7 +198,10 @@ function Recipesearch() {
                 <div className="recommendlistinsearch d-flex justify-content-center">
                     {/* <a href="./"> */}
                     <div className="recipephotoinsearch">
-                        <img src="/images/dishimage.jpg" alt="" />
+                        <img
+                            src="/images/dishimages/0f06264e9e2497a0449ac3dbdcf68533.jpg"
+                            alt=""
+                        />
                     </div>
                     {/* </a> */}
 
@@ -252,7 +255,10 @@ function Recipesearch() {
                 <div className="recommendlistinsearch d-flex justify-content-center">
                     {/* <a href="./"> */}
                     <div className="recipephotoinsearch">
-                        <img src="/images/dishimage.jpg" alt="" />
+                        <img
+                            src="/images/dishimages/0f06264e9e2497a0449ac3dbdcf68533.jpg"
+                            alt=""
+                        />
                     </div>
                     {/* </a> */}
                     <div className="recipeblockinsearch">
@@ -319,7 +325,7 @@ function Recipesearch() {
                             <div className="recipephotoinsearch">
                                 <Link to={`/recipe/each/${v.recipes_sid}`}>
                                     <img
-                                        src={`/dishimages/${v.recipes_img}`}
+                                        src={`/images/dishimages/${v.recipes_img}`}
                                         alt=""
                                     />
                                 </Link>
