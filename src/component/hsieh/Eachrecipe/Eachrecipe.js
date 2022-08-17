@@ -71,8 +71,9 @@ function Eachrecipe() {
         };
 
         if (loginUser.customer_id != eachrecipe.customer_id) {
-            alert('您並非本食譜提供者');
-            navigate('/recipe', { replace: true });
+            alert('您並非本食譜撰寫者');
+            navigate('/', { replace: false });
+            // return;
         } else {
             const r = await fetch('http://localhost:3600/recipe/delete', {
                 method: 'DELETE',
@@ -108,16 +109,23 @@ function Eachrecipe() {
         }
     }
 
-    // function like() {
-
-    // }
-
-    // function collection() {
-
-    // }
+    function gotocreate() {
+        // console.log(loginUser.customer_id);
+        if (loginUser.customer_id === '' || null) {
+            alert('請先登入帳號');
+            return;
+        } else {
+            navigate('/recipe/createrecipe', { replace: false });
+        }
+    }
 
     return (
         <>
+            <div className="menuincreate">
+                <button className="rightsidebutton" onClick={gotocreate}>
+                    <img src="/images/file-plus.svg" alt="" />
+                </button>
+            </div>
             <p className="eachrecipetitle">{eachrecipe.recipes_name}</p>
 
             <hr className="lineineach" align="center" />
