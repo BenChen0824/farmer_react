@@ -91,7 +91,7 @@ function MemberProfile() {
 
     return (
         <>
-            <div className="container">
+            <div className="container py-5">
                 <div className="row">
                     <MemberNavbar />
                     <div className="col-9">
@@ -279,7 +279,7 @@ function MemberProfile() {
                                               key={v.recipes_sid}
                                           >
                                               <img
-                                                  src={'/images/' + v.recipes_img}
+                                                  src={'/images/dishimages/' + v.recipes_img}
                                                   className="card-img-top bop-objft"
                                                   width="200px"
                                                   height="175px"

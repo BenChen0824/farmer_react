@@ -65,8 +65,7 @@ function MemberData(){
 
     return (
     <>
-    {console.log(memberData)}
-        <div className="container">
+        <div className="container py-5">
             <div className="row">
                 <MemberNavbar />
                 <div className="col-sm-9">

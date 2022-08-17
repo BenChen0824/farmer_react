@@ -52,7 +52,7 @@ function MemberEvents(){
     
     return (
         <>
-        <div className="container">
+        <div className="container py-5">
             <div className="row">
                 <MemberNavbar/>
                     <div className="col-9">
@@ -84,7 +84,7 @@ function MemberEvents(){
                                     <div className="card mb-3 shadow-sm" style={{maxWidth: "640px"}} key={v.activity_sid}>
                                 <div className="row">
                                     <div className="col-4 p-0">
-                                        <img src={`/images/${v.card_img}`} className="img-fluid rounded-start h-100 boe-objft" alt=""/>
+                                        <img src={`/images/activity/${JSON.parse(v.card_img)[0]}`} className="img-fluid rounded-start h-100 boe-objft" alt=""/>
                                     </div>
                                     <div className="col-8">
                                         <div className="card-body">
@@ -118,7 +118,7 @@ function MemberEvents(){
                                 <div className="card mb-3 shadow-sm" style={{maxWidth: "640px"}} key={v.activity_sid}>
                                 <div className="row">
                                     <div className="col-4 p-0">
-                                        <img src={`/images/${v.card_img}`} className="img-fluid rounded-start h-100 boe-objft" alt=""/>
+                                        <img src={`/images/activity/${JSON.parse(v.card_img)[0]}`} className="img-fluid rounded-start h-100 boe-objft" alt=""/>
                                     </div>
                                     <div className="col-8">
                                         <div className="card-body">

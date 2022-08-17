@@ -71,7 +71,7 @@ function MemberCollections() {
 
     return (
         <>
-            <div className="container">
+            <div className="container py-5">
                 <div className="row">
                     <MemberNavbar />
                     <div className="col-9">
