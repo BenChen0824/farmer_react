@@ -127,7 +127,8 @@ function Createrecipe() {
             step7: document.form1.step7.value,
             step8: document.form1.step8.value,
             step9: document.form1.step9.value,
-            recipes_img: document.form1.recipes_img.value,
+            // recipes_img: document.form1.recipes_img.value,
+            recipes_img: document.form1.recipes_img.value.substring(12),
             recipe_creater: loginUser.username,
             customer_id: loginUser.customer_id,
         };

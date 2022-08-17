@@ -140,7 +140,7 @@ function Eachrecipe() {
                             作者：{eachrecipe.recipe_creater}
                         </p>
 
-                        <div className="likeandcollectineach">
+                        {/* <div className="likeandcollectineach">
                             <button className="buttonineach">
                                 <img
                                     src="/images/heart.svg"
@@ -156,7 +156,7 @@ function Eachrecipe() {
                                     className="iconineach"
                                 />
                             </button>
-                        </div>
+                        </div> */}
                     </div>
 
                     {/* 分隔線 */}

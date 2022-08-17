@@ -189,7 +189,7 @@ function Updaterecipe() {
     }
 
     function qwert() {
-        const a = previewimg.substring(12);
+        const a = updaterecipe.recipes_img.substring(12);
         return a;
     }
 
@@ -1230,7 +1230,7 @@ function Updaterecipe() {
 
                         <img
                             className="showphotoincreate"
-                            src={`/dishimages/${updaterecipe.recipes_img}`}
+                            src={`/dishimages/${qwert()}`}
                             alt=""
                         />
                     </div>
