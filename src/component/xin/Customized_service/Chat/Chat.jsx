@@ -78,69 +78,90 @@ const Chat = ({ socket, user, users, setUsers, messages, setMessages }) => {
         },
         [messages, setMessages, handleNewMessageStatus]
     );
+    const imgMessage = useCallback(
+        ({ content, from, to }) => {
+            //if user is selected
+            if (currentSelectedUser.current.userId) {
+                if (currentSelectedUser.current.userId === from) {
+                    const newMessage = {
+                        userId: from,
+                        username: user.username,
+                        // username: user.username,
+                        content,
+                        type: 'file',
+                    };
+                    setMessages([...messages, newMessage]);
+                } else {
+                    handleNewMessageStatus(from, true);
+                }
+            } else {
+                //if user is not selected
+                handleNewMessageStatus(from, true);
+            }
+        },
+        [messages, setMessages, handleNewMessageStatus, user.username]
+    );
 
     const userMessages = useCallback(
         ({ messages }) => {
             //{content,from} 訊息發送過來
-            //{message,userId} 我們要的資料
             const chatMessages = [];
             messages.forEach(({ content, from }) => {
-                chatMessages.push({ userId: from, message: content });
+                const newMessage = {
+                    message,
+                    type: 'file',
+                    body: file,
+                };
+                chatMessages.push({
+                    userId: from,
+                    message: content,
+                    newMessage,
+                });
                 setMessages([...chatMessages]);
             });
         },
-        [setMessages]
+        [setMessages, file, message]
     );
-
-    useEffect(() => {
-        socket.on('user connected', (user) => userConnected(user));
-
-        socket.on('user disconnected', (user) => userDisconnected(user));
-
-        socket.on('private message', (message) => privateMessage(message));
-
-        socket.on('user messages', (messages) => userMessages(messages));
-    }, [socket, userConnected, userDisconnected, privateMessage, userMessages]);
-
     const sendMessage = () => {
-        if (file) {
-            const newMessage = {
-                userId: user.userId,
-                username: user.username,
-                message,
-                type: 'file',
-                body: file,
-                mimeType: file.type,
-                fileName: file.name,
-            };
-
-            socket.emit('private message', {
-                content: message,
-                to: selectedUser.userId,
-            });
-            setMessages([...messages, newMessage]);
-            setMessage('');
-            setFile();
-        } else {
-            socket.emit('private message', {
-                content: message,
-                to: selectedUser.userId,
-            });
-            const newMessage = {
-                userId: user.userId,
-                username: user.username,
-                message,
-            };
-            setMessages([...messages, newMessage]);
-            setMessage('');
-            setFile();
+        const newMessage = {
+            userId: user.userId,
+            username: user.username,
+            message,
+            type: 'text',
+            body: message,
+        };
+        if (message === '') {
+            return;
         }
+        setMessages([...messages, newMessage]);
+        setMessage('');
+        socket.emit('private message', {
+            content: message,
+            to: selectedUser.userId,
+            newMessage,
+        });
     };
+
     function selectFile(e) {
         if (typeof e.target.value[0] !== 'undefined') {
-            console.log(e.target.files[0]);
-            setMessage(e.target.files[0].name);
+            setMessage('');
             setFile(e.target.files[0]);
+            const blob = new Blob(e.target.files, e.target.files.type);
+            const reader = new FileReader();
+            reader.readAsDataURL(blob);
+            reader.onloadend = function () {
+                socket.emit('image message', {
+                    content: reader.result,
+                    to: selectedUser.userId,
+                });
+                const newMessage = {
+                    userId: user.userId,
+                    username: user.username,
+                    content: reader.result,
+                    type: 'file',
+                };
+                setMessages([...messages, newMessage]);
+            };
         } else {
             return null;
         }
@@ -154,7 +175,32 @@ const Chat = ({ socket, user, users, setUsers, messages, setMessages }) => {
         // 取消alert點點↓↓
         handleNewMessageStatus(user.userId, false);
     };
+    useEffect(() => {
+        socket.on('user connected', (user) => userConnected(user));
 
+        socket.on('user disconnected', (user) => userDisconnected(user));
+
+        socket.on('private message', (message) => privateMessage(message));
+
+        socket.on('image message', (message) => imgMessage(message));
+
+        socket.on('user messages', (messages) => userMessages(messages));
+    }, [
+        socket,
+        userConnected,
+        userDisconnected,
+        privateMessage,
+        userMessages,
+        imgMessage,
+    ]);
+    useEffect(() => {
+        document.querySelector('footer').style =
+            'visibility: hidden; height:0;min-height:0';
+        return () => {
+            document.querySelector('footer').style =
+                'visibility: visible; height:"auto"';
+        };
+    }, []);
     return (
         <ChatContainer>
             <div className="d-flex flex-column col-4 col-lg-4 col-xl-4 pe-0 border-right-info">
@@ -233,7 +279,13 @@ const Chat = ({ socket, user, users, setUsers, messages, setMessages }) => {
             {selectedUser.userId && (
                 <div className="d-flex flex-column col-8 col-lg-8 col-xl-8 ps-0 chat-window">
                     <ChatHeader user={selectedUser} />
-                    <ChatBody user={user} messages={messages} />
+                    <ChatBody
+                        user={user}
+                        socket={socket}
+                        messages={messages}
+                        message={message}
+                        selectedUser={selectedUser}
+                    />
                     <ChatInput
                         selectFile={selectFile}
                         message={message}

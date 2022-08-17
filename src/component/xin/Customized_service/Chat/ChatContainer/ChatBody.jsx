@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import Uploadimages from './hooks/Uploadimages';
+
 const ChatBody = ({ user, messages }) => {
     const scroll = useRef();
     //滾動到最後訊息
@@ -7,12 +7,37 @@ const ChatBody = ({ user, messages }) => {
         scroll.current?.scrollIntoView({ behavior: 'smooth' });
     }, [messages]);
 
+    // if (message.type === 'file') {
+    //     console.log(123);
+
+    //     return (
+    //         <div>
+    //             <Uploadimages fileName={message.fileName} blob={blob} />
+    //         </div>
+    //     );
+    // }
     return (
-        <div className="position-relative overflow-auto chat-height ">
+        <div
+            style={{ overflowY: 'scroll' }}
+            className="position-relative overflow-auto chat-height "
+        >
             <div className="p-4 d-flex flex-column">
                 {messages.map((message, index) => {
-                    return message.type === 'userStatus' ? (
-                        <div key={index} className="text-center"></div>
+                    return message.type === 'file' ? (
+                        <div
+                            key={index}
+                            className={
+                                message.userId === user.userId
+                                    ? 'chat-message-right mb-4 xin-bg-color bg-gradient rounded'
+                                    : 'chat-message-left mb-4 bg-light rounded'
+                            }
+                        >
+                            <img
+                                style={{ width: 150, height: 'auto' }}
+                                src={message.content}
+                                alt=""
+                            />
+                        </div>
                     ) : (
                         <div
                             key={index}
@@ -24,7 +49,7 @@ const ChatBody = ({ user, messages }) => {
                         >
                             <div
                                 className="flex-shrink-1  py-2 px-3 ml-3"
-                                // ref={scroll}
+                                ref={scroll}
                             >
                                 {message.message.includes('http') ? (
                                     <a href={message.message}>

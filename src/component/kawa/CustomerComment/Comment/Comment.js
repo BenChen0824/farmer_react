@@ -232,7 +232,7 @@ const Comment = () => {
         <>
             <div className="container">
                 {/* ----------------- Title ----------------- */}
-                <Title />
+                <Title className="Comment_Title" />
                 {/* ----------------- 搜尋 ----------------- */}
                 <div
                     className="CommentSearch_area d-flex justify-content-center m-5"
@@ -368,14 +368,14 @@ const Comment = () => {
 
                                 <div className="CommentCard d-flex">
                                     {/* ----------- */}
-                                    <div className="CommentCard_imgwrap me-3">
+                                    <div className="CommentCard_imgwrap ">
                                         <img
-                                            src={`./member_imgs/${v.profile_img}`}
+                                            src={`./member_images/${v.profile_img}`}
                                             alt=""
                                         />
                                     </div>
                                     {/* ----------- */}
-                                    <div>
+                                    <div className="x">
                                         <img
                                             src={getPicURL(+v.rating)}
                                             // getPicURL(e.target.getAttribute('value'))

@@ -39,20 +39,20 @@ function SignIn() {
                 title: '歡迎登入',
                 showConfirmButton: true,
                 confirmButtonText: '確認',
-                confirmButtonColor: "#709D40"
-            }).then(()=>{
+                confirmButtonColor: '#709D40',
+            }).then(() => {
                 navigate('/member/data', { replace: true });
-            })
+            });
         } else {
             Swal.fire({
                 icon: 'error',
                 title: '帳號密碼錯誤',
                 showConfirmButton: true,
                 confirmButtonText: '請輸入正確資訊',
-                confirmButtonColor: "#709D40"
-            }).then(()=>{
+                confirmButtonColor: '#709D40',
+            }).then(() => {
                 navigate('/member/', { replace: true });
-            })
+            });
         }
     }
 
@@ -69,7 +69,13 @@ function SignIn() {
                         <h4 className="fw-semibold text-center m-0">
                             會員登入
                         </h4>
-                        <button className="btn btn-outline-light btn-small position-absolute top-0 end-0 shadow-none" type="button" onClick={autoInput}>填寫</button>
+                        <button
+                            className="btn btn-outline-light btn-small position-absolute top-0 end-0 shadow-none"
+                            type="button"
+                            onClick={autoInput}
+                        >
+                            填寫
+                        </button>
                     </div>
                     <form
                         className="form-signin px-5 pb-4 pt-3 mx-2"

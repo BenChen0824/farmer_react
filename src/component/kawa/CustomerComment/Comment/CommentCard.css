@@ -3,15 +3,13 @@
 }
 
 .CommentCard {
-    min-height: 200px;
+    /* min-height: 200px; */
     background-color: rgb(255, 255, 255);
     border-radius: 2px 2px 2px 2px;
     /* margin: 10px; */
     border: 2px solid rgb(213, 225, 228);
-    padding: 10px;
-    /* box-shadow: #333; */
-       /* border-right: 1px solid #333; */
-       /* box-shadow: 5px 2px 2px 1px rgba(0, 0, 255, .2); */
+    /* padding: 10px; */
+
     
 }
 
@@ -24,6 +22,7 @@
     align-items: center;
     margin-top: 10px;
     margin-left: 10px;
+    margin-right: 50px;
 }
 
 .CommentCard_imgwrap img {
@@ -70,7 +69,6 @@
 .star_and_likes {
     /* flex-direction: column; */
 }
-
 
 
 

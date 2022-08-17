@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 // import 'emoji-mart/css/emoji-mart.css';
 // import data from '@emoji-mart/data';
 import Picker from '@emoji-mart/react';
@@ -32,13 +32,14 @@ const ChatInput = ({ message, setMessage, sendMessage, selectFile }) => {
                 <label htmlFor="file-input">
                     <div className="btn xin-btn-nofocus">
                         <img
-                            src="/images/emojiIcon.png"
+                            src="/images/uploadimgicon.png"
                             alt="emoji"
                             className="emojistyle"
                         />
                     </div>
                 </label>
                 <input
+                    style={{ display: 'none' }}
                     type="file"
                     id="file-input"
                     className="file-input"
