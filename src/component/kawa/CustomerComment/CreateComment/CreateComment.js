@@ -14,6 +14,7 @@ export default function CreateComment() {
     // const [ButtonClose, setButtonClose] = useState(false);
 
     const loginUser = JSON.parse(localStorage.getItem('auth'));
+    const CommentProduct = JSON.parse(localStorage.getItem('comment_product'));
 
     const sendComment = (event) => {
         event.preventDefault();
@@ -24,7 +25,7 @@ export default function CreateComment() {
                 // avatar: '',
                 rating: number,
                 comment: document.form1.comment.value,
-                product_sid: 30,
+                product_sid: CommentProduct,
             })
             .then(() => {
                 setTimeout(() => {
