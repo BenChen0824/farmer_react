@@ -67,7 +67,7 @@ function MemberRecipe(){
 
     return (
         <>
-        <div className="container">
+        <div className="container py-5">
             <div className="row">
                 <MemberNavbar/>
                     <div className="col-sm-9">
@@ -107,7 +107,7 @@ function MemberRecipe(){
                                     <div className="position-absolute top-0 end-0">
                                         <button id={res.recipes_sid} className="btn btn-sm btn-light rounded-circle px-1 fs-6 bore-lineheight" onClick={deleteProduct}>×</button>
                                     </div>
-                                    <img src={`/images/${res.recipes_img}`} className="card-img-top bore-objft" width="200px" height="175px" alt="..."/>
+                                    <img src={`/images/dishimages/${res.recipes_img}`} className="card-img-top bore-objft" width="200px" height="175px" alt="..."/>
                                     <div className="card-body text-center">
                                         <p style={{display:'none'}}>{res.recipes_type}</p>
                                         <h5 className="card-title bore-multiline-ellipsis-details">{res.recipes_name}</h5>
@@ -123,7 +123,7 @@ function MemberRecipe(){
                                     <div className="position-absolute top-0 end-0">
                                         <button id={res.recipes_sid} className="btn btn-sm btn-light rounded-circle px-1 fs-6 bore-lineheight" onClick={deleteProduct}>×</button>
                                     </div>
-                                    <img src={`/images/${res.recipes_img}`} className="card-img-top bore-objft" width="200px" height="175px" alt="..."/>
+                                    <img src={`/images/dishimages/${res.recipes_img}`} className="card-img-top bore-objft" width="200px" height="175px" alt="..."/>
                                     <div className="card-body text-center">
                                         <p style={{display:'none'}}>{res.recipes_type}</p>
                                         <h5 className="card-title bore-multiline-ellipsis-details">{res.recipes_name}</h5>

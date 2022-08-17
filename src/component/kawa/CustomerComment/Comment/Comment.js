@@ -112,15 +112,15 @@ const Comment = () => {
     //抓圖片
     const getPicURL = (starRate) => {
         if (+starRate === 5) {
-            return '/index_images/star5.png';
+            return '/images/index_images/star5.png';
         } else if (+starRate === 4) {
-            return '/index_images/star4.png';
+            return '/images/index_images/star4.png';
         } else if (+starRate === 3) {
-            return '/index_images/star3.png';
+            return '/images/index_images/star3.png';
         } else if (+starRate === 2) {
-            return '/index_images/star2.png';
+            return '/images/index_images/star2.png';
         } else {
-            return '/index_images/star1.png';
+            return '/images/index_images/star1.png';
         }
     };
     // console.log(getPicURL(5));
@@ -368,14 +368,14 @@ const Comment = () => {
 
                                 <div className="CommentCard d-flex">
                                     {/* ----------- */}
-                                    <div className="CommentCard_imgwrap ">
+                                    <div className="CommentCard_imgwrap col-3">
                                         <img
-                                            src={`./member_images/${v.profile_img}`}
+                                            src={`./images/member_images/${v.profile_img}`}
                                             alt=""
                                         />
                                     </div>
                                     {/* ----------- */}
-                                    <div className="x">
+                                    <div className="col-9">
                                         <img
                                             src={getPicURL(+v.rating)}
                                             // getPicURL(e.target.getAttribute('value'))
@@ -408,7 +408,6 @@ const Comment = () => {
                                                 {v.likes}
                                             </div>
                                         </div>
-                                        {/* <span className="likes-counter">{`Like | ${v.likes}`}</span> */}
                                     </div>
                                 </div>
                             </div>

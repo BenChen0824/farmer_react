@@ -39,31 +39,33 @@ const News = () => {
             <h2 className="justify-content-center d-flex mt-5">
                 最新活動 / News
             </h2>
-            {/* 
-            <div className="news_group d-flex mt-5 justify-content-center container ">
+
+            {/* <div className="news_group d-flex mt-5 justify-content-center container ">
                 {data
                     ? data.map((row) => (
                           <div
-                              className="news_card  mx-3 col-4"
+                              className="news_card  mx-3 col-4 d-flex flex-column"
                               key={'mm' + row.sid}
                           >
                               <img
                                   src={`/images/activity/${row.card_img}`}
                                   alt=""
                               />
-                              <div className="card-body">
+                              <div className="card-body flex-grow-1">
                                   <h5 className="card_title">
                                       {`${row.card_area}`}
                                   </h5>
-                                  <h5 className="card_title">{`${row.card_city}`}</h5>
-                                  <p className="card-text">{`${row.card_info}`}</p>
-                                  <a
-                                      href="/#"
-                                      className="btn btn-primary"
-                                      onClick={() => goToPath(`${row.sid}`)}
-                                  >
-                                      活動詳情
-                                  </a>
+                                  <div className="flex-grow-1">
+                                      <h5 className="card_title">{`${row.card_city}`}</h5>
+                                      <p className="card-text">{`${row.card_info}`}</p>
+                                      <a
+                                          href="/#"
+                                          className="btn btn-primary"
+                                          onClick={() => goToPath(`${row.sid}`)}
+                                      >
+                                          活動詳情
+                                      </a>
+                                  </div>
                               </div>
                           </div>
                       ))
@@ -71,9 +73,9 @@ const News = () => {
             </div> */}
 
             <div className=" news_group d-flex mt-5 justify-content-center container">
-                <div className="news_card  mx-3 col-3">
-                    <img src="/images/index_images/main_banner_04.jpg" alt="" />
-                    <div className="card-body">
+                <div className="news_card  mx-3 col-3 d-flex flex-column">
+                    <img src="/images/activity/1.activity.jpg" alt="" />
+                    <div className="card-body flex-frow-1">
                         <h5 className="card_title">金小鎮休閒農業區 </h5>
                         <h5 className="card_title mb-3">栗縣 公館鄉</h5>
 
@@ -85,9 +87,10 @@ const News = () => {
                         </a>
                     </div>
                 </div>
-                <div className="news_card  mx-3 col-3">
-                    <img src="/images/index_images/main_banner_04.jpg" alt="" />
-                    <div className="card-body">
+
+                <div className="news_card  mx-3 col-3 d-flex flex-column">
+                    <img src="/images/activity/2.activity.jpg" alt="" />
+                    <div className="card-body flex-frow-1">
                         <h5 className="card_title">梨之鄉休閒農業區</h5>
                         <h5 className="card_title mb-3">臺中市 東勢區</h5>
 
@@ -99,9 +102,10 @@ const News = () => {
                         </a>
                     </div>
                 </div>
-                <div className="news_card  mx-3 col-3">
-                    <img src="/images/index_images/main_banner_04.jpg" alt="" />
-                    <div className="card-body">
+
+                <div className="news_card  mx-3 col-3 d-flex flex-column">
+                    <img src="/images/activity/3.activity.jpg" alt="" />
+                    <div className="card-body flex-frow-1">
                         <h5 className="card_title">桃米休閒農業區</h5>
                         <h5 className="card_title mb-3">南投縣 埔里鎮</h5>
 
@@ -113,9 +117,10 @@ const News = () => {
                         </a>
                     </div>
                 </div>
-                <div className="news_card  mx-3 col-3">
-                    <img src="/images/index_images/main_banner_04.jpg" alt="" />
-                    <div className="card-body">
+
+                <div className="news_card  mx-3 col-3 d-flex flex-column">
+                    <img src="/images/activity/4.activity.jpg" alt="" />
+                    <div className="card-body flex-frow-1">
                         <h5 className="card_title">枕頭山休閒農業區</h5>
                         <h5 className="card_title mb-3">宜蘭縣 員山鄉</h5>
                         <p className="card-text">
@@ -127,11 +132,6 @@ const News = () => {
                     </div>
                 </div>
             </div>
-
-            {/* <div className="news_arrow_btn">
-                <FiArrowLeftCircle size={50} />
-                <FiArrowRightCircle size={50} />
-            </div> */}
         </>
     );
 };

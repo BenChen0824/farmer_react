@@ -8,7 +8,7 @@ import { ReactComponent as Logo } from './images/fresh_LOGO_black.svg';
 import CartCountContext from '../ben/cart_count/CartCountContext';
 import AuthContext from '../bob/component/authContext';
 
-function Nav() {
+function Nav_v2() {
     const { cartList, setCartList } = useContext(CartCountContext);
 
     const { authorized, username, logout } = useContext(AuthContext);
@@ -112,7 +112,7 @@ function Nav() {
                         </Link>
 
                         <div className="cart_number px-3 fs-5">
-                            {cartList.length}
+                            {cartList ? cartList.length : 0}
                         </div>
                         {/* btn-outline-dark */}
                         {authorized ? (
@@ -192,4 +192,4 @@ function Nav() {
     );
 }
 
-export default Nav;
+export default Nav_v2;

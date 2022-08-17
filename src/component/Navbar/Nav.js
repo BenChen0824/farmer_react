@@ -207,7 +207,7 @@ function Nav() {
                                     : 'cart_number px-3 fs-5'
                             }
                         >
-                            {cartList.length}
+                            {cartList ? cartList.length : 0}
                         </div>
                         {/* btn-outline-dark */}
                         {authorized ? (

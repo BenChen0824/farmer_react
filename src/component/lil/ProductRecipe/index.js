@@ -18,7 +18,7 @@ function ProductRecipe() {
 
         setRecipes(data);
     };
-    // console.log(recipes);
+    console.log(recipes);
     // useEffect on init
 
     useEffect(() => {

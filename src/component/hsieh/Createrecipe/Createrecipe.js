@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import './Createrecipe.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Title from './../../lil/Title/index';
 
 function Createrecipe() {
     const loginUser = JSON.parse(localStorage.getItem('auth'));
@@ -126,7 +127,8 @@ function Createrecipe() {
             step7: document.form1.step7.value,
             step8: document.form1.step8.value,
             step9: document.form1.step9.value,
-            recipes_img: document.form1.recipes_img.value,
+            // recipes_img: document.form1.recipes_img.value,
+            recipes_img: document.form1.recipes_img.value.substring(12),
             recipe_creater: loginUser.username,
             customer_id: loginUser.customer_id,
         };
@@ -243,8 +245,32 @@ function Createrecipe() {
     //     elem[elem.length - 1].value = '';
     // }
 
+    function autoInput() {
+        document.form1.recipesname.value = 'bob';
+        document.form1.description.value = 'bob791224@gmail.com';
+        document.form1.timecost.value = 'a123456';
+        document.form1.calories.value = 'a123456';
+        document.form1.ingredient.value = 'a123456';
+        document.form1.ingredient1.value = 'a123456';
+        document.form1.ingredient2.value = 'a123456';
+        document.form1.ingredient3.value = 'a123456';
+        document.form1.step.value = 'a123456';
+        document.form1.step1.value = 'a123456';
+        document.form1.step2.value = 'a123456';
+        document.form1.step3.value = 'a123456';
+    }
+
     return (
         <>
+            <div className="autoinputincreate">
+                <button
+                    className="autoinputincreatebutton"
+                    type="button"
+                    onClick={autoInput}
+                >
+                    填寫
+                </button>
+            </div>
             <form
                 name="form1"
                 value=""
@@ -253,10 +279,11 @@ function Createrecipe() {
                 method="post"
                 onSubmit={sentAllInfo}
             >
-                <h2 className="createrecipetitle">
-                    新增食譜 ／ Create New Recipes
-                </h2>
-                <hr className="hrincreaterecipe" />
+                <div className="createrecipetitle">
+                    <Title zh={'新增食譜'} eg={'Create New Recipes'} />
+                </div>
+                {/* <hr className="hrincreaterecipe" /> */}
+
                 <div className="eachdataincreaterecipe">
                     <label className="datanameincreaterecipe">食譜名稱</label>
                     <section>
@@ -481,11 +508,11 @@ function Createrecipe() {
                                 className="buttonincreate"
                                 // onClick={}
                             >
-                                <img
+                                {/* <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
-                                />
+                                /> */}
                             </button>
                         </div>
                         <div className="invalid-feedback"></div>
@@ -514,11 +541,11 @@ function Createrecipe() {
                                 className="buttonincreate"
                                 // onClick={}
                             >
-                                <img
+                                {/* <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
-                                />
+                                /> */}
                             </button>
                         </div>
                         <div className="invalid-feedback"></div>
@@ -547,11 +574,11 @@ function Createrecipe() {
                                 className="buttonincreate"
                                 // onClick={}
                             >
-                                <img
+                                {/* <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
-                                />
+                                /> */}
                             </button>
                         </div>
 
@@ -579,11 +606,11 @@ function Createrecipe() {
                                 className="buttonincreate"
                                 // onClick={}
                             >
-                                <img
+                                {/* <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
-                                />
+                                /> */}
                             </button>
                         </div>
 
@@ -611,11 +638,11 @@ function Createrecipe() {
                                 className="buttonincreate"
                                 // onClick={}
                             >
-                                <img
+                                {/* <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
-                                />
+                                /> */}
                             </button>
                         </div>
 
@@ -643,11 +670,11 @@ function Createrecipe() {
                                 className="buttonincreate"
                                 // onClick={}
                             >
-                                <img
+                                {/* <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
-                                />
+                                /> */}
                             </button>
                         </div>
 
@@ -675,11 +702,11 @@ function Createrecipe() {
                                 className="buttonincreate"
                                 // onClick={}
                             >
-                                <img
+                                {/* <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
-                                />
+                                /> */}
                             </button>
                         </div>
 
@@ -707,11 +734,11 @@ function Createrecipe() {
                                 className="buttonincreate"
                                 // onClick={}
                             >
-                                <img
+                                {/* <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
-                                />
+                                /> */}
                             </button>
                         </div>
 
@@ -739,11 +766,11 @@ function Createrecipe() {
                                 className="buttonincreate"
                                 // onClick={}
                             >
-                                <img
+                                {/* <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
-                                />
+                                /> */}
                             </button>
                         </div>
 
@@ -771,11 +798,11 @@ function Createrecipe() {
                                 className="buttonincreate"
                                 // onClick={}
                             >
-                                <img
+                                {/* <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
-                                />
+                                /> */}
                             </button>
                         </div>
 
@@ -842,11 +869,11 @@ function Createrecipe() {
                                 className="buttonincreate"
                                 // onClick={}
                             >
-                                <img
+                                {/* <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
-                                />
+                                /> */}
                             </button>
                         </div>
 
@@ -874,11 +901,11 @@ function Createrecipe() {
                                 className="buttonincreate"
                                 // onClick={}
                             >
-                                <img
+                                {/* <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
-                                />
+                                /> */}
                             </button>
                         </div>
 
@@ -906,11 +933,11 @@ function Createrecipe() {
                                 className="buttonincreate"
                                 // onClick={}
                             >
-                                <img
+                                {/* <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
-                                />
+                                /> */}
                             </button>
                         </div>
 
@@ -938,11 +965,11 @@ function Createrecipe() {
                                 className="buttonincreate"
                                 // onClick={}
                             >
-                                <img
+                                {/* <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
-                                />
+                                /> */}
                             </button>
                         </div>
 
@@ -970,11 +997,11 @@ function Createrecipe() {
                                 className="buttonincreate"
                                 // onClick={}
                             >
-                                <img
+                                {/* <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
-                                />
+                                /> */}
                             </button>
                         </div>
 
@@ -1002,11 +1029,11 @@ function Createrecipe() {
                                 className="buttonincreate"
                                 // onClick={}
                             >
-                                <img
+                                {/* <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
-                                />
+                                /> */}
                             </button>
                         </div>
 
@@ -1034,11 +1061,11 @@ function Createrecipe() {
                                 className="buttonincreate"
                                 // onClick={}
                             >
-                                <img
+                                {/* <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
-                                />
+                                /> */}
                             </button>
                         </div>
 
@@ -1066,11 +1093,11 @@ function Createrecipe() {
                                 className="buttonincreate"
                                 // onClick={}
                             >
-                                <img
+                                {/* <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
-                                />
+                                /> */}
                             </button>
                         </div>
 
@@ -1098,11 +1125,11 @@ function Createrecipe() {
                                 className="buttonincreate"
                                 // onClick={}
                             >
-                                <img
+                                {/* <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
-                                />
+                                /> */}
                             </button>
                         </div>
 
@@ -1130,11 +1157,11 @@ function Createrecipe() {
                                 className="buttonincreate"
                                 // onClick={}
                             >
-                                <img
+                                {/* <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
-                                />
+                                /> */}
                             </button>
                         </div>
 

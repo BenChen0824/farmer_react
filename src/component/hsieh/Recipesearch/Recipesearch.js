@@ -3,9 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './Recipesearch.css';
-import './Leftsidemenu.css';
+import './Rightsidemenu.css';
 import Pagination from './Pagination';
-import Popup from './Popup';
+// import Popup from './Popup';
 import axios from 'axios';
 import Title from './../../lil/Title/index';
 
@@ -37,6 +37,7 @@ function Recipesearch() {
         setRecipeDisplay(obj);
         setRecipeDisplayAgain(obj);
     }
+
     async function getRecipe1() {
         const r = await fetch('http://localhost:3600/recipe/recipe');
         const obj = await r.json();
@@ -59,8 +60,10 @@ function Recipesearch() {
     const loginUser = JSON.parse(localStorage.getItem('auth'));
 
     function gotocreate() {
+        // console.log(loginUser.customer_id);
         if (loginUser.customer_id === '' || null) {
             alert('請先登入帳號');
+            return;
         } else {
             navigate('/recipe/createrecipe', { replace: false });
         }
@@ -117,32 +120,31 @@ function Recipesearch() {
         setIsCollected(!isCollected);
     };
 
+    const collectionchange = (sid) => {
+        const packageToSend = {
+            customer_id: loginUser.customer_id,
+            recipes_sid: sid,
+        };
+        fetch('http://localhost:3600/recipe/recipecollection', {
+            method: 'POST',
+            body: JSON.stringify(packageToSend),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((r) => r.json())
+            .then((obj) => {
+                setCount(count + 1);
+                console.log(obj);
+            });
+    };
+
     return (
         <>
             <div className="menuincreate">
                 <button className="rightsidebutton" onClick={gotocreate}>
                     <img src="/images/file-plus.svg" alt="" />
                 </button>
-                {/* <Link to={`/recipe/createrecipe`}>
-                    <button className="leftsidebutton">
-                        新增食譜
-                        <img
-                            src="/images/file-plus.svg"
-                            alt=""
-                            className="crudineach"
-                        />
-                    </button>
-                </Link>
-                <br />
-
-                <button className="leftsidebutton" onClick={gotocreate}>
-                    新增食譜
-                    <img
-                        src="/images/file-plus.svg"
-                        alt=""
-                        className="crudineach"
-                    />
-                </button> */}
             </div>
 
             <div className="hsiehsearching">
@@ -173,7 +175,7 @@ function Recipesearch() {
                         搜尋
                     </button>
 
-                    <button
+                    {/* <button
                         type="button"
                         className="btn btn-dark"
                         style={{ margin: 5 }}
@@ -185,7 +187,7 @@ function Recipesearch() {
                         className="popuptosearch"
                         trigger={ButtonPop}
                         setButtonPop={setButtonPop}
-                    />
+                    /> */}
                 </div>
             </div>
 
@@ -196,75 +198,22 @@ function Recipesearch() {
             </div>
             <div className="w-100 d-flex flex-wrap">
                 <div className="recommendlistinsearch d-flex justify-content-center">
-                    {/* <a href="./"> */}
                     <div className="recipephotoinsearch">
-                        <img
-                            src="/images/dishimages/0f06264e9e2497a0449ac3dbdcf68533.jpg"
-                            alt=""
-                        />
+                        <Link to={`/recipe/each/18`}>
+                            <img
+                                src="/images/dishimages/b0fd632a003a439d13eef6fef4027a0a.jpg"
+                                alt=""
+                            />
+                        </Link>
                     </div>
-                    {/* </a> */}
 
                     <div className="recipeblockinsearch">
-                        {/* <a href="./">> */}
-                        <p>日式黃金炸蝦</p>
-                        {/* </a> */}
-
-                        <div className="iconmanagementinsearch">
-                            <button className="buttoninsearch">
-                                <img
-                                    src="/images/heart.svg"
-                                    alt=""
-                                    className="iconinsearch"
-                                />
-                            </button>
-                            <p className="iconinsearchp">10</p>
-                            <button className="buttoninsearch">
-                                <img
-                                    src="/images/good.svg"
-                                    alt=""
-                                    className="iconinsearch"
-                                />
-                            </button>
-                            <p className="iconinsearchp">10</p>
-                        </div>
-
-                        <hr className="hrlineinsearch" />
-
-                        <div className="iconmanagementinsearch">
-                            <img
-                                src="/images/clock.svg"
-                                alt=""
-                                className="iconinsearch"
-                            />
-                            <p className="iconinsearchp">10 分鐘</p>
-                        </div>
-                        <div className="iconmanagementinsearch">
-                            <img
-                                src="/images/heat.svg"
-                                alt=""
-                                className="iconinsearch"
-                            />
-                            <p className="iconinsearchp">約 100 大卡</p>
-                        </div>
-                    </div>
-                </div>
-
-                {/* 分隔線 */}
-
-                <div className="recommendlistinsearch d-flex justify-content-center">
-                    {/* <a href="./"> */}
-                    <div className="recipephotoinsearch">
-                        <img
-                            src="/images/dishimages/0f06264e9e2497a0449ac3dbdcf68533.jpg"
-                            alt=""
-                        />
-                    </div>
-                    {/* </a> */}
-                    <div className="recipeblockinsearch">
-                        {/* <a href="./"> */}
-                        <p>日式黃金炸蝦</p>
-                        {/* </a> */}
+                        <Link
+                            to={`/recipe/each/18`}
+                            className="linkinrecipesearch"
+                        >
+                            <p>紙包檸檬鮭魚菲力</p>
+                        </Link>
 
                         <div className="iconmanagementinsearch">
                             <button className="buttoninsearch">
@@ -282,7 +231,7 @@ function Recipesearch() {
                                     className="iconinsearch"
                                 />
                             </button>
-                            <p className="iconinsearchp">20</p>
+                            <p className="iconinsearchp">14</p>
                         </div>
 
                         <hr className="hrlineinsearch" />
@@ -301,7 +250,67 @@ function Recipesearch() {
                                 alt=""
                                 className="iconinsearch"
                             />
-                            <p className="iconinsearchp">約 200 大卡</p>
+                            <p className="iconinsearchp">約 600 大卡</p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* 分隔線 */}
+
+                <div className="recommendlistinsearch d-flex justify-content-center">
+                    <div className="recipephotoinsearch">
+                        <Link to={`/recipe/each/17`}>
+                            <img
+                                src="/images/dishimages/b161f75f968c10be8f35001b502d14c0.jpg"
+                                alt=""
+                            />
+                        </Link>
+                    </div>
+
+                    <div className="recipeblockinsearch">
+                        <Link
+                            to={`/recipe/each/17`}
+                            className="linkinrecipesearch"
+                        >
+                            <p>煎蛋湯</p>
+                        </Link>
+
+                        <div className="iconmanagementinsearch">
+                            <button className="buttoninsearch">
+                                <img
+                                    src="/images/heart.svg"
+                                    alt=""
+                                    className="iconinsearch"
+                                />
+                            </button>
+                            <p className="iconinsearchp">22</p>
+                            <button className="buttoninsearch">
+                                <img
+                                    src="/images/good.svg"
+                                    alt=""
+                                    className="iconinsearch"
+                                />
+                            </button>
+                            <p className="iconinsearchp">11</p>
+                        </div>
+
+                        <hr className="hrlineinsearch" />
+
+                        <div className="iconmanagementinsearch">
+                            <img
+                                src="/images/clock.svg"
+                                alt=""
+                                className="iconinsearch"
+                            />
+                            <p className="iconinsearchp">10 分鐘</p>
+                        </div>
+                        <div className="iconmanagementinsearch">
+                            <img
+                                src="/images/heat.svg"
+                                alt=""
+                                className="iconinsearch"
+                            />
+                            <p className="iconinsearchp">約 500 大卡</p>
                         </div>
                     </div>
                 </div>
@@ -325,7 +334,7 @@ function Recipesearch() {
                             <div className="recipephotoinsearch">
                                 <Link to={`/recipe/each/${v.recipes_sid}`}>
                                     <img
-                                        src={`/images/dishimages/${v.recipes_img}`}
+                                        src={`/dishimages/${v.recipes_img}`}
                                         alt=""
                                     />
                                 </Link>
@@ -341,7 +350,10 @@ function Recipesearch() {
                                 <div className="iconmanagementinsearch">
                                     <button
                                         className="buttoninsearch"
-                                        onClick={collected}
+                                        onClick={() => {
+                                            collectionchange(v.recipes_sid);
+                                            collected();
+                                        }}
                                     >
                                         <img
                                             src="/images/heart.svg"

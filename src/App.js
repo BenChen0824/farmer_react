@@ -1,7 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.css';
-import Nav from './component/Navbar/Nav';
+// import Nav from './component/Navbar/Nav';
+import Navbar from './page/Navbar';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Footer from './component/Footer/Footer';
 import Container from './Container';
@@ -38,7 +39,7 @@ function App() {
                 <IconContext.Provider value={{ className: 'react_icons' }}>
                     <BrowserRouter>
                         <ProviderContainer>
-                            <Nav />
+                            <Navbar />
                             <Container>
                                 <Routes>
                                     <Route
