@@ -1264,7 +1264,7 @@ function Updaterecipe() {
 
                 <div className="buttonintextalign">
                     <button className="finishincreate" type="submit">
-                        修改食譜132
+                        修改食譜
                         <img
                             src="/images/pen.svg"
                             alt=""
