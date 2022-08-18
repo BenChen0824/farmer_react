@@ -158,7 +158,7 @@ function Updaterecipe() {
             updateStep7: document.form1.updateStep.value,
             updateStep8: document.form1.updateStep.value,
             updateStep9: document.form1.updateStep.value,
-            recipes_img: document.form1.recipes_img.value,
+            recipes_img: document.form1.recipes_img.value.substring(12),
             customer_id: loginUser.customer_id,
         };
 
