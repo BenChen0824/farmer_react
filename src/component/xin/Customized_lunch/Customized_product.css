@@ -188,7 +188,7 @@
 }
 .deletAllArea {
     position: absolute;
-    bottom: 35px;
+    bottom: 20px;
     left: 50%;
   transform: translate(-50%, 0);
 }
@@ -314,9 +314,9 @@
     border: none;
         background-color: #FA4747;
 }  
-.hiddenSelectedFoodSideBar{
+/* .hiddenSelectedFoodSideBar{
     height: 85vh;
-}  
+}   */
 @media screen and (max-width: 992px) {
     .xin-btn-danger{
         padding: 5px 15px;
