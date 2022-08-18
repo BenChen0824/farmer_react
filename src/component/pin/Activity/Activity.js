@@ -7,6 +7,7 @@ function Activity() {
     const navigate = useNavigate();
     const goToPath = (sid) => {
         navigate(`/activity/${sid}`);
+        window.scroll(0, 0);
     };
     const [data, setData] = useState([
         {

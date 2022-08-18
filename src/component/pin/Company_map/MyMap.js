@@ -96,8 +96,8 @@ function MyMap() {
                         </div>
                     </form>
                     <section
-                        className="content bg-w overflow-auto w-100 px-3 pt-3 mx-2"
-                        style={{ height: '100vh' }}
+                        className="content bg-w overflow-auto  px-3 pt-3 mx-2"
+                        style={{ height: '68vh' }}
                     >
                         {companyShowInfo.map((v, i) => {
                             return (
