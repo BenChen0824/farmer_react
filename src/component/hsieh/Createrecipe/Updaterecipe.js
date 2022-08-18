@@ -1233,7 +1233,7 @@ function Updaterecipe() {
                     <label>請選擇照片</label>
                 </div> */}
 
-                <hr className="hrincreaterecipe" />
+                {/* <hr className="hrincreaterecipe" /> */}
                 {/* 分隔線，以下完成按鈕 */}
 
                 <div className="buttonintextalign">
