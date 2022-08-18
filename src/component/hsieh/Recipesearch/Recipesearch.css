@@ -7,13 +7,12 @@
     position: relative;
     display: flex;
     justify-content: center; 
-    align-items: center; 
+    align-items: center;
 }
 
 .iconmanagementinsearch{
     display: flex;
     align-items: center; 
-    /* margin-left: 10px; */
 }
 
 .popuptosearch{
@@ -37,25 +36,27 @@
     font-size: 28px;
 }
 
-.recommendlistinsearch {
-    width: 40%;
-    margin: 30px 0px;
-    flex-wrap: wrap;
+.recipeinfoinsearch{
+    width: 90%;
+    margin-left: 10%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: left;
 }
 
-.recipeinfoinsearch{
-    display: flex;
+.recommendlistinsearch {
+    width: 35%;
+    margin: 30px 10px 30px 0px;
     flex-wrap: wrap;
+    display: flex;
     justify-content: center;
+    outline: 1px solid black;
 }
 
 .recipephotoinsearch {
     width: 250px;
     height: 200px;
     overflow: hidden;
-
 }
 
 .recipephotoinsearch img {
@@ -116,6 +117,20 @@
         font-size: 20px;
     }
 
+    .recipeinfoinsearch{
+        width: 90%;
+        /* margin-left: 10%; */
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: left;
+
+        /* width: 90%;
+    margin-left: 20%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right; */
+    }
+
     .titlewordinsearch{
         text-align: center;
         font-size: 20px;
@@ -133,7 +148,7 @@
         width: 90%;
         margin: 10px 0px;
         display: flex;
-        flex-wrap: wrap;
+        /* flex-wrap: wrap; */
         justify-content: center;
     }
 
@@ -152,7 +167,6 @@
         font-size: 20px;
         line-height: 30px;
         margin-left:5px ;
-        /* border: 1px black solid; */
     }
 
     .iconinsearch {

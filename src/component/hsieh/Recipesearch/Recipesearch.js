@@ -319,9 +319,9 @@ function Recipesearch() {
             {/* 分隔線，以下為食譜列表 */}
 
             <div>
-                <p className="titlewordinsearch">
-                    <Title zh={'食譜列表'} eg={'Recipes List'} />
-                </p>
+                {/* <p className="titlewordinsearch"> */}
+                <Title zh={'食譜列表'} eg={'Recipes List'} />
+                {/* </p> */}
             </div>
 
             <div className="recipeinfoinsearch">
