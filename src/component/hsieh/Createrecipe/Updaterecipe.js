@@ -147,7 +147,7 @@ function Updaterecipe() {
             updateIngredient6: document.form1.updateIngredient6.value,
             updateIngredient7: document.form1.updateIngredient7.value,
             updateIngredient8: document.form1.updateIngredient8.value,
-            updateStep: document.form1.updateStep.value,
+            updateStep0: document.form1.updateStep0.value,
             updateStep1: document.form1.updateStep1.value,
             updateStep2: document.form1.updateStep2.value,
             updateStep3: document.form1.updateStep3.value,
@@ -189,10 +189,10 @@ function Updaterecipe() {
         }
     }
 
-    function qwert() {
-        const a = updaterecipe.recipes_img.substring(12);
-        return a;
-    }
+    // function qwert() {
+    //     const a = updaterecipe.recipes_img.substring(12);
+    //     return a;
+    // }
 
     function plusoneingredient() {
         var elem = document.querySelectorAll('div.ingredientincreate1');
@@ -836,8 +836,8 @@ function Updaterecipe() {
                             <div className="redballincreate">1</div>
                             <section>
                                 <textarea
-                                    name="updateStep"
-                                    id="updateStep"
+                                    name="updateStep0"
+                                    id="updateStep0"
                                     className="stepoftextareaincreate"
                                     value={updaterecipe.recipes_step}
                                     placeholder="步驟1"
