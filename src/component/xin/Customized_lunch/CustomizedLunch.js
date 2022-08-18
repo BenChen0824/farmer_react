@@ -45,7 +45,7 @@ function CustomizedLunch() {
     return (
         <>
             <div className="container-fluid g-0">
-                <div className="pho-bg row w-100 m-0">
+                <div className="pho-bg row w-100 m-0 g-0">
                     <Foods
                         isShowed={!isShowed}
                         setIsShowed={setIsShowed}

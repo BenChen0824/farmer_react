@@ -128,18 +128,6 @@ function Canvas(props) {
             event.preventDefault();
         }
 
-        // const confirmToCart = await confirm(
-        //     "訂單即將送出，請確認訂單食材，如確認無誤請按'確定'送出訂單"
-        // );
-
-        // if (confirmToCart === true) {
-        //     // Swal.fire('Any fool can use a computer');
-        //     alert('已送出訂單~感謝購買');
-        // } else {
-        //     event.preventDefault();
-        //     return;
-        // }
-
         const fd = new FormData(document.form1);
         fd.append(
             'lunch_1',
@@ -272,16 +260,17 @@ function Canvas(props) {
                             </div>
                         </div>
 
-                        <div className="canvasBtns  d-flex justify-content-center  mb-4">
+                        <div className="canvasBtns  d-flex justify-content-center mt-md-5 mb-4">
                             <button
-                                className="priceArea price-btn btn btn-success me-3 xin-font-primary-color disabled"
-                                style={{ color: '#3a2c2c' }}
+                                className="priceArea price-btn  btn-success me-3 xin-font-primary-color rounded-pill disabled"
+                                style={{ color: '#FAFAFA' }}
                             >
                                 總價:{totalPrice}
                             </button>
                             <button
                                 type="submit"
-                                className="btn btn-primary pay-btn"
+                                className="btn-primary pay-btn rounded-pill"
+                                style={{ color: '#FAFAFA' }}
                                 onClick={saveCanvas}
                             >
                                 送出訂單

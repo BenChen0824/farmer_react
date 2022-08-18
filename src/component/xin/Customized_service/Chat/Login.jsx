@@ -2,7 +2,7 @@ import React from 'react';
 
 const Login = ({ newUser, setNewUser, authenticateUser }) => {
     return (
-        <div className="card w-100 text-center border-white">
+        <div className="card w-100 text-center border-white login-content">
             <div className="row">
                 <div className="clo-12">
                     <h5>歡迎使用小鱻肉真人客服^_^</h5>
