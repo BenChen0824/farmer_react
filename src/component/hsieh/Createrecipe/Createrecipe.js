@@ -127,7 +127,6 @@ function Createrecipe() {
             step7: document.form1.step7.value,
             step8: document.form1.step8.value,
             step9: document.form1.step9.value,
-            // recipes_img: document.form1.recipes_img.value,
             recipes_img: document.form1.recipes_img.value.substring(12),
             recipe_creater: loginUser.username,
             customer_id: loginUser.customer_id,
@@ -196,24 +195,6 @@ function Createrecipe() {
             .then((r) => r.json())
             .then((obj) => console.log(obj));
     }
-
-    // function previewFile() {
-    //     var preview = document.querySelector('img');
-    //     var file = document.querySelector('input[type=file]').files[0];
-    //     var reader = new FileReader();
-
-    //     reader.addEventListener(
-    //         'load',
-    //         function () {
-    //             preview.src = reader.result;
-    //         },
-    //         false
-    //     );
-
-    //     if (file) {
-    //         reader.readAsDataURL(file);
-    //     }
-    // }
 
     function qwert() {
         const a = previewimg.substring(12);
@@ -330,9 +311,9 @@ function Createrecipe() {
                                 name="description"
                                 id="description"
                                 required
-                                className="dataform1increate"
+                                className="dataform1ofdescribes"
                                 value={description}
-                                placeholder="請100字內簡單描述"
+                                placeholder="請100字內簡述"
                                 cols="30"
                                 rows="5"
                                 onChange={(e) => {
@@ -1216,7 +1197,6 @@ function Createrecipe() {
                         <input
                             type="file"
                             name="recipes_img"
-                            // onchange={previewFile}
                             onChange={(e) => {
                                 setPreviewimg(e.target.value);
                             }}

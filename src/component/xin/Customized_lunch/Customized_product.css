@@ -168,7 +168,7 @@
 }
 
 .card .xin-card-img-top {
-    width: 70%;
+    width: 65%;
     height: 6.5rem;
     object-fit: cover;
     flex-grow: 1;
@@ -188,14 +188,14 @@
 }
 .deletAllArea {
     position: absolute;
-    bottom: 20px;
+    bottom: 35px;
     left: 50%;
   transform: translate(-50%, 0);
 }
 
 
 .selectedDetil {
-    width: 80%;
+    width: 65%;
     height: 5rem;
     object-fit: contain;
 
@@ -219,7 +219,7 @@
 
 
 
-.foodcard:hover{
+.foodCard:hover{
     transform: scale(1.1, 1.1);
     border: 1px;
     transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -236,8 +236,8 @@
   position: absolute;
 } */
 .canvasBtns .price-btn {
-    background-color: #82ca35;
-    border: 1px solid #82ca35;
+    background-color: #3A2C2C;
+    border: 1px solid #3A2C2C;
     cursor: default;
     padding: 0 30px;
     font-size: 20px;
@@ -245,11 +245,10 @@
 .pay-btn {
     padding: 10px 30px;
     font-size: 20px;
+    background-color: #82CA35;
+    border: 1px solid #82CA35;
 }
-.price-btn:hover {
-    background-color: #82ca35;
-    border: 1px solid #82ca35;
-}
+
 .xinCanvasTitle {
     font-size: 35px;
     font-weight: 900;
@@ -307,10 +306,21 @@
 }
 
 .xin-remove-all-btn{
-        padding: 15px 10px;
+        padding: 10px 5px;
      }
-    
+.xin-btn-danger{
+    padding: 10px 30px;
+    font-size: 20px;
+    border: none;
+        background-color: #FA4747;
+}  
+.hiddenSelectedFoodSideBar{
+    height: 85vh;
+}  
 @media screen and (max-width: 992px) {
+    .xin-btn-danger{
+        padding: 5px 15px;
+    }
     .main{
         min-height: 0;
     }
@@ -393,7 +403,7 @@
     .hiddenSelectedFoodSideBar {
         position: absolute;
         width: 1rem;
-        right: 10px;
+        right: 8px;
         height: 100vh;
         transition: all 0.2s;
         border: none;

@@ -31,7 +31,7 @@
 .subtitlewordinsearch{
     font-size: 24px;
     color: rgb(0, 0, 0);
-    -webkit-text-stroke: 0.1px rgb(4, 0, 255);
+    /* -webkit-text-stroke: 0.1px rgb(4, 0, 255); */
 }
 
 .searchinput {
@@ -114,7 +114,7 @@
 
 
 
-@media screen and (max-width:900px) {
+@media screen and (max-width:800px) {
     .searchinput {
         font-size: 20px;
     }
@@ -136,7 +136,7 @@
     .subtitlewordinsearch{
         font-size: 16px;
         color: rgb(0, 0, 0);
-        -webkit-text-stroke: 0.1px rgb(4, 0, 255);
+        /* -webkit-text-stroke: 0.1px rgb(4, 0, 255); */
     }
 
     .recommendlistinsearch {

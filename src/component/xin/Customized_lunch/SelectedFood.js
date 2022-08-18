@@ -34,8 +34,8 @@ function SelectedFood(props) {
                 <h3
                     className={
                         isShowedSelectFood
-                            ? 'text-center xin-font-primary-color '
-                            : 'text-center hidden xin-font-primary-color  '
+                            ? 'text-center xin-font-primary-color mt-3'
+                            : 'text-center hidden xin-font-primary-color mt-3'
                     }
                 >
                     目前已選{calcCount ? calcCount + '樣' : ''}食材
@@ -173,9 +173,10 @@ function SelectedFood(props) {
                     <button
                         className={
                             isShowedSelectFood
-                                ? 'btn btn-danger xin-remove-all-btn'
-                                : 'btn btn-danger hidden '
+                                ? 'xin-btn-danger xin-remove-all-btn rounded-pill'
+                                : 'xin-btn-danger hidden rounded-pill'
                         }
+                        style={{ color: '#FAFAFA' }}
                         onClick={() => {
                             removeAllItem();
                         }}

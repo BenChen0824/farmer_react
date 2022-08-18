@@ -2,9 +2,7 @@
     height: 30px;
     width: 30px;
 }
-/* .btn.btn-info.xin-btn-nofocus {
-    box-shadow: none;
-} */
+
 .xin-btn-nofocus:focus {
     box-shadow: none;
 }
@@ -59,7 +57,10 @@
     position: sticky;
     bottom: 0;
 }
-
+.login-content{
+    height: 500px;
+    justify-content: center;
+}
 .border-right-info {
     border-right: 1px #0dcaf0 solid;
 }

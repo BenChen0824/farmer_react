@@ -63,7 +63,6 @@ const ChatMain = ({ socket }) => {
                         authenticateUser={authenticateUser}
                     />
                 )}
-                {/* <ChatBot/> */}
             </div>
         </main>
     );
