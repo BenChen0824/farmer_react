@@ -139,12 +139,18 @@
         align-items: center;
     }
     
-    .likes_icons {
+
+
+    /* 按讚顏色 &　數字 */
+    .likes_icons, .likes_number {
+        color: #333;
         margin-right: 10px;
     }
-    
-    .likes_icons, .likes_number {
-        color: rgb(36, 36, 36);
+
+    /* 按讚顏色 &　數字 (點擊後顏色) */
+       .likes_icons_isliked, .likes_number_isliked {
+        color: rgb(207, 82, 82);
+        margin-right: 10px;
     }
     
     .CommentCardAccount_and_Time {
