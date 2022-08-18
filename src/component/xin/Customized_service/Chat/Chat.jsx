@@ -150,10 +150,6 @@ const Chat = ({ socket, user, users, setUsers, messages, setMessages }) => {
             const reader = new FileReader();
             reader.readAsDataURL(blob);
             reader.onloadend = function () {
-                socket.emit('image message', {
-                    content: reader.result,
-                    to: selectedUser.userId,
-                });
                 const newMessage = {
                     userId: user.userId,
                     username: user.username,
@@ -161,6 +157,12 @@ const Chat = ({ socket, user, users, setUsers, messages, setMessages }) => {
                     type: 'file',
                 };
                 setMessages([...messages, newMessage]);
+
+                socket.emit('image message', {
+                    content: reader.result,
+                    to: selectedUser.userId,
+                    newMessage,
+                });
             };
         } else {
             return null;
