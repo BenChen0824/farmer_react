@@ -14,7 +14,7 @@ function Dailypoint() {
     const [showup, setShowup] = useState();
     const [showuptime, setShowupTime] = useState()
 
-    const pointArray = [100, 50, 60, 40, 30, 20];
+    const pointArray = [100, 140, 160, 150, 50, 200];
     const randomNum = Math.ceil(Math.random() * 6) - 1;
 
     const brokenegg = '/dailypoint-img/44434.png';
@@ -107,7 +107,7 @@ function Dailypoint() {
                     </div>
                     <br />
                     <div className="">
-                        <h2 className="display-6 text-center">點擊領取</h2>
+                        <h2 className="display-7 text-center">點擊領取</h2>
                     </div>
                     <div className="">
                         <h2 className="display-7 text-center ">
