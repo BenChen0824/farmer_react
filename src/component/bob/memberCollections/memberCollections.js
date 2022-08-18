@@ -58,7 +58,7 @@ function MemberCollections() {
     const deleteProduct = async (event) => {
         setDeleteStatus(false);
         const r = await fetch('http://localhost:3600/member/deleteproduct', {
-            method: 'DELETE',
+            method: 'PUT',
             headers: {
                 member_id: loginUser.customer_id,
                 product_id: event.target.id,
@@ -121,7 +121,9 @@ function MemberCollections() {
                             <div className="row justify-content-center">
                                 {response[0] ? searchInput.length >= 1 ||
                                 filterCate.length >= 1
-                                    ? filteredResult.map((res) => (
+                                    ? filteredResult.filter((v) => {
+                                            return +v.saved === 1;
+                                        }).map((res) => (
                                           <div
                                               className="card p-2 bdr m-1 shadow-sm"
                                               val={res.member_id}
@@ -165,7 +167,9 @@ function MemberCollections() {
                                               </div>
                                           </div>
                                       ))
-                                    : response.map((res) => (
+                                    : response.filter((v) => {
+                                            return +v.saved === 1;
+                                        }).map((res) => (
                                           <div
                                               className="card p-2 bdr m-1 shadow-sm"
                                               style={{ width: '16rem' }}
