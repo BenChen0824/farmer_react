@@ -194,7 +194,7 @@ const Comment = () => {
                 console.log(obj);
             });
     };
-    
+
 
     const handleIconClicked = (e) => {
         // e.stopPropagation();
@@ -376,7 +376,7 @@ const Comment = () => {
                                     {/* ----------- */}
                                     <div className="CommentCard_imgwrap col-3">
                                         <img
-                                            src={`./images/member_images/${v.profile_img}`}
+                                            src={`./images/${v.profile_img}`}
                                             alt=""
                                         />
                                     </div>
