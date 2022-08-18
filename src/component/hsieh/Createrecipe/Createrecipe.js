@@ -313,9 +313,9 @@ function Createrecipe() {
                             />
                             <div className="invalid-feedback"></div>
                         </section>
-                        <label className="dataform1increate">
+                        {/* <label className="dataform1increate">
                             剩餘 {100 - description.length} 字
-                        </label>
+                        </label> */}
                     </div>
                 </div>
 
@@ -1203,7 +1203,7 @@ function Createrecipe() {
                     <label>請選擇照片</label>
                 </div> */}
 
-                <hr className="hrincreaterecipe" />
+                {/* <hr className="hrincreaterecipe" /> */}
                 {/* 分隔線，以下完成按鈕 */}
 
                 <div className="buttonintextalign">
