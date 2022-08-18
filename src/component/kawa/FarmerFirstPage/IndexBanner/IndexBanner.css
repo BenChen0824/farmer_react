@@ -66,8 +66,15 @@
 }
 
 .indexBanner_text_area h2 {
-    font-size: 48px;
+    font-size: 50px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
 }
+
+.indexBanner_text_area p {
+    font-size: 18px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+}
+
 .slick-arrow{
     display: none !important;
 }

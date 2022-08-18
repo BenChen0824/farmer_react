@@ -53,7 +53,7 @@ export default class Fade extends Component {
                             <p>
                                 體現出對於有機食材的堅持，
                                 <br />
-                                讓客戶能有一個更健康、更安心的選擇
+                                讓客戶能有一個更健康、更安心的選擇。
                             </p>
                         </div>
                     </div>
@@ -71,7 +71,7 @@ export default class Fade extends Component {
                             <p>
                                 體現出對於有機食材的堅持，
                                 <br />
-                                讓客戶能有一個更健康、更安心的選擇
+                                讓客戶能有一個更健康、更安心的選擇。
                             </p>
                         </div>
                     </div>
@@ -89,7 +89,7 @@ export default class Fade extends Component {
                             <p>
                                 體現出對於有機食材的堅持，
                                 <br />
-                                讓客戶能有一個更健康、更安心的選擇
+                                讓客戶能有一個更健康、更安心的選擇。
                             </p>
                         </div>
                     </div>
@@ -107,7 +107,7 @@ export default class Fade extends Component {
                             <p>
                                 體現出對於有機食材的堅持，
                                 <br />
-                                讓客戶能有一個更健康、更安心的選擇
+                                讓客戶能有一個更健康、更安心的選擇。
                             </p>
                         </div>
                     </div>
