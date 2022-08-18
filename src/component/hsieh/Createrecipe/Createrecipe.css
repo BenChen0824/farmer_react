@@ -28,9 +28,16 @@
   height: 40px;
 }
 
+.dataform1ofdescribes{
+  width: 400px;
+  height: 40px;
+  line-height: 35px;
+}
+
 .stepoftextareaincreate {
   width: 400px;
   height: 40px;
+  line-height: 35px;
 }
 
 .breakpointtitle1 {
@@ -225,6 +232,13 @@
     width: 150px;
     height: 30px;
   }
+
+  .dataform1ofdescribes{
+    width: 150px;
+    height: 30px;
+    line-height: 20px;
+  }
+
   .stepoftextareaincreate {
     width: 150px;
     height: 30px;

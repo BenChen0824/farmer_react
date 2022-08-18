@@ -1241,8 +1241,8 @@ function Updaterecipe() {
                         <input
                             type="file"
                             name="recipes_img"
-                            id="inputData"
-                            // value={updaterecipe.recipes_img}
+                            // id="inputData"
+                            value={updaterecipe.recipes_img}
                             onChange={(e) => {
                                 setPreviewimg(e.target.value);
                             }}
@@ -1256,9 +1256,9 @@ function Updaterecipe() {
                     </div>
                 </div>
 
-                <div className="buttonintextalign">
+                {/* <div className="buttonintextalign">
                     <label>請選擇照片</label>
-                </div>
+                </div> */}
 
                 <hr className="hrincreaterecipe" />
                 {/* 分隔線，以下完成按鈕 */}
