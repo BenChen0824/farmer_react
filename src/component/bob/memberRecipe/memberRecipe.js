@@ -105,7 +105,7 @@ function MemberRecipe(){
                             (filteredResult.map((res)=>
                                 <div className="card p-2 bdr m-1 shadow-sm position-relative" val={res.member_id} style={{width: '16rem'}} key={res.product_id}>
                                     <div className="position-absolute top-0 end-0">
-                                        <button id={res.recipes_sid} className="btn btn-sm btn-light rounded-circle px-1 fs-6 bore-lineheight" onClick={deleteProduct}>×</button>
+                                        <button id={res.recipes_sid} className="btn btn-sm btn-light rounded-circle bore-buttonPadding fs-6 bore-lineheight" onClick={deleteProduct}>×</button>
                                     </div>
                                     <img src={`/images/dishimages/${res.recipes_img}`} className="card-img-top bore-objft" width="200px" height="175px" alt="..."/>
                                     <div className="card-body text-center">
@@ -121,7 +121,7 @@ function MemberRecipe(){
                             (response.map((res)=>
                                 <div className="card p-2 bdr m-1 shadow-sm position-relative" style={{width: '16rem'}} val={res.customer_id} key={res.recipes_sid}>
                                     <div className="position-absolute top-0 end-0">
-                                        <button id={res.recipes_sid} className="btn btn-sm btn-light rounded-circle px-1 fs-6 bore-lineheight" onClick={deleteProduct}>×</button>
+                                        <button id={res.recipes_sid} className="btn btn-sm btn-light rounded-circle bore-buttonPadding fs-6 bore-lineheight" onClick={deleteProduct}>×</button>
                                     </div>
                                     <img src={`/images/dishimages/${res.recipes_img}`} className="card-img-top bore-objft" width="200px" height="175px" alt="..."/>
                                     <div className="card-body text-center">

@@ -133,7 +133,7 @@ function MemberCollections() {
                                               <div className="position-absolute top-0 end-0">
                                                   <button
                                                       id={res.product_id}
-                                                      className="btn btn-sm btn-light rounded-circle fs-6 px-1 boc-lineheight text-end"
+                                                      className="btn btn-sm btn-light rounded-circle fs-6 boc-buttonPadding boc-lineheight text-end"
                                                       onClick={deleteProduct}
                                                   >
                                                       ×
@@ -179,10 +179,10 @@ function MemberCollections() {
                                               <div className="position-absolute top-0 end-0">
                                                   <button
                                                       id={res.product_id}
-                                                      className="btn btn-sm btn-light rounded-circle fs-6 px-1 boc-lineheight text-end"
+                                                      className="btn btn-sm btn-light rounded-circle fs-6 boc-buttonPadding boc-lineheight text-end"
                                                       onClick={deleteProduct}
                                                   >
-                                                      ×
+                                                    ×
                                                   </button>
                                               </div>
                                               <img
