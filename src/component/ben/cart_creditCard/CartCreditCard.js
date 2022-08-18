@@ -44,7 +44,7 @@ function CartCreditCard() {
     return (
         <>
             <div className="container ">
-                <div className="row">
+                <div className="row mt-3">
                     <div className="col-md-8 mx-auto my-md-5 cart_step">
                         <div className="d-flex  justify-content-between">
                             <div className="col-2 cart_step_opacity">
@@ -207,18 +207,19 @@ function CartCreditCard() {
                                     // required
                                 />
                             </div>
-                            <div className="text-center mt-5">
-                                <button
-                                    type="submit"
-                                    className="btn px-5 py-2 fs-4 fw-bold"
-                                    onClick={(e) => {
-                                        formCheck(e);
-                                    }}
-                                >
-                                    確認付款
-                                </button>
-                            </div>
                         </form>
+                    </div>
+                    <div className="text-center mt-5">
+                        <button
+                            type="submit"
+                            className="btn px-5 py-2 fs-4 fw-bold cart_button_borderradius cart_button_color_green_cerditcard 
+                            cart_button_hover_change"
+                            onClick={(e) => {
+                                formCheck(e);
+                            }}
+                        >
+                            確認付款
+                        </button>
                     </div>
                 </div>
             </div>

@@ -140,7 +140,7 @@ function CartNonepay() {
     return (
         <>
             <div className="container">
-                <div className="row">
+                <div className="row mt-3">
                     <div className="col-md-8 mx-auto mb-5 mt-md-5 cart_step">
                         <div className="d-flex  justify-content-between">
                             <div className="col-2 cart_step_opacity">
@@ -320,7 +320,9 @@ function CartNonepay() {
                         </table>
                         <div className=" text-center mt-5 mb-3">
                             <button
-                                className="btn"
+                                className="btn px-3 py-2 cart_button_borderradius
+                                cart_button_color_green_cerditcard
+                                cart_button_hover_change"
                                 onClick={() => {
                                     sendBtn();
                                 }}

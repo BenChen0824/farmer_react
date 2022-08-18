@@ -232,7 +232,7 @@ function Cart() {
     return (
         <>
             <div className="container">
-                <div className="row ">
+                <div className="row  mt-3">
                     <div className="col-12 col-md-8  mx-auto cart_step">
                         <div className="d-flex justify-content-between">
                             <div className="col-2">
@@ -647,13 +647,13 @@ function Cart() {
                         <div className="col my-5">
                             <div className="d-flex justify-content-end">
                                 <Link to="/product">
-                                    <button className="btn btn-info mx-3 px-3">
+                                    <button className="btn cart_button_color_brown mx-3 px-3 cart_button_borderradius text-white">
                                         返回購物頁面
                                     </button>
                                 </Link>
 
                                 <button
-                                    className="btn btn-info px-3"
+                                    className="btn cart_button_color_green px-3 cart_button_borderradius text-white"
                                     onClick={() => {
                                         checkCartHasItems();
                                     }}

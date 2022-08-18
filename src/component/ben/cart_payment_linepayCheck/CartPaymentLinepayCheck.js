@@ -101,7 +101,7 @@ function CartPaymentLinepayCheck() {
     return (
         <>
             <div className="container my-5">
-                <div className="row">
+                <div className="row mt-3">
                     <div className="col-md-8 mx-auto cart_step">
                         <div className="d-flex  justify-content-between">
                             <div className="col-2 cart_step_opacity">

@@ -32,6 +32,31 @@
     border-right: 1px solid #eeeeee;
 }
 
+.cart_button_borderradius{
+    border-radius: 30px;
+}
+.cart_button_color_green{
+    background-color: #82ca35;
+}
+.cart_button_color_green_cerditcard{
+    background-color: #82ca35;
+}
+.cart_button_color_green:hover{
+    background-color: #82ca35;
+}
+.cart_button_color_brown{
+    background-color: #3a2c2c;
+}
+.cart_button_color_brown:hover{
+    background-color: #3a2c2c;
+}
+.cart_button_hover_change{
+    color: white;
+} 
+ .cart_button_hover_change:hover{
+    color: black;
+}
+
 
 
 /* 購物車清單 */

@@ -349,7 +349,7 @@ function CartPayment() {
     return (
         <>
             <div className="container my-5">
-                <div className="row">
+                <div className="row mt-3">
                     <div className="col-md-8 mx-auto cart_step">
                         <div className="d-flex  justify-content-between">
                             <div className="col-2 cart_step_opacity">
@@ -564,7 +564,7 @@ function CartPayment() {
                         </div>
                         <div className="my-4 text-end d-none d-md-block">
                             <button
-                                className="btn btn-success px-5"
+                                className="btn cart_button_color_green cart_button_borderradius px-5 text-white"
                                 onClick={() => {
                                     paymentLinkto();
                                 }}
@@ -735,7 +735,7 @@ function CartPayment() {
                 </div>
                 <div className="my-4 text-center d-md-none">
                     <button
-                        className="btn btn-success px-5"
+                        className="btn cart_button_borderradius  cart_button_color_green px-5 text-white "
                         onClick={() => {
                             paymentLinkto();
                         }}
