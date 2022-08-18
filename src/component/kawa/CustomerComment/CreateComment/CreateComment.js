@@ -61,10 +61,10 @@ export default function CreateComment() {
             case 2:
             case 3:
             case 4:
-                // return 'What is your problem?'
-                return '您需要怎麼樣的幫助?';
+            // return 'What is your problem?'
+            // return '您需要怎麼樣的幫助?';
             case 5:
-                return 'Why do you like the product?';
+            // return 'Why do you like the product?';
             default:
                 return '請輸入您的評論...';
         }
@@ -105,10 +105,11 @@ export default function CreateComment() {
               src="https://tanhungphatit.vn/images/detailed/93/iphone-13-blue-1-600x600.jpg"
               alt="name"
             /> */}
-                            <h1>請輸入您的評論</h1>
+                            <h1>感謝您的購買！</h1>
                         </div>
                         <div>
-                            <h1>{handleText()}</h1>
+                            {/* <h1>{handleText()}</h1> */}
+                            <h4>請輸入您的寶貴意見</h4>
                             {Array(5)
                                 .fill()
                                 .map((_, index) =>

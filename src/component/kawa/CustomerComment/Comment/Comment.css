@@ -43,18 +43,41 @@
      letter-spacing: 5px;
 }
 
-.CommentHotSearch p {
-    letter-spacing: 2px;
-    /* background-color: rgb(55, 55, 55); */
-    /* border-radius: 50% 50% 50% 50%; */
-    /* color: white; */
-}
+
 
 
 .CommentTimeSearch {
-    width: 300px;
+    /* width: 500px; */
+    /* border:  1px solid red; */
+    align-items: center;
 }
 
+/* 熱門關鍵字 */
+/* ------ */
+
+.CommentHotSearch .HotSearchBtn {
+    letter-spacing: 2px;
+    border:  1px solid #333;
+    width: 100px;
+    text-align: center;
+    margin-left: 10px;
+}
+
+.CommentHotSearch .HotSearchBtn:hover {
+    letter-spacing: 2px;
+    border:  1px solid rgba(51, 51, 51, 0);
+    background-color: #333;
+    color: white;
+    width: 100px;
+    text-align: center;
+    margin-left: 10px;
+}
+
+/* ------ */
+
+.CommentTimeSearch select {
+    width: 200px;
+}
 
 .starRating_title {
     display: flex;
@@ -91,7 +114,7 @@
         color: #ffffff;
     }
     
-    
+
     
     .CommentSearch_area input{
         width: 300px;
@@ -118,10 +141,9 @@
     }
     
     
-    .CommentTimeSearch {
-        width: 300px;
-    }
-    
+    .CommentHotSearch {
+        margin-right: 30px;
+      }
 
     }
 

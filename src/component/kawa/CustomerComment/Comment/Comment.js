@@ -255,6 +255,7 @@ const Comment = () => {
                         className=""
                         onClick={(e) => {
                             handleIconClicked();
+                            // console.log(value)
                             clickSearchFunction(value);
                         }}
                     >
@@ -264,16 +265,16 @@ const Comment = () => {
 
                 {/* --------------- 熱門關鍵字 ---------------*/}
                 {/*  ----------------- 顯示  ----------------- */}
-                <div className="HotSearch_and_Time_area">
+                <div className="HotSearch_and_Time_area d-flex justify-content-center align-items-center">
                     <div className="CommentHotSearch d-flex">
-                        <p>熱門關鍵字:</p>
-                        <div className="HotSearchBtn">蘋果</div>
-                        <div className="HotSearchBtn">西瓜</div>
-                        <div className="HotSearchBtn">日本和牛</div>
+                        <div>熱門關鍵字:</div>
+                        <div className="HotSearchBtn rounded-pill">蘋果</div>
+                        <div className="HotSearchBtn rounded-pill">西瓜</div>
+                        <div className="HotSearchBtn rounded-pill">和牛</div>
                     </div>
 
                     <div className="CommentTimeSearch d-flex">
-                        <p>顯示:</p>
+                        <label>顯示方式:</label>
                         <select
                             name=""
                             id=""
@@ -355,7 +356,7 @@ const Comment = () => {
 
                 {/* --------------------------------------------------------- */}
 
-                <div className="CommentCard_Area d-flex flex-wrap">
+                <div className="CommentCard_Area d-flex flex-wrap mb-5">
                     {commentToShow.map((v, i) => {
                         const createdAt = new Date(
                             v.created_at
