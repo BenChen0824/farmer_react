@@ -103,8 +103,8 @@ function SignUp() {
     }
 
     function autoInput() {
-        document.form1.username.value = 'bob';
-        document.form1.email.value = 'bob791224@gmail.com';
+        document.form1.username.value = 'farmer';
+        document.form1.email.value = 'mfee26farmer@gmail.com';
         document.form1.password.value = 'a123456';
         document.form1.checkPassword.value = 'a123456';
     }
