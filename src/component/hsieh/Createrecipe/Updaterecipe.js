@@ -1241,8 +1241,7 @@ function Updaterecipe() {
                         <input
                             type="file"
                             name="recipes_img"
-                            // id="inputData"
-                            value={updaterecipe.recipes_img}
+                            id="inputData"
                             onChange={(e) => {
                                 setPreviewimg(e.target.value);
                             }}
