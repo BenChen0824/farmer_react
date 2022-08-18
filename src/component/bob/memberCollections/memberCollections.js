@@ -1,7 +1,7 @@
 import './collections.css';
 import { useState, useEffect } from 'react';
 import MemberNavbar from '../component/memberCenter_Navbar';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 function MemberCollections() {
     const [response, setResponse] = useState([]);

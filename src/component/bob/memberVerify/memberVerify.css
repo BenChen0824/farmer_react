@@ -16,6 +16,10 @@
   background-color: #466b1f;
   transition: linear 0.2s;
 }
+.bover-iconSize{
+  width: 60px;
+  height: 60px;
+}
 .bover-svgColor{
   color:#709D40;
 }
