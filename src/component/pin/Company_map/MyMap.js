@@ -3,12 +3,8 @@ import { Icon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { countries, townships } from './data/townships';
 import React, { useState, useRef } from 'react';
-
 import companyData from './data/company.json';
-
 import './MyMap.css';
-// import { data } from './Data/company_1'
-// import { data } from './Data/company_1'
 
 const skater = new Icon({
     iconUrl: 'https://unpkg.com/leaflet@1.5.1/dist/images/marker-icon.png',
@@ -70,8 +66,8 @@ function MyMap() {
             <div className="row no-gutter w-100">
                 <div className="col-sm-6 col-md-4 col-xl-3 bg-w l_menu">
                     <form className="ml-3 mt-4 mb-3">
-                        <div className="  d-flex form-row select px-4 ">
-                            <div className="form-group col-md  ">
+                        <div className="d-flex form-row select px-4 ">
+                            <div className="" style={{ width: '100vh' }}>
                                 <label htmlFor="citys">選擇縣市</label>
                                 <select
                                     className="form-control jscounty"
@@ -83,10 +79,16 @@ function MyMap() {
                                         setTownshipIndex(-1);
                                     }}
                                 >
-                                    <option value="-1">請選擇縣市</option>
+                                    <option className="text-center" value="-1">
+                                        請選擇縣市
+                                    </option>
                                     {countries.map((v, i) => {
                                         return (
-                                            <option key={i} value={i}>
+                                            <option
+                                                className="text-center"
+                                                key={i}
+                                                value={i}
+                                            >
                                                 {v}
                                             </option>
                                         );
@@ -102,7 +104,6 @@ function MyMap() {
                         {companyShowInfo.map((v, i) => {
                             return (
                                 // CSS 更動
-
                                 <div
                                     className="pinmycard card mb-3 infocards"
                                     data-cards="241"
@@ -112,13 +113,13 @@ function MyMap() {
                                     <img src={v.Photo} />
                                     <ul className="list-group">
                                         <li className="list-group-item list-group-item-action">
-                                            {v.TEL}
+                                            電話：{v.TEL}
                                         </li>
                                         <li className="list-group-item list-group-item-action">
-                                            {v.Address_CH}
+                                            地址：{v.Address_CH}
                                         </li>
                                         <li className="list-group-item list-group-item-action">
-                                            {v.Time3}
+                                            營業時間： {v.Time3}
                                         </li>
                                     </ul>
                                     <button
@@ -135,7 +136,7 @@ function MyMap() {
                         })}
                     </section>
                 </div>
-                <div className="col-sm-6 col-md-8 col-xl-9 px-0">
+                <div className="col-sm-6 col-md-8 col-xl-9 px-0 d-none d-lg-block">
                     <div>
                         <Map ref={mapRef} center={[23.645, 121.064]} zoom={8}>
                             <TileLayer
@@ -164,20 +165,37 @@ function MyMap() {
                                         ]}
                                     >
                                         <div>
-                                            <h4>{company.FarmNm_CH}</h4>
+                                            <h4 className="text-center">
+                                                {company.FarmNm_CH}
+                                            </h4>
                                             <p>{'電話： ' + company.TEL}</p>
                                             <p>
                                                 {'地址： ' + company.Address_CH}
                                             </p>
-                                            <p>營業時間：</p>
-                                            <ul>
-                                                <li>{company.Time1}</li>
-                                                <li>{company.Time2}</li>
-                                                <li>{company.Time3}</li>
-                                                <li>{company.Time4}</li>
-                                                <li>{company.Time5}</li>
-                                                <li>{company.Time6}</li>
-                                                <li>{company.Time7}</li>
+
+                                            <ul class="list-group list-group-flush">
+                                                營業時間：
+                                                <li class="list-group ps-3 pt-1">
+                                                    {company.Time1}
+                                                </li>
+                                                <li class="list-group ps-3">
+                                                    {company.Time2}
+                                                </li>
+                                                <li class="list-group ps-3">
+                                                    {company.Time3}
+                                                </li>
+                                                <li class="list-group ps-3">
+                                                    {company.Time4}
+                                                </li>
+                                                <li class="list-group ps-3">
+                                                    {company.Time5}
+                                                </li>
+                                                <li class="list-group ps-3">
+                                                    {company.Time6}
+                                                </li>
+                                                <li class="list-group ps-3">
+                                                    {company.Time7}
+                                                </li>
                                             </ul>
                                         </div>
                                     </Popup>
