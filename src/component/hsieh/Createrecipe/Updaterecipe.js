@@ -423,17 +423,13 @@ function Updaterecipe() {
                                 />
                             </section>
 
-                            <button
-                                type="button"
-                                className="buttonincreate"
-                                // onClick={}
-                            >
+                            {/* <button type="button" className="buttonincreate">
                                 <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
                                 />
-                            </button>
+                            </button> */}
                         </div>
 
                         {/* 分隔線 */}
@@ -461,17 +457,13 @@ function Updaterecipe() {
                                 />
                             </section>
 
-                            <button
-                                type="button"
-                                className="buttonincreate"
-                                // onClick={}
-                            >
+                            {/* <button type="button" className="buttonincreate">
                                 <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
                                 />
-                            </button>
+                            </button> */}
                         </div>
 
                         {/* 分隔線 */}
@@ -499,17 +491,13 @@ function Updaterecipe() {
                                 />
                             </section>
 
-                            <button
-                                type="button"
-                                className="buttonincreate"
-                                // onClick={}
-                            >
+                            {/* <button type="button" className="buttonincreate">
                                 <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
                                 />
-                            </button>
+                            </button> */}
                         </div>
 
                         {/* 分隔線 */}
@@ -537,17 +525,13 @@ function Updaterecipe() {
                                 />
                             </section>
 
-                            <button
-                                type="button"
-                                className="buttonincreate"
-                                // onClick={}
-                            >
+                            {/* <button type="button" className="buttonincreate">
                                 <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
                                 />
-                            </button>
+                            </button> */}
                         </div>
 
                         {/* 分隔線 */}
@@ -575,17 +559,13 @@ function Updaterecipe() {
                                 />
                             </section>
 
-                            <button
-                                type="button"
-                                className="buttonincreate"
-                                // onClick={}
-                            >
+                            {/* <button type="button" className="buttonincreate">
                                 <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
                                 />
-                            </button>
+                            </button> */}
                         </div>
 
                         {/* 分隔線 */}
@@ -613,17 +593,13 @@ function Updaterecipe() {
                                 />
                             </section>
 
-                            <button
-                                type="button"
-                                className="buttonincreate"
-                                // onClick={}
-                            >
+                            {/* <button type="button" className="buttonincreate">
                                 <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
                                 />
-                            </button>
+                            </button> */}
                         </div>
 
                         {/* 分隔線 */}
@@ -651,17 +627,13 @@ function Updaterecipe() {
                                 />
                             </section>
 
-                            <button
-                                type="button"
-                                className="buttonincreate"
-                                // onClick={}
-                            >
+                            {/* <button type="button" className="buttonincreate">
                                 <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
                                 />
-                            </button>
+                            </button> */}
                         </div>
 
                         {/* 分隔線 */}
@@ -689,17 +661,13 @@ function Updaterecipe() {
                                 />
                             </section>
 
-                            <button
-                                type="button"
-                                className="buttonincreate"
-                                // onClick={}
-                            >
+                            {/* <button type="button" className="buttonincreate">
                                 <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
                                 />
-                            </button>
+                            </button> */}
                         </div>
 
                         {/* 分隔線 */}
@@ -727,17 +695,13 @@ function Updaterecipe() {
                                 />
                             </section>
 
-                            <button
-                                type="button"
-                                className="buttonincreate"
-                                // onClick={}
-                            >
+                            {/* <button type="button" className="buttonincreate">
                                 <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
                                 />
-                            </button>
+                            </button> */}
                         </div>
 
                         {/* 分隔線 */}
@@ -765,17 +729,13 @@ function Updaterecipe() {
                                 />
                             </section>
 
-                            <button
-                                type="button"
-                                className="buttonincreate"
-                                // onClick={}
-                            >
+                            {/* <button type="button" className="buttonincreate">
                                 <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
                                 />
-                            </button>
+                            </button> */}
                         </div>
 
                         {/* 分隔線 */}
@@ -846,17 +806,13 @@ function Updaterecipe() {
                                     }}
                                 />
                             </section>
-                            <button
-                                type="button"
-                                className="buttonincreate"
-                                // onClick={}
-                            >
+                            {/* <button type="button" className="buttonincreate">
                                 <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
                                 />
-                            </button>
+                            </button> */}
                         </div>
 
                         {/* 分隔線 */}
@@ -884,17 +840,13 @@ function Updaterecipe() {
                                 />
                                 <div className="invalid-feedback"></div>
                             </section>
-                            <button
-                                type="button"
-                                className="buttonincreate"
-                                // onClick={}
-                            >
+                            {/* <button type="button" className="buttonincreate">
                                 <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
                                 />
-                            </button>
+                            </button> */}
                         </div>
 
                         {/* 分隔線 */}
@@ -922,17 +874,13 @@ function Updaterecipe() {
                                 />
                                 <div className="invalid-feedback"></div>
                             </section>
-                            <button
-                                type="button"
-                                className="buttonincreate"
-                                // onClick={}
-                            >
+                            {/* <button type="button" className="buttonincreate">
                                 <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
                                 />
-                            </button>
+                            </button> */}
                         </div>
 
                         {/* 分隔線 */}
@@ -960,17 +908,13 @@ function Updaterecipe() {
                                 />
                                 <div className="invalid-feedback"></div>
                             </section>
-                            <button
-                                type="button"
-                                className="buttonincreate"
-                                // onClick={}
-                            >
+                            {/* <button type="button" className="buttonincreate">
                                 <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
                                 />
-                            </button>
+                            </button> */}
                         </div>
 
                         {/* 分隔線 */}
@@ -998,17 +942,13 @@ function Updaterecipe() {
                                 />
                                 <div className="invalid-feedback"></div>
                             </section>
-                            <button
-                                type="button"
-                                className="buttonincreate"
-                                // onClick={}
-                            >
+                            {/* <button type="button" className="buttonincreate">
                                 <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
                                 />
-                            </button>
+                            </button> */}
                         </div>
 
                         {/* 分隔線 */}
@@ -1036,17 +976,13 @@ function Updaterecipe() {
                                 />
                                 <div className="invalid-feedback"></div>
                             </section>
-                            <button
-                                type="button"
-                                className="buttonincreate"
-                                // onClick={}
-                            >
+                            {/* <button type="button" className="buttonincreate">
                                 <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
                                 />
-                            </button>
+                            </button> */}
                         </div>
 
                         {/* 分隔線 */}
@@ -1074,17 +1010,13 @@ function Updaterecipe() {
                                 />
                                 <div className="invalid-feedback"></div>
                             </section>
-                            <button
-                                type="button"
-                                className="buttonincreate"
-                                // onClick={}
-                            >
+                            {/* <button type="button" className="buttonincreate">
                                 <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
                                 />
-                            </button>
+                            </button> */}
                         </div>
 
                         {/* 分隔線 */}
@@ -1112,17 +1044,13 @@ function Updaterecipe() {
                                 />
                                 <div className="invalid-feedback"></div>
                             </section>
-                            <button
-                                type="button"
-                                className="buttonincreate"
-                                // onClick={}
-                            >
+                            {/* <button type="button" className="buttonincreate">
                                 <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
                                 />
-                            </button>
+                            </button> */}
                         </div>
 
                         {/* 分隔線 */}
@@ -1150,17 +1078,13 @@ function Updaterecipe() {
                                 />
                                 <div className="invalid-feedback"></div>
                             </section>
-                            <button
-                                type="button"
-                                className="buttonincreate"
-                                // onClick={}
-                            >
+                            {/* <button type="button" className="buttonincreate">
                                 <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
                                 />
-                            </button>
+                            </button> */}
                         </div>
 
                         {/* 分隔線 */}
@@ -1188,17 +1112,13 @@ function Updaterecipe() {
                                 />
                                 <div className="invalid-feedback"></div>
                             </section>
-                            <button
-                                type="button"
-                                className="buttonincreate"
-                                // onClick={}
-                            >
+                            {/* <button type="button" className="buttonincreate">
                                 <img
                                     src="/images/trashcan.svg"
                                     alt=""
                                     className="iconincreate"
                                 />
-                            </button>
+                            </button> */}
                         </div>
 
                         {/* 分隔線 */}
@@ -1247,6 +1167,11 @@ function Updaterecipe() {
                             }}
                         />
 
+                        {/* <img
+                            className="showphotoincreate"
+                            src={`/dishimages/${updaterecipe.recipes_img}`}
+                            alt=""
+                        /> */}
                         <img
                             className="showphotoincreate"
                             src={`/dishimages/${updaterecipe.recipes_img}`}
