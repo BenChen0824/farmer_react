@@ -89,16 +89,6 @@ function Createrecipe() {
     const sentAllInfo = async (event) => {
         event.preventDefault();
 
-        // const fd = new FormData(document.form1);
-        // fd.append('file', event.target.recipe_img);
-        // const r = await fetch('http://localhost:3600/recipe/createrecipe', {
-        //     method: 'POST',
-        //     body: fd,
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        // });
-
         const data = {
             recipesname: document.form1.recipesname.value,
             description: document.form1.description.value,

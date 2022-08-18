@@ -58,6 +58,14 @@ function Updaterecipe() {
         window.scrollTo({ top: 0, behavior: 'instant' }); // 調整往下滑
     }, [params.recipes_sid]);
 
+    const [previewimg, setPreviewimg] = useState('');
+    useEffect(() => {
+        if (previewimg) {
+            setUpdaterecipe({ ...updaterecipe, recipes_img: previewimg });
+        }
+    }, [previewimg]);
+    // 先宣告
+
     // 更改食譜名稱
     const [updateRecipesname, setUpdateRecipesname] = useState('');
 
@@ -121,8 +129,6 @@ function Updaterecipe() {
 
     // 料理照片
     const [updateRecipe_img, setUpdateRecipe_img] = useState([]);
-
-    const [previewimg, setPreviewimg] = useState('');
 
     const navigate = useNavigate();
 
@@ -188,6 +194,50 @@ function Updaterecipe() {
             navigate('/recipe', { replace: true });
         }
     }
+
+    // const hiddenFileInput = useRef('');
+    // const [image, setImage] = useState({ preview: '', data: '' });
+    // const [profileData, setProfileData] = useState([
+    //     {
+    //         username: '',
+    //         intro: '',
+    //         recipe_img: '',
+    //     },
+    // ]);
+
+    // const handleClick = (event) => {
+    //     hiddenFileInput.current.click();
+    // };
+
+    // function handleOnChange(event) {
+    //     const img = {
+    //         preview: URL.createObjectURL(event.target.files[0]),
+    //         data: event.target.files[0],
+    //     };
+    //     setImage(img);
+    //     handleSubmit(img);
+    // }
+
+    // function handleSubmit(upimg) {
+    //     const fd = new FormData();
+    //     fd.append('file', upimg.data);
+
+    //     fetch('http://localhost:3600/recipe/uploadimg', {
+    //         method: 'post',
+    //         body: fd,
+    //         headers: {
+    //             customer_id: loginUser.customer_id,
+    //             recipe_creater: loginUser.username,
+    //         },
+    //     })
+    //         .then((r) => r.json())
+    //         .then((obj) => console.log(obj));
+    // }
+
+    // function qwert() {
+    //     const a = previewimg.substring(12);
+    //     return a;
+    // }
 
     // function qwert() {
     //     const a = updaterecipe.recipes_img.substring(12);
@@ -1163,20 +1213,19 @@ function Updaterecipe() {
                             name="recipes_img"
                             id="inputData"
                             onChange={(e) => {
-                                setPreviewimg(e.target.value);
+                                setPreviewimg(e.target.value.substring(12));
                             }}
                         />
-
-                        {/* <img
-                            className="showphotoincreate"
-                            src={`/dishimages/${updaterecipe.recipes_img}`}
-                            alt=""
-                        /> */}
                         <img
                             className="showphotoincreate"
                             src={`/dishimages/${updaterecipe.recipes_img}`}
                             alt=""
                         />
+                        {/* <img
+                            className="showphotoincreate"
+                            src={`/dishimages/${qwert()}`}
+                            alt=""
+                        /> */}
                     </div>
                 </div>
 
