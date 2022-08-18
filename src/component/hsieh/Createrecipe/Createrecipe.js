@@ -251,6 +251,9 @@ function Createrecipe() {
             '炎炎夏日影響胃口？簡單的幾步料理方式，就能吃到營養健康又有飽足感的夏日減脂好滋味哦！';
         document.form1.timecost.value = '20';
         document.form1.calories.value = '300';
+        document.form1.portion.value = '3';
+        document.form1.recipestype.value = '歐式料理';
+        document.form1.recipesdegree.value = '新手輕鬆入門';
         document.form1.ingredient.value = '藜麥  40～50克';
         document.form1.ingredient1.value = '花椰菜  適量';
         document.form1.ingredient2.value = '橄欖油  2勺';

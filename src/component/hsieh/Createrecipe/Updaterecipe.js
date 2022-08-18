@@ -1230,7 +1230,7 @@ function Updaterecipe() {
 
                         <img
                             className="showphotoincreate"
-                            src={`/dishimages/${qwert()}`}
+                            src={`/dishimages/${updaterecipe.recipes_img}`}
                             alt=""
                         />
                     </div>
