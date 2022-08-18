@@ -193,7 +193,11 @@ function Recipesearch() {
 
             <div>
                 <p className="titlewordinsearch">
-                    <Title zh={'今日食譜推薦'} eg={'Recipes Recommend'} />
+                    <Title
+                        zh={'今日食譜推薦'}
+                        eg={'Recipes Recommend'}
+                        line={'width: 60%'}
+                    />
                 </p>
             </div>
             <div className="recipeinfoinsearch">
@@ -319,9 +323,9 @@ function Recipesearch() {
             {/* 分隔線，以下為食譜列表 */}
 
             <div>
-                {/* <p className="titlewordinsearch"> */}
-                <Title zh={'食譜列表'} eg={'Recipes List'} />
-                {/* </p> */}
+                <p className="titlewordinsearch">
+                    <Title zh={'食譜列表'} eg={'Recipes List'} />
+                </p>
             </div>
 
             <div className="recipeinfoinsearch">

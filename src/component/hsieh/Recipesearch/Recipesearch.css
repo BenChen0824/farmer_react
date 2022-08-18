@@ -20,6 +20,8 @@
 }
 
 .titlewordinsearch{
+    width: 85%;
+    margin: 0 8%;
     text-align: center;
     font-size: 30px;
     padding-top: 60px;
@@ -37,20 +39,20 @@
 }
 
 .recipeinfoinsearch{
-    width: 90%;
-    margin-left: 10%;
+    width: 80%;
+    margin-left: 15%;
     display: flex;
     flex-wrap: wrap;
     justify-content: left;
 }
 
 .recommendlistinsearch {
-    width: 35%;
-    margin: 30px 10px 30px 0px;
+    width: 40%;
+    margin: 30px 0px 30px 30px;
     flex-wrap: wrap;
     display: flex;
-    justify-content: center;
-    outline: 1px solid black;
+    justify-content: left;
+    /* outline: 1px solid black; */
 }
 
 .recipephotoinsearch {
@@ -112,23 +114,16 @@
 
 
 
-@media screen and (max-width:1000px) {
+@media screen and (max-width:900px) {
     .searchinput {
         font-size: 20px;
     }
 
     .recipeinfoinsearch{
         width: 90%;
-        /* margin-left: 10%; */
         display: flex;
         flex-wrap: wrap;
-        justify-content: left;
-
-        /* width: 90%;
-    margin-left: 20%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: right; */
+        justify-content: center;
     }
 
     .titlewordinsearch{
@@ -145,11 +140,11 @@
     }
 
     .recommendlistinsearch {
-        width: 90%;
-        margin: 10px 0px;
+        width: 80%;
+        margin: 20px 0px 20px 20px;
         display: flex;
-        /* flex-wrap: wrap; */
-        justify-content: center;
+        flex-wrap: wrap;
+        justify-content: left;
     }
 
     .recipephotoinsearch {
