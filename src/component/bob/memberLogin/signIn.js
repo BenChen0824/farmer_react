@@ -39,7 +39,7 @@ function SignIn() {
                 title: '歡迎登入',
                 showConfirmButton: true,
                 confirmButtonText: '確認',
-                confirmButtonColor: '#709D40',
+                confirmButtonColor: '#82CA35',
             }).then(() => {
                 navigate('/member/data', { replace: true });
             });
@@ -49,7 +49,7 @@ function SignIn() {
                 title: '帳號密碼錯誤',
                 showConfirmButton: true,
                 confirmButtonText: '請輸入正確資訊',
-                confirmButtonColor: '#709D40',
+                confirmButtonColor: '#82CA35',
             }).then(() => {
                 navigate('/member/', { replace: true });
             });

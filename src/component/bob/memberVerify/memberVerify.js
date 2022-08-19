@@ -36,7 +36,7 @@ function MemberVerify() {
                 title: '驗證成功',
                 showConfirmButton: true,
                 confirmButtonText: '歡迎加入',
-                confirmButtonColor: "#709D40"
+                confirmButtonColor: "#82CA35"
             }).then(()=>{
                 navigate('/member/data', { replace: true });
             })
@@ -46,7 +46,7 @@ function MemberVerify() {
                 title: '驗證失敗',
                 showConfirmButton: true,
                 confirmButtonText: '請輸入正確驗證碼',
-                confirmButtonColor: "#709D40"
+                confirmButtonColor: "#82CA35"
             }).then(()=>{
                 navigate('/member/verify', { replace: true });
             })
@@ -85,7 +85,10 @@ function MemberVerify() {
                             <input type="text" name="checknumber" className="form-control shadow-none border-dark text-center fw-bolder fs-4" />
                             <div className="d-grid gap-2 col-sm-9 mx-auto mt-4">
                                 <button className="border-0 shadow-sm rounded py-2 bover-buttonColor text-white" type="submit">驗證</button>
-                                <button className="btn btn-dark" type="button">重新寄送驗證信</button>
+                                <button className="btn btn-dark" type="button" onClick={(e)=>{
+                                    e.preventDefault()
+                                    navigate('/member', {replace: true})
+                                    }}>返回登入頁面</button>
                             </div>
                         </form>
                     </div>

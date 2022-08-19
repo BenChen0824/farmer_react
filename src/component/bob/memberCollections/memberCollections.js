@@ -84,7 +84,7 @@ function MemberCollections() {
                             <div className="row justify-content-center">
                                 <form className="d-flex col-sm-7 mb-3">
                                     <select
-                                        className="form-select mx-2"
+                                        className="form-select mx-2 shadow-none"
                                         value={filterCate}
                                         onChange={(e) => {
                                             searchCategory(e.target.value);
