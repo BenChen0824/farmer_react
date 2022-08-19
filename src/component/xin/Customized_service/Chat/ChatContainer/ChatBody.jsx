@@ -23,6 +23,7 @@ const ChatBody = ({ user, messages }) => {
         >
             <div className="p-4 d-flex flex-column">
                 {messages.map((message, index) => {
+                    console.log(message);
                     return message.type === 'file' ? (
                         <div
                             key={index}

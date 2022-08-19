@@ -203,6 +203,14 @@ const Chat = ({ socket, user, users, setUsers, messages, setMessages }) => {
                 'visibility: visible; height:"auto"';
         };
     }, []);
+    useEffect(() => {
+        document.querySelector('header').style =
+            'visibility: hidden; height:0;min-height:0';
+        return () => {
+            document.querySelector('footer').style =
+                'visibility: visible; height:"auto"';
+        };
+    }, []);
     return (
         <ChatContainer>
             <div className="d-flex flex-column col-4 col-lg-4 col-xl-4 pe-0 border-right-info">
@@ -213,7 +221,7 @@ const Chat = ({ socket, user, users, setUsers, messages, setMessages }) => {
                                 src={
                                     user.username === '管理員'
                                         ? 'logo/fresh_LOGO_icon.svg'
-                                        : 'http://bootdey.com/img/Content/avatar/avatar1.png'
+                                        : 'images/user.png'
                                 }
                                 className="rounded-circle mx-2"
                                 alt={user.username}
@@ -241,7 +249,7 @@ const Chat = ({ socket, user, users, setUsers, messages, setMessages }) => {
                                             src={
                                                 user.username === '管理員'
                                                     ? 'logo/fresh_LOGO_icon.svg'
-                                                    : 'http://bootdey.com/img/Content/avatar/avatar1.png'
+                                                    : 'images/user.png'
                                             }
                                             className="rounded-circle mx-2"
                                             alt={user.username}
