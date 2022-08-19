@@ -3,7 +3,6 @@
 }
 
 .CommentCard {
-    height: 220px;
     background-color: rgb(255, 255, 255);
     border-radius: 2px 2px 2px 2px;
     border: 2px solid rgb(213, 225, 228);
@@ -35,11 +34,7 @@
     /* max-width: 400px; */
 }
 
-.CommentProductItem::before {
-    /* content: '1. '; */
-    background-color: #666666;
-    max-width: 400px;
-}
+
 
 .likes_area {
     /* background-color: rgb(127, 80, 80); */
@@ -64,14 +59,13 @@
 
 .star_and_likes {
     /* flex-direction: column; */
-    flex-grow: 1;
+   
 }
 
 .CommentCard_right {
-    flex-grow: 1;
     align-items: center;
     justify-content: center;
-    padding: 10px 20px 10px 0px;
+    /* padding: 10px 20px 10px 0px; */
 }
 
 .CommentCard_imgwrap {
@@ -92,11 +86,11 @@
     }
     
     .CommentCard {
-        height: 220px;
         background-color: rgb(255, 255, 255);
         border-radius: 2px 2px 2px 2px;
         /* margin: 10px; */
         border: 2px solid rgb(213, 225, 228);
+        height: 200px;
         /* padding: 10px; */
     }
     
@@ -107,9 +101,10 @@
         border-radius: 50%;
         overflow: hidden;
         align-items: center;
-        margin-top: 10px;
+        margin-top: 40px;
         margin-left: 10px;
         margin-right: 50px;
+        padding: 0;
     }
     
     .CommentCard_imgwrap img {
@@ -126,11 +121,6 @@
         /* max-width: 400px; */
     }
     
-    .CommentProductItem::before {
-        /* content: '1. '; */
-        background-color: #666666;
-        max-width: 400px;
-    }
     
     .likes_area {
         /* background-color: rgb(127, 80, 80); */
@@ -139,7 +129,6 @@
         align-items: center;
     }
     
-
 
     /* 按讚顏色 &　數字 */
     .likes_icons, .likes_number {
@@ -167,7 +156,7 @@
         flex-grow: 1;
         align-items: center;
         justify-content: center;
-        padding: 10px 20px 10px 0px;
+        /* padding: 10px 20px 10px 0px; */
     }
     
     .CommentCard_imgwrap {
@@ -176,8 +165,9 @@
         /* justify-content: center; */
     }
 
-
-
+    .CommentContext {
+        background-color: #fff;
+    }
 
 
 
