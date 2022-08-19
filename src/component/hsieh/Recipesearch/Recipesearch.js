@@ -193,7 +193,7 @@ function Recipesearch() {
 
             <div>
                 <p className="titlewordinsearch">
-                    <Title zh={'今日食譜推薦'} eg={'Recipes Recommend'} />
+                    <Title zh={'今日推薦食譜'} eg={'Recipes Recommend'} />
                 </p>
             </div>
             <div className="recipeinfoinsearch">
