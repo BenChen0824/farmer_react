@@ -10,7 +10,7 @@ function MemberLevel() {
     const [myPoints, setMyPoints] = useState([]);
 
     const loginUser = JSON.parse(localStorage.getItem('auth'));
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const getCouponData = async () => {
         const coupons = await axios.get(
@@ -146,45 +146,69 @@ function MemberLevel() {
                             </h2>
                             <div className="container col-9 mt-2">
                                 <div className="row justify-content-center">
-                                    {myCoupons[0] ? 
-                                    myCoupons.map((v, i) => {
-                                        return (
-                                            <div
-                                                className="bol-couponCss mb-3"
-                                                style={{ maxWidth: '420px' }}
-                                                key={v.sid}
-                                            >
-                                                <div className="d-flex">
-                                                    <div className="col-5 p-3">
-                                                        <img
-                                                            src={v.change_img}
-                                                            className="img-fluid rounded-start h-100 boe-objft"
-                                                            alt=""
-                                                        />
-                                                    </div>
-                                                    <div className="col-8 d-flex align-items-center">
-                                                        <div className="card-body d-flex flex-column justify-content-center">
-                                                            <h2 className="bol-goldText">
-                                                                {
-                                                                    v.change_coupon
-                                                                }
-                                                            </h2>
-                                                            <h6 className="text-light">
-                                                                兌換時間：
-                                                                {v.change_time}
-                                                            </h6>
-                                                            <div className="row col-6">
-                                                                <button className="btn btn-sm bol-buttonColor text-white ms-5" onClick={()=>{
-                                                                    navigate('/product', {replace: true,})
-                                                                }}>來去使用</button>
+                                    {myCoupons[0] ? (
+                                        myCoupons
+                                            .filter((v) => {
+                                                return +v.coupon_isused === 0;
+                                            })
+                                            .map((v, i) => {
+                                                return (
+                                                    <div
+                                                        className="bol-couponCss mb-3"
+                                                        style={{
+                                                            maxWidth: '420px',
+                                                        }}
+                                                        key={v.sid}
+                                                    >
+                                                        <div className="d-flex">
+                                                            <div className="col-5 p-3">
+                                                                <img
+                                                                    src={
+                                                                        v.change_img
+                                                                    }
+                                                                    className="img-fluid rounded-start h-100 boe-objft"
+                                                                    alt=""
+                                                                />
+                                                            </div>
+                                                            <div className="col-8 d-flex align-items-center">
+                                                                <div className="card-body d-flex flex-column justify-content-center">
+                                                                    <h2 className="bol-goldText">
+                                                                        {
+                                                                            v.change_coupon
+                                                                        }
+                                                                    </h2>
+                                                                    <h6 className="text-light">
+                                                                        兌換時間：
+                                                                        {
+                                                                            v.change_time
+                                                                        }
+                                                                    </h6>
+                                                                    <div className="row col-6">
+                                                                        <button
+                                                                            className="btn btn-sm bol-buttonColor text-white ms-5"
+                                                                            onClick={() => {
+                                                                                navigate(
+                                                                                    '/product',
+                                                                                    {
+                                                                                        replace: true,
+                                                                                    }
+                                                                                );
+                                                                            }}
+                                                                        >
+                                                                            來去使用
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        );
-                                    }) :
-                                    <p className="text-muted text-center mt-5">尚無可使用的優惠券</p>}
+                                                );
+                                            })
+                                    ) : (
+                                        <p className="text-muted text-center mt-5">
+                                            尚無可使用的優惠券
+                                        </p>
+                                    )}
                                 </div>
                             </div>
                         </div>
