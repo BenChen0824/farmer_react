@@ -87,7 +87,7 @@ function SignUp() {
                 title: '註冊申請成功',
                 showConfirmButton: true,
                 confirmButtonText: '進入驗證頁面',
-                confirmButtonColor: '#709D40',
+                confirmButtonColor: '#82CA35',
             }).then(() => {
                 navigate('/member/verify', { replace: true });
             });
@@ -97,7 +97,7 @@ function SignUp() {
                 title: '註冊申請失敗',
                 showConfirmButton: true,
                 confirmButtonText: '請填寫正確資料',
-                confirmButtonColor: '#709D40',
+                confirmButtonColor: '#82CA35',
             });
         }
     }

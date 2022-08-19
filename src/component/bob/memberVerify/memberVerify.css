@@ -10,10 +10,10 @@
   height: 100vh
 }
 .bover-buttonColor{
-  background-color: #709D40;
+  background-color: #82CA35;
 }
 .bover-buttonColor:hover{
-  background-color: #466b1f;
+  background-color: #466B1F;
   transition: linear 0.2s;
 }
 .bover-iconSize{
@@ -21,7 +21,7 @@
   height: 60px;
 }
 .bover-svgColor{
-  color:#709D40;
+  color:#82CA35;
 }
 @media screen and (max-width:576px){
   .bover-bodyvh{

@@ -10,10 +10,10 @@
   height: 100vh
 }
 .bosi-buttonColor{
-  background-color: #709D40;
+  background-color: #82CA35;
 }
 .bosi-buttonColor:hover{
-  background-color: #466b1f;
+  background-color: #466B1F;
   transition: linear 0.2s;
 }
 @media screen and (max-width:576px){
