@@ -13,7 +13,7 @@ function Dailypoint() {
     //限定一天一次領取點數提示
     const [showup, setShowup] = useState();
     const [showuptime, setShowupTime] = useState()
-
+    const Swal = require('sweetalert2');
     const pointArray = [100, 140, 160, 150, 50, 200];
     const randomNum = Math.ceil(Math.random() * 6) - 1;
 
@@ -62,6 +62,14 @@ function Dailypoint() {
             setEggPoints(eggpoints + getPoint);
             // console.log(eggpoints);
             updateEggPoint(eggpoints + getPoint);
+            Swal.fire({
+                position: 'centre',
+                icon: 'success',
+                title: `獲得${getPoint}點數!!`,
+                showConfirmButton: false,
+                timer: 1500,
+            });
+
             //每日只領一次
             setDataCheck(false);
         } else {

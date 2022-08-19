@@ -375,13 +375,14 @@ function Eachrecipe() {
 
                             {/* 分隔線 */}
 
-                            <div
+                            {/* <div
                                 className={
                                     eachrecipe.recipes_ingredient9.length === 0
                                         ? 'chapter1ineach1'
                                         : 'chapter1ineach'
                                 }
-                            >
+                            > */}
+                            <div className="chapter1ineach1">
                                 <p>
                                     {eachrecipe.recipes_ingredient9}
                                     {/* 食材10 */}

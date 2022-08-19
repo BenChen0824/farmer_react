@@ -181,11 +181,12 @@ function MemberEvents() {
                                                                         </button>
                                                                     </dd>
                                                                 </dl>
-                                                                <p className="card-text lh-sm boe-multiline-ellipsis">
-                                                                    {
-                                                                        v.card_info1
-                                                                    }
-                                                                </p>
+                                                                <p
+                                                                    className="card-text lh-sm boe-multiline-ellipsis"
+                                                                    dangerouslySetInnerHTML={{
+                                                                        __html: `${v.card_info1}`,
+                                                                    }}
+                                                                ></p>
                                                                 <dl className="row m-0">
                                                                     <dt className="col-4 p-0">
                                                                         <p className="card-text boe-farmColor">
@@ -261,11 +262,12 @@ function MemberEvents() {
                                                                         </button>
                                                                     </dd>
                                                                 </dl>
-                                                                <p className="card-text lh-sm boe-multiline-ellipsis">
-                                                                    {
-                                                                        v.card_info1
-                                                                    }
-                                                                </p>
+                                                                <p
+                                                                    className="card-text lh-sm boe-multiline-ellipsis"
+                                                                    dangerouslySetInnerHTML={{
+                                                                        __html: `${v.card_info1}`,
+                                                                    }}
+                                                                ></p>
                                                                 <dl className="row m-0">
                                                                     <dt className="col-4 p-0">
                                                                         <p className="card-text boe-farmColor">
