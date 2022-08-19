@@ -30,7 +30,7 @@ function Game(props) {
     useEffect(() => {
         setTimeout(() => {
             setStartFlip(false);
-        }, 500);
+        }, 1500);
         shuffleCards();
     }, []);
 
