@@ -128,7 +128,7 @@ const News = () => {
                             </div>
                             <a
                                 href="/#"
-                                className="btn btn-primary po_buttonColor"
+                                className="btn btn-primary po_buttonColor "
                             >
                                 活動詳情
                             </a>
