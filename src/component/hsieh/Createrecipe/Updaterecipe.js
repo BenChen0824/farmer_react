@@ -191,7 +191,8 @@ function Updaterecipe() {
             alert('請填寫正確資料');
         } else {
             alert('更新成功');
-            navigate('/recipe', { replace: true });
+            // navigate('/recipe', { replace: true });
+            navigate(`/recipe/each/${params.recipes_sid}`, { replace: true });
         }
     }
 
@@ -244,25 +245,25 @@ function Updaterecipe() {
     //     return a;
     // }
 
-    function plusoneingredient() {
-        var elem = document.querySelectorAll('div.ingredientincreate1');
-        elem[0].className = 'ingredientincreate';
-    }
+    // function plusoneingredient() {
+    //     var elem = document.querySelectorAll('div.ingredientincreate1');
+    //     elem[0].className = 'ingredientincreate';
+    // }
 
-    function minusoneingredient() {
-        var elem = document.querySelectorAll('div.ingredientincreate');
-        elem[elem.length - 1].className = 'ingredientincreate1';
-    }
+    // function minusoneingredient() {
+    //     var elem = document.querySelectorAll('div.ingredientincreate');
+    //     elem[elem.length - 1].className = 'ingredientincreate1';
+    // }
 
-    function plusonestep() {
-        var elem = document.querySelectorAll('div.stepincreate1');
-        elem[0].className = 'stepincreate';
-    }
+    // function plusonestep() {
+    //     var elem = document.querySelectorAll('div.stepincreate1');
+    //     elem[0].className = 'stepincreate';
+    // }
 
-    function minusonestep() {
-        var elem = document.querySelectorAll('div.stepincreate');
-        elem[elem.length - 1].className = 'stepincreate1';
-    }
+    // function minusonestep() {
+    //     var elem = document.querySelectorAll('div.stepincreate');
+    //     elem[elem.length - 1].className = 'stepincreate1';
+    // }
 
     // function cleaninput() {
     //     var elem = document.querySelectorAll('input.ingredientuse');
@@ -792,7 +793,7 @@ function Updaterecipe() {
                     </div>
                 </div>
 
-                <div className="additemarea">
+                {/* <div className="additemarea">
                     <button
                         type="button"
                         className="plusbuttonincreate"
@@ -816,7 +817,7 @@ function Updaterecipe() {
                             className="iconincreate"
                         />
                     </button>
-                </div>
+                </div> */}
 
                 <hr className="hrincreaterecipe" />
                 {/* 分隔線，以下料理步驟 */}
@@ -1175,7 +1176,7 @@ function Updaterecipe() {
                     </div>
                 </div>
 
-                <div className="additemarea">
+                {/* <div className="additemarea">
                     <button
                         type="button"
                         className="plusbuttonincreate"
@@ -1199,7 +1200,7 @@ function Updaterecipe() {
                             className="iconincreate"
                         />
                     </button>
-                </div>
+                </div> */}
 
                 <hr className="hrincreaterecipe" />
                 {/* 分隔線，以下照片 */}
