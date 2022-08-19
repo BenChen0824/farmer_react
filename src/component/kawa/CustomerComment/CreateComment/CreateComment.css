@@ -11,7 +11,9 @@
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
 }
+
 .CreateComment_content {
   position: absolute;
   top: 50%;
@@ -20,7 +22,7 @@
   background: #fff;
   padding: 20px;
   border-radius: 5px;
-  width: 405px;
+  width: 500px;
 
   display: flex;
   flex-direction: column;
@@ -38,6 +40,7 @@
   width: 100%;
   border-radius: 6px;
   padding: 10px;
+  min-height: 200px;
 }
 .RatingsubmitBtn {
   background-color: #292929;

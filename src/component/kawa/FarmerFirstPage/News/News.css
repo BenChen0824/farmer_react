@@ -2,6 +2,21 @@
     width: 400px;
     /* max-height: 600px; */
     background-color: #fff;
+    /* border: 1px solid red; */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 10px 5px 5px rgb(68, 68, 68, 0.1);
+}
+
+.news_card:hover {
+    width: 400px;
+    /* max-height: 600px; */
+    background-color: #fff;
+    /* border: 1px solid red; */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 10px 5px 5px rgb(68, 68, 68, 0.1);
+    margin-top: 10px;
 }
 
 .news_card img {
@@ -16,6 +31,7 @@
     margin-left: auto;
     width: 100px;
     margin-right: 50px;
+    margin-bottom: 10px;
 }
 
 
