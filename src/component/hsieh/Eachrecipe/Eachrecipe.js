@@ -70,9 +70,11 @@ function Eachrecipe() {
         const data = {
             recipes_sid: params.recipes_sid,
         };
+
         if (eachrecipe.customer_id != loginUser.customer_id) {
-            alert('您並非本食譜撰寫者');
+            alert('您並非本食譜撰寫者，無權刪除食譜');
             navigate(`/recipe/each/${params.recipes_sid}`, { replace: true });
+            // navigate('/recipe', { replace: true });
             return;
         } else {
             const r = await fetch('http://localhost:3600/recipe/delete', {
@@ -100,7 +102,7 @@ function Eachrecipe() {
 
     function sendtoupdate() {
         if (eachrecipe.customer_id != loginUser.customer_id) {
-            alert('您並非本食譜撰寫者');
+            alert('您並非本食譜撰寫者，無權修改食譜');
             navigate(`/recipe/each/${params.recipes_sid}`, { replace: true });
         } else {
             navigate(`/recipe/updaterecipe/${params.recipes_sid}`, {
@@ -170,7 +172,6 @@ function Eachrecipe() {
                                 <p>
                                     料理所需時間
                                     <br />約 {eachrecipe.recipes_time_cost} 分鐘
-                                    {/* 引入料理時間 */}
                                 </p>
                             </div>
                         </div>
