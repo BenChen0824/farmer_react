@@ -9,13 +9,13 @@ function SelectedFood(props) {
         setDataFromFoodArea,
         calcCount,
     } = props;
-
+    //刪除食材
     const removeItem = (index) => {
         const newCart = [...dataFromFoodArea];
         newCart.splice(index, 1);
         setDataFromFoodArea(newCart);
     };
-
+    //全部刪除
     const removeAllItem = () => {
         let newRemoveAll = [...dataFromFoodArea];
         newRemoveAll = [];

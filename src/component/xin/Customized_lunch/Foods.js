@@ -13,6 +13,7 @@ function Foods(props) {
         foodList,
         setFoodList,
     } = props;
+    //添加食材
     const addItem = (item) => {
         if (dataFromFoodArea.length < 5) {
             const newItem = { ...item, tid: +Date.now() };
@@ -25,14 +26,14 @@ function Foods(props) {
             return;
         }
     };
-
+    //撈資料庫
     const getUserData = async () => {
         const response = await axios.get(
             'http://localhost:3600/customized_lunch/api'
         );
         setFoodList(response.data.rows);
     };
-
+    //撈資料庫都寫在useEffect
     useEffect(() => {
         getUserData();
     }, []);
