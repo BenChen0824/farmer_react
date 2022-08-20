@@ -169,7 +169,7 @@ function MemberEvents() {
                                                                         <button
                                                                             className="btn btn-sm boe-buttonColor text-white mb-0"
                                                                             onClick={() => {
-                                                                                window.scrollY(
+                                                                                window.scroll(
                                                                                     0,
                                                                                     0
                                                                                 );
@@ -254,7 +254,7 @@ function MemberEvents() {
                                                                         <button
                                                                             className="btn btn-sm boe-buttonColor text-white mb-0"
                                                                             onClick={() => {
-                                                                                window.scrollY(
+                                                                                window.scroll(
                                                                                     0,
                                                                                     0
                                                                                 );
