@@ -90,7 +90,7 @@
         border-radius: 2px 2px 2px 2px;
         /* margin: 10px; */
         border: 2px solid rgb(213, 225, 228);
-        height: 210px;
+        height: 200px;
         /* padding: 10px; */
     }
     
@@ -157,6 +157,7 @@
         align-items: center;
         justify-content: center;
         /* padding: 10px 20px 10px 0px; */
+        margin-top: 8px;
     }
     
     .CommentCard_imgwrap {
