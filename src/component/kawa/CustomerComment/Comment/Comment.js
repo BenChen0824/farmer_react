@@ -372,12 +372,13 @@ const Comment = () => {
                                 </div>
                                 <div className="CommentCard d-flex ">
                                     {/* ------左半邊: 頭像----- */}
-                                    <div className="CommentCard_imgwrap col-3 ">
+                                    <div className="CommentCard_imgwrap col-xl-2 ">
                                         <img
                                             src={`./images/${v.profile_img}`}
                                             alt=""
                                         />
                                     </div>
+
                                     {/* <div className="col-9 CommentCard_right ">
                                         <img
                                             src={getPicURL(+v.rating)}
@@ -409,13 +410,13 @@ const Comment = () => {
                                                 {v.likes}
                                             </div>
                                         </div>
-                                    </div> */}
+                                    </div>
                                     {/* ------右半邊: 評分/時間/帳號/留言內容----- */}
                                     <div
                                         className="d-flex flex-column"
                                         style={{ width: '100vh' }}
                                     >
-                                        <div className="col-9 CommentCard_right ">
+                                        <div className="col-xl-10 CommentCard_right ">
                                             <img
                                                 src={getPicURL(+v.rating)}
                                                 // getPicURL(e.target.getAttribute('value'))
@@ -431,10 +432,10 @@ const Comment = () => {
                                                     {createdAt}
                                                 </p>
                                             </div>
-                                            <p className="CommentContext  ">
+                                            <p className="CommentContext flex-grow-1 ">
                                                 {v.comment}
                                             </p>
-                                            <div className="likes_area d-flex mt-3 flex-grow-1 ">
+                                            <div className="likes_area d-flex mt-3 ">
                                                 <i
                                                     className="likes_icons fas fa-thumbs-up "
                                                     onClick={() => {
