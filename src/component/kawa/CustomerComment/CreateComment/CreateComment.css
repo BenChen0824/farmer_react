@@ -14,7 +14,9 @@
   z-index: 99;
   background-image: url(./../../../../../public/images/main_banner_01.jpg);
   background-repeat: repeat, repeat;
+  background-size: cover;
 }
+
 
 .CreateComment_content {
   position: absolute;
