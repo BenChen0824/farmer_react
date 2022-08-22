@@ -66,7 +66,7 @@ const News = () => {
                                           <h5 className="card_city mb-3">
                                               {`${row.card_city}`}
                                           </h5>
-                                          <p className="card-text  flex-frow-1">
+                                          <p className="newscard-text  flex-frow-1">
                                               {`${row.card_info}`}
                                           </p>
                                       </div>
