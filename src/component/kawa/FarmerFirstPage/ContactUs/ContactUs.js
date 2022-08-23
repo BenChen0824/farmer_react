@@ -41,7 +41,7 @@ export const ContactUs = () => {
         // <form ref={form} onSubmit={sendEmail}>
 
         <div className="ContactUs_section">
-            <h2 className="mb-3">訂閱我們 / News</h2>
+            <h2 className="mb-3">訂閱我們 / Subscribe</h2>
             <h5 className="mb-5">已追蹤更多消息!</h5>
 
             <div className="ContactUs_input_area">
