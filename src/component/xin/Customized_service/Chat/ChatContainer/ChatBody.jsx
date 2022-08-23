@@ -34,7 +34,7 @@ const ChatBody = ({ user, messages }) => {
                             }
                         >
                             <img
-                                style={{ width: 150, height: 'auto' }}
+                                style={{ width: 250, height: 'auto' }}
                                 src={message.content}
                                 alt=""
                             />
