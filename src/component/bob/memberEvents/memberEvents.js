@@ -169,6 +169,10 @@ function MemberEvents() {
                                                                         <button
                                                                             className="btn btn-sm boe-buttonColor text-white mb-0"
                                                                             onClick={() => {
+                                                                                window.scrollY(
+                                                                                    0,
+                                                                                    0
+                                                                                );
                                                                                 navigate(
                                                                                     `/activity/${v.activity_sid}`,
                                                                                     {
@@ -250,6 +254,10 @@ function MemberEvents() {
                                                                         <button
                                                                             className="btn btn-sm boe-buttonColor text-white mb-0"
                                                                             onClick={() => {
+                                                                                window.scrollY(
+                                                                                    0,
+                                                                                    0
+                                                                                );
                                                                                 navigate(
                                                                                     `/activity/${v.activity_sid}`,
                                                                                     {
