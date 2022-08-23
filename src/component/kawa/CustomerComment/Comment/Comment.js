@@ -29,6 +29,7 @@ const Comment = () => {
         ? JSON.parse(localStorage.getItem('auth')).customer_id
         : 500000000;
 
+    //抓全部資料
     const getData = () => {
         fetch(COMMENT_MAIN, {
             method: 'GET',
@@ -37,9 +38,11 @@ const Comment = () => {
             .then((obj) => {
                 // console.log(obj);
                 setTotalComment(obj);
+                console.log('a', setTotalComment(obj));
             });
     };
 
+    //顯示新舊
     const changeRow = () => {
         const newArray = [...commentToShow];
         newArray.reverse();
@@ -109,7 +112,7 @@ const Comment = () => {
         console.log(getPicURL(e.target.getAttribute('value'))); //3.png
     };
 
-    //抓圖片
+    //抓星星的圖片
     const getPicURL = (starRate) => {
         if (+starRate === 5) {
             return '/images/index_images/star5.png';
@@ -166,6 +169,7 @@ const Comment = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const [value, setValue] = useState();
     const search = query['search'];
+    console.log('搜尋', query);
 
     const handleChange = (e) => {
         const value = e.target.value;
@@ -179,6 +183,7 @@ const Comment = () => {
         }
     };
 
+    //搜尋
     const clickSearchFunction = (name) => {
         const readyToSend = { product_name: name };
         fetch(COMMENT_SEARCHNAME, {
@@ -191,17 +196,17 @@ const Comment = () => {
             .then((r) => r.json())
             .then((obj) => {
                 setCommentToShow(obj);
-                console.log(obj);
+                console.log('123', obj);
+                //搜尋後抓到的東西
             });
     };
-
 
     const handleIconClicked = (e) => {
         // e.stopPropagation();
         console.log('click on icon');
 
         const q = {
-            ...query,
+            // ...query,
             page: 1,
             search: value,
         };
@@ -224,6 +229,13 @@ const Comment = () => {
     useEffect(() => {
         if (search) {
             setValue(search);
+            // const testget = [...getData];
+            // const test = testget.map((v, i) => {
+            //     return v.profile_img;
+            // });
+            // console.log(test);
+
+            // setCommentToShow();
             // 渲染的地方 ↑ useeffect
             // 有搜尋的話就渲染
         }
@@ -256,7 +268,7 @@ const Comment = () => {
                         className=""
                         onClick={(e) => {
                             handleIconClicked();
-                            // console.log(value)
+                            console.log('value', value);
                             clickSearchFunction(value);
                         }}
                     >
@@ -371,21 +383,20 @@ const Comment = () => {
                                 <div className="CommentProductItem">
                                     {v.product_name}
                                 </div>
-
-                                <div className="CommentCard d-flex">
-                                    {/* ----------- */}
-                                    <div className="CommentCard_imgwrap col-3">
+                                <div className="CommentCard d-flex ">
+                                    {/* ------左半邊: 頭像----- */}
+                                    <div className="CommentCard_imgwrap col-xl-2 ">
                                         <img
                                             src={`./images/${v.profile_img}`}
                                             alt=""
                                         />
                                     </div>
-                                    {/* ----------- */}
-                                    <div className="col-9 CommentCard_right">
+
+                                    {/* <div className="col-9 CommentCard_right ">
                                         <img
                                             src={getPicURL(+v.rating)}
                                             // getPicURL(e.target.getAttribute('value'))
-
+                                            CommentCard
                                             style={{ width: '100px' }}
                                             alt=""
                                         />
@@ -397,11 +408,9 @@ const Comment = () => {
                                                 {createdAt}
                                             </p>
                                         </div>
-
                                         <p className="CommentContext">
                                             {v.comment}
                                         </p>
-
                                         <div className="likes_area d-flex mt-3">
                                             <i
                                                 className="likes_icons fas fa-thumbs-up"
@@ -412,6 +421,46 @@ const Comment = () => {
                                             ></i>
                                             <div className="likes_number">
                                                 {v.likes}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {/* ------右半邊: 評分/時間/帳號/留言內容----- */}
+                                    <div
+                                        className="d-flex flex-column"
+                                        style={{ width: '100vh' }}
+                                    >
+                                        <div className="col-xl-10 CommentCard_right ">
+                                            <img
+                                                src={getPicURL(+v.rating)}
+                                                // getPicURL(e.target.getAttribute('value'))
+                                                CommentCard
+                                                style={{ width: '100px' }}
+                                                alt=""
+                                            />
+                                            <div className="d-flex">
+                                                <p className=" pe-3">
+                                                    {v.account}
+                                                </p>
+                                                <p className="CommentCardTime">
+                                                    {createdAt}
+                                                </p>
+                                            </div>
+                                            <p className="CommentContext flex-grow-1 ">
+                                                {v.comment}
+                                            </p>
+                                            <div className="likes_area d-flex mt-3 ">
+                                                <i
+                                                    className="likes_icons fas fa-thumbs-up "
+                                                    onClick={() => {
+                                                        likeChange(
+                                                            v.comment_sid
+                                                        );
+                                                        handleClick();
+                                                    }}
+                                                ></i>
+                                                <div className="likes_number">
+                                                    {v.likes}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

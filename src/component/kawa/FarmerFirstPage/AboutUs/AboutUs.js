@@ -7,8 +7,7 @@ const AboutUs = () => {
     return (
         <>
             <MarqueeSliderL />
-
-            <div className="aboutUs_section  mt-5 mb-5 ">
+            <div className="aboutUs_section mt-5 mb-5">
                 <div className="aboutUs_imgwarap_area">
                     <div className="aboutUs_imgwarap">
                         <img

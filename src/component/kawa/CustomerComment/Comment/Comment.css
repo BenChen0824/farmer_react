@@ -15,6 +15,7 @@
     margin: auto;
     padding: 5px 10px 5px 10px;
     margin: 10px 0px;
+    cursor: pointer;
 }
 
 .starRating_btn:hover {
@@ -23,7 +24,6 @@
     color: #333;
     color: #ffffff;
 }
-
 
 
 .CommentSearch_area input{
@@ -82,6 +82,7 @@
 .starRating_title {
     display: flex;
     justify-content: center;
+
 }
 
 

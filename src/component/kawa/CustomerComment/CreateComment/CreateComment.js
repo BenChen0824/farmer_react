@@ -15,9 +15,23 @@ export default function CreateComment() {
 
     const loginUser = JSON.parse(localStorage.getItem('auth'));
     const CommentProduct = JSON.parse(localStorage.getItem('comment_product'));
+    const Swal = require('sweetalert2');
 
     const sendComment = (event) => {
         event.preventDefault();
+
+        //提示視窗:發送成功
+        function checkButton() {
+            Swal.fire({
+                position: 'center-center',
+                icon: 'success',
+                title: '感謝您的評價！',
+                showConfirmButton: false,
+
+                timer: 1500,
+            });
+        }
+
         axios
             .post('http://localhost:3600/comment/createcomment', {
                 member_id: loginUser.customer_id,
@@ -27,7 +41,9 @@ export default function CreateComment() {
                 comment: document.form1.comment.value,
                 product_sid: CommentProduct,
             })
+
             .then(() => {
+                checkButton();
                 setTimeout(() => {
                     navigate('/comment');
                 }, 1000);
@@ -123,7 +139,10 @@ export default function CreateComment() {
                                             onMouseLeave={() =>
                                                 setHoverStar(undefined)
                                             }
-                                            style={{ color: 'orange' }}
+                                            style={{
+                                                color: 'orange',
+                                                cursor: 'pointer',
+                                            }}
                                             onClick={() => setNumber(index + 1)}
                                             key={index}
                                             value={index + 1}

@@ -4,27 +4,13 @@ import SelectedFood from './SelectedFood';
 import './Customized_product.css';
 import { useState } from 'react';
 
-// import foodList from './data/foodList.json'
-//初始化狀態用的函式
-// const initState = (productArray) => {
-//   const state = []
-
-//   for (let i = 0; i < productArray.length; i++) {
-//     state.push({
-//       ...productArray[i],
-//       count: 1,
-//       id: productArray[i].id + new Date().getTime(),
-//     })
-//   }
-//   return state
-// }
 function CustomizedLunch() {
     const [isShowed, setIsShowed] = useState(true);
     const [isShowedSelectFood, setIsShowedSelectFood] = useState(true);
     const [dataFromFoodArea, setDataFromFoodArea] = useState([]);
     const [foodCount, setFoodCount] = useState(1);
     const [foodList, setFoodList] = useState([]); //撈資料庫
-
+    //算數量
     const caclTotalCount = () => {
         let count = 0;
         for (let i = 0; i < dataFromFoodArea.length; i++) {
@@ -32,7 +18,7 @@ function CustomizedLunch() {
         }
         return count;
     };
-
+    //算價格
     const calcTotalPrice = () => {
         let total = 0;
 

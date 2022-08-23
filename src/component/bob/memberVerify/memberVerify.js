@@ -4,6 +4,8 @@ import { useEffect, useContext } from 'react';
 import AuthContext from '../component/authContext';
 import Swal from 'sweetalert2';
 import { FaCheckCircle } from 'react-icons/fa'
+import { async } from 'emoji-mart';
+import { OKShareButton } from 'react-share';
 
 function MemberVerify() {
     const { setAuth } = useContext(AuthContext)
@@ -53,22 +55,28 @@ function MemberVerify() {
         }
     }
 
+    const verifyResend = async () => {
+        const r = await fetch('http://localhost:3600/member/verifyresend', {
+            method: 'put',
+        });
+        const obj = await r.json();
+        console.log(obj);
+        if (obj.send) {
+            Swal.fire({
+                icon: 'success',
+                title: '已重新寄送驗證信',
+                showConfirmButton: false,
+                timer: 1500,
+            })
+        }
+    }
+
     return (
         <>
             <div className="bover-bodyvh d-flex justify-content-center align-items-center bove-bodybg">
                 <div className="col-sm-3 shadow mb-5 rounded rounded-3 bg-white mx-4">
                     <div className="d-flex justify-content-center my-3">
                         <FaCheckCircle className="bover-iconSize bover-svgColor"></FaCheckCircle>
-                        {/* <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="50"
-                            height="50"
-                            fill="currentColor"
-                            className="bi bi-check-circle-fill bover-svgColor"
-                            viewBox="0 0 16 16"
-                        >
-                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-                        </svg> */}
                     </div>
                     <div className="p-3">
                         <h4 className="fw-bold text-center m-0">
@@ -77,20 +85,26 @@ function MemberVerify() {
                     </div>
                     <div className="col-9 m-auto p-3">
                         <h6 className="fw-semibold text-center m-0">
-                            我們已寄送驗證碼至您的信箱，請於下方輸入驗證碼即可完成註冊。
+                            我們已寄送驗證碼至您的信箱，請於下方輸入驗證碼即可完成會員開通。
                         </h6>
                     </div>
-                    <div className="d-grid gap-2 col-sm-7 mx-auto my-3">
+                    <div className="d-grid gap-2 col-7 mx-auto my-3">
                         <form name="form1" onSubmit={checkForm}>
                             <input type="text" name="checknumber" className="form-control shadow-none border-dark text-center fw-bolder fs-4" />
-                            <div className="d-grid gap-2 col-sm-9 mx-auto mt-4">
+                            <div className="d-grid gap-2 col-9 mx-auto mt-4">
                                 <button className="border-0 shadow-sm rounded py-2 bover-buttonColor text-white" type="submit">驗證</button>
-                                <button className="btn btn-dark" type="button" onClick={(e)=>{
-                                    e.preventDefault()
-                                    navigate('/member', {replace: true})
-                                    }}>返回登入頁面</button>
                             </div>
                         </form>
+                        <div className="d-grid gap-2 col-9 mx-auto mt-4">
+                            <button className="btn btn-secondary" type="button" onClick={(e)=>{
+                                        e.preventDefault();
+                                        verifyResend();
+                                    }}>重新寄送驗證信</button>
+                            <button className="btn btn-dark" type="button" onClick={(e)=>{
+                                        e.preventDefault()
+                                        navigate('/member', {replace: true})
+                                        }}>返回登入頁面</button>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -38,7 +38,7 @@ function Canvas(props) {
                 </option>
             ));
     };
-
+    //畫便當盒 async await
     const getImageFromPath = async (path) => {
         return new Promise((resolve, reject) => {
             if (!!cache[path]) {
@@ -61,13 +61,15 @@ function Canvas(props) {
         // let countComplete = tmpCart.length
 
         let i = 0;
+        // 清除畫面
         shadowCtx.clearRect(
             0,
             0,
             shadowRef.current.width,
             shadowRef.current.height
-        ); // 清除畫面
-        let img = await getImageFromPath(`/images/perferBox2.png`); // 背景圖
+        );
+        // 背景圖
+        let img = await getImageFromPath(`/images/perferBox2.png`);
         shadowCtx.drawImage(img, 0, 0, 700, 650);
         for (let item of tmpCart) {
             img = await getImageFromPath(`${item.image}`);
@@ -127,7 +129,7 @@ function Canvas(props) {
             });
             event.preventDefault();
         }
-
+        //送formData
         const fd = new FormData(document.form1);
         fd.append(
             'lunch_1',
