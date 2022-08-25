@@ -135,6 +135,7 @@ const Chat = ({ socket, user, users, setUsers, messages, setMessages }) => {
         }
         setMessages([...messages, newMessage]);
         setMessage('');
+        // socket.emit() 可以將訊息推播到伺服器：
         socket.emit('private message', {
             content: message,
             to: selectedUser.userId,
@@ -158,6 +159,7 @@ const Chat = ({ socket, user, users, setUsers, messages, setMessages }) => {
                 };
                 setMessages([...messages, newMessage]);
 
+                // socket.emit() 可以將訊息推播到伺服器：
                 socket.emit('image message', {
                     content: reader.result,
                     to: selectedUser.userId,
@@ -173,10 +175,12 @@ const Chat = ({ socket, user, users, setUsers, messages, setMessages }) => {
         setselectedUser(user);
         setMessages([]);
         currentSelectedUser.current = user;
+        // socket.emit() 可以將訊息推播到伺服器：
         socket.emit('user messages', user);
         // 取消alert點點↓↓
         handleNewMessageStatus(user.userId, false);
     };
+    // socket.on 監聽伺服器傳來的事件，並取得資料
     useEffect(() => {
         socket.on('user connected', (user) => userConnected(user));
 
