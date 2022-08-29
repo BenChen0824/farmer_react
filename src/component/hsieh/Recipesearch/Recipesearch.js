@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import './Recipesearch.css';
 import './Rightsidemenu.css';
 import Pagination from './Pagination';
-// import Popup from './Popup';
+import Popup from './Popup';
 import axios from 'axios';
 import Title from './../../lil/Title/index';
 
@@ -175,7 +175,7 @@ function Recipesearch() {
                         搜尋
                     </button>
 
-                    {/* <button
+                    <button
                         type="button"
                         className="btn btn-dark"
                         style={{ margin: 5 }}
@@ -187,7 +187,7 @@ function Recipesearch() {
                         className="popuptosearch"
                         trigger={ButtonPop}
                         setButtonPop={setButtonPop}
-                    /> */}
+                    />
                 </div>
             </div>
 
@@ -204,7 +204,6 @@ function Recipesearch() {
                                 src="/images/dishimages/b0fd632a003a439d13eef6fef4027a0a.jpg"
                                 alt=""
                             />
-                            {/* b0fd632a003a439d13eef6fef4027a0a */}
                         </Link>
                     </div>
 

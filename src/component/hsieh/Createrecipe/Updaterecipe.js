@@ -1140,14 +1140,14 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        {/* <div
+                        <div
                             className={
                                 updaterecipe.recipes_step9.length === 0
                                     ? 'stepincreate1'
                                     : 'stepincreate'
                             }
-                        > */}
-                        <div className="stepincreate">
+                        >
+                        {/* <div className="stepincreate"> */}
                             <div className="redballincreate">10</div>
                             <section>
                                 <textarea
