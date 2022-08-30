@@ -3,6 +3,7 @@ import { useState } from 'react';
 import './Popup.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import Title from './../../lil/Title/index';
 
 export default function Popup(props) {
     const [recipe, setRecipe] = useState([]);
@@ -45,6 +46,7 @@ export default function Popup(props) {
             <div className="searchinpopup">
                 <div className="searchinpopup-inner">
                     <h2 className="recipetitleinpopup">
+                        {/* <Title zh={'進階搜尋'} eg={'Search By Information'} /> */}
                         進階搜尋 ／ Search By Information
                     </h2>
                     <div>
@@ -137,6 +139,7 @@ export default function Popup(props) {
                     </div>
 
                     <h2 className="recipetitleinpopup">
+                        {/* <Title zh={'食材搜尋'} eg={'Search By Ingredient'} /> */}
                         食材搜尋 ／ Search By Ingredient
                     </h2>
                     <div className="searchbyingredient">
