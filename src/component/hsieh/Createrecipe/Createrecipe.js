@@ -4,6 +4,9 @@ import './Createrecipe.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Title from './../../lil/Title/index';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+const MySwal = withReactContent(Swal);
 
 function Createrecipe() {
     const loginUser = JSON.parse(localStorage.getItem('auth'));
@@ -142,7 +145,12 @@ function Createrecipe() {
         if (obj.success) {
             alert('請填寫正確資料');
         } else {
-            alert('新增成功');
+            // alert('新增成功');
+            // navigate('/recipe', { replace: true });
+            MySwal.fire({
+                title: '新增成功',
+                confirmButtonColor: '#82CA35',
+            });
             navigate('/recipe', { replace: true });
         }
     }

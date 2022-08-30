@@ -4,6 +4,9 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link, useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+const MySwal = withReactContent(Swal);
 
 function Eachrecipe() {
     const [eachrecipe, setEachrecipe] = useState({
@@ -85,8 +88,12 @@ function Eachrecipe() {
             alreadydelete(obj);
             console.log(alreadydelete);
         } else {
-            alert('您並非本食譜撰寫者，無權刪除食譜');
-            window.href = 'http://localhost:3000/recipe';
+            MySwal.fire({
+                title: '您並非本食譜撰寫者，無權刪除食譜',
+                confirmButtonColor: '#82CA35',
+            });
+            // alert('您並非本食譜撰寫者，無權刪除食譜');
+            // window.href = 'http://localhost:3000/recipe';
             // navigate('/recipe', { replace: true });
             return;
         }
@@ -103,8 +110,12 @@ function Eachrecipe() {
 
     function sendtoupdate() {
         if (eachrecipe.customer_id != loginUser.customer_id) {
-            alert('您並非本食譜撰寫者，無權修改食譜');
-            navigate(`/recipe/each/${params.recipes_sid}`, { replace: true });
+            MySwal.fire({
+                title: '您並非本食譜撰寫者，無權修改食譜',
+                confirmButtonColor: '#82CA35',
+            });
+            // alert('您並非本食譜撰寫者，無權修改食譜');
+            // navigate(`/recipe/each/${params.recipes_sid}`, { replace: true });
         } else {
             navigate(`/recipe/updaterecipe/${params.recipes_sid}`, {
                 replace: false,

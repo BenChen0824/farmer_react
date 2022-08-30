@@ -4,6 +4,9 @@ import './Createrecipe.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Title from './../../lil/Title/index';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+const MySwal = withReactContent(Swal);
 
 function Updaterecipe() {
     const loginUser = JSON.parse(localStorage.getItem('auth'));
@@ -190,8 +193,12 @@ function Updaterecipe() {
         if (obj.success) {
             alert('請填寫正確資料');
         } else {
-            alert('更新成功');
+            // alert('更新成功');
             // navigate('/recipe', { replace: true });
+            MySwal.fire({
+                title: '更新成功',
+                confirmButtonColor: '#82CA35',
+            });
             navigate(`/recipe/each/${params.recipes_sid}`, { replace: true });
         }
     }
@@ -1140,14 +1147,14 @@ function Updaterecipe() {
 
                         {/* 分隔線 */}
 
-                        <div
+                        {/* <div
                             className={
                                 updaterecipe.recipes_step9.length === 0
                                     ? 'stepincreate1'
                                     : 'stepincreate'
                             }
-                        >
-                        {/* <div className="stepincreate"> */}
+                        > */}
+                        <div className="stepincreate1">
                             <div className="redballincreate">10</div>
                             <section>
                                 <textarea
