@@ -92,9 +92,6 @@ function Eachrecipe() {
                 title: '您並非本食譜撰寫者，無權刪除食譜',
                 confirmButtonColor: '#82CA35',
             });
-            // alert('您並非本食譜撰寫者，無權刪除食譜');
-            // window.href = 'http://localhost:3000/recipe';
-            // navigate('/recipe', { replace: true });
             return;
         }
     };
@@ -103,7 +100,11 @@ function Eachrecipe() {
         if (obj.success) {
             alert('');
         } else {
-            alert('刪除成功');
+            MySwal.fire({
+                title: '刪除成功',
+                confirmButtonColor: '#82CA35',
+            });
+            // alert('刪除成功');
             navigate('/recipe', { replace: true });
         }
     }
@@ -112,10 +113,8 @@ function Eachrecipe() {
         if (eachrecipe.customer_id != loginUser.customer_id) {
             MySwal.fire({
                 title: '您並非本食譜撰寫者，無權修改食譜',
-                confirmButtonColor: '#82CA35',
+                confirmButtonColor: '#eb4141',
             });
-            // alert('您並非本食譜撰寫者，無權修改食譜');
-            // navigate(`/recipe/each/${params.recipes_sid}`, { replace: true });
         } else {
             navigate(`/recipe/updaterecipe/${params.recipes_sid}`, {
                 replace: false,

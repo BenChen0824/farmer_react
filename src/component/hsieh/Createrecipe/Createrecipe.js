@@ -143,10 +143,12 @@ function Createrecipe() {
 
     function alreadycreate(obj) {
         if (obj.success) {
-            alert('請填寫正確資料');
+            MySwal.fire({
+                title: '請填寫正確資料',
+                confirmButtonColor: '#eb4141',
+            });
+            // alert('請填寫正確資料');
         } else {
-            // alert('新增成功');
-            // navigate('/recipe', { replace: true });
             MySwal.fire({
                 title: '新增成功',
                 confirmButtonColor: '#82CA35',
