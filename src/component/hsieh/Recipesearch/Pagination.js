@@ -1,9 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 export default function Pagination({ page, totalPages }) {
     const location = useLocation();
     const usp = new URLSearchParams(location.search);
+
+    // 分頁用
+    const [pageNow, setPageNow] = useState(1);
+    // 目前頁號，預設第一頁
+
+    const [perPage, setPerPage] = useState(12);
+    // 每頁多少數量，預設一頁12筆資料
+
+    const [pageTotal, setPageTotal] = useState(0);
+    // 目前有多少頁，等伺服器抓完資料才知道多少(didMount時決定)
+
+    // chunk - 依size分成子陣列，ex. chunk([1, 2, 3, 4, 5], 2) -> [[1,2],[3,4],[5]]
+    // https://stackoverflow.com/questions/8495687/split-array-into-chunks
+    // const chunk = (arr, size) =>
+    //     Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
+    //         arr.slice(i * size, i * size + size)
+    //     );
+
+    // setRecipe(response.data)
+
+    //     const pageArray = chunk(response.data, perPage)
+
+    //     if (pageArray.length > 0) {
+    //       setPageTotal(pageArray.length)
+    //       setUsersDisplay(pageArray)
+    //     }
+    //   }
 
     return (
         <nav aria-label="Page navigation example">

@@ -345,7 +345,7 @@ function Updaterecipe() {
                             name="updateTimecost"
                             id="updateTimecost"
                             className="dataform2increate"
-                            type="text"
+                            type="number"
                             value={updaterecipe.recipes_time_cost}
                             onChange={(e) => {
                                 setUpdaterecipe(e.target.value);
@@ -366,7 +366,7 @@ function Updaterecipe() {
                             name="updateCalories"
                             id="updateCalories"
                             className="dataform2increate"
-                            type="text"
+                            type="number"
                             value={updaterecipe.recipes_calories}
                             onChange={(e) => {
                                 setUpdaterecipe(e.target.value);
@@ -387,6 +387,7 @@ function Updaterecipe() {
                             name="updatePortion"
                             id="updaterecipe"
                             className="dataform2increate"
+                            type="number"
                             value={updaterecipe.recipes_portion}
                             onChange={(e) => {
                                 setUpdaterecipe(e.target.value);

@@ -340,7 +340,7 @@ function Createrecipe() {
                             name="timecost"
                             id="timecost"
                             className="dataform2increate"
-                            type="text"
+                            type="number"
                             required
                             value={timecost}
                             onChange={(e) => {
@@ -364,7 +364,7 @@ function Createrecipe() {
                             name="calories"
                             id="calories"
                             className="dataform2increate"
-                            type="text"
+                            type="number"
                             required
                             value={calories}
                             onChange={(e) => {
@@ -388,6 +388,7 @@ function Createrecipe() {
                             name="portion"
                             id="portion"
                             className="dataform2increate"
+                            type="number"
                             value={portion}
                             required
                             onChange={(e) => {
@@ -1232,6 +1233,9 @@ function Createrecipe() {
 }
 
 export default Createrecipe;
+
+// https://www.npmjs.com/package/validator
+// 表單驗證套件
 
 // function CreateNewRecipe(){
 //   var
