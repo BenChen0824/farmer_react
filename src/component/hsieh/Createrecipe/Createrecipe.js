@@ -388,7 +388,6 @@ function Createrecipe() {
                             name="portion"
                             id="portion"
                             className="dataform2increate"
-                            type="number"
                             value={portion}
                             required
                             onChange={(e) => {

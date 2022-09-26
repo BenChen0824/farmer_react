@@ -387,7 +387,6 @@ function Updaterecipe() {
                             name="updatePortion"
                             id="updaterecipe"
                             className="dataform2increate"
-                            type="number"
                             value={updaterecipe.recipes_portion}
                             onChange={(e) => {
                                 setUpdaterecipe(e.target.value);
